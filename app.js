@@ -1,3 +1,4 @@
+/* Copyright (c) 2026 Nohuto. All rights reserved. */
 const THEME_KEY = 'nv-theme';
 const DEFAULT_THEME = 'default-dark';
 const BG_KEY = 'nv-bg';
@@ -16,37 +17,32 @@ const FONT_KEY = 'nv-font';
 const FONT_SIZE_KEY = 'nv-font-size';
 const DEFAULT_FONT = 'cascadia';
 const DEFAULT_FONT_SIZE = 14;
-const FONT_MAP = {
-  cascadia: '"Cascadia Mono", "Cascadia Code", Consolas, "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace',
-  jetbrains: '"JetBrains Mono", "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace',
-  fira: '"Fira Code", "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace',
-  ibm: '"IBM Plex Mono", "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace',
-  sourcecode: '"Source Code Pro", "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace',
-  consolas: 'Consolas, "Cascadia Mono", "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace'
-};
+const FONT_KEYS = ['cascadia', 'jetbrains', 'fira', 'ibm', 'sourcecode', 'consolas'];
+const FONT_SET = new Set(FONT_KEYS);
+const REPO_DESC_URL = 'data/repos.json';
 const PROJECT_LIST = [
-  { title: 'Windows Configuration', repo: '5Noxi/win-config' },
-  { title: 'AES CBC Encryption', repo: '5Noxi/aes-cbc' },
-  { title: 'Bitmask Calculator', repo: '5Noxi/bitmask-calc' },
-  { title: 'Blocklist Manager', repo: '5Noxi/blocklist-mgr' },
-  { title: 'Component Manager', repo: '5Noxi/comp-mgr' },
-  { title: 'App Configuration Tools', repo: '5Noxi/app-tools' },
-  { title: 'Game Configuration Tools', repo: '5Noxi/game-tools' },
-  { title: 'Symbols Memory Dump', repo: '5Noxi/sym-dump' },
-  { title: 'NVFetch', repo: '5Noxi/nvfetch' },
-  { title: 'Void Obfuscation', repo: '5Noxi/void' },
-  { title: 'PowerShell Minifier', repo: '5Noxi/minifier' },
-  { title: 'PS12bat', repo: '5Noxi/ps12bat' },
-  { title: 'WPR/Procmon Registry Activity Records', repo: '5Noxi/wpr-reg-records' },
-  { title: 'Base64 Encoding / Character Obfuscation', repo: '5Noxi/b64-char' },
-  { title: 'ADMX Parser', repo: '5Noxi/admx-parser' },
-  { title: 'Hash Generator', repo: '5Noxi/hash-gen' },
-  { title: 'strings2 TUI', repo: '5Noxi/strings2-tui' },
-  { title: 'Base64 Reversal & Character Obfuscation', repo: '5Noxi/b64rev' },
-  { title: 'DISM WSIM', repo: '5Noxi/dism-wsim' },
-  { title: 'reg2bat', repo: '5Noxi/reg2bat' },
-  { title: 'PBO2 UV Guide', repo: '5Noxi/pbo2-uv' },
-  { title: 'GPU OC/UV Guide', repo: '5Noxi/gpu-oc-uv' }
+  { title: 'Windows Configuration', repo: 'nohuto/win-config' },
+  { title: 'AES CBC Encryption', repo: 'nohuto/aes-cbc' },
+  { title: 'Bitmask Calculator', repo: 'nohuto/bitmask-calc' },
+  { title: 'Blocklist Manager', repo: 'nohuto/blocklist-mgr' },
+  { title: 'Component Manager', repo: 'nohuto/comp-mgr' },
+  { title: 'App Configuration Tools', repo: 'nohuto/app-tools' },
+  { title: 'Game Configuration Tools', repo: 'nohuto/game-tools' },
+  { title: 'Symbols Memory Dump', repo: 'nohuto/sym-dump' },
+  { title: 'NVFetch', repo: 'nohuto/nvfetch' },
+  { title: 'Void Obfuscation', repo: 'nohuto/void' },
+  { title: 'PowerShell Minifier', repo: 'nohuto/minifier' },
+  { title: 'PS12bat', repo: 'nohuto/ps12bat' },
+  { title: 'WPR/Procmon Registry Activity Records', repo: 'nohuto/wpr-reg-records' },
+  { title: 'Base64 Encoding / Character Obfuscation', repo: 'nohuto/b64-char' },
+  { title: 'ADMX Parser', repo: 'nohuto/admx-parser' },
+  { title: 'Hash Generator', repo: 'nohuto/hash-gen' },
+  { title: 'strings2 TUI', repo: 'nohuto/strings2-tui' },
+  { title: 'Base64 Reversal & Character Obfuscation', repo: 'nohuto/b64rev' },
+  { title: 'DISM WSIM', repo: 'nohuto/dism-wsim' },
+  { title: 'reg2bat', repo: 'nohuto/reg2bat' },
+  { title: 'PBO2 UV Guide', repo: 'nohuto/pbo2-uv' },
+  { title: 'GPU OC/UV Guide', repo: 'nohuto/gpu-oc-uv' }
 ];
 
 let toastTimer;
@@ -54,6 +50,9 @@ let consoleHistory = [];
 let consoleHistoryIndex = -1;
 let consoleTimestampTimer;
 let consoleFocusListener;
+let consoleResizeHandler;
+let consoleResizeObserver;
+let repoDescriptionsPromise;
 
 const ASCII_ART = [
   '  \\  |                                    ',
@@ -61,6 +60,22 @@ const ASCII_ART = [
   ' |\\  |  (   | \\ \\ /   __/  |   \\__ \\   __/',
   '_| \\_| \\___/   \\_/  \\___| _|   ____/ \\___|'
 ];
+
+const storageGet = (key, fallback) => {
+  try {
+    return localStorage.getItem(key) || fallback;
+  } catch {
+    return fallback;
+  }
+};
+
+const storageSet = (key, value) => {
+  try {
+    localStorage.setItem(key, value);
+  } catch { }
+};
+
+const hasSelectOption = (select, value) => Array.from(select.options).some(option => option.value === value);
 
 function setActive(href) {
   document.querySelectorAll('.nav-tabs a').forEach(a => {
@@ -84,28 +99,15 @@ function initTheme() {
   const select = document.getElementById('theme-select');
   if (!select) return;
 
-  let stored = DEFAULT_THEME;
-  try {
-    stored = localStorage.getItem(THEME_KEY) || document.documentElement.getAttribute('data-theme') || DEFAULT_THEME;
-  } catch {
-    stored = document.documentElement.getAttribute('data-theme') || DEFAULT_THEME;
-  }
-
-  const applied = applyTheme(stored);
-  const hasOption = Array.from(select.options).some(option => option.value === applied);
-  if (hasOption) {
-    select.value = applied;
-  } else {
-    select.value = DEFAULT_THEME;
-    applyTheme(DEFAULT_THEME);
-  }
+  const stored = storageGet(THEME_KEY, document.documentElement.getAttribute('data-theme') || DEFAULT_THEME);
+  const initial = hasSelectOption(select, stored) ? stored : DEFAULT_THEME;
+  applyTheme(initial);
+  select.value = initial;
 
   select.addEventListener('change', () => {
     const next = select.value || DEFAULT_THEME;
     applyTheme(next);
-    try {
-      localStorage.setItem(THEME_KEY, next);
-    } catch { }
+    storageSet(THEME_KEY, next);
   });
 }
 
@@ -120,35 +122,23 @@ function initBackground() {
   const select = document.getElementById('bg-select');
   if (!select) return;
 
-  let stored = DEFAULT_BG;
-  try {
-    stored = localStorage.getItem(BG_KEY) || document.documentElement.getAttribute('data-bg') || DEFAULT_BG;
-  } catch {
-    stored = document.documentElement.getAttribute('data-bg') || DEFAULT_BG;
-  }
-
-  const applied = applyBackground(stored);
-  const hasOption = Array.from(select.options).some(option => option.value === applied);
-  if (hasOption) {
-    select.value = applied;
-  } else {
-    select.value = DEFAULT_BG;
-    applyBackground(DEFAULT_BG);
-  }
+  const stored = storageGet(BG_KEY, document.documentElement.getAttribute('data-bg') || DEFAULT_BG);
+  const initial = BG_OPTIONS.includes(stored) ? stored : DEFAULT_BG;
+  applyBackground(initial);
+  select.value = initial;
 
   select.addEventListener('change', () => {
     const next = select.value || DEFAULT_BG;
     applyBackground(next);
-    try {
-      localStorage.setItem(BG_KEY, next);
-    } catch { }
+    storageSet(BG_KEY, next);
   });
 }
 
 function applyFont(key) {
-  const resolved = FONT_MAP[key] || FONT_MAP[DEFAULT_FONT];
-  document.documentElement.style.setProperty('--font-family', resolved);
-  return key || DEFAULT_FONT;
+  const applied = FONT_SET.has(key) ? key : DEFAULT_FONT;
+  document.documentElement.setAttribute('data-font', applied);
+  document.documentElement.style.removeProperty('--font-family');
+  return applied;
 }
 
 function applyFontSize(size) {
@@ -166,24 +156,13 @@ function initTypography() {
   const stepButtons = document.querySelectorAll('.size-step');
   if (!fontSelect && !sizeInput) return;
 
-  let storedFont = DEFAULT_FONT;
-  try {
-    storedFont = localStorage.getItem(FONT_KEY) || DEFAULT_FONT;
-  } catch { }
-
+  const storedFont = storageGet(FONT_KEY, DEFAULT_FONT);
+  const appliedFont = applyFont(storedFont);
   if (fontSelect) {
-    const hasFontOption = Array.from(fontSelect.options).some(option => option.value === storedFont);
-    if (!hasFontOption) {
-      storedFont = DEFAULT_FONT;
-    }
-    fontSelect.value = storedFont;
+    fontSelect.value = hasSelectOption(fontSelect, appliedFont) ? appliedFont : DEFAULT_FONT;
   }
-  applyFont(storedFont);
 
-  let storedSize = DEFAULT_FONT_SIZE;
-  try {
-    storedSize = localStorage.getItem(FONT_SIZE_KEY) || DEFAULT_FONT_SIZE;
-  } catch { }
+  const storedSize = storageGet(FONT_SIZE_KEY, DEFAULT_FONT_SIZE);
   const appliedSize = applyFontSize(storedSize);
   if (sizeInput) {
     sizeInput.value = appliedSize;
@@ -193,9 +172,7 @@ function initTypography() {
     fontSelect.addEventListener('change', () => {
       const next = fontSelect.value || DEFAULT_FONT;
       applyFont(next);
-      try {
-        localStorage.setItem(FONT_KEY, next);
-      } catch { }
+      storageSet(FONT_KEY, next);
     });
   }
 
@@ -203,9 +180,7 @@ function initTypography() {
     sizeInput.addEventListener('input', () => {
       const applied = applyFontSize(sizeInput.value);
       sizeInput.value = applied;
-      try {
-        localStorage.setItem(FONT_SIZE_KEY, applied + 'px');
-      } catch { }
+      storageSet(FONT_SIZE_KEY, applied + 'px');
     });
   }
 
@@ -216,9 +191,7 @@ function initTypography() {
       const nextValue = Number.parseInt(sizeInput.value || DEFAULT_FONT_SIZE, 10) + delta;
       const applied = applyFontSize(nextValue);
       sizeInput.value = applied;
-      try {
-        localStorage.setItem(FONT_SIZE_KEY, applied + 'px');
-      } catch { }
+      storageSet(FONT_SIZE_KEY, applied + 'px');
     });
   });
 }
@@ -321,81 +294,75 @@ window.addEventListener('popstate', e => {
   loadPage(url, false);
 });
 
-function fetchRepoMeta(repo) {
-  return fetch(`https://api.github.com/repos/${repo}`, {
-    headers: { 'Accept': 'application/vnd.github+json' },
-    cache: 'no-store'
-  }).then(res => {
-    if (!res.ok) throw new Error();
-    return res.json();
-  });
-}
+const loadRepoDescriptions = () => {
+  if (repoDescriptionsPromise) return repoDescriptionsPromise;
+  repoDescriptionsPromise = fetch(REPO_DESC_URL, { cache: 'force-cache' })
+    .then(res => (res.ok ? res.json() : {}))
+    .catch(() => ({}));
+  return repoDescriptionsPromise;
+};
 
 async function getRepoDescription(repo) {
-  const cacheKey = `ghmeta:${repo}`;
-  try {
-    const cached = localStorage.getItem(cacheKey);
-    if (cached) {
-      const { t, description } = JSON.parse(cached);
-      if (Date.now() - t < 6 * 60 * 60 * 1000 && description) {
-        return description;
-      }
-    }
-  } catch { }
-
-  try {
-    const meta = await fetchRepoMeta(repo);
-    const desc = (meta.description || 'No description yet.').trim();
-    localStorage.setItem(cacheKey, JSON.stringify({ t: Date.now(), description: desc }));
-    return desc;
-  } catch {
-    return 'No description yet.';
-  }
+  if (!repo || !repo.includes('/')) return 'No description yet.';
+  const data = await loadRepoDescriptions();
+  const desc = Object.prototype.hasOwnProperty.call(data, repo) ? data[repo] : '';
+  return desc && desc.trim() ? desc.trim() : 'No description yet.';
 }
 
 function initRepoDescriptions() {
-  document.querySelectorAll('.project-card[data-repo]').forEach(async card => {
+  const cards = document.querySelectorAll('.project-card[data-repo]');
+  if (!cards.length) return;
+  cards.forEach(card => {
     const repo = card.getAttribute('data-repo');
     const descEl = card.querySelector('.project-desc');
     if (!repo || !descEl) return;
-    descEl.textContent = await getRepoDescription(repo);
-  });
-}
-
-function filterProjects() {
-  const searchInput = document.getElementById('project-search');
-  if (!searchInput) return;
-
-  const search = searchInput.value.toLowerCase();
-  const activeTags = Array.from(document.querySelectorAll('.tag-filter button.active')).map(btn => btn.textContent.toLowerCase());
-
-  document.querySelectorAll('.project-card').forEach(card => {
-    const title = card.querySelector('.project-title').textContent.toLowerCase();
-    const desc = card.querySelector('.project-desc').textContent.toLowerCase();
-    const tags = (card.dataset.tags || '').toLowerCase().split(',').map(tag => tag.trim());
-
-    const matchesSearch = title.includes(search) || desc.includes(search);
-    const matchesTags = activeTags.length === 0 || activeTags.some(tag => tags.includes(tag));
-
-    card.style.display = (matchesSearch && matchesTags) ? '' : 'none';
+    getRepoDescription(repo).then(desc => {
+      descEl.textContent = desc;
+    });
   });
 }
 
 function initFiltering() {
   const searchInput = document.getElementById('project-search');
-  const tagButtons = document.querySelectorAll('.tag-filter button');
+  const tagButtons = Array.from(document.querySelectorAll('.tag-filter button'));
+  const cards = Array.from(document.querySelectorAll('.project-card'));
 
-  if (!searchInput || tagButtons.length === 0) return;
+  if (!searchInput || tagButtons.length === 0 || cards.length === 0) return;
 
-  searchInput.addEventListener('input', filterProjects);
+  const cardData = cards.map(card => {
+    const title = (card.querySelector('.project-title')?.textContent || '').toLowerCase();
+    const descEl = card.querySelector('.project-desc');
+    const tags = (card.dataset.tags || '')
+      .toLowerCase()
+      .split(',')
+      .map(tag => tag.trim())
+      .filter(Boolean);
+    return { card, title, descEl, tags };
+  });
+
+  const applyFilter = () => {
+    const search = searchInput.value.trim().toLowerCase();
+    const activeTags = tagButtons
+      .filter(btn => btn.classList.contains('active'))
+      .map(btn => (btn.dataset.tag || btn.textContent || '').toLowerCase());
+
+    cardData.forEach(({ card, title, descEl, tags }) => {
+      const desc = (descEl?.textContent || '').toLowerCase();
+      const matchesSearch = !search || title.includes(search) || desc.includes(search);
+      const matchesTags = activeTags.length === 0 || activeTags.some(tag => tags.includes(tag));
+      card.style.display = matchesSearch && matchesTags ? '' : 'none';
+    });
+  };
+
+  searchInput.addEventListener('input', applyFilter);
   tagButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       btn.classList.toggle('active');
-      filterProjects();
+      applyFilter();
     });
   });
 
-  filterProjects();
+  applyFilter();
 }
 
 function initConsoleWindow() {
@@ -435,12 +402,20 @@ function initConsoleWindow() {
     clampPosition();
   });
 
+  if (consoleResizeObserver) {
+    consoleResizeObserver.disconnect();
+    consoleResizeObserver = null;
+  }
   if (window.ResizeObserver) {
-    const observer = new ResizeObserver(() => clampPosition());
-    observer.observe(windowEl);
+    consoleResizeObserver = new ResizeObserver(() => clampPosition());
+    consoleResizeObserver.observe(windowEl);
   }
 
-  window.addEventListener('resize', clampPosition);
+  if (consoleResizeHandler) {
+    window.removeEventListener('resize', consoleResizeHandler);
+  }
+  consoleResizeHandler = clampPosition;
+  window.addEventListener('resize', consoleResizeHandler);
 
   handle.addEventListener('pointerdown', e => {
     if (e.button !== 0) return;
@@ -535,8 +510,39 @@ function initConsole() {
     scrollToBottom();
   };
 
+  const addLineParts = (parts, className) => {
+    const line = document.createElement('div');
+    line.className = className ? `console-line ${className}` : 'console-line';
+    parts.forEach(part => {
+      const span = document.createElement('span');
+      span.textContent = part.text;
+      if (part.className) span.className = part.className;
+      line.appendChild(span);
+    });
+    lines.appendChild(line);
+    scrollToBottom();
+  };
+
   const addBlock = items => {
     items.forEach(item => addLine(item));
+  };
+
+  const addIndentedLines = (items, className) => {
+    items.forEach(item => addLine(`  ${item}`, className));
+  };
+
+  const addKeyValueLines = entries => {
+    const width = entries.reduce((max, [key]) => Math.max(max, key.length), 0);
+    entries.forEach(([key, value]) => {
+      if (!value) {
+        addLine(`  ${key}`);
+        return;
+      }
+      addLineParts([
+        { text: `  ${key.padEnd(width + 2)}` },
+        { text: value, className: 'console-comment' }
+      ]);
+    });
   };
 
   const normalizePath = input => (input || '').replace(/\\/g, '/').trim();
@@ -552,7 +558,7 @@ function initConsole() {
     if (raw.startsWith('site/')) raw = raw.slice(5);
     raw = raw.split('/').filter(Boolean).pop() || '';
     if (raw === 'home') return rootPath;
-    if (['product', 'projects', 'about'].includes(raw)) {
+    if (['product', 'projects', 'about', 'security'].includes(raw)) {
       return `${rootPath}/${raw}`;
     }
     return null;
@@ -560,7 +566,7 @@ function initConsole() {
 
   const listDirs = () => {
     if (currentPath === rootPath) {
-      return ['./product', './projects', './about'];
+      return ['./product', './projects', './about', './security'];
     }
     return ['..'];
   };
@@ -569,7 +575,8 @@ function initConsole() {
     home: 'index.html',
     product: 'product.html',
     projects: 'projects.html',
-    about: 'about.html'
+    about: 'about.html',
+    security: 'security.html'
   };
 
   const navigateToPath = nextPath => {
@@ -611,89 +618,106 @@ function initConsole() {
     return Array.from(select.options).map(option => option.value);
   };
 
-  const listFonts = () => Object.keys(FONT_MAP);
+  const listFonts = () => FONT_KEYS;
 
   const commands = {
     help: () => {
-      addBlock([
-        'available commands:',
-        '- help: show this help message',
-        '- about: about me + links',
-        '- product: winconfig summary + pricing',
-        '- docs: documentation sections',
-        '- toolkit: external tools list',
-        '- projects: list projects with repo descriptions',
-        '- terms: terms of service summary',
-        '- contact: email + discord',
-        '- ascii: print the banner',
-        '- ls: list available directories',
-        '- pwd: show current directory',
-        '- cd <path>: change directory (./product, ../)',
-        '- alias: list aliases',
-        '- alias name=command: set alias',
-        '- unalias <name>: remove alias',
-        '- themes: list theme ids',
-        '- theme <id>: set theme',
-        '- fonts: list font ids',
-        '- font <id>: set font',
-        '- fontsize <12-22>: set size',
-        '- clear: clear the console'
-      ]);
-      addLine('tip: use Tab for autocompletion.', 'muted');
+      addLine('available commands:');
+      const entries = [
+        ['help', 'show this help message'],
+        ['about', 'about me + links'],
+        ['product', 'winconfig summary + pricing'],
+        ['docs', 'documentation sections'],
+        ['toolkit', 'external tools list'],
+        ['projects', 'list projects with repo descriptions'],
+        ['security', 'security + privacy statement'],
+        ['terms', 'terms of service summary'],
+        ['contact', 'email + discord'],
+        ['ascii', 'print the banner'],
+        ['ls', 'list available directories'],
+        ['pwd', 'show current directory'],
+        ['cd <path>', 'change directory (./product, ../)'],
+        ['alias', 'list aliases'],
+        ['alias name=command', 'set alias'],
+        ['unalias <name>', 'remove alias'],
+        ['themes', 'list theme ids'],
+        ['theme <id>', 'set theme'],
+        ['fonts', 'list font ids'],
+        ['font <id>', 'set font'],
+        ['fontsize <12-22>', 'set size'],
+        ['clear', 'clear the terminal']
+      ];
+      const width = entries.reduce((max, [cmd]) => Math.max(max, cmd.length), 0);
+      entries.forEach(([cmd, desc]) => {
+        addLineParts([
+          { text: `  ${cmd.padEnd(width + 2)}` },
+          { text: desc, className: 'console-comment' }
+        ]);
+      });
     },
     about: () => {
-      addBlock([
-        'about:',
-        '- proprietor of Noverse',
-        '- github: https://github.com/nohuto',
-        '- youtube: https://www.youtube.com/@5Noverse',
-        '- discord: https://discord.gg/E2ybG4j9jU'
+      addLine('about:');
+      addKeyValueLines([
+        ['proprietor', 'Noverse'],
+        ['github', 'https://github.com/nohuto'],
+        ['youtube', 'https://www.youtube.com/@5Noverse'],
+        ['discord', 'https://discord.gg/E2ybG4j9jU']
+      ]);
+    },
+    security: () => {
+      addLine('security:');
+      addIndentedLines([
+        'CSP, referrer policy, permissions policy',
+        'clickjacking blocked via frame-ancestors',
+        'includes privacy notes'
       ]);
     },
     product: () => {
-      addBlock([
-        'product: winconfig',
-        '- price: 9.99 EUR (lifetime)',
-        '- includes updates + discord role',
-        'features:',
-        '- transparent execution logs',
-        '- dynamic state detection',
-        '- per-option documentation',
-        '- extensive customization controls'
+      addLine('product: winconfig');
+      addKeyValueLines([
+        ['price', '9.99 EUR (lifetime)'],
+        ['includes updates + discord role']
+      ]);
+      addLine('features:');
+      addIndentedLines([
+        'transparent execution logs',
+        'dynamic state detection',
+        'per-option documentation',
+        'extensive customization controls'
       ]);
     },
     docs: () => {
-      addBlock([
-        'documentation sections:',
-        '- system, visibility, peripheral, power, privacy, security',
-        '- network, nvidia, cleanup, misc, policies, affinities'
+      addLine('documentation sections:');
+      addIndentedLines([
+        'system, visibility, peripheral, power, privacy, security',
+        'network, nvidia, cleanup, misc, policies, affinities'
       ]);
     },
     toolkit: () => {
-      addBlock([
-        'external tools:',
-        '- app tools',
-        '- game tools',
-        '- component manager',
-        '- blocklist manager',
-        '- bitmask calculator'
+      addLine('external tools:');
+      addIndentedLines([
+        'app tools',
+        'game tools',
+        'component manager',
+        'blocklist manager',
+        'bitmask calculator'
       ]);
     },
     terms: () => {
-      addBlock([
-        'terms:',
-        '- data privacy: hardware identifiers only for licensing',
-        '- usage: personal license only, no resale',
-        '- refunds: only before registration/role assignment',
-        '- license: hardware-bound, manual validation',
-        '- after purchase: discord role assignment required'
+      addLine('terms:');
+      addKeyValueLines([
+        ['data privacy', 'hardware identifiers only for licensing'],
+        ['usage', 'personal license only, no resale'],
+        ['refunds', 'only before registration/role assignment'],
+        ['license', 'hardware-bound, manual validation'],
+        ['after purchase', 'discord role assignment required']
       ]);
     },
     contact: () => {
-      addBlock([
-        'contact:',
-        '- email: nohuto@duck.com (use copy button)',
-        '- discord: https://discord.gg/E2ybG4j9jU'
+      addLine('contact:');
+      addKeyValueLines([
+        ['email', 'nohuto@duck.com (use footer icon)'],
+        ['discord', 'https://discord.gg/E2ybG4j9jU']
       ]);
     },
     ascii: () => {
@@ -725,8 +749,13 @@ function initConsole() {
       const raw = args.join(' ').trim();
       if (!raw) {
         addLine('aliases:', 'muted');
-        Object.entries(aliases).forEach(([name, value]) => {
-          addLine(`- ${name}=${value}`);
+        const entries = Object.entries(aliases);
+        const width = entries.reduce((max, [name]) => Math.max(max, name.length), 0);
+        entries.forEach(([name, value]) => {
+          addLineParts([
+            { text: `  ${name.padEnd(width + 2)}` },
+            { text: value, className: 'console-comment' }
+          ]);
         });
         return;
       }
@@ -759,11 +788,11 @@ function initConsole() {
     },
     themes: () => {
       addLine('themes:', 'muted');
-      listThemes().forEach(theme => addLine(`- ${theme}`));
+      addIndentedLines(listThemes());
     },
     fonts: () => {
       addLine('fonts:', 'muted');
-      listFonts().forEach(font => addLine(`- ${font}`));
+      addIndentedLines(listFonts());
     },
     theme: args => {
       const select = document.getElementById('theme-select');
@@ -773,16 +802,13 @@ function initConsole() {
         return;
       }
       const next = args.join(' ').trim();
-      const exists = Array.from(select.options).some(option => option.value === next);
-      if (!exists) {
+      if (!hasSelectOption(select, next)) {
         addLine(`theme not found: ${next}`, 'muted');
         return;
       }
       select.value = next;
       applyTheme(next);
-      try {
-        localStorage.setItem(THEME_KEY, next);
-      } catch { }
+      storageSet(THEME_KEY, next);
       addLine(`theme set: ${next}`);
     },
     font: args => {
@@ -793,15 +819,13 @@ function initConsole() {
         return;
       }
       const next = args.join(' ').trim();
-      if (!FONT_MAP[next]) {
+      if (!FONT_SET.has(next)) {
         addLine(`font not found: ${next}`, 'muted');
         return;
       }
       select.value = next;
       applyFont(next);
-      try {
-        localStorage.setItem(FONT_KEY, next);
-      } catch { }
+      storageSet(FONT_KEY, next);
       addLine(`font set: ${next}`);
     },
     fontsize: args => {
@@ -813,9 +837,7 @@ function initConsole() {
       }
       const applied = applyFontSize(args[0]);
       sizeInput.value = applied;
-      try {
-        localStorage.setItem(FONT_SIZE_KEY, applied + 'px');
-      } catch { }
+      storageSet(FONT_SIZE_KEY, applied + 'px');
       addLine(`size set: ${applied}px`);
     },
     clear: () => {
@@ -826,16 +848,25 @@ function initConsole() {
       addLine('projects: fetching descriptions...', 'muted');
       const items = await Promise.all(PROJECT_LIST.map(async project => {
         const desc = await getRepoDescription(project.repo);
-        return `- ${project.title}: ${desc}`;
+        return { title: project.title, desc };
       }));
-      items.forEach(item => addLine(item));
+      const width = items.reduce((max, item) => Math.max(max, item.title.length), 0);
+      items.forEach(item => {
+        addLineParts([
+          { text: `  ${item.title.padEnd(width + 2)}` },
+          { text: item.desc || 'No description yet.', className: 'console-comment' }
+        ]);
+      });
     }
   };
 
   const runCommand = async raw => {
     const trimmed = raw.trim();
     if (!trimmed) return;
-    addLine(`${promptLabel()} ${trimmed}`, 'muted');
+    addLineParts([
+      { text: `${promptLabel()} `, className: 'console-prompt-text' },
+      { text: trimmed, className: 'console-muted' }
+    ]);
     const expanded = expandAlias(trimmed);
     const parts = expanded.split(' ').filter(Boolean);
     const command = parts.shift().toLowerCase();
@@ -897,20 +928,8 @@ function initConsole() {
     scrollToBottom();
   });
 
-  input.addEventListener('input', () => {
-    updateCaret();
-  });
-
-  input.addEventListener('keyup', () => {
-    updateCaret();
-  });
-
-  input.addEventListener('click', () => {
-    updateCaret();
-  });
-
-  input.addEventListener('focus', () => {
-    updateCaret();
+  ['input', 'keyup', 'click', 'focus'].forEach(eventName => {
+    input.addEventListener(eventName, updateCaret);
   });
 
   input.addEventListener('keydown', e => {
@@ -963,8 +982,10 @@ function initConsole() {
   updateCaret();
 
   ASCII_ART.forEach(line => addLine(line, 'art'));
-  addLine('');
-  addLine('welcome to the noverse console.', 'muted');
+  addLine(' ');
+  addLine('welcome to the terminal, use Tab for autocompletion.', 'muted');
+  addLine('use the top sections to navigate if the terminal feels unfamiliar.', 'muted');
+  addLine(' ');
   commands.help();
 }
 

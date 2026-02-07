@@ -9,7 +9,7 @@
   <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=()">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self' https://www.paypal.com; frame-ancestors 'none'; img-src 'self' data: https://raw.githubusercontent.com; media-src 'self' https://raw.githubusercontent.com; script-src 'self' 'sha256-i4y5BSP2fnLcyOcLz1r0fZBBZhaducehNV/GILyN6zk='; style-src 'self' https://api.fonts.coollabs.io; connect-src 'self'; font-src 'self' https://fonts.coollabs.io https://api.fonts.coollabs.io https://cdn.fonts.coollabs.io; object-src 'none'">
   <link rel="stylesheet" href="https://api.fonts.coollabs.io/css2?family=JetBrains+Mono:wght@400;600&family=Fira+Code:wght@400;600&family=IBM+Plex+Mono:wght@400;600&family=Source+Code+Pro:wght@400;600&display=swap">
-  <title>About</title>
+  <title>Security</title>
   <link rel="icon" href="images/nvlogo.png">
   <script>
     (function () {
@@ -52,32 +52,54 @@
       <a href="index.html">home</a>
       <a href="product.html">product</a>
       <a href="projects.html">projects</a>
-      <a href="about.html" class="active" aria-current="page">about</a>
-      <a href="security.html">security</a>
+      <a href="about.html">about</a>
+      <a href="security.html" class="active" aria-current="page">security</a>
     </nav>
   </header>
-
   <main id="main">
-    <section class="content-box panel" data-title="about">
+    <section class="content-box panel" data-title="security">
       <div class="panel-header">
-        <span class="panel-title">about</span>
-        <span class="panel-meta">profile</span>
+        <span class="panel-title">security</span>
+        <span class="panel-meta">privacy</span>
       </div>
       <div class="panel-body">
-        <h1 class="projects-heading">About Me ~ Nohuto</h1>
+        <h1 class="projects-heading">Security &amp; Privacy</h1>
         <div class="projects-divider"></div>
-
-        <div class="about-container">
-          <div class="about-text">
-            <p>Proprietor of <a href="https://discord.gg/E2ybG4j9jU" class="link" target="_blank"
-                rel="noopener noreferrer">Noverse</a>.</p>
-          </div>
-          <div class="about-github-stats">
-            <img decoding="async" src="images/nvgh-metrics.svg"
-              class="github-langs-card" alt="GitHub metrics" loading="lazy">
-            <p class="mobile-scale-note"> Metrics may not be scaled correctly on phones.</p>
-          </div>
-        </div>
+        <h3>Privacy statement</h3>
+        <p>
+          This site is a personal website for showing off my projects and product. It doesn't use analytics,
+          trackers, or cookies. No account system exists and no user data is stored by the site itself.
+        </p>
+        <h3>What is collected</h3>
+        <p>
+          The hosting stack (Cloudflare and GitHub Pages) may log standard request metadata such as
+          IP address and user agent for operational or abuse prevention reasons.
+        </p>
+        <h3>Third party requests</h3>
+        <p>
+          Some pages include media hosted on GitHub (raw.githubusercontent.com). Those resources
+          are loaded directly from GitHub and will disclose basic request metadata to GitHub.
+          External links to GitHub, YouTube, Discord, and PayPal take you to those services when clicked.
+        </p>
+        <h3>Repo descriptions</h3>
+        <p>
+          Project descriptions are served from a local JSON file generated at build time.
+          The site does not call the GitHub API from your browser.
+        </p>
+        <h3>Browser policies</h3>
+        <p>
+          The site sets a Content Security Policy (CSP), a strict Referrer Policy,
+          and a restrictive Permissions Policy. On GitHub Pages these are applied via meta tags,
+          and can also be enforced at the Cloudflare edge for stronger coverage.
+          These reduce script injection, referrer leakage, and unnecessary browser features.
+        </p>
+        <h3>Clickjacking defense</h3>
+        <p>
+          The CSP disallows embedding the site in other pages using frame ancestors.
+        </p>
+        <p class="note-muted">
+          This page was created for fun since I wanted to get myself more known to the web security part.
+        </p>
       </div>
     </section>
   </main>

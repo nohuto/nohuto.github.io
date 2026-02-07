@@ -1,21 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Fira+Code:wght@400;600&family=IBM+Plex+Mono:wght@400;600&family=Source+Code+Pro:wght@400;600&display=swap");
-
-@font-face {
-  font-family: "Cascadia Mono";
-  src: url("https://cdn.jsdelivr.net/npm/@fontsource/cascadia-code@latest/files/cascadia-code-latin-400-normal.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Cascadia Mono";
-  src: url("https://cdn.jsdelivr.net/npm/@fontsource/cascadia-code@latest/files/cascadia-code-latin-600-normal.woff2") format("woff2");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
+/* Copyright (c) 2026 Nohuto. All rights reserved. */
 :root {
   --bg: #0b0f10;
   --bg-alt: #101416;
@@ -41,6 +24,30 @@
   --scrollbar-thumb-hover: var(--accent);
 }
 
+:root[data-font="cascadia"] {
+  --font-family: "Cascadia Mono", "Cascadia Code", Consolas, "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace;
+}
+
+:root[data-font="jetbrains"] {
+  --font-family: "JetBrains Mono", "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace;
+}
+
+:root[data-font="fira"] {
+  --font-family: "Fira Code", "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace;
+}
+
+:root[data-font="ibm"] {
+  --font-family: "IBM Plex Mono", "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace;
+}
+
+:root[data-font="sourcecode"] {
+  --font-family: "Source Code Pro", "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace;
+}
+
+:root[data-font="consolas"] {
+  --font-family: Consolas, "Cascadia Mono", "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace;
+}
+
 [data-theme="default-light"] {
   --bg: #f7f7f2;
   --bg-alt: #eef0e8;
@@ -50,8 +57,8 @@
   --border-strong: #a9aba3;
   --text: #1a1f1d;
   --muted: #59605c;
-  --accent: #2a5a4e;
-  --accent-2: #326e63;
+  --accent: #2994c2;
+  --accent-2: #53b8dd;
   --accent-contrast: #f7f7f2;
   --success: #2f7d5a;
   --warning: #b77a2a;
@@ -975,25 +982,6 @@ main.no-center {
   padding: 20px var(--panel-pad-x);
 }
 
-.hero {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  text-align: left;
-}
-
-.hero-line {
-  margin: 0;
-  font-size: 1.2rem;
-  color: var(--text);
-}
-
-.hero-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
 .console {
   display: flex;
   flex-direction: column;
@@ -1046,6 +1034,18 @@ main.product-main {
 
 .console-line.muted {
   color: var(--muted);
+}
+
+.console-comment {
+  color: var(--muted);
+}
+
+.console-muted {
+  color: var(--muted);
+}
+
+.console-prompt-text {
+  color: var(--accent);
 }
 
 .console-input {
@@ -1111,33 +1111,6 @@ main.product-main {
   white-space: nowrap;
 }
 
-.console-help {
-  font-size: 0.8rem;
-  color: var(--muted);
-}
-
-.console-key {
-  color: var(--accent);
-}
-
-.small-redirect {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--accent);
-  text-decoration: none;
-  font-size: 0.95rem;
-}
-
-.small-redirect::before {
-  content: "$";
-  color: var(--muted);
-}
-
-.small-redirect:hover {
-  color: var(--accent-2);
-}
-
 h1,
 h2,
 h3,
@@ -1151,6 +1124,11 @@ p {
   margin: 0 0 12px;
   color: var(--muted);
   line-height: 1.6;
+}
+
+.note-muted {
+  font-size: 0.85em;
+  font-style: italic;
 }
 
 a {
@@ -1330,7 +1308,6 @@ video {
   flex: 1 1 320px;
 }
 
-.product-label,
 .price-label {
   text-transform: uppercase;
   letter-spacing: 0.14em;

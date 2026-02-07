@@ -1,9 +1,14 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
+<!-- Copyright (c) 2026 Nohuto. All rights reserved. -->
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=()">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self' https://www.paypal.com; frame-ancestors 'none'; img-src 'self' data: https://raw.githubusercontent.com; media-src 'self' https://raw.githubusercontent.com; script-src 'self' 'sha256-i4y5BSP2fnLcyOcLz1r0fZBBZhaducehNV/GILyN6zk='; style-src 'self' https://api.fonts.coollabs.io; connect-src 'self'; font-src 'self' https://fonts.coollabs.io https://api.fonts.coollabs.io https://cdn.fonts.coollabs.io; object-src 'none'">
+  <link rel="stylesheet" href="https://api.fonts.coollabs.io/css2?family=JetBrains+Mono:wght@400;600&family=Fira+Code:wght@400;600&family=IBM+Plex+Mono:wght@400;600&family=Source+Code+Pro:wght@400;600&display=swap">
   <title>Product</title>
   <link rel="icon" href="images/nvlogo.png">
   <script>
@@ -15,17 +20,9 @@
         }
         var bg = localStorage.getItem('nv-bg') || 'topo-trace';
         document.documentElement.setAttribute('data-bg', bg);
-        var fontMap = {
-          cascadia: '"Cascadia Mono", "Cascadia Code", Consolas, "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace',
-          jetbrains: '"JetBrains Mono", "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace',
-          fira: '"Fira Code", "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace',
-          ibm: '"IBM Plex Mono", "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace',
-          sourcecode: '"Source Code Pro", "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace',
-          consolas: 'Consolas, "Cascadia Mono", "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace'
-        };
         var fontKey = localStorage.getItem('nv-font');
-        if (fontKey && fontMap[fontKey]) {
-          document.documentElement.style.setProperty('--font-family', fontMap[fontKey]);
+        if (fontKey) {
+          document.documentElement.setAttribute('data-font', fontKey);
         }
         var fontSize = localStorage.getItem('nv-font-size');
         if (fontSize) {
@@ -53,9 +50,10 @@
     </div>
     <nav class="nav-tabs" aria-label="Primary navigation">
       <a href="index.html">home</a>
-      <a href="product.html" class="active" aria-current="page">product</a>
+      <a href="product.html" aria-current="page" class="active">product</a>
       <a href="projects.html">projects</a>
       <a href="about.html">about</a>
+      <a href="security.html">security</a>
     </nav>
   </header>
 
@@ -82,7 +80,7 @@
                 target="_blank">
                 <input class="paypal-button" type="submit" value="Buy WinConfig">
                 <img decoding="async" class="paypal-methods"
-                  src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg"
+                  src="images/paypal-methods.svg"
                   alt="Accepted payment cards via PayPal" loading="lazy">
                 <p class="paypal-note">
                   Powered by
@@ -94,26 +92,26 @@
         </div>
         <div class="product-preview-grid">
           <figure class="product-preview-card">
-            <a href="images/darkbluelogs.png" target="_blank" rel="noopener">
+            <a href="images/darkbluelogs.png" target="_blank" rel="noopener noreferrer">
               <img decoding="async" src="images/darkbluelogs.png" alt="Dark mode blue palette with logs" loading="lazy">
             </a>
             <figcaption>Dark mode - Blue color scheme - Logs enabled - System section</figcaption>
           </figure>
           <figure class="product-preview-card">
-            <a href="images/darkreg.png" target="_blank" rel="noopener">
+            <a href="images/darkreg.png" target="_blank" rel="noopener noreferrer">
               <img decoding="async" src="images/darkreg.png" alt="Dark mode red palette peripheral view" loading="lazy">
             </a>
             <figcaption>Dark mode - Red color scheme - Logs disabled - Peripheral section</figcaption>
           </figure>
           <figure class="product-preview-card">
-            <a href="images/lightblue.png" target="_blank" rel="noopener">
+            <a href="images/lightblue.png" target="_blank" rel="noopener noreferrer">
               <img decoding="async" src="images/lightblue.png" alt="Light mode blue palette visibility view"
                 loading="lazy">
             </a>
             <figcaption>Light mode - Blue color scheme - Logs disabled - Visibility section</figcaption>
           </figure>
           <figure class="product-preview-card">
-            <a href="images/lightviolet.png" target="_blank" rel="noopener">
+            <a href="images/lightviolet.png" target="_blank" rel="noopener noreferrer">
               <img decoding="async" src="images/lightviolet.png" alt="Light mode violet palette privacy view"
                 loading="lazy">
             </a>
@@ -199,42 +197,42 @@
               <h4>System</h4>
               <p>Operating system adjustments for services, scheduling, storage, startup behavior and more.</p>
               <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/system/desc.md" target="_blank"
-                rel="noopener">View Documentation</a>
+                rel="noopener noreferrer">View Documentation</a>
             </article>
             <article class="doc-card">
               <span class="doc-index">02</span>
               <h4>Visibility</h4>
               <p>Customize Windows visuals and interface behavior.</p>
               <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/visibility/desc.md"
-                target="_blank" rel="noopener">View Documentation</a>
+                target="_blank" rel="noopener noreferrer">View Documentation</a>
             </article>
             <article class="doc-card">
               <span class="doc-index">03</span>
               <h4>Peripheral</h4>
               <p>Change input, audio, Bluetooth, display devices... behaviors/states.</p>
               <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/peripheral/desc.md"
-                target="_blank" rel="noopener">View Documentation</a>
+                target="_blank" rel="noopener noreferrer">View Documentation</a>
             </article>
             <article class="doc-card">
               <span class="doc-index">04</span>
               <h4>Power</h4>
               <p>Control several different power management features and other related options.</p>
               <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/power/desc.md" target="_blank"
-                rel="noopener">View Documentation</a>
+                rel="noopener noreferrer">View Documentation</a>
             </article>
             <article class="doc-card">
               <span class="doc-index">05</span>
               <h4>Privacy</h4>
               <p>Privacy configuration for telemetry, diagnostics, encryption, data sharing, and more.</p>
               <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/privacy/desc.md" target="_blank"
-                rel="noopener">View Documentation</a>
+                rel="noopener noreferrer">View Documentation</a>
             </article>
             <article class="doc-card">
               <span class="doc-index">06</span>
               <h4>Security</h4>
               <p>Security posture options such as elevation behavior, Defender and credential settings and more.</p>
               <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/security/desc.md" target="_blank"
-                rel="noopener">View Documentation</a>
+                rel="noopener noreferrer">View Documentation</a>
             </article>
             <article class="doc-card">
               <span class="doc-index">07</span>
@@ -242,42 +240,42 @@
               <p>Change network adapter settings including DNS, sharing controls, offloads... and miscellaneous network
                 related features.</p>
               <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/network/desc.md" target="_blank"
-                rel="noopener">View Documentation</a>
+                rel="noopener noreferrer">View Documentation</a>
             </article>
             <article class="doc-card">
               <span class="doc-index">08</span>
               <h4>NVIDIA</h4>
               <p>NVIDIA driver installation, control panel settings... and resource manager values.</p>
               <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/nvidia/desc.md" target="_blank"
-                rel="noopener">View Documentation</a>
+                rel="noopener noreferrer">View Documentation</a>
             </article>
             <article class="doc-card">
               <span class="doc-index">09</span>
               <h4>Cleanup</h4>
               <p>Clear caches, logs, histories, backups.</p>
               <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/cleanup/desc.md" target="_blank"
-                rel="noopener">View Documentation</a>
+                rel="noopener noreferrer">View Documentation</a>
             </article>
             <article class="doc-card">
               <span class="doc-index">10</span>
               <h4>Misc</h4>
               <p>Miscellaneous external app configuration/installation, e.g. nvfetch.</p>
               <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/misc/desc.md" target="_blank"
-                rel="noopener">View Documentation</a>
+                rel="noopener noreferrer">View Documentation</a>
             </article>
             <article class="doc-card">
               <span class="doc-index">11</span>
               <h4>Policies</h4>
               <p>A more detailed LGPE including keys, values and quick toggling, based on my admx-parser project.</p>
               <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/policies/desc.md" target="_blank"
-                rel="noopener">View Documentation</a>
+                rel="noopener noreferrer">View Documentation</a>
             </article>
             <article class="doc-card">
               <span class="doc-index">12</span>
               <h4>Affinities</h4>
               <p>Configure MSI mode/message limit, IRQ settings (priority/policy), affinities.</p>
               <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/affinities/desc.md"
-                target="_blank" rel="noopener">View Documentation</a>
+                target="_blank" rel="noopener noreferrer">View Documentation</a>
             </article>
           </div>
         </div>
@@ -299,31 +297,31 @@
               <h4>App Tools</h4>
               <p>Automates configuration for Discord, Spotify, Thorium, Steam, Ungoogled, Brave, Epic, LGHUB, and more.
               </p>
-              <a href="https://github.com/nohuto/app-tools" class="tool-link" target="_blank" rel="noopener">View
+              <a href="https://github.com/nohuto/app-tools" class="tool-link" target="_blank" rel="noopener noreferrer">View
                 Repository</a>
             </article>
             <article class="tool-card">
               <h4>Game Tools</h4>
               <p>Automates configuration VALORANT, Fortnite, Marvel Rivals, CS2, and Overwatch.</p>
-              <a href="https://github.com/nohuto/game-tools" class="tool-link" target="_blank" rel="noopener">View
+              <a href="https://github.com/nohuto/game-tools" class="tool-link" target="_blank" rel="noopener noreferrer">View
                 Repository</a>
             </article>
             <article class="tool-card">
               <h4>Component Manager</h4>
               <p>Remove/uninstall packages, optional Windows features, and capability bundles.</p>
-              <a href="https://github.com/nohuto/comp-mgr" class="tool-link" target="_blank" rel="noopener">View
+              <a href="https://github.com/nohuto/comp-mgr" class="tool-link" target="_blank" rel="noopener noreferrer">View
                 Repository</a>
             </article>
             <article class="tool-card">
               <h4>Blocklist Manager</h4>
               <p>Manage hosts/URL blocklists and edit your hosts directly.</p>
-              <a href="https://github.com/nohuto/blocklist-mgr" class="tool-link" target="_blank" rel="noopener">View
+              <a href="https://github.com/nohuto/blocklist-mgr" class="tool-link" target="_blank" rel="noopener noreferrer">View
                 Repository</a>
             </article>
             <article class="tool-card">
               <h4>Bitmask Calculator</h4>
               <p>Bitfield calculator built for official NVIDIA definitions.</p>
-              <a href="https://github.com/nohuto/bitmask-calc" class="tool-link" target="_blank" rel="noopener">View
+              <a href="https://github.com/nohuto/bitmask-calc" class="tool-link" target="_blank" rel="noopener noreferrer">View
                 Repository</a>
             </article>
           </div>
@@ -349,7 +347,7 @@
                 sound device ID, or USB controller ID. No additional system data is collected, transmitted, or stored.
                 Learn more about the firmware identifiers via the
                 <a class="legal-link" href="https://learn.microsoft.com/en-us/windows-hardware/drivers/bringup/smbios"
-                  target="_blank" rel="noopener">official SMBIOS documentation</a>.
+                  target="_blank" rel="noopener noreferrer">official SMBIOS documentation</a>.
               </p>
             </article>
             <article class="legal-card">

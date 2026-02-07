@@ -1,9 +1,14 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
+<!-- Copyright (c) 2026 Nohuto. All rights reserved. -->
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=()">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self' https://www.paypal.com; frame-ancestors 'none'; img-src 'self' data: https://raw.githubusercontent.com; media-src 'self' https://raw.githubusercontent.com; script-src 'self' 'sha256-i4y5BSP2fnLcyOcLz1r0fZBBZhaducehNV/GILyN6zk='; style-src 'self' https://api.fonts.coollabs.io; connect-src 'self'; font-src 'self' https://fonts.coollabs.io https://api.fonts.coollabs.io https://cdn.fonts.coollabs.io; object-src 'none'">
+  <link rel="stylesheet" href="https://api.fonts.coollabs.io/css2?family=JetBrains+Mono:wght@400;600&family=Fira+Code:wght@400;600&family=IBM+Plex+Mono:wght@400;600&family=Source+Code+Pro:wght@400;600&display=swap">
   <title>Home</title>
   <link rel="icon" href="images/nvlogo.png">
   <script>
@@ -15,17 +20,9 @@
         }
         var bg = localStorage.getItem('nv-bg') || 'topo-trace';
         document.documentElement.setAttribute('data-bg', bg);
-        var fontMap = {
-          cascadia: '"Cascadia Mono", "Cascadia Code", Consolas, "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace',
-          jetbrains: '"JetBrains Mono", "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace',
-          fira: '"Fira Code", "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace',
-          ibm: '"IBM Plex Mono", "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace',
-          sourcecode: '"Source Code Pro", "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace',
-          consolas: 'Consolas, "Cascadia Mono", "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace'
-        };
         var fontKey = localStorage.getItem('nv-font');
-        if (fontKey && fontMap[fontKey]) {
-          document.documentElement.style.setProperty('--font-family', fontMap[fontKey]);
+        if (fontKey) {
+          document.documentElement.setAttribute('data-font', fontKey);
         }
         var fontSize = localStorage.getItem('nv-font-size');
         if (fontSize) {
@@ -56,15 +53,16 @@
       <a href="product.html">product</a>
       <a href="projects.html">projects</a>
       <a href="about.html">about</a>
+      <a href="security.html">security</a>
     </nav>
   </header>
 
   <main id="main" class="main-home">
     <section class="home-shell" data-title="home">
       <div class="window-surface">
-        <div class="console-window" id="console-window" aria-label="Console window">
+        <div class="console-window" id="console-window" aria-label="Terminal window">
           <div class="console-window-header" id="console-drag">
-            <span>home.console</span>
+            <span>home.terminal</span>
             <span class="console-window-meta">drag / resize</span>
           </div>
           <div class="console-window-body">
