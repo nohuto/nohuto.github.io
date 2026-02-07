@@ -688,19 +688,29 @@ function initConsole() {
     },
     docs: () => {
       addLine('documentation sections:');
-      addIndentedLines([
-        'system, visibility, peripheral, power, privacy, security',
-        'network, nvidia, cleanup, misc, policies, affinities'
+      addKeyValueLines([
+        ['system', 'https://github.com/nohuto/win-config/blob/main/system/desc.md'],
+        ['visibility', 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md'],
+        ['peripheral', 'https://github.com/nohuto/win-config/blob/main/peripheral/desc.md'],
+        ['power', 'https://github.com/nohuto/win-config/blob/main/power/desc.md'],
+        ['privacy', 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md'],
+        ['security', 'https://github.com/nohuto/win-config/blob/main/security/desc.md'],
+        ['network', 'https://github.com/nohuto/win-config/blob/main/network/desc.md'],
+        ['nvidia', 'https://github.com/nohuto/win-config/blob/main/nvidia/desc.md'],
+        ['cleanup', 'https://github.com/nohuto/win-config/blob/main/cleanup/desc.md'],
+        ['misc', 'https://github.com/nohuto/win-config/blob/main/misc/desc.md'],
+        ['policies', 'https://github.com/nohuto/win-config/blob/main/policies/desc.md'],
+        ['affinities', 'https://github.com/nohuto/win-config/blob/main/affinities/desc.md']
       ]);
     },
     toolkit: () => {
       addLine('external tools:');
-      addIndentedLines([
-        'app tools',
-        'game tools',
-        'component manager',
-        'blocklist manager',
-        'bitmask calculator'
+      addKeyValueLines([
+        ['app tools', 'https://github.com/nohuto/app-tools'],
+        ['game tools', 'https://github.com/nohuto/game-tools'],
+        ['component manager', 'https://github.com/nohuto/comp-mgr'],
+        ['blocklist manager', 'https://github.com/nohuto/blocklist-mgr'],
+        ['bitmask calculator', 'https://github.com/nohuto/bitmask-calc']
       ]);
     },
     terms: () => {
