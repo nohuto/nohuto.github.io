@@ -1,333 +1,509 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Projects</title>
   <link rel="icon" href="images/nvlogo.png">
+  <script>
+    (function () {
+      try {
+        var theme = localStorage.getItem('nv-theme');
+        if (theme) {
+          document.documentElement.setAttribute('data-theme', theme);
+        }
+        var bg = localStorage.getItem('nv-bg') || 'topo-trace';
+        document.documentElement.setAttribute('data-bg', bg);
+        var fontMap = {
+          cascadia: '"Cascadia Mono", "Cascadia Code", Consolas, "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace',
+          jetbrains: '"JetBrains Mono", "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace',
+          fira: '"Fira Code", "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace',
+          ibm: '"IBM Plex Mono", "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace',
+          sourcecode: '"Source Code Pro", "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace',
+          consolas: 'Consolas, "Cascadia Mono", "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace'
+        };
+        var fontKey = localStorage.getItem('nv-font');
+        if (fontKey && fontMap[fontKey]) {
+          document.documentElement.style.setProperty('--font-family', fontMap[fontKey]);
+        }
+        var fontSize = localStorage.getItem('nv-font-size');
+        if (fontSize) {
+          document.documentElement.style.setProperty('--font-size', fontSize);
+        }
+      } catch (e) { }
+    })();
+  </script>
   <link rel="stylesheet" href="styles.css">
   <script src="app.js" defer></script>
 </head>
+
 <body>
   <div class="overlay" aria-hidden="true"></div>
 
-  <header>
-    <a class="brand" href="index.html">
-      <img decoding="async" src="images/noverse-logo.png" alt="Noverse logo">
-    </a>
+  <header class="prompt-bar">
+    <div class="prompt-line" aria-label="Terminal prompt">
+      <span class="prompt-user">nohuto</span>
+      <span class="prompt-sep">@</span>
+      <span class="prompt-host">noverse</span>
+      <span class="prompt-path">:~/site</span>
+      <span class="prompt-caret">$</span>
+      <span class="prompt-cmd">open</span>
+      <span class="prompt-cursor" aria-hidden="true">█</span>
+    </div>
     <nav class="nav-tabs" aria-label="Primary navigation">
-      <a href="index.html">Home</a>
-      <a href="product.html">Product</a>
-      <a href="projects.html" class="active" aria-current="page">Projects</a>
-      <a href="about.html">About</a>
+      <a href="index.html">home</a>
+      <a href="product.html">product</a>
+      <a href="projects.html" class="active" aria-current="page">projects</a>
+      <a href="about.html">about</a>
     </nav>
   </header>
 
-  <main class="no-center">
-    <section class="content-box">
-      <h1 class="projects-heading">My Open Source Projects</h1>
-      <div class="projects-divider"></div>
-      <div class="project-filter">
-        <input id="project-search" type="text" placeholder="Search..." />
-
-        <div class="tag-filter">
-          <button data-tag="OS Config">OS Config</button>
-          <button data-tag="NVIDIA">NVIDIA</button>
-          <button data-tag="Encryption">Encryption</button>
-          <button data-tag="Encoding">Encoding</button>
-          <button data-tag="Obfuscation">Obfuscation</button>
-          <button data-tag="Hashing">Hashing</button>
-          <button data-tag="Analysis">Analysis</button>
-          <button data-tag="App/Game Config">App/Game Config</button>
-          <button data-tag="HW Config">HW Config</button>
-          <button data-tag="Fetch">Fetch</button>
-          <button data-tag="Conversion">Conversion</button>
-        </div>
+  <main id="main" class="no-center">
+    <section class="content-box panel" data-title="projects">
+      <div class="panel-header">
+        <span class="panel-title">projects</span>
+        <span class="panel-meta">open-source</span>
       </div>
+      <div class="panel-body">
+        <h1 class="projects-heading">My Open Source Projects</h1>
+        <div class="projects-divider"></div>
+        <div class="project-filter">
+          <div class="filter-row">
+            <label class="filter-label" for="project-search">search</label>
+            <input id="project-search" type="text" placeholder="type to filter" />
+          </div>
+
+          <div class="tag-filter" role="group" aria-label="Tag filters">
+            <button data-tag="OS Config">OS Config</button>
+            <button data-tag="NVIDIA">NVIDIA</button>
+            <button data-tag="Encryption">Encryption</button>
+            <button data-tag="Encoding">Encoding</button>
+            <button data-tag="Obfuscation">Obfuscation</button>
+            <button data-tag="Hashing">Hashing</button>
+            <button data-tag="Analysis">Analysis</button>
+            <button data-tag="App/Game Config">App/Game Config</button>
+            <button data-tag="HW Config">HW Config</button>
+            <button data-tag="Fetch">Fetch</button>
+            <button data-tag="Conversion">Conversion</button>
+          </div>
+        </div>
         <div class="project-grid">
 
-        <!-- win-config -->
-        <article class="project-card" data-repo="5Noxi/win-config" data-tags="OS Config, NVIDIA, App/Game Config">
+          <!-- win-config -->
+          <article class="project-card" data-repo="5Noxi/win-config" data-tags="OS Config, NVIDIA, App/Game Config">
             <!--<video class="project-media" src="" controls preload="metadata" playsinline muted></video>-->
             <div class="project-body">
-            <h3 class="project-title">Windows Configuration</h3>
-            <p class="project-desc"></p>
-            <div class="project-actions">
-                <a class="project-link" href="https://github.com/nohuto/win-config" target="_blank" rel="noopener">Repository</a>
+              <h3 class="project-title">Windows Configuration</h3>
+              <p class="project-desc">Fetching description...</p>
+              <div class="project-actions">
+                <a class="project-link" href="https://github.com/nohuto/win-config" target="_blank"
+                  rel="noopener">Repository</a>
+              </div>
             </div>
-            </div>
-        </article>
+          </article>
 
-        <!-- aes-cbc -->
-        <article class="project-card" data-repo="5Noxi/aes-cbc" data-tags="Encryption">
-            <video class="project-media" src="https://raw.githubusercontent.com/nohuto/aes-cbc/main/media/aes-cbc.mp4" controls preload="metadata" playsinline muted></video>
+          <!-- aes-cbc -->
+          <article class="project-card" data-repo="5Noxi/aes-cbc" data-tags="Encryption">
+            <video class="project-media" src="https://raw.githubusercontent.com/nohuto/aes-cbc/main/media/aes-cbc.mp4"
+              controls preload="metadata" playsinline muted></video>
             <div class="project-body">
-            <h3 class="project-title">AES CBC Encryption</h3>
-            <p class="project-desc"></p>
-            <div class="project-actions">
-                <a class="project-link" href="https://github.com/nohuto/aes-cbc" target="_blank" rel="noopener">Repository</a>
+              <h3 class="project-title">AES CBC Encryption</h3>
+              <p class="project-desc">Fetching description...</p>
+              <div class="project-actions">
+                <a class="project-link" href="https://github.com/nohuto/aes-cbc" target="_blank"
+                  rel="noopener">Repository</a>
+              </div>
             </div>
-            </div>
-        </article>
+          </article>
 
-        <!-- bitmask-calc -->
-        <article class="project-card" data-repo="5Noxi/bitmask-calc" data-tags="OS Config, NVIDIA">
-            <video class="project-media" src="https://raw.githubusercontent.com/nohuto/bitmask-calc/main/media/bitmask-calc.mp4" controls preload="metadata" playsinline muted></video>
+          <!-- bitmask-calc -->
+          <article class="project-card" data-repo="5Noxi/bitmask-calc" data-tags="OS Config, NVIDIA">
+            <video class="project-media"
+              src="https://raw.githubusercontent.com/nohuto/bitmask-calc/main/media/bitmask-calc.mp4" controls
+              preload="metadata" playsinline muted></video>
             <div class="project-body">
-            <h3 class="project-title">Bitmask Calculator</h3>
-            <p class="project-desc"></p>
-            <div class="project-actions">
-                <a class="project-link" href="https://github.com/nohuto/bitmask-calc" target="_blank" rel="noopener">Repository</a>
+              <h3 class="project-title">Bitmask Calculator</h3>
+              <p class="project-desc">Fetching description...</p>
+              <div class="project-actions">
+                <a class="project-link" href="https://github.com/nohuto/bitmask-calc" target="_blank"
+                  rel="noopener">Repository</a>
+              </div>
             </div>
-            </div>
-        </article>
+          </article>
 
-        <!-- blocklist-mgr -->
-        <article class="project-card" data-repo="5Noxi/blocklist-mgr" data-tags="OS Config">
-            <video class="project-media" src="https://raw.githubusercontent.com/nohuto/blocklist-mgr/main/media/blocklist-mgr.mp4" controls preload="metadata" playsinline muted></video>
+          <!-- blocklist-mgr -->
+          <article class="project-card" data-repo="5Noxi/blocklist-mgr" data-tags="OS Config">
+            <video class="project-media"
+              src="https://raw.githubusercontent.com/nohuto/blocklist-mgr/main/media/blocklist-mgr.mp4" controls
+              preload="metadata" playsinline muted></video>
             <div class="project-body">
-            <h3 class="project-title">Blocklist Manager</h3>
-            <p class="project-desc"></p>
-            <div class="project-actions">
-                <a class="project-link" href="https://github.com/nohuto/blocklist-mgr" target="_blank" rel="noopener">Repository</a>
+              <h3 class="project-title">Blocklist Manager</h3>
+              <p class="project-desc">Fetching description...</p>
+              <div class="project-actions">
+                <a class="project-link" href="https://github.com/nohuto/blocklist-mgr" target="_blank"
+                  rel="noopener">Repository</a>
+              </div>
             </div>
-            </div>
-        </article>
+          </article>
 
-        <!-- comp-mgr -->
-        <article class="project-card" data-repo="5Noxi/comp-mgr" data-tags="OS Config">
-            <video class="project-media" src="https://raw.githubusercontent.com/nohuto/comp-mgr/main/media/comp-mgr.mp4" controls preload="metadata" playsinline muted></video>
+          <!-- comp-mgr -->
+          <article class="project-card" data-repo="5Noxi/comp-mgr" data-tags="OS Config">
+            <video class="project-media" src="https://raw.githubusercontent.com/nohuto/comp-mgr/main/media/comp-mgr.mp4"
+              controls preload="metadata" playsinline muted></video>
             <div class="project-body">
-            <h3 class="project-title">Component Manager</h3>
-            <p class="project-desc"></p>
-            <div class="project-actions">
-                <a class="project-link" href="https://github.com/nohuto/comp-mgr" target="_blank" rel="noopener">Repository</a>
+              <h3 class="project-title">Component Manager</h3>
+              <p class="project-desc">Fetching description...</p>
+              <div class="project-actions">
+                <a class="project-link" href="https://github.com/nohuto/comp-mgr" target="_blank"
+                  rel="noopener">Repository</a>
+              </div>
             </div>
-            </div>
-        </article>
+          </article>
 
-        <!-- app-tools -->
-        <article class="project-card" data-repo="5Noxi/app-tools" data-tags="App/Game Config">
+          <!-- app-tools -->
+          <article class="project-card" data-repo="5Noxi/app-tools" data-tags="App/Game Config">
             <!--<video class="project-media" src="" controls preload="metadata" playsinline muted></video>-->
             <div class="project-body">
-            <h3 class="project-title">App Configuration Tools</h3>
-            <p class="project-desc"></p>
-            <div class="project-actions">
-                <a class="project-link" href="https://github.com/nohuto/app-tools" target="_blank" rel="noopener">Repository</a>
+              <h3 class="project-title">App Configuration Tools</h3>
+              <p class="project-desc">Fetching description...</p>
+              <div class="project-actions">
+                <a class="project-link" href="https://github.com/nohuto/app-tools" target="_blank"
+                  rel="noopener">Repository</a>
+              </div>
             </div>
-            </div>
-        </article>
+          </article>
 
-        <!-- game-tools -->
-        <article class="project-card" data-repo="5Noxi/game-tools" data-tags="App/Game Config">
+          <!-- game-tools -->
+          <article class="project-card" data-repo="5Noxi/game-tools" data-tags="App/Game Config">
             <!--<video class="project-media" src="" controls preload="metadata" playsinline muted></video>-->
             <div class="project-body">
-            <h3 class="project-title">Game Configuration Tools</h3>
-            <p class="project-desc"></p>
-            <div class="project-actions">
-                <a class="project-link" href="https://github.com/nohuto/game-tools" target="_blank" rel="noopener">Repository</a>
+              <h3 class="project-title">Game Configuration Tools</h3>
+              <p class="project-desc">Fetching description...</p>
+              <div class="project-actions">
+                <a class="project-link" href="https://github.com/nohuto/game-tools" target="_blank"
+                  rel="noopener">Repository</a>
+              </div>
             </div>
-            </div>
-        </article>
+          </article>
 
-        <!-- sym-dump -->
-        <article class="project-card" data-repo="5Noxi/sym-dump" data-tags="Analysis">
-            <video class="project-media" src="https://raw.githubusercontent.com/nohuto/sym-dump/main/media/sym-dump.mp4" controls preload="metadata" playsinline muted></video>
+          <!-- sym-dump -->
+          <article class="project-card" data-repo="5Noxi/sym-dump" data-tags="Analysis">
+            <video class="project-media" src="https://raw.githubusercontent.com/nohuto/sym-dump/main/media/sym-dump.mp4"
+              controls preload="metadata" playsinline muted></video>
             <div class="project-body">
-            <h3 class="project-title">Symbols Memory Dump</h3>
-            <p class="project-desc"></p>
-            <div class="project-actions">
-                <a class="project-link" href="https://github.com/nohuto/sym-dump" target="_blank" rel="noopener">Repository</a>
+              <h3 class="project-title">Symbols Memory Dump</h3>
+              <p class="project-desc">Fetching description...</p>
+              <div class="project-actions">
+                <a class="project-link" href="https://github.com/nohuto/sym-dump" target="_blank"
+                  rel="noopener">Repository</a>
+              </div>
             </div>
-            </div>
-        </article>
+          </article>
 
-        <!-- nvfetch -->
-        <article class="project-card" data-repo="5Noxi/nvfetch" data-tags="Fetch">
-            <img decoding="async" class="project-media-img" src="https://raw.githubusercontent.com/nohuto/nvfetch/main/images/output.png" alt="NVFetch preview" loading="lazy">
+          <!-- nvfetch -->
+          <article class="project-card" data-repo="5Noxi/nvfetch" data-tags="Fetch">
+            <img decoding="async" class="project-media-img"
+              src="https://raw.githubusercontent.com/nohuto/nvfetch/main/images/output.png" alt="NVFetch preview"
+              loading="lazy">
             <div class="project-body">
-            <h3 class="project-title">NVFetch</h3>
-            <p class="project-desc"></p>
-            <div class="project-actions">
-                <a class="project-link" href="https://github.com/nohuto/nvfetch" target="_blank" rel="noopener">Repository</a>
+              <h3 class="project-title">NVFetch</h3>
+              <p class="project-desc">Fetching description...</p>
+              <div class="project-actions">
+                <a class="project-link" href="https://github.com/nohuto/nvfetch" target="_blank"
+                  rel="noopener">Repository</a>
+              </div>
             </div>
-            </div>
-        </article>
+          </article>
 
-        <!-- void -->
-        <article class="project-card" data-repo="5Noxi/void" data-tags="Obfuscation">
-            <video class="project-media" src="https://raw.githubusercontent.com/nohuto/void/main/media/void.mp4" controls preload="metadata" playsinline muted></video>
+          <!-- void -->
+          <article class="project-card" data-repo="5Noxi/void" data-tags="Obfuscation">
+            <video class="project-media" src="https://raw.githubusercontent.com/nohuto/void/main/media/void.mp4"
+              controls preload="metadata" playsinline muted></video>
             <div class="project-body">
-            <h3 class="project-title">Void Obfuscation</h3>
-            <p class="project-desc"></p>
-            <div class="project-actions">
-                <a class="project-link" href="https://github.com/nohuto/void" target="_blank" rel="noopener">Repository</a>
+              <h3 class="project-title">Void Obfuscation</h3>
+              <p class="project-desc">Fetching description...</p>
+              <div class="project-actions">
+                <a class="project-link" href="https://github.com/nohuto/void" target="_blank"
+                  rel="noopener">Repository</a>
+              </div>
             </div>
-            </div>
-        </article>
+          </article>
 
-        <!-- minifier -->
-        <article class="project-card" data-repo="5Noxi/minifier" data-tags="Obfuscation">
-            <video class="project-media" src="https://raw.githubusercontent.com/nohuto/minifier/main/media/minifier.mp4" controls preload="metadata" playsinline muted></video>
+          <!-- minifier -->
+          <article class="project-card" data-repo="5Noxi/minifier" data-tags="Obfuscation">
+            <video class="project-media" src="https://raw.githubusercontent.com/nohuto/minifier/main/media/minifier.mp4"
+              controls preload="metadata" playsinline muted></video>
             <div class="project-body">
-            <h3 class="project-title">PowerShell Minifier</h3>
-            <p class="project-desc"></p>
-            <div class="project-actions">
-                <a class="project-link" href="https://github.com/nohuto/minifier" target="_blank" rel="noopener">Repository</a>
+              <h3 class="project-title">PowerShell Minifier</h3>
+              <p class="project-desc">Fetching description...</p>
+              <div class="project-actions">
+                <a class="project-link" href="https://github.com/nohuto/minifier" target="_blank"
+                  rel="noopener">Repository</a>
+              </div>
             </div>
-            </div>
-        </article>
+          </article>
 
-        <!-- ps12bat -->
-        <article class="project-card" data-repo="5Noxi/ps12bat" data-tags="Conversion">
-            <img decoding="async" class="project-media-img" src="https://raw.githubusercontent.com/nohuto/ps12bat/main/images/ps12batpre.png" alt="PS12bat preview" loading="lazy">
+          <!-- ps12bat -->
+          <article class="project-card" data-repo="5Noxi/ps12bat" data-tags="Conversion">
+            <img decoding="async" class="project-media-img"
+              src="https://raw.githubusercontent.com/nohuto/ps12bat/main/images/ps12batpre.png" alt="PS12bat preview"
+              loading="lazy">
             <div class="project-body">
-            <h3 class="project-title">PS12bat</h3>
-            <p class="project-desc"></p>
-            <div class="project-actions">
-                <a class="project-link" href="https://github.com/nohuto/ps12bat" target="_blank" rel="noopener">Repository</a>
+              <h3 class="project-title">PS12bat</h3>
+              <p class="project-desc">Fetching description...</p>
+              <div class="project-actions">
+                <a class="project-link" href="https://github.com/nohuto/ps12bat" target="_blank"
+                  rel="noopener">Repository</a>
+              </div>
             </div>
-            </div>
-        </article>
+          </article>
 
-        <!-- wpr-reg-records -->
-        <article class="project-card" data-repo="5Noxi/wpr-reg-records" data-tags="OS Config, Analysis">
-            <img decoding="async" class="project-media-img" src="https://raw.githubusercontent.com/nohuto/wpr-reg-records/main/images/web.png" alt="WPR/Procmon registry records interface" loading="lazy">
+          <!-- wpr-reg-records -->
+          <article class="project-card" data-repo="5Noxi/wpr-reg-records" data-tags="OS Config, Analysis">
+            <img decoding="async" class="project-media-img"
+              src="https://raw.githubusercontent.com/nohuto/wpr-reg-records/main/images/web.png"
+              alt="WPR/Procmon registry records interface" loading="lazy">
             <div class="project-body">
-            <h3 class="project-title">WPR/Procmon Registry Activity Records</h3>
-            <p class="project-desc"></p>
-            <div class="project-actions">
-                <a class="project-link" href="https://github.com/nohuto/wpr-reg-records" target="_blank" rel="noopener">Repository</a>
+              <h3 class="project-title">WPR/Procmon Registry Activity Records</h3>
+              <p class="project-desc">Fetching description...</p>
+              <div class="project-actions">
+                <a class="project-link" href="https://github.com/nohuto/wpr-reg-records" target="_blank"
+                  rel="noopener">Repository</a>
+              </div>
             </div>
-            </div>
-        </article>
+          </article>
 
-        <!-- b64-char -->
-        <article class="project-card" data-repo="5Noxi/b64-char" data-tags="Encoding, Obfuscation">
-            <video class="project-media" src="https://raw.githubusercontent.com/nohuto/b64-char/main/media/b64-char.mp4" controls preload="metadata" playsinline muted></video>
+          <!-- b64-char -->
+          <article class="project-card" data-repo="5Noxi/b64-char" data-tags="Encoding, Obfuscation">
+            <video class="project-media" src="https://raw.githubusercontent.com/nohuto/b64-char/main/media/b64-char.mp4"
+              controls preload="metadata" playsinline muted></video>
             <div class="project-body">
-            <h3 class="project-title">Base64 Encoding / Character Obfuscation</h3>
-            <p class="project-desc"></p>
-            <div class="project-actions">
-                <a class="project-link" href="https://github.com/nohuto/b64-char" target="_blank" rel="noopener">Repository</a>
+              <h3 class="project-title">Base64 Encoding / Character Obfuscation</h3>
+              <p class="project-desc">Fetching description...</p>
+              <div class="project-actions">
+                <a class="project-link" href="https://github.com/nohuto/b64-char" target="_blank"
+                  rel="noopener">Repository</a>
+              </div>
             </div>
-            </div>
-        </article>
+          </article>
 
-        <!-- admx-parser -->
-        <article class="project-card" data-repo="5Noxi/admx-parser" data-tags="OS Config, Conversion">
-            <img decoding="async" class="project-media-img" src="https://raw.githubusercontent.com/nohuto/admx-parser/main/images/admxparser-web.png" alt="ADMX Parser preview" loading="lazy">
+          <!-- admx-parser -->
+          <article class="project-card" data-repo="5Noxi/admx-parser" data-tags="OS Config, Conversion">
+            <img decoding="async" class="project-media-img"
+              src="https://raw.githubusercontent.com/nohuto/admx-parser/main/images/admxparser-web.png"
+              alt="ADMX Parser preview" loading="lazy">
             <div class="project-body">
-            <h3 class="project-title">ADMX Parser</h3>
-            <p class="project-desc"></p>
-            <div class="project-actions">
-                <a class="project-link" href="https://github.com/nohuto/admx-parser" target="_blank" rel="noopener">Repository</a>
+              <h3 class="project-title">ADMX Parser</h3>
+              <p class="project-desc">Fetching description...</p>
+              <div class="project-actions">
+                <a class="project-link" href="https://github.com/nohuto/admx-parser" target="_blank"
+                  rel="noopener">Repository</a>
+              </div>
             </div>
-            </div>
-        </article>
+          </article>
 
-        <!-- hash-gen -->
-        <article class="project-card" data-repo="5Noxi/hash-gen" data-tags="Hashing">
-            <img decoding="async" class="project-media-img" src="https://raw.githubusercontent.com/nohuto/hash-gen/main/images/contextmenu.png" alt="HashGen preview" loading="lazy">
+          <!-- hash-gen -->
+          <article class="project-card" data-repo="5Noxi/hash-gen" data-tags="Hashing">
+            <img decoding="async" class="project-media-img"
+              src="https://raw.githubusercontent.com/nohuto/hash-gen/main/images/contextmenu.png" alt="HashGen preview"
+              loading="lazy">
             <div class="project-body">
-            <h3 class="project-title">Hash Generator</h3>
-            <p class="project-desc"></p>
-            <div class="project-actions">
-                <a class="project-link" href="https://github.com/nohuto/hash-gen" target="_blank" rel="noopener">Repository</a>
+              <h3 class="project-title">Hash Generator</h3>
+              <p class="project-desc">Fetching description...</p>
+              <div class="project-actions">
+                <a class="project-link" href="https://github.com/nohuto/hash-gen" target="_blank"
+                  rel="noopener">Repository</a>
+              </div>
             </div>
-            </div>
-        </article>
+          </article>
 
-        <!-- strings2-tui -->
-        <article class="project-card" data-repo="5Noxi/strings2-tui" data-tags="Analysis">
-            <video class="project-media" src="https://raw.githubusercontent.com/nohuto/strings2-tui/master/media/strings2-tui.mp4" controls preload="metadata" playsinline muted></video>
+          <!-- strings2-tui -->
+          <article class="project-card" data-repo="5Noxi/strings2-tui" data-tags="Analysis">
+            <video class="project-media"
+              src="https://raw.githubusercontent.com/nohuto/strings2-tui/master/media/strings2-tui.mp4" controls
+              preload="metadata" playsinline muted></video>
             <div class="project-body">
-            <h3 class="project-title">strings2 TUI</h3>
-            <p class="project-desc"></p>
-            <div class="project-actions">
-                <a class="project-link" href="https://github.com/nohuto/strings2-tui" target="_blank" rel="noopener">Repository</a>
+              <h3 class="project-title">strings2 TUI</h3>
+              <p class="project-desc">Fetching description...</p>
+              <div class="project-actions">
+                <a class="project-link" href="https://github.com/nohuto/strings2-tui" target="_blank"
+                  rel="noopener">Repository</a>
+              </div>
             </div>
-            </div>
-        </article>
+          </article>
 
-        <!-- b64rev -->
-        <article class="project-card" data-repo="5Noxi/b64rev" data-tags="Encoding">
-            <video class="project-media" src="https://raw.githubusercontent.com/nohuto/b64rev/main/media/b64rev.mp4" controls preload="metadata" playsinline muted></video>
+          <!-- b64rev -->
+          <article class="project-card" data-repo="5Noxi/b64rev" data-tags="Encoding">
+            <video class="project-media" src="https://raw.githubusercontent.com/nohuto/b64rev/main/media/b64rev.mp4"
+              controls preload="metadata" playsinline muted></video>
             <div class="project-body">
-            <h3 class="project-title">Base64 Reversal & Character Obfuscation</h3>
-            <p class="project-desc"></p>
-            <div class="project-actions">
-                <a class="project-link" href="https://github.com/nohuto/b64rev" target="_blank" rel="noopener">Repository</a>
+              <h3 class="project-title">Base64 Reversal & Character Obfuscation</h3>
+              <p class="project-desc">Fetching description...</p>
+              <div class="project-actions">
+                <a class="project-link" href="https://github.com/nohuto/b64rev" target="_blank"
+                  rel="noopener">Repository</a>
+              </div>
             </div>
-            </div>
-        </article>
+          </article>
 
-        <!-- dism-wsim -->
-        <article class="project-card" data-repo="5Noxi/dism-wsim" data-tags="OS Config">
-            <img decoding="async" class="project-media-img" src="https://raw.githubusercontent.com/nohuto/dism-wsim/main/images/web.png" alt="DISM WSIM preview" loading="lazy">
+          <!-- dism-wsim -->
+          <article class="project-card" data-repo="5Noxi/dism-wsim" data-tags="OS Config">
+            <img decoding="async" class="project-media-img"
+              src="https://raw.githubusercontent.com/nohuto/dism-wsim/main/images/web.png" alt="DISM WSIM preview"
+              loading="lazy">
             <div class="project-body">
-            <h3 class="project-title">DISM WSIM</h3>
-            <p class="project-desc"></p>
-            <div class="project-actions">
-                <a class="project-link" href="https://github.com/nohuto/dism-wsim" target="_blank" rel="noopener">Repository</a>
+              <h3 class="project-title">DISM WSIM</h3>
+              <p class="project-desc">Fetching description...</p>
+              <div class="project-actions">
+                <a class="project-link" href="https://github.com/nohuto/dism-wsim" target="_blank"
+                  rel="noopener">Repository</a>
+              </div>
             </div>
-            </div>
-        </article>
+          </article>
 
-        <!-- reg2bat -->
-        <article class="project-card" data-repo="5Noxi/reg2bat" data-tags="Conversion">
-            <img decoding="async" class="project-media-img" src="https://raw.githubusercontent.com/nohuto/reg2bat/main/images/reg2bat.png" alt="reg2bat preview" loading="lazy">
+          <!-- reg2bat -->
+          <article class="project-card" data-repo="5Noxi/reg2bat" data-tags="Conversion">
+            <img decoding="async" class="project-media-img"
+              src="https://raw.githubusercontent.com/nohuto/reg2bat/main/images/reg2bat.png" alt="reg2bat preview"
+              loading="lazy">
             <div class="project-body">
-            <h3 class="project-title">reg2bat</h3>
-            <p class="project-desc"></p>
-            <div class="project-actions">
-                <a class="project-link" href="https://github.com/nohuto/reg2bat" target="_blank" rel="noopener">Repository</a>
+              <h3 class="project-title">reg2bat</h3>
+              <p class="project-desc">Fetching description...</p>
+              <div class="project-actions">
+                <a class="project-link" href="https://github.com/nohuto/reg2bat" target="_blank"
+                  rel="noopener">Repository</a>
+              </div>
             </div>
-            </div>
-        </article>
+          </article>
 
-        <!-- pbo2-uv -->
-        <article class="project-card" data-repo="5Noxi/pbo2-uv" data-tags="HW Config">
-            <img decoding="async" class="project-media-img" src="https://raw.githubusercontent.com/nohuto/pbo2-uv/main/images/pbotechow.png" alt="PBO2 undervolting steps" loading="lazy">
+          <!-- pbo2-uv -->
+          <article class="project-card" data-repo="5Noxi/pbo2-uv" data-tags="HW Config">
+            <img decoding="async" class="project-media-img"
+              src="https://raw.githubusercontent.com/nohuto/pbo2-uv/main/images/pbotechow.png"
+              alt="PBO2 undervolting steps" loading="lazy">
             <div class="project-body">
-            <h3 class="project-title">PBO2 UV Guide</h3>
-            <p class="project-desc"></p>
-            <div class="project-actions">
-                <a class="project-link" href="https://github.com/nohuto/pbo2-uv" target="_blank" rel="noopener">Repository</a>
+              <h3 class="project-title">PBO2 UV Guide</h3>
+              <p class="project-desc">Fetching description...</p>
+              <div class="project-actions">
+                <a class="project-link" href="https://github.com/nohuto/pbo2-uv" target="_blank"
+                  rel="noopener">Repository</a>
+              </div>
             </div>
-            </div>
-        </article>
+          </article>
 
-        <!-- gpu-oc-uv -->
-        <article class="project-card" data-repo="5Noxi/gpu-oc-uv" data-tags="HW Config">
-            <img decoding="async" class="project-media-img" src="https://raw.githubusercontent.com/nohuto/gpu-oc-uv/main/images/oc.png" alt="GPU OC/UV workflow" loading="lazy">
+          <!-- gpu-oc-uv -->
+          <article class="project-card" data-repo="5Noxi/gpu-oc-uv" data-tags="HW Config">
+            <img decoding="async" class="project-media-img"
+              src="https://raw.githubusercontent.com/nohuto/gpu-oc-uv/main/images/oc.png" alt="GPU OC/UV workflow"
+              loading="lazy">
             <div class="project-body">
-            <h3 class="project-title">GPU OC/UV Guide</h3>
-            <p class="project-desc"></p>
-            <div class="project-actions">
-                <a class="project-link" href="https://github.com/nohuto/gpu-oc-uv" target="_blank" rel="noopener">Repository</a>
+              <h3 class="project-title">GPU OC/UV Guide</h3>
+              <p class="project-desc">Fetching description...</p>
+              <div class="project-actions">
+                <a class="project-link" href="https://github.com/nohuto/gpu-oc-uv" target="_blank"
+                  rel="noopener">Repository</a>
+              </div>
             </div>
-            </div>
-        </article>
+          </article>
         </div>
+      </div>
     </section>
   </main>
 
+  <div class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
   <footer>
-    <div class="social">
-      <a href="https://github.com/nohuto" target="_blank" rel="noopener noreferrer">
-        <img decoding="async" src="images/github-icon.png" loading="lazy" alt="GitHub">
-      </a>
-      <a href="https://www.youtube.com/@5Noverse" target="_blank" rel="noopener noreferrer">
-        <img decoding="async" src="images/youtube-icon.png" loading="lazy" alt="YouTube">
-      </a>
-      <a href="mailto:nohuto@duck.com" target="_blank" rel="noopener noreferrer">
-        <img decoding="async" src="images/email-icon.png" loading="lazy" alt="Email">
-      </a>
-      <a href="https://discord.gg/E2ybG4j9jU" target="_blank" rel="noopener noreferrer">
-        <img decoding="async" src="images/discord-icon.png" loading="lazy" alt="Discord">
-      </a>
+    <div class="footer-row">
+      <div class="footer-copy">© 2026 Nohuto</div>
+      <div class="social">
+        <a href="https://github.com/nohuto" target="_blank" rel="noopener noreferrer">
+          <img decoding="async" src="images/github-icon.png" loading="lazy" alt="GitHub">
+        </a>
+        <a href="https://www.youtube.com/@5Noverse" target="_blank" rel="noopener noreferrer">
+          <img decoding="async" src="images/youtube-icon.png" loading="lazy" alt="YouTube">
+        </a>
+        <button class="icon-button" type="button" data-copy="nohuto@duck.com" data-toast="Email copied"
+          aria-label="Copy email to clipboard">
+          <img decoding="async" src="images/email-icon.png" loading="lazy" alt="Email">
+        </button>
+        <a href="https://discord.gg/E2ybG4j9jU" target="_blank" rel="noopener noreferrer">
+          <img decoding="async" src="images/discord-icon.png" loading="lazy" alt="Discord">
+        </a>
+      </div>
+      <div class="footer-tools">
+        <div class="footer-tools-row">
+          <div class="footer-control">
+            <label class="theme-label" for="bg-select">bg</label>
+            <select id="bg-select" name="background">
+              <option value="data-tape">Data-tape</option>
+              <option value="hex-matrix">Hex-matrix</option>
+              <option value="signal-rails">Signal-rails</option>
+              <option value="circuit-loom">Circuit-loom</option>
+              <option value="phase-noise">Phase-noise</option>
+              <option value="mono-shards">Mono-shards</option>
+              <option value="topo-trace">Topo-trace</option>
+              <option value="quasar-mesh">Quasar-mesh</option>
+            </select>
+          </div>
+          <div class="footer-control">
+            <label class="theme-label" for="theme-select">theme</label>
+            <select id="theme-select" name="theme">
+              <option value="default-dark">Default Dark</option>
+              <option value="default-light">Default Light</option>
+              <option value="gruvbox-dark">Gruvbox Dark</option>
+              <option value="gruvbox-light">Gruvbox Light</option>
+              <option value="nord">Nord</option>
+              <option value="kanagawa-wave">Kanagawa Wave</option>
+              <option value="kanagawa-dragon">Kanagawa Dragon</option>
+              <option value="kanagawa-lotus">Kanagawa Lotus</option>
+              <option value="catppuccin-mocha">Catppuccin Mocha</option>
+              <option value="catppuccin-macchiato">Catppuccin Macchiato</option>
+              <option value="catppuccin-frappe">Catppuccin Frappe</option>
+              <option value="catppuccin-latte">Catppuccin Latte</option>
+              <option value="solarized-dark">Solarized Dark</option>
+              <option value="solarized-light">Solarized Light</option>
+              <option value="tokyo-night">Tokyo Night</option>
+              <option value="dracula">Dracula</option>
+              <option value="one-dark">One Dark</option>
+              <option value="one-light">One Light</option>
+              <option value="ayu-dark">Ayu Dark</option>
+              <option value="ayu-light">Ayu Light</option>
+              <option value="everforest-dark">Everforest Dark</option>
+              <option value="everforest-light">Everforest Light</option>
+              <option value="rose-pine">Rose Pine</option>
+              <option value="rose-pine-moon">Rose Pine Moon</option>
+              <option value="monokai">Monokai</option>
+              <option value="material">Material</option>
+              <option value="horizon">Horizon</option>
+              <option value="night-owl">Night Owl</option>
+            </select>
+          </div>
+        </div>
+        <div class="footer-tools-row">
+          <div class="footer-control">
+            <label class="theme-label" for="font-select">font</label>
+            <select id="font-select" name="font">
+              <option value="cascadia">Cascadia Mono</option>
+              <option value="jetbrains">JetBrains Mono</option>
+              <option value="fira">Fira Code</option>
+              <option value="ibm">IBM Plex Mono</option>
+              <option value="sourcecode">Source Code Pro</option>
+              <option value="consolas">Consolas</option>
+            </select>
+          </div>
+          <div class="footer-control footer-size">
+            <label class="theme-label" for="font-size">size</label>
+            <div class="size-stepper">
+              <button class="size-step" type="button" data-step="1" aria-label="Increase font size">▲</button>
+              <input id="font-size" type="number" min="12" max="22" step="1" value="14">
+              <button class="size-step" type="button" data-step="-1" aria-label="Decrease font size">▼</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </footer>
 </body>
+
 </html>

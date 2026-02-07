@@ -1,308 +1,490 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Product</title>
   <link rel="icon" href="images/nvlogo.png">
+  <script>
+    (function () {
+      try {
+        var theme = localStorage.getItem('nv-theme');
+        if (theme) {
+          document.documentElement.setAttribute('data-theme', theme);
+        }
+        var bg = localStorage.getItem('nv-bg') || 'topo-trace';
+        document.documentElement.setAttribute('data-bg', bg);
+        var fontMap = {
+          cascadia: '"Cascadia Mono", "Cascadia Code", Consolas, "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace',
+          jetbrains: '"JetBrains Mono", "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace',
+          fira: '"Fira Code", "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace',
+          ibm: '"IBM Plex Mono", "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace',
+          sourcecode: '"Source Code Pro", "Cascadia Mono", Consolas, "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace',
+          consolas: 'Consolas, "Cascadia Mono", "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace'
+        };
+        var fontKey = localStorage.getItem('nv-font');
+        if (fontKey && fontMap[fontKey]) {
+          document.documentElement.style.setProperty('--font-family', fontMap[fontKey]);
+        }
+        var fontSize = localStorage.getItem('nv-font-size');
+        if (fontSize) {
+          document.documentElement.style.setProperty('--font-size', fontSize);
+        }
+      } catch (e) { }
+    })();
+  </script>
   <link rel="stylesheet" href="styles.css">
   <script src="app.js" defer></script>
 </head>
+
 <body>
   <div class="overlay" aria-hidden="true"></div>
 
-  <header>
-    <a class="brand" href="index.html">
-      <img decoding="async" src="images/noverse-logo.png" alt="Noverse logo">
-    </a>
+  <header class="prompt-bar">
+    <div class="prompt-line" aria-label="Terminal prompt">
+      <span class="prompt-user">nohuto</span>
+      <span class="prompt-sep">@</span>
+      <span class="prompt-host">noverse</span>
+      <span class="prompt-path">:~/site</span>
+      <span class="prompt-caret">$</span>
+      <span class="prompt-cmd">open</span>
+      <span class="prompt-cursor" aria-hidden="true">█</span>
+    </div>
     <nav class="nav-tabs" aria-label="Primary navigation">
-      <a href="index.html">Home</a>
-      <a href="product.html" class="active" aria-current="page">Product</a>
-      <a href="projects.html">Projects</a>
-      <a href="about.html">About</a>
+      <a href="index.html">home</a>
+      <a href="product.html" class="active" aria-current="page">product</a>
+      <a href="projects.html">projects</a>
+      <a href="about.html">about</a>
     </nav>
   </header>
 
-  <main class="no-center">
-    <section class="content-box" id="product">
-      <div class="product-header">
-        <div class="product-intro">
-          <p class="product-label">Product</p>
-          <h2>Windows Configuration</h2>
-          <p>
-            WinConfig is based on my personal research on several topics, which I began documenting around July 2024.
-          </p>
+  <main id="main" class="no-center product-main">
+    <section class="content-box panel" id="product" data-title="product">
+      <div class="panel-header">
+        <span class="panel-title">Product</span>
+        <span class="panel-meta">winconfig</span>
+      </div>
+      <div class="panel-body">
+        <div class="product-header">
+          <div class="product-intro">
+            <h2>Windows Configuration</h2>
+            <p>
+              WinConfig is based on my personal research on several topics, which I began documenting around July 2024.
+            </p>
+          </div>
+          <div class="product-cta">
+            <span class="price-label">Lifetime license</span>
+            <span class="product-price">9,99&nbsp;EUR</span>
+            <p class="pricing-note">Includes updates & Discord role.</p>
+            <div class="purchase-actions">
+              <form class="paypal-form" action="https://www.paypal.com/ncp/payment/C4XUQMQZHS948" method="post"
+                target="_blank">
+                <input class="paypal-button" type="submit" value="Buy WinConfig">
+                <img decoding="async" class="paypal-methods"
+                  src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg"
+                  alt="Accepted payment cards via PayPal" loading="lazy">
+                <p class="paypal-note">
+                  Powered by
+                  <img decoding="async" class="paypal-logo" src="images/paypal.png" alt="PayPal" loading="lazy">
+                </p>
+              </form>
+            </div>
+          </div>
         </div>
-        <div class="product-cta">
-          <span class="price-label">Lifetime license</span>
-          <span class="product-price">9,99&nbsp;EUR</span>
-          <p class="pricing-note">Includes updates & Discord role.</p>
-          <div class="purchase-actions">
-            <form class="paypal-form" action="https://www.paypal.com/ncp/payment/C4XUQMQZHS948" method="post" target="_blank">
-              <input class="paypal-button" type="submit" value="Buy WinConfig">
-              <img decoding="async" class="paypal-methods" src="https://www.paypalobjects.com/images/Debit_Credit_APM.svg" alt="Accepted payment cards via PayPal" loading="lazy">
-              <p class="paypal-note">
-                Powered by
-                <img decoding="async" class="paypal-logo" src="images/paypal.png" alt="PayPal" loading="lazy">
-              </p>
-            </form>
+        <div class="product-preview-grid">
+          <figure class="product-preview-card">
+            <a href="images/darkbluelogs.png" target="_blank" rel="noopener">
+              <img decoding="async" src="images/darkbluelogs.png" alt="Dark mode blue palette with logs" loading="lazy">
+            </a>
+            <figcaption>Dark mode - Blue color scheme - Logs enabled - System section</figcaption>
+          </figure>
+          <figure class="product-preview-card">
+            <a href="images/darkreg.png" target="_blank" rel="noopener">
+              <img decoding="async" src="images/darkreg.png" alt="Dark mode red palette peripheral view" loading="lazy">
+            </a>
+            <figcaption>Dark mode - Red color scheme - Logs disabled - Peripheral section</figcaption>
+          </figure>
+          <figure class="product-preview-card">
+            <a href="images/lightblue.png" target="_blank" rel="noopener">
+              <img decoding="async" src="images/lightblue.png" alt="Light mode blue palette visibility view"
+                loading="lazy">
+            </a>
+            <figcaption>Light mode - Blue color scheme - Logs disabled - Visibility section</figcaption>
+          </figure>
+          <figure class="product-preview-card">
+            <a href="images/lightviolet.png" target="_blank" rel="noopener">
+              <img decoding="async" src="images/lightviolet.png" alt="Light mode violet palette privacy view"
+                loading="lazy">
+            </a>
+            <figcaption>Light mode - Violet color scheme - Logs disabled - Privacy section</figcaption>
+          </figure>
+        </div>
+        <div class="product-comparison">
+          <div class="comparison-copy">
+            <h3>Noteable Windows Configuration Tool Features:</h3>
+            <ul>
+              <li>Transparent execution logs so users can review every action, these include the value, data, type and
+                if given the amount of modified keys. Specific options will show the PS code that got executed.</li>
+              <li>Dynamic state detection instead of relying on cached registry values, this includes static/dynamic
+                (pattern) and all used cmdlets (which are also saved in the registry but on uncommon ways). Note that
+                this feature affects app performance, as several commands are called every time you switch trough
+                sections. However, you always see the current state, which more than compensates for the resulting wait
+                time. </li>
+              <li>Each option is backed up by documentation, instead of just general "optimize" prompts with an useless
+                text.</li>
+              <li>Guidance includes lesser known data alongside common adjustments, for futher customization for
+                experienced users.</li>
+              <li>Every control is available individually instead of being merged into large bundles.</li>
+              <li>Supports dark/light modes, custom color schemes, and layout preferences for search filters, rows,
+                columns, and panel widths.</li>
+            </ul>
+          </div>
+          <div class="comparison-table" aria-label="Feature comparison">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Feature</th>
+                  <th scope="col">WinConfig</th>
+                  <th scope="col">Typical tools</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Execution transparency</td>
+                  <td><span class="status-pill positive">Displays each change</span></td>
+                  <td><span class="status-pill neutral">Hidden</span></td>
+                </tr>
+                <tr>
+                  <td>State detection</td>
+                  <td><span class="status-pill positive">Dynamic</span></td>
+                  <td><span class="status-pill neutral">Stored in registry</span></td>
+                </tr>
+                <tr>
+                  <td>Documentation</td>
+                  <td><span class="status-pill positive">Per option notes</span></td>
+                  <td><span class="status-pill negative">None</span></td>
+                </tr>
+                <tr>
+                  <td>Selection</td>
+                  <td><span class="status-pill positive">Extensive</span></td>
+                  <td><span class="status-pill neutral">Common</span></td>
+                </tr>
+                <tr>
+                  <td>Customization control</td>
+                  <td><span class="status-pill positive">Per change toggles</span></td>
+                  <td><span class="status-pill negative">Bundled groups</span></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
-      <div class="product-preview-grid">
-        <figure class="product-preview-card">
-          <a href="images/darkbluelogs.png" target="_blank" rel="noopener">
-            <img decoding="async" src="images/darkbluelogs.png" alt="Dark mode blue palette with logs" loading="lazy">
-          </a>
-          <figcaption>Dark mode - Blue color scheme - Logs enabled - System section</figcaption>
-        </figure>
-        <figure class="product-preview-card">
-          <a href="images/darkreg.png" target="_blank" rel="noopener">
-            <img decoding="async" src="images/darkreg.png" alt="Dark mode red palette peripheral view" loading="lazy">
-          </a>
-          <figcaption>Dark mode - Red color scheme - Logs disabled - Peripheral section</figcaption>
-        </figure>
-        <figure class="product-preview-card">
-          <a href="images/lightblue.png" target="_blank" rel="noopener">
-            <img decoding="async" src="images/lightblue.png" alt="Light mode blue palette visibility view" loading="lazy">
-          </a>
-          <figcaption>Light mode - Blue color scheme - Logs disabled - Visibility section</figcaption>
-        </figure>
-        <figure class="product-preview-card">
-          <a href="images/lightviolet.png" target="_blank" rel="noopener">
-            <img decoding="async" src="images/lightviolet.png" alt="Light mode violet palette privacy view" loading="lazy">
-          </a>
-          <figcaption>Light mode - Violet color scheme - Logs disabled - Privacy section</figcaption>
-        </figure>
+    </section>
+    <section class="content-box panel" data-title="docs">
+      <div class="panel-header">
+        <span class="panel-title">Documentation</span>
+        <span class="panel-meta">winconfig</span>
       </div>
-      <div class="product-comparison">
-        <div class="comparison-copy">
-          <h3>Noteable Windows Configuration Tool Features:</h3>
-          <ul>
-            <li>Transparent execution logs so users can review every action, these include the value, data, type and if given the amount of modified keys. Specific options will show the PS code that got executed.</li>
-            <li>Dynamic state detection instead of relying on cached registry values, this includes static/dynamic (pattern) and all used cmdlets (which are also saved in the registry but on uncommon ways). Note that this feature affects app performance, as several commands are called every time you switch trough sections. However, you always see the current state, which more than compensates for the resulting wait time. </li>
-            <li>Each option is backed up by documentation, instead of just general "optimize" prompts with an useless text.</li>
-            <li>Guidance includes lesser known data alongside common adjustments, for futher customization for experienced users.</li>
-            <li>Every control is available individually instead of being merged into large bundles.</li>
-            <li>Supports dark/light modes, custom color schemes, and layout preferences for search filters, rows, columns, and panel widths.</li>
-          </ul>
-        </div>
-        <div class="comparison-table" aria-label="Feature comparison">
-          <table>
-            <thead>
-              <tr>
-                <th scope="col">Feature</th>
-                <th scope="col">WinConfig</th>
-                <th scope="col">Typical tools</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Execution transparency</td>
-                <td><span class="status-pill positive">Displays each change</span></td>
-                <td><span class="status-pill neutral">Hidden</span></td>
-              </tr>
-              <tr>
-                <td>State detection</td>
-                <td><span class="status-pill positive">Dynamic</span></td>
-                <td><span class="status-pill neutral">Stored in registry</span></td>
-              </tr>
-              <tr>
-                <td>Documentation</td>
-                <td><span class="status-pill positive">Per option notes</span></td>
-                <td><span class="status-pill negative">None</span></td>
-              </tr>
-              <tr>
-                <td>Selection</td>
-                <td><span class="status-pill positive">Extensive</span></td>
-                <td><span class="status-pill neutral">Common</span></td>
-              </tr>
-              <tr>
-                <td>Customization control</td>
-                <td><span class="status-pill positive">Per change toggles</span></td>
-                <td><span class="status-pill negative">Bundled groups</span></td>
-              </tr>
-            </tbody>
-          </table>
+      <div class="panel-body">
+        <div class="documentation-overview" id="documentation">
+          <div class="doc-header">
+            <h3>Detailed documentation for the WinConfig tool or for purely informational reasons.</h3>
+            <p>Each option has it's own somtimes detailed or less detailed documentation, containing explanations for
+              specific changes or information for the topic itself.</p>
+          </div>
+          <div class="doc-grid">
+            <article class="doc-card">
+              <span class="doc-index">01</span>
+              <h4>System</h4>
+              <p>Operating system adjustments for services, scheduling, storage, startup behavior and more.</p>
+              <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/system/desc.md" target="_blank"
+                rel="noopener">View Documentation</a>
+            </article>
+            <article class="doc-card">
+              <span class="doc-index">02</span>
+              <h4>Visibility</h4>
+              <p>Customize Windows visuals and interface behavior.</p>
+              <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/visibility/desc.md"
+                target="_blank" rel="noopener">View Documentation</a>
+            </article>
+            <article class="doc-card">
+              <span class="doc-index">03</span>
+              <h4>Peripheral</h4>
+              <p>Change input, audio, Bluetooth, display devices... behaviors/states.</p>
+              <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/peripheral/desc.md"
+                target="_blank" rel="noopener">View Documentation</a>
+            </article>
+            <article class="doc-card">
+              <span class="doc-index">04</span>
+              <h4>Power</h4>
+              <p>Control several different power management features and other related options.</p>
+              <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/power/desc.md" target="_blank"
+                rel="noopener">View Documentation</a>
+            </article>
+            <article class="doc-card">
+              <span class="doc-index">05</span>
+              <h4>Privacy</h4>
+              <p>Privacy configuration for telemetry, diagnostics, encryption, data sharing, and more.</p>
+              <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/privacy/desc.md" target="_blank"
+                rel="noopener">View Documentation</a>
+            </article>
+            <article class="doc-card">
+              <span class="doc-index">06</span>
+              <h4>Security</h4>
+              <p>Security posture options such as elevation behavior, Defender and credential settings and more.</p>
+              <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/security/desc.md" target="_blank"
+                rel="noopener">View Documentation</a>
+            </article>
+            <article class="doc-card">
+              <span class="doc-index">07</span>
+              <h4>Network</h4>
+              <p>Change network adapter settings including DNS, sharing controls, offloads... and miscellaneous network
+                related features.</p>
+              <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/network/desc.md" target="_blank"
+                rel="noopener">View Documentation</a>
+            </article>
+            <article class="doc-card">
+              <span class="doc-index">08</span>
+              <h4>NVIDIA</h4>
+              <p>NVIDIA driver installation, control panel settings... and resource manager values.</p>
+              <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/nvidia/desc.md" target="_blank"
+                rel="noopener">View Documentation</a>
+            </article>
+            <article class="doc-card">
+              <span class="doc-index">09</span>
+              <h4>Cleanup</h4>
+              <p>Clear caches, logs, histories, backups.</p>
+              <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/cleanup/desc.md" target="_blank"
+                rel="noopener">View Documentation</a>
+            </article>
+            <article class="doc-card">
+              <span class="doc-index">10</span>
+              <h4>Misc</h4>
+              <p>Miscellaneous external app configuration/installation, e.g. nvfetch.</p>
+              <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/misc/desc.md" target="_blank"
+                rel="noopener">View Documentation</a>
+            </article>
+            <article class="doc-card">
+              <span class="doc-index">11</span>
+              <h4>Policies</h4>
+              <p>A more detailed LGPE including keys, values and quick toggling, based on my admx-parser project.</p>
+              <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/policies/desc.md" target="_blank"
+                rel="noopener">View Documentation</a>
+            </article>
+            <article class="doc-card">
+              <span class="doc-index">12</span>
+              <h4>Affinities</h4>
+              <p>Configure MSI mode/message limit, IRQ settings (priority/policy), affinities.</p>
+              <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/affinities/desc.md"
+                target="_blank" rel="noopener">View Documentation</a>
+            </article>
+          </div>
         </div>
       </div>
     </section>
-    <section class="content-box">
-      <div class="documentation-overview" id="documentation">
-        <div class="doc-header">
-          <p class="product-label">Documentation</p>
-          <h3>Detailed documentation for the WinConfig tool or for purely informational reasons.</h3>
-          <p>Each option has it's own somtimes detailed or less detailed documentation, containing explanations for specific changes or information for the topic itself.</p>
-        </div>
-        <div class="doc-grid">
-          <article class="doc-card">
-            <span class="doc-index">01</span>
-            <h4>System</h4>
-            <p>Operating system adjustments for services, scheduling, storage, startup behavior and more.</p>
-            <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/system/desc.md" target="_blank" rel="noopener">View Documentation</a>
-          </article>
-          <article class="doc-card">
-            <span class="doc-index">02</span>
-            <h4>Visibility</h4>
-            <p>Customize Windows visuals and interface behavior.</p>
-            <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/visibility/desc.md" target="_blank" rel="noopener">View Documentation</a>
-          </article>
-          <article class="doc-card">
-            <span class="doc-index">03</span>
-            <h4>Peripheral</h4>
-            <p>Change input, audio, Bluetooth, display devices... behaviors/states.</p>
-            <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/peripheral/desc.md" target="_blank" rel="noopener">View Documentation</a>
-          </article>
-          <article class="doc-card">
-            <span class="doc-index">04</span>
-            <h4>Power</h4>
-            <p>Control several different power management features and other related options.</p>
-            <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/power/desc.md" target="_blank" rel="noopener">View Documentation</a>
-          </article>
-          <article class="doc-card">
-            <span class="doc-index">05</span>
-            <h4>Privacy</h4>
-            <p>Privacy configuration for telemetry, diagnostics, encryption, data sharing, and more.</p>
-            <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/privacy/desc.md" target="_blank" rel="noopener">View Documentation</a>
-          </article>
-          <article class="doc-card">
-            <span class="doc-index">06</span>
-            <h4>Security</h4>
-            <p>Security posture options such as elevation behavior, Defender and credential settings and more.</p>
-            <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/security/desc.md" target="_blank" rel="noopener">View Documentation</a>
-          </article>
-          <article class="doc-card">
-            <span class="doc-index">07</span>
-            <h4>Network</h4>
-            <p>Change network adapter settings including DNS, sharing controls, offloads... and miscellaneous network related features.</p>
-            <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/network/desc.md" target="_blank" rel="noopener">View Documentation</a>
-          </article>
-          <article class="doc-card">
-            <span class="doc-index">08</span>
-            <h4>NVIDIA</h4>
-            <p>NVIDIA driver installation, control panel settings... and resource manager values.</p>
-            <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/nvidia/desc.md" target="_blank" rel="noopener">View Documentation</a>
-          </article>
-          <article class="doc-card">
-            <span class="doc-index">09</span>
-            <h4>Cleanup</h4>
-            <p>Clear caches, logs, histories, backups.</p>
-            <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/cleanup/desc.md" target="_blank" rel="noopener">View Documentation</a>
-          </article>
-          <article class="doc-card">
-            <span class="doc-index">10</span>
-            <h4>Misc</h4>
-            <p>Miscellaneous external app configuration/installation, e.g. nvfetch.</p>
-            <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/misc/desc.md" target="_blank" rel="noopener">View Documentation</a>
-          </article>
-          <article class="doc-card">
-            <span class="doc-index">11</span>
-            <h4>Policies</h4>
-            <p>A more detailed LGPE including keys, values and quick toggling, based on my admx-parser project.</p>
-            <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/policies/desc.md" target="_blank" rel="noopener">View Documentation</a>
-          </article>
-          <article class="doc-card">
-            <span class="doc-index">12</span>
-            <h4>Affinities</h4>
-            <p>Configure MSI mode/message limit, IRQ settings (priority/policy), affinities.</p>
-            <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/affinities/desc.md" target="_blank" rel="noopener">View Documentation</a>
-          </article>
+    <section class="content-box panel" data-title="toolkit">
+      <div class="panel-header">
+        <span class="panel-title">External tools</span>
+        <span class="panel-meta">external</span>
+      </div>
+      <div class="panel-body">
+        <div class="external-tools" id="toolkit">
+          <div class="doc-header">
+            <h3>Free &amp; open-source extension tools</h3>
+            <p>Each tool is available under GPLv3 and can be used alongside WinConfig as standalone tools.</p>
+          </div>
+          <div class="tool-grid">
+            <article class="tool-card">
+              <h4>App Tools</h4>
+              <p>Automates configuration for Discord, Spotify, Thorium, Steam, Ungoogled, Brave, Epic, LGHUB, and more.
+              </p>
+              <a href="https://github.com/nohuto/app-tools" class="tool-link" target="_blank" rel="noopener">View
+                Repository</a>
+            </article>
+            <article class="tool-card">
+              <h4>Game Tools</h4>
+              <p>Automates configuration VALORANT, Fortnite, Marvel Rivals, CS2, and Overwatch.</p>
+              <a href="https://github.com/nohuto/game-tools" class="tool-link" target="_blank" rel="noopener">View
+                Repository</a>
+            </article>
+            <article class="tool-card">
+              <h4>Component Manager</h4>
+              <p>Remove/uninstall packages, optional Windows features, and capability bundles.</p>
+              <a href="https://github.com/nohuto/comp-mgr" class="tool-link" target="_blank" rel="noopener">View
+                Repository</a>
+            </article>
+            <article class="tool-card">
+              <h4>Blocklist Manager</h4>
+              <p>Manage hosts/URL blocklists and edit your hosts directly.</p>
+              <a href="https://github.com/nohuto/blocklist-mgr" class="tool-link" target="_blank" rel="noopener">View
+                Repository</a>
+            </article>
+            <article class="tool-card">
+              <h4>Bitmask Calculator</h4>
+              <p>Bitfield calculator built for official NVIDIA definitions.</p>
+              <a href="https://github.com/nohuto/bitmask-calc" class="tool-link" target="_blank" rel="noopener">View
+                Repository</a>
+            </article>
+          </div>
         </div>
       </div>
     </section>
-    <section class="content-box">
-      <div class="external-tools" id="toolkit">
-        <div class="doc-header">
-          <p class="product-label">External tools</p>
-          <h3>Free &amp; open-source extension tools</h3>
-          <p>Each tool is available under GPLv3 and can be used alongside WinConfig as standalone tools.</p>
-        </div>
-        <div class="tool-grid">
-          <article class="tool-card">
-            <h4>App Tools</h4>
-            <p>Automates configuration for Discord, Spotify, Thorium, Steam, Ungoogled, Brave, Epic, LGHUB, and more.</p>
-            <a href="https://github.com/nohuto/app-tools" class="tool-link" target="_blank" rel="noopener">View Repository</a>
-          </article>
-          <article class="tool-card">
-            <h4>Game Tools</h4>
-            <p>Automates configuration VALORANT, Fortnite, Marvel Rivals, CS2, and Overwatch.</p>
-            <a href="https://github.com/nohuto/game-tools" class="tool-link" target="_blank" rel="noopener">View Repository</a>
-          </article>
-          <article class="tool-card">
-            <h4>Component Manager</h4>
-            <p>Remove/uninstall packages, optional Windows features, and capability bundles.</p>
-            <a href="https://github.com/nohuto/comp-mgr" class="tool-link" target="_blank" rel="noopener">View Repository</a>
-          </article>
-          <article class="tool-card">
-            <h4>Blocklist Manager</h4>
-            <p>Manage hosts/URL blocklists and edit your hosts directly.</p>
-            <a href="https://github.com/nohuto/blocklist-mgr" class="tool-link" target="_blank" rel="noopener">View Repository</a>
-          </article>
-          <article class="tool-card">
-            <h4>Bitmask Calculator</h4>
-            <p>Bitfield calculator built for official NVIDIA definitions.</p>
-            <a href="https://github.com/nohuto/bitmask-calc" class="tool-link" target="_blank" rel="noopener">View Repository</a>
-          </article>
-        </div>
+    <section class="content-box panel" data-title="terms">
+      <div class="panel-header">
+        <span class="panel-title">Terms of service</span>
+        <span class="panel-meta">license</span>
       </div>
-    </section>
-    <section class="content-box">
-      <div class="legal-section" id="terms">
-        <div class="doc-header">
-          <p class="product-label">Terms of service</p>
-          <h3>Purchase, privacy, and license notes</h3>
-        </div>
-        <div class="legal-grid">
-          <article class="legal-card">
-            <h4>Data Privacy</h4>
-            <p>
-              WinConfig only references hardware identifiers required for license verification: UUID, CPU ID, and board ID. If any are unavailable, it can fall back to disk serial, MAC address, video controller ID, sound device ID, or USB controller ID. No additional system data is collected, transmitted, or stored. Learn more about the firmware identifiers via the
-              <a class="legal-link" href="https://learn.microsoft.com/en-us/windows-hardware/drivers/bringup/smbios" target="_blank" rel="noopener">official SMBIOS documentation</a>.
-            </p>
-          </article>
-          <article class="legal-card">
-            <h4>Usage &amp; Redistribution</h4>
-            <p>
-              Licenses are for personal use only. Reselling, transferring, or redistributing WinConfig is prohibited unless you receive explicit written permission from Nohuto. Violations lead to immediate license revocation and a permanent ban.
-            </p>
-          </article>
-          <article class="legal-card">
-            <h4>Refund Policy</h4>
-            <p>
-              Refunds are available only if no registration has been made and no Discord role has been assigned. Include proof of purchase when submitting a refund request.
-            </p>
-          </article>
-          <article class="legal-card">
-            <h4>License</h4>
-            <p>
-              Each purchase grants one hardware bound license. Manual validation is required after checkout and can take several minutes or hours. Keys do not transfer across devices without re-registration.
-            </p>
-          </article>
-          <article class="legal-card">
-            <h4>After Purchase</h4>
-            <p>
-            After purchase, a manual process begins. To get access, you must either include your Discord ID in the purchase message or send me your transaction ID so I can assign the Discord role. The role is not assigned automatically, so one of these is required. Once the role is assigned, you'll get access to a download link for the tool. After downloading, you must register via the tool, and then Nohuto will validate your registration. Joining (or already being in) the Discord server is recommended for now so you receive updates, announcements, and support. Otherwise you may miss app updates (config updates would theoretically work as long as no new section gets added).
-            </p>
-          </article>
+      <div class="panel-body">
+        <div class="legal-section" id="terms">
+          <div class="doc-header">
+            <h3>Purchase, privacy, and license notes</h3>
+          </div>
+          <div class="legal-grid">
+            <article class="legal-card">
+              <h4>Data Privacy</h4>
+              <p>
+                WinConfig only references hardware identifiers required for license verification: UUID, CPU ID, and
+                board ID. If any are unavailable, it can fall back to disk serial, MAC address, video controller ID,
+                sound device ID, or USB controller ID. No additional system data is collected, transmitted, or stored.
+                Learn more about the firmware identifiers via the
+                <a class="legal-link" href="https://learn.microsoft.com/en-us/windows-hardware/drivers/bringup/smbios"
+                  target="_blank" rel="noopener">official SMBIOS documentation</a>.
+              </p>
+            </article>
+            <article class="legal-card">
+              <h4>Usage &amp; Redistribution</h4>
+              <p>
+                Licenses are for personal use only. Reselling, transferring, or redistributing WinConfig is prohibited
+                unless you receive explicit written permission from Nohuto. Violations lead to immediate license
+                revocation and a permanent ban.
+              </p>
+            </article>
+            <article class="legal-card">
+              <h4>Refund Policy</h4>
+              <p>
+                Refunds are available only if no registration has been made and no Discord role has been assigned.
+                Include proof of purchase when submitting a refund request.
+              </p>
+            </article>
+            <article class="legal-card">
+              <h4>License</h4>
+              <p>
+                Each purchase grants one hardware bound license. Manual validation is required after checkout and can
+                take several minutes or hours. Keys do not transfer across devices without re-registration.
+              </p>
+            </article>
+            <article class="legal-card">
+              <h4>After Purchase</h4>
+              <p>
+                After purchase, a manual process begins. To get access, you must either include your Discord ID in the
+                purchase message or send me your transaction ID so I can assign the Discord role. The role is not
+                assigned automatically, so one of these is required. Once the role is assigned, you'll get access to a
+                download link for the tool. After downloading, you must register via the tool, and then Nohuto will
+                validate your registration. Joining (or already being in) the Discord server is recommended for now so
+                you receive updates, announcements, and support. Otherwise you may miss app updates (config updates
+                would theoretically work as long as no new section gets added).
+              </p>
+            </article>
+          </div>
         </div>
       </div>
     </section>
   </main>
+
+  <div class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
   <footer>
-    <div class="social">
-      <a href="https://github.com/nohuto" target="_blank" rel="noopener noreferrer">
-        <img decoding="async" src="images/github-icon.png" loading="lazy" alt="GitHub">
-      </a>
-      <a href="https://www.youtube.com/@5Noverse" target="_blank" rel="noopener noreferrer">
-        <img decoding="async" src="images/youtube-icon.png" loading="lazy" alt="YouTube">
-      </a>
-      <a href="mailto:nohuto@duck.com" target="_blank" rel="noopener noreferrer">
-        <img decoding="async" src="images/email-icon.png" loading="lazy" alt="Email">
-      </a>
-      <a href="https://discord.gg/E2ybG4j9jU" target="_blank" rel="noopener noreferrer">
-        <img decoding="async" src="images/discord-icon.png" loading="lazy" alt="Discord">
-      </a>
+    <div class="footer-row">
+      <div class="footer-copy">© 2026 Nohuto</div>
+      <div class="social">
+        <a href="https://github.com/nohuto" target="_blank" rel="noopener noreferrer">
+          <img decoding="async" src="images/github-icon.png" loading="lazy" alt="GitHub">
+        </a>
+        <a href="https://www.youtube.com/@5Noverse" target="_blank" rel="noopener noreferrer">
+          <img decoding="async" src="images/youtube-icon.png" loading="lazy" alt="YouTube">
+        </a>
+        <button class="icon-button" type="button" data-copy="nohuto@duck.com" data-toast="Email copied"
+          aria-label="Copy email to clipboard">
+          <img decoding="async" src="images/email-icon.png" loading="lazy" alt="Email">
+        </button>
+        <a href="https://discord.gg/E2ybG4j9jU" target="_blank" rel="noopener noreferrer">
+          <img decoding="async" src="images/discord-icon.png" loading="lazy" alt="Discord">
+        </a>
+      </div>
+      <div class="footer-tools">
+        <div class="footer-tools-row">
+          <div class="footer-control">
+            <label class="theme-label" for="bg-select">bg</label>
+            <select id="bg-select" name="background">
+              <option value="data-tape">Data-tape</option>
+              <option value="hex-matrix">Hex-matrix</option>
+              <option value="signal-rails">Signal-rails</option>
+              <option value="circuit-loom">Circuit-loom</option>
+              <option value="phase-noise">Phase-noise</option>
+              <option value="mono-shards">Mono-shards</option>
+              <option value="topo-trace">Topo-trace</option>
+              <option value="quasar-mesh">Quasar-mesh</option>
+            </select>
+          </div>
+          <div class="footer-control">
+            <label class="theme-label" for="theme-select">theme</label>
+            <select id="theme-select" name="theme">
+              <option value="default-dark">Default Dark</option>
+              <option value="default-light">Default Light</option>
+              <option value="gruvbox-dark">Gruvbox Dark</option>
+              <option value="gruvbox-light">Gruvbox Light</option>
+              <option value="nord">Nord</option>
+              <option value="kanagawa-wave">Kanagawa Wave</option>
+              <option value="kanagawa-dragon">Kanagawa Dragon</option>
+              <option value="kanagawa-lotus">Kanagawa Lotus</option>
+              <option value="catppuccin-mocha">Catppuccin Mocha</option>
+              <option value="catppuccin-macchiato">Catppuccin Macchiato</option>
+              <option value="catppuccin-frappe">Catppuccin Frappe</option>
+              <option value="catppuccin-latte">Catppuccin Latte</option>
+              <option value="solarized-dark">Solarized Dark</option>
+              <option value="solarized-light">Solarized Light</option>
+              <option value="tokyo-night">Tokyo Night</option>
+              <option value="dracula">Dracula</option>
+              <option value="one-dark">One Dark</option>
+              <option value="one-light">One Light</option>
+              <option value="ayu-dark">Ayu Dark</option>
+              <option value="ayu-light">Ayu Light</option>
+              <option value="everforest-dark">Everforest Dark</option>
+              <option value="everforest-light">Everforest Light</option>
+              <option value="rose-pine">Rose Pine</option>
+              <option value="rose-pine-moon">Rose Pine Moon</option>
+              <option value="monokai">Monokai</option>
+              <option value="material">Material</option>
+              <option value="horizon">Horizon</option>
+              <option value="night-owl">Night Owl</option>
+            </select>
+          </div>
+        </div>
+        <div class="footer-tools-row">
+          <div class="footer-control">
+            <label class="theme-label" for="font-select">font</label>
+            <select id="font-select" name="font">
+              <option value="cascadia">Cascadia Mono</option>
+              <option value="jetbrains">JetBrains Mono</option>
+              <option value="fira">Fira Code</option>
+              <option value="ibm">IBM Plex Mono</option>
+              <option value="sourcecode">Source Code Pro</option>
+              <option value="consolas">Consolas</option>
+            </select>
+          </div>
+          <div class="footer-control footer-size">
+            <label class="theme-label" for="font-size">size</label>
+            <div class="size-stepper">
+              <button class="size-step" type="button" data-step="1" aria-label="Increase font size">▲</button>
+              <input id="font-size" type="number" min="12" max="22" step="1" value="14">
+              <button class="size-step" type="button" data-step="-1" aria-label="Decrease font size">▼</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </footer>
 </body>
+
 </html>
