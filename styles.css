@@ -1621,7 +1621,8 @@ video {
   flex-wrap: wrap;
   gap: 12px;
   justify-content: flex-start;
-  justify-self: center;
+  justify-self: start;
+  grid-area: social;
 }
 
 .social a,
@@ -1658,9 +1659,13 @@ footer {
   width: min(1200px, 100%);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  gap: 16px;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    "social tools"
+    "copy tools";
+  align-items: start;
+  column-gap: 16px;
+  row-gap: 10px;
   padding: 0 18px;
 }
 
@@ -1670,13 +1675,14 @@ footer {
   align-items: flex-end;
   gap: 8px;
   justify-self: end;
+  grid-area: tools;
 }
 
 .footer-tools-row {
   display: flex;
   align-items: center;
   gap: 10px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: flex-end;
 }
 
@@ -1686,6 +1692,7 @@ footer {
   text-transform: uppercase;
   letter-spacing: 0.14em;
   justify-self: start;
+  grid-area: copy;
 }
 
 .footer-control {
@@ -1981,6 +1988,10 @@ footer {
 
   .footer-row {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      "social"
+      "copy"
+      "tools";
     justify-items: center;
   }
 
@@ -1996,6 +2007,7 @@ footer {
 
   .footer-tools-row {
     justify-content: center;
+    flex-wrap: wrap;
   }
 }
 
