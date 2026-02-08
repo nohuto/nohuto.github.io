@@ -1,6 +1,16 @@
 /* Copyright (c) 2026 Nohuto. All rights reserved. */
 const THEME_KEY = 'nv-theme';
 const DEFAULT_THEME = 'default-dark';
+const LIGHT_THEMES = new Set([
+  'default-light',
+  'gruvbox-light',
+  'kanagawa-lotus',
+  'catppuccin-latte',
+  'solarized-light',
+  'one-light',
+  'ayu-light',
+  'everforest-light'
+]);
 const BG_KEY = 'nv-bg';
 const DEFAULT_BG = 'topo-trace';
 const BG_OPTIONS = [
@@ -17,6 +27,8 @@ const FONT_KEY = 'nv-font';
 const FONT_SIZE_KEY = 'nv-font-size';
 const DEFAULT_FONT = 'cascadia';
 const DEFAULT_FONT_SIZE = 14;
+const FONT_SIZE_MIN = 10;
+const FONT_SIZE_MAX = 22;
 const FONT_KEYS = ['cascadia', 'jetbrains', 'fira', 'ibm', 'sourcecode', 'consolas'];
 const FONT_SET = new Set(FONT_KEYS);
 const REPO_DESC_URL = 'data/repos.json';
@@ -53,6 +65,8 @@ let consoleFocusListener;
 let consoleResizeHandler;
 let consoleResizeObserver;
 let repoDescriptionsPromise;
+let selectUiListener;
+let selectUiKeyListener;
 
 const ASCII_ART = [
   '  \\  |                                    ',
@@ -60,6 +74,14 @@ const ASCII_ART = [
   ' |\\  |  (   | \\ \\ /   __/  |   \\__ \\   __/',
   '_| \\_| \\___/   \\_/  \\___| _|   ____/ \\___|'
 ];
+const EMAIL_USER_REV = 'otuhon';
+const EMAIL_DOMAIN_REV = 'moc.kcud';
+
+const getEmailAddress = () => {
+  const user = EMAIL_USER_REV.split('').reverse().join('');
+  const domain = EMAIL_DOMAIN_REV.split('').reverse().join('');
+  return `${user}@${domain}`;
+};
 
 const storageGet = (key, fallback) => {
   try {
@@ -76,6 +98,11 @@ const storageSet = (key, value) => {
 };
 
 const hasSelectOption = (select, value) => Array.from(select.options).some(option => option.value === value);
+const closeSelectUIs = except => {
+  document.querySelectorAll('.select-ui.open').forEach(wrapper => {
+    if (wrapper !== except) wrapper.classList.remove('open');
+  });
+};
 
 function setActive(href) {
   document.querySelectorAll('.nav-tabs a').forEach(a => {
@@ -89,10 +116,121 @@ function setActive(href) {
   });
 }
 
+function updateIconTheme(theme) {
+  const applied = theme || document.documentElement.getAttribute('data-theme') || DEFAULT_THEME;
+  const useLight = LIGHT_THEMES.has(applied);
+  document.querySelectorAll('img[data-dark-src][data-light-src]').forEach(img => {
+    const next = useLight ? img.getAttribute('data-light-src') : img.getAttribute('data-dark-src');
+    if (!next || img.getAttribute('src') === next) return;
+    img.setAttribute('src', next);
+  });
+}
+
 function applyTheme(theme) {
   const applied = theme || DEFAULT_THEME;
   document.documentElement.setAttribute('data-theme', applied);
+  updateIconTheme(applied);
   return applied;
+}
+
+function initSelectUI() {
+  const selects = document.querySelectorAll('.footer-tools select');
+  if (!selects.length) return;
+
+  selects.forEach(select => {
+    if (select.dataset.ui === 'true') return;
+    select.dataset.ui = 'true';
+
+    const wrapper = document.createElement('div');
+    wrapper.className = 'select-ui';
+
+    const trigger = document.createElement('button');
+    trigger.type = 'button';
+    trigger.className = 'select-trigger';
+    trigger.setAttribute('aria-haspopup', 'listbox');
+    trigger.setAttribute('aria-expanded', 'false');
+
+    const label = document.querySelector(`label[for="${select.id}"]`);
+    if (label && label.textContent) {
+      trigger.setAttribute('aria-label', label.textContent.trim());
+    }
+
+    const menu = document.createElement('div');
+    menu.className = 'select-menu';
+    menu.setAttribute('role', 'listbox');
+
+    const list = document.createElement('div');
+    list.className = 'select-list';
+    menu.appendChild(list);
+
+    const buildOptions = () => {
+      list.innerHTML = '';
+      Array.from(select.options).forEach(option => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'select-option';
+        btn.textContent = option.textContent;
+        btn.dataset.value = option.value;
+        btn.setAttribute('role', 'option');
+        btn.setAttribute('aria-selected', option.selected ? 'true' : 'false');
+        if (option.disabled) {
+          btn.disabled = true;
+          btn.classList.add('is-disabled');
+        }
+        btn.addEventListener('click', () => {
+          if (option.disabled) return;
+          select.value = option.value;
+          select.dispatchEvent(new Event('change', { bubbles: true }));
+          closeSelectUIs();
+          trigger.focus({ preventScroll: true });
+        });
+        list.appendChild(btn);
+      });
+    };
+
+    const updateActive = () => {
+      const active = select.value;
+      const selected = select.options[select.selectedIndex];
+      trigger.textContent = selected ? selected.textContent : active;
+      list.querySelectorAll('.select-option').forEach(btn => {
+        const isActive = btn.dataset.value === active;
+        btn.classList.toggle('is-active', isActive);
+        btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+    };
+
+    const toggleOpen = () => {
+      const next = !wrapper.classList.contains('open');
+      closeSelectUIs(wrapper);
+      wrapper.classList.toggle('open', next);
+      trigger.setAttribute('aria-expanded', next ? 'true' : 'false');
+    };
+
+    buildOptions();
+    updateActive();
+    select.addEventListener('change', updateActive);
+    trigger.addEventListener('click', toggleOpen);
+
+    const parent = select.parentNode;
+    parent.insertBefore(wrapper, select);
+    wrapper.appendChild(trigger);
+    wrapper.appendChild(menu);
+    wrapper.appendChild(select);
+    select.classList.add('select-native');
+    select.setAttribute('tabindex', '-1');
+    select.setAttribute('aria-hidden', 'true');
+  });
+
+  if (!selectUiListener) {
+    selectUiListener = e => {
+      if (!e.target.closest('.select-ui')) closeSelectUIs();
+    };
+    selectUiKeyListener = e => {
+      if (e.key === 'Escape') closeSelectUIs();
+    };
+    document.addEventListener('click', selectUiListener);
+    document.addEventListener('keydown', selectUiKeyListener);
+  }
 }
 
 function initTheme() {
@@ -144,7 +282,7 @@ function applyFont(key) {
 function applyFontSize(size) {
   const parsed = Number.parseInt(size, 10);
   const safe = Number.isFinite(parsed)
-    ? Math.min(22, Math.max(12, parsed))
+    ? Math.min(FONT_SIZE_MAX, Math.max(FONT_SIZE_MIN, parsed))
     : DEFAULT_FONT_SIZE;
   document.documentElement.style.setProperty('--font-size', safe + 'px');
   return safe;
@@ -164,6 +302,7 @@ function initTypography() {
 
   const storedSize = storageGet(FONT_SIZE_KEY, DEFAULT_FONT_SIZE);
   const appliedSize = applyFontSize(storedSize);
+  let lastValidSize = appliedSize;
   if (sizeInput) {
     sizeInput.value = appliedSize;
   }
@@ -178,7 +317,24 @@ function initTypography() {
 
   if (sizeInput) {
     sizeInput.addEventListener('input', () => {
-      const applied = applyFontSize(sizeInput.value);
+      const raw = sizeInput.value.trim();
+      const parsed = Number.parseInt(raw, 10);
+      if (!Number.isFinite(parsed)) return;
+      if (parsed < FONT_SIZE_MIN || parsed > FONT_SIZE_MAX) return;
+      const applied = applyFontSize(parsed);
+      lastValidSize = applied;
+      storageSet(FONT_SIZE_KEY, applied + 'px');
+    });
+    sizeInput.addEventListener('blur', () => {
+      const raw = sizeInput.value.trim();
+      const parsed = Number.parseInt(raw, 10);
+      if (!Number.isFinite(parsed)) {
+        sizeInput.value = lastValidSize;
+        applyFontSize(lastValidSize);
+        return;
+      }
+      const applied = applyFontSize(parsed);
+      lastValidSize = applied;
       sizeInput.value = applied;
       storageSet(FONT_SIZE_KEY, applied + 'px');
     });
@@ -191,6 +347,7 @@ function initTypography() {
       const nextValue = Number.parseInt(sizeInput.value || DEFAULT_FONT_SIZE, 10) + delta;
       const applied = applyFontSize(nextValue);
       sizeInput.value = applied;
+      lastValidSize = applied;
       storageSet(FONT_SIZE_KEY, applied + 'px');
     });
   });
@@ -233,8 +390,14 @@ async function copyText(text) {
 function initClipboard() {
   document.addEventListener('click', async e => {
     const target = e.target.closest('[data-copy]');
-    if (!target) return;
-    const text = target.getAttribute('data-copy');
+    const emailTarget = e.target.closest('[data-email-user][data-email-domain]');
+    const source = emailTarget || target;
+    if (!source) return;
+    const emailUser = source.getAttribute('data-email-user');
+    const emailDomain = source.getAttribute('data-email-domain');
+    const text = emailUser && emailDomain
+      ? `${emailUser.split('').reverse().join('')}@${emailDomain.split('').reverse().join('')}`
+      : source.getAttribute('data-copy');
     if (!text) return;
     e.preventDefault();
     let ok = false;
@@ -243,7 +406,7 @@ function initClipboard() {
     } catch {
       ok = false;
     }
-    const message = target.getAttribute('data-toast') || (ok ? 'Copied.' : 'Copy failed.');
+    const message = source.getAttribute('data-toast') || (ok ? 'Copied.' : 'Copy failed.');
     showToast(message);
   });
 }
@@ -459,7 +622,8 @@ function initConsole() {
   const input = document.getElementById('console-command');
   const caret = document.getElementById('console-cursor');
   const measure = document.getElementById('console-measure');
-  if (!consoleRoot || !output || !lines || !form || !input || !caret || !measure) return;
+  const ghost = document.getElementById('console-ghost');
+  if (!consoleRoot || !output || !lines || !form || !input || !caret || !measure || !ghost) return;
   if (consoleRoot.dataset.ready === 'true') return;
   consoleRoot.dataset.ready = 'true';
 
@@ -492,14 +656,62 @@ function initConsole() {
     output.scrollTop = output.scrollHeight;
   };
 
+  const getCompletion = () => {
+    const raw = input.value;
+    if (!raw) return '';
+    const hasTrailingSpace = /\s$/.test(raw);
+    const parts = raw.trim().split(/\s+/).filter(Boolean);
+    if (parts.length === 0) return '';
+    const head = parts[0];
+    const firstMatch = (options, seed, sort = false) => {
+      const matches = options.filter(option => option.startsWith(seed));
+      if (!matches.length) return '';
+      if (sort) {
+        matches.sort((a, b) => a.localeCompare(b));
+      }
+      return matches[0] || '';
+    };
+    if (head === 'theme' && (parts.length > 1 || hasTrailingSpace)) {
+      const seed = parts.length > 1 ? parts.slice(1).join(' ') : '';
+      const match = firstMatch(listThemes(), seed);
+      return match ? `theme ${match}` : '';
+    }
+    if (head === 'font' && (parts.length > 1 || hasTrailingSpace)) {
+      const seed = parts.length > 1 ? parts.slice(1).join(' ') : '';
+      const match = firstMatch(listFonts(), seed);
+      return match ? `font ${match}` : '';
+    }
+    if (parts.length > 1) return '';
+    const commandMatch = firstMatch(Object.keys(commands), head, true);
+    if (commandMatch) return commandMatch;
+    return firstMatch(Object.keys(aliases), head, true);
+  };
+
+  const updateGhost = (value, pos, width) => {
+    if (!value || pos !== value.length) {
+      ghost.textContent = '';
+      return;
+    }
+    const completion = getCompletion();
+    if (!completion || completion === value || !completion.startsWith(value)) {
+      ghost.textContent = '';
+      return;
+    }
+    ghost.style.left = `${width}px`;
+    ghost.textContent = completion.slice(value.length);
+  };
+
   const updateCaret = () => {
     const value = input.value;
     const pos = typeof input.selectionStart === 'number' ? input.selectionStart : value.length;
     const head = value.slice(0, pos).replace(/ /g, '\u00a0');
     measure.textContent = head;
     const width = measure.getBoundingClientRect().width;
-    caret.style.left = `${width}px`;
+    const caretOffset = 1;
+    const ghostOffset = 0;
+    caret.style.left = `${width + caretOffset}px`;
     caret.style.height = `${input.offsetHeight}px`;
+    updateGhost(value, pos, width + ghostOffset);
   };
 
   const addLine = (text, className) => {
@@ -725,8 +937,9 @@ function initConsole() {
     },
     contact: () => {
       addLine('contact:');
+      const email = getEmailAddress();
       addKeyValueLines([
-        ['email', 'nohuto@duck.com (use footer icon)'],
+        ['email', `${email} (use footer icon)`],
         ['discord', 'https://discord.gg/E2ybG4j9jU']
       ]);
     },
@@ -817,8 +1030,7 @@ function initConsole() {
         return;
       }
       select.value = next;
-      applyTheme(next);
-      storageSet(THEME_KEY, next);
+      select.dispatchEvent(new Event('change', { bubbles: true }));
       addLine(`theme set: ${next}`);
     },
     font: args => {
@@ -834,8 +1046,7 @@ function initConsole() {
         return;
       }
       select.value = next;
-      applyFont(next);
-      storageSet(FONT_KEY, next);
+      select.dispatchEvent(new Event('change', { bubbles: true }));
       addLine(`font set: ${next}`);
     },
     fontsize: args => {
@@ -890,39 +1101,10 @@ function initConsole() {
   };
 
   const autocomplete = () => {
-    const value = input.value.trim();
-    if (!value) return;
-    const parts = value.split(' ');
-    if (parts.length > 1 && parts[0] === 'theme') {
-      const seed = parts.slice(1).join(' ');
-      const options = listThemes().filter(theme => theme.startsWith(seed));
-      if (options.length === 1) {
-        input.value = `theme ${options[0]}`;
-        updateCaret();
-      } else if (options.length > 1) {
-        addLine(options.join('  '), 'muted');
-      }
-      return;
-    }
-    if (parts.length > 1 && parts[0] === 'font') {
-      const seed = parts.slice(1).join(' ');
-      const options = listFonts().filter(font => font.startsWith(seed));
-      if (options.length === 1) {
-        input.value = `font ${options[0]}`;
-        updateCaret();
-      } else if (options.length > 1) {
-        addLine(options.join('  '), 'muted');
-      }
-      return;
-    }
-    const commandPool = Array.from(new Set([...Object.keys(commands), ...Object.keys(aliases)]));
-    const matches = commandPool.filter(cmd => cmd.startsWith(value));
-    if (matches.length === 1) {
-      input.value = matches[0];
-      updateCaret();
-    } else if (matches.length > 1) {
-      addLine(matches.join('  '), 'muted');
-    }
+    const completion = getCompletion();
+    if (!completion) return;
+    input.value = completion;
+    updateCaret();
   };
 
   form.addEventListener('submit', async e => {
@@ -1004,6 +1186,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initBackground();
   initTypography();
+  initSelectUI();
   initRepoDescriptions();
   initFiltering();
   initClipboard();
