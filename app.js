@@ -671,6 +671,16 @@ function initConsole() {
       }
       return matches[0] || '';
     };
+    if (head === 'cd') {
+      const cdMatch = raw.match(/^cd\s+(.+)$/);
+      if (!cdMatch) return '';
+      const seed = cdMatch[1];
+      if (!seed) return '';
+      const useBackslash = seed.startsWith('.\\');
+      const options = listDirs().map(option => useBackslash ? option.replace(/\//g, '\\') : option);
+      const match = firstMatch(options, seed);
+      return match ? `cd ${match}` : '';
+    }
     if (head === 'theme' && (parts.length > 1 || hasTrailingSpace)) {
       const seed = parts.length > 1 ? parts.slice(1).join(' ') : '';
       const match = firstMatch(listThemes(), seed);
@@ -770,7 +780,7 @@ function initConsole() {
     if (raw.startsWith('site/')) raw = raw.slice(5);
     raw = raw.split('/').filter(Boolean).pop() || '';
     if (raw === 'home') return rootPath;
-    if (['product', 'projects', 'about', 'security'].includes(raw)) {
+    if (['product', 'projects', 'about'].includes(raw)) {
       return `${rootPath}/${raw}`;
     }
     return null;
@@ -841,8 +851,7 @@ function initConsole() {
         ['product', 'winconfig summary + pricing'],
         ['docs', 'documentation sections'],
         ['toolkit', 'external tools list'],
-        ['projects', 'list projects with repo descriptions'],
-        ['security', 'security + privacy statement'],
+        ['projects', 'list projects with repo links'],
         ['terms', 'terms of service summary'],
         ['contact', 'email + discord'],
         ['ascii', 'print the banner'],
@@ -856,7 +865,7 @@ function initConsole() {
         ['theme <id>', 'set theme'],
         ['fonts', 'list font ids'],
         ['font <id>', 'set font'],
-        ['fontsize <12-22>', 'set size'],
+        ['fontsize <10-22>', 'set size'],
         ['clear', 'clear the terminal']
       ];
       const width = entries.reduce((max, [cmd]) => Math.max(max, cmd.length), 0);
@@ -874,14 +883,6 @@ function initConsole() {
         ['github', 'https://github.com/nohuto'],
         ['youtube', 'https://www.youtube.com/@5Noverse'],
         ['discord', 'https://discord.gg/E2ybG4j9jU']
-      ]);
-    },
-    security: () => {
-      addLine('security:');
-      addIndentedLines([
-        'CSP, referrer policy, permissions policy',
-        'clickjacking blocked via frame-ancestors',
-        'includes privacy notes'
       ]);
     },
     product: () => {
@@ -1065,17 +1066,17 @@ function initConsole() {
       lines.innerHTML = '';
       scrollToBottom();
     },
-    projects: async () => {
-      addLine('projects: fetching descriptions...', 'muted');
-      const items = await Promise.all(PROJECT_LIST.map(async project => {
-        const desc = await getRepoDescription(project.repo);
-        return { title: project.title, desc };
+    projects: () => {
+      addLine('projects:');
+      const items = PROJECT_LIST.map(project => ({
+        title: project.title,
+        link: `https://github.com/${project.repo}`
       }));
       const width = items.reduce((max, item) => Math.max(max, item.title.length), 0);
       items.forEach(item => {
         addLineParts([
           { text: `  ${item.title.padEnd(width + 2)}` },
-          { text: item.desc || 'No description yet.', className: 'console-comment' }
+          { text: item.link, className: 'console-comment' }
         ]);
       });
     }
