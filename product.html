@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <!-- Copyright (c) 2026 Nohuto. All rights reserved. -->
 <html lang="en">
 
@@ -20,7 +20,7 @@
   <div class="overlay" aria-hidden="true"></div>
 
   <header class="prompt-bar">
-    <div class="prompt-line" aria-label="Terminal prompt">
+    <div class="prompt-line" role="group" aria-label="Terminal prompt">
       <span class="prompt-user">nohuto</span>
       <span class="prompt-sep">@</span>
       <span class="prompt-host">noverse</span>
@@ -55,11 +55,11 @@
           <div class="product-cta">
             <span class="price-label">Lifetime license</span>
             <span class="product-price">9,99&nbsp;EUR</span>
-            <p class="pricing-note">Includes updates & Discord role.</p>
+            <p class="pricing-note">Includes updates &amp; Discord role.</p>
             <div class="purchase-actions">
               <form class="paypal-form" action="https://www.paypal.com/ncp/payment/C4XUQMQZHS948" method="post"
                 target="_blank">
-                <input class="paypal-button" type="submit" value="Buy WinConfig">
+                <button class="paypal-button" type="submit">Buy WinConfig</button>
                 <img decoding="async" class="paypal-methods" src="images/paypal-methods.svg"
                   alt="Accepted payment cards via PayPal" loading="lazy">
                 <p class="paypal-note">
@@ -118,8 +118,8 @@
                 columns, and panel widths.</li>
             </ul>
           </div>
-          <div class="comparison-table" aria-label="Feature comparison">
-            <table>
+            <div class="comparison-table">
+              <table aria-label="Feature comparison">
               <thead>
                 <tr>
                   <th scope="col">Feature</th>

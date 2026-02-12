@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <!-- Copyright (c) 2026 Nohuto. All rights reserved. -->
 <html lang="en">
 
@@ -20,7 +20,7 @@
   <div class="overlay" aria-hidden="true"></div>
 
   <header class="prompt-bar">
-    <div class="prompt-line" aria-label="Terminal prompt">
+    <div class="prompt-line" role="group" aria-label="Terminal prompt">
       <span class="prompt-user">nohuto</span>
       <span class="prompt-sep">@</span>
       <span class="prompt-host">noverse</span>
@@ -41,7 +41,7 @@
   <main id="main" class="main-home">
     <section class="home-shell" data-title="home">
       <div class="window-surface">
-        <div class="console-window" id="console-window" aria-label="Terminal window">
+        <div class="console-window" id="console-window" role="region" aria-label="Terminal window">
           <div class="console-window-header" id="console-drag">
             <span>home.terminal</span>
             <span class="console-window-meta">drag / resize</span>
@@ -57,6 +57,7 @@
                     <span class="console-ghost" id="console-ghost" aria-hidden="true"></span>
                     <input id="console-command" type="text" name="command" spellcheck="false" autocomplete="off"
                       autocapitalize="off" aria-label="Console command input">
+                    <button type="submit" class="sr-only">Run command</button>
                     <span class="console-block-cursor" id="console-cursor" aria-hidden="true"></span>
                   </span>
                   <span class="console-timestamp" id="console-timestamp" aria-hidden="true"></span>

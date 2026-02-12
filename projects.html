@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <!-- Copyright (c) 2026 Nohuto. All rights reserved. -->
 <html lang="en">
 
@@ -20,7 +20,7 @@
   <div class="overlay" aria-hidden="true"></div>
 
   <header class="prompt-bar">
-    <div class="prompt-line" aria-label="Terminal prompt">
+    <div class="prompt-line" role="group" aria-label="Terminal prompt">
       <span class="prompt-user">nohuto</span>
       <span class="prompt-sep">@</span>
       <span class="prompt-host">noverse</span>
@@ -50,21 +50,21 @@
         <div class="project-filter">
           <div class="filter-row">
             <label class="filter-label" for="project-search">search</label>
-            <input id="project-search" type="text" placeholder="type to filter" />
+            <input id="project-search" type="text" placeholder="type to filter">
           </div>
 
           <div class="tag-filter" role="group" aria-label="Tag filters">
-            <button data-tag="OS Config">OS Config</button>
-            <button data-tag="NVIDIA">NVIDIA</button>
-            <button data-tag="Encryption">Encryption</button>
-            <button data-tag="Encoding">Encoding</button>
-            <button data-tag="Obfuscation">Obfuscation</button>
-            <button data-tag="Hashing">Hashing</button>
-            <button data-tag="Analysis">Analysis</button>
-            <button data-tag="App/Game Config">App/Game Config</button>
-            <button data-tag="HW Config">HW Config</button>
-            <button data-tag="Fetch">Fetch</button>
-            <button data-tag="Conversion">Conversion</button>
+            <button type="button" data-tag="OS Config">OS Config</button>
+            <button type="button" data-tag="NVIDIA">NVIDIA</button>
+            <button type="button" data-tag="Encryption">Encryption</button>
+            <button type="button" data-tag="Encoding">Encoding</button>
+            <button type="button" data-tag="Obfuscation">Obfuscation</button>
+            <button type="button" data-tag="Hashing">Hashing</button>
+            <button type="button" data-tag="Analysis">Analysis</button>
+            <button type="button" data-tag="App/Game Config">App/Game Config</button>
+            <button type="button" data-tag="HW Config">HW Config</button>
+            <button type="button" data-tag="Fetch">Fetch</button>
+            <button type="button" data-tag="Conversion">Conversion</button>
           </div>
         </div>
         <div class="project-grid">
@@ -317,7 +317,7 @@
             <video class="project-media" src="media/projects/b64rev.mp4"
               controls preload="metadata" playsinline muted referrerpolicy="no-referrer"></video>
             <div class="project-body">
-              <h3 class="project-title">Base64 Reversal & Character Obfuscation</h3>
+              <h3 class="project-title">Base64 Reversal &amp; Character Obfuscation</h3>
               <p class="project-desc">Fetching description...</p>
               <div class="project-actions">
                 <a class="project-link" href="https://github.com/nohuto/b64rev" target="_blank"
