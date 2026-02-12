@@ -7,31 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="referrer" content="no-referrer">
   <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=()">
-  <meta \1default-src 'self'; base-uri 'self'; form-action 'self' https://www.paypal.com; img-src 'self' data: https://raw.githubusercontent.com; media-src 'self' https://raw.githubusercontent.com; script-src 'self' 'sha256-oqVeJicrw4cu5L8ATKTbSDjQ9ElB61XhgK7y6BpPWhs='; style-src 'self' 'unsafe-inline' https://api.fonts.coollabs.io; connect-src 'self'; font-src 'self' https://fonts.coollabs.io https://api.fonts.coollabs.io https://cdn.fonts.coollabs.io; object-src 'none'\3>
-  <link rel="stylesheet"
-    href="https://api.fonts.coollabs.io/css2?family=JetBrains+Mono:wght@400;600&family=Fira+Code:wght@400;600&family=IBM+Plex+Mono:wght@400;600&family=Source+Code+Pro:wght@400;600&display=swap">
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; script-src-attr 'none'; style-src 'self'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self'; form-action 'self' https://www.paypal.com">
   <title>Projects</title>
   <link rel="icon" href="images/nvlogo.png">
-  <script>
-    (function () {
-      try {
-        var theme = localStorage.getItem('nv-theme');
-        if (theme) {
-          document.documentElement.setAttribute('data-theme', theme);
-        }
-        var bg = localStorage.getItem('nv-bg') || 'topo-trace';
-        document.documentElement.setAttribute('data-bg', bg);
-        var fontKey = localStorage.getItem('nv-font');
-        if (fontKey) {
-          document.documentElement.setAttribute('data-font', fontKey);
-        }
-        var fontSize = localStorage.getItem('nv-font-size');
-        if (fontSize) {
-          document.documentElement.style.setProperty('--font-size', fontSize);
-        }
-      } catch (e) { }
-    })();
-  </script>
+  <script src="bootstrap.js"></script>
   <link rel="stylesheet" href="styles.css">
   <script src="app.js" defer></script>
 </head>
@@ -104,7 +84,7 @@
 
           <!-- aes-cbc -->
           <article class="project-card" data-repo="nohuto/aes-cbc" data-tags="Encryption">
-            <video class="project-media" src="https://raw.githubusercontent.com/nohuto/aes-cbc/main/media/aes-cbc.mp4"
+            <video class="project-media" src="media/projects/aes-cbc.mp4"
               controls preload="metadata" playsinline muted referrerpolicy="no-referrer"></video>
             <div class="project-body">
               <h3 class="project-title">AES CBC Encryption</h3>
@@ -119,7 +99,7 @@
           <!-- bitmask-calc -->
           <article class="project-card" data-repo="nohuto/bitmask-calc" data-tags="OS Config, NVIDIA">
             <video class="project-media"
-              src="https://raw.githubusercontent.com/nohuto/bitmask-calc/main/media/bitmask-calc.mp4" controls
+              src="media/projects/bitmask-calc.mp4" controls
               preload="metadata" playsinline muted referrerpolicy="no-referrer"></video>
             <div class="project-body">
               <h3 class="project-title">Bitmask Calculator</h3>
@@ -134,7 +114,7 @@
           <!-- blocklist-mgr -->
           <article class="project-card" data-repo="nohuto/blocklist-mgr" data-tags="OS Config">
             <video class="project-media"
-              src="https://raw.githubusercontent.com/nohuto/blocklist-mgr/main/media/blocklist-mgr.mp4" controls
+              src="media/projects/blocklist-mgr.mp4" controls
               preload="metadata" playsinline muted referrerpolicy="no-referrer"></video>
             <div class="project-body">
               <h3 class="project-title">Blocklist Manager</h3>
@@ -148,7 +128,7 @@
 
           <!-- comp-mgr -->
           <article class="project-card" data-repo="nohuto/comp-mgr" data-tags="OS Config">
-            <video class="project-media" src="https://raw.githubusercontent.com/nohuto/comp-mgr/main/media/comp-mgr.mp4"
+            <video class="project-media" src="media/projects/comp-mgr.mp4"
               controls preload="metadata" playsinline muted referrerpolicy="no-referrer"></video>
             <div class="project-body">
               <h3 class="project-title">Component Manager</h3>
@@ -188,7 +168,7 @@
 
           <!-- sym-dump -->
           <article class="project-card" data-repo="nohuto/sym-dump" data-tags="Analysis">
-            <video class="project-media" src="https://raw.githubusercontent.com/nohuto/sym-dump/main/media/sym-dump.mp4"
+            <video class="project-media" src="media/projects/sym-dump.mp4"
               controls preload="metadata" playsinline muted referrerpolicy="no-referrer"></video>
             <div class="project-body">
               <h3 class="project-title">Symbols Memory Dump</h3>
@@ -203,7 +183,7 @@
           <!-- nvfetch -->
           <article class="project-card" data-repo="nohuto/nvfetch" data-tags="Fetch">
             <img decoding="async" class="project-media-img"
-              src="https://raw.githubusercontent.com/nohuto/nvfetch/main/images/output.png" alt="NVFetch preview"
+              src="images/projects/nvfetch-output.png" alt="NVFetch preview"
               loading="lazy" referrerpolicy="no-referrer">
             <div class="project-body">
               <h3 class="project-title">NVFetch</h3>
@@ -217,7 +197,7 @@
 
           <!-- void -->
           <article class="project-card" data-repo="nohuto/void" data-tags="Obfuscation">
-            <video class="project-media" src="https://raw.githubusercontent.com/nohuto/void/main/media/void.mp4"
+            <video class="project-media" src="media/projects/void.mp4"
               controls preload="metadata" playsinline muted referrerpolicy="no-referrer"></video>
             <div class="project-body">
               <h3 class="project-title">Void Obfuscation</h3>
@@ -231,7 +211,7 @@
 
           <!-- minifier -->
           <article class="project-card" data-repo="nohuto/minifier" data-tags="Obfuscation">
-            <video class="project-media" src="https://raw.githubusercontent.com/nohuto/minifier/main/media/minifier.mp4"
+            <video class="project-media" src="media/projects/minifier.mp4"
               controls preload="metadata" playsinline muted referrerpolicy="no-referrer"></video>
             <div class="project-body">
               <h3 class="project-title">PowerShell Minifier</h3>
@@ -246,7 +226,7 @@
           <!-- ps12bat -->
           <article class="project-card" data-repo="nohuto/ps12bat" data-tags="Conversion">
             <img decoding="async" class="project-media-img"
-              src="https://raw.githubusercontent.com/nohuto/ps12bat/main/images/ps12batpre.png" alt="PS12bat preview"
+              src="images/projects/ps12bat-pre.png" alt="PS12bat preview"
               loading="lazy" referrerpolicy="no-referrer">
             <div class="project-body">
               <h3 class="project-title">PS12bat</h3>
@@ -261,7 +241,7 @@
           <!-- wpr-reg-records -->
           <article class="project-card" data-repo="nohuto/wpr-reg-records" data-tags="OS Config, Analysis">
             <img decoding="async" class="project-media-img"
-              src="https://raw.githubusercontent.com/nohuto/wpr-reg-records/main/images/web.png"
+              src="images/projects/wpr-reg-records-web.png"
               alt="WPR/Procmon registry records interface" loading="lazy" referrerpolicy="no-referrer">
             <div class="project-body">
               <h3 class="project-title">WPR/Procmon Registry Activity Records</h3>
@@ -275,7 +255,7 @@
 
           <!-- b64-char -->
           <article class="project-card" data-repo="nohuto/b64-char" data-tags="Encoding, Obfuscation">
-            <video class="project-media" src="https://raw.githubusercontent.com/nohuto/b64-char/main/media/b64-char.mp4"
+            <video class="project-media" src="media/projects/b64-char.mp4"
               controls preload="metadata" playsinline muted referrerpolicy="no-referrer"></video>
             <div class="project-body">
               <h3 class="project-title">Base64 Encoding / Character Obfuscation</h3>
@@ -290,7 +270,7 @@
           <!-- admx-parser -->
           <article class="project-card" data-repo="nohuto/admx-parser" data-tags="OS Config, Conversion">
             <img decoding="async" class="project-media-img"
-              src="https://raw.githubusercontent.com/nohuto/admx-parser/main/images/admxparser-web.png"
+              src="images/projects/admxparser-web.png"
               alt="ADMX Parser preview" loading="lazy" referrerpolicy="no-referrer">
             <div class="project-body">
               <h3 class="project-title">ADMX Parser</h3>
@@ -305,7 +285,7 @@
           <!-- hash-gen -->
           <article class="project-card" data-repo="nohuto/hash-gen" data-tags="Hashing">
             <img decoding="async" class="project-media-img"
-              src="https://raw.githubusercontent.com/nohuto/hash-gen/main/images/contextmenu.png" alt="HashGen preview"
+              src="images/projects/hash-gen-contextmenu.png" alt="HashGen preview"
               loading="lazy" referrerpolicy="no-referrer">
             <div class="project-body">
               <h3 class="project-title">Hash Generator</h3>
@@ -320,7 +300,7 @@
           <!-- strings2-tui -->
           <article class="project-card" data-repo="nohuto/strings2-tui" data-tags="Analysis">
             <video class="project-media"
-              src="https://raw.githubusercontent.com/nohuto/strings2-tui/master/media/strings2-tui.mp4" controls
+              src="media/projects/strings2-tui.mp4" controls
               preload="metadata" playsinline muted referrerpolicy="no-referrer"></video>
             <div class="project-body">
               <h3 class="project-title">strings2 TUI</h3>
@@ -334,7 +314,7 @@
 
           <!-- b64rev -->
           <article class="project-card" data-repo="nohuto/b64rev" data-tags="Encoding">
-            <video class="project-media" src="https://raw.githubusercontent.com/nohuto/b64rev/main/media/b64rev.mp4"
+            <video class="project-media" src="media/projects/b64rev.mp4"
               controls preload="metadata" playsinline muted referrerpolicy="no-referrer"></video>
             <div class="project-body">
               <h3 class="project-title">Base64 Reversal & Character Obfuscation</h3>
@@ -349,7 +329,7 @@
           <!-- dism-wsim -->
           <article class="project-card" data-repo="nohuto/dism-wsim" data-tags="OS Config">
             <img decoding="async" class="project-media-img"
-              src="https://raw.githubusercontent.com/nohuto/dism-wsim/main/images/web.png" alt="DISM WSIM preview"
+              src="images/projects/dism-wsim-web.png" alt="DISM WSIM preview"
               loading="lazy" referrerpolicy="no-referrer">
             <div class="project-body">
               <h3 class="project-title">DISM WSIM</h3>
@@ -364,7 +344,7 @@
           <!-- reg2bat -->
           <article class="project-card" data-repo="nohuto/reg2bat" data-tags="Conversion">
             <img decoding="async" class="project-media-img"
-              src="https://raw.githubusercontent.com/nohuto/reg2bat/main/images/reg2bat.png" alt="reg2bat preview"
+              src="images/projects/reg2bat.png" alt="reg2bat preview"
               loading="lazy" referrerpolicy="no-referrer">
             <div class="project-body">
               <h3 class="project-title">reg2bat</h3>
@@ -379,7 +359,7 @@
           <!-- pbo2-uv -->
           <article class="project-card" data-repo="nohuto/pbo2-uv" data-tags="HW Config">
             <img decoding="async" class="project-media-img"
-              src="https://raw.githubusercontent.com/nohuto/pbo2-uv/main/images/pbotechow.png"
+              src="images/projects/pbo2-uv-pbotechow.png"
               alt="PBO2 undervolting steps" loading="lazy" referrerpolicy="no-referrer">
             <div class="project-body">
               <h3 class="project-title">PBO2 UV Guide</h3>
@@ -394,7 +374,7 @@
           <!-- gpu-oc-uv -->
           <article class="project-card" data-repo="nohuto/gpu-oc-uv" data-tags="HW Config">
             <img decoding="async" class="project-media-img"
-              src="https://raw.githubusercontent.com/nohuto/gpu-oc-uv/main/images/oc.png" alt="GPU OC/UV workflow"
+              src="images/projects/gpu-oc-uv-oc.png" alt="GPU OC/UV workflow"
               loading="lazy" referrerpolicy="no-referrer">
             <div class="project-body">
               <h3 class="project-title">GPU OC/UV Guide</h3>
@@ -424,7 +404,7 @@
           <img decoding="async" src="images/youtube-icon.png" data-dark-src="images/youtube-icon.png"
             data-light-src="images/youtube-icon-dark.png" loading="lazy" alt="YouTube">
         </a>
-        <button class="icon-button" type="button" data-email-user="otuhon" data-email-domain="moc.kcud"
+        <button class="icon-button" type="button" data-email="copy"
           data-toast="Email copied" aria-label="Copy email to clipboard">
           <img decoding="async" src="images/email-icon.png" data-dark-src="images/email-icon.png"
             data-light-src="images/email-icon-dark.png" loading="lazy" alt="Email">

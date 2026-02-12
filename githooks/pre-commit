@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+files=$(git diff --cached --name-only --diff-filter=ACM | grep -Ei '\.(jpg|jpeg|png|webp|tif|tiff)$' || true)
+[ -z "$files" ] && exit 0
+
+if ! command -v exiftool >/dev/null 2>&1; then
+  echo "exiftool not found, skipping EXIF strip." >&2
+  exit 0
+fi
+
+echo "Stripping EXIF metadata from:"
+echo "$files"
+exiftool -all= -overwrite_original $files >/dev/null
+git add $files

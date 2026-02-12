@@ -7,31 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="referrer" content="no-referrer">
   <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=()">
-  <meta \1default-src 'self'; base-uri 'self'; form-action 'self' https://www.paypal.com; img-src 'self' data: https://raw.githubusercontent.com; media-src 'self' https://raw.githubusercontent.com; script-src 'self' 'sha256-oqVeJicrw4cu5L8ATKTbSDjQ9ElB61XhgK7y6BpPWhs='; style-src 'self' 'unsafe-inline' https://api.fonts.coollabs.io; connect-src 'self'; font-src 'self' https://fonts.coollabs.io https://api.fonts.coollabs.io https://cdn.fonts.coollabs.io; object-src 'none'\3>
-  <link rel="stylesheet"
-    href="https://api.fonts.coollabs.io/css2?family=JetBrains+Mono:wght@400;600&family=Fira+Code:wght@400;600&family=IBM+Plex+Mono:wght@400;600&family=Source+Code+Pro:wght@400;600&display=swap">
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; script-src-attr 'none'; style-src 'self'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self'; form-action 'self' https://www.paypal.com">
   <title>Security</title>
   <link rel="icon" href="images/nvlogo.png">
-  <script>
-    (function () {
-      try {
-        var theme = localStorage.getItem('nv-theme');
-        if (theme) {
-          document.documentElement.setAttribute('data-theme', theme);
-        }
-        var bg = localStorage.getItem('nv-bg') || 'topo-trace';
-        document.documentElement.setAttribute('data-bg', bg);
-        var fontKey = localStorage.getItem('nv-font');
-        if (fontKey) {
-          document.documentElement.setAttribute('data-font', fontKey);
-        }
-        var fontSize = localStorage.getItem('nv-font-size');
-        if (fontSize) {
-          document.documentElement.style.setProperty('--font-size', fontSize);
-        }
-      } catch (e) { }
-    })();
-  </script>
+  <script src="bootstrap.js"></script>
   <link rel="stylesheet" href="styles.css">
   <script src="app.js" defer></script>
 </head>
@@ -78,9 +58,9 @@
         </p>
         <h3>Third party requests</h3>
         <p>
-          Some pages include media hosted on GitHub (raw.githubusercontent.com). Those resources
-          are loaded directly from GitHub and will disclose basic request metadata to GitHub.
-          External links to GitHub, YouTube, Discord, and PayPal take you to those services when clicked.
+          Fonts, images, and videos are served from this site to avoid passive third-party requests.
+          External links to GitHub, YouTube, Discord, and PayPal only load those services when clicked.
+          The PayPal purchase form submits directly to PayPal after you initiate a purchase.
         </p>
         <h3>Repo descriptions</h3>
         <p>
@@ -90,8 +70,7 @@
         <h3>Browser policies</h3>
         <p>
           The site sets a Content Security Policy (CSP), a strict Referrer Policy,
-          and a restrictive Permissions Policy. On GitHub Pages these are applied via meta tags,
-          and can also be enforced at the Cloudflare edge for stronger coverage.
+          and a restrictive Permissions Policy. On GitHub Pages these are applied via meta tags.
           These reduce script injection, referrer leakage, and unnecessary browser features.
         </p>
         <p class="note-muted">
@@ -115,7 +94,7 @@
           <img decoding="async" src="images/youtube-icon.png" data-dark-src="images/youtube-icon.png"
             data-light-src="images/youtube-icon-dark.png" loading="lazy" alt="YouTube">
         </a>
-        <button class="icon-button" type="button" data-email-user="otuhon" data-email-domain="moc.kcud"
+        <button class="icon-button" type="button" data-email="copy"
           data-toast="Email copied" aria-label="Copy email to clipboard">
           <img decoding="async" src="images/email-icon.png" data-dark-src="images/email-icon.png"
             data-light-src="images/email-icon-dark.png" loading="lazy" alt="Email">

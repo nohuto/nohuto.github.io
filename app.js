@@ -74,14 +74,11 @@ const ASCII_ART = [
   ' |\\  |  (   | \\ \\ /   __/  |   \\__ \\   __/',
   '_| \\_| \\___/   \\_/  \\___| _|   ____/ \\___|'
 ];
-const EMAIL_USER_REV = 'otuhon';
-const EMAIL_DOMAIN_REV = 'moc.kcud';
+const EMAIL_KEY = 23;
+const EMAIL_BYTES = [121, 120, 127, 98, 99, 120, 87, 115, 98, 116, 124, 57, 116, 120, 122];
 
-const getEmailAddress = () => {
-  const user = EMAIL_USER_REV.split('').reverse().join('');
-  const domain = EMAIL_DOMAIN_REV.split('').reverse().join('');
-  return `${user}@${domain}`;
-};
+const getEmailAddress = () =>
+  EMAIL_BYTES.map(byte => String.fromCharCode(byte ^ EMAIL_KEY)).join('');
 
 const storageGet = (key, fallback) => {
   try {
@@ -164,7 +161,7 @@ function initSelectUI() {
     menu.appendChild(list);
 
     const buildOptions = () => {
-      list.innerHTML = '';
+      list.replaceChildren();
       Array.from(select.options).forEach(option => {
         const btn = document.createElement('button');
         btn.type = 'button';
@@ -390,14 +387,10 @@ async function copyText(text) {
 function initClipboard() {
   document.addEventListener('click', async e => {
     const target = e.target.closest('[data-copy]');
-    const emailTarget = e.target.closest('[data-email-user][data-email-domain]');
+    const emailTarget = e.target.closest('[data-email]');
     const source = emailTarget || target;
     if (!source) return;
-    const emailUser = source.getAttribute('data-email-user');
-    const emailDomain = source.getAttribute('data-email-domain');
-    const text = emailUser && emailDomain
-      ? `${emailUser.split('').reverse().join('')}@${emailDomain.split('').reverse().join('')}`
-      : source.getAttribute('data-copy');
+    const text = emailTarget ? getEmailAddress() : source.getAttribute('data-copy');
     if (!text) return;
     e.preventDefault();
     let ok = false;
@@ -411,6 +404,24 @@ function initClipboard() {
   });
 }
 
+function sanitizeMain(main) {
+  if (!main) return;
+  main.querySelectorAll('script').forEach(script => script.remove());
+  main.querySelectorAll('*').forEach(node => {
+    node.getAttributeNames().forEach(name => {
+      if (name.toLowerCase().startsWith('on')) {
+        node.removeAttribute(name);
+      }
+    });
+    ['href', 'src'].forEach(attr => {
+      const value = node.getAttribute(attr);
+      if (value && value.trim().toLowerCase().startsWith('javascript:')) {
+        node.removeAttribute(attr);
+      }
+    });
+  });
+}
+
 async function loadPage(url, push = true) {
   const main = document.querySelector('main');
   try {
@@ -420,6 +431,7 @@ async function loadPage(url, push = true) {
     const doc = new DOMParser().parseFromString(html, 'text/html');
     const newMain = doc.querySelector('main');
     if (!newMain) throw new Error('No main element in response');
+    sanitizeMain(newMain);
     const newTitle = doc.querySelector('title')?.textContent || document.title;
     newMain.classList.add('fading');
 
@@ -938,9 +950,8 @@ function initConsole() {
     },
     contact: () => {
       addLine('contact:');
-      const email = getEmailAddress();
       addKeyValueLines([
-        ['email', `${email} (use footer icon)`],
+        ['email', 'use the footer icon to copy'],
         ['discord', 'https://discord.gg/E2ybG4j9jU']
       ]);
     },
@@ -1063,7 +1074,7 @@ function initConsole() {
       addLine(`size set: ${applied}px`);
     },
     clear: () => {
-      lines.innerHTML = '';
+      lines.replaceChildren();
       scrollToBottom();
     },
     projects: () => {

@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lint:html": "html-validate \"**/*.html\"",
+    "lint:js": "eslint \"**/*.js\"",
+    "lint:security": "node tools/check-no-third-party.mjs && node tools/check-csp.mjs && node tools/check-sri.mjs",
+    "test": "npm run lint:html && npm run lint:js && npm run lint:security"
+  },
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "eslint-plugin-no-unsanitized": "^4.0.0",
+    "html-validate": "^8.0.0"
+  }
+}
