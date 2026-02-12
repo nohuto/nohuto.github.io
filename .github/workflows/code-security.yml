@@ -13,5 +13,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
-      - run: npm install
-      - run: npm test
+      - run: node tools/check-no-third-party.mjs
+      - run: node tools/check-csp.mjs
+      - run: node tools/check-sri.mjs
