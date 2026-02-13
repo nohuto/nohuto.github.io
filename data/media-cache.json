@@ -1,1 +1,59 @@
-{}
+{
+  "https://raw.githubusercontent.com/nohuto/aes-cbc/main/media/aes-cbc.mp4": {
+    "etag": "\"d33dd25f0a39a0f6371d05dfd90f65aef57c4392f01118d1eec87cd7f6f36957\""
+  },
+  "https://raw.githubusercontent.com/nohuto/bitmask-calc/main/media/bitmask-calc.mp4": {
+    "etag": "\"6597a0e75d78fef7d64f4665fe177df38b90ef91dbc29406b9371df6a7804c44\""
+  },
+  "https://raw.githubusercontent.com/nohuto/blocklist-mgr/main/media/blocklist-mgr.mp4": {
+    "etag": "\"dbfc547174cda739983bafaa2a9b794d0decf3108d2b4df9ccdbd66c98b59385\""
+  },
+  "https://raw.githubusercontent.com/nohuto/comp-mgr/main/media/comp-mgr.mp4": {
+    "etag": "\"5c5784a350130e3d6280e008f0c01700056847c57703affef5efe7f9b2648831\""
+  },
+  "https://raw.githubusercontent.com/nohuto/sym-dump/main/media/sym-dump.mp4": {
+    "etag": "\"35e278c705b8eca0bcfd3755f62b88be5a037e01062f95cbda0a79b81865903e\""
+  },
+  "https://raw.githubusercontent.com/nohuto/void/main/media/void.mp4": {
+    "etag": "\"6a88eb07711445584c2bf6013aa7aaacf3a39c87a890169d5dcb2364b1f47ba3\""
+  },
+  "https://raw.githubusercontent.com/nohuto/minifier/main/media/minifier.mp4": {
+    "etag": "\"c317be63909717b755994bf9ee24bb024b0b79f44baf8c41f1565a6da51c8db8\""
+  },
+  "https://raw.githubusercontent.com/nohuto/b64-char/main/media/b64-char.mp4": {
+    "etag": "\"a1f5dd6a06ce1eb37e2f6cd0139d9fa1bee2e55fac9d66ea4ca3b80cf64c9959\""
+  },
+  "https://raw.githubusercontent.com/nohuto/b64rev/main/media/b64rev.mp4": {
+    "etag": "\"b45852b7323995b272898fe7e3de5c918c082dd604f7bb6d84572aa041077e83\""
+  },
+  "https://raw.githubusercontent.com/nohuto/strings2-tui/master/media/strings2-tui.mp4": {
+    "etag": "\"318e1fa07e41b621d04e38b28b50ad72f0c3fdc28496d3a4360cc72fd8b7cb72\""
+  },
+  "https://raw.githubusercontent.com/nohuto/nvfetch/main/images/output.png": {
+    "etag": "\"b344726a5acf5bbc5d85d670750a07a2df598ae7c4521f98a43ef8ba90aa2a56\""
+  },
+  "https://raw.githubusercontent.com/nohuto/ps12bat/main/images/ps12batpre.png": {
+    "etag": "\"eca8baedbaf0fbac89cd13248d4cd640ae1e2c2d34c0c1839bb968e92fd0f529\""
+  },
+  "https://raw.githubusercontent.com/nohuto/wpr-reg-records/main/images/web.png": {
+    "etag": "\"969a1e48388c1ac8d8214261029057475eb3a7a31a8dcaf2e97490b4388ae440\""
+  },
+  "https://raw.githubusercontent.com/nohuto/admx-parser/main/images/admxparser-web.png": {
+    "etag": "\"e5cf10fb2cfde508f450fc8b6a039364a4f6d6bd6aafdbcb07014fbd9715e5ba\""
+  },
+  "https://raw.githubusercontent.com/nohuto/hash-gen/main/images/contextmenu.png": {
+    "etag": "\"825f56e3ff4af6b4ab896d1218fc1eec786aaee1c3042d56992f58eab7335c57\""
+  },
+  "https://raw.githubusercontent.com/nohuto/dism-wsim/main/images/web.png": {
+    "etag": "\"b6af6e117280ce69a59cec1f68e10b2227b2654b3c3686f3b050b9fb8a70b521\""
+  },
+  "https://raw.githubusercontent.com/nohuto/reg2bat/main/images/reg2bat.png": {
+    "etag": "\"6b366791640fa22dfa9082fa98cb5c7d3b6036308aa2a9ec7a84024872283e8d\""
+  },
+  "https://raw.githubusercontent.com/nohuto/pbo2-uv/main/images/pbotechow.png": {
+    "etag": "\"d4a565a1036f59860c377e2224d59118d91c40a81c83c7e7fc999a3beb14fc4d\""
+  },
+  "https://raw.githubusercontent.com/nohuto/gpu-oc-uv/main/images/oc.png": {
+    "etag": "\"f6ace417e474f3f018405dd0e12af47a1202ad3df615298a4a2b6af018b20e8e\""
+  }
+}
