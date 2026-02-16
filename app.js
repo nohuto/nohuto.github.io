@@ -34,6 +34,9 @@ const FONT_SET = new Set(FONT_KEYS);
 const REPO_DESC_URL = 'data/repos.json';
 const PROJECT_LIST = [
   { title: 'Windows Configuration', repo: 'nohuto/win-config' },
+  { title: 'RegKit', repo: 'nohuto/regkit' },
+  { title: 'Windows Registry Research', repo: 'nohuto/win-registry' },
+  { title: 'NVAPI CLI', repo: 'nohuto/nvapi-cli' },
   { title: 'AES CBC Encryption', repo: 'nohuto/aes-cbc' },
   { title: 'Bitmask Calculator', repo: 'nohuto/bitmask-calc' },
   { title: 'Blocklist Manager', repo: 'nohuto/blocklist-mgr' },
@@ -45,7 +48,6 @@ const PROJECT_LIST = [
   { title: 'Void Obfuscation', repo: 'nohuto/void' },
   { title: 'PowerShell Minifier', repo: 'nohuto/minifier' },
   { title: 'PS12bat', repo: 'nohuto/ps12bat' },
-  { title: 'WPR/Procmon Registry Activity Records', repo: 'nohuto/wpr-reg-records' },
   { title: 'Base64 Encoding / Character Obfuscation', repo: 'nohuto/b64-char' },
   { title: 'ADMX Parser', repo: 'nohuto/admx-parser' },
   { title: 'Hash Generator', repo: 'nohuto/hash-gen' },
@@ -75,7 +77,7 @@ const ASCII_ART = [
   '_| \\_| \\___/   \\_/  \\___| _|   ____/ \\___|'
 ];
 const EMAIL_KEY = 23;
-const EMAIL_BYTES = [121, 120, 127, 98, 99, 120, 87, 115, 98, 116, 124, 57, 116, 120, 122];
+const EMAIL_BYTES = [121, 120, 127, 98, 99, 120, 87, 99, 98, 99, 118, 57, 126, 120];
 
 const getEmailAddress = () =>
   EMAIL_BYTES.map(byte => String.fromCharCode(byte ^ EMAIL_KEY)).join('');

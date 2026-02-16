@@ -48,8 +48,24 @@
     "path": "images/projects/ps12bat-pre.png"
   },
   {
-    "url": "https://raw.githubusercontent.com/nohuto/wpr-reg-records/main/images/web.png",
-    "path": "images/projects/wpr-reg-records-web.png"
+    "url": "https://raw.githubusercontent.com/nohuto/regkit/main/assets/images/ayu-dark.png",
+    "path": "images/projects/regkit-ayu-dark.png"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/nohuto/win-registry/main/images/web.png",
+    "path": "images/projects/win-registry-web.png"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/nohuto/nvapi-cli/main/images/nvapicli.png",
+    "path": "images/projects/nvapi-cli.png"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/nohuto/app-tools/main/discord/media/discordtui.png",
+    "path": "images/projects/app-tools-discordtui.png"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/nohuto/game-tools/main/marvel-rivals/media/mrtui.png",
+    "path": "images/projects/game-tools-mrtui.png"
   },
   {
     "url": "https://raw.githubusercontent.com/nohuto/admx-parser/main/images/admxparser-web.png",

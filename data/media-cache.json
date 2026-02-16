@@ -55,5 +55,20 @@
   },
   "https://raw.githubusercontent.com/nohuto/gpu-oc-uv/main/images/oc.png": {
     "etag": "\"f6ace417e474f3f018405dd0e12af47a1202ad3df615298a4a2b6af018b20e8e\""
+  },
+  "https://raw.githubusercontent.com/nohuto/regkit/main/assets/images/ayu-dark.png": {
+    "etag": "\"94caab74e5d70980a3cfdf02cfb268245286b99ff3a4c2a5fb6256cd39b1e99d\""
+  },
+  "https://raw.githubusercontent.com/nohuto/win-registry/main/images/web.png": {
+    "etag": "\"969a1e48388c1ac8d8214261029057475eb3a7a31a8dcaf2e97490b4388ae440\""
+  },
+  "https://raw.githubusercontent.com/nohuto/nvapi-cli/main/images/nvapicli.png": {
+    "etag": "\"8cd9f8bc5ff5cf31ac1c7f67039ff487f62f1a83d24c6810777d75172443f556\""
+  },
+  "https://raw.githubusercontent.com/nohuto/app-tools/main/discord/media/discordtui.png": {
+    "etag": "\"38c937dcbd5cde9c5e306f178c40ef1f5b7d1ec3ce3b9e14689a3049b279e7f3\""
+  },
+  "https://raw.githubusercontent.com/nohuto/game-tools/main/marvel-rivals/media/mrtui.png": {
+    "etag": "\"d87da20f27bdb9e41fda1384d190861c6db94b296c2cd7241c46bfd2210f89d7\""
   }
 }
