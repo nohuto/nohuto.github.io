@@ -214,6 +214,19 @@
   --bg-ink-7: rgba(0, 0, 0, 0.02);
 }
 
+*::selection {
+  background-color: var(--accent);
+  color: var(--accent-contrast);
+  text-shadow: none;
+  -webkit-text-fill-color: var(--accent-contrast);
+}
+
+*::-moz-selection {
+  background-color: var(--accent);
+  color: var(--accent-contrast);
+  text-shadow: none;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
