@@ -1,7 +1,7 @@
 {
   "nohuto/win-config": "Most complete/documented Windows configuration tool.",
   "nohuto/regkit": "Reworked regedit including several new features. Contribute to nohuto/regkit development by creating an account on GitHub.",
-  "nohuto/win-registry": "Registry activity records & DXG Kernel/Session Manager/Power/DWM/USBHUB/BCDEdit/NIC/StorNVMe values research.",
+  "nohuto/win-registry": "Registry activity records & DXG Kernel/Session Manager/Power/DWM/USBHUB/PnPDevice/BCDEdit/NIC/StorNVMe values research.",
   "nohuto/nvapi-cli": "CLI for NvAPI - currently supports ~400. Contribute to nohuto/nvapi-cli development by creating an account on GitHub.",
   "nohuto/aes-cbc": "PowerShell encryption using AES CBC - 256 bit encryption key.",
   "nohuto/bitmask-calc": "Bitmask calculator uses official NVIDIA definitions to edit and apply registry values with bitfield mapping.",

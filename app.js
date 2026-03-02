@@ -12,17 +12,11 @@ const LIGHT_THEMES = new Set([
   'everforest-light'
 ]);
 const BG_KEY = 'nv-bg';
-const DEFAULT_BG = 'topo-trace';
-const BG_OPTIONS = [
-  'data-tape',
-  'hex-matrix',
-  'signal-rails',
-  'circuit-loom',
-  'phase-noise',
-  'mono-shards',
-  'topo-trace',
-  'quasar-mesh'
-];
+const DEFAULT_BG = 'dark-noise';
+const BG_KEYS = ['clear', 'diagonal-grid', 'dark-noise', 'dot-matrix', 'circuit-board', 'starfield'];
+const BG_SET = new Set(BG_KEYS);
+const KEYFRAMES_ICON_DARK = 'icons/dark/keyframes.svg';
+const KEYFRAMES_ICON_LIGHT = 'icons/light/keyframes.svg';
 const FONT_KEY = 'nv-font';
 const FONT_SIZE_KEY = 'nv-font-size';
 const DEFAULT_FONT = 'cascadia';
@@ -161,6 +155,19 @@ function initSelectUI() {
     const list = document.createElement('div');
     list.className = 'select-list';
     menu.appendChild(list);
+    const isAnimatedBgOption = option => select.id === 'bg-select' && option.dataset.animated === 'true';
+    const createAnimatedBadge = className => {
+      const icon = document.createElement('img');
+      icon.className = className;
+      icon.setAttribute('alt', '');
+      icon.setAttribute('aria-hidden', 'true');
+      icon.setAttribute('decoding', 'async');
+      icon.setAttribute('loading', 'lazy');
+      icon.setAttribute('src', KEYFRAMES_ICON_DARK);
+      icon.setAttribute('data-dark-src', KEYFRAMES_ICON_DARK);
+      icon.setAttribute('data-light-src', KEYFRAMES_ICON_LIGHT);
+      return icon;
+    };
 
     const buildOptions = () => {
       list.replaceChildren();
@@ -168,7 +175,13 @@ function initSelectUI() {
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'select-option';
-        btn.textContent = option.textContent;
+        const labelSpan = document.createElement('span');
+        labelSpan.className = 'select-option-label';
+        labelSpan.textContent = option.textContent;
+        btn.appendChild(labelSpan);
+        if (isAnimatedBgOption(option)) {
+          btn.appendChild(createAnimatedBadge('select-option-icon'));
+        }
         btn.dataset.value = option.value;
         btn.setAttribute('role', 'option');
         btn.setAttribute('aria-selected', option.selected ? 'true' : 'false');
@@ -190,7 +203,11 @@ function initSelectUI() {
     const updateActive = () => {
       const active = select.value;
       const selected = select.options[select.selectedIndex];
-      trigger.textContent = selected ? selected.textContent : active;
+      trigger.replaceChildren();
+      const labelSpan = document.createElement('span');
+      labelSpan.className = 'select-trigger-label';
+      labelSpan.textContent = selected ? selected.textContent : active;
+      trigger.appendChild(labelSpan);
       list.querySelectorAll('.select-option').forEach(btn => {
         const isActive = btn.dataset.value === active;
         btn.classList.toggle('is-active', isActive);
@@ -219,6 +236,7 @@ function initSelectUI() {
     select.setAttribute('tabindex', '-1');
     select.setAttribute('aria-hidden', 'true');
   });
+  updateIconTheme();
 
   if (!selectUiListener) {
     selectUiListener = e => {
@@ -248,9 +266,8 @@ function initTheme() {
   });
 }
 
-function applyBackground(bg) {
-  const candidate = bg || DEFAULT_BG;
-  const applied = BG_OPTIONS.includes(candidate) ? candidate : DEFAULT_BG;
+function applyBackground(key) {
+  const applied = BG_SET.has(key) ? key : DEFAULT_BG;
   document.documentElement.setAttribute('data-bg', applied);
   return applied;
 }
@@ -260,14 +277,14 @@ function initBackground() {
   if (!select) return;
 
   const stored = storageGet(BG_KEY, document.documentElement.getAttribute('data-bg') || DEFAULT_BG);
-  const initial = BG_OPTIONS.includes(stored) ? stored : DEFAULT_BG;
+  const initial = BG_SET.has(stored) ? stored : DEFAULT_BG;
   applyBackground(initial);
   select.value = initial;
 
   select.addEventListener('change', () => {
     const next = select.value || DEFAULT_BG;
-    applyBackground(next);
-    storageSet(BG_KEY, next);
+    const applied = applyBackground(next);
+    storageSet(BG_KEY, applied);
   });
 }
 
@@ -602,21 +619,47 @@ function initConsoleWindow() {
     const startY = e.clientY;
     const startLeft = rect.left - parentRect.left;
     const startTop = rect.top - parentRect.top;
+    const width = rect.width;
+    const height = rect.height;
+    const maxLeft = Math.max(0, parentRect.width - width);
+    const maxTop = Math.max(0, parentRect.height - height);
+    let rafId = 0;
+    let pendingX = startX;
+    let pendingY = startY;
+    let lastLeft = startLeft;
+    let lastTop = startTop;
 
     handle.setPointerCapture(e.pointerId);
+    windowEl.style.willChange = 'transform';
 
-    const onMove = ev => {
-      const dx = ev.clientX - startX;
-      const dy = ev.clientY - startY;
-      const maxLeft = Math.max(0, parentRect.width - windowEl.offsetWidth);
-      const maxTop = Math.max(0, parentRect.height - windowEl.offsetHeight);
+    const paintDrag = () => {
+      rafId = 0;
+      const dx = pendingX - startX;
+      const dy = pendingY - startY;
       const nextLeft = Math.min(Math.max(0, startLeft + dx), maxLeft);
       const nextTop = Math.min(Math.max(0, startTop + dy), maxTop);
-      windowEl.style.left = `${nextLeft}px`;
-      windowEl.style.top = `${nextTop}px`;
+      lastLeft = nextLeft;
+      lastTop = nextTop;
+      windowEl.style.transform = `translate3d(${nextLeft - startLeft}px, ${nextTop - startTop}px, 0)`;
+    };
+
+    const onMove = ev => {
+      pendingX = ev.clientX;
+      pendingY = ev.clientY;
+      if (rafId) return;
+      rafId = requestAnimationFrame(paintDrag);
     };
 
     const onUp = () => {
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = 0;
+      }
+      paintDrag();
+      windowEl.style.transform = '';
+      windowEl.style.left = `${lastLeft}px`;
+      windowEl.style.top = `${lastTop}px`;
+      windowEl.style.willChange = '';
       handle.releasePointerCapture(e.pointerId);
       handle.removeEventListener('pointermove', onMove);
       handle.removeEventListener('pointerup', onUp);
@@ -757,10 +800,6 @@ function initConsole() {
     });
     lines.appendChild(line);
     scrollToBottom();
-  };
-
-  const addBlock = items => {
-    items.forEach(item => addLine(item));
   };
 
   const addIndentedLines = (items, className) => {

@@ -1,4 +1,6 @@
 /* Copyright (c) 2026 Nohuto. All rights reserved. */
+@import url("data/starfield-stars.css");
+
 @font-face {
   font-family: "JetBrains Mono";
   font-style: normal;
@@ -166,6 +168,7 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308,
     U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+
 :root {
   --bg: #0b0f10;
   --bg-alt: #101416;
@@ -181,37 +184,35 @@
   --success: #44d388;
   --warning: #e4c07a;
   --danger: #ff6b6b;
-  --grid: rgba(255, 255, 255, 0.03);
   --scanline: rgba(255, 255, 255, 0.02);
-  --bg-ink-1: rgba(255, 255, 255, 0.08);
-  --bg-ink-2: rgba(255, 255, 255, 0.06);
-  --bg-ink-3: rgba(255, 255, 255, 0.05);
-  --bg-ink-4: rgba(255, 255, 255, 0.04);
-  --bg-ink-5: rgba(255, 255, 255, 0.03);
-  --bg-ink-6: rgba(255, 255, 255, 0.025);
-  --bg-ink-7: rgba(255, 255, 255, 0.02);
+  --starfield-dot: color-mix(in srgb, var(--text) 90%, transparent);
+  --starfield-shadow-fallback:
+    -1180px -340px var(--starfield-dot),
+    -1030px 220px var(--starfield-dot),
+    -920px -120px var(--starfield-dot),
+    -760px 310px var(--starfield-dot),
+    -640px -260px var(--starfield-dot),
+    -510px 150px var(--starfield-dot),
+    -390px -410px var(--starfield-dot),
+    -250px 40px var(--starfield-dot),
+    -120px -300px var(--starfield-dot),
+    30px 260px var(--starfield-dot),
+    170px -170px var(--starfield-dot),
+    280px 360px var(--starfield-dot),
+    420px -80px var(--starfield-dot),
+    560px 210px var(--starfield-dot),
+    700px -360px var(--starfield-dot),
+    840px 120px var(--starfield-dot),
+    980px -220px var(--starfield-dot),
+    1120px 300px var(--starfield-dot),
+    1260px -40px var(--starfield-dot),
+    1390px -280px var(--starfield-dot);
   --shadow: rgba(0, 0, 0, 0.35);
   --font-family: "Cascadia Mono", "Cascadia Code", Consolas, "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace;
   --font-size: 14px;
   --scrollbar-track: var(--bg-alt);
   --scrollbar-thumb: var(--border-strong);
   --scrollbar-thumb-hover: var(--accent);
-  }
-[data-theme="default-light"],
-[data-theme="gruvbox-light"],
-[data-theme="kanagawa-lotus"],
-[data-theme="catppuccin-latte"],
-[data-theme="solarized-light"],
-[data-theme="one-light"],
-[data-theme="ayu-light"],
-[data-theme="everforest-light"] {
-  --bg-ink-1: rgba(0, 0, 0, 0.08);
-  --bg-ink-2: rgba(0, 0, 0, 0.06);
-  --bg-ink-3: rgba(0, 0, 0, 0.05);
-  --bg-ink-4: rgba(0, 0, 0, 0.04);
-  --bg-ink-5: rgba(0, 0, 0, 0.03);
-  --bg-ink-6: rgba(0, 0, 0, 0.025);
-  --bg-ink-7: rgba(0, 0, 0, 0.02);
 }
 
 *::selection {
@@ -278,7 +279,6 @@
   --success: #2f7d5a;
   --warning: #b77a2a;
   --danger: #b44a4a;
-  --grid: rgba(0, 0, 0, 0.05);
   --scanline: rgba(0, 0, 0, 0.03);
 }
 
@@ -297,7 +297,6 @@
   --success: #b8bb26;
   --warning: #fabd2f;
   --danger: #fb4934;
-  --grid: rgba(235, 219, 178, 0.05);
   --scanline: rgba(235, 219, 178, 0.03);
 }
 
@@ -316,7 +315,6 @@
   --success: #98971a;
   --warning: #d79921;
   --danger: #cc241d;
-  --grid: rgba(60, 56, 54, 0.06);
   --scanline: rgba(60, 56, 54, 0.04);
 }
 
@@ -335,7 +333,6 @@
   --success: #a3be8c;
   --warning: #ebcb8b;
   --danger: #bf616a;
-  --grid: rgba(229, 233, 240, 0.04);
   --scanline: rgba(229, 233, 240, 0.03);
 }
 
@@ -354,7 +351,6 @@
   --success: #98bb6c;
   --warning: #ffa066;
   --danger: #e46876;
-  --grid: rgba(220, 215, 186, 0.04);
   --scanline: rgba(220, 215, 186, 0.03);
 }
 
@@ -373,7 +369,6 @@
   --success: #87a987;
   --warning: #c4b28a;
   --danger: #c4746e;
-  --grid: rgba(197, 201, 197, 0.04);
   --scanline: rgba(197, 201, 197, 0.03);
 }
 
@@ -392,7 +387,6 @@
   --success: #6f894e;
   --warning: #c88f3d;
   --danger: #b0545d;
-  --grid: rgba(77, 74, 65, 0.06);
   --scanline: rgba(77, 74, 65, 0.04);
 }
 
@@ -411,7 +405,6 @@
   --success: #a6e3a1;
   --warning: #f9e2af;
   --danger: #f38ba8;
-  --grid: rgba(205, 214, 244, 0.04);
   --scanline: rgba(205, 214, 244, 0.03);
 }
 
@@ -430,7 +423,6 @@
   --success: #a6da95;
   --warning: #eed49f;
   --danger: #ed8796;
-  --grid: rgba(202, 211, 245, 0.04);
   --scanline: rgba(202, 211, 245, 0.03);
 }
 
@@ -449,7 +441,6 @@
   --success: #a6d189;
   --warning: #e5c890;
   --danger: #e78284;
-  --grid: rgba(198, 208, 245, 0.04);
   --scanline: rgba(198, 208, 245, 0.03);
 }
 
@@ -468,7 +459,6 @@
   --success: #40a02b;
   --warning: #df8e1d;
   --danger: #d20f39;
-  --grid: rgba(76, 79, 105, 0.06);
   --scanline: rgba(76, 79, 105, 0.04);
 }
 
@@ -487,7 +477,6 @@
   --success: #859900;
   --warning: #b58900;
   --danger: #dc322f;
-  --grid: rgba(147, 161, 161, 0.05);
   --scanline: rgba(147, 161, 161, 0.03);
 }
 
@@ -506,7 +495,6 @@
   --success: #859900;
   --warning: #b58900;
   --danger: #dc322f;
-  --grid: rgba(88, 110, 117, 0.06);
   --scanline: rgba(88, 110, 117, 0.04);
 }
 
@@ -525,7 +513,6 @@
   --success: #9ece6a;
   --warning: #e0af68;
   --danger: #f7768e;
-  --grid: rgba(192, 202, 245, 0.04);
   --scanline: rgba(192, 202, 245, 0.03);
 }
 
@@ -544,7 +531,6 @@
   --success: #50fa7b;
   --warning: #f1fa8c;
   --danger: #ff5555;
-  --grid: rgba(248, 248, 242, 0.04);
   --scanline: rgba(248, 248, 242, 0.03);
 }
 
@@ -563,7 +549,6 @@
   --success: #98c379;
   --warning: #e5c07b;
   --danger: #e06c75;
-  --grid: rgba(171, 178, 191, 0.04);
   --scanline: rgba(171, 178, 191, 0.03);
 }
 
@@ -582,7 +567,6 @@
   --success: #50a14f;
   --warning: #c18401;
   --danger: #e45649;
-  --grid: rgba(56, 58, 66, 0.06);
   --scanline: rgba(56, 58, 66, 0.04);
 }
 
@@ -601,7 +585,6 @@
   --success: #a6e3a1;
   --warning: #ffb454;
   --danger: #f07178;
-  --grid: rgba(230, 225, 207, 0.04);
   --scanline: rgba(230, 225, 207, 0.03);
 }
 
@@ -620,7 +603,6 @@
   --success: #86b300;
   --warning: #f29718;
   --danger: #e65050;
-  --grid: rgba(92, 103, 115, 0.06);
   --scanline: rgba(92, 103, 115, 0.04);
 }
 
@@ -639,7 +621,6 @@
   --success: #a7c080;
   --warning: #dbbc7f;
   --danger: #e67e80;
-  --grid: rgba(211, 198, 170, 0.04);
   --scanline: rgba(211, 198, 170, 0.03);
 }
 
@@ -658,7 +639,6 @@
   --success: #8da101;
   --warning: #df8e1d;
   --danger: #f85552;
-  --grid: rgba(92, 106, 114, 0.06);
   --scanline: rgba(92, 106, 114, 0.04);
 }
 
@@ -677,7 +657,6 @@
   --success: #9ccfd8;
   --warning: #f6c177;
   --danger: #eb6f92;
-  --grid: rgba(224, 222, 244, 0.04);
   --scanline: rgba(224, 222, 244, 0.03);
 }
 
@@ -696,7 +675,6 @@
   --success: #9ccfd8;
   --warning: #f6c177;
   --danger: #ea9a97;
-  --grid: rgba(224, 222, 244, 0.04);
   --scanline: rgba(224, 222, 244, 0.03);
 }
 
@@ -715,7 +693,6 @@
   --success: #a6e22e;
   --warning: #e6db74;
   --danger: #f92672;
-  --grid: rgba(248, 248, 242, 0.04);
   --scanline: rgba(248, 248, 242, 0.03);
 }
 
@@ -734,7 +711,6 @@
   --success: #c3e88d;
   --warning: #ffcb6b;
   --danger: #ff5370;
-  --grid: rgba(207, 216, 220, 0.04);
   --scanline: rgba(207, 216, 220, 0.03);
 }
 
@@ -753,7 +729,6 @@
   --success: #29d398;
   --warning: #fac29a;
   --danger: #e95678;
-  --grid: rgba(224, 224, 224, 0.04);
   --scanline: rgba(224, 224, 224, 0.03);
 }
 
@@ -772,7 +747,6 @@
   --success: #addb67;
   --warning: #ecc48d;
   --danger: #ef5350;
-  --grid: rgba(214, 222, 235, 0.04);
   --scanline: rgba(214, 222, 235, 0.03);
 }
 
@@ -854,92 +828,144 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background-repeat: repeat;
   pointer-events: none;
   z-index: 0;
+  opacity: 0;
+  background-repeat: repeat;
 }
 
 body::after {
   content: "";
   position: fixed;
   inset: 0;
-  background-repeat: repeat;
   pointer-events: none;
   z-index: 0;
   opacity: 0;
-  will-change: transform, background-position;
+  background-repeat: repeat;
 }
 
-html[data-bg="data-tape"] body::before {
+/* credits: https://patterncraft.fun/ */
+html[data-bg="diagonal-grid"] body::before {
+  opacity: 0.8;
   background-image:
-    repeating-linear-gradient(0deg, var(--bg-ink-5) 0, var(--bg-ink-5) 1px, transparent 1px, transparent 6px),
-    repeating-linear-gradient(90deg, var(--bg-ink-7) 0, var(--bg-ink-7) 2px, transparent 2px, transparent 18px);
-  opacity: 0.5;
+    repeating-linear-gradient(45deg,
+      color-mix(in srgb, var(--accent) 20%, transparent) 0,
+      color-mix(in srgb, var(--accent) 20%, transparent) 1px,
+      transparent 1px,
+      transparent 22px),
+    repeating-linear-gradient(-45deg,
+      color-mix(in srgb, var(--accent-2) 12%, transparent) 0,
+      color-mix(in srgb, var(--accent-2) 12%, transparent) 1px,
+      transparent 1px,
+      transparent 22px);
+  background-size: 44px 44px;
 }
 
-html[data-bg="hex-matrix"] body::before {
+/* credits: https://patterncraft.fun/ */
+html[data-bg="dark-noise"] body::before {
+  opacity: 0.9;
   background-image:
-    radial-gradient(circle at 12px 10px, var(--bg-ink-3) 1px, transparent 1px),
-    radial-gradient(circle at 28px 26px, var(--bg-ink-4) 1px, transparent 1px);
-  background-size: 32px 28px;
-  background-position: 0 0, 16px 14px;
-  opacity: 0.45;
+    radial-gradient(circle at 1px 1px,
+      color-mix(in srgb, var(--accent) 22%, transparent) 1px,
+      transparent 0),
+    radial-gradient(circle at 1px 1px,
+      color-mix(in srgb, var(--accent-2) 20%, transparent) 1px,
+      transparent 0),
+    radial-gradient(circle at 1px 1px,
+      color-mix(in srgb, var(--danger) 16%, transparent) 1px,
+      transparent 0);
+  background-size: 20px 20px, 30px 30px, 25px 25px;
+  background-position: 0 0, 10px 10px, 15px 5px;
 }
 
-html[data-bg="signal-rails"] body::before {
-  background-image:
-    repeating-linear-gradient(0deg, var(--bg-ink-4) 0, var(--bg-ink-4) 1px, transparent 1px, transparent 9px),
-    repeating-linear-gradient(90deg, var(--bg-ink-6) 0, var(--bg-ink-6) 2px, transparent 2px, transparent 64px),
-    radial-gradient(circle at 20% 30%, var(--bg-ink-3) 0, var(--bg-ink-3) 2px, transparent 12px);
-  opacity: 0.45;
+html[data-bg="clear"] body::before,
+html[data-bg="clear"] body::after {
+  opacity: 0;
+  background-image: none;
+  animation: none;
 }
 
-html[data-bg="circuit-loom"] body::before {
+/* credits: https://patterncraft.fun/ */
+html[data-bg="dot-matrix"] body::before {
+  opacity: 1;
   background-image:
-    repeating-linear-gradient(45deg, var(--bg-ink-5) 0, var(--bg-ink-5) 1px, transparent 1px, transparent 18px),
-    repeating-linear-gradient(-45deg, var(--bg-ink-6) 0, var(--bg-ink-6) 1px, transparent 1px, transparent 22px),
-    radial-gradient(circle at 70% 20%, var(--bg-ink-4) 0, var(--bg-ink-4) 2px, transparent 14px);
-  opacity: 0.4;
+    radial-gradient(circle at 25% 25%, color-mix(in srgb, var(--text) 12%, transparent) 0.5px, transparent 1px),
+    radial-gradient(circle at 75% 75%, color-mix(in srgb, var(--text) 6%, transparent) 0.5px, transparent 1px);
+  background-size: 10px 10px;
+  image-rendering: pixelated;
 }
 
-html[data-bg="phase-noise"] body::before {
+/* credits: https://patterncraft.fun/ */
+html[data-bg="circuit-board"] body::before {
+  opacity: 0.95;
   background-image:
-    radial-gradient(circle at 18% 12%, var(--bg-ink-1) 0, var(--bg-ink-1) 2px, transparent 30%),
-    radial-gradient(circle at 82% 78%, var(--bg-ink-2) 0, var(--bg-ink-2) 2px, transparent 34%),
-    repeating-linear-gradient(0deg, var(--bg-ink-7) 0, var(--bg-ink-7) 1px, transparent 1px, transparent 4px);
-  opacity: 0.4;
+    repeating-linear-gradient(0deg,
+      transparent 0,
+      transparent 19px,
+      color-mix(in srgb, var(--accent) 14%, transparent) 19px,
+      color-mix(in srgb, var(--accent) 14%, transparent) 20px,
+      transparent 20px,
+      transparent 39px,
+      color-mix(in srgb, var(--accent) 14%, transparent) 39px,
+      color-mix(in srgb, var(--accent) 14%, transparent) 40px),
+    repeating-linear-gradient(90deg,
+      transparent 0,
+      transparent 19px,
+      color-mix(in srgb, var(--accent) 14%, transparent) 19px,
+      color-mix(in srgb, var(--accent) 14%, transparent) 20px,
+      transparent 20px,
+      transparent 39px,
+      color-mix(in srgb, var(--accent) 14%, transparent) 39px,
+      color-mix(in srgb, var(--accent) 14%, transparent) 40px),
+    radial-gradient(circle at 20px 20px, color-mix(in srgb, var(--accent-2) 18%, transparent) 2px, transparent 2px),
+    radial-gradient(circle at 40px 40px, color-mix(in srgb, var(--accent-2) 18%, transparent) 2px, transparent 2px);
+  background-size: 40px 40px, 40px 40px, 40px 40px, 40px 40px;
 }
 
-html[data-bg="mono-shards"] body::before {
-  background-image:
-    repeating-linear-gradient(120deg, var(--bg-ink-5) 0, var(--bg-ink-5) 3px, transparent 3px, transparent 24px),
-    repeating-linear-gradient(300deg, var(--bg-ink-7) 0, var(--bg-ink-7) 2px, transparent 2px, transparent 18px);
-  opacity: 0.45;
+/* credits: https://codepen.io/keithclark/pen/JjWyBb */
+html[data-bg="starfield"] body {
+  perspective: 340px;
 }
 
-html[data-bg="topo-trace"] body::before {
-  background-image:
-    repeating-radial-gradient(circle at 28% 32%, var(--bg-ink-3) 0 1px, transparent 1px 14px),
-    repeating-radial-gradient(circle at 72% 68%, var(--bg-ink-4) 0 1px, transparent 1px 18px),
-    repeating-radial-gradient(circle at 50% 50%, var(--bg-ink-5) 0 1px, transparent 1px 26px);
-  opacity: 0.4;
+.stars {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 2px;
+  pointer-events: none;
+  z-index: 0;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
-html[data-bg="quasar-mesh"] body::before {
-  background-image:
-    repeating-linear-gradient(90deg, var(--bg-ink-4) 0, var(--bg-ink-4) 1px, transparent 1px, transparent 28px),
-    repeating-linear-gradient(0deg, var(--bg-ink-5) 0, var(--bg-ink-5) 1px, transparent 1px, transparent 22px),
-    radial-gradient(circle at 40% 60%, var(--bg-ink-3), transparent 45%);
-  animation: quasar-mesh 8s ease-in-out infinite, bg-shift 10s ease-in-out infinite;
-  opacity: 0.55;
+html[data-bg="starfield"] .stars {
+  display: block;
+  --starfield-depth: 300px;
+  --starfield-speed: 3s;
+  --starfield-dot: color-mix(in srgb, var(--text) 90%, transparent);
+  box-shadow: var(--starfield-shadow, var(--starfield-shadow-fallback));
+  animation: fly var(--starfield-speed) linear infinite;
 }
 
-html[data-bg="quasar-mesh"] body::after {
-  background-image:
-    linear-gradient(90deg, transparent 0, var(--bg-ink-2) 50%, transparent 100%);
-  background-size: 220% 100%;
-  animation: quasar-pulse 6s ease-in-out infinite;
-  opacity: 0.35;
+html[data-bg="starfield"] .stars::before,
+html[data-bg="starfield"] .stars::after {
+  content: "";
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  box-shadow: inherit;
+}
+
+html[data-bg="starfield"] .stars::before {
+  transform: translateZ(calc(var(--starfield-depth) * -1));
+  animation: fade1 var(--starfield-speed) linear infinite;
+}
+
+html[data-bg="starfield"] .stars::after {
+  transform: translateZ(calc(var(--starfield-depth) * -2));
+  animation: fade2 var(--starfield-speed) linear infinite;
 }
 
 .window-surface {
@@ -1199,18 +1225,25 @@ select option:active {
   padding-right: 28px;
   display: flex;
   align-items: center;
+  justify-content: flex-start;
+}
+
+.select-trigger-label {
+  min-width: 0;
 }
 
 .select-trigger::after {
   content: "";
   position: absolute;
   right: 10px;
-  top: 50%;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
   width: 6px;
   height: 6px;
   border-right: 1px solid var(--muted);
   border-bottom: 1px solid var(--muted);
-  transform: translateY(-50%) rotate(45deg);
+  transform: rotate(45deg);
   pointer-events: none;
 }
 
@@ -1261,6 +1294,21 @@ select option:active {
   color: var(--text);
   font: inherit;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.select-option-label {
+  min-width: 0;
+}
+
+.select-option-icon {
+  width: 13px;
+  height: 13px;
+  flex: 0 0 auto;
+  opacity: 0.88;
 }
 
 .select-option.is-active {
@@ -1693,12 +1741,8 @@ video {
   text-transform: uppercase;
   letter-spacing: 0.14em;
   font-size: 0.75rem;
-  color: var(--accent);
-  margin: 0 0 10px;
-}
-
-.price-label {
   color: var(--muted);
+  margin: 0 0 10px;
 }
 
 .product-price {
@@ -2170,157 +2214,33 @@ footer {
   }
 }
 
-@keyframes bg-shift {
+@keyframes fly {
   0% {
-    transform: translate3d(0, 0, 0);
-  }
-
-  50% {
-    transform: translate3d(-18px, 14px, 0);
+    transform: translateZ(0);
   }
 
   100% {
-    transform: translate3d(0, 0, 0);
+    transform: translateZ(var(--starfield-depth));
   }
 }
 
-@keyframes vector-drift {
+@keyframes fade1 {
   0% {
-    background-position: 0 0, 0 0;
+    opacity: 0.5;
   }
 
   100% {
-    background-position: 260px 180px, -260px -180px;
+    opacity: 1;
   }
 }
 
-@keyframes vector-drift-slow {
+@keyframes fade2 {
   0% {
-    background-position: 0 0;
+    opacity: 0;
   }
 
   100% {
-    background-position: -220px 220px;
-  }
-}
-
-@keyframes scan-waves {
-  0% {
-    background-position: 0 0, 0 0;
-  }
-
-  100% {
-    background-position: 0 160px, 160px 0;
-  }
-}
-
-@keyframes scan-sheen {
-  0% {
-    background-position: 0 0;
-  }
-
-  100% {
-    background-position: 140% 0;
-  }
-}
-
-@keyframes aurora-shift {
-  0% {
-    background-position: 20% 20%;
-  }
-
-  50% {
-    background-position: 80% 60%;
-  }
-
-  100% {
-    background-position: 20% 20%;
-  }
-}
-
-@keyframes aurora-sheen {
-  0% {
-    background-position: 0 0;
-  }
-
-  100% {
-    background-position: 120% 0;
-  }
-}
-
-@keyframes spectral-flow {
-  0% {
-    background-position: 10% 20%, 80% 10%, 30% 80%;
-  }
-
-  50% {
-    background-position: 70% 40%, 20% 60%, 80% 30%;
-  }
-
-  100% {
-    background-position: 10% 20%, 80% 10%, 30% 80%;
-  }
-}
-
-@keyframes spectral-sheen {
-  0% {
-    background-position: 0 0;
-  }
-
-  100% {
-    background-position: 140% 140%;
-  }
-}
-
-@keyframes quasar-mesh {
-  0% {
-    background-position: 0 0, 0 0, 40% 60%;
-  }
-
-  50% {
-    background-position: 140px 0, 0 120px, 60% 40%;
-  }
-
-  100% {
-    background-position: 0 0, 0 0, 40% 60%;
-  }
-}
-
-@keyframes quasar-pulse {
-  0% {
-    background-position: 0 0;
-  }
-
-  50% {
-    background-position: 120% 0;
-  }
-
-  100% {
-    background-position: 0 0;
-  }
-}
-
-@keyframes prism-drift {
-  0% {
-    background-position: 0 0, 100% 0, 50% 50%;
-  }
-
-  50% {
-    background-position: 80% 20%, 20% 80%, 60% 40%;
-  }
-
-  100% {
-    background-position: 0 0, 100% 0, 50% 50%;
-  }
-}
-
-@keyframes prism-scan {
-  0% {
-    background-position: 0 0;
-  }
-
-  100% {
-    background-position: 0 160px;
+    opacity: 0.5;
   }
 }
 
@@ -2424,11 +2344,6 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   * {
     scroll-behavior: auto !important;
-  }
-
-  body::before,
-  body::after {
-    animation: none !important;
   }
 
   main {

@@ -17,6 +17,7 @@
 </head>
 
 <body>
+  <div class="stars" aria-hidden="true"></div>
   <div class="overlay" aria-hidden="true"></div>
 
   <header class="prompt-bar">
@@ -118,8 +119,8 @@
                 columns, and panel widths.</li>
             </ul>
           </div>
-            <div class="comparison-table">
-              <table aria-label="Feature comparison">
+          <div class="comparison-table">
+            <table aria-label="Feature comparison">
               <thead>
                 <tr>
                   <th scope="col">Feature</th>
@@ -389,8 +390,8 @@
           <img decoding="async" src="images/youtube-icon.png" data-dark-src="images/youtube-icon.png"
             data-light-src="images/youtube-icon-dark.png" loading="lazy" alt="YouTube">
         </a>
-        <button class="icon-button" type="button" data-email="copy"
-          data-toast="Email copied" aria-label="Copy email to clipboard">
+        <button class="icon-button" type="button" data-email="copy" data-toast="Email copied"
+          aria-label="Copy email to clipboard">
           <img decoding="async" src="images/email-icon.png" data-dark-src="images/email-icon.png"
             data-light-src="images/email-icon-dark.png" loading="lazy" alt="Email">
         </button>
@@ -404,14 +405,12 @@
           <div class="footer-control">
             <label class="theme-label" for="bg-select">bg</label>
             <select id="bg-select" name="background">
-              <option value="data-tape">Data-tape</option>
-              <option value="hex-matrix">Hex-matrix</option>
-              <option value="signal-rails">Signal-rails</option>
-              <option value="circuit-loom">Circuit-loom</option>
-              <option value="phase-noise">Phase-noise</option>
-              <option value="mono-shards">Mono-shards</option>
-              <option value="topo-trace">Topo-trace</option>
-              <option value="quasar-mesh">Quasar-mesh</option>
+              <option value="clear">Clear</option>
+              <option value="diagonal-grid">Diagonal Grid</option>
+              <option value="dark-noise">Dark Noise</option>
+              <option value="dot-matrix">Dot Matrix</option>
+              <option value="circuit-board">Circuit Board</option>
+              <option value="starfield" data-animated="true">Starfield</option>
             </select>
           </div>
           <div class="footer-control">

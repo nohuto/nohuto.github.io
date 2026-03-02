@@ -2,9 +2,9 @@
 (() => {
   const THEME_KEY = 'nv-theme';
   const BG_KEY = 'nv-bg';
+  const DEFAULT_BG = 'dark-noise';
   const FONT_KEY = 'nv-font';
   const FONT_SIZE_KEY = 'nv-font-size';
-  const DEFAULT_BG = 'topo-trace';
   const FONT_SIZE_MIN = 10;
   const FONT_SIZE_MAX = 22;
 
@@ -40,14 +40,12 @@
   ]);
 
   const BG_OPTIONS = new Set([
-    'data-tape',
-    'hex-matrix',
-    'signal-rails',
-    'circuit-loom',
-    'phase-noise',
-    'mono-shards',
-    'topo-trace',
-    'quasar-mesh'
+    'clear',
+    'diagonal-grid',
+    'dark-noise',
+    'dot-matrix',
+    'circuit-board',
+    'starfield'
   ]);
 
   const FONT_OPTIONS = new Set([
