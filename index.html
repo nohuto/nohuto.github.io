@@ -10,10 +10,10 @@
   <meta http-equiv="Content-Security-Policy"
     content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; script-src-attr 'none'; style-src 'self'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self'; form-action 'self' https://www.paypal.com">
   <title>Home</title>
-  <link rel="icon" href="images/nvlogo.png">
-  <script src="bootstrap.js"></script>
-  <link rel="stylesheet" href="styles.css">
-  <script src="app.js" defer></script>
+  <link rel="icon" href="main/images/nvlogo.png">
+  <script src="main/bootstrap.js"></script>
+  <link rel="stylesheet" href="main/styles.css">
+  <script src="main/app.js" defer></script>
 </head>
 
 <body>
@@ -25,7 +25,7 @@
       <span class="prompt-user">nohuto</span>
       <span class="prompt-sep">@</span>
       <span class="prompt-host">noverse</span>
-      <span class="prompt-path">:~/site</span>
+      <span class="prompt-path">:~/main</span>
       <span class="prompt-caret">$</span>
       <span class="prompt-cmd">open</span>
       <span class="prompt-cursor" aria-hidden="true">█</span>
@@ -34,8 +34,7 @@
       <a href="index.html" aria-current="page" class="active">home</a>
       <a href="product.html">product</a>
       <a href="projects.html">projects</a>
-      <a href="about.html">about</a>
-      <a href="security.html">security</a>
+      <a href="/docs/directory/">docs</a>
     </nav>
   </header>
 
@@ -52,7 +51,7 @@
               <div class="console-output" id="console-output" role="log" aria-live="polite" aria-relevant="additions">
                 <div class="console-lines" id="console-lines"></div>
                 <form class="console-input" id="console-form" autocomplete="off">
-                  <span class="console-prompt">nohuto@noverse:~/site$</span>
+                  <span class="console-prompt">nohuto@noverse:~/main$</span>
                   <span class="console-edit">
                     <span class="console-measure" id="console-measure" aria-hidden="true"></span>
                     <span class="console-ghost" id="console-ghost" aria-hidden="true"></span>
@@ -78,21 +77,21 @@
       <div class="footer-copy">&copy; 2026 Nohuto. All rights reserved.</div>
       <div class="social">
         <a href="https://github.com/nohuto" target="_blank" rel="noopener noreferrer">
-          <img decoding="async" src="images/github-icon.png" data-dark-src="images/github-icon.png"
-            data-light-src="images/github-icon-dark.png" loading="lazy" alt="GitHub">
+          <img decoding="async" src="main/images/github-icon.png" data-dark-src="main/images/github-icon.png"
+            data-light-src="main/images/github-icon-dark.png" loading="lazy" alt="GitHub">
         </a>
         <a href="https://www.youtube.com/@5Noverse" target="_blank" rel="noopener noreferrer">
-          <img decoding="async" src="images/youtube-icon.png" data-dark-src="images/youtube-icon.png"
-            data-light-src="images/youtube-icon-dark.png" loading="lazy" alt="YouTube">
+          <img decoding="async" src="main/images/youtube-icon.png" data-dark-src="main/images/youtube-icon.png"
+            data-light-src="main/images/youtube-icon-dark.png" loading="lazy" alt="YouTube">
         </a>
         <button class="icon-button" type="button" data-email="copy" data-toast="Email copied"
           aria-label="Copy email to clipboard">
-          <img decoding="async" src="images/email-icon.png" data-dark-src="images/email-icon.png"
-            data-light-src="images/email-icon-dark.png" loading="lazy" alt="Email">
+          <img decoding="async" src="main/images/email-icon.png" data-dark-src="main/images/email-icon.png"
+            data-light-src="main/images/email-icon-dark.png" loading="lazy" alt="Email">
         </button>
         <a href="https://discord.gg/E2ybG4j9jU" target="_blank" rel="noopener noreferrer">
-          <img decoding="async" src="images/discord-icon.png" data-dark-src="images/discord-icon.png"
-            data-light-src="images/discord-icon-dark.png" loading="lazy" alt="Discord">
+          <img decoding="async" src="main/images/discord-icon.png" data-dark-src="main/images/discord-icon.png"
+            data-light-src="main/images/discord-icon-dark.png" loading="lazy" alt="Discord">
         </a>
       </div>
       <div class="footer-tools">

@@ -1,0 +1,595 @@
+<!DOCTYPE html><html lang="en" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-bguv2lll"> <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Brave | Noverse Docs</title><link rel="canonical" href="https://www.noverse.dev/docs/app-tools/docs/brave/"/><link rel="sitemap" href="/docs/sitemap-index.xml"/><link rel="shortcut icon" href="/docs/logo.png" type="image/png"/><meta name="generator" content="Astro v6.0.2"/><meta name="generator" content="Starlight v0.38.0"/><meta property="og:title" content="Brave"/><meta property="og:type" content="article"/><meta property="og:url" content="https://www.noverse.dev/docs/app-tools/docs/brave/"/><meta property="og:locale" content="en"/><meta property="og:description" content="Generated from app-tools file: brave/desc.md."/><meta property="og:site_name" content="Noverse Docs"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="Generated from app-tools file: brave/desc.md."/><script>
+	window.StarlightThemeProvider = (() => {
+		const storedTheme =
+			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
+		const theme =
+			storedTheme ||
+			(window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+		document.documentElement.dataset.theme = theme === 'light' ? 'light' : 'dark';
+		return {
+			updatePickers(theme = storedTheme || 'auto') {
+				document.querySelectorAll('starlight-theme-select').forEach((picker) => {
+					const select = picker.querySelector('select');
+					if (select) select.value = theme;
+					/** @type {HTMLTemplateElement | null} */
+					const tmpl = document.querySelector(`#theme-icons`);
+					const newIcon = tmpl && tmpl.content.querySelector('.' + theme);
+					if (newIcon) {
+						const oldIcon = picker.querySelector('svg.label-icon');
+						if (oldIcon) {
+							oldIcon.replaceChildren(...newIcon.cloneNode(true).childNodes);
+						}
+					}
+				});
+			},
+		};
+	})();
+</script><template id="theme-icons"><svg aria-hidden="true" class="light astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg aria-hidden="true" class="dark astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg><svg aria-hidden="true" class="auto astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></template><link rel="stylesheet" href="/docs/_astro/print.DNXP8c50.css" media="print"><link rel="stylesheet" href="/docs/_astro/middleware.Trkv8c-y.css"><script type="module" src="/docs/_astro/page.CQKSag1d.js"></script></head> <body class="astro-bguv2lll"> <a href="#_top" class="astro-7q3lir66">Skip to content</a> <div class="page sl-flex astro-vrdttmbt"> <header class="header astro-vrdttmbt"><div class="header astro-zixgsetp"> <div class="title-wrapper sl-flex astro-zixgsetp"> <a href="/docs/" class="site-title sl-flex astro-m46x6ez3">  <span class="astro-m46x6ez3" translate="no"> Noverse Docs </span> </a> </div> <div class="sl-flex print:hidden astro-zixgsetp"> <site-search class="astro-zixgsetp astro-v37mnknz" data-translations="{&#34;placeholder&#34;:&#34;Search&#34;}"> <button data-open-modal disabled aria-label="Search" aria-keyshortcuts="Control+K" class="astro-v37mnknz"> <svg aria-hidden="true" class="astro-v37mnknz astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg> <span class="sl-hidden md:sl-block astro-v37mnknz" aria-hidden="true">Search</span> <kbd class="sl-hidden md:sl-flex astro-v37mnknz" style="display: none;"> <kbd class="astro-v37mnknz">Ctrl</kbd><kbd class="astro-v37mnknz">K</kbd> </kbd> </button> <dialog style="padding:0" aria-label="Search" class="astro-v37mnknz"> <div class="dialog-frame sl-flex astro-v37mnknz">  <button data-close-modal class="sl-flex md:sl-hidden astro-v37mnknz"> Cancel </button> <div class="search-container astro-v37mnknz"> <div id="starlight__search" class="astro-v37mnknz"></div> </div> </div> </dialog> </site-search>  <script>
+	(() => {
+		const openBtn = document.querySelector('button[data-open-modal]');
+		const shortcut = openBtn?.querySelector('kbd');
+		if (!openBtn || !(shortcut instanceof HTMLElement)) return;
+		const platformKey = shortcut.querySelector('kbd');
+		if (platformKey && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			platformKey.textContent = '⌘';
+			openBtn.setAttribute('aria-keyshortcuts', 'Meta+K');
+		}
+		shortcut.style.display = '';
+	})();
+</script> <script type="module" src="/docs/_astro/Search.astro_astro_type_script_index_0_lang.kqNDVTuv.js"></script>  </div> <div class="sl-hidden md:sl-flex print:hidden right-group astro-zixgsetp"> <div class="header-shortcuts astro-zixgsetp"> <a class="header-shortcut astro-zixgsetp" href="https://github.com/nohuto/app-tools" target="_blank" rel="noopener noreferrer"> app-tools </a> <a class="header-shortcut astro-zixgsetp" href="/docs/directory/">Directory</a> </div> <div class="sl-flex social-icons astro-zixgsetp"> <a href="https://github.com/nohuto" rel="me" class="sl-flex astro-wy4te6ga"><span class="sr-only astro-wy4te6ga">GitHub</span><svg aria-hidden="true" class="astro-wy4te6ga astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a><a href="https://discord.gg/E2ybG4j9jU" rel="me" class="sl-flex astro-wy4te6ga"><span class="sr-only astro-wy4te6ga">Discord</span><svg aria-hidden="true" class="astro-wy4te6ga astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M20.32 4.37a19.8 19.8 0 0 0-4.93-1.51 13.78 13.78 0 0 0-.64 1.28 18.27 18.27 0 0 0-5.5 0 12.64 12.64 0 0 0-.64-1.28h-.05A19.74 19.74 0 0 0 3.64 4.4 20.26 20.26 0 0 0 .11 18.09l.02.02a19.9 19.9 0 0 0 6.04 3.03l.04-.02a14.24 14.24 0 0 0 1.23-2.03.08.08 0 0 0-.05-.07 13.1 13.1 0 0 1-1.9-.92.08.08 0 0 1 .02-.1 10.2 10.2 0 0 0 .41-.31h.04a14.2 14.2 0 0 0 12.1 0l.04.01a9.63 9.63 0 0 0 .4.32.08.08 0 0 1-.03.1 12.29 12.29 0 0 1-1.9.91.08.08 0 0 0-.02.1 15.97 15.97 0 0 0 1.27 2.01h.04a19.84 19.84 0 0 0 6.03-3.05v-.03a20.12 20.12 0 0 0-3.57-13.69ZM8.02 15.33c-1.18 0-2.16-1.08-2.16-2.42 0-1.33.96-2.42 2.16-2.42 1.21 0 2.18 1.1 2.16 2.42 0 1.34-.96 2.42-2.16 2.42Zm7.97 0c-1.18 0-2.15-1.08-2.15-2.42 0-1.33.95-2.42 2.15-2.42 1.22 0 2.18 1.1 2.16 2.42 0 1.34-.94 2.42-2.16 2.42Z"/></svg></a> </div> <starlight-rapide-theme-select class="astro-vimfzm3o"> <button aria-label="Select theme" aria-live="polite" class="sl-flex astro-vimfzm3o" title="Select theme"> <svg aria-hidden="true" height="16" viewBox="0 0 24 24" width="16" class="astro-vimfzm3o"> <mask class="moon astro-vimfzm3o" id="moon-mask-0e2e48da"> <rect x="0" y="0" width="100%" height="100%" fill="white" class="astro-vimfzm3o"></rect> <circle cx="24" cy="10" r="6" fill="black" class="astro-vimfzm3o"></circle> </mask> <circle class="sun astro-vimfzm3o" cx="12" cy="12" r="6" mask="url(#moon-mask-0e2e48da)"></circle> <g class="sun-beams astro-vimfzm3o" stroke="currentColor"> <line x1="12" y1="1" x2="12" y2="3" class="astro-vimfzm3o"></line> <line x1="12" y1="21" x2="12" y2="23" class="astro-vimfzm3o"></line> <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" class="astro-vimfzm3o"></line> <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" class="astro-vimfzm3o"></line> <line x1="1" y1="12" x2="3" y2="12" class="astro-vimfzm3o"></line> <line x1="21" y1="12" x2="23" y2="12" class="astro-vimfzm3o"></line> <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" class="astro-vimfzm3o"></line> <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" class="astro-vimfzm3o"></line> </g> </svg> </button> </starlight-rapide-theme-select>   <script>
+  StarlightThemeProvider.updatePickers()
+</script> <script type="module">const n="starlight-theme";function c(e){return e==="auto"||e==="dark"||e==="light"?e:"auto"}function l(){return c(typeof localStorage<"u"&&localStorage.getItem(n))}function i(e){typeof localStorage<"u"&&localStorage.setItem(n,e==="light"||e==="dark"?e:"")}function s(){return matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}function t(e){StarlightThemeProvider.updatePickers(e),document.documentElement.dataset.theme=e==="auto"?s():e,i(e)}matchMedia("(prefers-color-scheme: light)").addEventListener("change",()=>{l()==="auto"&&t("auto")});customElements.define("starlight-rapide-theme-select",class extends HTMLElement{constructor(){super(),t(l());const a=this.querySelector("button");a?.addEventListener("click",()=>{const o=c(document.documentElement.dataset.theme),r=o==="dark"?"light":o==="light"?"dark":"auto";t(r),a?.setAttribute("aria-label",`${r} theme`)})}});</script>  </div> </div></header> <nav class="sidebar print:hidden astro-vrdttmbt" aria-label="Main"> <starlight-menu-button class="print:hidden astro-jif73yzw"> <button aria-expanded="false" aria-label="Menu" aria-controls="starlight__sidebar" class="sl-flex md:sl-hidden astro-jif73yzw"> <svg aria-hidden="true" class="open-menu astro-jif73yzw astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg> <svg aria-hidden="true" class="close-menu astro-jif73yzw astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg> </button> </starlight-menu-button> <script type="module">class s extends HTMLElement{constructor(){super(),this.btn=this.querySelector("button"),this.btn.addEventListener("click",()=>this.toggleExpanded());const t=this.closest("nav");t&&t.addEventListener("keyup",e=>this.closeOnEscape(e))}setExpanded(t){this.setAttribute("aria-expanded",String(t)),document.body.toggleAttribute("data-mobile-menu-expanded",t)}toggleExpanded(){this.setExpanded(this.getAttribute("aria-expanded")!=="true")}closeOnEscape(t){t.code==="Escape"&&(this.setExpanded(!1),this.btn.focus())}}customElements.define("starlight-menu-button",s);</script>  <div id="starlight__sidebar" class="sidebar-pane astro-vrdttmbt"> <div class="sidebar-content sl-flex astro-vrdttmbt"> <div class="sidebar-tree-search"> <label class="sidebar-tree-search-wrap" for="sidebar-tree-search"> <input type="text" id="sidebar-tree-search" class="sidebar-tree-search-input" placeholder="Filter sidebar..." autocomplete="off" spellcheck="false"> <span class="sidebar-tree-search-icon" aria-hidden="true"></span> </label> <p id="sidebar-tree-no-results" class="sidebar-tree-no-results sl-hidden">
+No results found in this navigation tree.
+</p> </div> <sl-sidebar-state-persist data-hash="0m1d8a0" class="astro-kku4brbg"> <script aria-hidden="true">
+		(() => {
+			try {
+				if (!matchMedia('(min-width: 50em)').matches) return;
+				/** @type {HTMLElement | null} */
+				const target = document.querySelector('sl-sidebar-state-persist');
+				const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+				if (!target || !state || target.dataset.hash !== state.hash) return;
+				window._starlightScrollRestore = state.scroll;
+				customElements.define(
+					'sl-sidebar-restore',
+					class SidebarRestore extends HTMLElement {
+						connectedCallback() {
+							try {
+								const idx = parseInt(this.dataset.index || '');
+								const details = this.closest('details');
+								if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+							} catch {}
+						}
+					}
+				);
+			} catch {}
+		})();
+	</script>  <ul class="top-level astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/docs/app-tools/sections/overview/" class="large astro-3ii7xxms"> <span class="astro-3ii7xxms">Overview</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/docs/app-tools/sections/table-of-content/" class="large astro-3ii7xxms"> <span class="astro-3ii7xxms">Table of Content</span>  </a> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">docs</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="0"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/docs/app-tools/docs/brave/" aria-current="page" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Brave</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/docs/app-tools/docs/discord/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Discord</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/docs/app-tools/docs/epic-games/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Epic Games</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/docs/app-tools/docs/lghub/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Lghub</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/docs/app-tools/docs/spotify/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Spotify</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/docs/app-tools/docs/steam/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Steam</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/docs/app-tools/docs/steelseries/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Steelseries</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/docs/app-tools/docs/thorium/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Thorium</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/docs/app-tools/docs/ungoogled/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Ungoogled</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/docs/app-tools/docs/wallpaper-engine/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Wallpaper Engine</span>  </a> </li> </ul> </details> </li> </ul>  <script aria-hidden="true">
+		(() => {
+			const scroller = document.getElementById('starlight__sidebar');
+			if (!window._starlightScrollRestore || !scroller) return;
+			scroller.scrollTop = window._starlightScrollRestore;
+			delete window._starlightScrollRestore;
+		})();
+	</script> </sl-sidebar-state-persist> <div class="md:sl-hidden"> <div class="mobile-preferences sl-flex astro-wu23bvmt"> <div class="social-icons astro-wu23bvmt"> <a href="https://github.com/nohuto" rel="me" class="sl-flex astro-wy4te6ga"><span class="sr-only astro-wy4te6ga">GitHub</span><svg aria-hidden="true" class="astro-wy4te6ga astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a><a href="https://discord.gg/E2ybG4j9jU" rel="me" class="sl-flex astro-wy4te6ga"><span class="sr-only astro-wy4te6ga">Discord</span><svg aria-hidden="true" class="astro-wy4te6ga astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M20.32 4.37a19.8 19.8 0 0 0-4.93-1.51 13.78 13.78 0 0 0-.64 1.28 18.27 18.27 0 0 0-5.5 0 12.64 12.64 0 0 0-.64-1.28h-.05A19.74 19.74 0 0 0 3.64 4.4 20.26 20.26 0 0 0 .11 18.09l.02.02a19.9 19.9 0 0 0 6.04 3.03l.04-.02a14.24 14.24 0 0 0 1.23-2.03.08.08 0 0 0-.05-.07 13.1 13.1 0 0 1-1.9-.92.08.08 0 0 1 .02-.1 10.2 10.2 0 0 0 .41-.31h.04a14.2 14.2 0 0 0 12.1 0l.04.01a9.63 9.63 0 0 0 .4.32.08.08 0 0 1-.03.1 12.29 12.29 0 0 1-1.9.91.08.08 0 0 0-.02.1 15.97 15.97 0 0 0 1.27 2.01h.04a19.84 19.84 0 0 0 6.03-3.05v-.03a20.12 20.12 0 0 0-3.57-13.69ZM8.02 15.33c-1.18 0-2.16-1.08-2.16-2.42 0-1.33.96-2.42 2.16-2.42 1.21 0 2.18 1.1 2.16 2.42 0 1.34-.96 2.42-2.16 2.42Zm7.97 0c-1.18 0-2.15-1.08-2.15-2.42 0-1.33.95-2.42 2.15-2.42 1.22 0 2.18 1.1 2.16 2.42 0 1.34-.94 2.42-2.16 2.42Z"/></svg></a> </div> <starlight-rapide-theme-select class="astro-vimfzm3o"> <button aria-label="Select theme" aria-live="polite" class="sl-flex astro-vimfzm3o" title="Select theme"> <svg aria-hidden="true" height="16" viewBox="0 0 24 24" width="16" class="astro-vimfzm3o"> <mask class="moon astro-vimfzm3o" id="moon-mask-7b36a1b1"> <rect x="0" y="0" width="100%" height="100%" fill="white" class="astro-vimfzm3o"></rect> <circle cx="24" cy="10" r="6" fill="black" class="astro-vimfzm3o"></circle> </mask> <circle class="sun astro-vimfzm3o" cx="12" cy="12" r="6" mask="url(#moon-mask-7b36a1b1)"></circle> <g class="sun-beams astro-vimfzm3o" stroke="currentColor"> <line x1="12" y1="1" x2="12" y2="3" class="astro-vimfzm3o"></line> <line x1="12" y1="21" x2="12" y2="23" class="astro-vimfzm3o"></line> <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" class="astro-vimfzm3o"></line> <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" class="astro-vimfzm3o"></line> <line x1="1" y1="12" x2="3" y2="12" class="astro-vimfzm3o"></line> <line x1="21" y1="12" x2="23" y2="12" class="astro-vimfzm3o"></line> <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" class="astro-vimfzm3o"></line> <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" class="astro-vimfzm3o"></line> </g> </svg> </button> </starlight-rapide-theme-select>   <script>
+  StarlightThemeProvider.updatePickers()
+</script>   </div> </div> <script>
+  (() => {
+    const initSidebarTreeFilter = () => {
+      const searchInput = document.getElementById('sidebar-tree-search');
+      const noResultsMessage = document.getElementById('sidebar-tree-no-results');
+      const sidebarTree = document.querySelector('sl-sidebar-state-persist');
+      if (!searchInput || !noResultsMessage || !sidebarTree) return;
+      if (searchInput.dataset.bound === 'true') return;
+      searchInput.dataset.bound = 'true';
+
+      const detailsElements = Array.from(sidebarTree.querySelectorAll('details'));
+      const items = Array.from(sidebarTree.querySelectorAll('li'));
+      let activeFilter = false;
+      let openStatesBeforeFilter = new Map();
+
+      const matchesAllTerms = (text, searchTerms) => {
+        const lowerText = (text || '').toLowerCase();
+        return searchTerms.every((term) => lowerText.includes(term));
+      };
+
+      const showParentChain = (element) => {
+        let parent = element.parentElement;
+        while (parent && parent !== sidebarTree) {
+          if (parent.tagName === 'LI') {
+            parent.style.display = '';
+          }
+          if (parent.tagName === 'DETAILS') {
+            parent.open = true;
+          }
+          parent = parent.parentElement;
+        }
+      };
+
+      const showDirectChildren = (details) => {
+        details.open = true;
+        const directList = details.querySelector(':scope > ul');
+        if (!directList) return;
+        directList.querySelectorAll(':scope > li').forEach((child) => {
+          child.style.display = '';
+        });
+      };
+
+      const filterSidebarItems = (query) => {
+        if (!query.trim()) {
+          items.forEach((item) => {
+            item.style.display = '';
+          });
+
+          detailsElements.forEach((details) => {
+            const originalOpen = openStatesBeforeFilter.get(details);
+            if (originalOpen !== undefined) {
+              details.open = originalOpen;
+            }
+          });
+
+          activeFilter = false;
+          openStatesBeforeFilter = new Map();
+          noResultsMessage.classList.add('sl-hidden');
+          return;
+        }
+
+        if (!activeFilter) {
+          activeFilter = true;
+          openStatesBeforeFilter = new Map(detailsElements.map((details) => [details, details.open]));
+        }
+
+        const searchTerms = query
+          .toLowerCase()
+          .split(/\s+/)
+          .filter((term) => term.length > 0);
+
+        items.forEach((item) => {
+          item.style.display = 'none';
+        });
+
+        detailsElements.forEach((details) => {
+          details.open = false;
+        });
+
+        const matchedItems = new Set();
+
+        detailsElements.forEach((details) => {
+          const summary = details.querySelector(':scope > summary');
+          if (!summary) return;
+          const summaryText = summary.textContent || '';
+          if (!matchesAllTerms(summaryText, searchTerms)) return;
+
+          const parentLi = details.closest('li');
+          if (!parentLi || matchedItems.has(parentLi)) return;
+
+          parentLi.style.display = '';
+          showDirectChildren(details);
+          showParentChain(parentLi);
+          matchedItems.add(parentLi);
+        });
+
+        items.forEach((item) => {
+          if (matchedItems.has(item)) return;
+          if (item.querySelector(':scope > details')) return;
+
+          const link = item.querySelector(':scope > a');
+          if (!link) return;
+
+          const linkText = link.textContent || '';
+          if (!matchesAllTerms(linkText, searchTerms)) return;
+
+          item.style.display = '';
+          showParentChain(item);
+          matchedItems.add(item);
+        });
+
+        if (matchedItems.size === 0) {
+          items.forEach((item) => {
+            const textContent = (item.textContent || '').toLowerCase();
+            const hasPartialMatch = searchTerms.some((term) => textContent.includes(term));
+            if (!hasPartialMatch) return;
+
+            item.style.display = '';
+            const details = item.querySelector(':scope > details');
+            if (details) showDirectChildren(details);
+            showParentChain(item);
+            matchedItems.add(item);
+          });
+        }
+
+        if (matchedItems.size === 0) {
+          noResultsMessage.classList.remove('sl-hidden');
+        } else {
+          noResultsMessage.classList.add('sl-hidden');
+        }
+      };
+
+      searchInput.addEventListener('input', () => {
+        filterSidebarItems(searchInput.value);
+      });
+
+      searchInput.addEventListener('keydown', (event) => {
+        if (event.key !== 'Escape') return;
+        searchInput.value = '';
+        filterSidebarItems('');
+      });
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initSidebarTreeFilter, { once: true });
+    } else {
+      initSidebarTreeFilter();
+    }
+
+    document.addEventListener('astro:page-load', initSidebarTreeFilter);
+  })();
+</script> </div> </div> </nav> <div class="main-frame astro-vrdttmbt">  <script type="module">const a=document.getElementById("starlight__sidebar"),n=a?.querySelector("sl-sidebar-state-persist"),o="sl-sidebar-state",i=()=>{let t=[];const e=n?.dataset.hash||"";try{const s=sessionStorage.getItem(o),r=JSON.parse(s||"{}");Array.isArray(r.open)&&r.hash===e&&(t=r.open)}catch{}return{hash:e,open:t,scroll:a?.scrollTop||0}},c=t=>{try{sessionStorage.setItem(o,JSON.stringify(t))}catch{}},d=()=>c(i()),l=(t,e)=>{const s=i();s.open[e]=t,c(s)};n?.addEventListener("click",t=>{if(!(t.target instanceof Element))return;const e=t.target.closest("summary")?.closest("details");if(!e)return;const s=e.querySelector("sl-sidebar-restore"),r=parseInt(s?.dataset.index||"");isNaN(r)||l(!e.open,r)});addEventListener("visibilitychange",()=>{document.visibilityState==="hidden"&&d()});addEventListener("pageHide",d);</script> <div class="lg:sl-flex astro-67yu43on"> <aside class="right-sidebar-container print:hidden astro-67yu43on"> <div class="right-sidebar astro-67yu43on"> <script type="module" src="/docs/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.hwBsy0Mo.js"></script><script type="module" src="/docs/_astro/TableOfContents.astro_astro_type_script_index_0_lang.FuRcXuRY.js"></script><div class="lg:sl-hidden astro-pb3aqygn"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-doynk5tl"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-doynk5tl"><details id="starlight__mobile-toc" class="astro-doynk5tl"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-doynk5tl"><span class="toggle sl-flex astro-doynk5tl">On this page<svg aria-hidden="true" class="caret astro-doynk5tl astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></span><span class="display-current astro-doynk5tl"></span></summary><div class="dropdown astro-doynk5tl"><ul class="isMobile astro-gnoq344e" style="--depth: 0;"> <li class="astro-gnoq344e" style="--depth: 0;"> <a href="#_top" class="astro-gnoq344e" style="--depth: 0;"> <span class="astro-gnoq344e" style="--depth: 0;">Overview</span> </a>  </li><li class="astro-gnoq344e" style="--depth: 0;"> <a href="#tui-preview" class="astro-gnoq344e" style="--depth: 0;"> <span class="astro-gnoq344e" style="--depth: 0;">TUI Preview</span> </a>  </li><li class="astro-gnoq344e" style="--depth: 0;"> <a href="#in-app-settings" class="astro-gnoq344e" style="--depth: 0;"> <span class="astro-gnoq344e" style="--depth: 0;">In-App Settings</span> </a>  </li><li class="astro-gnoq344e" style="--depth: 0;"> <a href="#flags---privacy-security--performance" class="astro-gnoq344e" style="--depth: 0;"> <span class="astro-gnoq344e" style="--depth: 0;">Flags - Privacy, Security &amp; Performance</span> </a> <ul class="isMobile astro-gnoq344e" style="--depth: 1;"> <li class="astro-gnoq344e" style="--depth: 1;"> <a href="#experimental-flags" class="astro-gnoq344e" style="--depth: 1;"> <span class="astro-gnoq344e" style="--depth: 1;">Experimental Flags</span> </a>  </li> </ul> </li><li class="astro-gnoq344e" style="--depth: 0;"> <a href="#download" class="astro-gnoq344e" style="--depth: 0;"> <span class="astro-gnoq344e" style="--depth: 0;">Download</span> </a>  </li> </ul></div></details></nav></mobile-starlight-toc></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-pb3aqygn"><div class="sl-container astro-pb3aqygn"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">On this page</h2><ul class="astro-gnoq344e" style="--depth: 0;"> <li class="astro-gnoq344e" style="--depth: 0;"> <a href="#_top" class="astro-gnoq344e" style="--depth: 0;"> <span class="astro-gnoq344e" style="--depth: 0;">Overview</span> </a>  </li><li class="astro-gnoq344e" style="--depth: 0;"> <a href="#tui-preview" class="astro-gnoq344e" style="--depth: 0;"> <span class="astro-gnoq344e" style="--depth: 0;">TUI Preview</span> </a>  </li><li class="astro-gnoq344e" style="--depth: 0;"> <a href="#in-app-settings" class="astro-gnoq344e" style="--depth: 0;"> <span class="astro-gnoq344e" style="--depth: 0;">In-App Settings</span> </a>  </li><li class="astro-gnoq344e" style="--depth: 0;"> <a href="#flags---privacy-security--performance" class="astro-gnoq344e" style="--depth: 0;"> <span class="astro-gnoq344e" style="--depth: 0;">Flags - Privacy, Security &amp; Performance</span> </a> <ul class="astro-gnoq344e" style="--depth: 1;"> <li class="astro-gnoq344e" style="--depth: 1;"> <a href="#experimental-flags" class="astro-gnoq344e" style="--depth: 1;"> <span class="astro-gnoq344e" style="--depth: 1;">Experimental Flags</span> </a>  </li> </ul> </li><li class="astro-gnoq344e" style="--depth: 0;"> <a href="#download" class="astro-gnoq344e" style="--depth: 0;"> <span class="astro-gnoq344e" style="--depth: 0;">Download</span> </a>  </li> </ul></nav></starlight-toc></div></div> </div> </aside> <div class="main-pane astro-67yu43on">  <main data-pagefind-body class="astro-bguv2lll" lang="en" dir="ltr">    <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" class="astro-j6tvhyss">Brave</h1> </div> </div> <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Option</th><th>Description</th><th>Details</th></tr></thead><tbody><tr><td><strong>Debloat</strong></td><td>Removes crash handler, language packs, event log files (some are optional), and older Brave versions</td><td>-</td></tr><tr><td><strong>Disable Tasks/Services</strong></td><td>Disables scheduled tasks and services</td><td><code dir="auto">brave</code>, <code dir="auto">BraveElevationService</code>, <code dir="auto">bravem</code>, <code dir="auto">BraveSoftwareUpdate*</code> scheduled tasks</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h2"><h2 id="tui-preview">TUI Preview</h2><a class="sl-anchor-link" href="#tui-preview"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “TUI Preview”</span></a></div>
+<p><img src="https://github.com/nohuto/app-tools/blob/main/brave/media/bravetui.png?raw=true" alt=""></p>
+<div class="sl-heading-wrapper level-h2"><h2 id="in-app-settings">In-App Settings</h2><a class="sl-anchor-link" href="#in-app-settings"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “In-App Settings”</span></a></div>
+<p><img src="https://github.com/nohuto/app-tools/blob/main/brave/media/br1.png?raw=true" alt="">
+<img src="https://github.com/nohuto/app-tools/blob/main/brave/media/br2.png?raw=true" alt=""></p>
+<p>Possible uBO configuration (which I currently use):</p>
+<blockquote>
+<p><a href="https://github.com/nohuto/app-tools/blob/main/assets/uBlock-Config.txt">https://github.com/nohuto/app-tools/blob/main/assets/uBlock-Config.txt</a></p>
+</blockquote>
+<p>uBlock Origin Filters:</p>
+<blockquote>
+<p><a href="https://github.com/nohuto/blocklist-mgr">https://github.com/nohuto/blocklist-mgr</a><br>
+<a href="https://github.com/yokoffing/filterlists">https://github.com/yokoffing/filterlists</a><br>
+<a href="https://filterlists.com/">https://filterlists.com/</a></p>
+</blockquote>
+<p>Further extensions you may want:</p>
+<blockquote>
+<p><a href="https://chromewebstore.google.com/detail/ublock-origin-development/cgbcahbpdhpcegmbfconppldiemgcoii?pli=1">https://chromewebstore.google.com/detail/ublock-origin-development/cgbcahbpdhpcegmbfconppldiemgcoii?pli=1</a> (uBlock Origin development build)</p>
+</blockquote>
+<p>uBlock origin was removed from the chrome extension store, but you can still add it via the link (may be removed soon).</p>
+<blockquote>
+<p><a href="https://chromewebstore.google.com/detail/duckduckgo-privacy-essent/bkdgflcldnnnapblkhphbgpggdiikppg">https://chromewebstore.google.com/detail/duckduckgo-privacy-essent/bkdgflcldnnnapblkhphbgpggdiikppg</a> (search engine)</p>
+</blockquote>
+<p>You can get my minimal configuration for the search engine via the <code dir="auto">nohutoddg</code> passphrase.</p>
+<blockquote>
+<p><a href="https://chromewebstore.google.com/detail/i-still-dont-care-about-c/edibdbjcniadpccecjdfdjjppcpchdlm">https://chromewebstore.google.com/detail/i-still-dont-care-about-c/edibdbjcniadpccecjdfdjjppcpchdlm</a> (skips cookies - don’t use <code dir="auto">I don't care about cookies</code>)
+<a href="https://chromewebstore.google.com/detail/dark-reader/eimadpbcbfnmbkopoojfekhnkhdbieeh">https://chromewebstore.google.com/detail/dark-reader/eimadpbcbfnmbkopoojfekhnkhdbieeh</a></p>
+</blockquote>
+<p>Possible DDG search engine configuration:</p>
+<p><img src="https://github.com/nohuto/app-tools/blob/main/assets/ddg1.png?raw=true" alt="">
+<img src="https://github.com/nohuto/app-tools/blob/main/assets/ddg2.png?raw=true" alt="">
+<img src="https://github.com/nohuto/app-tools/blob/main/assets/ddg3.png?raw=true" alt=""></p>
+<div class="sl-heading-wrapper level-h2"><h2 id="flags---privacy-security--performance">Flags - Privacy, Security &#x26; Performance</h2><a class="sl-anchor-link" href="#flags---privacy-security--performance"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Flags - Privacy, Security &#x26; Performance”</span></a></div>
+<p>You could also add command lines, instead of applying some of them via <code dir="auto">brave://flags</code>, but you won’t see the changes if the command line is also available in <code dir="auto">brave://flags</code>. Verify them by entering <code dir="auto">brave://version</code> and looking into the ‘<strong>Command Line</strong>’ section, you should see all commands, which are currently used there.</p>
+<p>How do I use command line flags in Brave?</p>
+<blockquote>
+<p><a href="https://support.brave.com/hc/en-us/articles/360044860011-How-Do-I-Use-Command-Line-Flags-in-Brave">https://support.brave.com/hc/en-us/articles/360044860011-How-Do-I-Use-Command-Line-Flags-in-Brave</a></p>
+</blockquote>
+<p>The following are flags, which can be changed, by opening <code dir="auto">brave://flags</code> and pasting the name into the search bar. Some are personal preference, some may disable features, which you want, so read the desc of the flag, before changing it.</p>
+<p>Since Brave comes with crypo features, Leo AI etc. by default it’s recommended to disable these features via flags (which completely hides them from the UI).</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Flag</th><th>Description</th><th>State</th></tr></thead><tbody><tr><td><code dir="auto">brave-wallet-zcash</code></td><td>Zcash support for native Brave Wallet</td><td>Disabled</td></tr><tr><td><code dir="auto">brave-wallet-bitcoin</code></td><td>Bitcoin support for native Brave Wallet</td><td>Disabled</td></tr><tr><td><code dir="auto">brave-wallet-cardano</code></td><td>Cardano support for native Brave Wallet</td><td>Disabled</td></tr><tr><td><code dir="auto">brave-ai-chat</code></td><td>Summarize articles and engage in conversation with AI</td><td>Disabled</td></tr><tr><td><code dir="auto">brave-ai-chat-history</code></td><td>Enables AI Chat History persistence and management</td><td>Disabled</td></tr><tr><td><code dir="auto">brave-ai-chat-tools</code></td><td>Conversations can provide Tools to the AI to perform more specific actions.</td><td>Disabled</td></tr><tr><td><code dir="auto">brave-ai-chat-agent-profile</code></td><td>Enables Leo’s content agent features and only in a separate built-in profile.</td><td>Disabled</td></tr><tr><td><code dir="auto">brave-ai-chat-open-leo-from-brave-search</code></td><td>Enables opening Leo AI Chat from Brave Search</td><td>Disabled</td></tr><tr><td><code dir="auto">brave-ai-rewriter</code></td><td>Enables the Brave AI rewriter dialog</td><td>Disabled</td></tr><tr><td><code dir="auto">block-insecure-private-network-requests</code></td><td>Prevents non-secure contexts from making subresource requests to more-private IP addresses</td><td>Enabled</td></tr><tr><td><code dir="auto">clear-cross-site-cross-browsing-context-group-window-name</code></td><td>Clear the preserved window.name property when it’s a top-level cross-site navigation that swaps BrowsingContextGroup</td><td>Enabled</td></tr><tr><td><code dir="auto">disallow-doc-written-script-loads</code></td><td>Disallows fetches for third-party parser-blocking scripts inserted into the main frame via document.write</td><td>Enabled</td></tr><tr><td><code dir="auto">enable-gpu-rasterization</code></td><td>Use GPU to rasterize web content</td><td>Enabled</td></tr><tr><td><code dir="auto">enable-parallel-downloading</code></td><td>Enable parallel downloading to accelerate download speed</td><td>Enabled</td></tr><tr><td><code dir="auto">enable-quic</code></td><td>Enable experimental QUIC protocol support</td><td>Enabled</td></tr><tr><td><code dir="auto">enable-webrtc-hide-local-ips-with-mdns</code></td><td>Conceal local IP addresses with mDNS hostnames</td><td>Enabled</td></tr><tr><td><code dir="auto">enable-zero-copy</code></td><td>Raster threads write directly to GPU memory associated with tiles</td><td>Enabled</td></tr><tr><td><code dir="auto">brave-adblock-default-1p-blocking</code></td><td>Allow Brave Shields to block first-party network requests in Standard blocking mode</td><td>Enabled</td></tr><tr><td><code dir="auto">brave-override-download-danger-level</code></td><td>Disables download warnings for files which are considered dangerous when Safe Browsing is disabled. Use at your own risks.</td><td>Enabled</td></tr><tr><td><code dir="auto">brave-module-filename-patch</code></td><td>Enables patching of executable’s name from brave.exe to chrome.exe in sandboxed processes.</td><td>Enabled</td></tr><tr><td><code dir="auto">enable-generic-sensor-extra-classes</code></td><td>Enables an extra set of sensor classes based on Generic Sensor API, which expose previously unavailable platform features, i.e. AmbientLightSensor and Magnetometer interfaces</td><td>Disabled</td></tr><tr><td><code dir="auto">enable-vulkan</code></td><td>Use Vulkan as the graphics backend</td><td>Disabled</td></tr><tr><td><code dir="auto">enable-webrtc-remote-event-log</code></td><td>Allow collecting WebRTC event logs and uploading them to Crash</td><td>Disabled</td></tr><tr><td><code dir="auto">in-product-help-demo-mode-choice</code></td><td>Selects the In-Product Help demo mode</td><td>Disabled</td></tr><tr><td><code dir="auto">media-router-cast-allow-all-ips</code></td><td>Have the Media Router connect to Cast devices on all IP addresses, not just RFC1918/RFC4193 private addresses</td><td>Disabled</td></tr><tr><td><code dir="auto">pull-to-refresh</code></td><td>Pull-to-refresh gesture in response to vertical overscroll</td><td>Disabled</td></tr><tr><td><code dir="auto">use-dev-updater-url</code></td><td>Use the dev URL for the component updater</td><td>Disabled</td></tr><tr><td><code dir="auto">brave-cosmetic-filtering-sync-load</code></td><td>Enable sync loading of cosmetic filter rules</td><td>Disabled</td></tr><tr><td><code dir="auto">brave-ads-should-always-run-brave-ads-service</code></td><td>Always run Brave Ads service to support triggering ad events when Brave Private Ads are disabled</td><td>Disabled</td></tr><tr><td><code dir="auto">translate</code></td><td>Should be used with brave-translate-go</td><td>Disabled</td></tr><tr><td><code dir="auto">native-brave-wallet</code></td><td>Native cryptocurrency wallet support without the use of extensions</td><td>Disabled</td></tr><tr><td><code dir="auto">brave-news-peek</code></td><td>Prompt Brave News via the top featured article peeking up from the bottom of the New Tab Page, after a short delay</td><td>Disabled</td></tr><tr><td><code dir="auto">brave-news-feed-update</code></td><td>Use the updated Brave News feed</td><td>Disabled</td></tr><tr><td><code dir="auto">brave-rewards-gemini</code></td><td>Enables support for Gemini as an external wallet provider for Brave</td><td>Disabled</td></tr><tr><td><code dir="auto">top-chrome-touch-ui</code></td><td>Enables touch UI layout in the browser’s top chrome</td><td>Disabled</td></tr><tr><td><code dir="auto">zero-copy-video-capture</code></td><td>Camera produces a GPU-friendly buffer on capture and, if there is, hardware accelerated video encoder consumes the buffer</td><td>Disabled</td></tr><tr><td><code dir="auto">record-web-app-debug-info</code></td><td>Enables recording additional web app related debugging data to be displayed in: chrome://web-app-internals</td><td>Disabled</td></tr><tr><td><code dir="auto">run-video-capture-service-in-browser</code></td><td>Run the video capture service in the browser process</td><td>Disabled</td></tr><tr><td><code dir="auto">show-autofill-type-predictions</code></td><td>Annotates web forms with Autofill field type predictions as placeholder text</td><td>Disabled</td></tr><tr><td><code dir="auto">smooth-scrolling</code></td><td>Animate smoothly when scrolling page content</td><td>Disabled</td></tr><tr><td><code dir="auto">overlay-strategies</code></td><td>Select strategies used to promote quads to HW overlays. Note that strategies other than Default may break playback of protected content.</td><td>None / Occluded and unoccluded buffers</td></tr><tr><td><code dir="auto">use-angle</code></td><td>Choose the graphics backend for ANGLE. D3D11 is used on most Windows computers by default. Using the OpenGL backend is not supported and will likely exhibit rendering artifacts.</td><td>D3D11on12 (Test)</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h3"><h3 id="experimental-flags">Experimental Flags</h3><a class="sl-anchor-link" href="#experimental-flags"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Experimental Flags”</span></a></div>
+<p>The following are flags, which also can be useful, but youll have to test them yourself. Make sure to read the desc of the flag! If you experience issues, revert them to their default value. Using the flags listed above is already enough, this is just for people, who want to test more. If you dont know much about such settings, leave them, as for example <code dir="auto">enable-waitable-swap-chain</code> can cause frame drops, if changing it to max 1 frame.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Flag</th><th>Description</th><th>State</th></tr></thead><tbody><tr><td><code dir="auto">enable-isolated-sandboxed-iframes</code></td><td>When enabled, applies process isolation to iframes with the ‘sandbox’ attribute and without the ‘allow-same-origin’ permission set on that attribute</td><td>Enabled</td></tr><tr><td><code dir="auto">enable-web-bluetooth-new-permissions-backend</code></td><td>Enables the new permissions backend for Web Bluetooth. This will enable persistent storage of device permissions and Web Bluetooth features such as BluetoothDevice.watchAdvertisements() and Bluetooth.getDevices()</td><td>Enabled</td></tr><tr><td><code dir="auto">fingerprinting-canvas-image-data-noise</code></td><td>Slightly modifies at most 10 pixels in Canvas image data extracted via JS APIs</td><td>Enabled</td></tr><tr><td><code dir="auto">fingerprinting-canvas-measuretext-noise</code></td><td>Scale the output values of Canvas::measureText() with a randomly selected factor in the range -0.0003% to 0.0003%, which are recomputed on every document initialization</td><td>Enabled</td></tr><tr><td><code dir="auto">fingerprinting-client-rects-noise</code></td><td>Scale the output values of Range::getClientRects() and Element::getBoundingClientRect() with a randomly selected factor in the range -0.0003% to 0.0003%, which are recomputed on every document initialization</td><td>Enabled</td></tr><tr><td><code dir="auto">isolate-origins</code></td><td>Isolate additional origins</td><td>Enabled</td></tr><tr><td><code dir="auto">strict-origin-isolation</code></td><td>Experimental security mode that strengthens the site isolation policy. Controls whether site isolation should use origins instead of scheme and eTLD+1</td><td>Enabled</td></tr><tr><td><code dir="auto">use-dns-https-svcb-alpn</code></td><td>When enabled, Chrome may try QUIC on the first connection using the ALPN information in the DNS HTTPS record</td><td>Enabled</td></tr><tr><td><code dir="auto">enable-webusb-device-detection</code></td><td>When enabled, the user will be notified when a device which advertises support for WebUSB is connected. Disable if problems with USB devices are observed when the browser is running</td><td>Disabled</td></tr><tr><td><code dir="auto">system-keyboard-lock</code></td><td>Enables websites to use the keyboard.lock() API to intercept system keyboard shortcuts and have the events routed directly to the website when in fullscreen mode</td><td>Disabled</td></tr><tr><td><code dir="auto">username-first-flow-with-intermediate-values-predictions</code></td><td>New single username predictions based on voting from Username First Flow with intermediate values</td><td>Disabled</td></tr><tr><td><code dir="auto">username-first-flow-with-intermediate-values-voting</code></td><td>Support voting on username first flow with intermediate values. Username first flow is login/sign-up flow where a user has to type username first on one page and then password on another page. Intermediate fields are usually an OTP field or CAPTCHA</td><td>Disabled</td></tr><tr><td><code dir="auto">web-share</code></td><td>Enables the Web Share (navigator.share) APIs on experimentally supported platforms</td><td>Disabled</td></tr><tr><td><code dir="auto">enable-waitable-swap-chain</code></td><td>Use waitable swap chains to reduce presentation latency (effective only on Windows 8.1 or later). If enabled, specify the maximum number of frames that can be queued, ranging from 1–3. 1 has the lowest delay but is most likely to drop frames, while 3 has the highest delay but is least likely to drop frames.</td><td>Enabled Max 2 Frame</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h2"><h2 id="download">Download</h2><a class="sl-anchor-link" href="#download"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Download”</span></a></div>
+<p>It might fail execution if the powershell execution policy is set to it’s default values. See <a href="/docs/win-config/security/ps-unrestricted-policy/">PS Unrestricted Policy</a> for details.</p>
+<blockquote>
+<p><a href="https://github.com/nohuto/app-tools/blob/main/brave/NV-Brave-Tool.ps1">brave/NV-Brave-Tool</a></p>
+</blockquote> </div> <footer class="sl-flex astro-3yyafb3n"> <div class="meta sl-flex astro-3yyafb3n"> <a href="https://github.com/nohuto/app-tools/blob/main/brave/desc.md" class="sl-flex print:hidden astro-eez2twj6"><svg aria-hidden="true" class="astro-eez2twj6 astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.2em;"><path d="M22 7.24a1 1 0 0 0-.29-.71l-4.24-4.24a1 1 0 0 0-1.1-.22 1 1 0 0 0-.32.22l-2.83 2.83L2.29 16.05a1 1 0 0 0-.29.71V21a1 1 0 0 0 1 1h4.24a1 1 0 0 0 .76-.29l10.87-10.93L21.71 8c.1-.1.17-.2.22-.33a1 1 0 0 0 0-.24v-.14l.07-.05ZM6.83 20H4v-2.83l9.93-9.93 2.83 2.83L6.83 20ZM18.17 8.66l-2.83-2.83 1.42-1.41 2.82 2.82-1.41 1.42Z"/></svg>Edit page</a>  </div> <div class="pagination-links print:hidden astro-tely5epz" dir="ltr"><a href="/docs/nvapi-cli/sections/documentation/" rel="prev" class="astro-tely5epz"><span class="link-label sl-flex astro-tely5epz"><svg aria-hidden="true" class="astro-tely5epz astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg>Previous</span><span class="link-title astro-tely5epz">Documentation</span></a><a href="/docs/app-tools/docs/discord/" rel="next" class="astro-tely5epz"><span class="link-label sl-flex astro-tely5epz">Next<svg aria-hidden="true" class="astro-tely5epz astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg></span><span class="link-title astro-tely5epz">Discord</span></a></div>  </footer> </div> </div>  </main> </div> </div> </div> </div> </body></html>

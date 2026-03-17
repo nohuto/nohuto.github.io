@@ -1,0 +1,26 @@
+---
+title: 'Lghub'
+description: 'Generated from app-tools file: lghub/desc.md.'
+editUrl: 'https://github.com/nohuto/app-tools/blob/main/lghub/desc.md'
+sidebar:
+  order: 4
+---
+
+Simple script which enables/disables the `LGHUBUpdaterService` service and other related ones. If you use the LG Hub software just for your mouse, use [onboard memory manager](https://support.logi.com/hc/en-us/articles/360059641133-Onboard-Memory-Manager) instead.
+
+Disables/removes:_
+- `LGHUBUpdaterService`
+- `logi_joy_bus_enum`
+- `logi_joy_vir_hid`
+- `logi_lamparray_service`
+- LGHUB from Startup
+
+## In-App Settings
+
+![](https://github.com/nohuto/app-tools/blob/main/lghub/media/logi.png?raw=true)
+
+## Download
+
+It might fail execution if the powershell execution policy is set to it's default values. See [PS Unrestricted Policy](/docs/win-config/security/ps-unrestricted-policy/) for details.
+
+> [lghub/NV-LGHUB-Switch](https://github.com/nohuto/app-tools/blob/main/lghub/NV-LGHUB-Switch.ps1)

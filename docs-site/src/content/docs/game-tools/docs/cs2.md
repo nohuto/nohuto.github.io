@@ -1,0 +1,38 @@
+---
+title: 'Cs2'
+description: 'Generated from game-tools file: cs2/desc.md.'
+editUrl: 'https://github.com/nohuto/game-tools/blob/main/cs2/desc.md'
+sidebar:
+  order: 1
+---
+
+| Option                | Details                                                           |
+|-----------------------------------|-------------------------------------------------------------------|
+| `cs2_video.txt` & `cs2_machine_convars.vcfg` | Replaces specific lines to configure game settings     |
+| `autoexec.cfg`                    | Configuration (console commands) – Doesn't remove current commands |
+| **QoS Policy**                    | - High priority packet handling (DSCP) <br> - No bandwidth throttling <br> [win-config/network - QoS-Policy](/docs/win-config/network/qos-policy/) includes more information|
+
+## TUI Preview
+
+![](https://github.com/nohuto/game-tools/blob/main/cs2/media/cs2tui.png?raw=true)
+
+## Steam Launch Settings
+
+Open Steam, go into your library, right click on Counter-Strike 2 and go into `Propeties`:
+```powershell
++exec autoexec -nojoy -full -forcenovsync -novid
+```
+
+> https://developer.valvesoftware.com/wiki/Command_line_options  
+> https://developer.valvesoftware.com/wiki/Command_line_options_(Source_2)  
+> https://totalcsgo.com/commands  
+
+Example:
+
+![](https://github.com/nohuto/game-tools/blob/main/cs2/media/cs2ls.png?raw=true)
+
+## Download
+
+It might fail execution if the powershell execution policy is set to it's default values. See [PS Unrestricted Policy](/docs/win-config/security/ps-unrestricted-policy/) for details.
+
+> [cs2/NV-CS2-Tool](https://github.com/nohuto/game-tools/blob/main/cs2/NV-CS2-Tool.ps1)

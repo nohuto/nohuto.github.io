@@ -1,0 +1,350 @@
+---
+import MobileMenuFooter from 'virtual:starlight/components/MobileMenuFooter';
+import SidebarPersister from '@astrojs/starlight/components/SidebarPersister.astro';
+import SidebarSublist from '@astrojs/starlight/components/SidebarSublist.astro';
+
+const { sidebar, id } = Astro.locals.starlightRoute;
+
+const knownRoots = collectKnownRoots(sidebar);
+const routeRoot = getRouteRoot(id, knownRoots);
+const scopedSidebar = getScopedSidebar(sidebar, routeRoot);
+const renderedSidebar = flattenSectionsGroups(scopedSidebar);
+
+function getRouteRoot(routeId, roots) {
+  const segments = String(routeId || '')
+    .split('/')
+    .filter(Boolean)
+    .map(normalize)
+    .filter((segment) => segment !== 'docs');
+
+  if (segments.length === 0) return '';
+
+  const firstMatch = segments.find((segment) => roots.has(segment));
+  if (firstMatch) return firstMatch;
+
+  return segments[0] || '';
+}
+
+function normalize(value) {
+  return String(value || '').trim().toLowerCase();
+}
+
+function slugifyLabel(value) {
+  return normalize(value)
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+function hrefRootSegment(href) {
+  if (!href) return '';
+  try {
+    const url = new URL(href, 'https://example.invalid');
+    const parts = url.pathname.split('/').filter(Boolean).map(normalize);
+    if (parts[0] === 'docs' && parts.length > 1) return parts[1];
+    return parts[0] || '';
+  } catch {
+    return '';
+  }
+}
+
+function collectKnownRoots(entries, roots = new Set()) {
+  entries.forEach((entry) => {
+    if (entry.type === 'link') {
+      const root = hrefRootSegment(entry.href);
+      if (root) roots.add(root);
+      return;
+    }
+    const labelRoot = slugifyLabel(entry.label);
+    if (labelRoot) roots.add(labelRoot);
+    collectKnownRoots(entry.entries, roots);
+  });
+  return roots;
+}
+
+function cloneGroup(group, entries) {
+  return { ...group, entries };
+}
+
+function flattenSingleRootGroup(entries, root) {
+  if (entries.length !== 1) return entries;
+  const onlyEntry = entries[0];
+  if (!onlyEntry || onlyEntry.type !== 'group') return entries;
+  if (slugifyLabel(onlyEntry.label) !== root) return entries;
+  return onlyEntry.entries;
+}
+
+function pruneEntry(entry, root) {
+  if (!entry) return null;
+  if (entry.type === 'link') {
+    return hrefRootSegment(entry.href) === root ? entry : null;
+  }
+  if (entry.type === 'group') {
+    if (slugifyLabel(entry.label) === root) return entry;
+    const prunedEntries = entry.entries
+      .map((child) => pruneEntry(child, root))
+      .filter(Boolean);
+    return prunedEntries.length > 0 ? cloneGroup(entry, prunedEntries) : null;
+  }
+  return null;
+}
+
+function shouldScope(root) {
+  if (!root) return false;
+  return !['index', 'directory', '404'].includes(root);
+}
+
+function getScopedSidebar(allEntries, root) {
+  if (!shouldScope(root)) return allEntries;
+  const pruned = allEntries.map((entry) => pruneEntry(entry, root)).filter(Boolean);
+  if (pruned.length === 0) return allEntries;
+  return flattenSingleRootGroup(pruned, root);
+}
+
+function flattenSectionsGroups(entries) {
+  return flattenSectionsGroupsWithContext(entries, { inRegistrySections: false });
+}
+
+function flattenSectionsGroupsWithContext(entries, context) {
+  const flattened = [];
+  const orderedEntries = orderSectionsFirst(entries);
+
+  for (const entry of orderedEntries) {
+    if (!entry) continue;
+
+    if (entry.type === 'link') {
+      flattened.push(entry);
+      continue;
+    }
+
+    if (entry.type === 'group') {
+      const isSectionsGroup = slugifyLabel(entry.label) === 'sections';
+      const nextContext = {
+        inRegistrySections: context.inRegistrySections || (routeRoot === 'win-registry' && isSectionsGroup),
+      };
+      const flattenedChildren = flattenSectionsGroupsWithContext(entry.entries || [], nextContext);
+      if (isSectionsGroup) {
+        flattened.push(...flattenedChildren);
+        continue;
+      }
+      let nextGroup = cloneGroup(entry, flattenedChildren);
+      if (nextContext.inRegistrySections) {
+        nextGroup = {
+          ...nextGroup,
+          label: formatRegistrySectionLabel(nextGroup.label),
+        };
+      }
+      flattened.push(nextGroup);
+    }
+  }
+
+  return flattened;
+}
+
+function formatRegistrySectionLabel(value) {
+  const text = String(value || '').trim();
+  if (!text) return value;
+
+  return text
+    .split('-')
+    .filter(Boolean)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(' ');
+}
+
+function orderSectionsFirst(entries) {
+  const sections = [];
+  const others = [];
+
+  for (const entry of entries || []) {
+    if (isSectionsGroup(entry)) {
+      sections.push(entry);
+      continue;
+    }
+    others.push(entry);
+  }
+
+  return [...sections, ...others];
+}
+
+function isSectionsGroup(entry) {
+  return Boolean(entry && entry.type === 'group' && slugifyLabel(entry.label) === 'sections');
+}
+---
+
+<div class="sidebar-tree-search">
+  <label class="sidebar-tree-search-wrap" for="sidebar-tree-search">
+    <input
+      type="text"
+      id="sidebar-tree-search"
+      class="sidebar-tree-search-input"
+      placeholder="Filter sidebar..."
+      autocomplete="off"
+      spellcheck="false"
+    />
+    <span class="sidebar-tree-search-icon" aria-hidden="true"></span>
+  </label>
+  <p id="sidebar-tree-no-results" class="sidebar-tree-no-results sl-hidden">
+    No results found in this navigation tree.
+  </p>
+</div>
+
+<SidebarPersister>
+  <SidebarSublist sublist={renderedSidebar} />
+</SidebarPersister>
+
+<div class="md:sl-hidden">
+  <MobileMenuFooter />
+</div>
+
+<script is:inline>
+  (() => {
+    const initSidebarTreeFilter = () => {
+      const searchInput = document.getElementById('sidebar-tree-search');
+      const noResultsMessage = document.getElementById('sidebar-tree-no-results');
+      const sidebarTree = document.querySelector('sl-sidebar-state-persist');
+      if (!searchInput || !noResultsMessage || !sidebarTree) return;
+      if (searchInput.dataset.bound === 'true') return;
+      searchInput.dataset.bound = 'true';
+
+      const detailsElements = Array.from(sidebarTree.querySelectorAll('details'));
+      const items = Array.from(sidebarTree.querySelectorAll('li'));
+      let activeFilter = false;
+      let openStatesBeforeFilter = new Map();
+
+      const matchesAllTerms = (text, searchTerms) => {
+        const lowerText = (text || '').toLowerCase();
+        return searchTerms.every((term) => lowerText.includes(term));
+      };
+
+      const showParentChain = (element) => {
+        let parent = element.parentElement;
+        while (parent && parent !== sidebarTree) {
+          if (parent.tagName === 'LI') {
+            parent.style.display = '';
+          }
+          if (parent.tagName === 'DETAILS') {
+            parent.open = true;
+          }
+          parent = parent.parentElement;
+        }
+      };
+
+      const showDirectChildren = (details) => {
+        details.open = true;
+        const directList = details.querySelector(':scope > ul');
+        if (!directList) return;
+        directList.querySelectorAll(':scope > li').forEach((child) => {
+          child.style.display = '';
+        });
+      };
+
+      const filterSidebarItems = (query) => {
+        if (!query.trim()) {
+          items.forEach((item) => {
+            item.style.display = '';
+          });
+
+          detailsElements.forEach((details) => {
+            const originalOpen = openStatesBeforeFilter.get(details);
+            if (originalOpen !== undefined) {
+              details.open = originalOpen;
+            }
+          });
+
+          activeFilter = false;
+          openStatesBeforeFilter = new Map();
+          noResultsMessage.classList.add('sl-hidden');
+          return;
+        }
+
+        if (!activeFilter) {
+          activeFilter = true;
+          openStatesBeforeFilter = new Map(detailsElements.map((details) => [details, details.open]));
+        }
+
+        const searchTerms = query
+          .toLowerCase()
+          .split(/\s+/)
+          .filter((term) => term.length > 0);
+
+        items.forEach((item) => {
+          item.style.display = 'none';
+        });
+
+        detailsElements.forEach((details) => {
+          details.open = false;
+        });
+
+        const matchedItems = new Set();
+
+        detailsElements.forEach((details) => {
+          const summary = details.querySelector(':scope > summary');
+          if (!summary) return;
+          const summaryText = summary.textContent || '';
+          if (!matchesAllTerms(summaryText, searchTerms)) return;
+
+          const parentLi = details.closest('li');
+          if (!parentLi || matchedItems.has(parentLi)) return;
+
+          parentLi.style.display = '';
+          showDirectChildren(details);
+          showParentChain(parentLi);
+          matchedItems.add(parentLi);
+        });
+
+        items.forEach((item) => {
+          if (matchedItems.has(item)) return;
+          if (item.querySelector(':scope > details')) return;
+
+          const link = item.querySelector(':scope > a');
+          if (!link) return;
+
+          const linkText = link.textContent || '';
+          if (!matchesAllTerms(linkText, searchTerms)) return;
+
+          item.style.display = '';
+          showParentChain(item);
+          matchedItems.add(item);
+        });
+
+        if (matchedItems.size === 0) {
+          items.forEach((item) => {
+            const textContent = (item.textContent || '').toLowerCase();
+            const hasPartialMatch = searchTerms.some((term) => textContent.includes(term));
+            if (!hasPartialMatch) return;
+
+            item.style.display = '';
+            const details = item.querySelector(':scope > details');
+            if (details) showDirectChildren(details);
+            showParentChain(item);
+            matchedItems.add(item);
+          });
+        }
+
+        if (matchedItems.size === 0) {
+          noResultsMessage.classList.remove('sl-hidden');
+        } else {
+          noResultsMessage.classList.add('sl-hidden');
+        }
+      };
+
+      searchInput.addEventListener('input', () => {
+        filterSidebarItems(searchInput.value);
+      });
+
+      searchInput.addEventListener('keydown', (event) => {
+        if (event.key !== 'Escape') return;
+        searchInput.value = '';
+        filterSidebarItems('');
+      });
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initSidebarTreeFilter, { once: true });
+    } else {
+      initSidebarTreeFilter();
+    }
+
+    document.addEventListener('astro:page-load', initSidebarTreeFilter);
+  })();
+</script>

@@ -1,0 +1,62 @@
+name: build-docs
+
+on:
+  schedule:
+    - cron: '15 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout site repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout win-config
+        uses: actions/checkout@v4
+        with:
+          repository: nohuto/win-config
+          ref: main
+          path: sources/win-config
+
+      - name: Checkout win-registry
+        uses: actions/checkout@v4
+        with:
+          repository: nohuto/win-registry
+          ref: main
+          path: sources/win-registry
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: docs-site/package-lock.json
+
+      - name: Install docs dependencies
+        run: npm ci
+        working-directory: docs-site
+
+      - name: Build docs output
+        run: npm run docs:build
+        working-directory: docs-site
+        env:
+          WIN_CONFIG_REPO_URL: https://github.com/nohuto/win-config
+          WIN_REGISTRY_REPO_URL: https://github.com/nohuto/win-registry
+
+      - name: Commit docs changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git status --porcelain | grep .; then
+            git add docs docs-site/src/content/docs
+            git commit -m "chore(docs): rebuild generated starlight docs"
+            git push
+          else
+            echo "No changes to commit."
+          fi

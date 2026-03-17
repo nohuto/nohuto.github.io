@@ -10,10 +10,10 @@
   <meta http-equiv="Content-Security-Policy"
     content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; script-src-attr 'none'; style-src 'self'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self'; form-action 'self' https://www.paypal.com">
   <title>Product</title>
-  <link rel="icon" href="images/nvlogo.png">
-  <script src="bootstrap.js"></script>
-  <link rel="stylesheet" href="styles.css">
-  <script src="app.js" defer></script>
+  <link rel="icon" href="main/images/nvlogo.png">
+  <script src="main/bootstrap.js"></script>
+  <link rel="stylesheet" href="main/styles.css">
+  <script src="main/app.js" defer></script>
 </head>
 
 <body>
@@ -25,7 +25,7 @@
       <span class="prompt-user">nohuto</span>
       <span class="prompt-sep">@</span>
       <span class="prompt-host">noverse</span>
-      <span class="prompt-path">:~/site</span>
+      <span class="prompt-path">:~/main</span>
       <span class="prompt-caret">$</span>
       <span class="prompt-cmd">open</span>
       <span class="prompt-cursor" aria-hidden="true">█</span>
@@ -34,8 +34,7 @@
       <a href="index.html">home</a>
       <a href="product.html" aria-current="page" class="active">product</a>
       <a href="projects.html">projects</a>
-      <a href="about.html">about</a>
-      <a href="security.html">security</a>
+      <a href="/docs/directory/">docs</a>
     </nav>
   </header>
 
@@ -61,11 +60,11 @@
               <form class="paypal-form" action="https://www.paypal.com/ncp/payment/C4XUQMQZHS948" method="post"
                 target="_blank">
                 <button class="paypal-button" type="submit">Buy WinConfig</button>
-                <img decoding="async" class="paypal-methods" src="images/paypal-methods.svg"
+                <img decoding="async" class="paypal-methods" src="main/images/paypal-methods.svg"
                   alt="Accepted payment cards via PayPal" loading="lazy">
                 <p class="paypal-note">
                   Powered by
-                  <img decoding="async" class="paypal-logo" src="images/paypal.png" alt="PayPal" loading="lazy">
+                  <img decoding="async" class="paypal-logo" src="main/images/paypal.png" alt="PayPal" loading="lazy">
                 </p>
               </form>
             </div>
@@ -73,27 +72,27 @@
         </div>
         <div class="product-preview-grid">
           <figure class="product-preview-card">
-            <a href="images/darkbluelogs.png" target="_blank" rel="noopener noreferrer">
-              <img decoding="async" src="images/darkbluelogs.png" alt="Dark mode blue palette with logs" loading="lazy">
+            <a href="main/images/darkbluelogs.png" target="_blank" rel="noopener noreferrer">
+              <img decoding="async" src="main/images/darkbluelogs.png" alt="Dark mode blue palette with logs" loading="lazy">
             </a>
             <figcaption>Dark mode - Blue color scheme - Logs enabled - System section</figcaption>
           </figure>
           <figure class="product-preview-card">
-            <a href="images/darkreg.png" target="_blank" rel="noopener noreferrer">
-              <img decoding="async" src="images/darkreg.png" alt="Dark mode red palette peripheral view" loading="lazy">
+            <a href="main/images/darkreg.png" target="_blank" rel="noopener noreferrer">
+              <img decoding="async" src="main/images/darkreg.png" alt="Dark mode red palette peripheral view" loading="lazy">
             </a>
             <figcaption>Dark mode - Red color scheme - Logs disabled - Peripheral section</figcaption>
           </figure>
           <figure class="product-preview-card">
-            <a href="images/lightblue.png" target="_blank" rel="noopener noreferrer">
-              <img decoding="async" src="images/lightblue.png" alt="Light mode blue palette visibility view"
+            <a href="main/images/lightblue.png" target="_blank" rel="noopener noreferrer">
+              <img decoding="async" src="main/images/lightblue.png" alt="Light mode blue palette visibility view"
                 loading="lazy">
             </a>
             <figcaption>Light mode - Blue color scheme - Logs disabled - Visibility section</figcaption>
           </figure>
           <figure class="product-preview-card">
-            <a href="images/lightviolet.png" target="_blank" rel="noopener noreferrer">
-              <img decoding="async" src="images/lightviolet.png" alt="Light mode violet palette privacy view"
+            <a href="main/images/lightviolet.png" target="_blank" rel="noopener noreferrer">
+              <img decoding="async" src="main/images/lightviolet.png" alt="Light mode violet palette privacy view"
                 loading="lazy">
             </a>
             <figcaption>Light mode - Violet color scheme - Logs disabled - Privacy section</figcaption>
@@ -177,85 +176,78 @@
               <span class="doc-index">01</span>
               <h4>System</h4>
               <p>Operating system adjustments for services, scheduling, storage, startup behavior and more.</p>
-              <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/system/desc.md" target="_blank"
+              <a class="doc-link" href="/docs/win-config/system/" target="_blank"
                 rel="noopener noreferrer">View Documentation</a>
             </article>
             <article class="doc-card">
               <span class="doc-index">02</span>
               <h4>Visibility</h4>
               <p>Customize Windows visuals and interface behavior.</p>
-              <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/visibility/desc.md"
+              <a class="doc-link" href="/docs/win-config/visibility/"
                 target="_blank" rel="noopener noreferrer">View Documentation</a>
             </article>
             <article class="doc-card">
               <span class="doc-index">03</span>
               <h4>Peripheral</h4>
               <p>Change input, audio, Bluetooth, display devices... behaviors/states.</p>
-              <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/peripheral/desc.md"
+              <a class="doc-link" href="/docs/win-config/peripheral/"
                 target="_blank" rel="noopener noreferrer">View Documentation</a>
             </article>
             <article class="doc-card">
               <span class="doc-index">04</span>
               <h4>Power</h4>
               <p>Control several different power management features and other related options.</p>
-              <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/power/desc.md" target="_blank"
+              <a class="doc-link" href="/docs/win-config/power/" target="_blank"
                 rel="noopener noreferrer">View Documentation</a>
             </article>
             <article class="doc-card">
               <span class="doc-index">05</span>
               <h4>Privacy</h4>
               <p>Privacy configuration for telemetry, diagnostics, encryption, data sharing, and more.</p>
-              <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/privacy/desc.md" target="_blank"
+              <a class="doc-link" href="/docs/win-config/privacy/" target="_blank"
                 rel="noopener noreferrer">View Documentation</a>
             </article>
             <article class="doc-card">
               <span class="doc-index">06</span>
-              <h4>Security</h4>
-              <p>Security posture options such as elevation behavior, Defender and credential settings and more.</p>
-              <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/security/desc.md" target="_blank"
+              <h4>Network</h4>
+              <p>Change network adapter settings including DNS, sharing controls, offloads... and miscellaneous network
+                related features.</p>
+              <a class="doc-link" href="/docs/win-config/network/" target="_blank"
                 rel="noopener noreferrer">View Documentation</a>
             </article>
             <article class="doc-card">
               <span class="doc-index">07</span>
-              <h4>Network</h4>
-              <p>Change network adapter settings including DNS, sharing controls, offloads... and miscellaneous network
-                related features.</p>
-              <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/network/desc.md" target="_blank"
+              <h4>NVIDIA</h4>
+              <p>NVIDIA driver installation, control panel settings... and resource manager values.</p>
+              <a class="doc-link" href="/docs/win-config/nvidia/" target="_blank"
                 rel="noopener noreferrer">View Documentation</a>
             </article>
             <article class="doc-card">
               <span class="doc-index">08</span>
-              <h4>NVIDIA</h4>
-              <p>NVIDIA driver installation, control panel settings... and resource manager values.</p>
-              <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/nvidia/desc.md" target="_blank"
+              <h4>Cleanup</h4>
+              <p>Clear caches, logs, histories, backups.</p>
+              <a class="doc-link" href="/docs/win-config/cleanup/" target="_blank"
                 rel="noopener noreferrer">View Documentation</a>
             </article>
             <article class="doc-card">
               <span class="doc-index">09</span>
-              <h4>Cleanup</h4>
-              <p>Clear caches, logs, histories, backups.</p>
-              <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/cleanup/desc.md" target="_blank"
+              <h4>Misc</h4>
+              <p>Miscellaneous external app configuration/installation, e.g. nvfetch.</p>
+              <a class="doc-link" href="/docs/win-config/misc/" target="_blank"
                 rel="noopener noreferrer">View Documentation</a>
             </article>
             <article class="doc-card">
               <span class="doc-index">10</span>
-              <h4>Misc</h4>
-              <p>Miscellaneous external app configuration/installation, e.g. nvfetch.</p>
-              <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/misc/desc.md" target="_blank"
+              <h4>Policies</h4>
+              <p>A more detailed LGPE including keys, values and quick toggling, based on my admx-parser project.</p>
+              <a class="doc-link" href="/docs/win-config/policies/" target="_blank"
                 rel="noopener noreferrer">View Documentation</a>
             </article>
             <article class="doc-card">
               <span class="doc-index">11</span>
-              <h4>Policies</h4>
-              <p>A more detailed LGPE including keys, values and quick toggling, based on my admx-parser project.</p>
-              <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/policies/desc.md" target="_blank"
-                rel="noopener noreferrer">View Documentation</a>
-            </article>
-            <article class="doc-card">
-              <span class="doc-index">12</span>
               <h4>Affinities</h4>
               <p>Configure MSI mode/message limit, IRQ settings (priority/policy), affinities.</p>
-              <a class="doc-link" href="https://github.com/nohuto/win-config/blob/main/affinities/desc.md"
+              <a class="doc-link" href="/docs/win-config/affinities/"
                 target="_blank" rel="noopener noreferrer">View Documentation</a>
             </article>
           </div>
@@ -383,21 +375,21 @@
       <div class="footer-copy">&copy; 2026 Nohuto. All rights reserved.</div>
       <div class="social">
         <a href="https://github.com/nohuto" target="_blank" rel="noopener noreferrer">
-          <img decoding="async" src="images/github-icon.png" data-dark-src="images/github-icon.png"
-            data-light-src="images/github-icon-dark.png" loading="lazy" alt="GitHub">
+          <img decoding="async" src="main/images/github-icon.png" data-dark-src="main/images/github-icon.png"
+            data-light-src="main/images/github-icon-dark.png" loading="lazy" alt="GitHub">
         </a>
         <a href="https://www.youtube.com/@5Noverse" target="_blank" rel="noopener noreferrer">
-          <img decoding="async" src="images/youtube-icon.png" data-dark-src="images/youtube-icon.png"
-            data-light-src="images/youtube-icon-dark.png" loading="lazy" alt="YouTube">
+          <img decoding="async" src="main/images/youtube-icon.png" data-dark-src="main/images/youtube-icon.png"
+            data-light-src="main/images/youtube-icon-dark.png" loading="lazy" alt="YouTube">
         </a>
         <button class="icon-button" type="button" data-email="copy" data-toast="Email copied"
           aria-label="Copy email to clipboard">
-          <img decoding="async" src="images/email-icon.png" data-dark-src="images/email-icon.png"
-            data-light-src="images/email-icon-dark.png" loading="lazy" alt="Email">
+          <img decoding="async" src="main/images/email-icon.png" data-dark-src="main/images/email-icon.png"
+            data-light-src="main/images/email-icon-dark.png" loading="lazy" alt="Email">
         </button>
         <a href="https://discord.gg/E2ybG4j9jU" target="_blank" rel="noopener noreferrer">
-          <img decoding="async" src="images/discord-icon.png" data-dark-src="images/discord-icon.png"
-            data-light-src="images/discord-icon-dark.png" loading="lazy" alt="Discord">
+          <img decoding="async" src="main/images/discord-icon.png" data-dark-src="main/images/discord-icon.png"
+            data-light-src="main/images/discord-icon-dark.png" loading="lazy" alt="Discord">
         </a>
       </div>
       <div class="footer-tools">

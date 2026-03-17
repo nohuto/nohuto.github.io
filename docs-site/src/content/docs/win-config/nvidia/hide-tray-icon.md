@@ -1,0 +1,41 @@
+---
+title: 'Hide Tray Icon'
+description: 'NVIDIA option documentation from win-config.'
+editUrl: 'https://github.com/nohuto/win-config/blob/main/nvidia/desc.md#hide-tray-icon'
+sidebar:
+  order: 7
+---
+
+```
+\Registry\Machine\SYSTEM\ControlSet001\Services\nvlddmkm\Global\NVTweak : HideXGpuTrayIcon
+\Registry\Machine\SOFTWARE\NVIDIA Corporation\Global\CoProcManager : ShowTrayIcon
+```
+> https://forums.developer.nvidia.com/t/hide-nvidia-tray-icon/162739
+
+---
+
+Other miscellaneous values I found:
+
+```json
+"HKLM\\SYSTEM\\CurrentControlSet\\Services\\nvlddmkm\\Global\\NVTweak": {
+  "HideManufacturerFromMonitorName": { "Type": "REG_DWORD", "Data": 1 }
+}
+```
+
+Hides the icon from the context menu (2nd one is probably related to optimus, first controls NVCPL):
+```json
+"HKCU\\Software\\NVIDIA Corporation\\Global\\NvCplApi\\Policies": {
+  "ContextUIPolicy": { "Type": "REG_DWORD", "Data": 0 }
+},
+"HKCU\\SOFTWARE\\NVIDIA Corporation\\Global\\RunOpenGLOn": {
+  "ShowContextMenu": { "Type": "REG_DWORD", "Data": 0 }
+},
+"HKCU\\SOFTWARE\\NVIDIA Corporation\\Global\\CoProcManager": {
+  "ShowContextMenu": { "Type": "REG_DWORD", "Data": 0 }
+}
+```
+Only the first value gets used.
+
+> [nvidia/assets | HideManufacturer.c](https://github.com/nohuto/win-config/blob/main/nvidia/assets/trayicon-HideManufacturer.c)  
+> [nvidia/assets | notes.cpp](https://github.com/nohuto/win-config/blob/main/nvidia/assets/trayicon-notes.cpp)  
+> [nvidia/assets | nvcpl.c](https://github.com/nohuto/win-config/blob/main/nvidia/assets/trayicon-nvcpl.c)

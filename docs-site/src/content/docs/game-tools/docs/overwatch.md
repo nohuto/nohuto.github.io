@@ -1,0 +1,30 @@
+---
+title: 'Overwatch'
+description: 'Generated from game-tools file: overwatch/desc.md.'
+editUrl: 'https://github.com/nohuto/game-tools/blob/main/overwatch/desc.md'
+sidebar:
+  order: 4
+---
+
+| Option                 | Details                                                           |
+|------------------------------------|-------------------------------------------------------------------|
+| `Settings_v0.ini` Configuration    | **Let you choose:** <br> - FPS Cap <br> - Shadow Detail <br> &nbsp;&nbsp;&nbsp; - Enabling shadows can give you an advantage in certain situations (if someone is above you and you can see their location based on the shadows) <br> - NVIDIA Reflex <br> You still have to apply the settings from the pictures above. |
+| **QoS Policy**                    | - High priority packet handling (DSCP) <br> - No bandwidth throttling <br> [win-config/network - QoS-Policy](/docs/win-config/network/qos-policy/) includes more information|
+
+## TUI Preview
+
+![](https://github.com/nohuto/game-tools/blob/main/overwatch/media/owtui.png?raw=true)
+
+## In-Game Settings
+
+These are only the settings, which can't get applied via the script.
+
+![](https://github.com/nohuto/game-tools/blob/main/overwatch/media/ow1.png?raw=true)
+![](https://github.com/nohuto/game-tools/blob/main/overwatch/media/ow2.png?raw=true)
+![](https://github.com/nohuto/game-tools/blob/main/overwatch/media/ow3.png?raw=true)
+
+## Download
+
+It might fail execution if the powershell execution policy is set to it's default values. See [PS Unrestricted Policy](/docs/win-config/security/ps-unrestricted-policy/) for details.
+
+> [overwatch/NV-Overwatch-Tool](https://github.com/nohuto/game-tools/blob/main/overwatch/NV-Overwatch-Tool.ps1)

@@ -18,13 +18,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: python scripts/update-repo-descs.py
+      - run: python main/scripts/update-repo-descs.py
       - name: Commit updates
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           if git status --porcelain | grep .; then
-            git add data/repos.json data/media-cache.json media images
+            git add main/data/repos.json main/data/media-cache.json main/media main/images
             git commit -m "chore: update repo data"
             git push
           else

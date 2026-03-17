@@ -1,0 +1,55 @@
+---
+title: 'VPNs'
+description: 'Network option documentation from win-config.'
+editUrl: 'https://github.com/nohuto/win-config/blob/main/network/desc.md#disable-vpns'
+sidebar:
+  order: 9
+---
+
+SSTP VPN & other VPNs - enable the services, to revert it.
+
+Get current VPN connections:
+```powershell
+Get-VpnConnection
+```
+Remove a VPN connection with (or `Remove-VpnConnection`):
+```bat
+rasphone -r "Name"
+```
+or `WIN + I` > Network & Internet > VPN > Remove
+
+> https://learn.microsoft.com/en-us/powershell/module/vpnclient/remove-vpnconnection?view=windowsserver2025-ps  
+> https://learn.microsoft.com/en-us/powershell/module/vpnclient/?view=windowsserver2025-ps
+
+`Allow VPN over metered networks`:
+```c
+OSDATA__SYSTEM__CurrentControlSet__Services__RasMan__Parameters_1 = 
+    L"SYSTEM\\CurrentControlSet\\Services\\RasMan\\Parameters\\Config\\VpnCostedNetworkSettings",
+
+VpnRegQueryDWord(
+    v13,
+    OSDATA__SYSTEM__CurrentControlSet__Services__RasMan__Parameters_1,
+    L"NoCostedNetwork",
+    &g_donotUseCosted,
+    v17),
+
+if ( !v17[0] )
+    g_donotUseCosted = 0, // default
+```
+`Allow VPN while Roaming`:
+```c
+OSDATA__SYSTEM__CurrentControlSet__Services__RasMan__Parameters = 
+    L"SYSTEM\\CurrentControlSet\\Services\\RasMan\\Parameters\\Config\\VpnCostedNetworkSettings",
+
+VpnRegQueryDWord(
+    v15,
+    OSDATA__SYSTEM__CurrentControlSet__Services__RasMan__Parameters,
+    L"NoRoamingNetwork",
+    &g_donotUseRoaming,
+    v17),
+
+if ( !v17[0] )
+    g_donotUseRoaming = 0, // default
+```
+
+> [network/assets | vpn-NlmGetCostedNetworkSettings.c](https://github.com/nohuto/win-config/blob/main/network/assets/vpn-NlmGetCostedNetworkSettings.c)
