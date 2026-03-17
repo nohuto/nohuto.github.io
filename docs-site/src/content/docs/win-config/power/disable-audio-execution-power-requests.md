@@ -14,7 +14,7 @@ There's no official documentation on this value, but it probably controls whethe
     "AllowAudioToEnableExecutionRequiredPowerRequests" = 1; // PopPowerRequestActiveAudioEnablesExecutionRequired 
 ```
 
-> /docs/win-registry/sections/registry-values-research/power-values/
+> [/docs/win-registry/sections/registry-values-research/power-values/](/docs/win-registry/sections/registry-values-research/power-values/)
 
 ```c
 bool PopPowerRequestEvaluateExecutionRequiredStatus()

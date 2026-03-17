@@ -7,7 +7,7 @@ sidebar:
 ---
 
 See win-registry repo for a list of `SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\multimedia\\systemprofile\\...` values/defaults/notes:
-> /docs/win-registry/sections/registry-values-research/mmcss-values/
+> [/docs/win-registry/sections/registry-values-research/mmcss-values/](/docs/win-registry/sections/registry-values-research/mmcss-values/)
 
 ## SystemResponsiveness Details
 

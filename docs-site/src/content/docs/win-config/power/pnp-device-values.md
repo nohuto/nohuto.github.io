@@ -54,4 +54,4 @@ Storport Idle Power Management (IPM) isn't enabled by default. It can be enabled
 > [power/assets | storport.c](https://github.com/nohuto/win-config/blob/main/power/assets/storport.c)
 
 See win-registry repo for a list of `CCS\\Enum\\<enumerator>\\<deviceID>\\<instanceID>\\...` values/defaults/notes:
-> /docs/win-registry/sections/registry-values-research/pnp-device-values/
+> [/docs/win-registry/sections/registry-values-research/pnp-device-values/](/docs/win-registry/sections/registry-values-research/pnp-device-values/)

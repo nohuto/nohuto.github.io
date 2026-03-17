@@ -51,7 +51,7 @@ Using the highest clamp as shown above will end up with a BSoD (same goes for `0
     "CoalescingTimerInterval" = 1500; // PopCoalescingTimerInterval (0x000005DC) - Units: seconds (multiplies value by -10,000,000, one second in 100 ns units, so the default corresponds to a 25min cadence)
     "DeepIoCoalescingEnabled" = 0; // PopDeepIoCoalescingEnabled 
 ```
-> /docs/win-registry/sections/registry-values-research/power-values/
+> [/docs/win-registry/sections/registry-values-research/power-values/](/docs/win-registry/sections/registry-values-research/power-values/)
 
 ```c
 void InitTimerPowerSaving(void)

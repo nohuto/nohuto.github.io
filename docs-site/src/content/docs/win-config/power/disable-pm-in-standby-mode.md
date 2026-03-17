@@ -19,7 +19,7 @@ This policy setting specifies that power management is disabled when the machine
     "EnabledActions" = 0; // PopAggressiveStandbyActionsRegValue 
     "EnableDsNetRefresh" = 0; // PopEnableDsNetRefresh 
 ```
-> /docs/win-registry/sections/registry-values-research/power-values/
+> [/docs/win-registry/sections/registry-values-research/power-values/](/docs/win-registry/sections/registry-values-research/power-values/)
 
 | Power state | ACPI state | Description | 
 |-------------|------------|-------------|

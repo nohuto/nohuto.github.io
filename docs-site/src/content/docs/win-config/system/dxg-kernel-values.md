@@ -13,4 +13,4 @@ sidebar:
 Many applied values are defaults, some not. See documentation below for details. The applied data is sometimes pure speculation.
 
 See win-registry repo for a list of `CCS\\Control\\GraphicsDrivers\\...` values/defaults/notes:
-> /docs/win-registry/sections/registry-values-research/dxg-kernel-values/
+> [/docs/win-registry/sections/registry-values-research/dxg-kernel-values/](/docs/win-registry/sections/registry-values-research/dxg-kernel-values/)

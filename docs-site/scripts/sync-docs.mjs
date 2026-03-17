@@ -958,7 +958,12 @@ function rewriteMarkdownLinks(markdown) {
 
 function rewriteBareGitHubUrls(line) {
   return line.replace(/https?:\/\/github\.com\/[^\s<>()]+/gi, (rawUrl) => {
-    return rewriteLinkTarget(rawUrl);
+    const rewritten = rewriteLinkTarget(rawUrl);
+    if (rewritten === rawUrl) return rawUrl;
+    if (rewritten.startsWith('/docs/')) {
+      return `[${rewritten}](${rewritten})`;
+    }
+    return rewritten;
   });
 }
 

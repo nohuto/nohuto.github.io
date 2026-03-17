@@ -26,7 +26,7 @@ Coalescing UDP datagrams reduces the CPU cost to process packets in high-bandwid
     "RscMode" = 1; // range 0-2
 ```
 
-> /docs/win-registry/sections/registry-values-research/intel-nic-values/
+> [/docs/win-registry/sections/registry-values-research/intel-nic-values/](/docs/win-registry/sections/registry-values-research/intel-nic-values/)
 
 ```c
 void __fastcall ReceiveSideCoalescing::ReadRegistryParameters(struct ADAPTER_CONTEXT **this)
@@ -103,7 +103,7 @@ It depends on your adapter/driver if VMQ is enabled/disabled by default:
     "MaxNumVmqs" = ?; // found it in the "Mellanox ConnectX based IPoIB Adapter (NDIS 6.4)" driver
 ```
 
-> /docs/win-registry/sections/registry-values-research/intel-nic-values/
+> [/docs/win-registry/sections/registry-values-research/intel-nic-values/](/docs/win-registry/sections/registry-values-research/intel-nic-values/)
 
 ```inf
 ; Mellanox
@@ -146,7 +146,7 @@ It depends on your adapter/driver if SR-IOV is enabled/disabled by default:
     "*SriovPreferred" = 0; // range 0-1
 ```
 
-> /docs/win-registry/sections/registry-values-research/intel-nic-values/
+> [/docs/win-registry/sections/registry-values-research/intel-nic-values/](/docs/win-registry/sections/registry-values-research/intel-nic-values/)
 
 | SubkeyName            | Value       | EnumDesc |
 | --------------------  | ----------- | ---- |
@@ -207,7 +207,7 @@ FEC (forwarded error correction) improves link stability, but increases latency.
     "FecMode" = 0; // range 0-3
 ```
 
-> /docs/win-registry/sections/registry-values-research/intel-nic-values/
+> [/docs/win-registry/sections/registry-values-research/intel-nic-values/](/docs/win-registry/sections/registry-values-research/intel-nic-values/)
 
 ```c
 RegistryKey<enum HdSplitLocation>::Initialize(
@@ -302,7 +302,7 @@ This feature allows packet burst handling, while avoiding packet drops that may 
     "ThreadDpcEnable" = 1; // KeThreadDpcEnable
 ```
 
-> /docs/win-registry/sections/registry-values-research/session-manager-values/  
+> [/docs/win-registry/sections/registry-values-research/session-manager-values/](/docs/win-registry/sections/registry-values-research/session-manager-values/)  
 > https://learn.microsoft.com/en-us/windows-hardware/drivers/kernel/introduction-to-threaded-dpcs
 
 | Data | Meaning |

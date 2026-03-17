@@ -28,4 +28,4 @@ sidebar:
   - [Hives and on-disk files](https://github.com/nohuto/regkit#hives-and-on-disk-files)
 - [Credits/References](/docs/regkit/sections/credits-references/)
 
-More info can be found in the repo: /docs/regkit/sections/overview/
+More info can be found in the repo: [/docs/regkit/sections/overview/](/docs/regkit/sections/overview/)

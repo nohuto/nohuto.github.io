@@ -20,7 +20,7 @@ Read more about it in [Windows Internals E7, P2](https://github.com/nohuto/windo
 ## Service/Driver Table Overview
 
 The suboptions probably overlap the documentation. If so, you can open the markdown file on my GitHub instead:
-> /docs/win-config/system/disable-services-drivers/
+> [/docs/win-config/system/disable-services-drivers/](/docs/win-config/system/disable-services-drivers/)
 
 See [services](https://github.com/nohuto/win-config/blob/main/system/assets/services.txt)/[drivers](https://github.com/nohuto/win-config/blob/main/system/assets/drivers.txt) for reference, these files were generated on a stock `W11 IoT Enterprise LTSC` installation via [serviwin](https://www.nirsoft.net/utils/serviwin.html).
 
