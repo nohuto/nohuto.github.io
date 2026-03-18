@@ -2,7 +2,8 @@
 (() => {
   const THEME_KEY = 'nv-theme';
   const BG_KEY = 'nv-bg';
-  const DEFAULT_BG = 'dark-noise';
+  const DEFAULT_THEME = 'gruvbox-dark';
+  const DEFAULT_BG = 'diagonal-grid';
   const FONT_KEY = 'nv-font';
   const FONT_SIZE_KEY = 'nv-font-size';
   const FONT_SIZE_MIN = 10;
@@ -84,7 +85,7 @@
   };
 
   try {
-    setAttrIfValid('data-theme', safeGet(THEME_KEY), THEME_OPTIONS);
+    setAttrIfValid('data-theme', safeGet(THEME_KEY) || DEFAULT_THEME, THEME_OPTIONS, DEFAULT_THEME);
     setAttrIfValid('data-bg', safeGet(BG_KEY) || DEFAULT_BG, BG_OPTIONS, DEFAULT_BG);
     setAttrIfValid('data-font', safeGet(FONT_KEY), FONT_OPTIONS);
     applyFontSize(safeGet(FONT_SIZE_KEY));

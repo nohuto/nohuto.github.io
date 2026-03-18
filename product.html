@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <!-- Copyright (c) 2026 Nohuto. All rights reserved. -->
 <html lang="en">
 
@@ -8,7 +8,7 @@
   <meta name="referrer" content="no-referrer">
   <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=()">
   <meta http-equiv="Content-Security-Policy"
-    content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; script-src-attr 'none'; style-src 'self'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self'; form-action 'self' https://www.paypal.com">
+    content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; script-src-attr 'none'; style-src 'self'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self' https://api.github.com https://raw.githubusercontent.com; form-action 'self' https://www.paypal.com">
   <title>Product</title>
   <link rel="icon" href="main/images/nvlogo.png">
   <script src="main/bootstrap.js"></script>
@@ -28,12 +28,12 @@
       <span class="prompt-path">:~/main</span>
       <span class="prompt-caret">$</span>
       <span class="prompt-cmd">open</span>
-      <span class="prompt-cursor" aria-hidden="true">█</span>
     </div>
     <nav class="nav-tabs" aria-label="Primary navigation">
       <a href="index.html">home</a>
       <a href="product.html" aria-current="page" class="active">product</a>
       <a href="projects.html">projects</a>
+      <a href="bin-diff.html">bin-diff</a>
       <a href="/docs/directory/">docs</a>
     </nav>
   </header>
@@ -438,25 +438,12 @@
               <option value="tokyo-night">Tokyo Night</option>
             </select>
           </div>
-        </div>
-        <div class="footer-tools-row">
-          <div class="footer-control">
-            <label class="theme-label" for="font-select">font</label>
-            <select id="font-select" name="font">
-              <option value="cascadia">Cascadia Mono</option>
-              <option value="jetbrains">JetBrains Mono</option>
-              <option value="fira">Fira Code</option>
-              <option value="ibm">IBM Plex Mono</option>
-              <option value="sourcecode">Source Code Pro</option>
-              <option value="consolas">Consolas</option>
-            </select>
-          </div>
           <div class="footer-control footer-size">
             <label class="theme-label" for="font-size">size</label>
             <div class="size-stepper">
-              <button class="size-step" type="button" data-step="1" aria-label="Increase font size">▲</button>
+              <button class="size-step" type="button" data-step="1" aria-label="Increase font size"></button>
               <input id="font-size" type="number" min="12" max="22" step="1" value="14">
-              <button class="size-step" type="button" data-step="-1" aria-label="Decrease font size">▼</button>
+              <button class="size-step" type="button" data-step="-1" aria-label="Decrease font size"></button>
             </div>
           </div>
         </div>
@@ -466,3 +453,6 @@
 </body>
 
 </html>
+
+
+

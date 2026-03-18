@@ -1,6 +1,6 @@
 /* Copyright (c) 2026 Nohuto. All rights reserved. */
 const THEME_KEY = 'nv-theme';
-const DEFAULT_THEME = 'default-dark';
+const DEFAULT_THEME = 'gruvbox-dark';
 const LIGHT_THEMES = new Set([
   'default-light',
   'gruvbox-light',
@@ -12,7 +12,7 @@ const LIGHT_THEMES = new Set([
   'everforest-light'
 ]);
 const BG_KEY = 'nv-bg';
-const DEFAULT_BG = 'dark-noise';
+const DEFAULT_BG = 'diagonal-grid';
 const BG_KEYS = ['clear', 'diagonal-grid', 'dark-noise', 'dot-matrix', 'circuit-board', 'starfield'];
 const BG_SET = new Set(BG_KEYS);
 const KEYFRAMES_ICON_DARK = 'main/icons/dark/keyframes.svg';
@@ -23,9 +23,28 @@ const DEFAULT_FONT = 'cascadia';
 const DEFAULT_FONT_SIZE = 14;
 const FONT_SIZE_MIN = 10;
 const FONT_SIZE_MAX = 22;
-const FONT_KEYS = ['cascadia', 'jetbrains', 'fira', 'ibm', 'sourcecode', 'consolas'];
+const FONT_KEYS = ['cascadia'];
 const FONT_SET = new Set(FONT_KEYS);
 const REPO_DESC_URL = 'main/data/repos.json';
+const BIN_DIFF_REPO_API_BASE = 'https://api.github.com/repos/nohuto/decompiled-pseudocode/contents';
+const BIN_DIFF_REPO_RAW_BASE = 'https://raw.githubusercontent.com/nohuto/decompiled-pseudocode/main';
+const BIN_DIFF_REPO_BLOB_BASE = 'https://github.com/nohuto/decompiled-pseudocode/blob/main';
+const BIN_DIFF_REPO_GIT_TREES_BASE = 'https://api.github.com/repos/nohuto/decompiled-pseudocode/git/trees';
+const BIN_DIFF_ASSET_STYLES = [
+  'main/vendor/highlight-github-dark.min.css',
+  'main/vendor/diff2html.min.css'
+];
+const BIN_DIFF_ASSET_SCRIPTS = [
+  'main/vendor/highlight.common.min.js',
+  'main/vendor/diff.min.js',
+  'main/vendor/diff2html-ui-base.min.js'
+];
+const BIN_DIFF_FUNCTION_CACHE_KEY = 'nv-bindiff-function-cache-v1';
+const BIN_DIFF_FUNCTION_CACHE_TTL_MS = 1000 * 60 * 60 * 24 * 7;
+const BIN_DIFF_FUNCTION_CACHE_MAX_ENTRIES = 6;
+const BIN_DIFF_FUNCTION_SEARCH_LIMIT_KEY = 'nv-bindiff-function-search-limit';
+const BIN_DIFF_FUNCTION_SEARCH_LIMIT_DEFAULT = 300;
+const RELEASE_NAME_COLLATOR = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
 const PROJECT_LIST = [
   { title: 'Windows Configuration', repo: 'nohuto/win-config' },
   { title: 'RegKit', repo: 'nohuto/regkit' },
@@ -63,6 +82,10 @@ let consoleResizeObserver;
 let repoDescriptionsPromise;
 let selectUiListener;
 let selectUiKeyListener;
+let binDiffAssetsPromise;
+const binDiffAssetPromiseCache = new Map();
+const binDiffEntriesCache = new Map();
+const binDiffFunctionNamesCache = new Map();
 
 const ASCII_ART = [
   '  \\  |                                    ',
@@ -127,7 +150,7 @@ function applyTheme(theme) {
 }
 
 function initSelectUI() {
-  const selects = document.querySelectorAll('.footer-tools select');
+  const selects = document.querySelectorAll('.footer-tools select, select.select-enhanced');
   if (!selects.length) return;
 
   selects.forEach(select => {
@@ -151,10 +174,34 @@ function initSelectUI() {
     const menu = document.createElement('div');
     menu.className = 'select-menu';
     menu.setAttribute('role', 'listbox');
+    const isSearchable = select.dataset.searchable === 'true';
+    if (isSearchable) {
+      wrapper.classList.add('is-searchable');
+    }
+    let searchValue = '';
+
+    let searchInput = null;
+    let menuMeta = null;
+    let menuMetaText = null;
+    if (isSearchable) {
+      searchInput = document.createElement('input');
+      searchInput.type = 'text';
+      searchInput.className = 'select-search';
+      searchInput.placeholder = 'Filter...';
+      searchInput.setAttribute('aria-label', 'Filter options');
+      menu.appendChild(searchInput);
+
+      menuMeta = document.createElement('div');
+      menuMeta.className = 'select-menu-meta';
+      menuMetaText = document.createElement('span');
+      menuMetaText.className = 'select-menu-meta-text';
+      menuMeta.appendChild(menuMetaText);
+    }
 
     const list = document.createElement('div');
     list.className = 'select-list';
     menu.appendChild(list);
+    if (menuMeta) menu.appendChild(menuMeta);
     const isAnimatedBgOption = option => select.id === 'bg-select' && option.dataset.animated === 'true';
     const createAnimatedBadge = className => {
       const icon = document.createElement('img');
@@ -169,9 +216,33 @@ function initSelectUI() {
       return icon;
     };
 
-    const buildOptions = () => {
+    const optionSignature = () => Array.from(select.options).map(option => `${option.value}\u0000${option.disabled ? '1' : '0'}\u0000${option.textContent || ''}`).join('\u0001');
+    let lastOptionSignature = '';
+    const getSearchRenderLimit = () => {
+      const raw = (select.dataset.searchLimit || '').trim().toLowerCase();
+      if (!raw) return BIN_DIFF_FUNCTION_SEARCH_LIMIT_DEFAULT;
+      if (raw === 'all' || raw === 'unlimited' || raw === '0' || raw === 'inf' || raw === 'infinity') {
+        return Number.POSITIVE_INFINITY;
+      }
+      const parsed = Number.parseInt(raw, 10);
+      if (!Number.isFinite(parsed) || parsed < 1) return BIN_DIFF_FUNCTION_SEARCH_LIMIT_DEFAULT;
+      return parsed;
+    };
+
+    const buildOptions = (filterText = '') => {
       list.replaceChildren();
-      Array.from(select.options).forEach(option => {
+      const normalizedFilter = (filterText || '').trim().toLowerCase();
+      const allOptions = Array.from(select.options);
+      const filteredOptions = normalizedFilter
+        ? allOptions.filter(option => (option.textContent || '').toLowerCase().includes(normalizedFilter))
+        : allOptions;
+      const searchRenderLimit = getSearchRenderLimit();
+      const optionsToRender = isSearchable && Number.isFinite(searchRenderLimit)
+        ? filteredOptions.slice(0, searchRenderLimit)
+        : filteredOptions;
+      const fragment = document.createDocumentFragment();
+
+      optionsToRender.forEach(option => {
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'select-option';
@@ -189,15 +260,19 @@ function initSelectUI() {
           btn.disabled = true;
           btn.classList.add('is-disabled');
         }
-        btn.addEventListener('click', () => {
-          if (option.disabled) return;
-          select.value = option.value;
-          select.dispatchEvent(new Event('change', { bubbles: true }));
-          closeSelectUIs();
-          trigger.focus({ preventScroll: true });
-        });
-        list.appendChild(btn);
+        fragment.appendChild(btn);
       });
+      list.appendChild(fragment);
+
+      if (menuMetaText) {
+        if (!filteredOptions.length) {
+          menuMetaText.textContent = 'No matches';
+        } else if (isSearchable && filteredOptions.length > optionsToRender.length) {
+          menuMetaText.textContent = `Showing ${optionsToRender.length} / ${filteredOptions.length}`;
+        } else {
+          menuMetaText.textContent = `${filteredOptions.length} option${filteredOptions.length === 1 ? '' : 's'}`;
+        }
+      }
     };
 
     const updateActive = () => {
@@ -215,17 +290,71 @@ function initSelectUI() {
       });
     };
 
+    const syncMenuOptions = (forceRebuild = false) => {
+      if (isSearchable) {
+        buildOptions(searchValue);
+      } else {
+        const nextSignature = optionSignature();
+        if (forceRebuild || nextSignature !== lastOptionSignature) {
+          buildOptions();
+          lastOptionSignature = nextSignature;
+        }
+      }
+      updateActive();
+    };
+
     const toggleOpen = () => {
+      syncMenuOptions();
       const next = !wrapper.classList.contains('open');
       closeSelectUIs(wrapper);
       wrapper.classList.toggle('open', next);
       trigger.setAttribute('aria-expanded', next ? 'true' : 'false');
+      if (next && searchInput) {
+        requestAnimationFrame(() => searchInput?.focus({ preventScroll: true }));
+      }
     };
 
     buildOptions();
+    if (!isSearchable) {
+      lastOptionSignature = optionSignature();
+    }
     updateActive();
-    select.addEventListener('change', updateActive);
-    trigger.addEventListener('click', toggleOpen);
+    select.addEventListener('change', syncMenuOptions);
+    select.addEventListener('nv:options-updated', event => {
+      if (searchInput && event instanceof CustomEvent && event.detail?.resetSearch) {
+        searchValue = '';
+        searchInput.value = '';
+      }
+      syncMenuOptions(true);
+    });
+    list.addEventListener('click', event => {
+      const optionButton = event.target.closest('.select-option');
+      if (!optionButton || !list.contains(optionButton) || optionButton.disabled) return;
+      select.value = optionButton.dataset.value || '';
+      select.dispatchEvent(new Event('change', { bubbles: true }));
+      closeSelectUIs();
+      trigger.focus({ preventScroll: true });
+    });
+    trigger.addEventListener('pointerdown', event => {
+      event.preventDefault();
+      event.stopPropagation();
+      toggleOpen();
+    });
+    trigger.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ' || event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+        event.preventDefault();
+        if (!wrapper.classList.contains('open')) {
+          toggleOpen();
+        }
+      }
+    });
+    if (searchInput) {
+      searchInput.addEventListener('input', () => {
+        searchValue = searchInput.value;
+        buildOptions(searchValue);
+        updateActive();
+      });
+    }
 
     const parent = select.parentNode;
     parent.insertBefore(wrapper, select);
@@ -305,30 +434,17 @@ function applyFontSize(size) {
 }
 
 function initTypography() {
-  const fontSelect = document.getElementById('font-select');
   const sizeInput = document.getElementById('font-size');
   const stepButtons = document.querySelectorAll('.size-step');
-  if (!fontSelect && !sizeInput) return;
-
-  const storedFont = storageGet(FONT_KEY, DEFAULT_FONT);
-  const appliedFont = applyFont(storedFont);
-  if (fontSelect) {
-    fontSelect.value = hasSelectOption(fontSelect, appliedFont) ? appliedFont : DEFAULT_FONT;
-  }
+  applyFont(DEFAULT_FONT);
+  storageSet(FONT_KEY, DEFAULT_FONT);
+  if (!sizeInput) return;
 
   const storedSize = storageGet(FONT_SIZE_KEY, DEFAULT_FONT_SIZE);
   const appliedSize = applyFontSize(storedSize);
   let lastValidSize = appliedSize;
   if (sizeInput) {
     sizeInput.value = appliedSize;
-  }
-
-  if (fontSelect) {
-    fontSelect.addEventListener('change', () => {
-      const next = fontSelect.value || DEFAULT_FONT;
-      applyFont(next);
-      storageSet(FONT_KEY, next);
-    });
   }
 
   if (sizeInput) {
@@ -460,6 +576,8 @@ async function loadPage(url, push = true) {
       setActive(new URL(url, location.href).pathname.split('/').pop() || 'index.html');
       initRepoDescriptions();
       initFiltering();
+      initSelectUI();
+      initBinDiff();
       initConsole();
       requestAnimationFrame(() => newMain.classList.remove('fading'));
     }, 180);
@@ -557,6 +675,724 @@ function initFiltering() {
   });
 
   applyFilter();
+}
+
+const estimateReleaseRank = release => {
+  const normalized = (release || '').trim();
+  if (!normalized) return Number.NEGATIVE_INFINITY;
+
+  const win11Match = normalized.match(/^(\d+)-(\d{2})H([12])$/i);
+  if (win11Match) {
+    const generation = Number.parseInt(win11Match[1], 10);
+    const year = 2000 + Number.parseInt(win11Match[2], 10);
+    const half = Number.parseInt(win11Match[3], 10);
+    return generation * 100000 + year * 10 + half;
+  }
+
+  const win10Match = normalized.match(/^(\d{2})H([12])$/i);
+  if (win10Match) {
+    const year = 2000 + Number.parseInt(win10Match[1], 10);
+    const half = Number.parseInt(win10Match[2], 10);
+    return year * 10 + half;
+  }
+
+  if (/^\d{4}$/.test(normalized)) {
+    return Number.parseInt(normalized, 10);
+  }
+
+  return Number.NEGATIVE_INFINITY;
+};
+
+const compareReleaseNames = (left, right) => {
+  const leftRank = estimateReleaseRank(left);
+  const rightRank = estimateReleaseRank(right);
+  if (leftRank !== rightRank) return rightRank - leftRank;
+  return RELEASE_NAME_COLLATOR.compare(right, left);
+};
+
+const encodePathSegments = segments => segments
+  .filter(Boolean)
+  .map(segment => encodeURIComponent(segment))
+  .join('/');
+
+const joinPathSegments = segments => segments.filter(Boolean).join('/');
+
+const hasScriptAsset = src => Array.from(document.scripts).some(script => {
+  const current = script.getAttribute('src') || '';
+  return current === src || current.endsWith(`/${src}`);
+});
+
+const hasStyleAsset = href => Array.from(document.querySelectorAll('link[rel="stylesheet"]')).some(link => {
+  const current = link.getAttribute('href') || '';
+  return current === href || current.endsWith(`/${href}`);
+});
+
+const ensureScriptAsset = src => {
+  if (hasScriptAsset(src)) return Promise.resolve();
+  if (binDiffAssetPromiseCache.has(src)) return binDiffAssetPromiseCache.get(src);
+  const promise = new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = src;
+    script.defer = true;
+    script.onload = () => resolve();
+    script.onerror = () => reject(new Error(`Failed to load script asset: ${src}`));
+    document.head.appendChild(script);
+  });
+  binDiffAssetPromiseCache.set(src, promise);
+  return promise;
+};
+
+const ensureStyleAsset = href => {
+  if (hasStyleAsset(href)) return Promise.resolve();
+  if (binDiffAssetPromiseCache.has(href)) return binDiffAssetPromiseCache.get(href);
+  const promise = new Promise((resolve, reject) => {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = href;
+    link.onload = () => resolve();
+    link.onerror = () => reject(new Error(`Failed to load style asset: ${href}`));
+    document.head.appendChild(link);
+  });
+  binDiffAssetPromiseCache.set(href, promise);
+  return promise;
+};
+
+const ensureBinDiffAssets = async () => {
+  if (window.Diff && window.Diff2HtmlUI && window.hljs) return;
+  if (!binDiffAssetsPromise) {
+    binDiffAssetsPromise = (async () => {
+      for (const href of BIN_DIFF_ASSET_STYLES) {
+        await ensureStyleAsset(href);
+      }
+      for (const src of BIN_DIFF_ASSET_SCRIPTS) {
+        await ensureScriptAsset(src);
+      }
+    })();
+  }
+  await binDiffAssetsPromise;
+};
+
+const fetchRepoEntries = async pathSegments => {
+  const pathKey = joinPathSegments(pathSegments);
+  if (binDiffEntriesCache.has(pathKey)) {
+    return binDiffEntriesCache.get(pathKey);
+  }
+
+  const encodedPath = encodePathSegments(pathSegments);
+  const base = encodedPath ? `${BIN_DIFF_REPO_API_BASE}/${encodedPath}` : BIN_DIFF_REPO_API_BASE;
+  const url = `${base}?ref=main`;
+  const promise = fetch(url, {
+    cache: 'force-cache',
+    headers: { Accept: 'application/vnd.github+json' }
+  })
+    .then(async response => {
+      if (!response.ok) {
+        throw new Error(`GitHub API request failed (${response.status})`);
+      }
+      const json = await response.json();
+      return Array.isArray(json) ? json : [];
+    });
+
+  binDiffEntriesCache.set(pathKey, promise);
+  return promise;
+};
+
+const listRepoDirectories = async pathSegments => {
+  const entries = await fetchRepoEntries(pathSegments);
+  return entries
+    .filter(entry => entry && entry.type === 'dir' && typeof entry.name === 'string' && !entry.name.startsWith('.'))
+    .map(entry => entry.name)
+    .sort((a, b) => RELEASE_NAME_COLLATOR.compare(a, b));
+};
+
+const readFunctionCacheStore = () => {
+  try {
+    const raw = localStorage.getItem(BIN_DIFF_FUNCTION_CACHE_KEY);
+    if (!raw) return { entries: {} };
+    const parsed = JSON.parse(raw);
+    if (!parsed || typeof parsed !== 'object' || !parsed.entries || typeof parsed.entries !== 'object') {
+      return { entries: {} };
+    }
+    return parsed;
+  } catch {
+    return { entries: {} };
+  }
+};
+
+const writeFunctionCacheStore = store => {
+  try {
+    const entries = Object.entries(store.entries || {})
+      .sort((left, right) => (right[1]?.ts || 0) - (left[1]?.ts || 0))
+      .slice(0, BIN_DIFF_FUNCTION_CACHE_MAX_ENTRIES);
+    const normalized = { entries: Object.fromEntries(entries) };
+    localStorage.setItem(BIN_DIFF_FUNCTION_CACHE_KEY, JSON.stringify(normalized));
+  } catch {
+    // ignore quota and storage failures
+  }
+};
+
+const loadFunctionNamesFromPersistentCache = key => {
+  const store = readFunctionCacheStore();
+  const entry = store.entries?.[key];
+  if (!entry || !Array.isArray(entry.names) || typeof entry.ts !== 'number') return null;
+  if (Date.now() - entry.ts > BIN_DIFF_FUNCTION_CACHE_TTL_MS) return null;
+  return entry.names;
+};
+
+const saveFunctionNamesToPersistentCache = (key, names) => {
+  const store = readFunctionCacheStore();
+  store.entries[key] = { ts: Date.now(), names };
+  writeFunctionCacheStore(store);
+};
+
+const fetchTreeBySha = async treeSha => {
+  const key = `tree:${treeSha}`;
+  if (binDiffEntriesCache.has(key)) {
+    return binDiffEntriesCache.get(key);
+  }
+  const url = `${BIN_DIFF_REPO_GIT_TREES_BASE}/${treeSha}?recursive=1`;
+  const promise = fetch(url, {
+    cache: 'force-cache',
+    headers: { Accept: 'application/vnd.github+json' }
+  }).then(async response => {
+    if (!response.ok) {
+      throw new Error(`GitHub tree request failed (${response.status})`);
+    }
+    const json = await response.json();
+    return {
+      truncated: Boolean(json?.truncated),
+      tree: Array.isArray(json?.tree) ? json.tree : []
+    };
+  });
+  binDiffEntriesCache.set(key, promise);
+  return promise;
+};
+
+const listRepoFunctionFiles = async pathSegments => {
+  const cacheKey = joinPathSegments(pathSegments);
+  if (binDiffFunctionNamesCache.has(cacheKey)) {
+    return binDiffFunctionNamesCache.get(cacheKey).map(name => ({
+      name,
+      downloadUrl: `${BIN_DIFF_REPO_RAW_BASE}/${encodePathSegments([...pathSegments, name])}`
+    }));
+  }
+
+  const persistentNames = loadFunctionNamesFromPersistentCache(cacheKey);
+  if (persistentNames) {
+    binDiffFunctionNamesCache.set(cacheKey, persistentNames);
+    return persistentNames.map(name => ({
+      name,
+      downloadUrl: `${BIN_DIFF_REPO_RAW_BASE}/${encodePathSegments([...pathSegments, name])}`
+    }));
+  }
+
+  if (pathSegments.length < 2) {
+    const entries = await fetchRepoEntries(pathSegments);
+    const names = entries
+      .filter(entry =>
+        entry &&
+        entry.type === 'file' &&
+        typeof entry.name === 'string' &&
+        entry.name.toLowerCase().endsWith('.c'))
+      .map(entry => entry.name)
+      .sort((a, b) => RELEASE_NAME_COLLATOR.compare(a, b));
+    binDiffFunctionNamesCache.set(cacheKey, names);
+    saveFunctionNamesToPersistentCache(cacheKey, names);
+    return names.map(name => ({
+      name,
+      downloadUrl: `${BIN_DIFF_REPO_RAW_BASE}/${encodePathSegments([...pathSegments, name])}`
+    }));
+  }
+
+  const parentPath = pathSegments.slice(0, -1);
+  const targetName = pathSegments[pathSegments.length - 1];
+  const parentEntries = await fetchRepoEntries(parentPath);
+  const targetDirectory = parentEntries.find(entry => entry.type === 'dir' && entry.name === targetName);
+  if (!targetDirectory?.sha) {
+    throw new Error(`Unable to locate directory SHA for ${cacheKey}`);
+  }
+
+  const treeResult = await fetchTreeBySha(targetDirectory.sha);
+  if (treeResult.truncated) {
+    throw new Error(`Function tree for ${cacheKey} is truncated by GitHub API.`);
+  }
+
+  const names = treeResult.tree
+    .filter(entry =>
+      entry &&
+      entry.type === 'blob' &&
+      typeof entry.path === 'string' &&
+      !entry.path.includes('/') &&
+      entry.path.toLowerCase().endsWith('.c'))
+    .map(entry => entry.path)
+    .sort((a, b) => RELEASE_NAME_COLLATOR.compare(a, b));
+
+  binDiffFunctionNamesCache.set(cacheKey, names);
+  saveFunctionNamesToPersistentCache(cacheKey, names);
+  return names.map(name => ({
+    name,
+    downloadUrl: `${BIN_DIFF_REPO_RAW_BASE}/${encodePathSegments([...pathSegments, name])}`
+  }));
+};
+
+function initBinDiff() {
+  const root = document.getElementById('bin-diff-app');
+  if (!root) return;
+  if (root.dataset.ready === 'true') return;
+  root.dataset.ready = 'true';
+
+  const leftReleaseSelect = document.getElementById('bindiff-left-release');
+  const rightReleaseSelect = document.getElementById('bindiff-right-release');
+  const moduleSelect = document.getElementById('bindiff-module');
+  const functionSelect = document.getElementById('bindiff-function');
+  const viewTools = document.getElementById('bindiff-view-tools');
+  const viewModeToggle = document.getElementById('bindiff-view-mode');
+  const viewModeButtons = Array.from(document.querySelectorAll('#bindiff-view-mode .bindiff-view-button'));
+  const maximizeButton = document.getElementById('bindiff-maximize');
+  const runButton = document.getElementById('bindiff-run');
+  const swapButton = document.getElementById('bindiff-swap');
+  const output = document.getElementById('bin-diff-output');
+  let functionLimitInput = document.getElementById('bindiff-function-limit');
+  let functionLimitUnlimited = document.getElementById('bindiff-function-limit-unlimited');
+  const leftLink = document.getElementById('bindiff-left-link');
+  const rightLink = document.getElementById('bindiff-right-link');
+  const linksWrap = document.getElementById('bindiff-links');
+
+  if (
+    !leftReleaseSelect ||
+    !rightReleaseSelect ||
+    !moduleSelect ||
+    !functionSelect ||
+    !viewTools ||
+    !viewModeToggle ||
+    !viewModeButtons.length ||
+    !maximizeButton ||
+    !runButton ||
+    !swapButton ||
+    !output ||
+    !linksWrap ||
+    !leftLink ||
+    !rightLink
+  ) {
+    return;
+  }
+
+  let leftFileMap = new Map();
+  let rightFileMap = new Map();
+  let selectionUpdateToken = 0;
+  let lastComparisonState = null;
+  let currentViewMode = 'side-by-side';
+  let isMaximized = false;
+
+  const setMaximized = maximized => {
+    const next = Boolean(maximized);
+    if (isMaximized === next) return;
+    isMaximized = next;
+    root.classList.toggle('bindiff-maximized', next);
+    document.body.classList.toggle('bindiff-maximized', next);
+    maximizeButton.setAttribute('aria-pressed', next ? 'true' : 'false');
+    maximizeButton.setAttribute('aria-label', next ? 'Restore diff size' : 'Maximize diff');
+    maximizeButton.title = next ? 'Restore diff size' : 'Maximize diff';
+  };
+
+  const setComparisonUiVisible = visible => {
+    viewTools.style.display = visible ? '' : 'none';
+    linksWrap.style.display = visible ? '' : 'none';
+    swapButton.style.display = visible ? '' : 'none';
+    maximizeButton.style.display = visible ? 'block' : 'none';
+    if (!visible) {
+      setMaximized(false);
+    }
+  };
+
+  const clearComparison = () => {
+    output.replaceChildren();
+    lastComparisonState = null;
+    setComparisonUiVisible(false);
+  };
+
+  const setSourceLinks = (leftPath, rightPath) => {
+    leftLink.href = `${BIN_DIFF_REPO_BLOB_BASE}/${encodePathSegments(leftPath)}`;
+    rightLink.href = `${BIN_DIFF_REPO_BLOB_BASE}/${encodePathSegments(rightPath)}`;
+    leftLink.textContent = `Left source (${leftPath[0]})`;
+    rightLink.textContent = `Right source (${rightPath[0]})`;
+  };
+
+  const ensureFunctionLimitControls = () => {
+    const selectUi = functionSelect.closest('.select-ui');
+    const menuMeta = selectUi?.querySelector('.select-menu-meta');
+    if (!menuMeta) return;
+
+    let controls = menuMeta.querySelector('.bindiff-limit-controls');
+    if (!controls) {
+      controls = document.createElement('div');
+      controls.className = 'bindiff-limit-controls';
+
+      const limitLabel = document.createElement('label');
+      limitLabel.className = 'bindiff-limit-label';
+      limitLabel.setAttribute('for', 'bindiff-function-limit');
+      limitLabel.textContent = 'limit';
+
+      const limitInput = document.createElement('input');
+      limitInput.id = 'bindiff-function-limit';
+      limitInput.type = 'number';
+      limitInput.min = '1';
+      limitInput.step = '100';
+      limitInput.value = String(BIN_DIFF_FUNCTION_SEARCH_LIMIT_DEFAULT);
+
+      const unlimitedLabel = document.createElement('label');
+      unlimitedLabel.className = 'bindiff-limit-toggle';
+      unlimitedLabel.setAttribute('for', 'bindiff-function-limit-unlimited');
+      const unlimitedInput = document.createElement('input');
+      unlimitedInput.id = 'bindiff-function-limit-unlimited';
+      unlimitedInput.type = 'checkbox';
+      unlimitedLabel.appendChild(unlimitedInput);
+      unlimitedLabel.appendChild(document.createTextNode('unlimited'));
+
+      controls.appendChild(limitLabel);
+      controls.appendChild(limitInput);
+      controls.appendChild(unlimitedLabel);
+      menuMeta.appendChild(controls);
+    }
+
+    functionLimitInput = menuMeta.querySelector('#bindiff-function-limit');
+    functionLimitUnlimited = menuMeta.querySelector('#bindiff-function-limit-unlimited');
+  };
+
+  const refreshFunctionSelectUi = () => {
+    functionSelect.dispatchEvent(new CustomEvent('nv:options-updated', { detail: { resetSearch: false } }));
+  };
+
+  const applyFunctionSearchLimit = (value, unlimited, persist = true) => {
+    if (unlimited) {
+      functionSelect.dataset.searchLimit = 'all';
+      if (functionLimitUnlimited) functionLimitUnlimited.checked = true;
+      if (persist) storageSet(BIN_DIFF_FUNCTION_SEARCH_LIMIT_KEY, 'all');
+      refreshFunctionSelectUi();
+      return;
+    }
+
+    let parsed = Number.parseInt(String(value || ''), 10);
+    if (!Number.isFinite(parsed) || parsed < 1) {
+      parsed = BIN_DIFF_FUNCTION_SEARCH_LIMIT_DEFAULT;
+    }
+    functionSelect.dataset.searchLimit = String(parsed);
+    if (functionLimitInput) functionLimitInput.value = String(parsed);
+    if (functionLimitUnlimited) functionLimitUnlimited.checked = false;
+    if (persist) storageSet(BIN_DIFF_FUNCTION_SEARCH_LIMIT_KEY, String(parsed));
+    refreshFunctionSelectUi();
+  };
+
+  const initFunctionSearchLimit = () => {
+    const stored = String(storageGet(BIN_DIFF_FUNCTION_SEARCH_LIMIT_KEY, String(BIN_DIFF_FUNCTION_SEARCH_LIMIT_DEFAULT)))
+      .trim()
+      .toLowerCase();
+    if (stored === 'all' || stored === 'unlimited' || stored === '0' || stored === 'inf' || stored === 'infinity') {
+      applyFunctionSearchLimit(BIN_DIFF_FUNCTION_SEARCH_LIMIT_DEFAULT, true, false);
+      return;
+    }
+    applyFunctionSearchLimit(stored, false, false);
+  };
+
+  const replaceOptions = (select, options, preferredValue) => {
+    select.replaceChildren();
+    options.forEach(value => {
+      const option = document.createElement('option');
+      option.value = value;
+      option.textContent = value;
+      select.appendChild(option);
+    });
+    if (!options.length) {
+      select.dispatchEvent(new CustomEvent('nv:options-updated', { detail: { resetSearch: true } }));
+      return '';
+    }
+    if (preferredValue && options.includes(preferredValue)) {
+      select.value = preferredValue;
+      select.dispatchEvent(new CustomEvent('nv:options-updated', { detail: { resetSearch: true } }));
+      return preferredValue;
+    }
+    select.value = options[0];
+    select.dispatchEvent(new CustomEvent('nv:options-updated', { detail: { resetSearch: true } }));
+    return options[0];
+  };
+
+  const replaceFunctionOptions = (items, preferredValue) => {
+    return replaceOptions(functionSelect, items, preferredValue);
+  };
+
+  const updateUrlState = () => {
+    const params = new URLSearchParams();
+    params.set('left', leftReleaseSelect.value);
+    params.set('right', rightReleaseSelect.value);
+    params.set('module', moduleSelect.value);
+    params.set('function', functionSelect.value);
+    params.set('mode', currentViewMode);
+    const url = `bin-diff.html?${params.toString()}`;
+    history.replaceState({ ...(history.state || {}), url }, '', url);
+  };
+
+  const setViewMode = mode => {
+    const nextMode = mode === 'line-by-line' ? 'line-by-line' : 'side-by-side';
+    currentViewMode = nextMode;
+    viewModeButtons.forEach(button => {
+      const active = button.dataset.mode === nextMode;
+      button.classList.toggle('is-active', active);
+      button.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+  };
+
+  const renderDiff = (leftSource, rightSource, options) => {
+    const leftLabel = `${options.leftRelease}/${options.module}/${options.functionName}`;
+    const rightLabel = `${options.rightRelease}/${options.module}/${options.functionName}`;
+
+    const patch = window.Diff.createTwoFilesPatch(
+      leftLabel,
+      rightLabel,
+      leftSource,
+      rightSource,
+      '',
+      '',
+      { context: 4 }
+    );
+    const ui = new window.Diff2HtmlUI(output, patch, {
+      drawFileList: false,
+      matching: 'lines',
+      outputFormat: options.viewMode,
+      synchronisedScroll: true,
+      highlight: true,
+      fileListToggle: false,
+      fileContentToggle: false,
+      stickyFileHeaders: true,
+      renderNothingWhenEmpty: false
+    }, window.hljs);
+    ui.draw();
+  };
+
+  const runComparison = async () => {
+    const functionName = functionSelect.value.trim();
+    if (!functionName) return;
+    if (!leftFileMap.has(functionName) || !rightFileMap.has(functionName)) return;
+
+    try {
+      await ensureBinDiffAssets();
+
+      const leftFile = leftFileMap.get(functionName);
+      const rightFile = rightFileMap.get(functionName);
+      const [leftSource, rightSource] = await Promise.all([
+        fetch(leftFile.downloadUrl, { cache: 'force-cache' }).then(res => {
+          if (!res.ok) throw new Error(`Failed to fetch left source (${res.status})`);
+          return res.text();
+        }),
+        fetch(rightFile.downloadUrl, { cache: 'force-cache' }).then(res => {
+          if (!res.ok) throw new Error(`Failed to fetch right source (${res.status})`);
+          return res.text();
+        })
+      ]);
+
+      const options = {
+        leftRelease: leftReleaseSelect.value,
+        rightRelease: rightReleaseSelect.value,
+        module: moduleSelect.value,
+        functionName,
+        viewMode: currentViewMode
+      };
+      renderDiff(leftSource, rightSource, options);
+      setSourceLinks(
+        [options.leftRelease, options.module, functionName],
+        [options.rightRelease, options.module, functionName]
+      );
+      updateUrlState();
+      setComparisonUiVisible(true);
+      lastComparisonState = { leftSource, rightSource, options };
+    } catch (error) {
+      clearComparison();
+    }
+  };
+
+  const refreshFunctions = async (preferredFunction, autoRun = false) => {
+    const leftRelease = leftReleaseSelect.value;
+    const rightRelease = rightReleaseSelect.value;
+    const module = moduleSelect.value;
+    if (!leftRelease || !rightRelease || !module) return;
+
+    const token = ++selectionUpdateToken;
+    try {
+      const [leftFiles, rightFiles] = await Promise.all([
+        listRepoFunctionFiles([leftRelease, module]),
+        listRepoFunctionFiles([rightRelease, module])
+      ]);
+      if (token !== selectionUpdateToken) return;
+
+      leftFileMap = new Map(leftFiles.map(file => [file.name, file]));
+      rightFileMap = new Map(rightFiles.map(file => [file.name, file]));
+      const rightNames = new Set(rightFiles.map(file => file.name));
+      const sharedFunctions = leftFiles
+        .map(file => file.name)
+        .filter(name => rightNames.has(name))
+        .sort((a, b) => RELEASE_NAME_COLLATOR.compare(a, b));
+
+      const selectedFunction = replaceFunctionOptions(sharedFunctions, preferredFunction);
+      runButton.disabled = sharedFunctions.length === 0;
+      if (!sharedFunctions.length) {
+        clearComparison();
+        return;
+      }
+      if (autoRun && selectedFunction) {
+        await runComparison();
+      }
+    } catch (error) {
+      if (token !== selectionUpdateToken) return;
+      clearComparison();
+    }
+  };
+
+  const refreshModules = async (preferredModule, preferredFunction, autoRun = false) => {
+    const leftRelease = leftReleaseSelect.value;
+    const rightRelease = rightReleaseSelect.value;
+    if (!leftRelease || !rightRelease) return;
+
+    const token = ++selectionUpdateToken;
+    try {
+      const [leftModules, rightModules] = await Promise.all([
+        listRepoDirectories([leftRelease]),
+        listRepoDirectories([rightRelease])
+      ]);
+      if (token !== selectionUpdateToken) return;
+
+      const rightModuleSet = new Set(rightModules);
+      const sharedModules = leftModules
+        .filter(module => rightModuleSet.has(module))
+        .sort((a, b) => RELEASE_NAME_COLLATOR.compare(a, b));
+
+      const selectedModule = replaceOptions(moduleSelect, sharedModules, preferredModule);
+      if (!sharedModules.length) {
+        clearComparison();
+        return;
+      }
+      await refreshFunctions(preferredFunction, autoRun && Boolean(selectedModule));
+    } catch (error) {
+      if (token !== selectionUpdateToken) return;
+      clearComparison();
+    }
+  };
+
+  const readUrlState = () => {
+    const params = new URLSearchParams(location.search);
+    return {
+      left: params.get('left') || '',
+      right: params.get('right') || '',
+      module: params.get('module') || '',
+      functionName: params.get('function') || '',
+      mode: params.get('mode') || ''
+    };
+  };
+
+  const applyViewState = state => {
+    setViewMode(state.mode);
+  };
+
+  const rerenderLastComparison = () => {
+    if (!lastComparisonState) return;
+    lastComparisonState.options.viewMode = currentViewMode;
+    renderDiff(lastComparisonState.leftSource, lastComparisonState.rightSource, lastComparisonState.options);
+    setComparisonUiVisible(true);
+    updateUrlState();
+  };
+
+  const initialize = async () => {
+    clearComparison();
+    runButton.disabled = true;
+    try {
+      await ensureBinDiffAssets();
+      const releases = (await listRepoDirectories([])).sort(compareReleaseNames);
+      if (!releases.length) {
+        return;
+      }
+
+      const urlState = readUrlState();
+      const leftDefault = releases.includes(urlState.left) ? urlState.left : releases[0];
+      const rightFallback = releases.find(release => release !== leftDefault) || leftDefault;
+      const rightDefault = releases.includes(urlState.right) ? urlState.right : rightFallback;
+
+      replaceOptions(leftReleaseSelect, releases, leftDefault);
+      replaceOptions(rightReleaseSelect, releases, rightDefault);
+      applyViewState(urlState);
+      await refreshModules(urlState.module, urlState.functionName, false);
+    } catch (error) {
+    }
+  };
+
+  leftReleaseSelect.addEventListener('change', () => {
+    clearComparison();
+    refreshModules(moduleSelect.value, functionSelect.value);
+  });
+  rightReleaseSelect.addEventListener('change', () => {
+    clearComparison();
+    refreshModules(moduleSelect.value, functionSelect.value);
+  });
+  moduleSelect.addEventListener('change', () => {
+    clearComparison();
+    refreshFunctions(functionSelect.value);
+  });
+  functionSelect.addEventListener('change', () => {
+    clearComparison();
+    updateUrlState();
+  });
+  ensureFunctionLimitControls();
+  if (functionLimitInput) {
+    functionLimitInput.addEventListener('input', () => {
+      if (functionLimitUnlimited?.checked) functionLimitUnlimited.checked = false;
+    });
+    functionLimitInput.addEventListener('change', () => {
+      if (functionLimitUnlimited?.checked) functionLimitUnlimited.checked = false;
+      applyFunctionSearchLimit(functionLimitInput.value, false, true);
+    });
+    functionLimitInput.addEventListener('blur', () => {
+      if (functionLimitUnlimited?.checked) functionLimitUnlimited.checked = false;
+      applyFunctionSearchLimit(functionLimitInput.value, false, true);
+    });
+  }
+  if (functionLimitUnlimited) {
+    functionLimitUnlimited.addEventListener('change', () => {
+      if (functionLimitUnlimited.checked) {
+        applyFunctionSearchLimit(BIN_DIFF_FUNCTION_SEARCH_LIMIT_DEFAULT, true, true);
+        return;
+      }
+      applyFunctionSearchLimit(functionLimitInput?.value || BIN_DIFF_FUNCTION_SEARCH_LIMIT_DEFAULT, false, true);
+    });
+  }
+  runButton.addEventListener('click', () => {
+    runComparison();
+  });
+  swapButton.addEventListener('click', () => {
+    const previousLeft = leftReleaseSelect.value;
+    leftReleaseSelect.value = rightReleaseSelect.value;
+    rightReleaseSelect.value = previousLeft;
+    refreshModules(moduleSelect.value, functionSelect.value, true);
+  });
+  viewModeButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      if (button.dataset.mode === currentViewMode) return;
+      setViewMode(button.dataset.mode);
+      if (lastComparisonState) {
+        rerenderLastComparison();
+      } else {
+        updateUrlState();
+      }
+    });
+  });
+  maximizeButton.addEventListener('click', () => {
+    if (!lastComparisonState) return;
+    setMaximized(!isMaximized);
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key !== 'Escape' || !isMaximized) return;
+    event.preventDefault();
+    setMaximized(false);
+  });
+
+  initFunctionSearchLimit();
+  initialize();
 }
 
 function initConsoleWindow() {
@@ -743,11 +1579,6 @@ function initConsole() {
       const match = firstMatch(listThemes(), seed);
       return match ? `theme ${match}` : '';
     }
-    if (head === 'font' && (parts.length > 1 || hasTrailingSpace)) {
-      const seed = parts.length > 1 ? parts.slice(1).join(' ') : '';
-      const match = firstMatch(listFonts(), seed);
-      return match ? `font ${match}` : '';
-    }
     if (parts.length > 1) return '';
     const commandMatch = firstMatch(Object.keys(commands), head, true);
     if (commandMatch) return commandMatch;
@@ -833,7 +1664,7 @@ function initConsole() {
     if (raw.startsWith('main/')) raw = raw.slice(5);
     raw = raw.split('/').filter(Boolean).pop() || '';
     if (raw === 'home') return rootPath;
-    if (['product', 'projects', 'docs'].includes(raw)) {
+    if (['product', 'projects', 'bin-diff', 'docs'].includes(raw)) {
       return `${rootPath}/${raw}`;
     }
     return null;
@@ -841,7 +1672,7 @@ function initConsole() {
 
   const listDirs = () => {
     if (currentPath === rootPath) {
-      return ['./product', './projects', './docs'];
+      return ['./product', './projects', './bin-diff', './docs'];
     }
     return ['..'];
   };
@@ -850,6 +1681,7 @@ function initConsole() {
     home: 'index.html',
     product: 'product.html',
     projects: 'projects.html',
+    'bin-diff': 'bin-diff.html',
     docs: 'docs/'
   };
 
@@ -876,6 +1708,7 @@ function initConsole() {
     home: 'cd home',
     cprod: 'cd product',
     cproj: 'cd projects',
+    cbindiff: 'cd bin-diff',
     cdocs: 'cd docs',
     cabout: 'about',
     '..': 'cd ..'
@@ -897,8 +1730,6 @@ function initConsole() {
     return Array.from(select.options).map(option => option.value);
   };
 
-  const listFonts = () => FONT_KEYS;
-
   const commands = {
     help: () => {
       addLine('available commands:');
@@ -907,6 +1738,7 @@ function initConsole() {
         ['about', 'about me + links'],
         ['product', 'winconfig summary + pricing'],
         ['docs', 'documentation hub + section links'],
+        ['bindiff', 'open binary pseudocode diff page'],
         ['toolkit', 'external tools list'],
         ['projects', 'list projects with repo links'],
         ['terms', 'terms of service summary'],
@@ -914,14 +1746,12 @@ function initConsole() {
         ['ascii', 'print the banner'],
         ['ls', 'list available directories'],
         ['pwd', 'show current directory'],
-        ['cd <path>', 'change directory (./product, ./docs, ../)'],
+        ['cd <path>', 'change directory (./product, ./projects, ./bin-diff, ./docs, ../)'],
         ['alias', 'list aliases'],
         ['alias name=command', 'set alias'],
         ['unalias <name>', 'remove alias'],
         ['themes', 'list theme ids'],
         ['theme <id>', 'set theme'],
-        ['fonts', 'list font ids'],
-        ['font <id>', 'set font'],
         ['fontsize <10-22>', 'set size'],
         ['clear', 'clear the terminal']
       ];
@@ -976,6 +1806,10 @@ function initConsole() {
         ['policies', 'docs/win-config/policies/'],
         ['affinities', 'docs/win-config/affinities/']
       ]);
+    },
+    bindiff: () => {
+      addLine('opening bin-diff...');
+      navigateToPath(`${rootPath}/bin-diff`);
     },
     toolkit: () => {
       addLine('external tools:');
@@ -1074,10 +1908,6 @@ function initConsole() {
       addLine('themes:', 'muted');
       addIndentedLines(listThemes());
     },
-    fonts: () => {
-      addLine('fonts:', 'muted');
-      addIndentedLines(listFonts());
-    },
     theme: args => {
       const select = document.getElementById('theme-select');
       if (!select) return;
@@ -1093,22 +1923,6 @@ function initConsole() {
       select.value = next;
       select.dispatchEvent(new Event('change', { bubbles: true }));
       addLine(`theme set: ${next}`);
-    },
-    font: args => {
-      const select = document.getElementById('font-select');
-      if (!select) return;
-      if (!args.length) {
-        addLine(`current font: ${select.value}`);
-        return;
-      }
-      const next = args.join(' ').trim();
-      if (!FONT_SET.has(next)) {
-        addLine(`font not found: ${next}`, 'muted');
-        return;
-      }
-      select.value = next;
-      select.dispatchEvent(new Event('change', { bubbles: true }));
-      addLine(`font set: ${next}`);
     },
     fontsize: args => {
       const sizeInput = document.getElementById('font-size');
@@ -1261,6 +2075,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSelectUI();
   initRepoDescriptions();
   initFiltering();
+  initBinDiff();
   initClipboard();
   initConsole();
 });

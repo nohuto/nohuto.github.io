@@ -9,7 +9,7 @@
   <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=()">
   <meta http-equiv="Content-Security-Policy"
     content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; script-src-attr 'none'; style-src 'self'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self' https://api.github.com https://raw.githubusercontent.com; form-action 'self' https://www.paypal.com">
-  <title>Home</title>
+  <title>Bin Diff</title>
   <link rel="icon" href="main/images/nvlogo.png">
   <script src="main/bootstrap.js"></script>
   <link rel="stylesheet" href="main/styles.css">
@@ -29,42 +29,95 @@
       <span class="prompt-caret">$</span>
       <span class="prompt-cmd">open</span>
     </div>
-    <nav class="nav-tabs" aria-label="Primary navigation">
-      <a href="index.html" aria-current="page" class="active">home</a>
+        <nav class="nav-tabs" aria-label="Primary navigation">
+      <a href="index.html">home</a>
       <a href="product.html">product</a>
       <a href="projects.html">projects</a>
-      <a href="bin-diff.html">bin-diff</a>
+      <a href="bin-diff.html" aria-current="page" class="active">bin-diff</a>
       <a href="/docs/directory/">docs</a>
     </nav>
   </header>
 
-  <main id="main" class="main-home">
-    <section class="home-shell" data-title="home">
-      <div class="window-surface">
-        <div class="console-window" id="console-window" role="region" aria-label="Terminal window">
-          <div class="console-window-header" id="console-drag">
-            <span>home.terminal</span>
-            <span class="console-window-meta">drag / resize</span>
-          </div>
-          <div class="console-window-body">
-            <div class="console" id="console">
-              <div class="console-output" id="console-output" role="log" aria-live="polite" aria-relevant="additions">
-                <div class="console-lines" id="console-lines"></div>
-                <form class="console-input" id="console-form" autocomplete="off">
-                  <span class="console-prompt">nohuto@noverse:~/main$</span>
-                  <span class="console-edit">
-                    <span class="console-measure" id="console-measure" aria-hidden="true"></span>
-                    <span class="console-ghost" id="console-ghost" aria-hidden="true"></span>
-                    <input id="console-command" type="text" name="command" spellcheck="false" autocomplete="off"
-                      autocapitalize="off" aria-label="Console command input">
-                    <button type="submit" class="sr-only">Run command</button>
-                    <span class="console-block-cursor" id="console-cursor" aria-hidden="true"></span>
-                  </span>
-                  <span class="console-timestamp" id="console-timestamp" aria-hidden="true"></span>
-                </form>
-              </div>
+    <main id="main" class="no-center">
+    <section class="content-box panel" id="bin-diff-app" data-title="bin-diff">
+      <div class="panel-header">
+        <span class="panel-title">bin-diff</span>
+        <span class="panel-meta">decompiled pseudocode</span>
+      </div>
+      <div class="panel-body">
+        <div class="bindiff-intro">
+          <h1 class="projects-heading">Binary Function Diff</h1>
+          <div class="projects-divider"></div>
+          <p>Compare decompiled pseudocode functions of different builds (<a class="link" href="https://github.com/nohuto/decompiled-pseudocode" target="_blank" rel="noopener noreferrer">decompiled-pseudocode</a>).</p>
+        </div>
+
+        <div class="bindiff-controls">
+          <div class="bindiff-grid">
+            <div class="bindiff-field bindiff-field-compact">
+              <label for="bindiff-left-release">Left build</label>
+              <select class="select-enhanced" id="bindiff-left-release" name="left-release"></select>
+            </div>
+            <div class="bindiff-field bindiff-field-compact">
+              <label for="bindiff-right-release">Right build</label>
+              <select class="select-enhanced" id="bindiff-right-release" name="right-release"></select>
+            </div>
+            <div class="bindiff-field bindiff-field-compact">
+              <label for="bindiff-module">Binary</label>
+              <select class="select-enhanced" id="bindiff-module" name="module"></select>
+            </div>
+            <div class="bindiff-field bindiff-field-compact bindiff-field-function">
+              <label for="bindiff-function">Function</label>
+              <select class="select-enhanced" data-searchable="true" data-search-limit="300" id="bindiff-function" name="function"></select>
             </div>
           </div>
+
+        </div>
+
+        <div class="bindiff-output-tools">
+          <div class="bindiff-actions">
+            <button id="bindiff-run" type="button">Compare</button>
+            <button id="bindiff-swap" type="button">Swap builds</button>
+          </div>
+          <div class="bindiff-view-tools" id="bindiff-view-tools">
+            <div class="bindiff-view-toggle" aria-label="View mode" id="bindiff-view-mode" role="group">
+              <button class="bindiff-view-button is-active" type="button" data-mode="side-by-side" aria-pressed="true">Side by side</button>
+              <button class="bindiff-view-button" type="button" data-mode="line-by-line" aria-pressed="false">Line by line</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="bindiff-output-frame">
+          <button id="bindiff-maximize" type="button" aria-pressed="false" aria-label="Maximize diff" title="Maximize diff">
+            <svg class="bindiff-maximize-icon icon-maximize" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M16 4h4v4"></path>
+              <path d="M14 10l6 -6"></path>
+              <path d="M8 20h-4v-4"></path>
+              <path d="M4 20l6 -6"></path>
+              <path d="M16 20h4v-4"></path>
+              <path d="M14 14l6 6"></path>
+              <path d="M8 4h-4v4"></path>
+              <path d="M4 4l6 6"></path>
+            </svg>
+            <svg class="bindiff-maximize-icon icon-minimize" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M5 9h4v-4"></path>
+              <path d="M3 3l6 6"></path>
+              <path d="M5 15h4v4"></path>
+              <path d="M3 21l6 -6"></path>
+              <path d="M19 9h-4v-4"></path>
+              <path d="M15 9l6 -6"></path>
+              <path d="M19 15h-4v4"></path>
+              <path d="M15 15l6 6"></path>
+            </svg>
+            <span class="sr-only">Toggle diff maximize</span>
+          </button>
+          <div id="bin-diff-output" class="bindiff-output" aria-live="off"></div>
+        </div>
+
+        <div class="bindiff-links" id="bindiff-links">
+          <a id="bindiff-left-link" class="link" href="#" target="_blank" rel="noopener noreferrer">Left source</a>
+          <a id="bindiff-right-link" class="link" href="#" target="_blank" rel="noopener noreferrer">Right source</a>
         </div>
       </div>
     </section>
@@ -155,6 +208,4 @@
 </body>
 
 </html>
-
-
 
