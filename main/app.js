@@ -2282,14 +2282,20 @@ function initConsole() {
         'per-option documentation (cd ./docs/win-config)',
         'extensive customization controls'
       ]);
+      addLine('terms:');
+      addKeyValueLines([
+        ['data privacy', 'hardware identifiers only for licensing'],
+        ['usage', 'personal license only, no resale'],
+        ['refunds', 'only before registration/role assignment'],
+        ['license', 'hardware-bound, manual validation'],
+        ['after purchase', 'discord role assignment required']
+      ]);
     },
     docs: () => {
       addLine('documentation:');
       addKeyValueLines([
-        ['main docs', 'docs/'],
-        ['docs home', 'docs/'],
+        ['docs directory', 'docs/directory'],
         ['winconfig', 'docs/win-config/'],
-        ['win registry', 'docs/win-registry/'],
         ['system', 'docs/win-config/system/'],
         ['visibility', 'docs/win-config/visibility/'],
         ['peripheral', 'docs/win-config/peripheral/'],
@@ -2300,7 +2306,12 @@ function initConsole() {
         ['cleanup', 'docs/win-config/cleanup/'],
         ['misc', 'docs/win-config/misc/'],
         ['policies', 'docs/win-config/policies/'],
-        ['affinities', 'docs/win-config/affinities/']
+        ['affinities', 'docs/win-config/affinities/'],
+        ['regkit', 'docs/regkit/'],
+        ['win-registry', 'docs/win-registry/'],
+        ['game-tools', 'docs/game-tools/'],
+        ['app-tools', 'docs/app-tools/'],
+        ['nvapi-cli', 'docs/nvapi-cli/']
       ]);
     },
     bindiff: () => {
@@ -2318,14 +2329,7 @@ function initConsole() {
       });
     },
     terms: () => {
-      addLine('terms:');
-      addKeyValueLines([
-        ['data privacy', 'hardware identifiers only for licensing'],
-        ['usage', 'personal license only, no resale'],
-        ['refunds', 'only before registration/role assignment'],
-        ['license', 'hardware-bound, manual validation'],
-        ['after purchase', 'discord role assignment required']
-      ]);
+      commands.product();
     },
     contact: () => {
       addLine('contact:');
