@@ -1402,6 +1402,15 @@ function initBinDiff() {
     });
   };
 
+  const applyDiffHeaderFormatting = () => {
+    output.querySelectorAll('.d2h-file-name').forEach(node => {
+      node.textContent = (node.textContent || '').replaceAll('→', '->');
+    });
+    output.querySelectorAll('.d2h-file-name-wrapper .d2h-icon').forEach(icon => {
+      icon.remove();
+    });
+  };
+
   const enhanceDiffCommentHighlight = () => {
     output.querySelectorAll('.d2h-file-side-diff, .d2h-file-diff').forEach(container => {
       let inBlockComment = false;
@@ -1437,16 +1446,36 @@ function initBinDiff() {
     const preparedRight = preprocessBinDiffSource(rightSource, diffSettings);
     const fullContext = Math.max(preparedLeft.split('\n').length, preparedRight.split('\n').length) + 2;
     const context = diffSettings.showFullFunction ? fullContext : 4;
+    const buildNoChangePatch = (leftFile, rightFile, source) => {
+      const normalized = String(source || '').replace(/\r\n?/g, '\n');
+      const lines = normalized.endsWith('\n')
+        ? normalized.slice(0, -1).split('\n')
+        : normalized
+          ? normalized.split('\n')
+          : [];
+      const lineCount = lines.length;
+      const startLine = lineCount > 0 ? 1 : 0;
+      const headers = [
+        '===================================================================',
+        `--- ${leftFile}`,
+        `+++ ${rightFile}`,
+        `@@ -${startLine},${lineCount} +${startLine},${lineCount} @@`
+      ];
+      const body = lines.map(line => ` ${line}`);
+      return [...headers, ...body, ''].join('\n');
+    };
 
-    const rawPatch = window.Diff.createTwoFilesPatch(
-      leftLabel,
-      rightLabel,
-      preparedLeft,
-      preparedRight,
-      '',
-      '',
-      { context }
-    );
+    const rawPatch = preparedLeft === preparedRight
+      ? buildNoChangePatch(leftLabel, rightLabel, preparedLeft)
+      : window.Diff.createTwoFilesPatch(
+        leftLabel,
+        rightLabel,
+        preparedLeft,
+        preparedRight,
+        '',
+        '',
+        { context }
+      );
     const patch = rawPatch.replace(/^(---|\+\+\+) ([^\n\t]+)\t$/gm, '$1 $2');
     const ui = new window.Diff2HtmlUI(output, patch, {
       drawFileList: false,
@@ -1461,6 +1490,7 @@ function initBinDiff() {
       renderNothingWhenEmpty: false
     }, window.hljs);
     ui.draw();
+    applyDiffHeaderFormatting();
     enhanceDiffCommentHighlight();
     applyRenderedDiffColorScheme();
   };

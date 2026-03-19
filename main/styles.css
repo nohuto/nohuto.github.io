@@ -2169,6 +2169,22 @@ video {
   --d2h-dark-moved-label-color: color-mix(in srgb, var(--accent) 78%, var(--text));
 }
 
+.bindiff-output .d2h-file-name-wrapper .d2h-icon {
+  display: none !important;
+}
+
+.bindiff-output .d2h-file-header,
+.bindiff-output .d2h-file-name-wrapper,
+.bindiff-output .d2h-file-name,
+.bindiff-output .d2h-file-stats {
+  font-family: var(--font-family);
+  font-size: var(--font-size) !important;
+}
+
+.bindiff-output .d2h-file-name {
+  color: var(--muted) !important;
+}
+
 .bindiff-output .d2h-tag {
   display: none;
 }
@@ -2177,6 +2193,17 @@ video {
   width: auto;
   min-width: 100%;
   table-layout: auto;
+  font-family: var(--font-family);
+  font-size: var(--font-size) !important;
+}
+
+.bindiff-output .d2h-code-line-ctn,
+.bindiff-output .d2h-code-linenumber,
+.bindiff-output .d2h-code-side-linenumber,
+.bindiff-output .line-num1,
+.bindiff-output .line-num2 {
+  font-size: var(--font-size) !important;
+  font-family: var(--font-family) !important;
 }
 
 .bindiff-output .d2h-code-line-ctn {
