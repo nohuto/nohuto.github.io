@@ -237,12 +237,46 @@ function initSelectUI() {
       return parsed;
     };
 
+    const escapeSearchRegex = value => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const wildcardToRegexPattern = term => {
+      let pattern = '';
+      for (const char of term) {
+        if (char === '*') {
+          pattern += '.*';
+        } else if (char === '?') {
+          pattern += '.';
+        } else {
+          pattern += escapeSearchRegex(char);
+        }
+      }
+      return pattern;
+    };
+
+    const buildSearchMatcher = filterText => {
+      const raw = (filterText || '').trim();
+      if (!raw) return null;
+
+      const terms = raw.split(/\s+/).filter(Boolean);
+      const checks = terms.map(term => {
+        if (!/[*?]/.test(term)) {
+          const literal = term.toLowerCase();
+          return text => (text || '').toLowerCase().includes(literal);
+        }
+        const wildcardPattern = wildcardToRegexPattern(term);
+        const expression = new RegExp(wildcardPattern, 'i');
+        return text => expression.test(text || '');
+      });
+
+      return text => checks.every(check => check(text));
+    };
+
     const buildOptions = (filterText = '') => {
       list.replaceChildren();
-      const normalizedFilter = (filterText || '').trim().toLowerCase();
+      const normalizedFilter = (filterText || '').trim();
+      const matcher = buildSearchMatcher(normalizedFilter);
       const allOptions = Array.from(select.options);
-      const filteredOptions = normalizedFilter
-        ? allOptions.filter(option => (option.textContent || '').toLowerCase().includes(normalizedFilter))
+      const filteredOptions = matcher
+        ? allOptions.filter(option => matcher(option.textContent || ''))
         : allOptions;
       const searchRenderLimit = getSearchRenderLimit();
       const optionsToRender = isSearchable && Number.isFinite(searchRenderLimit)
