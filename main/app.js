@@ -155,6 +155,12 @@ function applyTheme(theme) {
   const applied = theme || DEFAULT_THEME;
   document.documentElement.setAttribute('data-theme', applied);
   updateIconTheme(applied);
+  document.dispatchEvent(new CustomEvent('nv:theme-change', {
+    detail: {
+      theme: applied,
+      isLight: LIGHT_THEMES.has(applied)
+    }
+  }));
   return applied;
 }
 
@@ -1383,6 +1389,47 @@ function initBinDiff() {
     });
   };
 
+  const getBinDiffColorScheme = () => {
+    const activeTheme = document.documentElement.getAttribute('data-theme') || DEFAULT_THEME;
+    return LIGHT_THEMES.has(activeTheme) ? 'light' : 'dark';
+  };
+
+  const applyRenderedDiffColorScheme = () => {
+    const schemeClass = getBinDiffColorScheme() === 'light' ? 'd2h-light-color-scheme' : 'd2h-dark-color-scheme';
+    output.querySelectorAll('.d2h-wrapper').forEach(wrapper => {
+      wrapper.classList.remove('d2h-light-color-scheme', 'd2h-dark-color-scheme', 'd2h-auto-color-scheme');
+      wrapper.classList.add(schemeClass);
+    });
+  };
+
+  const enhanceDiffCommentHighlight = () => {
+    output.querySelectorAll('.d2h-file-side-diff, .d2h-file-diff').forEach(container => {
+      let inBlockComment = false;
+      container.querySelectorAll('.d2h-code-line-ctn').forEach(line => {
+        const text = line.textContent || '';
+        if (!text) return;
+
+        const startIndex = text.indexOf('/*');
+        const endIndex = text.indexOf('*/');
+        const startsBlock = startIndex !== -1;
+        const endsBlock = endIndex !== -1;
+        const closedSameLine = startsBlock && endsBlock && endIndex > startIndex;
+
+        if (inBlockComment || startsBlock) {
+          line.classList.add('hljs-comment', 'bindiff-comment-line');
+        }
+
+        if (inBlockComment) {
+          if (endsBlock) {
+            inBlockComment = false;
+          }
+        } else if (startsBlock && !closedSameLine) {
+          inBlockComment = true;
+        }
+      });
+    });
+  };
+
   const renderDiff = (leftSource, rightSource, options) => {
     const leftLabel = `${options.leftRelease}/${options.module}/${options.functionName}`;
     const rightLabel = `${options.rightRelease}/${options.module}/${options.functionName}`;
@@ -1391,7 +1438,7 @@ function initBinDiff() {
     const fullContext = Math.max(preparedLeft.split('\n').length, preparedRight.split('\n').length) + 2;
     const context = diffSettings.showFullFunction ? fullContext : 4;
 
-    const patch = window.Diff.createTwoFilesPatch(
+    const rawPatch = window.Diff.createTwoFilesPatch(
       leftLabel,
       rightLabel,
       preparedLeft,
@@ -1400,10 +1447,12 @@ function initBinDiff() {
       '',
       { context }
     );
+    const patch = rawPatch.replace(/^(---|\+\+\+) ([^\n\t]+)\t$/gm, '$1 $2');
     const ui = new window.Diff2HtmlUI(output, patch, {
       drawFileList: false,
       matching: 'lines',
       outputFormat: options.viewMode,
+      colorScheme: getBinDiffColorScheme(),
       synchronisedScroll: true,
       highlight: true,
       fileListToggle: false,
@@ -1412,6 +1461,8 @@ function initBinDiff() {
       renderNothingWhenEmpty: false
     }, window.hljs);
     ui.draw();
+    enhanceDiffCommentHighlight();
+    applyRenderedDiffColorScheme();
   };
 
   const runComparison = async () => {
@@ -1734,6 +1785,10 @@ function initBinDiff() {
     if (!isMaximized) return;
     event.preventDefault();
     setMaximized(false);
+  });
+  document.addEventListener('nv:theme-change', () => {
+    if (!lastComparisonState) return;
+    applyRenderedDiffColorScheme();
   });
 
   initFunctionSearchLimit();
