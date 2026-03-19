@@ -46,10 +46,11 @@ const BIN_DIFF_FUNCTION_SEARCH_LIMIT_KEY = 'nv-bindiff-function-search-limit';
 const BIN_DIFF_FUNCTION_SEARCH_LIMIT_DEFAULT = 300;
 const BIN_DIFF_DIFF_SETTINGS_KEY = 'nv-bindiff-diff-settings-v1';
 const BIN_DIFF_DIFF_SETTINGS_DEFAULTS = Object.freeze({
-  stripXrefs: true,
+  stripXrefs: false,
   stripAddresses: true,
   stripLocations: true,
   normalizeIdentifiers: true,
+  showFullFunction: true,
   trimTrailingWhitespace: true
 });
 const RELEASE_NAME_COLLATOR = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
@@ -989,6 +990,7 @@ const readBinDiffSettings = () => {
       stripAddresses: parsed.stripAddresses !== undefined ? Boolean(parsed.stripAddresses) : defaults.stripAddresses,
       stripLocations: parsed.stripLocations !== undefined ? Boolean(parsed.stripLocations) : defaults.stripLocations,
       normalizeIdentifiers: parsed.normalizeIdentifiers !== undefined ? Boolean(parsed.normalizeIdentifiers) : defaults.normalizeIdentifiers,
+      showFullFunction: parsed.showFullFunction !== undefined ? Boolean(parsed.showFullFunction) : defaults.showFullFunction,
       trimTrailingWhitespace: parsed.trimTrailingWhitespace !== undefined ? Boolean(parsed.trimTrailingWhitespace) : defaults.trimTrailingWhitespace
     };
   } catch {
@@ -1002,6 +1004,7 @@ const writeBinDiffSettings = settings => {
     stripAddresses: Boolean(settings?.stripAddresses),
     stripLocations: Boolean(settings?.stripLocations),
     normalizeIdentifiers: Boolean(settings?.normalizeIdentifiers),
+    showFullFunction: Boolean(settings?.showFullFunction),
     trimTrailingWhitespace: Boolean(settings?.trimTrailingWhitespace)
   }));
 };
@@ -1098,6 +1101,7 @@ function initBinDiff() {
   const stripAddressesInput = document.getElementById('bindiff-setting-strip-addresses');
   const stripLocationsInput = document.getElementById('bindiff-setting-strip-locations');
   const normalizeIdentifiersInput = document.getElementById('bindiff-setting-normalize-identifiers');
+  const showFullFunctionInput = document.getElementById('bindiff-setting-show-full');
   const trimWhitespaceInput = document.getElementById('bindiff-setting-trim-whitespace');
   const runButton = document.getElementById('bindiff-run');
   const swapButton = document.getElementById('bindiff-swap');
@@ -1128,6 +1132,7 @@ function initBinDiff() {
     !stripAddressesInput ||
     !stripLocationsInput ||
     !normalizeIdentifiersInput ||
+    !showFullFunctionInput ||
     !trimWhitespaceInput ||
     !runButton ||
     !swapButton ||
@@ -1175,6 +1180,7 @@ function initBinDiff() {
     stripAddressesInput.checked = diffSettings.stripAddresses;
     stripLocationsInput.checked = diffSettings.stripLocations;
     normalizeIdentifiersInput.checked = diffSettings.normalizeIdentifiers;
+    showFullFunctionInput.checked = diffSettings.showFullFunction;
     trimWhitespaceInput.checked = diffSettings.trimTrailingWhitespace;
   };
 
@@ -1184,6 +1190,7 @@ function initBinDiff() {
       stripAddresses: stripAddressesInput.checked,
       stripLocations: stripLocationsInput.checked,
       normalizeIdentifiers: normalizeIdentifiersInput.checked,
+      showFullFunction: showFullFunctionInput.checked,
       trimTrailingWhitespace: trimWhitespaceInput.checked
     };
     writeBinDiffSettings(diffSettings);
@@ -1381,6 +1388,8 @@ function initBinDiff() {
     const rightLabel = `${options.rightRelease}/${options.module}/${options.functionName}`;
     const preparedLeft = preprocessBinDiffSource(leftSource, diffSettings);
     const preparedRight = preprocessBinDiffSource(rightSource, diffSettings);
+    const fullContext = Math.max(preparedLeft.split('\n').length, preparedRight.split('\n').length) + 2;
+    const context = diffSettings.showFullFunction ? fullContext : 4;
 
     const patch = window.Diff.createTwoFilesPatch(
       leftLabel,
@@ -1389,7 +1398,7 @@ function initBinDiff() {
       preparedRight,
       '',
       '',
-      { context: 4 }
+      { context }
     );
     const ui = new window.Diff2HtmlUI(output, patch, {
       drawFileList: false,
@@ -1686,7 +1695,7 @@ function initBinDiff() {
     if (settingsModal.hidden) return;
     clampSettingsDialogPosition();
   });
-  [stripXrefsInput, stripAddressesInput, stripLocationsInput, normalizeIdentifiersInput, trimWhitespaceInput].forEach(input => {
+  [stripXrefsInput, stripAddressesInput, stripLocationsInput, normalizeIdentifiersInput, showFullFunctionInput, trimWhitespaceInput].forEach(input => {
     input.addEventListener('change', () => {
       applySettingsFromUi();
     });
