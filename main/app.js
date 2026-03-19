@@ -44,6 +44,14 @@ const BIN_DIFF_FUNCTION_CACHE_TTL_MS = 1000 * 60 * 60 * 24 * 7;
 const BIN_DIFF_FUNCTION_CACHE_MAX_ENTRIES = 6;
 const BIN_DIFF_FUNCTION_SEARCH_LIMIT_KEY = 'nv-bindiff-function-search-limit';
 const BIN_DIFF_FUNCTION_SEARCH_LIMIT_DEFAULT = 300;
+const BIN_DIFF_DIFF_SETTINGS_KEY = 'nv-bindiff-diff-settings-v1';
+const BIN_DIFF_DIFF_SETTINGS_DEFAULTS = Object.freeze({
+  stripXrefs: true,
+  stripAddresses: true,
+  stripLocations: true,
+  normalizeIdentifiers: true,
+  trimTrailingWhitespace: true
+});
 const RELEASE_NAME_COLLATOR = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
 const PROJECT_LIST = [
   { title: 'Windows Configuration', repo: 'nohuto/win-config' },
@@ -935,6 +943,102 @@ const listRepoFunctionFiles = async pathSegments => {
   }));
 };
 
+const readBinDiffSettings = () => {
+  const defaults = { ...BIN_DIFF_DIFF_SETTINGS_DEFAULTS };
+  const raw = storageGet(BIN_DIFF_DIFF_SETTINGS_KEY, '');
+  if (!raw) return defaults;
+  try {
+    const parsed = JSON.parse(raw);
+    if (!parsed || typeof parsed !== 'object') return defaults;
+    return {
+      stripXrefs: parsed.stripXrefs !== undefined ? Boolean(parsed.stripXrefs) : defaults.stripXrefs,
+      stripAddresses: parsed.stripAddresses !== undefined ? Boolean(parsed.stripAddresses) : defaults.stripAddresses,
+      stripLocations: parsed.stripLocations !== undefined ? Boolean(parsed.stripLocations) : defaults.stripLocations,
+      normalizeIdentifiers: parsed.normalizeIdentifiers !== undefined ? Boolean(parsed.normalizeIdentifiers) : defaults.normalizeIdentifiers,
+      trimTrailingWhitespace: parsed.trimTrailingWhitespace !== undefined ? Boolean(parsed.trimTrailingWhitespace) : defaults.trimTrailingWhitespace
+    };
+  } catch {
+    return defaults;
+  }
+};
+
+const writeBinDiffSettings = settings => {
+  storageSet(BIN_DIFF_DIFF_SETTINGS_KEY, JSON.stringify({
+    stripXrefs: Boolean(settings?.stripXrefs),
+    stripAddresses: Boolean(settings?.stripAddresses),
+    stripLocations: Boolean(settings?.stripLocations),
+    normalizeIdentifiers: Boolean(settings?.normalizeIdentifiers),
+    trimTrailingWhitespace: Boolean(settings?.trimTrailingWhitespace)
+  }));
+};
+
+const stripBinDiffXrefMetadata = source => source.replace(/\/\*[\s\S]*?\*\//g, block => {
+  if (/\bXREFs of\b/.test(block) || /\bCallers:\b/.test(block) || /\bCallees:\b/.test(block)) {
+    return '';
+  }
+  return block;
+});
+
+const stripBinDiffLocationComments = source => source
+  .split('\n')
+  .map(line => line
+    .replace(/\s*\/\/\s*\[(?:rsp|rbp|esp|ebp)[^\]]*\](?:\s*\[(?:rsp|rbp|esp|ebp)[^\]]*\])*(?:\s*BYREF)?\s*$/i, '')
+    .replace(/\s*\/\/\s*(?:[re]?[abcd]x|[re]?(?:si|di|sp|bp|ip)|r\d+[bwd]?|xmm\d+|ymm\d+|zmm\d+)\s*$/i, ''))
+  .join('\n');
+
+const AUTO_IDENTIFIER_DECLARATION_RE = /^(?:[_A-Za-z]\w*(?:\s+[_A-Za-z]\w*)*\s+)(?:\*+\s*)?(?:var_\d+|arg_\d+)(?:\s*\[[^\]]+\])?\s*;\s*$/;
+
+const stripAutoIdentifierDeclarations = source => source
+  .split('\n')
+  .filter(line => !AUTO_IDENTIFIER_DECLARATION_RE.test(line.trim()))
+  .join('\n');
+
+const normalizeBinDiffIdentifiers = source => {
+  const mapping = new Map();
+  let argCount = 0;
+  let varCount = 0;
+  const normalized = source.replace(/\b([av])\d+\b/g, match => {
+    if (!mapping.has(match)) {
+      if (match.startsWith('a')) {
+        argCount += 1;
+        mapping.set(match, `arg_${argCount}`);
+      } else {
+        varCount += 1;
+        mapping.set(match, `var_${varCount}`);
+      }
+    }
+    return mapping.get(match) || match;
+  });
+  return stripAutoIdentifierDeclarations(normalized);
+};
+
+const normalizeBinDiffAddresses = source => source
+  .replace(/\b((?:qword|dword|word|byte|xmmword|ymmword|zmmword|oword|unk|loc|off|stru|sub|nullsub)_)0x?[0-9A-Fa-f]{6,}\b/g, '$1ADDR')
+  .replace(/\b0x[0-9A-Fa-f]{8,}(?:u|U|l|L|ul|UL|ll|LL|ull|ULL)?\b/g, '0xADDR');
+
+const preprocessBinDiffSource = (source, settings) => {
+  let normalized = String(source || '').replace(/\r\n?/g, '\n');
+
+  if (settings.stripXrefs) {
+    normalized = stripBinDiffXrefMetadata(normalized);
+  }
+  if (settings.stripAddresses) {
+    normalized = normalizeBinDiffAddresses(normalized);
+  }
+  if (settings.stripLocations) {
+    normalized = stripBinDiffLocationComments(normalized);
+  }
+  if (settings.normalizeIdentifiers) {
+    normalized = normalizeBinDiffIdentifiers(normalized);
+  }
+  if (settings.trimTrailingWhitespace) {
+    normalized = normalized.replace(/[ \t]+$/gm, '');
+  }
+
+  normalized = normalized.replace(/\n{3,}/g, '\n\n').trimEnd();
+  return normalized ? `${normalized}\n` : '';
+};
+
 function initBinDiff() {
   const root = document.getElementById('bin-diff-app');
   if (!root) return;
@@ -948,7 +1052,19 @@ function initBinDiff() {
   const viewTools = document.getElementById('bindiff-view-tools');
   const viewModeToggle = document.getElementById('bindiff-view-mode');
   const viewModeButtons = Array.from(document.querySelectorAll('#bindiff-view-mode .bindiff-view-button'));
+  const settingsButton = document.getElementById('bindiff-settings');
   const maximizeButton = document.getElementById('bindiff-maximize');
+  const settingsModal = document.getElementById('bindiff-settings-modal');
+  const settingsDialog = document.getElementById('bindiff-settings-dialog');
+  const settingsHeader = document.getElementById('bindiff-settings-header');
+  const settingsCloseButton = document.getElementById('bindiff-settings-close');
+  const settingsDoneButton = document.getElementById('bindiff-settings-done');
+  const settingsResetButton = document.getElementById('bindiff-settings-reset');
+  const stripXrefsInput = document.getElementById('bindiff-setting-strip-xrefs');
+  const stripAddressesInput = document.getElementById('bindiff-setting-strip-addresses');
+  const stripLocationsInput = document.getElementById('bindiff-setting-strip-locations');
+  const normalizeIdentifiersInput = document.getElementById('bindiff-setting-normalize-identifiers');
+  const trimWhitespaceInput = document.getElementById('bindiff-setting-trim-whitespace');
   const runButton = document.getElementById('bindiff-run');
   const swapButton = document.getElementById('bindiff-swap');
   const output = document.getElementById('bin-diff-output');
@@ -966,7 +1082,19 @@ function initBinDiff() {
     !viewTools ||
     !viewModeToggle ||
     !viewModeButtons.length ||
+    !settingsButton ||
     !maximizeButton ||
+    !settingsModal ||
+    !settingsDialog ||
+    !settingsHeader ||
+    !settingsCloseButton ||
+    !settingsDoneButton ||
+    !settingsResetButton ||
+    !stripXrefsInput ||
+    !stripAddressesInput ||
+    !stripLocationsInput ||
+    !normalizeIdentifiersInput ||
+    !trimWhitespaceInput ||
     !runButton ||
     !swapButton ||
     !output ||
@@ -983,6 +1111,8 @@ function initBinDiff() {
   let lastComparisonState = null;
   let currentViewMode = 'side-by-side';
   let isMaximized = false;
+  let diffSettings = readBinDiffSettings();
+  let settingsFocusRestore = null;
 
   const setMaximized = maximized => {
     const next = Boolean(maximized);
@@ -998,10 +1128,81 @@ function initBinDiff() {
   const setComparisonUiVisible = visible => {
     viewTools.style.display = visible ? '' : 'none';
     linksWrap.style.display = visible ? '' : 'none';
-    swapButton.style.display = visible ? '' : 'none';
+    swapButton.style.display = visible ? 'block' : 'none';
+    settingsButton.style.display = visible ? 'block' : 'none';
     maximizeButton.style.display = visible ? 'block' : 'none';
     if (!visible) {
       setMaximized(false);
+    }
+  };
+
+  const syncSettingsUi = () => {
+    stripXrefsInput.checked = diffSettings.stripXrefs;
+    stripAddressesInput.checked = diffSettings.stripAddresses;
+    stripLocationsInput.checked = diffSettings.stripLocations;
+    normalizeIdentifiersInput.checked = diffSettings.normalizeIdentifiers;
+    trimWhitespaceInput.checked = diffSettings.trimTrailingWhitespace;
+  };
+
+  const applySettingsFromUi = () => {
+    diffSettings = {
+      stripXrefs: stripXrefsInput.checked,
+      stripAddresses: stripAddressesInput.checked,
+      stripLocations: stripLocationsInput.checked,
+      normalizeIdentifiers: normalizeIdentifiersInput.checked,
+      trimTrailingWhitespace: trimWhitespaceInput.checked
+    };
+    writeBinDiffSettings(diffSettings);
+    if (lastComparisonState) {
+      rerenderLastComparison();
+    }
+  };
+
+  const clampSettingsDialogPosition = () => {
+    const width = settingsDialog.offsetWidth;
+    const height = settingsDialog.offsetHeight;
+    const maxLeft = Math.max(0, settingsModal.clientWidth - width);
+    const maxTop = Math.max(0, settingsModal.clientHeight - height);
+    const currentLeft = settingsDialog.offsetLeft;
+    const currentTop = settingsDialog.offsetTop;
+    settingsDialog.style.left = `${Math.min(Math.max(0, currentLeft), maxLeft)}px`;
+    settingsDialog.style.top = `${Math.min(Math.max(0, currentTop), maxTop)}px`;
+    settingsDialog.style.transform = 'none';
+  };
+
+  const centerSettingsDialog = () => {
+    const width = settingsDialog.offsetWidth;
+    const height = settingsDialog.offsetHeight;
+    const left = Math.max(0, (settingsModal.clientWidth - width) / 2);
+    const top = Math.max(0, (settingsModal.clientHeight - height) / 2);
+    settingsDialog.style.left = `${left}px`;
+    settingsDialog.style.top = `${top}px`;
+    settingsDialog.style.transform = 'none';
+    settingsDialog.dataset.positioned = 'true';
+  };
+
+  const openSettingsModal = () => {
+    syncSettingsUi();
+    settingsFocusRestore = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    settingsModal.hidden = false;
+    document.body.classList.add('bindiff-settings-open');
+    requestAnimationFrame(() => {
+      if (settingsDialog.dataset.positioned !== 'true') {
+        centerSettingsDialog();
+      }
+      clampSettingsDialogPosition();
+      settingsCloseButton.focus({ preventScroll: true });
+    });
+  };
+
+  const closeSettingsModal = () => {
+    if (settingsModal.hidden) return;
+    settingsModal.hidden = true;
+    document.body.classList.remove('bindiff-settings-open');
+    const focusTarget = settingsFocusRestore || settingsButton;
+    settingsFocusRestore = null;
+    if (focusTarget instanceof HTMLElement) {
+      focusTarget.focus({ preventScroll: true });
     }
   };
 
@@ -1144,12 +1345,14 @@ function initBinDiff() {
   const renderDiff = (leftSource, rightSource, options) => {
     const leftLabel = `${options.leftRelease}/${options.module}/${options.functionName}`;
     const rightLabel = `${options.rightRelease}/${options.module}/${options.functionName}`;
+    const preparedLeft = preprocessBinDiffSource(leftSource, diffSettings);
+    const preparedRight = preprocessBinDiffSource(rightSource, diffSettings);
 
     const patch = window.Diff.createTwoFilesPatch(
       leftLabel,
       rightLabel,
-      leftSource,
-      rightSource,
+      preparedLeft,
+      preparedRight,
       '',
       '',
       { context: 4 }
@@ -1361,6 +1564,99 @@ function initBinDiff() {
       applyFunctionSearchLimit(functionLimitInput?.value || BIN_DIFF_FUNCTION_SEARCH_LIMIT_DEFAULT, false, true);
     });
   }
+  settingsButton.addEventListener('click', () => {
+    openSettingsModal();
+  });
+  settingsCloseButton.addEventListener('click', () => {
+    closeSettingsModal();
+  });
+  settingsDoneButton.addEventListener('click', () => {
+    closeSettingsModal();
+  });
+  settingsResetButton.addEventListener('click', () => {
+    diffSettings = { ...BIN_DIFF_DIFF_SETTINGS_DEFAULTS };
+    writeBinDiffSettings(diffSettings);
+    syncSettingsUi();
+    if (lastComparisonState) {
+      rerenderLastComparison();
+    }
+  });
+  settingsModal.addEventListener('click', event => {
+    if (event.target === settingsModal) {
+      closeSettingsModal();
+    }
+  });
+  settingsHeader.addEventListener('pointerdown', event => {
+    if (event.button !== 0 || settingsModal.hidden) return;
+    if (event.target instanceof Element && event.target.closest('button')) return;
+    event.preventDefault();
+    if (settingsDialog.dataset.positioned !== 'true') {
+      centerSettingsDialog();
+    }
+
+    const startX = event.clientX;
+    const startY = event.clientY;
+    const startLeft = settingsDialog.offsetLeft;
+    const startTop = settingsDialog.offsetTop;
+    const width = settingsDialog.offsetWidth;
+    const height = settingsDialog.offsetHeight;
+    const maxLeft = Math.max(0, settingsModal.clientWidth - width);
+    const maxTop = Math.max(0, settingsModal.clientHeight - height);
+    let rafId = 0;
+    let pendingX = startX;
+    let pendingY = startY;
+    let lastLeft = startLeft;
+    let lastTop = startTop;
+
+    settingsHeader.setPointerCapture(event.pointerId);
+    settingsDialog.style.willChange = 'transform';
+
+    const paintDrag = () => {
+      rafId = 0;
+      const dx = pendingX - startX;
+      const dy = pendingY - startY;
+      const nextLeft = Math.min(Math.max(0, startLeft + dx), maxLeft);
+      const nextTop = Math.min(Math.max(0, startTop + dy), maxTop);
+      lastLeft = nextLeft;
+      lastTop = nextTop;
+      settingsDialog.style.transform = `translate3d(${nextLeft - startLeft}px, ${nextTop - startTop}px, 0)`;
+    };
+
+    const onMove = moveEvent => {
+      pendingX = moveEvent.clientX;
+      pendingY = moveEvent.clientY;
+      if (rafId) return;
+      rafId = requestAnimationFrame(paintDrag);
+    };
+
+    const onUp = () => {
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = 0;
+      }
+      paintDrag();
+      settingsDialog.style.transform = 'none';
+      settingsDialog.style.left = `${lastLeft}px`;
+      settingsDialog.style.top = `${lastTop}px`;
+      settingsDialog.style.willChange = '';
+      settingsDialog.dataset.positioned = 'true';
+      settingsHeader.releasePointerCapture(event.pointerId);
+      settingsHeader.removeEventListener('pointermove', onMove);
+      settingsHeader.removeEventListener('pointerup', onUp);
+    };
+
+    settingsHeader.addEventListener('pointermove', onMove);
+    settingsHeader.addEventListener('pointerup', onUp);
+  });
+  window.addEventListener('resize', () => {
+    if (settingsModal.hidden) return;
+    clampSettingsDialogPosition();
+  });
+  [stripXrefsInput, stripAddressesInput, stripLocationsInput, normalizeIdentifiersInput, trimWhitespaceInput].forEach(input => {
+    input.addEventListener('change', () => {
+      applySettingsFromUi();
+    });
+  });
   runButton.addEventListener('click', () => {
     runComparison();
   });
@@ -1386,12 +1682,19 @@ function initBinDiff() {
     setMaximized(!isMaximized);
   });
   document.addEventListener('keydown', event => {
-    if (event.key !== 'Escape' || !isMaximized) return;
+    if (event.key !== 'Escape') return;
+    if (!settingsModal.hidden) {
+      event.preventDefault();
+      closeSettingsModal();
+      return;
+    }
+    if (!isMaximized) return;
     event.preventDefault();
     setMaximized(false);
   });
 
   initFunctionSearchLimit();
+  syncSettingsUi();
   initialize();
 }
 

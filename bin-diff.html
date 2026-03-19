@@ -76,7 +76,6 @@
         <div class="bindiff-output-tools">
           <div class="bindiff-actions">
             <button id="bindiff-run" type="button">Compare</button>
-            <button id="bindiff-swap" type="button">Swap builds</button>
           </div>
           <div class="bindiff-view-tools" id="bindiff-view-tools">
             <div class="bindiff-view-toggle" aria-label="View mode" id="bindiff-view-mode" role="group">
@@ -87,6 +86,24 @@
         </div>
 
         <div class="bindiff-output-frame">
+          <button id="bindiff-swap" type="button" aria-label="Swap builds" title="Swap builds">
+            <svg class="bindiff-swap-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M16 3l4 4l-4 4"></path>
+              <path d="M10 7h10"></path>
+              <path d="M8 13l-4 4l4 4"></path>
+              <path d="M4 17h9"></path>
+            </svg>
+            <span class="sr-only">Swap builds</span>
+          </button>
+          <button id="bindiff-settings" type="button" aria-label="Diff settings" title="Diff settings">
+            <svg class="bindiff-settings-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065"></path>
+              <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path>
+            </svg>
+            <span class="sr-only">Diff settings</span>
+          </button>
           <button id="bindiff-maximize" type="button" aria-pressed="false" aria-label="Maximize diff" title="Maximize diff">
             <svg class="bindiff-maximize-icon icon-maximize" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -113,6 +130,47 @@
             <span class="sr-only">Toggle diff maximize</span>
           </button>
           <div id="bin-diff-output" class="bindiff-output" aria-live="off"></div>
+        </div>
+        <div class="bindiff-settings-modal" id="bindiff-settings-modal" hidden>
+          <div class="bindiff-settings-dialog" id="bindiff-settings-dialog" role="dialog" aria-modal="true" aria-labelledby="bindiff-settings-title">
+            <div class="bindiff-settings-header" id="bindiff-settings-header">
+              <h2 id="bindiff-settings-title">Settings</h2>
+              <button id="bindiff-settings-close" type="button" aria-label="Close settings" title="Close settings">
+                <svg class="bindiff-close-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                  <path d="M18 6l-12 12"></path>
+                  <path d="M6 6l12 12"></path>
+                </svg>
+                <span class="sr-only">Close settings</span>
+              </button>
+            </div>
+            <div class="bindiff-settings-body">
+              <label class="bindiff-setting-row" for="bindiff-setting-strip-xrefs">
+                <input id="bindiff-setting-strip-xrefs" type="checkbox">
+                <span>Remove XREF metadata comments</span>
+              </label>
+              <label class="bindiff-setting-row" for="bindiff-setting-strip-addresses">
+                <input id="bindiff-setting-strip-addresses" type="checkbox">
+                <span>Normalize address-like values</span>
+              </label>
+              <label class="bindiff-setting-row" for="bindiff-setting-strip-locations">
+                <input id="bindiff-setting-strip-locations" type="checkbox">
+                <span>Hide register / stack location comments</span>
+              </label>
+              <label class="bindiff-setting-row" for="bindiff-setting-normalize-identifiers">
+                <input id="bindiff-setting-normalize-identifiers" type="checkbox">
+                <span>Normalize auto-generated variable names</span>
+              </label>
+              <label class="bindiff-setting-row" for="bindiff-setting-trim-whitespace">
+                <input id="bindiff-setting-trim-whitespace" type="checkbox">
+                <span>Ignore trailing whitespace-only changes</span>
+              </label>
+            </div>
+            <div class="bindiff-settings-footer">
+              <button id="bindiff-settings-reset" type="button">Reset</button>
+              <button id="bindiff-settings-done" type="button">Close</button>
+            </div>
+          </div>
         </div>
 
         <div class="bindiff-links" id="bindiff-links">

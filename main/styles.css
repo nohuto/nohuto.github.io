@@ -2045,6 +2045,53 @@ video {
   min-height: 0;
 }
 
+#bindiff-settings {
+  position: absolute;
+  top: 8px;
+  right: 36px;
+  width: 24px;
+  height: 24px;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  z-index: 10;
+  padding: 0;
+  display: none;
+}
+
+.bindiff-swap-icon,
+.bindiff-settings-icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+  margin: auto;
+  stroke-width: 1.7;
+}
+
+#bindiff-swap {
+  position: absolute;
+  top: 8px;
+  right: 64px;
+  width: 24px;
+  height: 24px;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  z-index: 10;
+  padding: 0;
+  display: none;
+}
+
+#bindiff-swap:hover {
+  color: var(--accent);
+}
+
+#bindiff-settings:hover {
+  color: var(--accent);
+}
+
 #bindiff-maximize {
   position: absolute;
   top: 8px;
@@ -2081,6 +2128,182 @@ video {
 }
 
 #bindiff-maximize:hover {
+  color: var(--accent);
+}
+
+#bindiff-swap:focus,
+#bindiff-settings:focus,
+#bindiff-maximize:focus,
+#bindiff-settings-close:focus,
+.icon-button:focus {
+  border-color: transparent;
+  box-shadow: none;
+  outline: none;
+}
+
+.bindiff-settings-modal[hidden] {
+  display: none;
+}
+
+.bindiff-settings-modal {
+  position: fixed;
+  inset: 0;
+  background: color-mix(in srgb, var(--bg) 74%, transparent);
+  z-index: 140;
+  padding: 12px;
+}
+
+.bindiff-settings-dialog {
+  position: absolute;
+  width: min(460px, calc(100vw - 24px));
+  border: 1px solid var(--border);
+  background: var(--panel);
+  box-shadow: 0 12px 30px var(--shadow);
+  left: 0;
+  top: 0;
+  transform: none;
+}
+
+.bindiff-settings-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 5px 10px;
+  border-bottom: 1px solid var(--border);
+  background: var(--panel-alt);
+  cursor: move;
+  user-select: none;
+  touch-action: none;
+}
+
+.bindiff-settings-header h2 {
+  margin: 0;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  pointer-events: none;
+}
+
+#bindiff-settings-close {
+  height: 20px;
+  width: 20px;
+  min-width: 20px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  color: var(--text);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#bindiff-settings-close:hover {
+  color: var(--accent);
+}
+
+.bindiff-close-icon {
+  width: 14px;
+  height: 14px;
+  display: block;
+  stroke-width: 1.9;
+}
+
+.bindiff-settings-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 8px 10px;
+}
+
+.bindiff-setting-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 28px;
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.92rem;
+  padding: 2px 0;
+}
+
+.bindiff-setting-row input[type="checkbox"] {
+  width: 12px;
+  height: 12px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  box-sizing: border-box;
+  min-width: 12px;
+  min-height: 12px;
+  padding: 0;
+  line-height: 0;
+  vertical-align: middle;
+  position: relative;
+  border: 1px solid var(--border);
+  background: var(--panel-alt);
+  border-radius: 0;
+  display: inline-block;
+  margin: 0;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+
+.bindiff-setting-row input[type="checkbox"]::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  box-sizing: border-box;
+  width: 4px;
+  height: 7px;
+  border-right: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  transform: translate(-50%, -56%) rotate(45deg);
+  opacity: 0;
+}
+
+.bindiff-setting-row input[type="checkbox"]:checked {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.bindiff-setting-row input[type="checkbox"]:checked::after {
+  border-right-color: var(--accent-contrast);
+  border-bottom-color: var(--accent-contrast);
+  opacity: 1;
+}
+
+.bindiff-setting-row input[type="checkbox"]:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.bindiff-settings-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  border-top: 0;
+  padding: 8px 10px;
+}
+
+#bindiff-settings-reset,
+#bindiff-settings-done {
+  height: 24px;
+  min-width: 72px;
+  padding: 0 8px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+  cursor: pointer;
+}
+
+#bindiff-settings-reset:hover,
+#bindiff-settings-done:hover {
+  border-color: var(--accent);
   color: var(--accent);
 }
 
@@ -2190,6 +2413,10 @@ video {
 }
 
 body.bindiff-maximized {
+  overflow: hidden;
+}
+
+body.bindiff-settings-open {
   overflow: hidden;
 }
 
