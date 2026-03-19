@@ -1276,6 +1276,10 @@ main.product-main {
   color: var(--muted);
 }
 
+.console-url:hover {
+  text-decoration: underline;
+}
+
 .console-muted {
   color: var(--muted);
 }
@@ -1385,6 +1389,7 @@ p {
 
 a {
   color: var(--accent);
+  text-decoration: none;
 }
 
 a.link {
@@ -1503,6 +1508,16 @@ video {
   object-fit: cover;
   border-bottom: 1px solid var(--border);
   background: var(--bg-alt);
+}
+
+.project-media-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .project-body {

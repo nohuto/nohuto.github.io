@@ -30,6 +30,28 @@ const BIN_DIFF_REPO_API_BASE = 'https://api.github.com/repos/nohuto/decompiled-p
 const BIN_DIFF_REPO_RAW_BASE = 'https://raw.githubusercontent.com/nohuto/decompiled-pseudocode/main';
 const BIN_DIFF_REPO_BLOB_BASE = 'https://github.com/nohuto/decompiled-pseudocode/blob/main';
 const BIN_DIFF_REPO_GIT_TREES_BASE = 'https://api.github.com/repos/nohuto/decompiled-pseudocode/git/trees';
+const BIN_DIFF_RELEASE_LINKS = Object.freeze([
+  'https://github.com/nohuto/decompiled-pseudocode/tree/main/11-21H2',
+  'https://github.com/nohuto/decompiled-pseudocode/tree/main/11-22H2',
+  'https://github.com/nohuto/decompiled-pseudocode/tree/main/11-23H2',
+  'https://github.com/nohuto/decompiled-pseudocode/tree/main/11-24H2',
+  'https://github.com/nohuto/decompiled-pseudocode/tree/main/11-25H2',
+  'https://github.com/nohuto/decompiled-pseudocode/tree/main/11-26H1',
+  'https://github.com/nohuto/decompiled-pseudocode/tree/main/1507',
+  'https://github.com/nohuto/decompiled-pseudocode/tree/main/1511',
+  'https://github.com/nohuto/decompiled-pseudocode/tree/main/1607',
+  'https://github.com/nohuto/decompiled-pseudocode/tree/main/1703',
+  'https://github.com/nohuto/decompiled-pseudocode/tree/main/1709',
+  'https://github.com/nohuto/decompiled-pseudocode/tree/main/1803',
+  'https://github.com/nohuto/decompiled-pseudocode/tree/main/1809',
+  'https://github.com/nohuto/decompiled-pseudocode/tree/main/1903',
+  'https://github.com/nohuto/decompiled-pseudocode/tree/main/1909',
+  'https://github.com/nohuto/decompiled-pseudocode/tree/main/2004',
+  'https://github.com/nohuto/decompiled-pseudocode/tree/main/20H2',
+  'https://github.com/nohuto/decompiled-pseudocode/tree/main/21H1',
+  'https://github.com/nohuto/decompiled-pseudocode/tree/main/21H2',
+  'https://github.com/nohuto/decompiled-pseudocode/tree/main/22H2'
+]);
 const BIN_DIFF_ASSET_STYLES = [
   'main/vendor/highlight-github-dark.min.css',
   'main/vendor/diff2html.min.css'
@@ -58,6 +80,7 @@ const PROJECT_LIST = [
   { title: 'Windows Configuration', repo: 'nohuto/win-config' },
   { title: 'RegKit', repo: 'nohuto/regkit' },
   { title: 'Windows Registry Research', repo: 'nohuto/win-registry' },
+  { title: 'Decompiled Pseudocode', repo: 'nohuto/decompiled-pseudocode' },
   { title: 'NVAPI CLI', repo: 'nohuto/nvapi-cli' },
   { title: 'AES CBC Encryption', repo: 'nohuto/aes-cbc' },
   { title: 'Bitmask Calculator', repo: 'nohuto/bitmask-calc' },
@@ -2052,12 +2075,14 @@ function initConsole() {
   };
 
   const addLineParts = (parts, className) => {
+    const urlPattern = /https?:\/\/[^\s<>"'`]+/i;
     const line = document.createElement('div');
     line.className = className ? `console-line ${className}` : 'console-line';
     parts.forEach(part => {
       const span = document.createElement('span');
       span.textContent = part.text;
       if (part.className) span.className = part.className;
+      if (urlPattern.test(part.text || '')) span.classList.add('console-url');
       line.appendChild(span);
     });
     lines.appendChild(line);
@@ -2066,6 +2091,30 @@ function initConsole() {
 
   const addIndentedLines = (items, className) => {
     items.forEach(item => addLine(`  ${item}`, className));
+  };
+
+  const extractFirstUrl = text => {
+    if (!text) return null;
+    const match = text.match(/https?:\/\/[^\s<>"'`]+/i);
+    return match ? match[0] : null;
+  };
+
+  const openConsoleUrlFromEvent = event => {
+    if (!(event.ctrlKey || event.metaKey)) return false;
+    const target = event.target instanceof Element ? event.target : null;
+    if (!target) return false;
+
+    const clickable = target.closest('a');
+    if (clickable && clickable.getAttribute('href')) return false;
+
+    const span = target.closest('span');
+    const line = target.closest('.console-line');
+    const url = extractFirstUrl(span?.textContent || '') || extractFirstUrl(line?.textContent || '');
+    if (!url) return false;
+
+    event.preventDefault();
+    window.open(url, '_blank', 'noopener,noreferrer');
+    return true;
   };
 
   const addKeyValueLines = entries => {
@@ -2083,6 +2132,8 @@ function initConsole() {
   };
 
   const normalizePath = input => (input || '').replace(/\\/g, '/').trim();
+  const DOCS_ROOT_PATH = `${rootPath}/docs`;
+  const trimSlashes = value => (value || '').replace(/^\/+|\/+$/g, '');
 
   const resolvePath = input => {
     if (!input) return rootPath;
@@ -2091,12 +2142,23 @@ function initConsole() {
     if (raw === '.' || raw === './' || raw === '.\\') return currentPath;
     if (raw === '..' || raw.startsWith('../')) return rootPath;
     if (raw.startsWith('~/')) raw = raw.slice(2);
+    if (raw.startsWith(`${rootPath}/`)) raw = raw.slice(rootPath.length + 1);
     if (raw.startsWith('./')) raw = raw.slice(2);
+    if (raw === 'main') return rootPath;
     if (raw.startsWith('main/')) raw = raw.slice(5);
-    raw = raw.split('/').filter(Boolean).pop() || '';
-    if (raw === 'home') return rootPath;
-    if (['product', 'projects', 'bin-diff', 'docs'].includes(raw)) {
-      return `${rootPath}/${raw}`;
+    raw = raw.replace(/^\/+/, '');
+
+    const segments = raw.split('/').filter(Boolean);
+    if (!segments.length) return rootPath;
+    if (segments[0] === 'home') return rootPath;
+
+    if (segments[0] === 'docs') {
+      const docsTail = trimSlashes(segments.slice(1).join('/'));
+      return docsTail ? `${DOCS_ROOT_PATH}/${docsTail}` : DOCS_ROOT_PATH;
+    }
+
+    if (segments.length === 1 && ['product', 'projects', 'bin-diff'].includes(segments[0])) {
+      return `${rootPath}/${segments[0]}`;
     }
     return null;
   };
@@ -2112,18 +2174,24 @@ function initConsole() {
     home: 'index.html',
     product: 'product.html',
     projects: 'projects.html',
-    'bin-diff': 'bin-diff.html',
-    docs: 'docs/'
+    'bin-diff': 'bin-diff.html'
   };
 
   const navigateToPath = nextPath => {
-    const segment = nextPath === rootPath ? 'home' : nextPath.split('/').pop();
-    const target = NAV_MAP[segment];
-    if (!target) return;
-    if (target === 'docs/') {
+    if (nextPath === DOCS_ROOT_PATH || nextPath.startsWith(`${DOCS_ROOT_PATH}/`)) {
+      const docsRelative = nextPath === DOCS_ROOT_PATH ? '' : nextPath.slice(DOCS_ROOT_PATH.length + 1);
+      const cleanRelative = trimSlashes(docsRelative);
+      const target = cleanRelative ? `docs/${cleanRelative}/` : 'docs/';
+      const currentPathname = (location.pathname || '').replace(/^\/+/, '');
+      const normalizedCurrent = currentPathname.endsWith('/') ? currentPathname : `${currentPathname}/`;
+      if (normalizedCurrent === target) return;
       location.href = target;
       return;
     }
+
+    const segment = nextPath === rootPath ? 'home' : nextPath.split('/').pop();
+    const target = NAV_MAP[segment];
+    if (!target) return;
     const currentPage = location.pathname.split('/').pop() || 'index.html';
     if (currentPage === target) return;
     loadPage(target);
@@ -2144,7 +2212,7 @@ function initConsole() {
     cabout: 'about',
     '..': 'cd ..'
   };
-  const aliases = { ...defaultAliases };
+  const aliases = Object.freeze({ ...defaultAliases });
 
   const expandAlias = input => {
     const parts = input.trim().split(/\s+/);
@@ -2169,18 +2237,15 @@ function initConsole() {
         ['about', 'about me + links'],
         ['product', 'winconfig summary + pricing'],
         ['docs', 'documentation hub + section links'],
-        ['bindiff', 'open binary pseudocode diff page'],
-        ['toolkit', 'external tools list'],
+        ['bindiff', 'list decompiled-pseudocode links (used by bin-diff page)'],
         ['projects', 'list projects with repo links'],
         ['terms', 'terms of service summary'],
         ['contact', 'email + discord'],
         ['ascii', 'print the banner'],
         ['ls', 'list available directories'],
         ['pwd', 'show current directory'],
-        ['cd <path>', 'change directory (./product, ./projects, ./bin-diff, ./docs, ../)'],
-        ['alias', 'list aliases'],
-        ['alias name=command', 'set alias'],
-        ['unalias <name>', 'remove alias'],
+        ['cd <path>', 'change directory (./product, ./projects, ./bin-diff, ./docs/<projectname>, ../)'],
+        ['alias', 'list built-in aliases'],
         ['themes', 'list theme ids'],
         ['theme <id>', 'set theme'],
         ['fontsize <10-22>', 'set size'],
@@ -2214,7 +2279,7 @@ function initConsole() {
       addIndentedLines([
         'transparent execution logs',
         'dynamic state detection',
-        'per-option documentation',
+        'per-option documentation (cd ./docs/win-config)',
         'extensive customization controls'
       ]);
     },
@@ -2239,18 +2304,18 @@ function initConsole() {
       ]);
     },
     bindiff: () => {
-      addLine('opening bin-diff...');
-      navigateToPath(`${rootPath}/bin-diff`);
-    },
-    toolkit: () => {
-      addLine('external tools:');
-      addKeyValueLines([
-        ['app tools', 'https://github.com/nohuto/app-tools'],
-        ['game tools', 'https://github.com/nohuto/game-tools'],
-        ['component manager', 'https://github.com/nohuto/comp-mgr'],
-        ['blocklist manager', 'https://github.com/nohuto/blocklist-mgr'],
-        ['bitmask calculator', 'https://github.com/nohuto/bitmask-calc']
-      ]);
+      addLine('decompiled-pseudocode folders:', 'muted');
+      const items = BIN_DIFF_RELEASE_LINKS.map(link => ({
+        release: decodeURIComponent((link.split('/').pop() || '').trim()),
+        link
+      }));
+      const width = items.reduce((max, item) => Math.max(max, item.release.length), 0);
+      items.forEach(item => {
+        addLineParts([
+          { text: `  ${item.release.padEnd(width + 2)}` },
+          { text: item.link, className: 'console-comment' }
+        ]);
+      });
     },
     terms: () => {
       addLine('terms:');
@@ -2296,44 +2361,18 @@ function initConsole() {
     },
     alias: args => {
       const raw = args.join(' ').trim();
-      if (!raw) {
-        addLine('aliases:', 'muted');
-        const entries = Object.entries(aliases);
-        const width = entries.reduce((max, [name]) => Math.max(max, name.length), 0);
-        entries.forEach(([name, value]) => {
-          addLineParts([
-            { text: `  ${name.padEnd(width + 2)}` },
-            { text: value, className: 'console-comment' }
-          ]);
-        });
-        return;
+      if (raw) {
+        addLine('custom aliases are disabled; only preconfigured aliases are available.', 'muted');
       }
-      const match = raw.match(/^([\\w?.-]+)=(.+)$/);
-      if (!match) {
-        addLine('usage: alias name=command', 'muted');
-        return;
-      }
-      const name = match[1];
-      const value = match[2].trim();
-      if (!value) {
-        addLine('alias target required', 'muted');
-        return;
-      }
-      aliases[name] = value;
-      addLine(`alias set: ${name}=${value}`);
-    },
-    unalias: args => {
-      const name = args[0];
-      if (!name) {
-        addLine('usage: unalias name', 'muted');
-        return;
-      }
-      if (!aliases[name]) {
-        addLine(`alias not found: ${name}`, 'muted');
-        return;
-      }
-      delete aliases[name];
-      addLine(`alias removed: ${name}`);
+      addLine('aliases:', 'muted');
+      const entries = Object.entries(aliases);
+      const width = entries.reduce((max, [name]) => Math.max(max, name.length), 0);
+      entries.forEach(([name, value]) => {
+        addLineParts([
+          { text: `  ${name.padEnd(width + 2)}` },
+          { text: value, className: 'console-comment' }
+        ]);
+      });
     },
     themes: () => {
       addLine('themes:', 'muted');
@@ -2463,7 +2502,8 @@ function initConsole() {
     }
   });
 
-  output.addEventListener('click', () => {
+  output.addEventListener('click', event => {
+    if (openConsoleUrlFromEvent(event)) return;
     input.focus();
   });
 
@@ -2492,7 +2532,7 @@ function initConsole() {
 
   ASCII_ART.forEach(line => addLine(line, 'art'));
   addLine(' ');
-  addLine('welcome to the terminal, use Tab or Right Arrow for autocompletion.', 'muted');
+  addLine('welcome to the terminal, use Tab or Right Arrow for autocompletion (CTRL + mouse click opens links).', 'muted');
   addLine('use the top sections to navigate if the terminal feels unfamiliar.', 'muted');
   addLine(' ');
   commands.help();
