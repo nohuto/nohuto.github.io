@@ -57,6 +57,7 @@ const BIN_DIFF_ASSET_STYLES = [
   'main/vendor/diff2html.min.css'
 ];
 const BIN_DIFF_ASSET_SCRIPTS = [
+  'main/normalization.js',
   'main/vendor/highlight.common.min.js',
   'main/vendor/diff.min.js',
   'main/vendor/diff2html-ui-base.min.js'
@@ -66,14 +67,24 @@ const BIN_DIFF_FUNCTION_CACHE_TTL_MS = 1000 * 60 * 60 * 24 * 7;
 const BIN_DIFF_FUNCTION_CACHE_MAX_ENTRIES = 6;
 const BIN_DIFF_FUNCTION_SEARCH_LIMIT_KEY = 'nv-bindiff-function-search-limit';
 const BIN_DIFF_FUNCTION_SEARCH_LIMIT_DEFAULT = 300;
-const BIN_DIFF_DIFF_SETTINGS_KEY = 'nv-bindiff-diff-settings-v1';
-const BIN_DIFF_DIFF_SETTINGS_DEFAULTS = Object.freeze({
-  stripXrefs: false,
-  stripAddresses: true,
-  stripLocations: true,
-  normalizeIdentifiers: true,
-  showFullFunction: true,
+const BIN_DIFF_DIFF_SETTINGS_KEY = 'nv-bindiff-settings-v2';
+const BIN_DIFF_NORMALIZATION_DEFAULTS = Object.freeze({
+  stripCrossReferenceMetadata: true,
+  normalizeRelocationSymbols: true,
+  stripStorageLocationComments: true,
+  normalizeDecompilerIdentifiers: true,
+  normalizeNumericNotation: true,
+  normalizeGeneratedLabels: false,
+  normalizePrototypeExpansionArgs: false,
   trimTrailingWhitespace: true
+});
+const getNormalizationDefaults = () => ({
+  ...BIN_DIFF_NORMALIZATION_DEFAULTS,
+  ...(window.Normalization?.DEFAULTS || {})
+});
+const BIN_DIFF_DIFF_SETTINGS_DEFAULTS = Object.freeze({
+  normalization: getNormalizationDefaults(),
+  showFullFunction: true
 });
 const RELEASE_NAME_COLLATOR = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
 const PROJECT_LIST = [
@@ -1008,101 +1019,57 @@ const listRepoFunctionFiles = async pathSegments => {
 };
 
 const readBinDiffSettings = () => {
-  const defaults = { ...BIN_DIFF_DIFF_SETTINGS_DEFAULTS };
+  const defaults = {
+    ...BIN_DIFF_DIFF_SETTINGS_DEFAULTS,
+    normalization: getNormalizationDefaults()
+  };
+
+  const normalizeNormalizationSettings = candidate => {
+    const normalizationDefaults = getNormalizationDefaults();
+    if (!candidate || typeof candidate !== 'object') return normalizationDefaults;
+    const normalized = { ...normalizationDefaults };
+    Object.keys(normalizationDefaults).forEach(key => {
+      if (candidate[key] !== undefined) {
+        normalized[key] = Boolean(candidate[key]);
+      }
+    });
+    return normalized;
+  };
+
+  const normalizeContainer = candidate => {
+    if (!candidate || typeof candidate !== 'object') return defaults;
+    return {
+      normalization: normalizeNormalizationSettings(candidate.normalization),
+      showFullFunction: candidate.showFullFunction !== undefined ? Boolean(candidate.showFullFunction) : defaults.showFullFunction
+    };
+  };
+
   const raw = storageGet(BIN_DIFF_DIFF_SETTINGS_KEY, '');
   if (!raw) return defaults;
   try {
     const parsed = JSON.parse(raw);
-    if (!parsed || typeof parsed !== 'object') return defaults;
-    return {
-      stripXrefs: parsed.stripXrefs !== undefined ? Boolean(parsed.stripXrefs) : defaults.stripXrefs,
-      stripAddresses: parsed.stripAddresses !== undefined ? Boolean(parsed.stripAddresses) : defaults.stripAddresses,
-      stripLocations: parsed.stripLocations !== undefined ? Boolean(parsed.stripLocations) : defaults.stripLocations,
-      normalizeIdentifiers: parsed.normalizeIdentifiers !== undefined ? Boolean(parsed.normalizeIdentifiers) : defaults.normalizeIdentifiers,
-      showFullFunction: parsed.showFullFunction !== undefined ? Boolean(parsed.showFullFunction) : defaults.showFullFunction,
-      trimTrailingWhitespace: parsed.trimTrailingWhitespace !== undefined ? Boolean(parsed.trimTrailingWhitespace) : defaults.trimTrailingWhitespace
-    };
+    return normalizeContainer(parsed);
   } catch {
     return defaults;
   }
 };
 
 const writeBinDiffSettings = settings => {
-  storageSet(BIN_DIFF_DIFF_SETTINGS_KEY, JSON.stringify({
-    stripXrefs: Boolean(settings?.stripXrefs),
-    stripAddresses: Boolean(settings?.stripAddresses),
-    stripLocations: Boolean(settings?.stripLocations),
-    normalizeIdentifiers: Boolean(settings?.normalizeIdentifiers),
-    showFullFunction: Boolean(settings?.showFullFunction),
-    trimTrailingWhitespace: Boolean(settings?.trimTrailingWhitespace)
-  }));
-};
-
-const stripBinDiffXrefMetadata = source => source.replace(/\/\*[\s\S]*?\*\//g, block => {
-  if (/\bXREFs of\b/.test(block) || /\bCallers:\b/.test(block) || /\bCallees:\b/.test(block)) {
-    return '';
-  }
-  return block;
-});
-
-const stripBinDiffLocationComments = source => source
-  .split('\n')
-  .map(line => line
-    .replace(/\s*\/\/\s*\[(?:rsp|rbp|esp|ebp)[^\]]*\](?:\s*\[(?:rsp|rbp|esp|ebp)[^\]]*\])*(?:\s*BYREF)?\s*$/i, '')
-    .replace(/\s*\/\/\s*(?:[re]?[abcd]x|[re]?(?:si|di|sp|bp|ip)|r\d+[bwd]?|xmm\d+|ymm\d+|zmm\d+)\s*$/i, ''))
-  .join('\n');
-
-const AUTO_IDENTIFIER_DECLARATION_RE = /^(?:[_A-Za-z]\w*(?:\s+[_A-Za-z]\w*)*\s+)(?:\*+\s*)?(?:var_\d+|arg_\d+)(?:\s*\[[^\]]+\])?\s*;\s*$/;
-
-const stripAutoIdentifierDeclarations = source => source
-  .split('\n')
-  .filter(line => !AUTO_IDENTIFIER_DECLARATION_RE.test(line.trim()))
-  .join('\n');
-
-const normalizeBinDiffIdentifiers = source => {
-  const mapping = new Map();
-  let argCount = 0;
-  let varCount = 0;
-  const normalized = source.replace(/\b([av])\d+\b/g, match => {
-    if (!mapping.has(match)) {
-      if (match.startsWith('a')) {
-        argCount += 1;
-        mapping.set(match, `arg_${argCount}`);
-      } else {
-        varCount += 1;
-        mapping.set(match, `var_${varCount}`);
+  const normalizationDefaults = getNormalizationDefaults();
+  const normalizationRaw = settings?.normalization;
+  const normalization = { ...normalizationDefaults };
+  if (normalizationRaw && typeof normalizationRaw === 'object') {
+    Object.keys(normalizationDefaults).forEach(key => {
+      if (normalizationRaw[key] !== undefined) {
+        normalization[key] = Boolean(normalizationRaw[key]);
       }
-    }
-    return mapping.get(match) || match;
-  });
-  return stripAutoIdentifierDeclarations(normalized);
-};
-
-const normalizeBinDiffAddresses = source => source
-  .replace(/\b((?:qword|dword|word|byte|xmmword|ymmword|zmmword|oword|unk|loc|off|stru|sub|nullsub)_)0x?[0-9A-Fa-f]{6,}\b/g, '$1ADDR')
-  .replace(/\b0x[0-9A-Fa-f]{8,}(?:u|U|l|L|ul|UL|ll|LL|ull|ULL)?\b/g, '0xADDR');
-
-const preprocessBinDiffSource = (source, settings) => {
-  let normalized = String(source || '').replace(/\r\n?/g, '\n');
-
-  if (settings.stripXrefs) {
-    normalized = stripBinDiffXrefMetadata(normalized);
-  }
-  if (settings.stripAddresses) {
-    normalized = normalizeBinDiffAddresses(normalized);
-  }
-  if (settings.stripLocations) {
-    normalized = stripBinDiffLocationComments(normalized);
-  }
-  if (settings.normalizeIdentifiers) {
-    normalized = normalizeBinDiffIdentifiers(normalized);
-  }
-  if (settings.trimTrailingWhitespace) {
-    normalized = normalized.replace(/[ \t]+$/gm, '');
+    });
   }
 
-  normalized = normalized.replace(/\n{3,}/g, '\n\n').trimEnd();
-  return normalized ? `${normalized}\n` : '';
+  storageSet(BIN_DIFF_DIFF_SETTINGS_KEY, JSON.stringify({
+    normalization,
+    showFullFunction: Boolean(settings?.showFullFunction)
+  }));
 };
 
 function initBinDiff() {
@@ -1130,6 +1097,9 @@ function initBinDiff() {
   const stripAddressesInput = document.getElementById('bindiff-setting-strip-addresses');
   const stripLocationsInput = document.getElementById('bindiff-setting-strip-locations');
   const normalizeIdentifiersInput = document.getElementById('bindiff-setting-normalize-identifiers');
+  const normalizeNumericInput = document.getElementById('bindiff-setting-normalize-numeric');
+  const normalizeLabelsInput = document.getElementById('bindiff-setting-normalize-labels');
+  const normalizePrototypeInput = document.getElementById('bindiff-setting-normalize-prototype');
   const showFullFunctionInput = document.getElementById('bindiff-setting-show-full');
   const trimWhitespaceInput = document.getElementById('bindiff-setting-trim-whitespace');
   const runButton = document.getElementById('bindiff-run');
@@ -1161,6 +1131,9 @@ function initBinDiff() {
     !stripAddressesInput ||
     !stripLocationsInput ||
     !normalizeIdentifiersInput ||
+    !normalizeNumericInput ||
+    !normalizeLabelsInput ||
+    !normalizePrototypeInput ||
     !showFullFunctionInput ||
     !trimWhitespaceInput ||
     !runButton ||
@@ -1205,24 +1178,33 @@ function initBinDiff() {
   };
 
   const syncSettingsUi = () => {
-    stripXrefsInput.checked = diffSettings.stripXrefs;
-    stripAddressesInput.checked = diffSettings.stripAddresses;
-    stripLocationsInput.checked = diffSettings.stripLocations;
-    normalizeIdentifiersInput.checked = diffSettings.normalizeIdentifiers;
+    stripXrefsInput.checked = diffSettings.normalization.stripCrossReferenceMetadata;
+    stripAddressesInput.checked = diffSettings.normalization.normalizeRelocationSymbols;
+    stripLocationsInput.checked = diffSettings.normalization.stripStorageLocationComments;
+    normalizeIdentifiersInput.checked = diffSettings.normalization.normalizeDecompilerIdentifiers;
+    normalizeNumericInput.checked = diffSettings.normalization.normalizeNumericNotation;
+    normalizeLabelsInput.checked = diffSettings.normalization.normalizeGeneratedLabels;
+    normalizePrototypeInput.checked = diffSettings.normalization.normalizePrototypeExpansionArgs;
     showFullFunctionInput.checked = diffSettings.showFullFunction;
-    trimWhitespaceInput.checked = diffSettings.trimTrailingWhitespace;
+    trimWhitespaceInput.checked = diffSettings.normalization.trimTrailingWhitespace;
   };
 
   const applySettingsFromUi = () => {
     diffSettings = {
-      stripXrefs: stripXrefsInput.checked,
-      stripAddresses: stripAddressesInput.checked,
-      stripLocations: stripLocationsInput.checked,
-      normalizeIdentifiers: normalizeIdentifiersInput.checked,
-      showFullFunction: showFullFunctionInput.checked,
-      trimTrailingWhitespace: trimWhitespaceInput.checked
+      normalization: {
+        stripCrossReferenceMetadata: stripXrefsInput.checked,
+        normalizeRelocationSymbols: stripAddressesInput.checked,
+        stripStorageLocationComments: stripLocationsInput.checked,
+        normalizeDecompilerIdentifiers: normalizeIdentifiersInput.checked,
+        normalizeNumericNotation: normalizeNumericInput.checked,
+        normalizeGeneratedLabels: normalizeLabelsInput.checked,
+        normalizePrototypeExpansionArgs: normalizePrototypeInput.checked,
+        trimTrailingWhitespace: trimWhitespaceInput.checked
+      },
+      showFullFunction: showFullFunctionInput.checked
     };
     writeBinDiffSettings(diffSettings);
+    syncSettingsUi();
     if (lastComparisonState) {
       rerenderLastComparison();
     }
@@ -1465,8 +1447,15 @@ function initBinDiff() {
   const renderDiff = (leftSource, rightSource, options) => {
     const leftLabel = `${options.leftRelease}/${options.module}/${options.functionName}`;
     const rightLabel = `${options.rightRelease}/${options.module}/${options.functionName}`;
-    const preparedLeft = preprocessBinDiffSource(leftSource, diffSettings);
-    const preparedRight = preprocessBinDiffSource(rightSource, diffSettings);
+    const normalizationResult = window.Normalization?.preparePair
+      ? window.Normalization.preparePair(leftSource, rightSource, diffSettings.normalization)
+      : {
+        leftText: String(leftSource || '').replace(/\r\n?/g, '\n'),
+        rightText: String(rightSource || '').replace(/\r\n?/g, '\n'),
+        equivalent: false
+      };
+    const preparedLeft = normalizationResult.leftText;
+    const preparedRight = normalizationResult.rightText;
     const fullContext = Math.max(preparedLeft.split('\n').length, preparedRight.split('\n').length) + 2;
     const context = diffSettings.showFullFunction ? fullContext : 4;
     const buildNoChangePatch = (leftFile, rightFile, source) => {
@@ -1488,7 +1477,7 @@ function initBinDiff() {
       return [...headers, ...body, ''].join('\n');
     };
 
-    const rawPatch = preparedLeft === preparedRight
+    const rawPatch = normalizationResult.equivalent || preparedLeft === preparedRight
       ? buildNoChangePatch(leftLabel, rightLabel, preparedLeft)
       : window.Diff.createTwoFilesPatch(
         leftLabel,
@@ -1721,7 +1710,10 @@ function initBinDiff() {
     closeSettingsModal();
   });
   settingsResetButton.addEventListener('click', () => {
-    diffSettings = { ...BIN_DIFF_DIFF_SETTINGS_DEFAULTS };
+    diffSettings = {
+      ...BIN_DIFF_DIFF_SETTINGS_DEFAULTS,
+      normalization: getNormalizationDefaults()
+    };
     writeBinDiffSettings(diffSettings);
     syncSettingsUi();
     if (lastComparisonState) {
@@ -1799,7 +1791,17 @@ function initBinDiff() {
     if (settingsModal.hidden) return;
     clampSettingsDialogPosition();
   });
-  [stripXrefsInput, stripAddressesInput, stripLocationsInput, normalizeIdentifiersInput, showFullFunctionInput, trimWhitespaceInput].forEach(input => {
+  [
+    stripXrefsInput,
+    stripAddressesInput,
+    stripLocationsInput,
+    normalizeIdentifiersInput,
+    normalizeNumericInput,
+    normalizeLabelsInput,
+    normalizePrototypeInput,
+    showFullFunctionInput,
+    trimWhitespaceInput
+  ].forEach(input => {
     input.addEventListener('change', () => {
       applySettingsFromUi();
     });
