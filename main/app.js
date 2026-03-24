@@ -67,6 +67,8 @@ const BIN_DIFF_FUNCTION_CACHE_TTL_MS = 1000 * 60 * 60 * 24 * 7;
 const BIN_DIFF_FUNCTION_CACHE_MAX_ENTRIES = 6;
 const BIN_DIFF_FUNCTION_SEARCH_LIMIT_KEY = 'nv-bindiff-function-search-limit';
 const BIN_DIFF_FUNCTION_SEARCH_LIMIT_DEFAULT = 300;
+const BIN_DIFF_DEFAULT_LEFT_RELEASE = '11-23H2';
+const BIN_DIFF_DEFAULT_RIGHT_RELEASE = '11-24H2';
 const BIN_DIFF_DIFF_SETTINGS_KEY = 'nv-bindiff-settings-v2';
 const BIN_DIFF_NORMALIZATION_DEFAULTS = Object.freeze({
   stripCrossReferenceMetadata: true,
@@ -1649,9 +1651,17 @@ function initBinDiff() {
       }
 
       const urlState = readUrlState();
-      const leftDefault = releases.includes(urlState.left) ? urlState.left : releases[0];
+      const preferredLeft = releases.includes(BIN_DIFF_DEFAULT_LEFT_RELEASE)
+        ? BIN_DIFF_DEFAULT_LEFT_RELEASE
+        : releases[0];
+      const leftDefault = releases.includes(urlState.left) ? urlState.left : preferredLeft;
+      const preferredRight = releases.includes(BIN_DIFF_DEFAULT_RIGHT_RELEASE)
+        ? BIN_DIFF_DEFAULT_RIGHT_RELEASE
+        : releases.find(release => release !== leftDefault) || leftDefault;
       const rightFallback = releases.find(release => release !== leftDefault) || leftDefault;
-      const rightDefault = releases.includes(urlState.right) ? urlState.right : rightFallback;
+      const rightFromUrl = releases.includes(urlState.right) ? urlState.right : '';
+      const rightCandidate = rightFromUrl || preferredRight;
+      const rightDefault = rightCandidate !== leftDefault ? rightCandidate : rightFallback;
 
       replaceOptions(leftReleaseSelect, releases, leftDefault);
       replaceOptions(rightReleaseSelect, releases, rightDefault);
