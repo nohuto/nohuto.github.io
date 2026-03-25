@@ -3,7 +3,7 @@ title: 'Performance State (P0)'
 description: 'NVIDIA option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/nvidia/desc.md#performance-state-p0'
 sidebar:
-  order: 5
+  order: 6
 ---
 
 "P-States are GPU active/executing performance capability and power consumption states. Each P-State, if available, maps to a performance level. Not all P-States are available on a given system."

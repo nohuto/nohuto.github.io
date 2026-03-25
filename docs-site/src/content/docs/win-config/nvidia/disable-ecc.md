@@ -3,7 +3,7 @@ title: 'ECC'
 description: 'NVIDIA option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/nvidia/desc.md#disable-ecc'
 sidebar:
-  order: 6
+  order: 7
 ---
 
 Some GPUs don't support it, disabling is also not really needed. You can test it by disabling it via the control panel.

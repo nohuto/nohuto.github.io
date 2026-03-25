@@ -9,6 +9,7 @@ sidebar:
 
 - [Bitmask Calculator](/docs/win-config/nvidia/bitmask-calculator/)
 - [Debloated Driver](/docs/win-config/nvidia/debloated-driver/)
+- [NvAPI CLI](/docs/win-config/nvidia/nvapi-cli/)
 - [NVCPL Settings](/docs/win-config/nvidia/nvcpl-settings/)
 - [Temporary NVCPL](/docs/win-config/nvidia/temporary-nvcpl/)
 - [Performance State (P0)](/docs/win-config/nvidia/performance-state-p0/)

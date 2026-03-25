@@ -3,7 +3,7 @@ title: 'Hide Tray Icon'
 description: 'NVIDIA option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/nvidia/desc.md#hide-tray-icon'
 sidebar:
-  order: 7
+  order: 8
 ---
 
 ```

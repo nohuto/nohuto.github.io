@@ -3,7 +3,7 @@ title: 'GPU Performance Counters'
 description: 'NVIDIA option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/nvidia/desc.md#gpu-performance-counters'
 sidebar:
-  order: 18
+  order: 19
 ---
 
 "GPU performance counters are used by NVIDIA GPU profiling tools such as NVIDIA Nsight. These tools enable developers debug, profile and develop software for NVIDIA GPUs."

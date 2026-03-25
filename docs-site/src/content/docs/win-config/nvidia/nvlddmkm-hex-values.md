@@ -3,7 +3,7 @@ title: 'NVLDDMKM Hex Values'
 description: 'NVIDIA option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/nvidia/desc.md#nvlddmkm-hex-values'
 sidebar:
-  order: 20
+  order: 21
 ---
 
 I'd suggest you don't change this option and just use it for information only.

@@ -3,7 +3,7 @@ title: 'Developer Settings'
 description: 'NVIDIA option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/nvidia/desc.md#enable-developer-settings'
 sidebar:
-  order: 16
+  order: 17
 ---
 
 Enables `Enable Developer Settings` in the NVIDIA control panel.

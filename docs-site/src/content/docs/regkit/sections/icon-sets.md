@@ -14,7 +14,7 @@ Built-in sets:
 - Fluent UI
 - Material Symbols
 
-You can set your own ico set via `%LOCALAPPDATA%\Noverse\RegKit\icons`. If `icons\dark` and `icons\light` exist, regkit uses them for dark/light modes, if not it will use the root `icons` folder for both modes.w
+You can set your own ico set via `%LOCALAPPDATA%\Noverse\RegKit\icons`. If `icons\dark` and `icons\light` exist, regkit uses them for dark/light modes, if not it will use the root `icons` folder for both modes.
 
 Required filenames: `back.ico`, `binary.ico`, `copy.ico`, `database.ico`, `delete.ico`, `export.ico`, `folder.ico`, `folder-sim.ico`, `forward.ico`, `local-registry.ico`, `offline-registry.ico`, `paste.ico`, `redo.ico`, `refresh.ico`, `remote-registry.ico`, `replace.ico`, `search.ico`, `symlink.ico`, `text.ico`, `undo.ico`, `up.ico`.
 

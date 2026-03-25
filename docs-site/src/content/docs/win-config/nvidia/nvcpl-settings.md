@@ -3,7 +3,7 @@ title: 'NVCPL Settings'
 description: 'NVIDIA option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/nvidia/desc.md#nvcpl-settings'
 sidebar:
-  order: 3
+  order: 4
 ---
 
 `Minimal` = Uses the configurations while turning off features like G-SYNC, Antialiasing, Sharpening, Ambient Occlusion, NIS, Ansel etc.  

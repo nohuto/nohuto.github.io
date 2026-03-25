@@ -3,7 +3,7 @@ title: 'Power Savings'
 description: 'NVIDIA option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/nvidia/desc.md#disable-power-savings'
 sidebar:
-  order: 12
+  order: 13
 ---
 
 Sets `RmDisableACPI`, `RMDisableGpuASPMFlags`, `RMFspg`, `RMBlcg`, `RMElcg`, `RmElpg`, `RMSlcg`, `RMOPSB`, `RMLpwrArch`. I won't add the bit fields in here, as they're too big. See [`bitmask-calc`](https://github.com/nohuto/bitmask-calc) for more details of what the data does.

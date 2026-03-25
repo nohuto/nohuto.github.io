@@ -3,7 +3,7 @@ title: 'RMPowerFeature'
 description: 'NVIDIA option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/nvidia/desc.md#rmpowerfeature'
 sidebar:
-  order: 11
+  order: 12
 ---
 
 `ELPG` - Engine-Level Power Gating  

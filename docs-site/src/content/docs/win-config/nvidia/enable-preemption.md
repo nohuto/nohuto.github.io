@@ -3,7 +3,7 @@ title: 'Preemption'
 description: 'NVIDIA option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/nvidia/desc.md#enable-preemption'
 sidebar:
-  order: 15
+  order: 16
 ---
 
 Preemption is the scheduler hitting pause on a long running task so a more important one runs immediately. Example, a heavy compute shader is using the GPU, then the VR compositor arrives and must render a frame within a short time. With preemption, the GPU lets the current tiny unit of work finish, switches to the compositor so the frame makes its deadline, then resumes the paused job. Without preemption, the compositor would wait behind the long job.

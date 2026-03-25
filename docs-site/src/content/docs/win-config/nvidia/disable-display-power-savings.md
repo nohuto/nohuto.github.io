@@ -3,7 +3,7 @@ title: 'Display Power Savings'
 description: 'NVIDIA option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/nvidia/desc.md#disable-display-power-savings'
 sidebar:
-  order: 9
+  order: 10
 ---
 
 ```
