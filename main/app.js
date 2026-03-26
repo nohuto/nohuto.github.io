@@ -707,11 +707,11 @@ async function getRepoDescription(repo) {
 }
 
 function initRepoDescriptions() {
-  const cards = document.querySelectorAll('.project-card[data-repo]');
+  const cards = document.querySelectorAll('.project-card[data-repo], .tool-card[data-repo]');
   if (!cards.length) return;
   cards.forEach(card => {
     const repo = card.getAttribute('data-repo');
-    const descEl = card.querySelector('.project-desc');
+    const descEl = card.querySelector('.project-desc, .tool-desc');
     if (!repo || !descEl) return;
     getRepoDescription(repo).then(desc => {
       descEl.textContent = desc;

@@ -46,12 +46,6 @@
       </div>
       <div class="panel-body">
         <div class="product-header">
-          <div class="product-intro">
-            <h2>Windows Configuration</h2>
-            <p>
-              WinConfig is based on my personal research on several topics, which I began documenting around July 2024.
-            </p>
-          </div>
           <div class="product-cta">
             <span class="price-label">Lifetime</span>
             <span class="product-price">9,99&nbsp;EUR</span>
@@ -67,25 +61,20 @@
               </form>
             </div>
           </div>
-        </div>
-        <div class="product-comparison">
+          <div class="product-intro">
+            <h2>Windows Configuration</h2>
+            <p>
+              WinConfig is based on my personal research on several topics, which I began documenting around July 2024.
+            </p>
+          </div>
           <div class="comparison-copy">
             <h3>Noteable Windows Configuration Tool Features:</h3>
             <ul>
-              <li>Transparent execution logs so users can review every action, these include the value, data, type and
-                if given the amount of modified keys. Specific options will show the PS code that got executed.</li>
-              <li>Dynamic state detection instead of relying on cached registry values, this includes static/dynamic
-                (pattern) and all used cmdlets (which are also saved in the registry but on uncommon ways). Note that
-                this feature affects app performance, as several commands are called every time you switch trough
-                sections. However, you always see the current state, which more than compensates for the resulting wait
-                time. </li>
-              <li>Each option is backed up by documentation, instead of just general "optimize" prompts with an useless
-                text.</li>
-              <li>Guidance includes lesser known data alongside common adjustments, for futher customization for
-                experienced users.</li>
+              <li>Transparent execution logs so users can review every action, these include the value, data, type and if given the amount of modified keys. Specific options will show the PS code that got executed.</li>
+              <li>Dynamic state detection instead of relying on cached registry values, this includes static/dynamic (pattern) and all used cmdlets (which are also saved in the registry but on uncommon ways).</li>
+              <li>Each option is backed up by <a href="#documentation">documentation</a>, instead of just general "optimize" prompts with an useless text.</li>
               <li>Every control is available individually instead of being merged into large bundles.</li>
-              <li>Supports dark/light modes, custom color schemes, and layout preferences for search filters, rows,
-                columns, and panel widths.</li>
+              <li>Supports dark/light modes, custom color schemes, and layout preferences for search filters, rows, columns, and panel widths.</li>
               <li>Export/import your entire configuration within a single click, so you can easily reapply everything on new installations.</li>
             </ul>
           </div>
@@ -262,42 +251,56 @@
         <div class="external-tools" id="toolkit">
           <div class="doc-header">
             <h3>Free &amp; open-source extension tools</h3>
-            <p>Each tool is available under GPLv3 and can be used alongside WinConfig as standalone tools.</p>
+            <p>Each tool is available under GPLv3 and can be used alongside WinConfig as standalone tools. See all my
+              open source projects <a class="legal-link" href="projects.html">here</a>.</p>
           </div>
           <div class="tool-grid">
-            <article class="tool-card">
+            <article class="tool-card project-card" data-repo="nohuto/app-tools">
               <h4>App Tools</h4>
-              <p>Automates configuration for Discord, Spotify, Thorium, Steam, Ungoogled, Brave, Epic, LGHUB, and more.
-              </p>
+              <p class="tool-desc project-desc">Fetching description...</p>
               <a href="https://github.com/nohuto/app-tools" class="tool-link" target="_blank"
                 rel="noopener noreferrer">View
                 Repository</a>
             </article>
-            <article class="tool-card">
+            <article class="tool-card project-card" data-repo="nohuto/game-tools">
               <h4>Game Tools</h4>
-              <p>Automates configuration VALORANT, Fortnite, Marvel Rivals, CS2, and Overwatch.</p>
+              <p class="tool-desc project-desc">Fetching description...</p>
               <a href="https://github.com/nohuto/game-tools" class="tool-link" target="_blank"
                 rel="noopener noreferrer">View
                 Repository</a>
             </article>
-            <article class="tool-card">
+            <article class="tool-card project-card" data-repo="nohuto/comp-mgr">
               <h4>Component Manager</h4>
-              <p>Remove/uninstall packages, optional Windows features, and capability bundles.</p>
+              <p class="tool-desc project-desc">Fetching description...</p>
               <a href="https://github.com/nohuto/comp-mgr" class="tool-link" target="_blank"
                 rel="noopener noreferrer">View
                 Repository</a>
             </article>
-            <article class="tool-card">
+            <article class="tool-card project-card" data-repo="nohuto/blocklist-mgr">
               <h4>Blocklist Manager</h4>
-              <p>Manage hosts/URL blocklists and edit your hosts directly.</p>
+              <p class="tool-desc project-desc">Fetching description...</p>
               <a href="https://github.com/nohuto/blocklist-mgr" class="tool-link" target="_blank"
                 rel="noopener noreferrer">View
                 Repository</a>
             </article>
-            <article class="tool-card">
+            <article class="tool-card project-card" data-repo="nohuto/bitmask-calc">
               <h4>Bitmask Calculator</h4>
-              <p>Bitfield calculator built for official NVIDIA definitions.</p>
+              <p class="tool-desc project-desc">Fetching description...</p>
               <a href="https://github.com/nohuto/bitmask-calc" class="tool-link" target="_blank"
+                rel="noopener noreferrer">View
+                Repository</a>
+            </article>
+            <article class="tool-card project-card" data-repo="nohuto/regkit">
+              <h4>Regkit</h4>
+              <p class="tool-desc project-desc">Fetching description...</p>
+              <a href="https://github.com/nohuto/regkit" class="tool-link" target="_blank"
+                rel="noopener noreferrer">View
+                Repository</a>
+            </article>
+            <article class="tool-card project-card" data-repo="nohuto/nvapi-cli">
+              <h4>NVAPI CLI</h4>
+              <p class="tool-desc project-desc">Fetching description...</p>
+              <a href="https://github.com/nohuto/nvapi-cli" class="tool-link" target="_blank"
                 rel="noopener noreferrer">View
                 Repository</a>
             </article>
@@ -320,7 +323,7 @@
               <h4>Data Privacy</h4>
               <p>
                 WinConfig only references hardware identifiers required for license verification: UUID, CPU ID, and
-                board ID. If any are unavailable, it can fall back to disk serial, MAC address, video controller ID,
+                board ID. If any are unavailable, it can fall back to, MAC address, video controller ID,
                 sound device ID, or USB controller ID. No additional system data is collected, transmitted, or stored.
                 Learn more about the firmware identifiers via the
                 <a class="legal-link" href="https://learn.microsoft.com/en-us/windows-hardware/drivers/bringup/smbios"

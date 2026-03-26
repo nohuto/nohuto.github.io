@@ -936,7 +936,7 @@ main {
   background: var(--panel);
   color: var(--text);
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 0.97rem;
   text-transform: lowercase;
   letter-spacing: 0.04em;
   line-height: 1;
@@ -1995,7 +1995,9 @@ video {
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  padding: 5px 10px;
+  min-height: 24px;
+  box-sizing: border-box;
+  padding: 0 10px;
   border-bottom: 1px solid var(--border);
   background: var(--panel-alt);
   cursor: move;
@@ -2361,16 +2363,10 @@ body.bindiff-settings-open {
 }
 
 .product-header {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 260px;
-  grid-template-areas: "intro cta";
-  column-gap: 28px;
-  row-gap: 18px;
-  align-items: flex-start;
+  display: flow-root;
 }
 
 .product-intro {
-  grid-area: intro;
   min-width: 0;
 }
 
@@ -2394,13 +2390,13 @@ body.bindiff-settings-open {
 }
 
 .product-cta {
-  grid-area: cta;
-  width: 100%;
+  float: right;
+  width: 260px;
   max-width: 260px;
   text-align: left;
   padding: 10px 12px;
-  border: 1px solid var(--border);
   background: var(--panel);
+  margin: 0 0 14px 28px;
 }
 
 .purchase-actions {
@@ -2503,12 +2499,12 @@ body.bindiff-settings-open {
 }
 
 .product-comparison {
-  margin-top: 6px;
+  margin-top: 0;
   display: flex;
   flex-direction: column;
   gap: 18px;
   align-items: stretch;
-  padding: 0 22px;
+  padding: 0;
 }
 
 .comparison-copy ul {
@@ -2518,7 +2514,8 @@ body.bindiff-settings-open {
 }
 
 .comparison-copy {
-  width: 100%;
+  width: auto;
+  max-width: none;
   text-align: left;
   align-self: stretch;
 }
@@ -2536,6 +2533,10 @@ body.bindiff-settings-open {
   max-width: 760px;
   overflow-x: auto;
   margin: 0 auto;
+}
+
+#product > .panel-body > .comparison-table {
+  clear: both;
 }
 
 #product>.panel-body>.comparison-table {
@@ -3021,16 +3022,14 @@ footer {
   }
 
   .product-header {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "intro"
-      "cta";
+    display: block;
   }
 
   .product-cta {
     width: 260px;
     max-width: 260px;
-    justify-self: center;
+    float: none;
+    margin: 0 auto 16px;
   }
 
   .product-preview-grid {
