@@ -53,22 +53,80 @@
             </p>
           </div>
           <div class="product-cta">
-            <span class="price-label">Lifetime license</span>
+            <span class="price-label">Lifetime</span>
             <span class="product-price">9,99&nbsp;EUR</span>
             <p class="pricing-note">Includes updates &amp; Discord role.</p>
             <div class="purchase-actions">
               <form class="paypal-form" action="https://www.paypal.com/ncp/payment/C4XUQMQZHS948" method="post"
                 target="_blank">
-                <button class="paypal-button" type="submit">Buy WinConfig</button>
-                <img decoding="async" class="paypal-methods" src="main/images/paypal-methods.svg"
-                  alt="Accepted payment cards via PayPal" loading="lazy">
-                <p class="paypal-note">
-                  Powered by
-                  <img decoding="async" class="paypal-logo" src="main/images/paypal.png" alt="PayPal" loading="lazy">
-                </p>
+                <button class="paypal-button" type="submit">
+                  <span>Buy via</span>
+                  <img decoding="async" class="paypal-button-logo" src="main/images/paypal-methods.svg"
+                    alt="Accepted payment cards via PayPal" loading="lazy">
+                </button>
               </form>
             </div>
           </div>
+        </div>
+        <div class="product-comparison">
+          <div class="comparison-copy">
+            <h3>Noteable Windows Configuration Tool Features:</h3>
+            <ul>
+              <li>Transparent execution logs so users can review every action, these include the value, data, type and
+                if given the amount of modified keys. Specific options will show the PS code that got executed.</li>
+              <li>Dynamic state detection instead of relying on cached registry values, this includes static/dynamic
+                (pattern) and all used cmdlets (which are also saved in the registry but on uncommon ways). Note that
+                this feature affects app performance, as several commands are called every time you switch trough
+                sections. However, you always see the current state, which more than compensates for the resulting wait
+                time. </li>
+              <li>Each option is backed up by documentation, instead of just general "optimize" prompts with an useless
+                text.</li>
+              <li>Guidance includes lesser known data alongside common adjustments, for futher customization for
+                experienced users.</li>
+              <li>Every control is available individually instead of being merged into large bundles.</li>
+              <li>Supports dark/light modes, custom color schemes, and layout preferences for search filters, rows,
+                columns, and panel widths.</li>
+              <li>Export/import your entire configuration within a single click, so you can easily reapply everything on new installations.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="comparison-table">
+          <table aria-label="Feature comparison">
+            <thead>
+              <tr>
+                <th scope="col">Feature</th>
+                <th scope="col">WinConfig</th>
+                <th scope="col">Typical tools</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Execution transparency</td>
+                <td><span class="status-pill positive">Displays each change</span></td>
+                <td><span class="status-pill neutral">Hidden</span></td>
+              </tr>
+              <tr>
+                <td>State detection</td>
+                <td><span class="status-pill positive">Dynamic</span></td>
+                <td><span class="status-pill neutral">Stored in registry</span></td>
+              </tr>
+              <tr>
+                <td>Documentation</td>
+                <td><span class="status-pill positive">Per option notes</span></td>
+                <td><span class="status-pill negative">None</span></td>
+              </tr>
+              <tr>
+                <td>Selection</td>
+                <td><span class="status-pill positive">Extensive</span></td>
+                <td><span class="status-pill neutral">Common</span></td>
+              </tr>
+              <tr>
+                <td>Customization control</td>
+                <td><span class="status-pill positive">Per change toggles</span></td>
+                <td><span class="status-pill negative">Bundled groups</span></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <div class="product-preview-grid">
           <figure class="product-preview-card">
@@ -97,65 +155,6 @@
             </a>
             <figcaption>Light mode - Violet color scheme - Logs disabled - Privacy section</figcaption>
           </figure>
-        </div>
-        <div class="product-comparison">
-          <div class="comparison-copy">
-            <h3>Noteable Windows Configuration Tool Features:</h3>
-            <ul>
-              <li>Transparent execution logs so users can review every action, these include the value, data, type and
-                if given the amount of modified keys. Specific options will show the PS code that got executed.</li>
-              <li>Dynamic state detection instead of relying on cached registry values, this includes static/dynamic
-                (pattern) and all used cmdlets (which are also saved in the registry but on uncommon ways). Note that
-                this feature affects app performance, as several commands are called every time you switch trough
-                sections. However, you always see the current state, which more than compensates for the resulting wait
-                time. </li>
-              <li>Each option is backed up by documentation, instead of just general "optimize" prompts with an useless
-                text.</li>
-              <li>Guidance includes lesser known data alongside common adjustments, for futher customization for
-                experienced users.</li>
-              <li>Every control is available individually instead of being merged into large bundles.</li>
-              <li>Supports dark/light modes, custom color schemes, and layout preferences for search filters, rows,
-                columns, and panel widths.</li>
-            </ul>
-          </div>
-          <div class="comparison-table">
-            <table aria-label="Feature comparison">
-              <thead>
-                <tr>
-                  <th scope="col">Feature</th>
-                  <th scope="col">WinConfig</th>
-                  <th scope="col">Typical tools</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Execution transparency</td>
-                  <td><span class="status-pill positive">Displays each change</span></td>
-                  <td><span class="status-pill neutral">Hidden</span></td>
-                </tr>
-                <tr>
-                  <td>State detection</td>
-                  <td><span class="status-pill positive">Dynamic</span></td>
-                  <td><span class="status-pill neutral">Stored in registry</span></td>
-                </tr>
-                <tr>
-                  <td>Documentation</td>
-                  <td><span class="status-pill positive">Per option notes</span></td>
-                  <td><span class="status-pill negative">None</span></td>
-                </tr>
-                <tr>
-                  <td>Selection</td>
-                  <td><span class="status-pill positive">Extensive</span></td>
-                  <td><span class="status-pill neutral">Common</span></td>
-                </tr>
-                <tr>
-                  <td>Customization control</td>
-                  <td><span class="status-pill positive">Per change toggles</span></td>
-                  <td><span class="status-pill negative">Bundled groups</span></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
         </div>
       </div>
     </section>
@@ -375,21 +374,21 @@
       <div class="footer-copy">&copy; 2026 Nohuto. All rights reserved.</div>
       <div class="social">
         <a href="https://github.com/nohuto" target="_blank" rel="noopener noreferrer">
-          <img decoding="async" src="main/images/github-icon.png" data-dark-src="main/images/github-icon.png"
-            data-light-src="main/images/github-icon-dark.png" loading="lazy" alt="GitHub">
+          <img decoding="async" src="main/icons/dark/github-icon.png" data-dark-src="main/icons/dark/github-icon.png"
+            data-light-src="main/icons/light/github-icon.png" loading="lazy" alt="GitHub">
         </a>
         <a href="https://www.youtube.com/@5Noverse" target="_blank" rel="noopener noreferrer">
-          <img decoding="async" src="main/images/youtube-icon.png" data-dark-src="main/images/youtube-icon.png"
-            data-light-src="main/images/youtube-icon-dark.png" loading="lazy" alt="YouTube">
+          <img decoding="async" src="main/icons/dark/youtube-icon.png" data-dark-src="main/icons/dark/youtube-icon.png"
+            data-light-src="main/icons/light/youtube-icon.png" loading="lazy" alt="YouTube">
         </a>
         <button class="icon-button" type="button" data-email="copy" data-toast="Email copied"
           aria-label="Copy email to clipboard">
-          <img decoding="async" src="main/images/email-icon.png" data-dark-src="main/images/email-icon.png"
-            data-light-src="main/images/email-icon-dark.png" loading="lazy" alt="Email">
+          <img decoding="async" src="main/icons/dark/email-icon.svg" data-dark-src="main/icons/dark/email-icon.svg"
+            data-light-src="main/icons/light/email-icon.svg" loading="lazy" alt="Email">
         </button>
         <a href="https://discord.gg/E2ybG4j9jU" target="_blank" rel="noopener noreferrer">
-          <img decoding="async" src="main/images/discord-icon.png" data-dark-src="main/images/discord-icon.png"
-            data-light-src="main/images/discord-icon-dark.png" loading="lazy" alt="Discord">
+          <img decoding="async" src="main/icons/dark/discord-icon.png" data-dark-src="main/icons/dark/discord-icon.png"
+            data-light-src="main/icons/light/discord-icon.png" loading="lazy" alt="Discord">
         </a>
       </div>
       <div class="footer-tools">
