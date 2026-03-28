@@ -3022,14 +3022,24 @@ footer {
   }
 
   .product-header {
-    display: block;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-intro {
+    order: 1;
   }
 
   .product-cta {
+    order: 2;
     width: 260px;
     max-width: 260px;
     float: none;
     margin: 0 auto 16px;
+  }
+
+  .comparison-copy {
+    order: 3;
   }
 
   .product-preview-grid {
