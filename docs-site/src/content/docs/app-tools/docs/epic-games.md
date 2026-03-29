@@ -3,7 +3,7 @@ title: 'Epic Games'
 description: 'Generated from app-tools file: epic-games/desc.md.'
 editUrl: 'https://github.com/nohuto/app-tools/blob/main/epic-games/desc.md'
 sidebar:
-  order: 3
+  order: 1
 ---
 
 | Option       | Description                                       |

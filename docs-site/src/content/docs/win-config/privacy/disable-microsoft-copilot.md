@@ -1483,7 +1483,6 @@ svchost.exe	RegSetValue	HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Ch
 
 Miscellaenous notes:
 ```c
-```c
 "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Power";
     "SleepstudyAccountingEnabled" = 1; // SleepstudyHelperAccountingEnabled 
     "SleepstudyGlobalBlockerLimit" = 3000; // SleepstudyHelperBlockerGlobalLimit (0x0BB8) 
@@ -1531,3 +1530,620 @@ Miscellaenous notes:
 ```
 
 > https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/wevtutil
+
+# Disable RSoP Logging
+
+"This setting allows you to enable or disable Resultant Set of Policy (RSoP) logging on a client computer.RSoP logs information on Group Policy settings that have been applied to the client. This information includes details such as which Group Policy Objects (GPO) were applied where they came from and the client-side extension settings that were included.If you enable this setting RSoP logging is turned off.If you disable or do not configure this setting RSoP logging is turned on. By default RSoP logging is always on.Note: To view the RSoP information logged on a client computer you can use the RSoP snap-in in the Microsoft Management Console (MMC)."
+
+> https://www.windows-security.org/370c915e44b6a75efac0d24669aa9434/turn-off-resultant-set-of-policy-logging
+
+```
+\Registry\Machine\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon : RsopLogging
+\Registry\Machine\SOFTWARE\Policies\Microsoft\Windows\SYSTEM : RsopLogging
+```
+
+> https://learn.microsoft.com/en-us/previous-versions/windows/desktop/Policy/developing-an-rsop-management-tool  
+
+# Disable Desktop Heap Logging
+
+"It is meant to log information about desktop heap usage. This can be helpful when diagnosing issues where system resources for desktop objects might be strained." 
+
+```c
+__int64 IsDesktopHeapLoggingOn(void)
+{
+  int v1 = 0; // default state
+  int v4 = *(_DWORD *)(W32GetUserSessionState() + 62792);
+
+  if ( v4 )
+    v1 = 0; // fallback to the default when registry access fails
+  return v1 != 0;
+}
+```
+
+`DesktopHeapLogging` seems to have a fallback of `0`, but the value exists by default and is set to `1`. Means deleting it/setting it to `0` should do the same.
+
+> [privacy/assets | rsop-IsDesktopHeapLoggingOn.c](https://github.com/nohuto/win-config/blob/main/privacy/assets/rsop-IsDesktopHeapLoggingOn.c)  
+> https://answers.microsoft.com/en-us/windows/forum/all/question-about-some-dwm-registry-settings/341cac5c-d85a-43e5-89d3-d9734f84da4e  
+> https://github.com/nohuto/win-registry/blob/main/records/Winows-NT.txt
+
+# Disable Message Sync
+
+"This policy setting allows backup and restore of cellular text messages to Microsoft's cloud services. Disable this feature to avoid information being stored on servers outside of your organization's control."
+
+| Policy | Description | Values |
+| ------ | ------ | ------ |
+| AllowMessageSync | Controls whether SMS/MMS are synced to Microsoft's cloud so they can be backed up and restored; also decides if the user can toggle this in the UI. | 0 = sync not allowed, user cannot change - 1 = sync allowed, user can change (default) |
+
+> https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-messaging
+
+```json
+{
+  "File": "messaging.admx",
+  "CategoryName": "Messaging_Category",
+  "PolicyName": "AllowMessageSync",
+  "NameSpace": "Microsoft.Policies.Messaging",
+  "Supported": "Windows_10_0_RS3",
+  "DisplayName": "Allow Message Service Cloud Sync",
+  "ExplainText": "This policy setting allows backup and restore of cellular text messages to Microsoft's cloud services.",
+  "KeyPath": [
+    "HKLM\\Software\\Policies\\Microsoft\\Windows\\Messaging"
+  ],
+  "ValueName": "AllowMessageSync",
+  "Elements": [
+    { "Type": "EnabledValue", "Data": "1" },
+    { "Type": "DisabledValue", "Data": "0" }
+  ]
+},
+```
+
+# Disable CSC
+
+Disable Offline Files (CSC) via policy and services. Sets NetCache policy keys, disables `CSC`/`CscService`, disables the two `Offline Files` scheduled tasks (they're disabled by default), and renames `mobsync.exe` to block execution.
+
+"Offline Files (Client-Side Caching, CSC) lets Windows cache files from network shares locally so users can keep working when the network/server is unavailable. Sync Center handles the background sync between the local CSC cache (`%WINDIR%\CSC`) and the share. It's commonly paired with Folder Redirection so "known folders" (e.g., Documents) live on a server but remain available offline, with options like "Always Offline" for performance on slow links. You enable/disable it via Sync Center (Control Panel) or policy. When disabled, Sync Center has nothing to sync."
+
+> https://learn.microsoft.com/en-us/windows-server/storage/folder-redirection/deploy-folder-redirection
+
+
+```json
+{
+  "File": "OfflineFiles.admx",
+  "CategoryName": "Cat_OfflineFiles",
+  "PolicyName": "Pol_Enabled",
+  "NameSpace": "Microsoft.Policies.OfflineFiles",
+  "Supported": "Win2k",
+  "DisplayName": "Allow or Disallow use of the Offline Files feature",
+  "ExplainText": "This policy setting determines whether the Offline Files feature is enabled. Offline Files saves a copy of network files on the user's computer for use when the computer is not connected to the network. If you enable this policy setting, Offline Files is enabled and users cannot disable it. If you disable this policy setting, Offline Files is disabled and users cannot enable it. If you do not configure this policy setting, Offline Files is enabled on Windows client computers, and disabled on computers running Windows Server, unless changed by the user. Note: Changes to this policy setting do not take effect until the affected computer is restarted.",
+  "KeyPath": [
+    "HKLM\\Software\\Policies\\Microsoft\\Windows\\NetCache"
+  ],
+  "ValueName": "Enabled",
+  "Elements": [
+    { "Type": "EnabledValue", "Data": "1" },
+    { "Type": "DisabledValue", "Data": "0" }
+  ]
+},
+{
+  "File": "OfflineFiles.admx",
+  "CategoryName": "Cat_OfflineFiles",
+  "PolicyName": "Pol_BackgroundSyncSettings",
+  "NameSpace": "Microsoft.Policies.OfflineFiles",
+  "Supported": "Windows7",
+  "DisplayName": "Configure Background Sync",
+  "ExplainText": "This policy setting controls when background synchronization occurs while operating in slow-link mode, and applies to any user who logs onto the specified machine while this policy is in effect. To control slow-link mode, use the \"Configure slow-link mode\" policy setting. If you enable this policy setting, you can control when Windows synchronizes in the background while operating in slow-link mode. Use the 'Sync Interval' and 'Sync Variance' values to override the default sync interval and variance settings. Use 'Blockout Start Time' and 'Blockout Duration' to set a period of time where background sync is disabled. Use the 'Maximum Allowed Time Without A Sync' value to ensure that all network folders on the machine are synchronized with the server on a regular basis. You can also configure Background Sync for network shares that are in user selected Work Offline mode. This mode is in effect when a user selects the Work Offline button for a specific share. When selected, all configured settings will apply to shares in user selected Work Offline mode as well. If you disable or do not configure this policy setting, Windows performs a background sync of offline folders in the slow-link mode at a default interval with the start of the sync varying between 0 and 60 additional minutes. In Windows 7 and Windows Server 2008 R2, the default sync interval is 360 minutes. In Windows 8 and Windows Server 2012, the default sync interval is 120 minutes.",
+  "KeyPath": [
+    "HKLM\\Software\\Policies\\Microsoft\\Windows\\NetCache"
+  ],
+  "ValueName": "BackgroundSyncEnabled",
+  "Elements": [
+    { "Type": "Decimal", "ValueName": "BackgroundSyncPeriodMin", "MinValue": "1", "MaxValue": "1440" },
+    { "Type": "Decimal", "ValueName": "BackgroundSyncMaxStartMin", "MinValue": "0", "MaxValue": "3600" },
+    { "Type": "Decimal", "ValueName": "BackgroundSyncIgnoreBlockOutAfterMin", "MinValue": "0", "MaxValue": "4294967295" },
+    { "Type": "Decimal", "ValueName": "BackgroundSyncBlockOutStartTime", "MinValue": "0", "MaxValue": "2400" },
+    { "Type": "Decimal", "ValueName": "BackgroundSyncBlockOutDurationMin", "MinValue": "0", "MaxValue": "1440" },
+    { "Type": "Boolean", "ValueName": "BackgroundSyncEnabledForForcedOffline", "TrueValue": "1", "FalseValue": "0" },
+    { "Type": "EnabledValue", "Data": "1" },
+    { "Type": "DisabledValue", "Data": "0" }
+  ]
+},
+{
+  "File": "OfflineFiles.admx",
+  "CategoryName": "Cat_OfflineFiles",
+  "PolicyName": "Pol_NoReminders_2",
+  "NameSpace": "Microsoft.Policies.OfflineFiles",
+  "Supported": "WindowsPreVista",
+  "DisplayName": "Turn off reminder balloons",
+  "ExplainText": "Hides or displays reminder balloons, and prevents users from changing the setting. Reminder balloons appear above the Offline Files icon in the notification area to notify users when they have lost the connection to a networked file and are working on a local copy of the file. Users can then decide how to proceed. If you enable this setting, the system hides the reminder balloons, and prevents users from displaying them. If you disable the setting, the system displays the reminder balloons and prevents users from hiding them. If this setting is not configured, reminder balloons are displayed by default when you enable offline files, but users can change the setting. To prevent users from changing the setting while a setting is in effect, the system disables the \"Enable reminders\" option on the Offline Files tab This setting appears in the Computer Configuration and User Configuration folders. If both settings are configured, the setting in Computer Configuration takes precedence over the setting in User Configuration. Tip: To display or hide reminder balloons without establishing a setting, in Windows Explorer, on the Tools menu, click Folder Options, and then click the Offline Files tab. This setting corresponds to the \"Enable reminders\" check box.",
+  "KeyPath": [
+    "HKLM\\Software\\Policies\\Microsoft\\Windows\\NetCache"
+  ],
+  "ValueName": "NoReminders",
+  "Elements": [
+    { "Type": "EnabledValue", "Data": "1" },
+    { "Type": "DisabledValue", "Data": "0" }
+  ]
+},
+{
+  "File": "OfflineFiles.admx",
+  "CategoryName": "Cat_OfflineFiles",
+  "PolicyName": "Pol_SyncAtLogoff_2",
+  "NameSpace": "Microsoft.Policies.OfflineFiles",
+  "Supported": "WindowsPreVista",
+  "DisplayName": "Synchronize all offline files before logging off",
+  "ExplainText": "Determines whether offline files are fully synchronized when users log off. This setting also disables the \"Synchronize all offline files before logging off\" option on the Offline Files tab. This prevents users from trying to change the option while a setting controls it. If you enable this setting, offline files are fully synchronized. Full synchronization ensures that offline files are complete and current. If you disable this setting, the system only performs a quick synchronization. Quick synchronization ensures that files are complete, but does not ensure that they are current. If you do not configure this setting, the system performs a quick synchronization by default, but users can change this option. This setting appears in the Computer Configuration and User Configuration folders. If both settings are configured, the setting in Computer Configuration takes precedence over the setting in User Configuration. Tip: To change the synchronization method without changing a setting, in Windows Explorer, on the Tools menu, click Folder Options, click the Offline Files tab, and then select the \"Synchronize all offline files before logging off\" option.",
+  "KeyPath": [
+    "HKLM\\Software\\Policies\\Microsoft\\Windows\\NetCache"
+  ],
+  "ValueName": "SyncAtLogoff",
+  "Elements": [
+    { "Type": "EnabledValue", "Data": "1" },
+    { "Type": "DisabledValue", "Data": "0" }
+  ]
+},
+{
+  "File": "OfflineFiles.admx",
+  "CategoryName": "Cat_OfflineFiles",
+  "PolicyName": "Pol_SyncAtLogon_2",
+  "NameSpace": "Microsoft.Policies.OfflineFiles",
+  "Supported": "WindowsPreVista",
+  "DisplayName": "Synchronize all offline files when logging on",
+  "ExplainText": "Determines whether offline files are fully synchronized when users log on. This setting also disables the \"Synchronize all offline files before logging on\" option on the Offline Files tab. This prevents users from trying to change the option while a setting controls it. If you enable this setting, offline files are fully synchronized at logon. Full synchronization ensures that offline files are complete and current. Enabling this setting automatically enables logon synchronization in Synchronization Manager. If this setting is disabled and Synchronization Manager is configured for logon synchronization, the system performs only a quick synchronization. Quick synchronization ensures that files are complete but does not ensure that they are current. If you do not configure this setting and Synchronization Manager is configured for logon synchronization, the system performs a quick synchronization by default, but users can change this option. This setting appears in the Computer Configuration and User Configuration folders. If both settings are configured, the setting in Computer Configuration takes precedence over the setting in User Configuration. Tip: To change the synchronization method without setting a setting, in Windows Explorer, on the Tools menu, click Folder Options, click the Offline Files tab, and then select the \"Synchronize all offline files before logging on\" option.",
+  "KeyPath": [
+    "HKLM\\Software\\Policies\\Microsoft\\Windows\\NetCache"
+  ],
+  "ValueName": "SyncAtLogon",
+  "Elements": [
+    { "Type": "EnabledValue", "Data": "1" },
+    { "Type": "DisabledValue", "Data": "0" }
+  ]
+},
+{
+  "File": "OfflineFiles.admx",
+  "CategoryName": "Cat_OfflineFiles",
+  "PolicyName": "Pol_WorkOfflineDisabled_2",
+  "NameSpace": "Microsoft.Policies.OfflineFiles",
+  "Supported": "Windows8",
+  "DisplayName": "Remove \"Work offline\" command",
+  "ExplainText": "This policy setting removes the \"Work offline\" command from Explorer, preventing users from manually changing whether Offline Files is in online mode or offline mode. If you enable this policy setting, the \"Work offline\" command is not displayed in File Explorer. If you disable or do not configure this policy setting, the \"Work offline\" command is displayed in File Explorer.",
+  "KeyPath": [
+    "HKLM\\Software\\Policies\\Microsoft\\Windows\\NetCache"
+  ],
+  "ValueName": "WorkOfflineDisabled",
+  "Elements": [
+    { "Type": "EnabledValue", "Data": "1" },
+    { "Type": "DisabledValue", "Data": "0" }
+  ]
+},
+```
+
+# Disable Cloud Content Search
+
+"Cloud Content Search lets Windows Search include results from your signed-in cloud accounts personal Microsoft account (OneDrive, Outlook, Bing) and/or work/school (OneDrive for Business, SharePoint, Outlook) alongside local files. Turn it on per account to get those items and Bing-personalized suggestions, turn it off to keep search limited to local content (and non-personalized web)."
+
+![](https://github.com/nohuto/win-config/blob/main/privacy/images/cloudsearch.png?raw=true)
+
+# Microsoft Accounts
+
+"This setting prevents using the Settings app to add a Microsoft account for single sign-on (SSO) authentication for Microsoft services and some background services, or using a Microsoft account for single sign-on to other applications or services.
+
+There are two options if this setting is enabled:
+
+- Users can't add Microsoft accounts means that existing connected accounts can still sign in to the device (and appear on the Sign in screen). However, users cannot use the Settings app to add new connected accounts (or connect local accounts to Microsoft accounts).
+
+- Users can't add or log on with Microsoft accounts means that users cannot add new connected accounts (or connect local accounts to Microsoft accounts) or use existing connected accounts through Settings.
+
+This setting does not affect adding a Microsoft account for application authentication. For example, if this setting is enabled, a user can still provide a Microsoft account for authentication with an application such as Mail, but the user cannot use the Microsoft account for single sign-on authentication for other applications or services (in other words, the user will be prompted to authenticate for other applications or services).
+
+By default, this setting is Not defined."
+
+```c
+// This policy is disabled
+services.exe	RegSetValue	HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\NoConnectedUser	Type: REG_DWORD, Length: 4, Data: 0
+
+// Users can't add Microsoft accounts
+services.exe	RegSetValue	HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\NoConnectedUser	Type: REG_DWORD, Length: 4, Data: 1
+
+// Users can't add or log on with Microsoft accounts
+services.exe	RegSetValue	HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\NoConnectedUser	Type: REG_DWORD, Length: 4, Data: 3
+```
+
+# Opt-Out KMS Activation Telemetry
+
+Friendly name: `Turn off KMS Client Online AVS Validation`
+
+"This policy setting lets you opt-out of sending KMS client activation data to Microsoft automatically. Enabling this setting prevents this computer from sending data to Microsoft regarding its activation state.
+
+If you disable or don't configure this policy setting, KMS client activation data will be sent to Microsoft services when this device activates."
+
+> https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-licensing#disallowkmsclientonlineavsvalidation
+
+`Disable Auto Activation` (MAK and KMS host but not KMS client) prevents windows from whether it's actived or not.
+
+> https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn502532(v=ws.11)
+
+```json
+{
+  "File": "AVSValidationGP.admx",
+  "CategoryName": "SoftwareProtectionPlatform",
+  "PolicyName": "NoAcquireGT",
+  "NameSpace": "Microsoft.Policies.SoftwareProtectionPlatform",
+  "Supported": "Windows_10_0",
+  "DisplayName": "Turn off KMS Client Online AVS Validation",
+  "ExplainText": "This policy setting lets you opt-out of sending KMS client activation data to Microsoft automatically. Enabling this setting prevents this computer from sending data to Microsoft regarding its activation state. If you disable or do not configure this policy setting, KMS client activation data will be sent to Microsoft services when this device activates. Policy Options: - Not Configured (default -- data will be automatically sent to Microsoft) - Disabled (data will be automatically sent to Microsoft) - Enabled (data will not be sent to Microsoft)",
+  "KeyPath": [
+    "HKLM\\Software\\Policies\\Microsoft\\Windows NT\\CurrentVersion\\Software Protection Platform"
+  ],
+  "ValueName": "NoGenTicket",
+  "Elements": [
+    { "Type": "EnabledValue", "Data": "1" },
+    { "Type": "DisabledValue", "Data": "0" }
+  ]
+},
+```
+
+For Windows Server 2016 it can be disabled via:
+```json
+"HKLM\\Software\\Policies\\Microsoft\\Windows NT\\CurrentVersion\\Software Protection Platform": {
+  "NoAcquireGT": { "Type": "REG_DWORD", "Data": 1 }
+}
+```
+
+"Due to a known issue the Turn off KMS Client Online AVS Validation group policy does not work as intended on Windows Server 2016; the NoAcquireGT value needs to be set instead. The Windows activation status will be valid for a rolling period of 180 days with weekly activation status checks to the KMS."
+
+> https://learn.microsoft.com/en-us/windows/privacy/manage-connections-from-windows-operating-system-components-to-microsoft-services#19-software-protection-platform
+
+# Disable Font Providers
+
+"This policy setting determines whether Windows is allowed to download fonts and font catalog data from an online font provider.
+
+If you enable this policy setting, Windows periodically queries an online font provider to determine whether a new font catalog is available. Windows may also download font data if needed to format or render text.
+
+If you disable this policy setting, Windows does not connect to an online font provider and only enumerates locally-installed fonts."
+
+```json
+{
+  "File": "GroupPolicy.admx",
+  "CategoryName": "NetworkFonts",
+  "PolicyName": "EnableFontProviders",
+  "NameSpace": "Microsoft.Policies.GroupPolicy",
+  "Supported": "Windows_10_0",
+  "DisplayName": "Enable Font Providers",
+  "ExplainText": "This policy setting determines whether Windows is allowed to download fonts and font catalog data from an online font provider. If you enable this policy setting, Windows periodically queries an online font provider to determine whether a new font catalog is available. Windows may also download font data if needed to format or render text. If you disable this policy setting, Windows does not connect to an online font provider and only enumerates locally-installed fonts. If you do not configure this policy setting, the default behavior depends on the Windows edition. Changes to this policy take effect on reboot.",
+  "KeyPath": [
+    "HKLM\\Software\\Policies\\Microsoft\\Windows\\System"
+  ],
+  "ValueName": "EnableFontProviders",
+  "Elements": [
+    { "Type": "EnabledValue", "Data": "1" },
+    { "Type": "DisabledValue", "Data": "0" }
+  ]
+},
+```
+
+# Disable Local Security Questions
+
+Prevent the use of security questions for local accounts.
+
+```json
+{
+  "File": "CredUI.admx",
+  "CategoryName": "CredUI",
+  "PolicyName": "NoLocalPasswordResetQuestions",
+  "NameSpace": "Microsoft.Policies.CredentialsUI",
+  "Supported": "Windows_10_0_RS6",
+  "DisplayName": "Prevent the use of security questions for local accounts",
+  "ExplainText": "If you turn this policy setting on, local users won\u2019t be able to set up and use security questions to reset their passwords.",
+  "KeyPath": [
+    "HKLM\\Software\\Policies\\Microsoft\\Windows\\System"
+  ],
+  "ValueName": "NoLocalPasswordResetQuestions",
+  "Elements": []
+},
+```
+
+# Disable Application Compatibility
+
+Disables Windows Application Experience telemetry and compatibility components, Microsoft Compatibility Appraiser (including its daily task and `CompatTelRunner.exe`) and the Application Experience tasks. It reduces telemetry, and some attack surface, but removes most automatic compatibility checks, upgrade assessments and some app related backup/recovery features.
+
+`DisableAPISamping`, `DisableApplicationFootprint`, `DisableInstallTracing`, `DisableWin32AppBackup` will only work on 24H2 and above.
+
+Currently includes all existing tasks in `\\Microsoft\\Windows\\Application Experience\\` (LTSC IoT Enterprise 2024):
+```c
+"\\Microsoft\\Windows\\Application Experience\\MareBackup",
+"\\Microsoft\\Windows\\Application Experience\\Microsoft Compatibility Appraiser",
+"\\Microsoft\\Windows\\Application Experience\\Microsoft Compatibility Appraiser Exp",
+"\\Microsoft\\Windows\\Application Experience\\PcaPatchDbTask",
+"\\Microsoft\\Windows\\Application Experience\\SdbinstMergeDbTask",
+"\\Microsoft\\Windows\\Application Experience\\StartupAppTask"
+
+//"\\Microsoft\\Windows\\Application Experience\\AitAgent",
+//"\\Microsoft\\Windows\\Application Experience\\PcaWallpaperAppDetect",
+```
+```json
+{
+  "File": "AppDeviceInventory.admx",
+  "CategoryName": "AppDeviceInventory",
+  "PolicyName": "TurnOffAPISamping",
+  "NameSpace": "Microsoft.Policies.AppDeviceInventory",
+  "Supported": "Windows_11_0_24H2 - At least Windows 11 Version 24H2",
+  "DisplayName": "Turn off API Sampling",
+  "ExplainText": "This policy controls the state of API Sampling. API Sampling monitors the sampled collection of application programming interfaces used during system runtime to help diagnose compatibility problems. If you enable this policy, API Sampling will not be run. If you disable or do not configure this policy, API Sampling will be turned on.",
+  "KeyPath": [
+    "HKLM\\Software\\Policies\\Microsoft\\Windows\\AppCompat"
+  ],
+  "ValueName": "DisableAPISamping",
+  "Elements": [
+    { "Type": "EnabledValue", "Data": "1" },
+    { "Type": "DisabledValue", "Data": "0" }
+  ]
+},
+{
+  "File": "AppDeviceInventory.admx",
+  "CategoryName": "AppDeviceInventory",
+  "PolicyName": "TurnOffApplicationFootprint",
+  "NameSpace": "Microsoft.Policies.AppDeviceInventory",
+  "Supported": "Windows_11_0_24H2 - At least Windows 11 Version 24H2",
+  "DisplayName": "Turn off Application Footprint",
+  "ExplainText": "This policy controls the state of Application Footprint. Application Footprint monitors the sampled collection of registry and file usage to help diagnose compatibility problems. If you enable this policy, Application Footprint will not be run. If you disable or do not configure this policy, Application Footprint will be turned on.",
+  "KeyPath": [
+    "HKLM\\Software\\Policies\\Microsoft\\Windows\\AppCompat"
+  ],
+  "ValueName": "DisableApplicationFootprint",
+  "Elements": [
+    { "Type": "EnabledValue", "Data": "1" },
+    { "Type": "DisabledValue", "Data": "0" }
+  ]
+},
+{
+  "File": "AppCompat.admx",
+  "CategoryName": "AppCompat",
+  "PolicyName": "AppCompatTurnOffEngine",
+  "NameSpace": "Microsoft.Policies.ApplicationCompatibility",
+  "Supported": "WindowsNET - At least Windows Server 2003",
+  "DisplayName": "Turn off Application Compatibility Engine",
+  "ExplainText": "This policy controls the state of the application compatibility engine in the system. The engine is part of the loader and looks through a compatibility database every time an application is started on the system. If a match for the application is found it provides either run-time solutions or compatibility fixes, or displays an Application Help message if the application has a know problem. Turning off the application compatibility engine will boost system performance. However, this will degrade the compatibility of many popular legacy applications, and will not block known incompatible applications from installing. (For Instance: This may result in a blue screen if an old anti-virus application is installed.) The Windows Resource Protection and User Account Control features of Windows use the application compatibility engine to provide mitigations for application problems. If the engine is turned off, these mitigations will not be applied to applications and their installers and these applications may fail to install or run properly. This option is useful to server administrators who require faster performance and are aware of the compatibility of the applications they are using. It is particularly useful for a web server where applications may be launched several hundred times a second, and the performance of the loader is essential. NOTE: Many system processes cache the value of this setting for performance reasons. If you make changes to this setting, please reboot to ensure that your system accurately reflects those changes.",
+  "KeyPath": [
+    "HKLM\\Software\\Policies\\Microsoft\\Windows\\AppCompat"
+  ],
+  "ValueName": "DisableEngine",
+  "Elements": []
+},
+{
+  "File": "AppDeviceInventory.admx",
+  "CategoryName": "AppDeviceInventory",
+  "PolicyName": "TurnOffInstallTracing",
+  "NameSpace": "Microsoft.Policies.AppDeviceInventory",
+  "Supported": "Windows_11_0_24H2 - At least Windows 11 Version 24H2",
+  "DisplayName": "Turn off Install Tracing",
+  "ExplainText": "This policy controls the state of Install Tracing. Install Tracing is a mechanism that tracks application installs to help diagnose compatibility problems. If you enable this policy, Install Tracing will not be run. If you disable or do not configure this policy, Install Tracing will be turned on.",
+  "KeyPath": [
+    "HKLM\\Software\\Policies\\Microsoft\\Windows\\AppCompat"
+  ],
+  "ValueName": "DisableInstallTracing",
+  "Elements": [
+    { "Type": "EnabledValue", "Data": "1" },
+    { "Type": "DisabledValue", "Data": "0" }
+  ]
+},
+{
+  "File": "AppCompat.admx",
+  "CategoryName": "AppCompat",
+  "PolicyName": "AppCompatTurnOffProgramCompatibilityAssistant_1",
+  "NameSpace": "Microsoft.Policies.ApplicationCompatibility",
+  "Supported": "WindowsVista - At least Windows Vista",
+  "DisplayName": "Turn off Program Compatibility Assistant",
+  "ExplainText": "This setting exists only for backward compatibility, and is not valid for this version of Windows. To configure the Program Compatibility Assistant, use the 'Turn off Program Compatibility Assistant' setting under Computer Configuration\\Administrative Templates\\Windows Components\\Application Compatibility.",
+  "KeyPath": [
+    "HKCU\\Software\\Policies\\Microsoft\\Windows\\AppCompat"
+  ],
+  "ValueName": "DisablePCA",
+  "Elements": [
+    { "Type": "EnabledValue", "Data": "1" },
+    { "Type": "DisabledValue", "Data": "0" }
+  ]
+},
+{
+  "File": "pca.admx",
+  "CategoryName": "PcaScenarioCategory",
+  "PolicyName": "DisablePcaUIPolicy",
+  "NameSpace": "Microsoft.Policies.ApplicationDiagnostics",
+  "Supported": "Windows8 - At least Windows Server 2012, Windows 8 or Windows RT",
+  "DisplayName": "Detect compatibility issues for applications and drivers",
+  "ExplainText": "This policy setting configures the Program Compatibility Assistant (PCA) to diagnose failures with application and driver compatibility. If you enable this policy setting, the PCA is configured to detect failures during application installation, failures during application runtime, and drivers blocked due to compatibility issues. When failures are detected, the PCA will provide options to run the application in a compatibility mode or get help online through a Microsoft website. If you disable this policy setting, the PCA does not detect compatibility issues for applications and drivers. If you do not configure this policy setting, the PCA is configured to detect failures during application installation, failures during application runtime, and drivers blocked due to compatibility issues. Note: This policy setting has no effect if the \"Turn off Program Compatibility Assistant\" policy setting is enabled. The Diagnostic Policy Service (DPS) and Program Compatibility Assistant Service must be running for the PCA to run. These services can be configured by using the Services snap-in to the Microsoft Management Console.",
+  "KeyPath": [
+    "HKLM\\Software\\Policies\\Microsoft\\Windows\\AppCompat"
+  ],
+  "ValueName": "DisablePcaUI",
+  "Elements": [
+    { "Type": "EnabledValue", "Data": "1" },
+    { "Type": "DisabledValue", "Data": "0" }
+  ]
+},
+{
+  "File": "AppDeviceInventory.admx",
+  "CategoryName": "AppDeviceInventory",
+  "PolicyName": "TurnOffWin32AppBackup",
+  "NameSpace": "Microsoft.Policies.AppDeviceInventory",
+  "Supported": "Windows_11_0_24H2 - At least Windows 11 Version 24H2",
+  "DisplayName": "Turn off compatibility scan for backed up applications",
+  "ExplainText": "This policy controls the state of the compatibility scan for backed up applications. The compatibility scan for backed up applications evaluates for compatibility problems in installed applications. If you enable this policy, the compatibility scan for backed up applications will not be run. If you disable or do not configure this policy, the compatibility scan for backed up applications will be run.",
+  "KeyPath": [
+    "HKLM\\Software\\Policies\\Microsoft\\Windows\\AppCompat"
+  ],
+  "ValueName": "DisableWin32AppBackup",
+  "Elements": [
+    { "Type": "EnabledValue", "Data": "1" },
+    { "Type": "DisabledValue", "Data": "0" }
+  ]
+},
+{
+  "File": "AppCompat.admx",
+  "CategoryName": "AppCompat",
+  "PolicyName": "AppCompatTurnOffSwitchBack",
+  "NameSpace": "Microsoft.Policies.ApplicationCompatibility",
+  "Supported": "Windows7 - At least Windows Server 2008 R2 or Windows 7",
+  "DisplayName": "Turn off SwitchBack Compatibility Engine",
+  "ExplainText": "The policy controls the state of the Switchback compatibility engine in the system. Switchback is a mechanism that provides generic compatibility mitigations to older applications by providing older behavior to old applications and new behavior to new applications. Switchback is on by default. If you enable this policy setting, Switchback will be turned off. Turning Switchback off may degrade the compatibility of older applications. This option is useful for server administrators who require performance and are aware of compatibility of the applications they are using. If you disable or do not configure this policy setting, the Switchback will be turned on. Please reboot the system after changing the setting to ensure that your system accurately reflects those changes.",
+  "KeyPath": [
+    "HKLM\\Software\\Policies\\Microsoft\\Windows\\AppCompat"
+  ],
+  "ValueName": "SbEnable",
+  "Elements": [
+    { "Type": "EnabledValue", "Data": "0" },
+    { "Type": "DisabledValue", "Data": "1" }
+  ]
+},
+```
+
+# Disable Census Data Collection
+
+`DeviceCensus.exe` = "Device and configuration data collection tool"
+
+"In a nutshell, Device Census is a telemetry process from Microsoft. It will analyze the use of the webcam and other components. Then, the data will be transmitted anonymously to Microsoft to help optimize Windows for future versions and fix bugs. In addition, it only checks how often the devices are used and don't record anything."
+
+> https://www.partitionwizard.com/partitionmanager/devicecensus-exe.html
+
+`\Microsoft\Windows\Device Information` runs:
+```powershell
+%windir%\system32\devicecensus.exe SystemCxt
+```
+
+`\Microsoft\Windows\Device Information` runs:
+```powershell
+%windir%\system32\devicecensus.exe UserCxt
+```
+
+# Disable OneSettings Download
+
+Services Configuration is used by Windows components and apps, such as the telemetry service, to dynamically update their configuration. If you turn off this service, apps using this service may stop working.
+
+If enabled = "Windows will periodically attempt to connect with the OneSettings service to download configuration settings".
+
+> https://learn.microsoft.com/en-us/windows/privacy/manage-connections-from-windows-operating-system-components-to-microsoft-services#31-services-configuration
+
+```json
+{
+  "File": "DataCollection.admx",
+  "CategoryName": "DataCollectionAndPreviewBuilds",
+  "PolicyName": "EnableOneSettingsAuditing",
+  "NameSpace": "Microsoft.Policies.DataCollection",
+  "Supported": "Windows_10_0_RS7 - At least Windows Server 2016, Windows 10 Version 1909",
+  "DisplayName": "Enable OneSettings Auditing",
+  "ExplainText": "This policy setting controls whether Windows records attempts to connect with the OneSettings service to the EventLog. If you enable this policy, Windows will record attempts to connect with the OneSettings service to the Microsoft\\Windows\\Privacy-Auditing\\Operational EventLog channel. If you disable or don't configure this policy setting, Windows will not record attempts to connect with the OneSettings service to the EventLog.",
+  "KeyPath": [
+    "HKLM\\Software\\Policies\\Microsoft\\Windows\\DataCollection"
+  ],
+  "ValueName": "EnableOneSettingsAuditing",
+  "Elements": [
+    { "Type": "EnabledValue", "Data": "1" },
+    { "Type": "DisabledValue", "Data": "0" }
+  ]
+},
+{
+  "File": "DataCollection.admx",
+  "CategoryName": "DataCollectionAndPreviewBuilds",
+  "PolicyName": "DisableOneSettingsDownloads",
+  "NameSpace": "Microsoft.Policies.DataCollection",
+  "Supported": "Windows_10_0_RS7 - At least Windows Server 2016, Windows 10 Version 1909",
+  "DisplayName": "Disable OneSettings Downloads",
+  "ExplainText": "This policy setting controls whether Windows attempts to connect with the OneSettings service. If you enable this policy, Windows will not attempt to connect with the OneSettings Service. If you disable or don't configure this policy setting, Windows will periodically attempt to connect with the OneSettings service to download configuration settings.",
+  "KeyPath": [
+    "HKLM\\Software\\Policies\\Microsoft\\Windows\\DataCollection"
+  ],
+  "ValueName": "DisableOneSettingsDownloads",
+  "Elements": [
+    { "Type": "EnabledValue", "Data": "1" },
+    { "Type": "DisabledValue", "Data": "0" }
+  ]
+},
+```
+
+# Disable F1 Help Key
+
+Works via renaming `HelpPane.exe` (Help and Support Windows desktop application) which was the help component in `W8`/`W8.1`. The executeable still exists but calls to it will either start the `Get Started` application (if user is offline), or opens a browser instance and redirects the browser to an online topic. Note that `HelpPane` still handles the `F1` shortcut.
+
+If the option is disabled, pressing `F1` on your desktop will take you to a search query like:
+```
+https://www.bing.com/search?q=how+to+get+help+in+windows+11
+```
+
+# Disable Defender Core Service Telemetry
+
+`Get-Help Set-MpPreference -Full` exposes the command:
+```powershell
+-DisableCoreServiceTelemetry <bool>
+    Required?                    false
+    Position?                    Named
+    Accept pipeline input?       false
+    Parameter set name           Set0
+    Aliases                      dcst
+    Dynamic?                     false
+```
+
+Using the command sets:
+```c
+// Set-MpPreference -DisableCoreServiceTelemetry $true
+MsMpEng.exe	HKLM\SOFTWARE\Microsoft\Windows Defender\Features\DisableCoreService1DSTelemetry	Type: REG_DWORD, Length: 4, Data: 1
+MsMpEng.exe	HKLM\SOFTWARE\Microsoft\Windows Defender\CoreService\DisableCoreService1DSTelemetry	Type: REG_DWORD, Length: 4, Data: 1
+
+// Set-MpPreference -DisableCoreServiceTelemetry $false
+MsMpEng.exe	HKLM\SOFTWARE\Microsoft\Windows Defender\Features\DisableCoreService1DSTelemetry	Type: REG_DWORD, Length: 4, Data: 0
+MsMpEng.exe	HKLM\SOFTWARE\Microsoft\Windows Defender\CoreService\DisableCoreService1DSTelemetry	Type: REG_DWORD, Length: 4, Data: 0
+```
+
+This flag blocks the Defender Core service from the One Data Service (1DS) telemetry pipeline that the MDEP telemetry framework uses for text-based health events, so the new `MdCoreSvc` no longer reports status back to Microsofts Cosmos/Kusto backend.
+
+> https://learn.microsoft.com/en-us/mdep/architecture/core-os/telemetry/  
+> https://github.com/MicrosoftDocs/defender-docs/blob/18b1904eda7048bff8111b10b12852d692047d6f/defender-endpoint/microsoft-defender-core-service-overview.md
+
+---
+
+```powershell
+-DisableCoreServiceECSIntegration <bool>
+    Required?                    false
+    Position?                    Named
+    Accept pipeline input?       false
+    Parameter set name           Set0
+    Aliases                      dcsei
+    Dynamic?                     false
+```
+
+```c
+// Set-MpPreference -DisableCoreServiceECSIntegration $true
+MsMpEng.exe	HKLM\SOFTWARE\Microsoft\Windows Defender\Features\DisableCoreServiceECSIntegration	Type: REG_DWORD, Length: 4, Data: 1
+MsMpEng.exe	HKLM\SOFTWARE\Microsoft\Windows Defender\CoreService\DisableCoreServiceECSIntegration	Type: REG_DWORD, Length: 4, Data: 1
+
+// Set-MpPreference -DisableCoreServiceECSIntegration $false
+MsMpEng.exe	HKLM\SOFTWARE\Microsoft\Windows Defender\Features\DisableCoreServiceECSIntegration	Type: REG_DWORD, Length: 4, Data: 0
+MsMpEng.exe	HKLM\SOFTWARE\Microsoft\Windows Defender\CoreService\DisableCoreServiceECSIntegration	Type: REG_DWORD, Length: 4, Data: 0
+```
+
+ECS stands for Experimentation and Configuration Service, so changing this on stops the Defender Core service from taking part in remote flights or config updates that come from that service.
+
+# Disable Find My Device
+
+"Find My Device is a feature that can help you locate your Windows 10 or Windows 11 device if it's lost or stolen. To use this feature, sign in to your device with a Microsoft account and make sure you're an administrator on it. This feature works when location is turned on for your device, even if other users on the device have turned off location settings for their apps. Any time you attempt to locate the device, users using the device will see a notification in the notification area. 
+
+- This setting works for any Windows device, such as a PC, laptop, Surface, or Surface Pen. It needs to be turned on before you can use it. 
+
+- You can't use it with a work or school account, and it doesn't work for iOS devices, Android devices, or Xbox One consoles."
+
+```json
+{
+  "File": "FindMy.admx",
+  "CategoryName": "FindMyDeviceCat",
+  "PolicyName": "FindMy_AllowFindMyDeviceConfig",
+  "NameSpace": "Microsoft.Policies.FindMyDevice",
+  "Supported": "Windows_10_0_NOSERVER - At least Windows 10",
+  "DisplayName": "Turn On/Off Find My Device",
+  "ExplainText": "This policy turns on Find My Device. When Find My Device is on, the device and its location are registered in the cloud so that the device can be located when the user initiates a Find command from account.microsoft.com. On devices that are compatible with active digitizers, enabling Find My Device will also allow the user to view the last location of use of their active digitizer on their device; this location is stored locally on the user's device after each use of their active digitizer. When Find My Device is off, the device and its location are not registered and the Find My Device feature will not work.The user will also not be able to view the location of the last use of their active digitizer on their device.",
+  "KeyPath": [
+    "HKLM\\SOFTWARE\\Policies\\Microsoft\\FindMyDevice"
+  ],
+  "ValueName": "AllowFindMyDevice",
+  "Elements": [
+    { "Type": "EnabledValue", "Data": "1" },
+    { "Type": "DisabledValue", "Data": "0" }
+  ]
+},
+```

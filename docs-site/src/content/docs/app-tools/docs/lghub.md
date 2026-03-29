@@ -3,7 +3,7 @@ title: 'Lghub'
 description: 'Generated from app-tools file: lghub/desc.md.'
 editUrl: 'https://github.com/nohuto/app-tools/blob/main/lghub/desc.md'
 sidebar:
-  order: 4
+  order: 2
 ---
 
 Simple script which enables/disables the `LGHUBUpdaterService` service and other related ones. If you use the LG Hub software just for your mouse, use [onboard memory manager](https://support.logi.com/hc/en-us/articles/360059641133-Onboard-Memory-Manager) instead.

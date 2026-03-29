@@ -3,7 +3,7 @@ title: 'Steam'
 description: 'Generated from app-tools file: steam/desc.md.'
 editUrl: 'https://github.com/nohuto/app-tools/blob/main/steam/desc.md'
 sidebar:
-  order: 6
+  order: 4
 ---
 
 | Option                                                                                 | Description                                                                                                                                                                                                            |

@@ -7,8 +7,7 @@ sidebar:
   order: 1
 ---
 
-- [Brave](/docs/app-tools/docs/brave/)
-- [Discord](/docs/app-tools/docs/discord/)
+- [Guides](/docs/app-tools/docs/guides/)
 - [Epic Games](/docs/app-tools/docs/epic-games/)
 - [Lghub](/docs/app-tools/docs/lghub/)
 - [Spotify](/docs/app-tools/docs/spotify/)
@@ -16,4 +15,5 @@ sidebar:
 - [Steelseries](/docs/app-tools/docs/steelseries/)
 - [Thorium](/docs/app-tools/docs/thorium/)
 - [Ungoogled](/docs/app-tools/docs/ungoogled/)
-- [Wallpaper Engine](/docs/app-tools/docs/wallpaper-engine/)
+- [Browser Extensions](/docs/app-tools/docs/extensions/)
+- [Search Engines](/docs/app-tools/docs/search-engine/)

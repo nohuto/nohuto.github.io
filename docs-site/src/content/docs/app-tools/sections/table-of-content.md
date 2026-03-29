@@ -6,17 +6,17 @@ sidebar:
   order: 2
 ---
 
-- [Brave Tool](/docs/app-tools/docs/brave/#brave-tool)
-  - [TUI Preview](/docs/app-tools/docs/brave/#tui-preview)
-  - [In-App Settings](/docs/app-tools/docs/brave/#in-app-settings)
-  - [Flags - Privacy, Security & Performance](/docs/app-tools/docs/brave/#flags---privacy-security--performance)
-    - [Experimental Flags](/docs/app-tools/docs/brave/#experimental-flags)
-  - [Download](/docs/app-tools/docs/brave/#download)
+- [Brave Tool](https://github.com/nohuto/app-tools/blob/main/brave/desc.md#brave-tool)
+  - [TUI Preview](https://github.com/nohuto/app-tools/blob/main/brave/desc.md#tui-preview)
+  - [In-App Settings](https://github.com/nohuto/app-tools/blob/main/brave/desc.md#in-app-settings)
+  - [Flags - Privacy, Security & Performance](https://github.com/nohuto/app-tools/blob/main/brave/desc.md#flags---privacy-security--performance)
+    - [Experimental Flags](https://github.com/nohuto/app-tools/blob/main/brave/desc.md#experimental-flags)
+  - [Download](https://github.com/nohuto/app-tools/blob/main/brave/desc.md#download)
 
-- [Discord Tool](/docs/app-tools/docs/discord/#discord-tool)
-  - [TUI Preview](/docs/app-tools/docs/discord/#tui-preview)
-  - [In-App Settings](/docs/app-tools/docs/discord/#in-app-settings)
-  - [Download](/docs/app-tools/docs/discord/#download)
+- [Discord Tool](https://github.com/nohuto/app-tools/blob/main/discord/desc.md#discord-tool)
+  - [TUI Preview](https://github.com/nohuto/app-tools/blob/main/discord/desc.md#tui-preview)
+  - [In-App Settings](https://github.com/nohuto/app-tools/blob/main/discord/desc.md#in-app-settings)
+  - [Download](https://github.com/nohuto/app-tools/blob/main/discord/desc.md#download)
 
 - [Epic Games Clean-Up](/docs/app-tools/docs/epic-games/#epic-games-clean-up)
   - [In-App Settings](/docs/app-tools/docs/epic-games/#in-app-settings)
@@ -53,6 +53,6 @@ sidebar:
     - [Experimental Flags](/docs/app-tools/docs/ungoogled/#exmperimental-flags)
   - [Download](/docs/app-tools/docs/ungoogled/#download)
 
-- [Wallpaper Engine Debloat](/docs/app-tools/docs/wallpaper-engine/#wallpaper-engine-debloat)
-  - [In-App Settings](/docs/app-tools/docs/wallpaper-engine/#in-app-settings)
-  - [Download](/docs/app-tools/docs/wallpaper-engine/#download)
+- [Wallpaper Engine Debloat](https://github.com/nohuto/app-tools/blob/main/wallpaper-engine/desc.md#wallpaper-engine-debloat)
+  - [In-App Settings](https://github.com/nohuto/app-tools/blob/main/wallpaper-engine/desc.md#in-app-settings)
+  - [Download](https://github.com/nohuto/app-tools/blob/main/wallpaper-engine/desc.md#download)

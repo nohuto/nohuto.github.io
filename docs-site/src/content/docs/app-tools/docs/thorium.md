@@ -3,7 +3,7 @@ title: 'Thorium'
 description: 'Generated from app-tools file: thorium/desc.md.'
 editUrl: 'https://github.com/nohuto/app-tools/blob/main/thorium/desc.md'
 sidebar:
-  order: 8
+  order: 6
 ---
 
 Thorium has already many files removed & settings applied, this tool will remove the last few files, which aren't needed for browsing.

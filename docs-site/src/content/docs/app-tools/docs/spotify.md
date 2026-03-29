@@ -3,7 +3,7 @@ title: 'Spotify'
 description: 'Generated from app-tools file: spotify/desc.md.'
 editUrl: 'https://github.com/nohuto/app-tools/blob/main/spotify/desc.md'
 sidebar:
-  order: 5
+  order: 3
 ---
 
 | Option              | Description |
