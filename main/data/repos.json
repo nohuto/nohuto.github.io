@@ -8,7 +8,7 @@
   "nohuto/bitmask-calc": "Bitmask calculator uses official NVIDIA definitions to edit and apply registry values with bitfield mapping.",
   "nohuto/blocklist-mgr": "GUI that lets you easily select one or more blocklists (hosts or URLs, e.g., for UBO).",
   "nohuto/comp-mgr": "Manage components (packages, optional features, capabilities) easily within a single tool.",
-  "nohuto/app-tools": "Automatic app configurations tools for Discord, Spotify, Thorium, Steam, Ungoogled, Brave, SteelSeries, Epic Games, LGHUB, Wallpaper Engine.",
+  "nohuto/app-tools": "App (Desktop/iOS) configurations for privacy/security & general recommendations.",
   "nohuto/game-tools": "Automatic game configuration tools for VALORANT, Fortnite, Marvel Rivals, CS2, Overwatch.",
   "nohuto/sym-dump": "Lists all modules and dumps the memory addresses of each symbol from the selected module.",
   "nohuto/nvfetch": "CL OS/HW information tool.",
