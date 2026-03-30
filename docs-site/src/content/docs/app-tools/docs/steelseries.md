@@ -3,7 +3,7 @@ title: 'Steelseries'
 description: 'Generated from app-tools file: steelseries/desc.md.'
 editUrl: 'https://github.com/nohuto/app-tools/blob/main/steelseries/desc.md'
 sidebar:
-  order: 5
+  order: 3
 ---
 
 It was made for fun, if you're using SS for something else than your keyboard, don't use it. The script is pretty simple to understand, if you want to modify the debloat process just add the file/folder names to the vars.

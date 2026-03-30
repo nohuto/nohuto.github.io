@@ -3,7 +3,7 @@ title: 'Telemetry'
 description: 'NVIDIA option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/nvidia/desc.md#disable-telemetry'
 sidebar:
-  order: 15
+  order: 10
 ---
 
 Removes several files & preventing the system from sending telemetry data.

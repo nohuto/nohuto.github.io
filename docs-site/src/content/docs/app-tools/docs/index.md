@@ -9,8 +9,6 @@ sidebar:
 
 - [Guides](/docs/app-tools/docs/guides/)
 - [Epic Games](/docs/app-tools/docs/epic-games/)
-- [Lghub](/docs/app-tools/docs/lghub/)
-- [Spotify](/docs/app-tools/docs/spotify/)
 - [Steam](/docs/app-tools/docs/steam/)
 - [Steelseries](/docs/app-tools/docs/steelseries/)
 - [Thorium](/docs/app-tools/docs/thorium/)

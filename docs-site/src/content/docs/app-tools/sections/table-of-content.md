@@ -22,14 +22,14 @@ sidebar:
   - [In-App Settings](/docs/app-tools/docs/epic-games/#in-app-settings)
   - [Download](/docs/app-tools/docs/epic-games/#download)
 
-- [LGHUB Switcher](/docs/app-tools/docs/lghub/#lghub-switcher)
-  - [In-App Settings](/docs/app-tools/docs/lghub/#in-app-settings)
-  - [Download](/docs/app-tools/docs/lghub/#download)
+- [LGHUB Switcher](https://github.com/nohuto/app-tools/blob/main/lghub/desc.md#lghub-switcher)
+  - [In-App Settings](https://github.com/nohuto/app-tools/blob/main/lghub/desc.md#in-app-settings)
+  - [Download](https://github.com/nohuto/app-tools/blob/main/lghub/desc.md#download)
 
-- [Spotify Tool](/docs/app-tools/docs/spotify/#spotify-tool)
-  - [Preview](/docs/app-tools/docs/spotify/#preview)
-  - [In-App Settings](/docs/app-tools/docs/spotify/#in-app-settings)
-  - [Download & Note on SpotX Removal](/docs/app-tools/docs/spotify/#download--note-on-spotx-removal)
+- [Spotify Tool](https://github.com/nohuto/app-tools/blob/main/spotify/desc.md#spotify-tool)
+  - [Preview](https://github.com/nohuto/app-tools/blob/main/spotify/desc.md#preview)
+  - [In-App Settings](https://github.com/nohuto/app-tools/blob/main/spotify/desc.md#in-app-settings)
+  - [Download & Note on SpotX Removal](https://github.com/nohuto/app-tools/blob/main/spotify/desc.md#download--note-on-spotx-removal)
 
 - [Steam Tool](/docs/app-tools/docs/steam/#steam-tool)
   - [Steam Trace](/docs/app-tools/docs/steam/#steam-trace)

@@ -3,7 +3,7 @@ title: 'OC/UV Guide'
 description: 'NVIDIA option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/nvidia/desc.md#ocuv-guide'
 sidebar:
-  order: 22
+  order: 16
 ---
 
 > https://github.com/nohuto/gpu-oc-uv

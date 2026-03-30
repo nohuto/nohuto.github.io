@@ -3,7 +3,7 @@ title: 'Logging'
 description: 'NVIDIA option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/nvidia/desc.md#disable-logging'
 sidebar:
-  order: 11
+  order: 8
 ---
 
 ```cpp

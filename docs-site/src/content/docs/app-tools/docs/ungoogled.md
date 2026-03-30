@@ -3,7 +3,7 @@ title: 'Ungoogled'
 description: 'Generated from app-tools file: ungoogled/desc.md.'
 editUrl: 'https://github.com/nohuto/app-tools/blob/main/ungoogled/desc.md'
 sidebar:
-  order: 7
+  order: 5
 ---
 
 It only debloats the installation a bit, for proper setup use the info below. Optionally you can use the debloater/clean up. Personal recommendation: switch to [Thorium](https://github.com/Alex313031/Thorium-Win/releases)/[Brave](https://brave.com/download/).

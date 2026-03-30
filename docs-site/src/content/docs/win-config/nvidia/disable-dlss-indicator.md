@@ -3,7 +3,7 @@ title: 'DLSS Indicator'
 description: 'NVIDIA option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/nvidia/desc.md#disable-dlss-indicator'
 sidebar:
-  order: 9
+  order: 7
 ---
 
 Enabled = `1024`  

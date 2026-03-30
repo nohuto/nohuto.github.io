@@ -3,7 +3,7 @@ title: 'Browser Extensions'
 description: 'Generated from app-tools file: extensions.md.'
 editUrl: 'https://github.com/nohuto/app-tools/blob/main/extensions.md'
 sidebar:
-  order: 8
+  order: 6
 ---
 
 Keep the amount of extensions to a minimum, don't use multiple ad-blockers. Also don't install extensions that have no actual use, e.g. "HTPPS Everywhere". Browers support that natively.
