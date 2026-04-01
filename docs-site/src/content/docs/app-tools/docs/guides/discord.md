@@ -3,7 +3,7 @@ title: 'Discord Configuration'
 description: 'Generated from app-tools file: guides/discord.md.'
 editUrl: 'https://github.com/nohuto/app-tools/blob/main/guides/discord.md'
 sidebar:
-  order: 8
+  order: 3
 ---
 
 I'd rather use a modified version of Discord ([Vesktop](https://github.com/Vencord/Vesktop)/[Equibop](https://github.com/Equicord/Equibop)) to prevent tracking/telemetry, or if possible use discord via your browser.

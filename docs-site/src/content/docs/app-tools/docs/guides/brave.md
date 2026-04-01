@@ -3,7 +3,7 @@ title: 'Brave Configuration'
 description: 'Generated from app-tools file: guides/brave.md.'
 editUrl: 'https://github.com/nohuto/app-tools/blob/main/guides/brave.md'
 sidebar:
-  order: 7
+  order: 2
 ---
 
 [Brave](https://github.com/brave/brave-browser/releases) is my second browser which I use for streaming content that requires widevine.

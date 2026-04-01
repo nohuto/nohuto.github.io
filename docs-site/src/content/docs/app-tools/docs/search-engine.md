@@ -3,7 +3,7 @@ title: 'Search Engines'
 description: 'Generated from app-tools file: search-engine.md.'
 editUrl: 'https://github.com/nohuto/app-tools/blob/main/search-engine.md'
 sidebar:
-  order: 11
+  order: 8
 ---
 
 I personally use [noai.duckduckgo](https://noai.duckduckgo.com/) everywhere. Other provider that seem to not collect your data are [Brave Search](https://search.brave.com/), [Startpage](https://www.startpage.com/), [Mojeek](https://www.mojeek.com/).

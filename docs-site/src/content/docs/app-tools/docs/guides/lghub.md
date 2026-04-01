@@ -3,7 +3,7 @@ title: 'LGHUB Configuration'
 description: 'Generated from app-tools file: guides/lghub.md.'
 editUrl: 'https://github.com/nohuto/app-tools/blob/main/guides/lghub.md'
 sidebar:
-  order: 9
+  order: 4
 ---
 
 There're two scenarios, first is that you only have a logitech mouse, if so use [OMM](https://support.logi.com/hc/en-us/articles/360059641133-Onboard-Memory-Manager) instead. Otherwise if you've more than a mouse from logitech you might need LGHub to configure other devices (e.g. headphones). After doing so, enable OMM for your mouse, use the app settings & disable LGHub using the toggle script.

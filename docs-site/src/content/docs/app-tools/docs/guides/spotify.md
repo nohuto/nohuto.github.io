@@ -1,9 +1,9 @@
 ---
-title: 'Spotify Tool'
+title: 'Spotify Configuration'
 description: 'Generated from app-tools file: guides/spotify.md.'
 editUrl: 'https://github.com/nohuto/app-tools/blob/main/guides/spotify.md'
 sidebar:
-  order: 10
+  order: 5
 ---
 
 By default Spotify includes trackers/ads/analytics which can be blocked using a patched version of it, see SpotX.

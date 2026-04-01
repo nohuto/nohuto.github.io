@@ -1,0 +1,394 @@
+<!DOCTYPE html><html lang="en" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-bguv2lll"> <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Steam Configuration | Noverse Docs</title><link rel="canonical" href="https://www.noverse.dev/docs/app-tools/docs/guides/steam/"/><link rel="sitemap" href="/docs/sitemap-index.xml"/><link rel="shortcut icon" href="/docs/logo.png" type="image/png"/><meta name="generator" content="Astro v6.0.2"/><meta name="generator" content="Starlight v0.38.0"/><meta property="og:title" content="Steam Configuration"/><meta property="og:type" content="article"/><meta property="og:url" content="https://www.noverse.dev/docs/app-tools/docs/guides/steam/"/><meta property="og:locale" content="en"/><meta property="og:description" content="Generated from app-tools file: guides/steam.md."/><meta property="og:site_name" content="Noverse Docs"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="Generated from app-tools file: guides/steam.md."/><script>
+	window.StarlightThemeProvider = (() => {
+		const storedTheme =
+			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
+		const theme =
+			storedTheme ||
+			(window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+		document.documentElement.dataset.theme = theme === 'light' ? 'light' : 'dark';
+		return {
+			updatePickers(theme = storedTheme || 'auto') {
+				document.querySelectorAll('starlight-theme-select').forEach((picker) => {
+					const select = picker.querySelector('select');
+					if (select) select.value = theme;
+					/** @type {HTMLTemplateElement | null} */
+					const tmpl = document.querySelector(`#theme-icons`);
+					const newIcon = tmpl && tmpl.content.querySelector('.' + theme);
+					if (newIcon) {
+						const oldIcon = picker.querySelector('svg.label-icon');
+						if (oldIcon) {
+							oldIcon.replaceChildren(...newIcon.cloneNode(true).childNodes);
+						}
+					}
+				});
+			},
+		};
+	})();
+</script><template id="theme-icons"><svg aria-hidden="true" class="light astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg aria-hidden="true" class="dark astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg><svg aria-hidden="true" class="auto astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></template><link rel="stylesheet" href="/docs/_astro/print.DNXP8c50.css" media="print"><link rel="stylesheet" href="/docs/_astro/middleware.Trkv8c-y.css"><script type="module" src="/docs/_astro/page.CQKSag1d.js"></script></head> <body class="astro-bguv2lll"> <a href="#_top" class="astro-7q3lir66">Skip to content</a> <div class="page sl-flex astro-vrdttmbt"> <header class="header astro-vrdttmbt"><div class="header astro-zixgsetp"> <div class="title-wrapper sl-flex astro-zixgsetp"> <a href="/docs/" class="site-title sl-flex astro-m46x6ez3">  <span class="astro-m46x6ez3" translate="no"> Noverse Docs </span> </a> </div> <div class="sl-flex print:hidden astro-zixgsetp"> <site-search class="astro-zixgsetp astro-v37mnknz" data-translations="{&#34;placeholder&#34;:&#34;Search&#34;}"> <button data-open-modal disabled aria-label="Search" aria-keyshortcuts="Control+K" class="astro-v37mnknz"> <svg aria-hidden="true" class="astro-v37mnknz astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg> <span class="sl-hidden md:sl-block astro-v37mnknz" aria-hidden="true">Search</span> <kbd class="sl-hidden md:sl-flex astro-v37mnknz" style="display: none;"> <kbd class="astro-v37mnknz">Ctrl</kbd><kbd class="astro-v37mnknz">K</kbd> </kbd> </button> <dialog style="padding:0" aria-label="Search" class="astro-v37mnknz"> <div class="dialog-frame sl-flex astro-v37mnknz">  <button data-close-modal class="sl-flex md:sl-hidden astro-v37mnknz"> Cancel </button> <div class="search-container astro-v37mnknz"> <div id="starlight__search" class="astro-v37mnknz"></div> </div> </div> </dialog> </site-search>  <script>
+	(() => {
+		const openBtn = document.querySelector('button[data-open-modal]');
+		const shortcut = openBtn?.querySelector('kbd');
+		if (!openBtn || !(shortcut instanceof HTMLElement)) return;
+		const platformKey = shortcut.querySelector('kbd');
+		if (platformKey && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			platformKey.textContent = '⌘';
+			openBtn.setAttribute('aria-keyshortcuts', 'Meta+K');
+		}
+		shortcut.style.display = '';
+	})();
+</script> <script type="module" src="/docs/_astro/Search.astro_astro_type_script_index_0_lang.kqNDVTuv.js"></script>  </div> <div class="sl-hidden md:sl-flex print:hidden right-group astro-zixgsetp"> <div class="header-shortcuts astro-zixgsetp"> <a class="header-shortcut astro-zixgsetp" href="https://github.com/nohuto/app-tools" target="_blank" rel="noopener noreferrer"> app-tools </a> <a class="header-shortcut astro-zixgsetp" href="/docs/directory/">Directory</a> </div> <div class="sl-flex social-icons astro-zixgsetp"> <a href="https://github.com/nohuto" rel="me" class="sl-flex astro-wy4te6ga"><span class="sr-only astro-wy4te6ga">GitHub</span><svg aria-hidden="true" class="astro-wy4te6ga astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a><a href="https://discord.gg/E2ybG4j9jU" rel="me" class="sl-flex astro-wy4te6ga"><span class="sr-only astro-wy4te6ga">Discord</span><svg aria-hidden="true" class="astro-wy4te6ga astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M20.32 4.37a19.8 19.8 0 0 0-4.93-1.51 13.78 13.78 0 0 0-.64 1.28 18.27 18.27 0 0 0-5.5 0 12.64 12.64 0 0 0-.64-1.28h-.05A19.74 19.74 0 0 0 3.64 4.4 20.26 20.26 0 0 0 .11 18.09l.02.02a19.9 19.9 0 0 0 6.04 3.03l.04-.02a14.24 14.24 0 0 0 1.23-2.03.08.08 0 0 0-.05-.07 13.1 13.1 0 0 1-1.9-.92.08.08 0 0 1 .02-.1 10.2 10.2 0 0 0 .41-.31h.04a14.2 14.2 0 0 0 12.1 0l.04.01a9.63 9.63 0 0 0 .4.32.08.08 0 0 1-.03.1 12.29 12.29 0 0 1-1.9.91.08.08 0 0 0-.02.1 15.97 15.97 0 0 0 1.27 2.01h.04a19.84 19.84 0 0 0 6.03-3.05v-.03a20.12 20.12 0 0 0-3.57-13.69ZM8.02 15.33c-1.18 0-2.16-1.08-2.16-2.42 0-1.33.96-2.42 2.16-2.42 1.21 0 2.18 1.1 2.16 2.42 0 1.34-.96 2.42-2.16 2.42Zm7.97 0c-1.18 0-2.15-1.08-2.15-2.42 0-1.33.95-2.42 2.15-2.42 1.22 0 2.18 1.1 2.16 2.42 0 1.34-.94 2.42-2.16 2.42Z"/></svg></a> </div> <starlight-rapide-theme-select class="astro-vimfzm3o"> <button aria-label="Select theme" aria-live="polite" class="sl-flex astro-vimfzm3o" title="Select theme"> <svg aria-hidden="true" height="16" viewBox="0 0 24 24" width="16" class="astro-vimfzm3o"> <mask class="moon astro-vimfzm3o" id="moon-mask-20b6d845"> <rect x="0" y="0" width="100%" height="100%" fill="white" class="astro-vimfzm3o"></rect> <circle cx="24" cy="10" r="6" fill="black" class="astro-vimfzm3o"></circle> </mask> <circle class="sun astro-vimfzm3o" cx="12" cy="12" r="6" mask="url(#moon-mask-20b6d845)"></circle> <g class="sun-beams astro-vimfzm3o" stroke="currentColor"> <line x1="12" y1="1" x2="12" y2="3" class="astro-vimfzm3o"></line> <line x1="12" y1="21" x2="12" y2="23" class="astro-vimfzm3o"></line> <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" class="astro-vimfzm3o"></line> <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" class="astro-vimfzm3o"></line> <line x1="1" y1="12" x2="3" y2="12" class="astro-vimfzm3o"></line> <line x1="21" y1="12" x2="23" y2="12" class="astro-vimfzm3o"></line> <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" class="astro-vimfzm3o"></line> <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" class="astro-vimfzm3o"></line> </g> </svg> </button> </starlight-rapide-theme-select>   <script>
+  StarlightThemeProvider.updatePickers()
+</script> <script type="module">const n="starlight-theme";function c(e){return e==="auto"||e==="dark"||e==="light"?e:"auto"}function l(){return c(typeof localStorage<"u"&&localStorage.getItem(n))}function i(e){typeof localStorage<"u"&&localStorage.setItem(n,e==="light"||e==="dark"?e:"")}function s(){return matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}function t(e){StarlightThemeProvider.updatePickers(e),document.documentElement.dataset.theme=e==="auto"?s():e,i(e)}matchMedia("(prefers-color-scheme: light)").addEventListener("change",()=>{l()==="auto"&&t("auto")});customElements.define("starlight-rapide-theme-select",class extends HTMLElement{constructor(){super(),t(l());const a=this.querySelector("button");a?.addEventListener("click",()=>{const o=c(document.documentElement.dataset.theme),r=o==="dark"?"light":o==="light"?"dark":"auto";t(r),a?.setAttribute("aria-label",`${r} theme`)})}});</script>  </div> </div></header> <nav class="sidebar print:hidden astro-vrdttmbt" aria-label="Main"> <starlight-menu-button class="print:hidden astro-jif73yzw"> <button aria-expanded="false" aria-label="Menu" aria-controls="starlight__sidebar" class="sl-flex md:sl-hidden astro-jif73yzw"> <svg aria-hidden="true" class="open-menu astro-jif73yzw astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg> <svg aria-hidden="true" class="close-menu astro-jif73yzw astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg> </button> </starlight-menu-button> <script type="module">class s extends HTMLElement{constructor(){super(),this.btn=this.querySelector("button"),this.btn.addEventListener("click",()=>this.toggleExpanded());const t=this.closest("nav");t&&t.addEventListener("keyup",e=>this.closeOnEscape(e))}setExpanded(t){this.setAttribute("aria-expanded",String(t)),document.body.toggleAttribute("data-mobile-menu-expanded",t)}toggleExpanded(){this.setExpanded(this.getAttribute("aria-expanded")!=="true")}closeOnEscape(t){t.code==="Escape"&&(this.setExpanded(!1),this.btn.focus())}}customElements.define("starlight-menu-button",s);</script>  <div id="starlight__sidebar" class="sidebar-pane astro-vrdttmbt"> <div class="sidebar-content sl-flex astro-vrdttmbt"> <div class="sidebar-tree-search"> <label class="sidebar-tree-search-wrap" for="sidebar-tree-search"> <input type="text" id="sidebar-tree-search" class="sidebar-tree-search-input" placeholder="Filter sidebar..." autocomplete="off" spellcheck="false"> <span class="sidebar-tree-search-icon" aria-hidden="true"></span> </label> <p id="sidebar-tree-no-results" class="sidebar-tree-no-results sl-hidden">
+No results found in this navigation tree.
+</p> </div> <sl-sidebar-state-persist data-hash="1cny10w" class="astro-kku4brbg"> <script aria-hidden="true">
+		(() => {
+			try {
+				if (!matchMedia('(min-width: 50em)').matches) return;
+				/** @type {HTMLElement | null} */
+				const target = document.querySelector('sl-sidebar-state-persist');
+				const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+				if (!target || !state || target.dataset.hash !== state.hash) return;
+				window._starlightScrollRestore = state.scroll;
+				customElements.define(
+					'sl-sidebar-restore',
+					class SidebarRestore extends HTMLElement {
+						connectedCallback() {
+							try {
+								const idx = parseInt(this.dataset.index || '');
+								const details = this.closest('details');
+								if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+							} catch {}
+						}
+					}
+				);
+			} catch {}
+		})();
+	</script>  <ul class="top-level astro-3ii7xxms"> <li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">docs</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="0"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/docs/app-tools/docs/extensions/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Browser Extensions</span>  </a> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">guides</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="1"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/docs/app-tools/docs/guides/brave/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Brave Configuration</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/docs/app-tools/docs/guides/discord/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Discord Configuration</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/docs/app-tools/docs/guides/lghub/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">LGHUB Configuration</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/docs/app-tools/docs/guides/spotify/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Spotify Configuration</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/docs/app-tools/docs/guides/steam/" aria-current="page" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Steam Configuration</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/docs/app-tools/docs/guides/steelseries/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">SteelSeries Configuration</span>  </a> </li> </ul> </details> </li><li class="astro-3ii7xxms"> <a href="/docs/app-tools/docs/search-engine/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Search Engines</span>  </a> </li> </ul> </details> </li> </ul>  <script aria-hidden="true">
+		(() => {
+			const scroller = document.getElementById('starlight__sidebar');
+			if (!window._starlightScrollRestore || !scroller) return;
+			scroller.scrollTop = window._starlightScrollRestore;
+			delete window._starlightScrollRestore;
+		})();
+	</script> </sl-sidebar-state-persist> <div class="md:sl-hidden"> <div class="mobile-preferences sl-flex astro-wu23bvmt"> <div class="social-icons astro-wu23bvmt"> <a href="https://github.com/nohuto" rel="me" class="sl-flex astro-wy4te6ga"><span class="sr-only astro-wy4te6ga">GitHub</span><svg aria-hidden="true" class="astro-wy4te6ga astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a><a href="https://discord.gg/E2ybG4j9jU" rel="me" class="sl-flex astro-wy4te6ga"><span class="sr-only astro-wy4te6ga">Discord</span><svg aria-hidden="true" class="astro-wy4te6ga astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M20.32 4.37a19.8 19.8 0 0 0-4.93-1.51 13.78 13.78 0 0 0-.64 1.28 18.27 18.27 0 0 0-5.5 0 12.64 12.64 0 0 0-.64-1.28h-.05A19.74 19.74 0 0 0 3.64 4.4 20.26 20.26 0 0 0 .11 18.09l.02.02a19.9 19.9 0 0 0 6.04 3.03l.04-.02a14.24 14.24 0 0 0 1.23-2.03.08.08 0 0 0-.05-.07 13.1 13.1 0 0 1-1.9-.92.08.08 0 0 1 .02-.1 10.2 10.2 0 0 0 .41-.31h.04a14.2 14.2 0 0 0 12.1 0l.04.01a9.63 9.63 0 0 0 .4.32.08.08 0 0 1-.03.1 12.29 12.29 0 0 1-1.9.91.08.08 0 0 0-.02.1 15.97 15.97 0 0 0 1.27 2.01h.04a19.84 19.84 0 0 0 6.03-3.05v-.03a20.12 20.12 0 0 0-3.57-13.69ZM8.02 15.33c-1.18 0-2.16-1.08-2.16-2.42 0-1.33.96-2.42 2.16-2.42 1.21 0 2.18 1.1 2.16 2.42 0 1.34-.96 2.42-2.16 2.42Zm7.97 0c-1.18 0-2.15-1.08-2.15-2.42 0-1.33.95-2.42 2.15-2.42 1.22 0 2.18 1.1 2.16 2.42 0 1.34-.94 2.42-2.16 2.42Z"/></svg></a> </div> <starlight-rapide-theme-select class="astro-vimfzm3o"> <button aria-label="Select theme" aria-live="polite" class="sl-flex astro-vimfzm3o" title="Select theme"> <svg aria-hidden="true" height="16" viewBox="0 0 24 24" width="16" class="astro-vimfzm3o"> <mask class="moon astro-vimfzm3o" id="moon-mask-97024682"> <rect x="0" y="0" width="100%" height="100%" fill="white" class="astro-vimfzm3o"></rect> <circle cx="24" cy="10" r="6" fill="black" class="astro-vimfzm3o"></circle> </mask> <circle class="sun astro-vimfzm3o" cx="12" cy="12" r="6" mask="url(#moon-mask-97024682)"></circle> <g class="sun-beams astro-vimfzm3o" stroke="currentColor"> <line x1="12" y1="1" x2="12" y2="3" class="astro-vimfzm3o"></line> <line x1="12" y1="21" x2="12" y2="23" class="astro-vimfzm3o"></line> <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" class="astro-vimfzm3o"></line> <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" class="astro-vimfzm3o"></line> <line x1="1" y1="12" x2="3" y2="12" class="astro-vimfzm3o"></line> <line x1="21" y1="12" x2="23" y2="12" class="astro-vimfzm3o"></line> <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" class="astro-vimfzm3o"></line> <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" class="astro-vimfzm3o"></line> </g> </svg> </button> </starlight-rapide-theme-select>   <script>
+  StarlightThemeProvider.updatePickers()
+</script>   </div> </div> <script>
+  (() => {
+    const initSidebarTreeFilter = () => {
+      const searchInput = document.getElementById('sidebar-tree-search');
+      const noResultsMessage = document.getElementById('sidebar-tree-no-results');
+      const sidebarTree = document.querySelector('sl-sidebar-state-persist');
+      if (!searchInput || !noResultsMessage || !sidebarTree) return;
+      if (searchInput.dataset.bound === 'true') return;
+      searchInput.dataset.bound = 'true';
+
+      const detailsElements = Array.from(sidebarTree.querySelectorAll('details'));
+      const items = Array.from(sidebarTree.querySelectorAll('li'));
+      let activeFilter = false;
+      let openStatesBeforeFilter = new Map();
+
+      const matchesAllTerms = (text, searchTerms) => {
+        const lowerText = (text || '').toLowerCase();
+        return searchTerms.every((term) => lowerText.includes(term));
+      };
+
+      const showParentChain = (element) => {
+        let parent = element.parentElement;
+        while (parent && parent !== sidebarTree) {
+          if (parent.tagName === 'LI') {
+            parent.style.display = '';
+          }
+          if (parent.tagName === 'DETAILS') {
+            parent.open = true;
+          }
+          parent = parent.parentElement;
+        }
+      };
+
+      const showDirectChildren = (details) => {
+        details.open = true;
+        const directList = details.querySelector(':scope > ul');
+        if (!directList) return;
+        directList.querySelectorAll(':scope > li').forEach((child) => {
+          child.style.display = '';
+        });
+      };
+
+      const filterSidebarItems = (query) => {
+        if (!query.trim()) {
+          items.forEach((item) => {
+            item.style.display = '';
+          });
+
+          detailsElements.forEach((details) => {
+            const originalOpen = openStatesBeforeFilter.get(details);
+            if (originalOpen !== undefined) {
+              details.open = originalOpen;
+            }
+          });
+
+          activeFilter = false;
+          openStatesBeforeFilter = new Map();
+          noResultsMessage.classList.add('sl-hidden');
+          return;
+        }
+
+        if (!activeFilter) {
+          activeFilter = true;
+          openStatesBeforeFilter = new Map(detailsElements.map((details) => [details, details.open]));
+        }
+
+        const searchTerms = query
+          .toLowerCase()
+          .split(/\s+/)
+          .filter((term) => term.length > 0);
+
+        items.forEach((item) => {
+          item.style.display = 'none';
+        });
+
+        detailsElements.forEach((details) => {
+          details.open = false;
+        });
+
+        const matchedItems = new Set();
+
+        detailsElements.forEach((details) => {
+          const summary = details.querySelector(':scope > summary');
+          if (!summary) return;
+          const summaryText = summary.textContent || '';
+          if (!matchesAllTerms(summaryText, searchTerms)) return;
+
+          const parentLi = details.closest('li');
+          if (!parentLi || matchedItems.has(parentLi)) return;
+
+          parentLi.style.display = '';
+          showDirectChildren(details);
+          showParentChain(parentLi);
+          matchedItems.add(parentLi);
+        });
+
+        items.forEach((item) => {
+          if (matchedItems.has(item)) return;
+          if (item.querySelector(':scope > details')) return;
+
+          const link = item.querySelector(':scope > a');
+          if (!link) return;
+
+          const linkText = link.textContent || '';
+          if (!matchesAllTerms(linkText, searchTerms)) return;
+
+          item.style.display = '';
+          showParentChain(item);
+          matchedItems.add(item);
+        });
+
+        if (matchedItems.size === 0) {
+          items.forEach((item) => {
+            const textContent = (item.textContent || '').toLowerCase();
+            const hasPartialMatch = searchTerms.some((term) => textContent.includes(term));
+            if (!hasPartialMatch) return;
+
+            item.style.display = '';
+            const details = item.querySelector(':scope > details');
+            if (details) showDirectChildren(details);
+            showParentChain(item);
+            matchedItems.add(item);
+          });
+        }
+
+        if (matchedItems.size === 0) {
+          noResultsMessage.classList.remove('sl-hidden');
+        } else {
+          noResultsMessage.classList.add('sl-hidden');
+        }
+      };
+
+      searchInput.addEventListener('input', () => {
+        filterSidebarItems(searchInput.value);
+      });
+
+      searchInput.addEventListener('keydown', (event) => {
+        if (event.key !== 'Escape') return;
+        searchInput.value = '';
+        filterSidebarItems('');
+      });
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initSidebarTreeFilter, { once: true });
+    } else {
+      initSidebarTreeFilter();
+    }
+
+    document.addEventListener('astro:page-load', initSidebarTreeFilter);
+  })();
+</script> </div> </div> </nav> <div class="main-frame astro-vrdttmbt">  <script type="module">const a=document.getElementById("starlight__sidebar"),n=a?.querySelector("sl-sidebar-state-persist"),o="sl-sidebar-state",i=()=>{let t=[];const e=n?.dataset.hash||"";try{const s=sessionStorage.getItem(o),r=JSON.parse(s||"{}");Array.isArray(r.open)&&r.hash===e&&(t=r.open)}catch{}return{hash:e,open:t,scroll:a?.scrollTop||0}},c=t=>{try{sessionStorage.setItem(o,JSON.stringify(t))}catch{}},d=()=>c(i()),l=(t,e)=>{const s=i();s.open[e]=t,c(s)};n?.addEventListener("click",t=>{if(!(t.target instanceof Element))return;const e=t.target.closest("summary")?.closest("details");if(!e)return;const s=e.querySelector("sl-sidebar-restore"),r=parseInt(s?.dataset.index||"");isNaN(r)||l(!e.open,r)});addEventListener("visibilitychange",()=>{document.visibilityState==="hidden"&&d()});addEventListener("pageHide",d);</script> <div class="lg:sl-flex astro-67yu43on"> <aside class="right-sidebar-container print:hidden astro-67yu43on"> <div class="right-sidebar astro-67yu43on"> <script type="module" src="/docs/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.hwBsy0Mo.js"></script><script type="module" src="/docs/_astro/TableOfContents.astro_astro_type_script_index_0_lang.FuRcXuRY.js"></script><div class="lg:sl-hidden astro-pb3aqygn"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-doynk5tl"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-doynk5tl"><details id="starlight__mobile-toc" class="astro-doynk5tl"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-doynk5tl"><span class="toggle sl-flex astro-doynk5tl">On this page<svg aria-hidden="true" class="caret astro-doynk5tl astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></span><span class="display-current astro-doynk5tl"></span></summary><div class="dropdown astro-doynk5tl"><ul class="isMobile astro-gnoq344e" style="--depth: 0;"> <li class="astro-gnoq344e" style="--depth: 0;"> <a href="#_top" class="astro-gnoq344e" style="--depth: 0;"> <span class="astro-gnoq344e" style="--depth: 0;">Overview</span> </a>  </li><li class="astro-gnoq344e" style="--depth: 0;"> <a href="#app-settings" class="astro-gnoq344e" style="--depth: 0;"> <span class="astro-gnoq344e" style="--depth: 0;">App Settings</span> </a> <ul class="isMobile astro-gnoq344e" style="--depth: 1;"> <li class="astro-gnoq344e" style="--depth: 1;"> <a href="#profile-settings" class="astro-gnoq344e" style="--depth: 1;"> <span class="astro-gnoq344e" style="--depth: 1;">Profile Settings</span> </a>  </li><li class="astro-gnoq344e" style="--depth: 1;"> <a href="#account-settings" class="astro-gnoq344e" style="--depth: 1;"> <span class="astro-gnoq344e" style="--depth: 1;">Account Settings</span> </a>  </li><li class="astro-gnoq344e" style="--depth: 1;"> <a href="#steam-settings" class="astro-gnoq344e" style="--depth: 1;"> <span class="astro-gnoq344e" style="--depth: 1;">Steam Settings</span> </a>  </li><li class="astro-gnoq344e" style="--depth: 1;"> <a href="#per-game-settings" class="astro-gnoq344e" style="--depth: 1;"> <span class="astro-gnoq344e" style="--depth: 1;">Per-Game Settings</span> </a>  </li> </ul> </li><li class="astro-gnoq344e" style="--depth: 0;"> <a href="#local-config-files" class="astro-gnoq344e" style="--depth: 0;"> <span class="astro-gnoq344e" style="--depth: 0;">Local Config Files</span> </a>  </li><li class="astro-gnoq344e" style="--depth: 0;"> <a href="#steam-cef" class="astro-gnoq344e" style="--depth: 0;"> <span class="astro-gnoq344e" style="--depth: 0;">Steam CEF</span> </a>  </li><li class="astro-gnoq344e" style="--depth: 0;"> <a href="#steam-registry-values" class="astro-gnoq344e" style="--depth: 0;"> <span class="astro-gnoq344e" style="--depth: 0;">Steam Registry Values</span> </a>  </li> </ul></div></details></nav></mobile-starlight-toc></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-pb3aqygn"><div class="sl-container astro-pb3aqygn"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">On this page</h2><ul class="astro-gnoq344e" style="--depth: 0;"> <li class="astro-gnoq344e" style="--depth: 0;"> <a href="#_top" class="astro-gnoq344e" style="--depth: 0;"> <span class="astro-gnoq344e" style="--depth: 0;">Overview</span> </a>  </li><li class="astro-gnoq344e" style="--depth: 0;"> <a href="#app-settings" class="astro-gnoq344e" style="--depth: 0;"> <span class="astro-gnoq344e" style="--depth: 0;">App Settings</span> </a> <ul class="astro-gnoq344e" style="--depth: 1;"> <li class="astro-gnoq344e" style="--depth: 1;"> <a href="#profile-settings" class="astro-gnoq344e" style="--depth: 1;"> <span class="astro-gnoq344e" style="--depth: 1;">Profile Settings</span> </a>  </li><li class="astro-gnoq344e" style="--depth: 1;"> <a href="#account-settings" class="astro-gnoq344e" style="--depth: 1;"> <span class="astro-gnoq344e" style="--depth: 1;">Account Settings</span> </a>  </li><li class="astro-gnoq344e" style="--depth: 1;"> <a href="#steam-settings" class="astro-gnoq344e" style="--depth: 1;"> <span class="astro-gnoq344e" style="--depth: 1;">Steam Settings</span> </a>  </li><li class="astro-gnoq344e" style="--depth: 1;"> <a href="#per-game-settings" class="astro-gnoq344e" style="--depth: 1;"> <span class="astro-gnoq344e" style="--depth: 1;">Per-Game Settings</span> </a>  </li> </ul> </li><li class="astro-gnoq344e" style="--depth: 0;"> <a href="#local-config-files" class="astro-gnoq344e" style="--depth: 0;"> <span class="astro-gnoq344e" style="--depth: 0;">Local Config Files</span> </a>  </li><li class="astro-gnoq344e" style="--depth: 0;"> <a href="#steam-cef" class="astro-gnoq344e" style="--depth: 0;"> <span class="astro-gnoq344e" style="--depth: 0;">Steam CEF</span> </a>  </li><li class="astro-gnoq344e" style="--depth: 0;"> <a href="#steam-registry-values" class="astro-gnoq344e" style="--depth: 0;"> <span class="astro-gnoq344e" style="--depth: 0;">Steam Registry Values</span> </a>  </li> </ul></nav></starlight-toc></div></div> </div> </aside> <div class="main-pane astro-67yu43on">  <main data-pagefind-body class="astro-bguv2lll" lang="en" dir="ltr">    <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" class="astro-j6tvhyss">Steam Configuration</h1> </div> </div> <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <div class="sl-heading-wrapper level-h2"><h2 id="app-settings">App Settings</h2><a class="sl-anchor-link" href="#app-settings"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “App Settings”</span></a></div>
+<div class="sl-heading-wrapper level-h3"><h3 id="profile-settings">Profile Settings</h3><a class="sl-anchor-link" href="#profile-settings"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Profile Settings”</span></a></div>
+<p><code dir="auto">&#x3C;steamname></code> tab -> <code dir="auto">Edit Profile</code> on the right.</p>
+<ul>
+<li>
+<p>General</p>
+<ul>
+<li><code dir="auto">Real Name</code>: Delete</li>
+<li><code dir="auto">Location:</code>: Do not display</li>
+<li><code dir="auto">Hide Community Awards on my profile</code>: On</li>
+</ul>
+</li>
+<li>
+<p>Avatar</p>
+<ul>
+<li><code dir="auto">Upload your avatar</code>: Don’t use a private picture (face etc.)</li>
+</ul>
+</li>
+<li>
+<p>Privacy Setitngs</p>
+<ul>
+<li><code dir="auto">My profile</code> Private</li>
+</ul>
+</li>
+<li>
+<p>Account</p>
+<ul>
+<li>Privacy Settings
+<ul>
+<li><code dir="auto">My profile</code>: Private</li>
+<li><code dir="auto">Game details</code>: Private</li>
+<li><code dir="auto">Friends List</code>: Private</li>
+<li><code dir="auto">Inventory</code>: Private</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="sl-heading-wrapper level-h3"><h3 id="account-settings">Account Settings</h3><a class="sl-anchor-link" href="#account-settings"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Account Settings”</span></a></div>
+<p>Store -> Browse -> My Preferences.</p>
+<ul>
+<li>Store preferences
+<ul>
+<li>Community Content Preferences
+<ul>
+<li><code dir="auto">Language Preferences</code>: Do not filter</li>
+<li><code dir="auto">User Group Preferences</code>: Do not filter text from my Steam Friends</li>
+</ul>
+</li>
+<li>Broadcast Preferences
+<ul>
+<li><code dir="auto">Hide all live broadcasts on the store product pages</code>: On</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Security &#x26; Devices
+<ul>
+<li><code dir="auto">Sign out everywhere</code>: If there’re too many devices which hinders clarity</li>
+</ul>
+</li>
+<li>Data &#x26; Browsing
+<ul>
+<li><code dir="auto">Optional Cookies</code>: Reject All</li>
+<li><code dir="auto">Third Party Links (UTM)</code>: Off</li>
+<li><code dir="auto">Ask Me For Feedback</code>: Off</li>
+<li><code dir="auto">Anonymous Game Framerate Data</code>: Off</li>
+</ul>
+</li>
+<li>Notification Settings
+<ul>
+<li><code dir="auto">Manage Email Notifications</code>: Opt out of all email marketing communication</li>
+</ul>
+</li>
+</ul>
+<div class="sl-heading-wrapper level-h3"><h3 id="steam-settings">Steam Settings</h3><a class="sl-anchor-link" href="#steam-settings"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Steam Settings”</span></a></div>
+<p>Steam (top left) -> Settings.</p>
+<ul>
+<li>Friends &#x26; Chat
+<ul>
+<li><code dir="auto">Sign in to friends when Steam starts</code>: Off (preference)</li>
+<li><code dir="auto">Compact friends list &#x26; chat view</code>: On (preference)</li>
+<li><code dir="auto">Compact favorite friends area</code>: On (preference)</li>
+<li><code dir="auto">Remember my open chats</code>: Off</li>
+<li><code dir="auto">Disable spellcheck in chat message entry</code>: On</li>
+</ul>
+</li>
+<li>Security
+<ul>
+<li><code dir="auto">Don't save account credentials on this computer</code>: On (if on public/shared computer)</li>
+</ul>
+</li>
+<li>Notifications
+-<code dir="auto">Show Notification Toasts...</code>: Never (preference)</li>
+<li>Interface
+<ul>
+<li><code dir="auto">Clinet Beta Participation</code>: No beta chosen</li>
+<li><code dir="auto">Start Up Location</code>: Library (preference)</li>
+<li><code dir="auto">Run Steam when my computer starts</code>: Off</li>
+</ul>
+</li>
+<li>Library
+<ul>
+<li><code dir="auto">Low Bandwidth Mode</code>: On</li>
+<li><code dir="auto">Low Performance Mode</code>: On</li>
+<li><code dir="auto">Disable Community Content</code>: On</li>
+</ul>
+</li>
+<li>Downloads
+<ul>
+<li><code dir="auto">Allow downlaods during gameplay</code>: Off</li>
+<li><code dir="auto">Display download rates in bits per second</code>: Off</li>
+</ul>
+</li>
+<li>In Game
+<ul>
+<li><code dir="auto">Enable the Steam Overlay while in-game</code>: Off (on for in-game purchases)</li>
+<li><code dir="auto">Steam Networking</code>: <a href="https://help.steampowered.com/en/faqs/view/1433-AD20-F11D-B71E/">Never</a> (uses <a href="https://partner.steamgames.com/doc/features/multiplayer/networking">ISteamNetworkingSockets/ISteamNetworkingMessages</a>)</li>
+</ul>
+</li>
+<li>Accessibility
+<ul>
+<li><code dir="auto">Reduce Motion</code>: On</li>
+</ul>
+</li>
+<li><code dir="auto">Game Recording</code> Recording Off</li>
+<li>Remote Play
+<ul>
+<li><code dir="auto">Enable Remote Play</code>: Off</li>
+</ul>
+</li>
+<li>Broadcast
+<ul>
+<li><code dir="auto">Privacy setting</code>: Broadcasting disabled</li>
+</ul>
+</li>
+</ul>
+<div class="sl-heading-wrapper level-h3"><h3 id="per-game-settings">Per-Game Settings</h3><a class="sl-anchor-link" href="#per-game-settings"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Per-Game Settings”</span></a></div>
+<p>Library -> <code dir="auto">&#x3C;game></code> -> Properties.</p>
+<ul>
+<li>General
+<ul>
+<li><code dir="auto">Enable the Steam Overlay while in-game</code>: Off</li>
+<li><code dir="auto">Launch Options</code>: See all listed <a href="https://github.com/nohuto/app-tools/blob/main/assets/Steam-Commands.xlsx">here</a></li>
+</ul>
+</li>
+<li>Controller
+<ul>
+<li><code dir="auto">Override for &#x3C;game></code>: Disable Steam Input</li>
+</ul>
+</li>
+</ul>
+<div class="sl-heading-wrapper level-h2"><h2 id="local-config-files">Local Config Files</h2><a class="sl-anchor-link" href="#local-config-files"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Local Config Files”</span></a></div>
+<p><a href="https://github.com/nohuto/app-tools/blob/main/assets/Steam-Config.ps1"><code dir="auto">Steam-Config.ps1</code></a> parses localconfig, then adds/edits the keys/blocks (a <code dir="auto">.bak</code> file gets created in case you want to revert the changes). The order doesn’t seem to be important means that the script adds missing keys/blocks to the buttom.</p>
+<p>You can edit the settings the script applies via <code dir="auto">$settings</code>, to do so you need to know if a key is in the root block or if it’s in a specific block. The script currently applies several settings which are listed in <a href="/docs/app-tools/docs/guides/steam/#app-settings">#app-settings</a>.</p>
+<ul>
+<li><code dir="auto">C:\Program Files (x86)\Steam\config\config.vdf</code></li>
+<li><code dir="auto">C:\Program Files (x86)\Steam\config\loginusers.vdf</code>: stores users/login behaviours (offline mode, remember password, auto login, etc.)</li>
+<li><code dir="auto">C:\Program Files (x86)\Steam\config\libraryfolders.vdf</code>: stores library paths</li>
+<li><code dir="auto">C:\Program Files (x86)\Steam\userdata\&#x3C;AccountID>\config\localconfig.vdf</code>: saves most steam settings</li>
+<li><code dir="auto">C:\Program Files (x86)\Steam\userdata\&#x3C;AccountID>\&#x3C;AppID>\remote\sharedconfig.vdf</code>: saves per-app/SteamUI config (and toast settings)</li>
+</ul>
+<p>Means to automate the configuration we only use <code dir="auto">localconfig.vdf</code>/<code dir="auto">sharedconfig.vdf</code>. It’s not possible to configure all settings from <a href="/docs/app-tools/docs/guides/steam/#app-settings">#app-settings</a> via the local files/registry but some of them.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="steam-cef">Steam CEF</h2><a class="sl-anchor-link" href="#steam-cef"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Steam CEF”</span></a></div>
+<p><code dir="auto">umpdc.dll</code> checks Steam’s <code dir="auto">RunningAppID</code> to see whether a game is running and terminates <code dir="auto">steamwebhelper.exe</code> (runs CEF UI) while one is active. This can be used to avoid SteamWebHelper processes during gaming (“CEF is Chromium Embedded Framework, the browser engine Steam uses for web-based UI parts like the store, community, chat/friends, and other embedded web views.”). Install it using the command below (replace <code dir="auto">v5.0.2</code> with <code dir="auto">v5.0.1</code> if x86 machine).</p>
+<div class="expressive-code"><link rel="stylesheet" href="/docs/_astro/ec.6oty3.css"><script type="module" src="/docs/_astro/ec.0vx5m.js"></script><figure class="frame is-terminal not-content"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="powershell"><code><div class="ec-line"><div class="code"><span style="--0:#8B8B8B;--1:#686868">$</span><span style="--0:#BD976A;--1:#876037">steam</span><span style="--0:#DBD7CAEE;--1:#393A34"> </span><span style="--0:#8B8B8B;--1:#686868">=</span><span style="--0:#DBD7CAEE;--1:#393A34"> </span><span style="--0:#8B8B8B;--1:#686868">(</span><span style="--0:#DBD7CAEE;--1:#393A34">gp </span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU:\Software\Valve\Steam</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#8B8B8B;--1:#686868">)</span><span style="--0:#DBD7CAEE;--1:#393A34">.SteamPath</span></div></div><div class="ec-line"><div class="code"><span style="--0:#DBD7CAEE;--1:#393A34">iwr </span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">https://github.com/Aetopia/NoSteamWebHelper/releases/download/v5.0.2/umpdc.dll</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#DBD7CAEE;--1:#393A34"> </span><span style="--0:#8B8B8B;--1:#686868">-</span><span style="--0:#DBD7CAEE;--1:#393A34">OutFile </span><span style="--0:#8B8B8B;--1:#686868">(</span><span style="--0:#B8A965;--1:#786713">Join-Path</span><span style="--0:#DBD7CAEE;--1:#393A34"> </span><span style="--0:#8B8B8B;--1:#686868">$</span><span style="--0:#BD976A;--1:#876037">steam</span><span style="--0:#DBD7CAEE;--1:#393A34"> </span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">umpdc.dll</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#8B8B8B;--1:#686868">)</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="$steam = (gp &#x22;HKCU:\Software\Valve\Steam&#x22;).SteamPathiwr &#x22;https://github.com/Aetopia/NoSteamWebHelper/releases/download/v5.0.2/umpdc.dll&#x22; -OutFile (Join-Path $steam &#x22;umpdc.dll&#x22;)"><div></div></button></div></figure></div>
+<div class="sl-heading-wrapper level-h2"><h2 id="steam-registry-values">Steam Registry Values</h2><a class="sl-anchor-link" href="#steam-registry-values"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore="">Section titled “Steam Registry Values”</span></a></div>
+<p>All values steam queries (<code dir="auto">HKCU\Software\Valve\Steam</code>):</p>
+<div class="expressive-code"><figure class="frame is-terminal not-content"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="powershell"><code><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\ActiveProcess\ActiveUser</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Type: REG_DWORD, Length: 4, Data: 0</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\ActiveProcess\SteamClientDll</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Type: REG_SZ, Length: 90, Data: C:\Program Files (x86)\Steam\steamclient.dll</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\ActiveProcess\SteamClientDll64</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Type: REG_SZ, Length: 94, Data: C:\Program Files (x86)\Steam\steamclient64.dll</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\ActiveProcess\Universe</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Type: REG_SZ, Length: 14, Data: Public</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\ActiveProcess\pid</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Type: REG_DWORD, Length: 4, Data: 3520</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\AlreadyRetriedOfflineMode</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Type: REG_DWORD, Length: 4, Data: 0</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\Apps\2357570\Installed</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Type: REG_DWORD, Length: 4, Data: 1</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\Apps\2357570\Running</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Type: REG_DWORD, Length: 4, Data: 0</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\Apps\2357570\Updating</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Type: REG_DWORD, Length: 4, Data: 0</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\AutoLoginUser</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Type: REG_SZ, Length: 18, Data: &#x3C;accountname></span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\CEFGPUBlocklistDisabled</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Length: 16</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\CompletedOOBEStage1</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Type: REG_DWORD, Length: 4, Data: 1</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\DPIScaling</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Type: REG_DWORD, Length: 4, Data: 0</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\DWriteEnable</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Type: REG_DWORD, Length: 4, Data: 0</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\DeviceFriendlyName</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Length: 12</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\DeviceSavedHardwareID</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Length: 20</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\EnableGamescopeComposer</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Length: 16</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\EnableGamescopeComposerVR</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Length: 16</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\FlushConfig</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Length: 16</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\ForceOOBE</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Length: 16</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\ForceOOBEStage2</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Length: 16</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\GPUAccelWebViewsV3</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Type: REG_DWORD, Length: 4, Data: 0</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\GamescopeEnableAppTargetRefreshRate2</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Length: 16</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\H264HWAccel</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Type: REG_DWORD, Length: 4, Data: 0</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\IgnoreCompatMode#Steam_WindowsCompat_Description_2</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Length: 16</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\IgnoreCompatMode#Steam_WindowsCompat_Webhelper_2</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Length: 16</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\Language</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Type: REG_SZ, Length: 16, Data: english</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\OSVersionUnsupported</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Length: 16</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\OverlayScaleInterface</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Type: REG_DWORD, Length: 4, Data: 0</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\OverrideBrowserComposerMode</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Length: 16</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\Restart</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Type: REG_DWORD, Length: 4, Data: 0</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\RunningAppID</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Type: REG_DWORD, Length: 4, Data: 0</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\SkinV5</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Length: 12</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\SmoothScrollWebViews</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Type: REG_DWORD, Length: 4, Data: 0</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\SourceModInstallPath</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Type: REG_SZ, Length: 100, Data: C:\Program Files (x86)\Steam\steamapps\sourcemods</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\StartupMode</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Type: REG_DWORD, Length: 4, Data: 7</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\StartupModeTmpIsValid</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Type: REG_DWORD, Length: 4, Data: 0</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\steamglobal\Language</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Type: REG_SZ, Length: 16, Data: english</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\SteamExe</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Type: REG_SZ, Length: 78, Data: c:/program files (x86)/steam/steam.exe</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\SteamInstaller</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Length: 12</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\SteamPath</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Type: REG_SZ, Length: 58, Data: c:/program files (x86)/steam</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">HKCU\Software\Valve\Steam\SuppressAutoRun</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#CB7676;--1:#9E5252">,</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span><span style="--0:#C98A7D;--1:#96574A">Type: REG_DWORD, Length: 4, Data: 0</span><span style="--0:#C98A7DE4;--1:#96574AFD">"</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="&#x22;HKCU\Software\Valve\Steam\ActiveProcess\ActiveUser&#x22;,&#x22;Type: REG_DWORD, Length: 4, Data: 0&#x22;&#x22;HKCU\Software\Valve\Steam\ActiveProcess\SteamClientDll&#x22;,&#x22;Type: REG_SZ, Length: 90, Data: C:\Program Files (x86)\Steam\steamclient.dll&#x22;&#x22;HKCU\Software\Valve\Steam\ActiveProcess\SteamClientDll64&#x22;,&#x22;Type: REG_SZ, Length: 94, Data: C:\Program Files (x86)\Steam\steamclient64.dll&#x22;&#x22;HKCU\Software\Valve\Steam\ActiveProcess\Universe&#x22;,&#x22;Type: REG_SZ, Length: 14, Data: Public&#x22;&#x22;HKCU\Software\Valve\Steam\ActiveProcess\pid&#x22;,&#x22;Type: REG_DWORD, Length: 4, Data: 3520&#x22;&#x22;HKCU\Software\Valve\Steam\AlreadyRetriedOfflineMode&#x22;,&#x22;Type: REG_DWORD, Length: 4, Data: 0&#x22;&#x22;HKCU\Software\Valve\Steam\Apps\2357570\Installed&#x22;,&#x22;Type: REG_DWORD, Length: 4, Data: 1&#x22;&#x22;HKCU\Software\Valve\Steam\Apps\2357570\Running&#x22;,&#x22;Type: REG_DWORD, Length: 4, Data: 0&#x22;&#x22;HKCU\Software\Valve\Steam\Apps\2357570\Updating&#x22;,&#x22;Type: REG_DWORD, Length: 4, Data: 0&#x22;&#x22;HKCU\Software\Valve\Steam\AutoLoginUser&#x22;,&#x22;Type: REG_SZ, Length: 18, Data: <accountname>&#x22;&#x22;HKCU\Software\Valve\Steam\CEFGPUBlocklistDisabled&#x22;,&#x22;Length: 16&#x22;&#x22;HKCU\Software\Valve\Steam\CompletedOOBEStage1&#x22;,&#x22;Type: REG_DWORD, Length: 4, Data: 1&#x22;&#x22;HKCU\Software\Valve\Steam\DPIScaling&#x22;,&#x22;Type: REG_DWORD, Length: 4, Data: 0&#x22;&#x22;HKCU\Software\Valve\Steam\DWriteEnable&#x22;,&#x22;Type: REG_DWORD, Length: 4, Data: 0&#x22;&#x22;HKCU\Software\Valve\Steam\DeviceFriendlyName&#x22;,&#x22;Length: 12&#x22;&#x22;HKCU\Software\Valve\Steam\DeviceSavedHardwareID&#x22;,&#x22;Length: 20&#x22;&#x22;HKCU\Software\Valve\Steam\EnableGamescopeComposer&#x22;,&#x22;Length: 16&#x22;&#x22;HKCU\Software\Valve\Steam\EnableGamescopeComposerVR&#x22;,&#x22;Length: 16&#x22;&#x22;HKCU\Software\Valve\Steam\FlushConfig&#x22;,&#x22;Length: 16&#x22;&#x22;HKCU\Software\Valve\Steam\ForceOOBE&#x22;,&#x22;Length: 16&#x22;&#x22;HKCU\Software\Valve\Steam\ForceOOBEStage2&#x22;,&#x22;Length: 16&#x22;&#x22;HKCU\Software\Valve\Steam\GPUAccelWebViewsV3&#x22;,&#x22;Type: REG_DWORD, Length: 4, Data: 0&#x22;&#x22;HKCU\Software\Valve\Steam\GamescopeEnableAppTargetRefreshRate2&#x22;,&#x22;Length: 16&#x22;&#x22;HKCU\Software\Valve\Steam\H264HWAccel&#x22;,&#x22;Type: REG_DWORD, Length: 4, Data: 0&#x22;&#x22;HKCU\Software\Valve\Steam\IgnoreCompatMode#Steam_WindowsCompat_Description_2&#x22;,&#x22;Length: 16&#x22;&#x22;HKCU\Software\Valve\Steam\IgnoreCompatMode#Steam_WindowsCompat_Webhelper_2&#x22;,&#x22;Length: 16&#x22;&#x22;HKCU\Software\Valve\Steam\Language&#x22;,&#x22;Type: REG_SZ, Length: 16, Data: english&#x22;&#x22;HKCU\Software\Valve\Steam\OSVersionUnsupported&#x22;,&#x22;Length: 16&#x22;&#x22;HKCU\Software\Valve\Steam\OverlayScaleInterface&#x22;,&#x22;Type: REG_DWORD, Length: 4, Data: 0&#x22;&#x22;HKCU\Software\Valve\Steam\OverrideBrowserComposerMode&#x22;,&#x22;Length: 16&#x22;&#x22;HKCU\Software\Valve\Steam\Restart&#x22;,&#x22;Type: REG_DWORD, Length: 4, Data: 0&#x22;&#x22;HKCU\Software\Valve\Steam\RunningAppID&#x22;,&#x22;Type: REG_DWORD, Length: 4, Data: 0&#x22;&#x22;HKCU\Software\Valve\Steam\SkinV5&#x22;,&#x22;Length: 12&#x22;&#x22;HKCU\Software\Valve\Steam\SmoothScrollWebViews&#x22;,&#x22;Type: REG_DWORD, Length: 4, Data: 0&#x22;&#x22;HKCU\Software\Valve\Steam\SourceModInstallPath&#x22;,&#x22;Type: REG_SZ, Length: 100, Data: C:\Program Files (x86)\Steam\steamapps\sourcemods&#x22;&#x22;HKCU\Software\Valve\Steam\StartupMode&#x22;,&#x22;Type: REG_DWORD, Length: 4, Data: 7&#x22;&#x22;HKCU\Software\Valve\Steam\StartupModeTmpIsValid&#x22;,&#x22;Type: REG_DWORD, Length: 4, Data: 0&#x22;&#x22;HKCU\Software\Valve\Steam\steamglobal\Language&#x22;,&#x22;Type: REG_SZ, Length: 16, Data: english&#x22;&#x22;HKCU\Software\Valve\Steam\SteamExe&#x22;,&#x22;Type: REG_SZ, Length: 78, Data: c:/program files (x86)/steam/steam.exe&#x22;&#x22;HKCU\Software\Valve\Steam\SteamInstaller&#x22;,&#x22;Length: 12&#x22;&#x22;HKCU\Software\Valve\Steam\SteamPath&#x22;,&#x22;Type: REG_SZ, Length: 58, Data: c:/program files (x86)/steam&#x22;&#x22;HKCU\Software\Valve\Steam\SuppressAutoRun&#x22;,&#x22;Type: REG_DWORD, Length: 4, Data: 0&#x22;"><div></div></button></div></figure></div> </div> <footer class="sl-flex astro-3yyafb3n"> <div class="meta sl-flex astro-3yyafb3n"> <a href="https://github.com/nohuto/app-tools/blob/main/guides/steam.md" class="sl-flex print:hidden astro-eez2twj6"><svg aria-hidden="true" class="astro-eez2twj6 astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.2em;"><path d="M22 7.24a1 1 0 0 0-.29-.71l-4.24-4.24a1 1 0 0 0-1.1-.22 1 1 0 0 0-.32.22l-2.83 2.83L2.29 16.05a1 1 0 0 0-.29.71V21a1 1 0 0 0 1 1h4.24a1 1 0 0 0 .76-.29l10.87-10.93L21.71 8c.1-.1.17-.2.22-.33a1 1 0 0 0 0-.24v-.14l.07-.05ZM6.83 20H4v-2.83l9.93-9.93 2.83 2.83L6.83 20ZM18.17 8.66l-2.83-2.83 1.42-1.41 2.82 2.82-1.41 1.42Z"/></svg>Edit page</a>  </div> <div class="pagination-links print:hidden astro-tely5epz" dir="ltr"><a href="/docs/app-tools/docs/guides/spotify/" rel="prev" class="astro-tely5epz"><span class="link-label sl-flex astro-tely5epz"><svg aria-hidden="true" class="astro-tely5epz astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg>Previous</span><span class="link-title astro-tely5epz">Spotify Configuration</span></a><a href="/docs/app-tools/docs/guides/steelseries/" rel="next" class="astro-tely5epz"><span class="link-label sl-flex astro-tely5epz">Next<svg aria-hidden="true" class="astro-tely5epz astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg></span><span class="link-title astro-tely5epz">SteelSeries Configuration</span></a></div>  </footer> </div> </div>  </main> </div> </div> </div> </div> </body></html>

@@ -4,10 +4,12 @@ description: 'Auto-generated overview for Guides.'
 editUrl: false
 sidebar:
   hidden: true
-  order: 7
+  order: 2
 ---
 
 - [Brave Configuration](/docs/app-tools/docs/guides/brave/)
 - [Discord Configuration](/docs/app-tools/docs/guides/discord/)
 - [LGHUB Configuration](/docs/app-tools/docs/guides/lghub/)
-- [Spotify Tool](/docs/app-tools/docs/guides/spotify/)
+- [Spotify Configuration](/docs/app-tools/docs/guides/spotify/)
+- [Steam Configuration](/docs/app-tools/docs/guides/steam/)
+- [SteelSeries Configuration](/docs/app-tools/docs/guides/steelseries/)
