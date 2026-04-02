@@ -3,7 +3,7 @@ title: 'Edge Features'
 description: 'Misc option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/misc/desc.md#disable-edge-features'
 sidebar:
-  order: 12
+  order: 11
 ---
 
 Edge is a whole mess, I wouldn't recommend anyone to use it, but here's an option that applies the following values:

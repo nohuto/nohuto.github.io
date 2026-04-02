@@ -14,7 +14,6 @@ sidebar:
 - [StartAllBack Settings](/docs/win-config/misc/startallback-settings/)
 - [System Informer](/docs/win-config/misc/system-informer/)
 - [7-Zip Settings](/docs/win-config/misc/7-zip-settings/)
-- [VSC Telemetry](/docs/win-config/misc/disable-vsc-telemetry/)
 - [VS Telemetry](/docs/win-config/misc/disable-vs-telemetry/)
 - [MS Office Telemetry](/docs/win-config/misc/disable-ms-office-telemetry/)
 - [OneDrive](/docs/win-config/misc/onedrive/)

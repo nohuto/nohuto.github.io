@@ -3,7 +3,7 @@ title: 'MS Office Telemetry'
 description: 'Misc option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/misc/desc.md#disable-ms-office-telemetry'
 sidebar:
-  order: 10
+  order: 9
 ---
 
 Disables logging, data collection, opts out from CEIP, disables feedback collection and telemetry agent tasks.

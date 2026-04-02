@@ -32,3 +32,8 @@ sidebar:
 - [Flow Control](/docs/win-config/network/disable-flow-control/)
 - [Jumbo Packets](/docs/win-config/network/enable-jumbo-packets/)
 - [RSC/URO](/docs/win-config/network/enable-rsc-uro/)
+- [VMQ](/docs/win-config/network/disable-vmq/)
+- [SR-IOV](/docs/win-config/network/disable-sr-iov/)
+- [FEC](/docs/win-config/network/disable-fec/)
+- [Legacy Switch Compatibility Mode](/docs/win-config/network/enable-legacy-switch-compatibility-mode/)
+- [NDIS Poll Mode](/docs/win-config/network/ndis-poll-mode/)

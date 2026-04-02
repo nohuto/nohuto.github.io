@@ -3,7 +3,7 @@ title: 'Hash Generator'
 description: 'Misc option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/misc/desc.md#hash-generator'
 sidebar:
-  order: 13
+  order: 12
 ---
 
 "The `Get-FileHash` cmdlet computes the hash value for a file by using a specified hash algorithm. A hash value is a unique value that corresponds to the content of the file. Rather than identifying the contents of a file by its file name, extension, or other designation, a hash assigns a unique value to the contents of a file. File names and extensions can be changed without altering the content of the file, and without changing the hash value. Similarly, the file's content can be changed without changing the name or extension. However, changing even a single character in the contents of a file changes the hash value of the file.

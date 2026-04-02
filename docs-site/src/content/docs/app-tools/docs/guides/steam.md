@@ -3,7 +3,7 @@ title: 'Steam Configuration'
 description: 'Generated from app-tools file: guides/steam.md.'
 editUrl: 'https://github.com/nohuto/app-tools/blob/main/guides/steam.md'
 sidebar:
-  order: 6
+  order: 7
 ---
 
 ## App Settings
