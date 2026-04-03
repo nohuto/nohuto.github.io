@@ -3,7 +3,7 @@ title: 'Trusted Path Credential Prompting'
 description: 'Security option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/security/desc.md#trusted-path-credential-prompting'
 sidebar:
-  order: 23
+  order: 21
 ---
 
 This policy setting requires the user to enter Microsoft Windows credentials using a trusted path, to prevent a Trojan horse or other types of malicious code from stealing the user's Windows credentials.

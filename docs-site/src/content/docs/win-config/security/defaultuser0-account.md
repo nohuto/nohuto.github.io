@@ -3,7 +3,7 @@ title: 'defaultuser0 Account'
 description: 'Security option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/security/desc.md#defaultuser0-account'
 sidebar:
-  order: 29
+  order: 27
 ---
 
 defaultuser0 is a temporary Windows setup account.

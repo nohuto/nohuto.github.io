@@ -3,7 +3,7 @@ title: 'Decrease Mouse Hover Time'
 description: 'Visibility option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#decrease-mouse-hover-time'
 sidebar:
-  order: 30
+  order: 31
 ---
 
 `MouseHoverTime` controls how long the mouse must stay still over something before Windows treats it as a hover.

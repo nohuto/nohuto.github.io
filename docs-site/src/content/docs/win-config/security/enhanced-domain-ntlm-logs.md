@@ -3,7 +3,7 @@ title: 'Enhanced Domain NTLM Logs'
 description: 'Security option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/security/desc.md#enhanced-domain-ntlm-logs'
 sidebar:
-  order: 19
+  order: 17
 ---
 
 Controls the Netlogon policy that enables or disables enhanced domain wide NTLM logs on domain controllers (includes NTLMv1 usage). Applies to domain controllers only (Windows 11 24H2+). If not configured, domain controllers default to logging these on supported builds.

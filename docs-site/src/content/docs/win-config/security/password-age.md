@@ -3,7 +3,7 @@ title: 'Password Age'
 description: 'Security option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/security/desc.md#password-age'
 sidebar:
-  order: 22
+  order: 20
 ---
 
 `/MAXPWAGE:{days | UNLIMITED}`:  

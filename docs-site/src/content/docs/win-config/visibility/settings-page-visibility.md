@@ -3,7 +3,7 @@ title: 'Settings Page Visibility'
 description: 'Visibility option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#settings-page-visibility'
 sidebar:
-  order: 32
+  order: 33
 ---
 
 It controls which pages in the windows settings app are visible (blocked pages are removed from view and direct access redirects to the main settings page).

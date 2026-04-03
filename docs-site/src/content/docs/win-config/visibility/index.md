@@ -27,6 +27,7 @@ sidebar:
 - [Desktop Icon Spacing](/docs/win-config/visibility/desktop-icon-spacing/)
 - [Detailed File Transfer](/docs/win-config/visibility/detailed-file-transfer/)
 - [Alt-Tab App Tabs](/docs/win-config/visibility/alt-tab-app-tabs/)
+- [Snap Flyout](/docs/win-config/visibility/disable-snap-flyout/)
 - [Remove Quick Access](/docs/win-config/visibility/remove-quick-access/)
 - [System Fonts](/docs/win-config/visibility/system-fonts/)
 - [Hide Lock Screen](/docs/win-config/visibility/hide-lock-screen/)

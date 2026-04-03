@@ -3,10 +3,10 @@ title: 'Bitlocker & EFS'
 description: 'Security option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/security/desc.md#disable-bitlocker--efs'
 sidebar:
-  order: 13
+  order: 11
 ---
 
-Disable bitlocker on all volumes:
+Disable Bitlocker on all volumes:
 ```powershell
 $nvbvol = Get-BitLockerVolume
 Disable-BitLocker -MountPoint $nvbvol

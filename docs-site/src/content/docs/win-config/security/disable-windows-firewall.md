@@ -3,7 +3,7 @@ title: 'Windows Firewall'
 description: 'Security option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/security/desc.md#disable-windows-firewall'
 sidebar:
-  order: 7
+  order: 6
 ---
 
 It disables the profiles, but leaves the services/driver running.

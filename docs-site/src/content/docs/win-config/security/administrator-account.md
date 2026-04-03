@@ -3,7 +3,7 @@ title: 'Administrator Account'
 description: 'Security option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/security/desc.md#administrator-account'
 sidebar:
-  order: 27
+  order: 25
 ---
 
 This security setting determines whether the local Administrator account is enabled or disabled. The following conditions prevent disabling the Administrator account, even if this security setting is disabled.

@@ -7,18 +7,16 @@ sidebar:
   order: 11
 ---
 
-- [UAC](/docs/win-config/security/disable-uac/)
+- [Windows Defender](/docs/win-config/security/windows-defender/)
+- [Windows Update](/docs/win-config/security/windows-update/)
+- [UAC](/docs/win-config/security/uac/)
 - [PS Unrestricted Policy](/docs/win-config/security/ps-unrestricted-policy/)
-- [Windows Update](/docs/win-config/security/disable-windows-update/)
 - [System Mitigations](/docs/win-config/security/disable-system-mitigations/)
-- [WU Driver Updates](/docs/win-config/security/disable-wu-driver-updates/)
-- [Windows Defender](/docs/win-config/security/disable-windows-defender/)
 - [Windows Firewall](/docs/win-config/security/disable-windows-firewall/)
 - [Opt-Out DMA Remapping](/docs/win-config/security/opt-out-dma-remapping/)
 - [System Restore](/docs/win-config/security/disable-system-restore/)
 - [Downloads Blocking](/docs/win-config/security/disable-downloads-blocking/)
 - [WPBT](/docs/win-config/security/disable-wpbt/)
-- [Block MRT via WU](/docs/win-config/security/block-mrt-via-wu/)
 - [Bitlocker & EFS](/docs/win-config/security/disable-bitlocker-efs/)
 - [VBS (HVCI)](/docs/win-config/security/disable-vbs-hvci/)
 - [Password Reveal](/docs/win-config/security/disable-password-reveal/)

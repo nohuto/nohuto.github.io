@@ -3,7 +3,7 @@ title: 'Downloads Blocking'
 description: 'Security option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/security/desc.md#disable-downloads-blocking'
 sidebar:
-  order: 10
+  order: 9
 ---
 
 Windows adds a hidden tag called `Zone.Identifier` to files downloaded from the internet. This tag (also known as MotW) stores info about the file's origin and helps apply security warnings, see files including the tag with:

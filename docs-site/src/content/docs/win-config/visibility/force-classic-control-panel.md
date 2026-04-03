@@ -3,7 +3,7 @@ title: 'Force Classic Control Panel'
 description: 'Visibility option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#force-classic-control-panel'
 sidebar:
-  order: 29
+  order: 30
 ---
 
 "This policy setting controls the default Control Panel view, whether by category or icons. If this policy setting is enabled, the Control Panel opens to the icon view. If this policy setting is disabled, the Control Panel opens to the category view."

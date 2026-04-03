@@ -3,7 +3,7 @@ title: 'PS Unrestricted Policy'
 description: 'Security option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/security/desc.md#ps-unrestricted-policy'
 sidebar:
-  order: 2
+  order: 4
 ---
 
 Used to make powershell (`.ps1`) scripts work on your PC without showing any warning.
@@ -16,7 +16,7 @@ Used to make powershell (`.ps1`) scripts work on your PC without showing any war
 | `EnableTranscripting` | Enables or disables transcription of PowerShell commands. If enabled, records the input and output of PowerShell commands into text-based transcripts stored by default in My Documents. |
 | `EnableScripts` | Controls which types of scripts are allowed to run on the system. Options include allowing only signed scripts, allowing local scripts and remote signed scripts, or allowing all scripts to run. |
 
-| **Scope**​ | **Description​** |
+| **Scope**â€‹ | **Descriptionâ€‹** |
 |---- | ---- |
 | `MachinePolicy` | Set by a Group Policy for all users of the computer |
 | `UserPolicy` | Set by a Group Policy for the current user of the computer |
@@ -51,4 +51,3 @@ powershell.exe    HKLM\SOFTWARE\Microsoft\PowerShell\1\ShellIds\Microsoft.PowerS
 > https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_powershell_config?view=powershell-7.5  
 > https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.5  
 > https://learn.microsoft.com/en-us/previous-versions/troubleshoot/browsers/security-privacy/ie-security-zones-registry-entries#zones
-> https://gpsearch.azurewebsites.net/#4954
