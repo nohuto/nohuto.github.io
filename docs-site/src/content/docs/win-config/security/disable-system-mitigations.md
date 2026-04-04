@@ -3,7 +3,7 @@ title: 'System Mitigations'
 description: 'Security option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/security/desc.md#disable-system-mitigations'
 sidebar:
-  order: 5
+  order: 6
 ---
 
 Security features that protect against memory based attacks like buffer overflows and code injection. Enabling this option will reduce system security.

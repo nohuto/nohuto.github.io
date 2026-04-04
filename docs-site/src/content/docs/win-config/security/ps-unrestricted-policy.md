@@ -3,7 +3,7 @@ title: 'PS Unrestricted Policy'
 description: 'Security option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/security/desc.md#ps-unrestricted-policy'
 sidebar:
-  order: 4
+  order: 5
 ---
 
 Used to make powershell (`.ps1`) scripts work on your PC without showing any warning.

@@ -9,10 +9,10 @@ sidebar:
 
 - [Windows Defender](/docs/win-config/security/windows-defender/)
 - [Windows Update](/docs/win-config/security/windows-update/)
+- [Windows Firewall](/docs/win-config/security/windows-firewall/)
 - [UAC](/docs/win-config/security/uac/)
 - [PS Unrestricted Policy](/docs/win-config/security/ps-unrestricted-policy/)
 - [System Mitigations](/docs/win-config/security/disable-system-mitigations/)
-- [Windows Firewall](/docs/win-config/security/disable-windows-firewall/)
 - [Opt-Out DMA Remapping](/docs/win-config/security/opt-out-dma-remapping/)
 - [System Restore](/docs/win-config/security/disable-system-restore/)
 - [Downloads Blocking](/docs/win-config/security/disable-downloads-blocking/)

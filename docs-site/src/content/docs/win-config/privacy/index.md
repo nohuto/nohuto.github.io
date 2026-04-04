@@ -59,5 +59,4 @@ sidebar:
 - [Census Data Collection](/docs/win-config/privacy/disable-census-data-collection/)
 - [OneSettings Download](/docs/win-config/privacy/disable-onesettings-download/)
 - [F1 Help Key](/docs/win-config/privacy/disable-f1-help-key/)
-- [Defender Core Service Telemetry](/docs/win-config/privacy/disable-defender-core-service-telemetry/)
 - [Find My Device](/docs/win-config/privacy/disable-find-my-device/)
