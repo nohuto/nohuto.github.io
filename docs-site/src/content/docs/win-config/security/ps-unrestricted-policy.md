@@ -16,7 +16,7 @@ Used to make powershell (`.ps1`) scripts work on your PC without showing any war
 | `EnableTranscripting` | Enables or disables transcription of PowerShell commands. If enabled, records the input and output of PowerShell commands into text-based transcripts stored by default in My Documents. |
 | `EnableScripts` | Controls which types of scripts are allowed to run on the system. Options include allowing only signed scripts, allowing local scripts and remote signed scripts, or allowing all scripts to run. |
 
-| **Scope**â€‹ | **Descriptionâ€‹** |
+| **Scope** | **Description** |
 |---- | ---- |
 | `MachinePolicy` | Set by a Group Policy for all users of the computer |
 | `UserPolicy` | Set by a Group Policy for the current user of the computer |
