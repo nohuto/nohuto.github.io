@@ -3,7 +3,7 @@ title: 'Alt-Tab App Tabs'
 description: 'Visibility option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#alt-tab-app-tabs'
 sidebar:
-  order: 20
+  order: 21
 ---
 
 Select the amount of recent tabs from apps in the alt+tab menu.

@@ -3,7 +3,7 @@ title: 'OEM Information'
 description: 'Visibility option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#oem-information'
 sidebar:
-  order: 32
+  order: 33
 ---
 
 Set your own support information in `System > About` (or `Control Panel > System and Security > System`. All values are saved in:

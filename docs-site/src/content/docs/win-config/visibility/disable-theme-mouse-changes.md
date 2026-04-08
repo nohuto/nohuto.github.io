@@ -3,7 +3,7 @@ title: 'Theme Mouse Changes'
 description: 'Visibility option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#disable-theme-mouse-changes'
 sidebar:
-  order: 28
+  order: 29
 ---
 
 Prevent Themes from changing the mouse cursor.

@@ -3,7 +3,7 @@ title: 'Spotlight'
 description: 'Visibility option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#disable-spotlight'
 sidebar:
-  order: 26
+  order: 27
 ---
 
 Spotlight is used to provide new pictures on your lock screen.

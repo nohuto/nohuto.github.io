@@ -3,7 +3,7 @@ title: 'Hide Lock Screen'
 description: 'Visibility option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#hide-lock-screen'
 sidebar:
-  order: 24
+  order: 25
 ---
 
 Disables the lock screen (skips the lock screen and go directly to the login screen). See content below for details on the suboptions.

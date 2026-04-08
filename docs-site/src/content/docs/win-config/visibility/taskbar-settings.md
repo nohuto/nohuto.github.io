@@ -3,7 +3,7 @@ title: 'Taskbar Settings'
 description: 'Visibility option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#taskbar-settings'
 sidebar:
-  order: 14
+  order: 15
 ---
 
 Removes the search box, moves the taskbar to the left, removes badges, disables the flashes on the app icons, removes the "Task View" button. (`Personalization > Taskbar`)

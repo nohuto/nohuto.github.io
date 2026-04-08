@@ -1,0 +1,46 @@
+---
+title: 'Rounded Corners'
+description: 'Visibility option documentation from win-config.'
+editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#disable-rounded-corners'
+sidebar:
+  order: 11
+---
+
+This currently works via [Win11DisableRoundedCorners](https://github.com/valinet/Win11DisableRoundedCorners) which works fine on [latest version since the function exists/works the same on latest builds](https://www.noverse.dev/bin-diff.html).
+
+It works by overriding the first instruction with the function via:
+
+```c
+mov rax, 0 // result = 0
+ret
+```
+
+```c
+__int64 __fastcall CTopLevelWindow::GetEffectiveCornerStyle(__int64 a1)
+{
+  __int64 result; // rax
+  int v2; // ebx
+
+  if ( *((_BYTE *)CDesktopManager::s_pDesktopManagerInstance + 27)
+    && !*((_BYTE *)CDesktopManager::s_pDesktopManagerInstance + 29)
+    || *((int *)CDesktopManager::s_pDesktopManagerInstance + 8) >= 2 )
+  {
+    return 1LL;
+  }
+  result = *(unsigned int *)(*(_QWORD *)(a1 + 752) + 184LL);
+  if ( !(_DWORD)result )
+  {
+    v2 = *(_DWORD *)(a1 + 624);
+    if ( (v2 & 2) != 0 )
+      return 3LL;
+    if ( !(unsigned __int8)IsOpenThemeDataPresent() )
+      return 1LL;
+    result = 2LL;
+    if ( (v2 & 6) == 0 )
+      return 1LL;
+  }
+  return result;
+}
+```
+
+Obviously, `GetEffectiveCornerStyle` only exists in W11 builds (as you can see in [decompiled-pseudocode](https://github.com/nohuto/decompiled-pseudocode)) .

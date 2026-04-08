@@ -3,7 +3,7 @@ title: 'Desktop Icon Spacing'
 description: 'Visibility option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#desktop-icon-spacing'
 sidebar:
-  order: 18
+  order: 19
 ---
 
 Location:

@@ -3,7 +3,7 @@ title: 'Hide Language Bar'
 description: 'Visibility option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#hide-language-bar'
 sidebar:
-  order: 12
+  order: 13
 ---
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/languagebar.png?raw=true)

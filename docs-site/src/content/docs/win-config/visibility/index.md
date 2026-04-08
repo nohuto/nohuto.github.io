@@ -17,6 +17,7 @@ sidebar:
 - [Remove Home & Gallery](/docs/win-config/visibility/remove-home-gallery/)
 - [Classic Context Menu](/docs/win-config/visibility/classic-context-menu/)
 - [Animations](/docs/win-config/visibility/disable-animations/)
+- [Rounded Corners](/docs/win-config/visibility/disable-rounded-corners/)
 - [Automatic Folder Type Discovery](/docs/win-config/visibility/disable-automatic-folder-type-discovery/)
 - [Hide Language Bar](/docs/win-config/visibility/hide-language-bar/)
 - [System Clock Seconds](/docs/win-config/visibility/system-clock-seconds/)

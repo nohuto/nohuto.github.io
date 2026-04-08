@@ -3,7 +3,7 @@ title: '''New'' Context Menu'
 description: 'Visibility option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#new-context-menu'
 sidebar:
-  order: 17
+  order: 18
 ---
 
 Instead of creating a `.txt` file, then renaming it to e.g. `.bat` / `.ps1`, you can add these options to the 'new' context menu. This may also change the `Type` shown in the explorer (only `.bat` is affected of the three).
