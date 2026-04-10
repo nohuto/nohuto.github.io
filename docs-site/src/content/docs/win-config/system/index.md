@@ -34,7 +34,6 @@ sidebar:
 - [Prefetch & Superfetch](/docs/win-config/system/disable-prefetch-superfetch/)
 - [Optimize File System](/docs/win-config/system/optimize-file-system/)
 - [Clipboard](/docs/win-config/system/disable-clipboard/)
-- [Background GP Updates](/docs/win-config/system/disable-background-gp-updates/)
 - [Memory Compression](/docs/win-config/system/disable-memory-compression/)
 - [Page Combining](/docs/win-config/system/disable-page-combining/)
 - [Detailed BSoD](/docs/win-config/system/enable-detailed-bsod/)

@@ -3,7 +3,7 @@ title: 'Mobility Center'
 description: 'System option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/system/desc.md#disable-mobility-center'
 sidebar:
-  order: 38
+  order: 37
 ---
 
 Note that this is a laptop only feature. The "Mobility Center" is a feature that includes controls for screen brightness, power options, volume, battery status, wireless network status, external display settings, and more.

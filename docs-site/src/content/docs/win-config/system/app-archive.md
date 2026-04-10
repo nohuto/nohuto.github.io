@@ -3,7 +3,7 @@ title: 'App Archive'
 description: 'System option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/system/desc.md#app-archive'
 sidebar:
-  order: 36
+  order: 35
 ---
 
 "Automatically archive your infrequently used apps to save storage and internet bandwidth. Your files and data will still be saved, and the app's full version will be restored on your next use if it's still available."

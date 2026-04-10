@@ -3,7 +3,7 @@ title: 'FSO'
 description: 'System option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/system/desc.md#enable-fso'
 sidebar:
-  order: 35
+  order: 34
 ---
 
 This may not be accurate yet, it's preferable to disable FSO per application via the compability section.

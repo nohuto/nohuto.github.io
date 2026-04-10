@@ -11,7 +11,7 @@ sidebar:
 - [Windows Update](/docs/win-config/security/windows-update/)
 - [Windows Firewall](/docs/win-config/security/windows-firewall/)
 - [UAC](/docs/win-config/security/uac/)
-- [PS Unrestricted Policy](/docs/win-config/security/ps-unrestricted-policy/)
+- [PS Execution Policy](/docs/win-config/security/ps-execution-policy/)
 - [System Mitigations](/docs/win-config/security/disable-system-mitigations/)
 - [Opt-Out DMA Remapping](/docs/win-config/security/opt-out-dma-remapping/)
 - [System Restore](/docs/win-config/security/disable-system-restore/)

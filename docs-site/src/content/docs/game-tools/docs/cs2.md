@@ -33,6 +33,6 @@ Example:
 
 ## Download
 
-It might fail execution if the powershell execution policy is set to it's default values. See [PS Unrestricted Policy](/docs/win-config/security/ps-unrestricted-policy/) for details.
+It might fail execution if the powershell execution policy is set to it's default values. See [PS Unrestricted Policy](https://github.com/nohuto/win-config/blob/main/security/desc.md#ps-unrestricted-policy) for details.
 
 > [cs2/NV-CS2-Tool](https://github.com/nohuto/game-tools/blob/main/cs2/NV-CS2-Tool.ps1)

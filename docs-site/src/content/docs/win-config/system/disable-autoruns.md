@@ -3,7 +3,7 @@ title: 'Autoruns'
 description: 'System option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/system/desc.md#disable-autoruns'
 sidebar:
-  order: 34
+  order: 33
 ---
 
 The `Open` buttons downloads & executes [`Autoruns.exe`](https://live.sysinternals.com/Autoruns.exe). It's recommended to disable all kind of autoruns in the `Logon` section that you don't need, examples:

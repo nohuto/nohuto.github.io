@@ -7,7 +7,7 @@ sidebar:
   order: 4
 ---
 
-- [xHCI IMOD](/docs/win-config/power/disable-xhci-imod/)
+- [xHCI IMOD](/docs/win-config/power/xhci-imod/)
 - [Power Values](/docs/win-config/power/power-values/)
 - [PnP Device Values](/docs/win-config/power/pnp-device-values/)
 - [Hibernation](/docs/win-config/power/disable-hibernation/)

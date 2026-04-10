@@ -3,7 +3,7 @@ title: 'Detailed BSoD'
 description: 'System option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/system/desc.md#enable-detailed-bsod'
 sidebar:
-  order: 31
+  order: 30
 ---
 
 | Aspect                    | New BSoD (Windows 8/10/11)                      | Old BSoD (Windows 7/classic)                                                      |
