@@ -3,7 +3,7 @@ title: 'Event Logs'
 description: 'Cleanup option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/cleanup/desc.md#event-logs'
 sidebar:
-  order: 16
+  order: 19
 ---
 
 Only do this if you want to export the data elsewhere or purposely delete logs (security logs can't be recovered afterward).

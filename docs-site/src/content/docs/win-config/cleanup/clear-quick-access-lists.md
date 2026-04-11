@@ -1,0 +1,17 @@
+---
+title: 'Clear Quick Access Lists'
+description: 'Cleanup option documentation from win-config.'
+editUrl: 'https://github.com/nohuto/win-config/blob/main/cleanup/desc.md#clear-quick-access-lists'
+sidebar:
+  order: 8
+---
+
+Quick access shows recent files and pinned folders in File Explorer. Clearing these files will reset your quick access pins to default state. Windows recreates these files as you use File Explorer and apps again.
+
+It clears both Quick Access Jump List folders:
+```c
+%APPDATA%\Microsoft\Windows\Recent\AutomaticDestinations\*
+%APPDATA%\Microsoft\Windows\Recent\CustomDestinations\*
+```
+
+> https://support.microsoft.com/en-us/windows/file-explorer-in-windows-ef370130-1cca-9dc5-e0df-2f7416fe1cb1

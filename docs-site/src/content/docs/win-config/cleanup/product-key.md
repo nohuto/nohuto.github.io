@@ -3,7 +3,7 @@ title: 'Product Key'
 description: 'Cleanup option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/cleanup/desc.md#product-key'
 sidebar:
-  order: 21
+  order: 24
 ---
 
 "Some servicing operations require the product key to be available in the registry during Out of Box Experience (OOBE) operations. The /cpky option removes the product key from the registry to prevent this key from being stolen by malicious code. For retail installations that deploy keys, the best practice is to run this option. This option isn't required for MAK and KMS host keys, because this is the default behavior for those keys. This option is required only for other types of keys whose default behavior isn't to clear the key from the registry."

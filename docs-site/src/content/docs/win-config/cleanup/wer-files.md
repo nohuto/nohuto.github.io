@@ -3,7 +3,7 @@ title: 'WER Files'
 description: 'Cleanup option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/cleanup/desc.md#wer-files'
 sidebar:
-  order: 15
+  order: 17
 ---
 
 Windows Error Reporting (WER) queues crash dumps and report metadata under `%PROGRAMDATA%\Microsoft\Windows\WER` (system) and `%LOCALAPPDATA%\Microsoft\Windows\WER` (per user). Clearing the queue removes pending uploads and archived `.wer` files.

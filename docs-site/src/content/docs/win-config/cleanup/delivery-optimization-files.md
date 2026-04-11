@@ -3,7 +3,7 @@ title: 'Delivery Optimization Files'
 description: 'Cleanup option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/cleanup/desc.md#delivery-optimization-files'
 sidebar:
-  order: 11
+  order: 13
 ---
 
 Delivery Optimization (DoSvc) stores update files under `%WINDIR%\SoftwareDistribution\DeliveryOptimization`, uses `%WINDIR%\ServiceProfiles\NetworkService\AppData\Local\Microsoft\Windows\DeliveryOptimization` for cache metadata, and `%PROGRAMDATA%\Microsoft\Network\Downloader` for the BITS session data. The option stops DoSvc to delete the files, but won't start it as it's not recommended to have it enabled anyway.

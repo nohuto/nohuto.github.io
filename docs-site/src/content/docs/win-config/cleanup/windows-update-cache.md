@@ -3,7 +3,7 @@ title: 'Windows Update Cache'
 description: 'Cleanup option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/cleanup/desc.md#windows-update-cache'
 sidebar:
-  order: 17
+  order: 20
 ---
 
 Troubleshooting update loops often requires resetting `%WINDIR%\SoftwareDistribution` and `%WINDIR%\System32\catroot2`. This forces Windows Update to redownload the catalog metadata.
