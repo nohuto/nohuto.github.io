@@ -3,7 +3,7 @@
   "nohuto/regkit": "Reworked regedit including several new features.",
   "nohuto/win-registry": "Registry activity records & DXG Kernel/Session Manager/Power/DWM/USBHUB/PnPDevice/BCDEdit/NIC/StorNVMe values research.",
   "nohuto/decompiled-pseudocode": "Pseudocode of decompiled functions (1511, 1607, 1703, 1709, 1803, 1809, 1903, 1909, 2004, 20H2, 21H1, 21H2, 22H2, W11 21H2, 22H2, 23H2, 24H2, 25H2, 26H1)",
-  "nohuto/nvapi-cli": "CLI for NvAPI - currently supports ~400.",
+  "nohuto/nvapi-cli": "CLI for NvAPI - currently supports ~400. Contribute to nohuto/nvapi-cli development by creating an account on GitHub.",
   "nohuto/aes-cbc": "PowerShell encryption using AES CBC - 256 bit encryption key.",
   "nohuto/bitmask-calc": "Bitmask calculator uses official NVIDIA definitions to edit and apply registry values with bitfield mapping.",
   "nohuto/blocklist-mgr": "GUI that lets you easily select one or more blocklists (hosts or URLs, e.g., for UBO).",
@@ -11,7 +11,7 @@
   "nohuto/app-tools": "App (Desktop/iOS) configurations for privacy/security & general recommendations.",
   "nohuto/game-tools": "Automatic game configuration tools for VALORANT, Fortnite, Marvel Rivals, CS2, Overwatch.",
   "nohuto/sym-dump": "Lists all modules and dumps the memory addresses of each symbol from the selected module.",
-  "nohuto/nvfetch": "CL OS/HW information tool.",
+  "nohuto/nvfetch": "CL OS/HW information tool. Contribute to nohuto/nvfetch development by creating an account on GitHub.",
   "nohuto/void": "PowerShell obfuscation using binary & whitespaces, resulting in a empty looking file.",
   "nohuto/minifier": "Removes unnecessary content (extra spaces...), formatting, replaces cmdlets/parameters/operators with their alias to create a \"minified\" version of the script.",
   "nohuto/ps12bat": "Converts .ps1 code to a standalone .bat file using B64.",
@@ -21,7 +21,7 @@
   "nohuto/strings2-tui": "An improved string extraction tool, including a TUI.",
   "nohuto/b64rev": "Encodes with B64, reverts them & builds the decoding part.",
   "nohuto/dism-wsim": "Guide on how to create your own customized and automated Windows installation using DISM, WSIM and more.",
-  "nohuto/reg2bat": "A simple CL tool that converts .reg to .bat",
-  "nohuto/pbo2-uv": "Guide on how to set up PBO using curve optimizer.",
+  "nohuto/reg2bat": "A simple CL tool that converts .reg to .bat. Contribute to nohuto/reg2bat development by creating an account on GitHub.",
+  "nohuto/pbo2-uv": "Guide on how to set up PBO using curve optimizer. Contribute to nohuto/pbo2-uv development by creating an account on GitHub.",
   "nohuto/gpu-oc-uv": "Guide on how to OC/UV your GPU via MSI Afterburner."
 }
