@@ -3,7 +3,7 @@ title: 'Optimize Visual Effects'
 description: 'Visibility option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#optimize-visual-effects'
 sidebar:
-  order: 16
+  order: 17
 ---
 
 `UserPreferencesMask`:

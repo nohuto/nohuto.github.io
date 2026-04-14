@@ -3,7 +3,7 @@ title: 'Desktop Wallpaper'
 description: 'Visibility option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#desktop-wallpaper'
 sidebar:
-  order: 1
+  order: 2
 ---
 
 This is a collection of some wallpapers that I've found over time. Added for people who may never have spent time changing their background, or for anyone else. Head over to [visibility/desc.md#desktop-wallpaper](/docs/win-config/visibility/desktop-wallpaper/), if you want to see the wallpapers in a seperate window.

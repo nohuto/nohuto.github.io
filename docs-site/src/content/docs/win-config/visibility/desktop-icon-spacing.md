@@ -3,7 +3,7 @@ title: 'Desktop Icon Spacing'
 description: 'Visibility option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#desktop-icon-spacing'
 sidebar:
-  order: 19
+  order: 20
 ---
 
 Location:
@@ -24,7 +24,8 @@ Value gets calculated with:
 
 -15*75 = -1125 // default
 ```
-I created a small tool for fun, since it's a lot easier to quickly change and test the different icon spacing. You've to log out after applying, otherwise it won't update instantly. (the images show vertical `75px` & `100px` difference)
+
+I created a small tool for fun, since it's a lot easier to quickly change and test the different icon spacing. You've to log out after applying, otherwise it won't update instantly (the images show vertical `75px` & `100px` difference). I personally use `110px Horizonzal - 60px Vertical` for a more vertical compact view and more space horizontally (see suboption).
 
 `75px`:
 

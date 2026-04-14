@@ -3,7 +3,7 @@ title: 'Remove Home & Gallery'
 description: 'Visibility option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#remove-home--gallery'
 sidebar:
-  order: 8
+  order: 9
 ---
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/homegal.png?raw=true)

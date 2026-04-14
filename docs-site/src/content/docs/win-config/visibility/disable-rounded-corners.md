@@ -3,7 +3,7 @@ title: 'Rounded Corners'
 description: 'Visibility option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#disable-rounded-corners'
 sidebar:
-  order: 11
+  order: 12
 ---
 
 This currently works via [Win11DisableRoundedCorners](https://github.com/valinet/Win11DisableRoundedCorners) which works fine on [latest version since the function exists/works the same on latest builds](https://www.noverse.dev/bin-diff.html). Note that the revert doesn't run `sfc /scannow` to restore proper file permissions to `uDWM.dll` since it does a lot more than restoring permissions. If you're aware if it, run the command after reverting the option.

@@ -7,6 +7,7 @@ sidebar:
   order: 2
 ---
 
+- [Pointer Style](/docs/win-config/visibility/pointer-style/)
 - [Desktop Wallpaper](/docs/win-config/visibility/desktop-wallpaper/)
 - [Account Picture](/docs/win-config/visibility/account-picture/)
 - [Explorer Options](/docs/win-config/visibility/explorer-options/)

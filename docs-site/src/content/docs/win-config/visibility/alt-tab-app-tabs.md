@@ -3,7 +3,7 @@ title: 'Alt-Tab App Tabs'
 description: 'Visibility option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#alt-tab-app-tabs'
 sidebar:
-  order: 21
+  order: 22
 ---
 
 Select the amount of recent tabs from apps in the alt+tab menu.
@@ -50,14 +50,14 @@ Select the amount of recent tabs from apps in the alt+tab menu.
 
 The option changes it via `HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced`.
 
----
+## Classic Task Switcher
 
-`Classic Task Switcher` won't work on 24H2.
+Restarting the explorer is enough to apply the changes.
 
-New (delete `AltTabSettings`):
+New:
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/taskswitchnew.png?raw=true)
 
-Classic (`AltTabSettings` - `1`):
+Classic:
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/taskswitchold.png?raw=true)

@@ -3,7 +3,7 @@ title: 'Account Picture'
 description: 'Visibility option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#account-picture'
 sidebar:
-  order: 2
+  order: 3
 ---
 
 Changes the user account picture via:

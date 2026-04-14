@@ -8,6 +8,8 @@ sidebar:
 
 Prevents windows from being minimized or restored when the active window is shaken back and forth with the mouse.
 
+`SystemSettings > System > Multitasking: Title bar window shake`.
+
 ![](https://www.techjunkie.com/wp-content/uploads/2018/10/windows-aero-shake-example.gif)
 
 ```json

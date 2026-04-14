@@ -3,7 +3,7 @@ title: 'Explorer Options'
 description: 'Visibility option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#explorer-options'
 sidebar:
-  order: 3
+  order: 4
 ---
 
 It changes every setting, which is shown in the `Folder Options` window. Some are personal preference, see suboptions bellow for customization.

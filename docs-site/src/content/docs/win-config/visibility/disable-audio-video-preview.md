@@ -3,7 +3,7 @@ title: 'Audio / Video Preview'
 description: 'Visibility option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#disable-audio--video-preview'
 sidebar:
-  order: 7
+  order: 8
 ---
 
 Disables the preview function for (extensions):

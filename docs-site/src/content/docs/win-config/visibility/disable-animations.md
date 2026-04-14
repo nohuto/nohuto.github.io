@@ -3,7 +3,7 @@ title: 'Animations'
 description: 'Visibility option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#disable-animations'
 sidebar:
-  order: 10
+  order: 11
 ---
 
 Minimize, Maximize, Taskbar Animations / First Sign-In Animations. These options are also changeable via `SystemPropertiesPerformance` (`WIN + R`) - first three.
