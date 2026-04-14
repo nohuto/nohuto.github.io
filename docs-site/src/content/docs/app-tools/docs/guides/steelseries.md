@@ -3,7 +3,7 @@ title: 'SteelSeries Configuration'
 description: 'Generated from app-tools file: guides/steelseries.md.'
 editUrl: 'https://github.com/nohuto/app-tools/blob/main/guides/steelseries.md'
 sidebar:
-  order: 8
+  order: 9
 ---
 
 If you only own a SteelSeries keyboard, save your configuration in an on-board profile then turn off the lighting via `SteelSeries Key + C`. Turning off the lighting in the "Prism" tab won't work, as the default colors will load when the app isn't opened (this tip is for users who don't want the app to run in the background).

@@ -3,7 +3,7 @@ title: 'Census Data Collection'
 description: 'Privacy option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-census-data-collection'
 sidebar:
-  order: 50
+  order: 51
 ---
 
 `DeviceCensus.exe` = "Device and configuration data collection tool"

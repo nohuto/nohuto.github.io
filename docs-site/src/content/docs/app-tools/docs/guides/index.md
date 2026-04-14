@@ -11,6 +11,7 @@ sidebar:
 - [Brave Configuration (iOS)](/docs/app-tools/docs/guides/brave-ios/)
 - [Discord Configuration](/docs/app-tools/docs/guides/discord/)
 - [LGHUB Configuration](/docs/app-tools/docs/guides/lghub/)
+- [Mullvad Configuration](/docs/app-tools/docs/guides/mullvad-desktop/)
 - [Spotify Configuration](/docs/app-tools/docs/guides/spotify/)
 - [Steam Configuration](/docs/app-tools/docs/guides/steam/)
 - [SteelSeries Configuration](/docs/app-tools/docs/guides/steelseries/)

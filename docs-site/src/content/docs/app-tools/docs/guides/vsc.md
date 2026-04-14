@@ -3,7 +3,7 @@ title: 'VSC Configuration'
 description: 'Generated from app-tools file: guides/vsc.md.'
 editUrl: 'https://github.com/nohuto/app-tools/blob/main/guides/vsc.md'
 sidebar:
-  order: 9
+  order: 10
 ---
 
 I personally use [VSCodium](https://github.com/VSCodium/vscodium) instead of VSC, as VSC contains telemetry/tracker - [VSC developer comment](https://github.com/Microsoft/vscode/issues/60#issuecomment-161792005).

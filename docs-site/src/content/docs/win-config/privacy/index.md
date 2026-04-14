@@ -55,6 +55,7 @@ sidebar:
 - [Opt-Out KMS Activation Telemetry](/docs/win-config/privacy/opt-out-kms-activation-telemetry/)
 - [Font Providers](/docs/win-config/privacy/disable-font-providers/)
 - [Local Security Questions](/docs/win-config/privacy/disable-local-security-questions/)
+- [Thumbnail Caching](/docs/win-config/privacy/disable-thumbnail-caching/)
 - [Application Compatibility](/docs/win-config/privacy/disable-application-compatibility/)
 - [Census Data Collection](/docs/win-config/privacy/disable-census-data-collection/)
 - [OneSettings Download](/docs/win-config/privacy/disable-onesettings-download/)

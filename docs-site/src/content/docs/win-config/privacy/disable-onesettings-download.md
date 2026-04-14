@@ -3,7 +3,7 @@ title: 'OneSettings Download'
 description: 'Privacy option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-onesettings-download'
 sidebar:
-  order: 51
+  order: 52
 ---
 
 Services Configuration is used by Windows components and apps, such as the telemetry service, to dynamically update their configuration. If you turn off this service, apps using this service may stop working.
