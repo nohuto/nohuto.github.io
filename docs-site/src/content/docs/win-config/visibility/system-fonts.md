@@ -74,6 +74,13 @@ Revert the changes:
 }
 ```
 
+## Suboptions
+
+| Option | Description |
+| --- | --- |
+| Hide fonts based on language settings | "Windows can hide fonts that are not designed for your input language settings. If you choose this option, only fonts that are designed for your language settings will be listed in your programs. |
+| Allow fonts to be installed using a shortcut | To save space on your computer, you can choose to install a shortcut to a font file instead of the file itself. If the font file becomes unavailable, you might not be able to use the font. |
+
 ## Notes on System Text Size
 
 Edit text sizes via `TextScaleFactor`, valid ranges are `100-225` (DWORD).
