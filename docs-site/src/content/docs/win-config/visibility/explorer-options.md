@@ -10,9 +10,9 @@ It changes every setting, which is shown in the `Folder Options` window. Some ar
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/explorer.png?raw=true)
 
----
 
-Miscellaneous notes:
+## Miscellaneous Notes
+
 ```json
 "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer": {
   "ShellState": { "Type": "REG_BINARY", "Data": "240000003e20000000000000000000000001000000130000000000000042000000" }
@@ -21,6 +21,8 @@ Miscellaneous notes:
   "Settings": { "Type": "REG_BINARY", "Data": "0c0002000a01000060000000" }
 }
 ```
+
+## Windows Policies
 
 ```json
   {

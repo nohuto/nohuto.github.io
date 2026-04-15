@@ -8,6 +8,8 @@ sidebar:
 
 Disables legacy/insecure protocols, ciphers, renegotiation, hashes, and forces .NET apps to use strong cryptography (Disables RC2 (40/56/128), RC4 (40/56/64/128), DES, 3DES, NULL, MD5/SHA-1, SSL 2.0/3.0, TLS 1.0/1.1, DTLS 1.0, insecure TLS renegotiation - Enables TLS SCSV, .NET StrongCrypto & SystemDefaultTlsVersions, NTLMv2 only). Windows may use insecure connections for e.g. older software (compatibility reasons), so disabling them can cause issues with old software.
 
+## LmCompatibilityLevel Data
+
 | Setting | Description | Registry security level |
 | ---- | ---- | ---- |
 | Send LM & NTLM responses | Client devices use LM and NTLM authentication, and they never use NTLMv2 session security. Domain controllers accept LM, NTLM, and NTLMv2 authentication. | 0 |
@@ -26,7 +28,8 @@ Level `5` gets applied.
 
 ![](https://github.com/nohuto/win-config/blob/main/security/images/insecureconn.png?raw=true)
 
-DTLS 1.2 & TLS 1.3:
+## DTLS 1.2 & TLS 1.3 Notes
+
 ```json
 {
   "HKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\DTLS 1.2\\Server": {

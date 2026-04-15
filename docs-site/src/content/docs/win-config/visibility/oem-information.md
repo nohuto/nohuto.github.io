@@ -30,9 +30,7 @@ Edit miscellaneous things in `winver.exe` using (`basebrd.dll`/`basebrd.dll.mui`
 
 > https://www.angusj.com/resourcehacker/
 
----
-
-Example:
+### Example
 
 ```json
 "HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\OEMInformation": {

@@ -18,7 +18,7 @@ By adding them, you'll have to click `OK` every time you boot/log in:
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/legalnotice.png?raw=true)
 
----
+## Windows Policies
 
 ```json
 {
@@ -123,6 +123,8 @@ By adding them, you'll have to click `OK` every time you boot/log in:
 },
 ```
 
+## Accounts Captures
+
 `Accounts > Sign-in options` - `Automatically save my restartable apps and restart them when I sign back in`:
 ```c
 // Off
@@ -141,9 +143,7 @@ HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\SystemProtectedUserData\S-{ID}\An
 HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\SystemProtectedUserData\S-{ID}\AnyoneRead\Logon\ShowEmail	Type: REG_DWORD, Length: 4, Data: 0
 ```
 
----
-
-Miscellaneous notes:
+## Personalization Captures
 
 `Personalization > Lock screen` - `Personalize your lock screen`:
 ```c

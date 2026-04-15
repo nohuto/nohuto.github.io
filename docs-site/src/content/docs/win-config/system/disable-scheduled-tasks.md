@@ -8,6 +8,8 @@ sidebar:
 
 This list was created using my small [`ScheduledTasksLists.ps1`](https://github.com/nohuto/win-config/blob/main/system/assets/ScheduledTasksList.ps1) parser which displays name, path, description, principals, settings, triggers, actions if given. See example output of a stock 25H2 installation: [scheduled-tasks.json](https://github.com/nohuto/win-config/blob/main/system/assets/scheduled-tasks.json).
 
+## Scheduled Tasks Table
+
 | Option Name | Task | Description | Action Command |
 | --- | --- | --- | --- |
 | CEIP | `\Microsoft\Windows\Autochk\Proxy` | This task collects and uploads autochk SQM data if opted-in to the Microsoft Customer Experience Improvement Program. | `%windir%\system32\rundll32.exe /d acproxy.dll,PerformAutochkOperations` |

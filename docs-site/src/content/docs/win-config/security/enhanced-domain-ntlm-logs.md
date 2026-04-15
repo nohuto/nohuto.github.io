@@ -10,6 +10,8 @@ Controls the Netlogon policy that enables or disables enhanced domain wide NTLM 
 
 > https://aka.ms/ntlmlogandblock
 
+## Windows Policies
+
 ```json
 {
   "File": "Netlogon.admx",

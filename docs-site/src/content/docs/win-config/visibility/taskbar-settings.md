@@ -23,6 +23,8 @@ SystemSettings.exe	HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advan
 ```
 Disallowing it via the `AllowNewsAndInterests` policy won't set `TaskbarDa` to 0, but it grays out & disables the option.
 
+## Windows Policies
+
 ```json
 {
   "File": "StartMenu.admx",

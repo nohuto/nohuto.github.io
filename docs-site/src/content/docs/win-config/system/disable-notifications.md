@@ -6,6 +6,8 @@ sidebar:
   order: 22
 ---
 
+## Option/Suboptions
+
 | Option | Description |
 | ---- | ---- |
 | Main | Disables all kind of notifications completely. |
@@ -26,6 +28,8 @@ sidebar:
 | Turn off access to the Store | `NoUseStoreOpenWith` policy - "*This policy setting specifies whether to use the Store service for finding an application to open a file with an unhandled file type or protocol association. When a user opens a file type or protocol that is not associated with any applications on the computer, the user is given the choice to select a local application or use the Store service to find an application. If you enable this policy setting, the "Look for an app in the Store" item in the Open With dialog is removed. If you disable or do not configure this policy setting, the user is allowed to use the Store service and the Store item is available in the Open With dialog.*" |
 | Hide Time in Notification Center | Works via `SystemSettings > Time & language > Date & time: Show time and date in the System tray` |
 
+
+## All NOC_GLOBAL_SETTING Values
 
 All `NOC_GLOBAL_SETTING_*` I found in `NotificationController.dll`:
 ```c
@@ -105,7 +109,7 @@ See [system/assets | noti-CLowDiskSpaceUI_CanShowStorageSenseToast.c](https://gi
 "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Notifications\\TimestampWhenSeen","Length: 20"
 ```
 
-### Windows Policies
+## Windows Policies
 
 ```json
 {

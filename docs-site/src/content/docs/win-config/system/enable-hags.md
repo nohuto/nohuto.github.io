@@ -15,7 +15,7 @@ HAGS should be enabled.
 > https://devblogs.microsoft.com/directx/hardware-accelerated-gpu-scheduling/  
 > https://maxcloudon.com/hardware-accelerated-gpu-scheduling/
 
----
+## SystemSettings Records
 
 Enable HAGS:
 ```powershell

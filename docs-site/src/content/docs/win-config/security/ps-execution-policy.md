@@ -14,6 +14,8 @@ sidebar:
 
 *On non-Windows systems, the reported default is `Unrestricted` and cannot be changed, though the actual behavior is closer to `Bypass` because Windows security zones do not exist there.*"
 
+### Execution Policy
+
 | **Execution Policy**  | **Description** |
 | ---- | ---- |
 | `AllSigned` | All scripts must be signed by a trusted publisher. Prompts for untrusted publishers. |
@@ -24,6 +26,8 @@ sidebar:
 | `Undefined` | No policy in this scope. If all scopes are undefined, defaults to `Restricted` (clients) or `RemoteSigned` (servers). |
 | `Unrestricted` | Unsigned scripts can run. Prompts for scripts from outside the intranet zone. |
 
+### Scope
+
 | **Scope** | **Description** |
 |---- | ---- |
 | `MachinePolicy` | Set by a Group Policy for all users of the computer |
@@ -31,6 +35,8 @@ sidebar:
 | `Process` | Sets the execution policy only for the current session - stored in an environment variable & removed when the session ends |
 | `CurrentUser` | The execution policy affects only the current user - stored in the HKCU subkey |
 | `LocalMachine` | The execution policy affects all users on the current computer - stored in the HKLM subkey |
+
+### Registry Values
 
 | **Value Name** | **Description** |
 | ---- | ---- |

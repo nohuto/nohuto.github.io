@@ -20,15 +20,18 @@ HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer : SettingsPageV
 
 Page identifiers are the part after `ms-settings:` in a settings URI.
 
-Example:
+### Example:
+
 `showonly:bluetooth` only shows the `Bluetooth` page
 `hide:bluetooth;windowsdefender` hides the `Bluetooth` & `Windows Security` pages
 
 All categories of `ms-settings` URIs:
 > https://learn.microsoft.com/en-us/windows/apps/develop/launch/launch-settings-app#ms-settings-uri-scheme-reference
 
-Example value:
+### Example Value
+
 ```bat
 hide:sync;signinoptions-launchfaceenrollment;signinoptions-launchfingerprintenrollment;maps;maps-downloadmaps;mobile-devices;family-group;deviceusage;findmydevice
 ```
+
 It depends on the user what he wants to see and what not, so I won't add a switch for it.

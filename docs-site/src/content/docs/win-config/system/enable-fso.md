@@ -6,7 +6,7 @@ sidebar:
   order: 34
 ---
 
-This may not be accurate yet, it's preferable to disable FSO per application via the compability section.
+This may not be accurate yet, it's preferable to disable FSO per application via the compability section. Disabling this option won't revert the changes like all other ones do, it'll disable FSO.
 
 ### FSE (Fullscreen Exclusive)
 
@@ -26,9 +26,7 @@ DX12 games don't support FSE.
 
 ![](https://github.com/nohuto/win-config/blob/main/system/images/swapchain.jpg?raw=true)
 
----
-
-Caution: Disabling this option won't revert the changes like all other ones do, it'll disable FSO.
+## ResourcePolicyServer
 
 All values I found that are `GameDVR` related in `ResourcePolicyServer.dll`:
 ```c
@@ -55,6 +53,8 @@ GameDVR_HonorUserFSEBehaviorMode
 
 `GameDVR_DSEBehavior` doesn't exist on my current system.
 
+## Compability Captures
+
 Disable/enable FSO for a specific application via `Properties > Compatibility > Change settings for all users` - `Disable fullscreen optimizations` or do it per user one step before.
 
 ```c
@@ -68,16 +68,3 @@ HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers\C:\Progr
 > https://devblogs.microsoft.com/directx/demystifying-full-screen-optimizations/
 > https://wiki.special-k.info/en/SwapChain
 > https://wiki.special-k.info/Presentation_Model
-
----
-
-Miscellaneous values:
-```c
-GameDVR_Enabled
-GameDVR_GameGUID
-// Seems to be located in HKCU\System\GameConfigStore\Children\*
-
-Win32_AutoGameModeDefaultProfile
-Win32_GameModeRelatedProcesses
-Win32_GameModeUserRelatedProcesses
-```

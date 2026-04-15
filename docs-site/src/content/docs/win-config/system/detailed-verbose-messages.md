@@ -15,6 +15,8 @@ Note: This policy setting is ignored if the \"Remove Boot/Shutdown/Logon/Logoff 
 
 > https://learn.microsoft.com/en-us/troubleshoot/windows-server/performance/enable-verbose-startup-shutdown-logon-logoff-status-messages
 
+## Windows Policies
+
 ```json
 {
   "File": "Logon.admx",

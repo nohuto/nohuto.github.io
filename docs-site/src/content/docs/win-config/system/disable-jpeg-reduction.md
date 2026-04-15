@@ -8,6 +8,8 @@ sidebar:
 
 Windows reduces the quality of JPEG images you set as the desktop background to `85%` by default, you can set it to `100%` via the option switch.
 
+### TranscodeImage
+
 ```c
 if ( JPEGImportQuality not present or error )
     v54 = 85.0f;

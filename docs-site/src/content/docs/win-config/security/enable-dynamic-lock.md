@@ -8,6 +8,8 @@ sidebar:
 
 Automatically locks your device when you're away. It requires Bluetooth to be active. This option is disabled by default.
 
+### Accounts Captures
+
 Toggling it via `Accounts > Sign-in options`:
 ```c
 // Enabled
@@ -17,9 +19,7 @@ HKCU\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\EnableGoodbye	Type: R
 HKCU\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\EnableGoodbye	Type: REG_DWORD, Length: 4, Data: 0
 ```
 
----
-
-Miscellaneous notes:
+## Windows Policies
 
 ```json
 {

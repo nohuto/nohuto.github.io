@@ -166,7 +166,7 @@ reg delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache
 rmdir /s /q "%windir%\System32\Tasks\Microsoft\Windows\Windows Defender"
 ```
 
-## Windows Security Records
+## Windows Security Captures
 
 ```c
 // Real-time protection - 0 = On, 1 = Off

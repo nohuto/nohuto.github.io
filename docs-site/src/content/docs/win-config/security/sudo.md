@@ -10,11 +10,15 @@ sidebar:
 
 Note that sudo uses administrator previledges and doesn't include `TrustedInstaller`/`SYSTEM` previledges.
 
+### Modes
+
 | Mode | Description |
 | ---- | ---- |
 | `forceNewWindow` | Runs the command elevated in a new console window. |
 | `disableInput` | Runs elevated in the same window but blocks keyboard input while it runs. |
 | `normal` | Runs elevated in the same window with normal input and output behavior. |
+
+## Windows Policies
 
 ```json
 {

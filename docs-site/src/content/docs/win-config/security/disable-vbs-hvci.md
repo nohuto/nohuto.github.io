@@ -37,12 +37,14 @@ You can disable VBS for a VM with:
 Set-VMSecurity -VMName <VMName> -VirtualizationBasedSecurityOptOut $true
 ```
 
-Details on device/credential guard:
+## Windows Internals
 
 ![](https://github.com/nohuto/win-config/blob/main/security/images/vbs-guards1.png?raw=true)
 ![](https://github.com/nohuto/win-config/blob/main/security/images/vbs-guards2.png?raw=true)
 ![](https://github.com/nohuto/win-config/blob/main/security/images/vbs-guards3.png?raw=true)
 ![](https://github.com/nohuto/win-config/blob/main/security/images/vbs-guards4.png?raw=true)
+
+## Windows Policies
 
 ```json
 {

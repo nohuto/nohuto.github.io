@@ -12,6 +12,8 @@ BCDEdit is primarily used for boot troubleshooting, recovery, debugging, and sec
 
 BitLocker validates a subset of BCD settings at boot to detect security sensitive changes. The validated set can be extended or reduced via policy, and the hex value of a triggering setting is logged (event ID 523). Friendly names can be listed with `bcdedit /enum all`, but some settings have no friendly name and must be configured by hex. BCD settings are also scoped to specific boot applications (for example, `winload`, `winresume`, `bootmgr`), policy entries can be prefixed with the target application (for example, `winload:nx` or `all:locale`). When secure boot is used for integrity validation, the enhanced BCD validation profile policy is ignored, and secure boot enforces its own BCD rules.
 
+## Key & Value Structure
+
 As kind of everything else, BCD edits are also stored in the registry:
 ```c
 HKLM\BCD00000000\Objects
@@ -187,7 +189,7 @@ else
 HalpInterruptSetMsiOverride(v10);
 ```
 
----
+## Custom Edits
 
 `custom:16000067 true` disables the Windows logo while booting:
 
@@ -196,6 +198,8 @@ HalpInterruptSetMsiOverride(v10);
 `custom:16000069 true` disables the loading circle while booting:
 
 ![](https://github.com/nohuto/win-config/blob/main/system/images/load.png?raw=true)
+
+## Default Entries
 
 Default entries (25H2, Build 26200.6584) including WinRE:
 ```powershell

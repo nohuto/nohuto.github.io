@@ -21,6 +21,8 @@ if ( (int)CLowDiskSpaceUI_GetIsMDMConfigured(
     !v30 )
 ```
 
+## Windows Policies
+
 ```json
 {
   "File": "StorageSense.admx",

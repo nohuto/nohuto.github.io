@@ -10,6 +10,8 @@ Changes the size of text, apps, and other items. Note that on laptops the defaul
 
 ![](https://github.com/nohuto/win-config/blob/main/system/images/displayscaling.png?raw=true)
 
+## SystemSettings Captures
+
 ```c
 // 100%
 SystemSettings.exe	RegSetValue	HKLM\System\CurrentControlSet\Control\GraphicsDrivers\ScaleFactors\MONITORID\DpiValue	Type: REG_DWORD, Length: 4, Data: 0
@@ -36,8 +38,7 @@ SystemSettings.exe	RegSetValue	HKLM\System\CurrentControlSet\Control\GraphicsDri
 SystemSettings.exe	RegSetValue	HKCU\Control Panel\Desktop\PerMonitorSettings\MONITORID\DpiValue	Type: REG_DWORD, Length: 4, Data: 5
 ```
 
----
-
+## Suboption
 
 `Prevent Window Minimization on Monitor Disconnection` disables `Minimize windows then a monitor is diconnected` (`System > Display`).
 

@@ -34,9 +34,7 @@ Editing process mitigations via LGPE (`Administrative Templates\System\Mitigatio
 
 > https://learn.microsoft.com/en-us/windows/security/operating-system-security/device-management/override-mitigation-options-for-app-related-security-policies
 
----
-
-**Table 7-20** Process mitigation options
+## Process Mitigation Options
 
 | Mitigation Name | Use Case | Enabling Mechanism |
 | --- | --- | --- |
@@ -71,7 +69,7 @@ Editing process mitigations via LGPE (`Administrative Templates\System\Mitigatio
 
 Read more about process-mitigation policies in [Windows Internals E7, P1 - P.735f. 'Process-mitigation policies'](https://github.com/nohuto/windows-books/releases/download/7th-Edition/Windows-Internals-E7-P1.pdf).
 
----
+## ProcessMitigation ValidValues
 
 `(gcm set-processmitigation).Parameters.Disable.Attributes.ValidValues`:
 ```powershell

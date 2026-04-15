@@ -31,7 +31,7 @@ Disabling it via policies etc. is enough, therefore I won't add them as there's 
 \Registry\User\S-<ID>\SOFTWARE\Microsoft\WINDOWS\CurrentVersion\DesktopSpotlight\Settings : EnabledState
 ```
 
----
+## Windows Policies
 
 ```json
 {

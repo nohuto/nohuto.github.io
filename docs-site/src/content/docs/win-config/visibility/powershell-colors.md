@@ -12,6 +12,8 @@ Since `powershell.exe` has default color of white (foreground) and blue (backgro
 `0-3` bit = `Foreground color`  
 `4-7` bit = `Background color`
 
+### Color Table
+
 | Color | Binary | Decimal |
 | ----- | :----: | :-----: |
 | Black | `0000` | `0` |
@@ -32,6 +34,8 @@ Since `powershell.exe` has default color of white (foreground) and blue (backgro
 | White | `1111` | `15` |
 
 Calculate it on your own, by using [bitmask-calc](https://github.com/nohuto/bitmask-calc) - e.g. set bit `1-3` and `7`, to get `Yellow` (foreground) and `DarkGray` (background).
+
+## Miscellaneous Notes
 
 If you've set a custom foreground/background color, they won't override the colors changed within the code, e.g.:
 ```powershell

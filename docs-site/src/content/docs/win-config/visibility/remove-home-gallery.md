@@ -6,12 +6,16 @@ sidebar:
   order: 9
 ---
 
+#### Home / Galery
+
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/homegal.png?raw=true)
+
+#### Network Sharing Folder (Suboption)
+
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/homenet.png?raw=true)
 
----
+### Miscellaneous Notes
 
-Miscellaneous comments:
 ```c
 {018D5C66-4533-4307-9B53-224DE2ED1FE6} = OneDrive
 {F02C1A0D-BE21-4350-88B0-7367FC96EF3C} = Network Sharing Folder

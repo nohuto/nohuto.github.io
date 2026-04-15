@@ -10,6 +10,8 @@ Note that this is a laptop only feature. The "Mobility Center" is a feature that
 
 ![](https://github.com/nohuto/win-config/blob/main/system/images/mobility-center.png?raw=true)
 
+## Windows Policies
+
 ```json
 {
   "File": "MobilePCMobilityCenter.admx",
@@ -30,9 +32,7 @@ Note that this is a laptop only feature. The "Mobility Center" is a feature that
 },
 ```
 
----
-
-Miscellaneous notes:
+### Miscellaneous Values
 
 ```c
 "HKCU\Software\Microsoft\Windows\CurrentVersion\Mobility\LastResumeOnPCInteractionTime","Length: 20"

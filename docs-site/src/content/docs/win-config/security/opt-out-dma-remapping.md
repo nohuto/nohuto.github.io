@@ -13,7 +13,7 @@ sidebar:
 `per-device` - recommended and preferred mechanism (`DmaRemappingCompatible`)
 `per-driver` - legacy mechanism (`RemappingSupported`)
 
-`DmaRemappingCompatible`:
+### `DmaRemappingCompatible`
 
 | Value | Meaning |
 |--|--|
@@ -23,7 +23,7 @@ sidebar:
 | 3 | Opt-in |
 | No registry key | Let the system determine the policy. |
 
-`RemappingFlags`:
+### `RemappingFlags`
 
 | Value | Meaning |
 |--|--|
@@ -31,7 +31,7 @@ sidebar:
 | 1 | If **RemappingSupported** is 1, opt in, but only when one or more of the following conditions are met: A. The device is an external device (for example, Thunderbolt); B. DMA verification is enabled in Driver Verifier |
 | No registry key | Same as 0 value. |
 
-`RemappingSupported`:
+### `RemappingSupported`
 
 | Value | Meaning |
 |--|--|
@@ -48,7 +48,7 @@ Example paths:
 \Registry\Machine\SYSTEM\ControlSet001\Enum\pci\VEN_1022&DEV_1483&SUBSYS_88081043&REV_00\3&11583659&0&09\Device Parameters\DMA Management : RemappingSupported
 ```
 
----
+## EnableNVMeInterface Notes
 
 Since `EnableNVMeInterface` is included in the function, I'll add it here. Default value of `0`, range `0`-`1`? Located in:
 ```

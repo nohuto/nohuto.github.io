@@ -8,6 +8,8 @@ sidebar:
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/mostused.jpg?raw=true)
 
+## Windows Policies
+
 ```json
 {
   "File": "StartMenu.admx",

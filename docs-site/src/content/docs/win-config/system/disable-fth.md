@@ -12,4 +12,6 @@ Used for preventing legacy or unstable applications from crashing, read through 
 > https://learn.microsoft.com/en-us/windows/win32/win7appqual/fault-tolerant-heap  
 > https://www.youtube.com/watch?v=4SvNNXAwoqE
 
+## Windows Internals
+
 ![](https://github.com/nohuto/win-config/blob/main/system/images/fth.png?raw=true)

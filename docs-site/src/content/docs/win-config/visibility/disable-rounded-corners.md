@@ -14,6 +14,8 @@ It works by overriding the first 8 bytes in the function with `48 C7 C0 00 00 00
 mov rax, 0; ret // result = 0
 ```
 
+## GetEffectiveCornerStyle
+
 That function calculates the effective corner mode, its callers include border/shadow/radius.
 ```c
 /*

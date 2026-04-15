@@ -34,6 +34,8 @@ PageCombining                : True # Enabled
 PSComputerName               :
 ```
 
+## Windows Internals
+
 ![](https://github.com/nohuto/win-config/blob/main/system/images/pagecomb1.png?raw=true)
 ![](https://github.com/nohuto/win-config/blob/main/system/images/pagecomb2.png?raw=true)
 ![](https://github.com/nohuto/win-config/blob/main/system/images/pagecomb3.png?raw=true)

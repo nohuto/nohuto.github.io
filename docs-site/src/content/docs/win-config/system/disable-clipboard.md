@@ -25,6 +25,8 @@ Miscellaneous notes:
 "HKCU\Software\Microsoft\Clipboard\ShellHotKeyUsed","Length: 16"
 ```
 
+## Windows Policies
+
 ```json
 {
   "File": "TerminalServer.admx",

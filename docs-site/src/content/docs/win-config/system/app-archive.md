@@ -10,6 +10,8 @@ sidebar:
 
 If enabled, the system will periodically check for such infrequently used apps. By default app archiving is turned on.
 
+## SystemSettings Records
+
 Toggling the option via `Apps > Advanced app settings`:
 ```c
 // On
@@ -18,6 +20,8 @@ HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\InstallService\Stubification\S-{I
 // Off
 HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\InstallService\Stubification\S-{ID}\EnableAppOffloading    Type: REG_DWORD, Length: 4, Data: 0
 ```
+
+## Windows Policies
 
 ```json
 {

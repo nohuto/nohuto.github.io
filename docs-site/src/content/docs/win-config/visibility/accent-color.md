@@ -25,6 +25,8 @@ Something I noticed while creating the option is that procmon doesn't show the a
 99EBFF004CC2FF000091F8000078D4000067C000003E9200001A6800F7630C00
 ```
 
+## SystemSettings Captures
+
 Changing the color via `Personalization > Colors` sets:
 ```c
 // Nord Theme (#2e3440)
@@ -46,57 +48,4 @@ HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Accent\AccentColorMenu	T
 HKCU\Software\Microsoft\Windows\DWM\AccentColor	Type: REG_DWORD, Length: 4, Data: 4292114432
 HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\SystemProtectedUserData\S-1-5-21-1713887642-2553820887-3827158055-1000\AnyoneRead\Colors\StartColor	Type: REG_DWORD, Length: 4, Data: 4290799360
 HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\SystemProtectedUserData\S-1-5-21-1713887642-2553820887-3827158055-1000\AnyoneRead\Colors\AccentColor	Type: REG_DWORD, Length: 4, Data: 4292114432
-```
-
-Ignore it, this is the old "Nord Accent Color" json block.
-```json
-"SUBOPTION": {
-  "Nord Accent Color": {
-    "HKCU\\Software\\Microsoft\\Windows\\DWM": {
-      "ColorizationColor": { "Type": "REG_DWORD", "Data": 3291823178 },
-      "ColorizationAfterglow": { "Type": "REG_DWORD", "Data": 3291823178 },
-      "AccentColor": { "Type": "REG_DWORD", "Data": 4283055157 }
-    },
-    "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Accent": {
-      "AccentPalette": { "Type": "REG_BINARY", "Data": "59657CFF4A5468FF3F4859FF353C4AFF2A303BFF1F242CFF111317FF88179800" },
-      "StartColorMenu": { "Type": "REG_DWORD", "Data": 4282069034 },
-      "AccentColorMenu": { "Type": "REG_DWORD", "Data": 4283055157 }
-    },
-    "COMMANDS": {
-      "AccentColorsSystemProtected": {
-        "Action": "user_id",
-        "UserIDPath": "HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\SystemProtectedUserData\\{userid}\\AnyoneRead\\Colors",
-        "Values": {
-          "StartColor": { "Type": "REG_DWORD", "Data": 4282069034, "Elevated": true },
-          "AccentColor": { "Type": "REG_DWORD", "Data": 4283055157, "Elevated": true }
-        }
-      }
-    }
-  }
-}
-
-"SUBOPTION": {
-  "Nord Accent Color": {
-    "HKCU\\Software\\Microsoft\\Windows\\DWM": {
-      "ColorizationColor": { "Type": "REG_DWORD", "Data": 3288365268 },
-      "ColorizationAfterglow": { "Type": "REG_DWORD", "Data": 3288365268 },
-      "AccentColor": { "Type": "REG_DWORD", "Data": 4292114432 }
-    },
-    "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Accent": {
-      "AccentPalette": { "Type": "REG_BINARY", "Data": "99EBFF004CC2FF000091F8000078D4000067C000003E9200001A6800F7630C00" },
-      "StartColorMenu": { "Type": "REG_DWORD", "Data": 4290799360 },
-      "AccentColorMenu": { "Type": "REG_DWORD", "Data": 4292114432 }
-    },
-    "COMMANDS": {
-      "AccentColorsSystemProtected": {
-        "Action": "user_id",
-        "UserIDPath": "HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\SystemProtectedUserData\\{userid}\\AnyoneRead\\Colors",
-        "Values": {
-          "StartColor": { "Type": "REG_DWORD", "Data": 4290799360, "Elevated": true },
-          "AccentColor": { "Type": "REG_DWORD", "Data": 4292114432, "Elevated": true }
-        }
-      }
-    }
-  }
-}
 ```

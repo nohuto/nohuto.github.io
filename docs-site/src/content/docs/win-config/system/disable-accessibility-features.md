@@ -8,6 +8,8 @@ sidebar:
 
 Disables all kind of accessibility features such as `Voice Access`, `Live Captions`, `Narrator`, `Magnifier`, `OSK` (only via suboption) etc. (`SystemSettings > Accessibility`/`Control Panel > All Control Panel Items > Ease of Access Center`).
 
+## Suboptions
+
 | Suboption | Description |
 | --- | --- |
 | Audio Description | Hear descriptions of what's happening in videos (when available). |

@@ -17,7 +17,7 @@ I personally recommend using only the main option. This includes disabling telem
 
 Read more about it in [Windows Internals E7, P2](https://github.com/nohuto/windows-books/releases/download/7th-Edition/Windows-Internals-E7-P2.pdf) 'Windows services (P.426-474) section.
 
-## Service/Driver Table Overview
+## Service/Driver Table
 
 The suboptions probably overlap the documentation. If so, you can open the markdown file on my GitHub instead:
 > [/docs/win-config/system/disable-services-drivers/](/docs/win-config/system/disable-services-drivers/)

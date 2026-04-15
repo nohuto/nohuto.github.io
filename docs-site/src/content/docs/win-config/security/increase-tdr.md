@@ -10,7 +10,9 @@ sidebar:
 
 > Disabling TDR removes a valuable layer of protection, so it is generally recommended that you keep it enabled.
 
-| Registry key       | Value name           | Default value                | Description                                                                                               |
+### Registry Values
+
+| Registry value     | Value name           | Default data                 | Description                                                                                               |
 | ------------------ | -------------------- | ---------------------------- | --------------------------------------------------------------------------------------------------------- |
 | TdrLevel           | `TdrLevel`           | `3` (TdrLevelRecover)        | Controls the GPU timeout behavior. `0` = disabled, `1` = bugcheck, `2` = recover to VGA (not implemented) `3` = reset/recover (Windows default). |
 | TdrDelay           | `TdrDelay`           | `2` seconds                  | Timeout threshold before Windows starts TDR handling. Longer value = GPU gets more time. |
@@ -25,7 +27,8 @@ sidebar:
 > https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/display/tdr-registry-keys.md  
 > https://docs.nvidia.com/gameworks/content/developertools/desktop/timeout_detection_recovery.htm
 
-Driver code snippets:
+## Pseudocode Snippets
+
 ```c
 if ( v0 < 0 )
 {
@@ -61,6 +64,8 @@ if (dword_1C015B874 != v15) {
 ```
 > https://github.com/nohuto/win-registry/blob/main/records/Graphics-Drivers.txt  
 > [security/assets | TdrInit.c](https://github.com/nohuto/win-config/blob/main/security/assets/TdrInit.c)
+
+## NVLDDMKM TDR
 
 Notes to the values located in:
 ```

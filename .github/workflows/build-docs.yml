@@ -1,4 +1,4 @@
-name: build-docs
+name: site-update
 
 on:
   schedule:
@@ -9,13 +9,23 @@ permissions:
   contents: write
 
 jobs:
-  build:
+  update-and-build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout site repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Refresh repository data
+        run: python main/scripts/update-repo-descs.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Checkout win-config
         uses: actions/checkout@v4
@@ -30,6 +40,34 @@ jobs:
           repository: nohuto/win-registry
           ref: main
           path: sources/win-registry
+
+      - name: Checkout nvapi-cli
+        uses: actions/checkout@v4
+        with:
+          repository: nohuto/nvapi-cli
+          ref: main
+          path: sources/nvapi-cli
+
+      - name: Checkout regkit
+        uses: actions/checkout@v4
+        with:
+          repository: nohuto/regkit
+          ref: main
+          path: sources/regkit
+
+      - name: Checkout app-tools
+        uses: actions/checkout@v4
+        with:
+          repository: nohuto/app-tools
+          ref: main
+          path: sources/app-tools
+
+      - name: Checkout game-tools
+        uses: actions/checkout@v4
+        with:
+          repository: nohuto/game-tools
+          ref: main
+          path: sources/game-tools
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -48,14 +86,18 @@ jobs:
         env:
           WIN_CONFIG_REPO_URL: https://github.com/nohuto/win-config
           WIN_REGISTRY_REPO_URL: https://github.com/nohuto/win-registry
+          NVAPI_CLI_REPO_URL: https://github.com/nohuto/nvapi-cli
+          REGKIT_REPO_URL: https://github.com/nohuto/regkit
+          APP_TOOLS_REPO_URL: https://github.com/nohuto/app-tools
+          GAME_TOOLS_REPO_URL: https://github.com/nohuto/game-tools
 
-      - name: Commit docs changes
+      - name: Commit generated site changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           if git status --porcelain | grep .; then
-            git add docs docs-site/src/content/docs
-            git commit -m "chore(docs): rebuild generated starlight docs"
+            git add docs docs-site/src/content/docs main/data/repos.json main/data/media-cache.json main/media main/images
+            git commit -m "chore(site): refresh generated site data"
             git push
           else
             echo "No changes to commit."

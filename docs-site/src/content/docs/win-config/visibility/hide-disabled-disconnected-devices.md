@@ -10,6 +10,8 @@ Hides disabled/disconnected devices in the `mmsys.cpl` window.
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/hidedevices.png?raw=true)
 
+## Sound Captures
+
 ```c
 // Show disabled/disconnected devices
 rundll32.exe	RegSetValue	HKCU\Software\Microsoft\Multimedia\Audio\DeviceCpl\ShowHiddenDevices	Type: REG_DWORD, Length: 4, Data: 1

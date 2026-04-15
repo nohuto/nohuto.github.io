@@ -2,7 +2,7 @@
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
 import { getDocsDirectoryData } from '../data/projects-directory';
 
-const { groups, repos } = await getDocsDirectoryData();
+const { repos } = await getDocsDirectoryData();
 ---
 
 <StarlightPage
@@ -15,167 +15,25 @@ const { groups, repos } = await getDocsDirectoryData();
   }}
   hasSidebar={false}
 >
-  <section class="docs-directory" data-directory-root>
+  <section class="docs-directory">
     <p class="docs-directory-description">
       For now, this only includes repositories that have more than a few lines of MD content.
     </p>
-    <div class="docs-directory-layout">
-      <aside class="docs-directory-filter-panel" aria-label="Directory filters">
-        <div class="docs-directory-filter-block">
-          <label class="docs-directory-search-wrap" for="docs-directory-search">
-            <input
-              id="docs-directory-search"
-              class="docs-directory-search-input"
-              type="text"
-              placeholder="Search repositories"
-              autocomplete="off"
-              spellcheck="false"
-            />
-            <span class="docs-directory-search-icon" aria-hidden="true"></span>
-          </label>
-        </div>
-
-        <fieldset class="docs-directory-filter-block docs-directory-groups">
-          <legend class="docs-directory-filter-label">Groups</legend>
-          <div class="docs-directory-group-list">
-            {
-              groups.map((group) => (
-                <label class="docs-directory-group-item">
-                  <input
-                    type="checkbox"
-                    value={group.toLowerCase()}
-                    data-group-checkbox
-                  />
-                  <span>{group}</span>
-                </label>
-              ))
-            }
-          </div>
-        </fieldset>
-      </aside>
-
-      <div class="docs-directory-results">
-        <p class="docs-directory-results-meta" data-results-meta></p>
-        <p class="docs-directory-no-results" data-no-results hidden>
-          No repositories matched your current filters.
-        </p>
-
-        <div class="docs-directory-grid" data-repo-grid>
-          {
-            repos.map((repo) => (
-              <a
-                class="docs-directory-card"
-                href={repo.docsUrl}
-                data-repo-card
-                data-search={`${repo.title} ${repo.repo}`.toLowerCase()}
-                data-topics={repo.topics.map((topic) => topic.toLowerCase()).join('|')}
-              >
-                <h2 class="docs-directory-card-title">{repo.title}</h2>
-                <p class="docs-directory-card-description">{repo.description}</p>
-              </a>
-            ))
-          }
-        </div>
-      </div>
+    <p class="docs-directory-results-meta">
+      {repos.length} {repos.length === 1 ? 'repository' : 'repositories'}
+    </p>
+    <div class="docs-directory-grid">
+      {
+        repos.map((repo) => (
+          <a
+            class="docs-directory-card"
+            href={repo.docsUrl}
+          >
+            <h2 class="docs-directory-card-title">{repo.title}</h2>
+            <p class="docs-directory-card-description">{repo.description}</p>
+          </a>
+        ))
+      }
     </div>
   </section>
 </StarlightPage>
-
-<script is:inline>
-  (() => {
-    const root = document.querySelector('[data-directory-root]');
-    if (!root) return;
-
-    const searchInput = root.querySelector('#docs-directory-search');
-    const cards = Array.from(root.querySelectorAll('[data-repo-card]'));
-    const checkboxes = Array.from(root.querySelectorAll('[data-group-checkbox]'));
-    const resultsMeta = root.querySelector('[data-results-meta]');
-    const noResults = root.querySelector('[data-no-results]');
-    const activeGroups = new Set();
-
-    const syncUrl = () => {
-      const params = new URLSearchParams();
-      const query = (searchInput?.value || '').trim();
-      if (query) params.set('search', query);
-      for (const group of activeGroups) params.append('group', group);
-
-      const queryString = params.toString();
-      const nextUrl = queryString ? `${window.location.pathname}?${queryString}` : window.location.pathname;
-      window.history.replaceState({}, '', nextUrl);
-    };
-
-    const applyUrlState = () => {
-      const params = new URLSearchParams(window.location.search);
-      const search = params.get('search') || '';
-      const groupsFromUrl = new Set(
-        params
-          .getAll('group')
-          .map((value) => value.trim().toLowerCase())
-          .filter(Boolean)
-      );
-
-      if (searchInput) searchInput.value = search;
-
-      for (const checkbox of checkboxes) {
-        const value = (checkbox.value || '').trim().toLowerCase();
-        const checked = groupsFromUrl.has(value);
-        checkbox.checked = checked;
-        if (checked) activeGroups.add(value);
-      }
-    };
-
-    const applyFilters = () => {
-      const terms = (searchInput?.value || '')
-        .trim()
-        .toLowerCase()
-        .split(/\s+/)
-        .filter(Boolean);
-      let visibleCount = 0;
-
-      for (const card of cards) {
-        const cardSearch = card.getAttribute('data-search') || '';
-        const cardTopics = (card.getAttribute('data-topics') || '').split('|').filter(Boolean);
-        const searchMatch = terms.length === 0 || terms.every((term) => cardSearch.includes(term));
-        const groupMatch = activeGroups.size === 0 || cardTopics.some((topic) => activeGroups.has(topic));
-        const show = searchMatch && groupMatch;
-
-        card.hidden = !show;
-        if (show) visibleCount += 1;
-      }
-
-      if (resultsMeta) {
-        resultsMeta.textContent = `${visibleCount} ${visibleCount === 1 ? 'repository' : 'repositories'} shown`;
-      }
-
-      if (noResults) {
-        noResults.hidden = visibleCount !== 0;
-      }
-
-      syncUrl();
-    };
-
-    for (const checkbox of checkboxes) {
-      checkbox.addEventListener('change', () => {
-        const group = (checkbox.value || '').trim().toLowerCase();
-        if (!group) return;
-        if (checkbox.checked) {
-          activeGroups.add(group);
-        } else {
-          activeGroups.delete(group);
-        }
-        applyFilters();
-      });
-    }
-
-    searchInput?.addEventListener('input', applyFilters);
-    searchInput?.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') {
-        searchInput.value = '';
-        applyFilters();
-      }
-    });
-
-    applyUrlState();
-    applyFilters();
-  })();
-</script>

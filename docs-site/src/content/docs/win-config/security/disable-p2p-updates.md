@@ -10,6 +10,8 @@ Default is configured to LAN. The Group Download mode combined with Group ID, en
 
 The option applies `0` = disables peer-to-peer (P2P) caching but still allows Delivery Optimization to download content over HTTP from the download's original source or a Microsoft Connected Cache server.
 
+### DODownloadMode Data
+
 | Download mode option | Data  | Functionality when configured |
 | ---- | :----: | ---- |
 | HTTP Only | `0` | This setting disables peer-to-peer caching but still allows Delivery Optimization to download content over HTTP from the download's original source or a Microsoft Connected Cache server. This mode uses additional metadata provided by the Delivery Optimization cloud services for a peerless, reliable and efficient download experience. |
@@ -21,13 +23,8 @@ The option applies `0` = disables peer-to-peer (P2P) caching but still allows De
 
 > https://learn.microsoft.com/en-us/windows/deployment/do/waas-delivery-optimization-reference#download-mode
 
----
+### Set-DODownloadMode
 
 Microsoft has a cmdlet for it, but seems like they didn't work much on it yet.
 
 > https://learn.microsoft.com/en-us/powershell/module/deliveryoptimization/set-dodownloadmode?view=windowsserver2025-ps
-
-
-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\DeliveryOptimization\DODownloadMode
-
-**WUDODownloadMode**  Retrieves whether DO is turned on and how to acquire/distribute updates Delivery Optimization (DO) allows users to deploy previously downloaded WU updates to other devices on the same network.

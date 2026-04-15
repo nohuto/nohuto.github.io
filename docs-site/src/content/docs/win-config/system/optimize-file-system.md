@@ -8,6 +8,8 @@ sidebar:
 
 Small documentation on several values the option applies, see links below for more details.
 
+### Registry Values
+
 | Value | Description |
 | ----- | ------------ |
 | `DisableDeleteNotification` | 0 = TRIM/UNMAP enabled, 1 = disabled. Controls whether delete operations send trim/unmap notifications to the underlying storage. |

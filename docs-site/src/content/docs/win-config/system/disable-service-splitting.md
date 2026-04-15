@@ -41,14 +41,7 @@ return v1;
 > https://learn.microsoft.com/en-us/windows/win32/api/sysinfoapi/nf-sysinfoapi-globalmemorystatusex
 
 ![](https://github.com/nohuto/win-config/blob/main/system/images/servicesplitting1.png?raw=true)
+
+## Windows Internals
+
 ![](https://github.com/nohuto/win-config/blob/main/system/images/servicesplitting2.png?raw=true)
-
----
-
-Miscellaneous notes:
-```json
-// "If the total physical memory is above the threshold, it enables Svchost service splitting"
-"HKLM\\SYSTEM\\CurrentControlSet\\Control": {
-  "SvcHostSplitThresholdInKB": { "Type": "REG_DWORD", "Data": 4294967295 }
-}
-```

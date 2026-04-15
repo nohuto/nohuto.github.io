@@ -11,11 +11,12 @@ Changes the user account picture via:
 C:\ProgramData\Microsoft\Default Account Pictures
 ```
 
----
+### Suboption
 
 `Global Account Picture`:  
 "This policy setting allows an administrator to standardize the account pictures for all users on a system to the default account picture."
 
+## Windows Policies
 
 ```json
 {

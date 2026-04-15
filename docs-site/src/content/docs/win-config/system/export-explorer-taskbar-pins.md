@@ -8,6 +8,8 @@ sidebar:
 
 Can be useful when creating your own image and trying to automate the installation and configuration part.
 
+### Quick Access Pins
+
 Quick access pins are saved in a file named `f01b4d95cf55d32a.automaticDestinations-ms`, located at:
 ```bat
 %appdata%\Microsoft\Windows\Recent\AutomaticDestinations
@@ -16,6 +18,9 @@ You can either terminate `explorer` while copying it to the path, or just restar
 ```bat
 copy /y ".\f01b4d95cf55d32a.automaticDestinations-ms" "%appdata%\Microsoft\Windows\Recent\AutomaticDestinations"
 ```
+
+### Taskbar Pins
+
 Taskbar pins are saved in a folder and a key, the folder includes the shortcuts:
 ```bat
 %appdata%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar

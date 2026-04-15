@@ -8,6 +8,8 @@ sidebar:
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/languagebar.png?raw=true)
 
+## Text Services and Input Languages Captures
+
 `Time & language > Typing > Advanced keyboard settings > Language bar options`:
 ```c
 // Floating On Desktop

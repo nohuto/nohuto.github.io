@@ -12,7 +12,6 @@ export interface DirectoryRepo {
 }
 
 export interface DocsDirectoryData {
-  groups: string[];
   repos: DirectoryRepo[];
 }
 
@@ -37,7 +36,6 @@ export async function getDocsDirectoryData(): Promise<DocsDirectoryData> {
     readRepoDescriptions(),
   ]);
 
-  const configuredTagOrder = parseTagOrder(projectsHtml);
   const projectCards = parseProjectCards(projectsHtml)
     .filter((card) => DOC_REPOS.has(card.repoName))
     .sort((a, b) => (DOC_REPO_RANK.get(a.repoName) ?? Number.MAX_SAFE_INTEGER) - (DOC_REPO_RANK.get(b.repoName) ?? Number.MAX_SAFE_INTEGER));
@@ -50,18 +48,8 @@ export async function getDocsDirectoryData(): Promise<DocsDirectoryData> {
     repoUrl: card.repoUrl || `https://github.com/${card.repo}`,
     topics: card.topics.length ? card.topics : ['Uncategorized'],
   }));
-  const usedTopics = new Set(
-    repos.flatMap((repo) => repo.topics).filter(Boolean)
-  );
-  const groups = configuredTagOrder
-    .filter((topic) => usedTopics.has(topic))
-    .concat(
-    [...usedTopics]
-      .filter((topic) => !configuredTagOrder.includes(topic))
-      .sort((a, b) => a.localeCompare(b))
-  );
 
-  return { groups, repos };
+  return { repos };
 }
 
 async function readRepoDescriptions(): Promise<Record<string, string>> {
@@ -75,21 +63,6 @@ async function readRepoDescriptions(): Promise<Record<string, string>> {
   } catch {
     return {};
   }
-}
-
-function parseTagOrder(html: string): string[] {
-  const out: string[] = [];
-  const tagButtonRegex = /<button\b[^>]*\bdata-tag="([^"]+)"/gi;
-
-  let match: RegExpExecArray | null;
-  while ((match = tagButtonRegex.exec(html)) !== null) {
-    const tag = decodeHtmlEntities(match[1]).trim();
-    if (tag && !out.includes(tag)) {
-      out.push(tag);
-    }
-  }
-
-  return out;
 }
 
 function parseProjectCards(html: string): ParsedProjectCard[] {

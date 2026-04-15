@@ -6,14 +6,10 @@ sidebar:
   order: 7
 ---
 
-The pictures below show: `Transparency On`, `Transparency Off`.
+#### Transparency Enabled
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/transpa1.png?raw=true)
+
+#### Transparency Disabled
+
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/transpa2.png?raw=true)
-
----
-
-Miscellaneous notes:
-```c
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\CurrentVersion\SystemProtectedUserData\{userid}\AnyoneRead\Accessibility : Transparency
-```

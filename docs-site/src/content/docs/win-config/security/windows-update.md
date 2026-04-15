@@ -12,6 +12,8 @@ sidebar:
 | `Enable WU` | Restores normal update behavior for the controls managed in this section. |
 | `Security Only` | Keeps monthly Windows quality and security servicing for the current release while blocking feature upgrades, WU driver updates, optional content, CFR rollouts, preview content, Microsoft product updates, and MRT through Windows Update. |
 
+## Suboptions
+
 | Suboption | Description |
 | ---- | ---- |
 | `Disable Feature Updates` | Keeps the device on its current Windows release while quality updates continue. New Windows releases are not offered until removed. |

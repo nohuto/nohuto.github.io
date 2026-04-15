@@ -27,7 +27,7 @@ On first use kind of everything get's blocked -> minimalfirewall asks you to blo
 - `Default`: inbound block, outbound allow
 - `Allowlist`: inbound block, outbound block unless allowed (recommended, but requires time to set up)
 
-## Firewall Records
+## Firewall Captures
 
 ```c
 // {profile} = always 'DomainProfile' + 'StandardProfile' + 'PublicProfile'

@@ -15,6 +15,8 @@ Disable-BitLocker -MountPoint $nvbvol
 > https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/fsutil-behavior  
 > https://learn.microsoft.com/en-us/powershell/module/bitlocker/disable-bitlocker?view=windowsserver2025-ps
 
+## NtfsDisableEncryption Notes
+
 `fsutil behavior set disableencryption 1` sets:
 ```powershell
 fsutil.exe	RegSetValue	HKLM\System\CurrentControlSet\Control\FileSystem\NtfsDisableEncryption	Type: REG_DWORD, Length: 4, Data: 1
@@ -23,6 +25,19 @@ fsutil.exe	RegSetValue	HKLM\System\CurrentControlSet\Control\FileSystem\NtfsDisa
 \Registry\Machine\SYSTEM\ControlSet001\Policies : NtfsDisableEncryption
 \Registry\Machine\SYSTEM\ControlSet001\Control\FileSystem : NtfsDisableEncryption
 ```
+
+### 0x8007177E Error
+
+Enabling `NtfsDisableEncryption` (`1`) may cause Xbox games to fail to install (error code `0x8007177E` - "Allow encryption on selected disk volume to install this game"):
+
+```powershell
+ERROR_VOLUME_NOT_SUPPORT_EFS = 0x8007177E;
+```
+
+> [Windows API - Error Defines](https://github.com/arizvisa/BugId-mWindowsAPI/blob/904a1c0bd22c019ef6ca8313945fe38f4ca26f30/mDefines/mErrorDefines.py#L1793)
+
+## Windows Policies
+
 ```json
 {
   "File": "FileSys.admx",
@@ -42,8 +57,3 @@ fsutil.exe	RegSetValue	HKLM\System\CurrentControlSet\Control\FileSystem\NtfsDisa
   ]
 },
 ```
-Enabling `NtfsDisableEncryption` (`1`) may cause Xbox games to fail to install (error code `0x8007177E` - "Allow encryption on selected disk volume to install this game"):
-```py
-ERROR_VOLUME_NOT_SUPPORT_EFS = 0x8007177E;
-```
-> [Windows API - Error Defines](https://github.com/arizvisa/BugId-mWindowsAPI/blob/904a1c0bd22c019ef6ca8313945fe38f4ca26f30/mDefines/mErrorDefines.py#L1793)

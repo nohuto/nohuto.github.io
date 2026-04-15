@@ -45,6 +45,8 @@ CMachine::RegQueryDWORD(
 
 > https://blogs.windows.com/windows-insider/2024/06/13/releasing-windows-11-builds-22621-3807-and-22631-3807-to-the-release-preview-channel/
 
+## Windows Policies
+
 ```json
 {
   "File": "Explorer.admx",

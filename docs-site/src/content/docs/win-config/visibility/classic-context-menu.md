@@ -6,9 +6,12 @@ sidebar:
   order: 10
 ---
 
-Use it on W11, unless you like the new menu - remove the key, to revert it.
+Use it on W11, unless you like the new menu.
 
-Before & after:
+#### Before
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/classiconb.png?raw=true)
+
+#### After
+
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/classicona.png?raw=true)

@@ -6,6 +6,8 @@ sidebar:
   order: 12
 ---
 
+## Suboptions
+
 | **Suboption** | **Description** |
 | ---- | ---- |
 | **Disable SafeSearch** | Disables the SafeSearch filter for web search, preventing strict filtering of search results. |
@@ -26,6 +28,8 @@ sidebar:
 | **Disable Search Highlights** | If enabled: "See content suggestions in the search boxi and in search home". |
 | **Disable Web Search** | If disabled: "removes the option of searching the Web from Windows Desktop Search". |
 
+## Search Indexing
+
 Search indexing builds a database of file names, properties, and contents to speed up searches, runs as `SearchIndexer.exe`, updates automatically. Disabling it slows down searches, but as shows below you should use everything anyway. Additionally you can disable content and property indexing per drive, by right clicking on the drive, then unticking the box as shown in the picture.
 
 > https://learn.microsoft.com/en-us/windows/win32/search/-search-indexing-process-overview  
@@ -37,26 +41,7 @@ Instead of using the explorer to search for a file or folder, use [`Everything`]
 
 The `WSearch` service is needed for CmdPals `File Search` extension to work.
 
----
-
-Exists in [Search Policies](https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-search), but isn't present anymore on 24H2 and probably versions above.
-
-```c
-// Disabling this setting turns off search highlights in the start menu search box and in search home. Enabling or not configuring this setting turns on search highlights in the start menu search box and in search home.
-"Disable Search Highlights": {
-  "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search": {
-    "EnableDynamicContentInWSB": { "Type": "REG_DWORD", "Data": 0 }
-  }
-}
-```
-
-It probably got replaced by:
-```c
-// Privacy & security > Search - Show search highlights
-SystemSettings.exe	RegSetValue	HKCU\Software\Microsoft\Windows\CurrentVersion\SearchSettings\IsDynamicSearchBoxEnabled	Type: REG_DWORD, Length: 4, Data: 0
-```
-
----
+## Windows Policies
 
 ```json
 {
@@ -79,4 +64,23 @@ SystemSettings.exe	RegSetValue	HKCU\Software\Microsoft\Windows\CurrentVersion\Se
     }
   ]
 },
+```
+
+## Miscellaneous Notes
+
+Exists in [Search Policies](https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-search), but isn't present anymore on 24H2 and probably versions above.
+
+```c
+// Disabling this setting turns off search highlights in the start menu search box and in search home. Enabling or not configuring this setting turns on search highlights in the start menu search box and in search home.
+"Disable Search Highlights": {
+  "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search": {
+    "EnableDynamicContentInWSB": { "Type": "REG_DWORD", "Data": 0 }
+  }
+}
+```
+
+It probably got replaced by:
+```c
+// Privacy & security > Search - Show search highlights
+SystemSettings.exe	RegSetValue	HKCU\Software\Microsoft\Windows\CurrentVersion\SearchSettings\IsDynamicSearchBoxEnabled	Type: REG_DWORD, Length: 4, Data: 0
 ```

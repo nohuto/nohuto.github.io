@@ -10,6 +10,8 @@ sidebar:
 
 `MenuShowDelay` controls how long Windows waits before opening a submenu when you hover over a menu entry.
 
+## Pseudocode Analysis
+
 ```c
 v2 = a2;
 if ( SystemParametersInfoW(0x6Au, 0, &g_lMenuPopupTimeout, 0) )

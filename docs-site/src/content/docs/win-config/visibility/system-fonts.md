@@ -25,7 +25,7 @@ Add-Type -AssemblyName System.Drawing;[System.Drawing.FontFamily]::Families | % 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/font1.png?raw=true)
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/font2.png?raw=true)
 
----
+## Manually Adding Custom Fonts
 
 The option lists the default fonts, add your own custom font via:
 ```json
