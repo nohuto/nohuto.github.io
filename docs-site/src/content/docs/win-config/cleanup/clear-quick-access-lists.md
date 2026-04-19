@@ -1,7 +1,7 @@
 ---
 title: 'Clear Quick Access Lists'
 description: 'Cleanup option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/cleanup/desc.md#clear-quick-access-lists'
+editUrl: false
 sidebar:
   order: 8
 ---

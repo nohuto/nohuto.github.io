@@ -1,11 +1,11 @@
 {
-  "name": "noverse-docs-site",
+  "name": "docs-site",
   "private": true,
   "type": "module",
   "version": "0.1.0",
   "scripts": {
     "docs:sync": "node ./scripts/sync-docs.mjs",
-    "postinstall": "node ./scripts/fix-starlight-codeblock-fullscreen.mjs",
+    "postinstall": "node ./scripts/patch-starlight-codeblock-fullscreen.mjs",
     "dev": "npm run docs:sync && astro dev",
     "build": "astro build",
     "docs:build": "npm run docs:sync && astro build && node ./scripts/publish-docs.mjs",
@@ -16,7 +16,11 @@
     "@astrojs/starlight": "latest",
     "astro": "latest",
     "starlight-codeblock-fullscreen": "^0.1.4",
+    "starlight-image-zoom": "^0.14.1",
+    "starlight-links-validator": "^0.23.0",
     "starlight-scroll-to-top": "^0.4.0",
-    "starlight-theme-rapide": "^0.5.2"
+    "starlight-theme-rapide": "^0.5.2",
+    "starlight-view-modes": "^0.13.0"
   }
 }
+

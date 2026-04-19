@@ -1,7 +1,7 @@
 ---
 title: 'Building'
 description: 'Generated from nvapi-cli README section: Building.'
-editUrl: 'https://github.com/nohuto/nvapi-cli/blob/main/README.md#building'
+editUrl: false
 sidebar:
   order: 3
 ---

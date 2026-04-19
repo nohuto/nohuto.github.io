@@ -1,7 +1,7 @@
 ---
 title: 'Microsoft Accounts'
 description: 'Privacy option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#microsoft-accounts'
+editUrl: false
 sidebar:
   order: 46
 ---

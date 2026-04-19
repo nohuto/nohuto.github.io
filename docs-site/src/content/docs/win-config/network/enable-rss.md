@@ -1,7 +1,7 @@
 ---
 title: 'RSS'
 description: 'Network option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/network/desc.md#enable-rss'
+editUrl: false
 sidebar:
   order: 18
 ---

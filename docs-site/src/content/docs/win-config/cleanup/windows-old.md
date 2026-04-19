@@ -1,7 +1,7 @@
 ---
 title: 'Windows.old'
 description: 'Cleanup option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/cleanup/desc.md#windowsold'
+editUrl: false
 sidebar:
   order: 2
 ---

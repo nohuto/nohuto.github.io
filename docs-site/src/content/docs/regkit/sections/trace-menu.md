@@ -1,7 +1,7 @@
 ---
 title: 'Trace Menu'
 description: 'Generated from regkit README section: Trace Menu.'
-editUrl: 'https://github.com/nohuto/regkit/blob/main/README.md#trace-menu'
+editUrl: false
 sidebar:
   order: 7
 ---

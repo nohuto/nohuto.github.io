@@ -2,7 +2,7 @@
 (() => {
   const THEME_KEY = 'nv-theme';
   const BG_KEY = 'nv-bg';
-  const DEFAULT_THEME = 'gruvbox-dark';
+  const DEFAULT_THEME = 'horizon';
   const DEFAULT_BG = 'diagonal-grid';
   const FONT_KEY = 'nv-font';
   const FONT_SIZE_KEY = 'nv-font-size';

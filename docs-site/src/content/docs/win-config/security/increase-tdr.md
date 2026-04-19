@@ -1,7 +1,7 @@
 ---
 title: 'Increase TDR'
 description: 'Security option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/security/desc.md#increase-tdr'
+editUrl: false
 sidebar:
   order: 19
 ---

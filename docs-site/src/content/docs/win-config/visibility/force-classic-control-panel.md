@@ -1,7 +1,7 @@
 ---
 title: 'Force Classic Control Panel'
 description: 'Visibility option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#force-classic-control-panel'
+editUrl: false
 sidebar:
   order: 32
 ---

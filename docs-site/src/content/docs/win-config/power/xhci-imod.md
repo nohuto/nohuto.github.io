@@ -1,7 +1,7 @@
 ---
 title: 'xHCI IMOD'
 description: 'Power option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/power/desc.md#xhci-imod'
+editUrl: false
 sidebar:
   order: 1
 ---

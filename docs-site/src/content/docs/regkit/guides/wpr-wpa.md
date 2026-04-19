@@ -1,7 +1,7 @@
 ---
 title: 'Boot Registry Activity'
 description: 'Generated from regkit file: guides/wpr-wpa.md.'
-editUrl: 'https://github.com/nohuto/regkit/blob/main/guides/wpr-wpa.md'
+editUrl: false
 sidebar:
   order: 2
 ---

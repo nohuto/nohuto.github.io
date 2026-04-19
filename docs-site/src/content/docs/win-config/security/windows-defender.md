@@ -1,7 +1,7 @@
 ---
 title: 'Windows Defender'
 description: 'Security option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/security/desc.md#windows-defender'
+editUrl: false
 sidebar:
   order: 1
 ---

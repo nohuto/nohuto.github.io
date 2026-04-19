@@ -1,7 +1,7 @@
 ---
 title: 'Theme Presets'
 description: 'Generated from regkit README section: Theme Presets.'
-editUrl: 'https://github.com/nohuto/regkit/blob/main/README.md#theme-presets'
+editUrl: false
 sidebar:
   order: 4
 ---

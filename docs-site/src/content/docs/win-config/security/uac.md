@@ -1,7 +1,7 @@
 ---
 title: 'UAC'
 description: 'Security option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/security/desc.md#uac'
+editUrl: false
 sidebar:
   order: 4
 ---

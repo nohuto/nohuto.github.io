@@ -1,7 +1,7 @@
 ---
 title: 'Interrupt Handling and Affinity Policies'
 description: 'Affinities option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/affinities/desc.md#interrupt-handling-and-affinity-policies'
+editUrl: false
 sidebar:
   order: 1
 ---

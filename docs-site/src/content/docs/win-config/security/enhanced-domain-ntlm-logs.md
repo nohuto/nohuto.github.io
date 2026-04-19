@@ -1,7 +1,7 @@
 ---
 title: 'Enhanced Domain NTLM Logs'
 description: 'Security option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/security/desc.md#enhanced-domain-ntlm-logs'
+editUrl: false
 sidebar:
   order: 17
 ---

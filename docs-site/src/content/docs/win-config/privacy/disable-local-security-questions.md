@@ -1,7 +1,7 @@
 ---
 title: 'Local Security Questions'
 description: 'Privacy option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-local-security-questions'
+editUrl: false
 sidebar:
   order: 49
 ---

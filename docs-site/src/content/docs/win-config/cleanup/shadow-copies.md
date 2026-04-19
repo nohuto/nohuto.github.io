@@ -1,7 +1,7 @@
 ---
 title: 'Shadow Copies'
 description: 'Cleanup option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/cleanup/desc.md#shadow-copies'
+editUrl: false
 sidebar:
   order: 6
 ---

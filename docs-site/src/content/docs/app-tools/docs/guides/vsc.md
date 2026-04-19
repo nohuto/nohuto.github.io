@@ -1,7 +1,7 @@
 ---
 title: 'VSC Configuration'
 description: 'Generated from app-tools file: guides/vsc.md.'
-editUrl: 'https://github.com/nohuto/app-tools/blob/main/guides/vsc.md'
+editUrl: false
 sidebar:
   order: 11
 ---

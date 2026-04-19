@@ -1,7 +1,7 @@
 ---
 title: 'DirectX Shader Cache'
 description: 'Cleanup option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/cleanup/desc.md#directx-shader-cache'
+editUrl: false
 sidebar:
   order: 4
 ---

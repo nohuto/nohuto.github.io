@@ -1,7 +1,7 @@
 ---
 title: 'PS Execution Policy'
 description: 'Security option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/security/desc.md#ps-execution-policy'
+editUrl: false
 sidebar:
   order: 5
 ---

@@ -1,7 +1,7 @@
 ---
 title: 'Opt-Out KMS Activation Telemetry'
 description: 'Privacy option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#opt-out-kms-activation-telemetry'
+editUrl: false
 sidebar:
   order: 47
 ---

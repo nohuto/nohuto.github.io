@@ -1,7 +1,7 @@
 ---
 title: 'Legacy TLS/Crypto'
 description: 'Security option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/security/desc.md#disable-legacy-tlscrypto'
+editUrl: false
 sidebar:
   order: 16
 ---

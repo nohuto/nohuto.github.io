@@ -1,7 +1,7 @@
 ---
 title: 'Wi-Fi Sense'
 description: 'Network option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/network/desc.md#disable-wi-fi-sense'
+editUrl: false
 sidebar:
   order: 13
 ---

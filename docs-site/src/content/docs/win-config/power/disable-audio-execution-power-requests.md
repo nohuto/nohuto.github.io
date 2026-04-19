@@ -1,7 +1,7 @@
 ---
 title: 'Audio Execution Power Requests'
 description: 'Power option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/power/desc.md#disable-audio-execution-power-requests'
+editUrl: false
 sidebar:
   order: 15
 ---

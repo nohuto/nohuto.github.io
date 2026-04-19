@@ -1,7 +1,7 @@
 ---
 title: 'Mullvad Configuration'
 description: 'Generated from app-tools file: guides/mullvad-desktop.md.'
-editUrl: 'https://github.com/nohuto/app-tools/blob/main/guides/mullvad-desktop.md'
+editUrl: false
 sidebar:
   order: 7
 ---

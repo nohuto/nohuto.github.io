@@ -1,7 +1,7 @@
 ---
 title: 'Guides'
 description: 'Generated from app-tools README section: Guides.'
-editUrl: 'https://github.com/nohuto/app-tools/blob/main/README.md#guides'
+editUrl: false
 sidebar:
   order: 1
 ---

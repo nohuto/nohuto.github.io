@@ -1,7 +1,7 @@
 ---
 title: 'Online Speech Recognition'
 description: 'Privacy option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-online-speech-recognition'
+editUrl: false
 sidebar:
   order: 21
 ---

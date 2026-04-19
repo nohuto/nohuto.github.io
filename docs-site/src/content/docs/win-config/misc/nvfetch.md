@@ -1,7 +1,7 @@
 ---
 title: 'NVFetch'
 description: 'Misc option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/misc/desc.md#nvfetch'
+editUrl: false
 sidebar:
   order: 2
 ---
@@ -16,7 +16,7 @@ It currently gets most of the information using the [`Get-CimInstance`](https://
 ```powershell
 nvidia-smi -q
 ```
-[`nvfetch-win32cimv2.txt`]((https://github.com/nohuto/win-config/blob/main/misc/assets)) shows class names in the `root\CIMV2` namespace, filtered with `Win32*`.
+[`nvfetch-win32cimv2.txt`](https://github.com/nohuto/win-config/blob/main/misc/assets) shows class names in the `root\CIMV2` namespace, filtered with `Win32*`.
 
 | **Category** | **Query** | **Fields/Description** |
 | ---- | ---- | ---- |

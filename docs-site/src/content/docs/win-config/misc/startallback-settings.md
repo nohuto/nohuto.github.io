@@ -1,7 +1,7 @@
 ---
 title: 'StartAllBack Settings'
 description: 'Misc option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/misc/desc.md#startallback-settings'
+editUrl: false
 sidebar:
   order: 5
 ---

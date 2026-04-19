@@ -1,7 +1,7 @@
 ---
 title: 'Census Data Collection'
 description: 'Privacy option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-census-data-collection'
+editUrl: false
 sidebar:
   order: 52
 ---

@@ -1,7 +1,7 @@
 ---
 title: '7-Zip Settings'
 description: 'Misc option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/misc/desc.md#7-zip-settings'
+editUrl: false
 sidebar:
   order: 7
 ---

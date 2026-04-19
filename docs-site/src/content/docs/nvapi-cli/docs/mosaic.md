@@ -1,7 +1,7 @@
 ---
 title: 'Mosaic Group'
 description: 'Generated from nvapi-cli file: docs/mosaic.md.'
-editUrl: 'https://github.com/nohuto/nvapi-cli/blob/main/docs/mosaic.md'
+editUrl: false
 sidebar:
   order: 3
 ---

@@ -1,7 +1,7 @@
 ---
 title: 'Opt-Out DMA Remapping'
 description: 'Security option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/security/desc.md#opt-out-dma-remapping'
+editUrl: false
 sidebar:
   order: 7
 ---

@@ -1,7 +1,7 @@
 ---
 title: 'Clipboard History'
 description: 'Cleanup option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/cleanup/desc.md#clipboard-history'
+editUrl: false
 sidebar:
   order: 15
 ---

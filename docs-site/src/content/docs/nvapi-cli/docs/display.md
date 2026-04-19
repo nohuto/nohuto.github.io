@@ -1,7 +1,7 @@
 ---
 title: 'Display Group'
 description: 'Generated from nvapi-cli file: docs/display.md.'
-editUrl: 'https://github.com/nohuto/nvapi-cli/blob/main/docs/display.md'
+editUrl: false
 sidebar:
   order: 2
 ---

@@ -1,7 +1,7 @@
 ---
 title: 'F1 Help Key'
 description: 'Privacy option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-f1-help-key'
+editUrl: false
 sidebar:
   order: 54
 ---

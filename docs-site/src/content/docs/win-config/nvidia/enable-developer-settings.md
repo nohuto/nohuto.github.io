@@ -1,7 +1,7 @@
 ---
 title: 'Developer Settings'
 description: 'NVIDIA option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/nvidia/desc.md#enable-developer-settings'
+editUrl: false
 sidebar:
   order: 11
 ---

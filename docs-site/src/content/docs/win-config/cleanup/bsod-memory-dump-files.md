@@ -1,7 +1,7 @@
 ---
 title: 'BSoD Memory Dump Files'
 description: 'Cleanup option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/cleanup/desc.md#bsod-memory-dump-files'
+editUrl: false
 sidebar:
   order: 23
 ---

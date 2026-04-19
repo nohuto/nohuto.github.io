@@ -1,7 +1,7 @@
 ---
 title: 'Rounded Corners'
 description: 'Visibility option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#disable-rounded-corners'
+editUrl: false
 sidebar:
   order: 12
 ---
@@ -55,4 +55,4 @@ __int64 __fastcall CTopLevelWindow::GetEffectiveCornerStyle(__int64 a1)
 }
 ```
 
-Obviously, `GetEffectiveCornerStyle` only exists in W11 builds (as you can see in [decompiled-pseudocode]([/docs/regkit/sections/overview/](/docs/regkit/sections/overview/))).
+Obviously, `GetEffectiveCornerStyle` only exists in W11 builds (as you can see in [decompiled-pseudocode](/docs/regkit/sections/overview/)).

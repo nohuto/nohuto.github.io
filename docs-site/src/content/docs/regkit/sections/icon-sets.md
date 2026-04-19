@@ -1,7 +1,7 @@
 ---
 title: 'Icon Sets'
 description: 'Generated from regkit README section: Icon Sets.'
-editUrl: 'https://github.com/nohuto/regkit/blob/main/README.md#icon-sets'
+editUrl: false
 sidebar:
   order: 5
 ---

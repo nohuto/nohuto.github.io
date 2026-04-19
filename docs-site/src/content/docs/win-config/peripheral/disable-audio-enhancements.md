@@ -1,7 +1,7 @@
 ---
 title: 'Audio Enhancements'
 description: 'Peripheral option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/peripheral/desc.md#disable-audio-enhancements'
+editUrl: false
 sidebar:
   order: 8
 ---

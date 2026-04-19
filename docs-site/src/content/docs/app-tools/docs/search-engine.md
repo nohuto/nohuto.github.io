@@ -1,7 +1,7 @@
 ---
 title: 'Search Engines'
 description: 'Generated from app-tools file: search-engine.md.'
-editUrl: 'https://github.com/nohuto/app-tools/blob/main/search-engine.md'
+editUrl: false
 sidebar:
   order: 2
 ---

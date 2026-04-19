@@ -1,7 +1,7 @@
 ---
 title: 'Activity History'
 description: 'Privacy option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-activity-history'
+editUrl: false
 sidebar:
   order: 27
 ---

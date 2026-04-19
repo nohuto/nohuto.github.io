@@ -1,7 +1,7 @@
 ---
 title: 'Notifications'
 description: 'System option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/system/desc.md#disable-notifications'
+editUrl: false
 sidebar:
   order: 22
 ---

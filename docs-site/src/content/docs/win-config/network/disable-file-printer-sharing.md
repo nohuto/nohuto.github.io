@@ -1,7 +1,7 @@
 ---
 title: 'File/Printer Sharing'
 description: 'Network option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/network/desc.md#disable-fileprinter-sharing'
+editUrl: false
 sidebar:
   order: 19
 ---

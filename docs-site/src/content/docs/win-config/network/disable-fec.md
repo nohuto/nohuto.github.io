@@ -1,7 +1,7 @@
 ---
 title: 'FEC'
 description: 'Network option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/network/desc.md#disable-fec'
+editUrl: false
 sidebar:
   order: 29
 ---

@@ -1,7 +1,7 @@
 ---
 title: 'Aero Shake'
 description: 'System option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/system/desc.md#disable-aero-shake'
+editUrl: false
 sidebar:
   order: 19
 ---

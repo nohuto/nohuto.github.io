@@ -1,7 +1,7 @@
 ---
 title: 'BCD Edits'
 description: 'System option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/system/desc.md#bcd-edits'
+editUrl: false
 sidebar:
   order: 32
 ---

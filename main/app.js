@@ -1,6 +1,6 @@
 /* Copyright (c) 2026 Nohuto. All rights reserved. */
 const THEME_KEY = 'nv-theme';
-const DEFAULT_THEME = 'gruvbox-dark';
+const DEFAULT_THEME = 'horizon';
 const LIGHT_THEMES = new Set([
   'default-light',
   'gruvbox-light',

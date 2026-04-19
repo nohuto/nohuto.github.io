@@ -1,7 +1,7 @@
 ---
 title: 'USBHUB Values'
 description: 'Peripheral option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/peripheral/desc.md#usbhub-values'
+editUrl: false
 sidebar:
   order: 3
 ---

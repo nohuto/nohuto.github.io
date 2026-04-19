@@ -1,7 +1,7 @@
 ---
 title: 'RSoP Logging'
 description: 'Privacy option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-rsop-logging'
+editUrl: false
 sidebar:
   order: 41
 ---

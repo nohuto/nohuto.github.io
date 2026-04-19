@@ -1,7 +1,7 @@
 ---
 title: 'Capture Table'
 description: 'Generated from regkit README section: Capture Table.'
-editUrl: 'https://github.com/nohuto/regkit/blob/main/README.md#capture-table'
+editUrl: false
 sidebar:
   order: 12
 ---

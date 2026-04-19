@@ -1,7 +1,7 @@
 ---
 title: 'NIC Power Savings'
 description: 'Power option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/power/desc.md#disable-nic-power-savings'
+editUrl: false
 sidebar:
   order: 14
 ---

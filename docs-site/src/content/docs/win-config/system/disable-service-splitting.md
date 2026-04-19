@@ -1,7 +1,7 @@
 ---
 title: 'Service Splitting'
 description: 'System option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/system/desc.md#disable-service-splitting'
+editUrl: false
 sidebar:
   order: 6
 ---

@@ -1,7 +1,7 @@
 ---
 title: 'VBS (HVCI)'
 description: 'Security option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/security/desc.md#disable-vbs-hvci'
+editUrl: false
 sidebar:
   order: 12
 ---

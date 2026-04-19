@@ -1,7 +1,7 @@
 ---
 title: 'Sleep Study'
 description: 'Privacy option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-sleep-study'
+editUrl: false
 sidebar:
   order: 40
 ---

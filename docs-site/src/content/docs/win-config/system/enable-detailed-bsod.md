@@ -1,7 +1,7 @@
 ---
 title: 'Detailed BSoD'
 description: 'System option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/system/desc.md#enable-detailed-bsod'
+editUrl: false
 sidebar:
   order: 30
 ---

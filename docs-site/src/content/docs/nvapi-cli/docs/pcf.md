@@ -1,7 +1,7 @@
 ---
 title: 'PCF Group'
 description: 'Generated from nvapi-cli file: docs/pcf.md.'
-editUrl: 'https://github.com/nohuto/nvapi-cli/blob/main/docs/pcf.md'
+editUrl: false
 sidebar:
   order: 10
 ---

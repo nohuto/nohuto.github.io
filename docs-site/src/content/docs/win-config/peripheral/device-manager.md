@@ -1,7 +1,7 @@
 ---
 title: 'Device Manager'
 description: 'Peripheral option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/peripheral/desc.md#device-manager'
+editUrl: false
 sidebar:
   order: 15
 ---

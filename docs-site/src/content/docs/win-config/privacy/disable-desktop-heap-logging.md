@@ -1,7 +1,7 @@
 ---
 title: 'Desktop Heap Logging'
 description: 'Privacy option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-desktop-heap-logging'
+editUrl: false
 sidebar:
   order: 42
 ---

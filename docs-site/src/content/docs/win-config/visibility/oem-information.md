@@ -1,7 +1,7 @@
 ---
 title: 'OEM Information'
 description: 'Visibility option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#oem-information'
+editUrl: false
 sidebar:
   order: 34
 ---

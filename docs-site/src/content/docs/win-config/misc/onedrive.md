@@ -1,7 +1,7 @@
 ---
 title: 'OneDrive'
 description: 'Misc option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/misc/desc.md#onedrive'
+editUrl: false
 sidebar:
   order: 10
 ---

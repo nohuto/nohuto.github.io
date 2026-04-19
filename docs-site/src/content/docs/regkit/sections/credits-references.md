@@ -1,7 +1,7 @@
 ---
 title: 'Credits/References'
 description: 'Generated from regkit README section: Credits/References.'
-editUrl: 'https://github.com/nohuto/regkit/blob/main/README.md#creditsreferences'
+editUrl: false
 sidebar:
   order: 14
 ---

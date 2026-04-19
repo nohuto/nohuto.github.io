@@ -1,7 +1,7 @@
 ---
 title: 'USB Write Protection'
 description: 'Security option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/security/desc.md#enable-usb-write-protection'
+editUrl: false
 sidebar:
   order: 18
 ---

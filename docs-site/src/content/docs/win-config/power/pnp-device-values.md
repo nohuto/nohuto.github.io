@@ -1,7 +1,7 @@
 ---
 title: 'PnP Device Values'
 description: 'Power option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/power/desc.md#pnp-device-values'
+editUrl: false
 sidebar:
   order: 4
 ---

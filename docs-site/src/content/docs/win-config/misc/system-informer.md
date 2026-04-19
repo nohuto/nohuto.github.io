@@ -1,7 +1,7 @@
 ---
 title: 'System Informer'
 description: 'Misc option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/misc/desc.md#system-informer'
+editUrl: false
 sidebar:
   order: 6
 ---

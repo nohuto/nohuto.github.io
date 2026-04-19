@@ -1,7 +1,7 @@
 ---
 title: 'Detailed Verbose Messages'
 description: 'System option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/system/desc.md#detailed-verbose-messages'
+editUrl: false
 sidebar:
   order: 18
 ---

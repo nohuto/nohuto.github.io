@@ -1,7 +1,7 @@
 ---
 title: 'Scheduled Tasks'
 description: 'NVIDIA option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/nvidia/desc.md#disable-scheduled-tasks'
+editUrl: false
 sidebar:
   order: 9
 ---

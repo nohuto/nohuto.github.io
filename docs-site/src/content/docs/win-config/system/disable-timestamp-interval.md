@@ -1,7 +1,7 @@
 ---
 title: 'Timestamp Interval'
 description: 'System option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/system/desc.md#disable-timestamp-interval'
+editUrl: false
 sidebar:
   order: 24
 ---

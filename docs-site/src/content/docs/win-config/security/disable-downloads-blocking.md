@@ -1,7 +1,7 @@
 ---
 title: 'Downloads Blocking'
 description: 'Security option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/security/desc.md#disable-downloads-blocking'
+editUrl: false
 sidebar:
   order: 9
 ---

@@ -1,7 +1,7 @@
 ---
 title: 'Registry Fundamentals'
 description: 'Generated from regkit README section: Registry Fundamentals.'
-editUrl: 'https://github.com/nohuto/regkit/blob/main/README.md#registry-fundamentals'
+editUrl: false
 sidebar:
   order: 13
 ---

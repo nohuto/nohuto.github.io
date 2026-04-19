@@ -1,7 +1,7 @@
 ---
 title: 'OC/UV Guide'
 description: 'NVIDIA option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/nvidia/desc.md#ocuv-guide'
+editUrl: false
 sidebar:
   order: 16
 ---
@@ -12,18 +12,18 @@ Overclocking means increasing the clock speed, which increases temperatures. Und
 
 ## ToC
 
-- [Preconfigurations]([/docs/regkit/sections/registry-values-details/](/docs/regkit/sections/registry-values-details/))
-  - [MSI Afterburner]([/docs/regkit/sections/registry-values-details/](/docs/regkit/sections/registry-values-details/))
-  - [3DMark]([/docs/regkit/sections/registry-values-details/](/docs/regkit/sections/registry-values-details/))
-  - [Superposition]([/docs/regkit/sections/registry-values-details/](/docs/regkit/sections/registry-values-details/))
-  - [OCCT]([/docs/regkit/sections/registry-values-details/](/docs/regkit/sections/registry-values-details/))
-- [Overclocking]([/docs/regkit/sections/registry-values-details/](/docs/regkit/sections/registry-values-details/))
-  - [Increasing the core clock & finding the voltage]([/docs/regkit/sections/registry-values-details/](/docs/regkit/sections/registry-values-details/))
-- [Undervolting]([/docs/regkit/sections/registry-values-details/](/docs/regkit/sections/registry-values-details/))
-  - [Limiting the voltage]([/docs/regkit/sections/registry-values-details/](/docs/regkit/sections/registry-values-details/))
-- [Memory Overclock]([/docs/regkit/sections/registry-values-details/](/docs/regkit/sections/registry-values-details/))
-  - [Increasing the memory clock]([/docs/regkit/sections/registry-values-details/](/docs/regkit/sections/registry-values-details/))
-- [Final Test]([/docs/regkit/sections/registry-values-details/](/docs/regkit/sections/registry-values-details/))
+- [Preconfigurations](/docs/regkit/sections/registry-values-details/)
+  - [MSI Afterburner](/docs/regkit/sections/registry-values-details/)
+  - [3DMark](/docs/regkit/sections/registry-values-details/)
+  - [Superposition](/docs/regkit/sections/registry-values-details/)
+  - [OCCT](/docs/regkit/sections/registry-values-details/)
+- [Overclocking](/docs/regkit/sections/registry-values-details/)
+  - [Increasing the core clock & finding the voltage](/docs/regkit/sections/registry-values-details/)
+- [Undervolting](/docs/regkit/sections/registry-values-details/)
+  - [Limiting the voltage](/docs/regkit/sections/registry-values-details/)
+- [Memory Overclock](/docs/regkit/sections/registry-values-details/)
+  - [Increasing the memory clock](/docs/regkit/sections/registry-values-details/)
+- [Final Test](/docs/regkit/sections/registry-values-details/)
 
 ## Preconfigurations
 

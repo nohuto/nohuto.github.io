@@ -1,7 +1,7 @@
 ---
 title: 'DRS Group'
 description: 'Generated from nvapi-cli file: docs/drs.md.'
-editUrl: 'https://github.com/nohuto/nvapi-cli/blob/main/docs/drs.md'
+editUrl: false
 sidebar:
   order: 6
 ---

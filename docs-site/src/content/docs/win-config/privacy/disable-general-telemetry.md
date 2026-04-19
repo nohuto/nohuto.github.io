@@ -1,7 +1,7 @@
 ---
 title: 'General Telemetry'
 description: 'Privacy option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-general-telemetry'
+editUrl: false
 sidebar:
   order: 2
 ---

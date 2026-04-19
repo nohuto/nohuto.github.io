@@ -1,7 +1,7 @@
 ---
 title: 'Hide Disabled/Disconnected Devices'
 description: 'Visibility option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#hide-disableddisconnected-devices'
+editUrl: false
 sidebar:
   order: 31
 ---

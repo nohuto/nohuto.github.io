@@ -1,7 +1,7 @@
 ---
 title: 'M/K DQS'
 description: 'Peripheral option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/peripheral/desc.md#mk-dqs'
+editUrl: false
 sidebar:
   order: 14
 ---

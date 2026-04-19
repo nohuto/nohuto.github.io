@@ -1,7 +1,7 @@
 ---
 title: 'Telemetry'
 description: 'NVIDIA option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/nvidia/desc.md#disable-telemetry'
+editUrl: false
 sidebar:
   order: 10
 ---
@@ -15,7 +15,7 @@ Removes several files & preventing the system from sending telemetry data.
   "EnableRID66610": { "Type": "REG_DWORD", "Data": 0 }
 },
 ```
-These three values are often applied in reference to "NVIDIA Telemetry", but since these seem to be outdated (they don't exist - test it yourself via [strings2-tui]([/docs/regkit/sections/overview/](/docs/regkit/sections/overview/))) they won't get applied. The only "telemetry" related FTS parameters I found are:
+These three values are often applied in reference to "NVIDIA Telemetry", but since these seem to be outdated (they don't exist - test it yourself via [strings2-tui](/docs/regkit/sections/overview/)) they won't get applied. The only "telemetry" related FTS parameters I found are:
 ```cfg
 Parameter NVCFG_GLOBAL_FEATURE_RID67822_NVCPLTELEMETRYPHASE2_DYNAMIC
 {

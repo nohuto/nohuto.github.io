@@ -1,7 +1,7 @@
 ---
 title: 'Guides'
 description: 'Generated from regkit README section: Guides.'
-editUrl: 'https://github.com/nohuto/regkit/blob/main/README.md#guides'
+editUrl: false
 sidebar:
   order: 11
 ---

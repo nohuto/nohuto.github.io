@@ -1,7 +1,7 @@
 ---
 title: 'Brave Configuration (Desktop)'
 description: 'Generated from app-tools file: guides/brave-desktop.md.'
-editUrl: 'https://github.com/nohuto/app-tools/blob/main/guides/brave-desktop.md'
+editUrl: false
 sidebar:
   order: 3
 ---

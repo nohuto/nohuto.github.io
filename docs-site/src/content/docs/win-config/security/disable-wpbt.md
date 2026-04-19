@@ -1,7 +1,7 @@
 ---
 title: 'WPBT'
 description: 'Security option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/security/desc.md#disable-wpbt'
+editUrl: false
 sidebar:
   order: 10
 ---

@@ -1,7 +1,7 @@
 ---
 title: 'Browser Extensions'
 description: 'Generated from app-tools file: extensions.md.'
-editUrl: 'https://github.com/nohuto/app-tools/blob/main/extensions.md'
+editUrl: false
 sidebar:
   order: 1
 ---

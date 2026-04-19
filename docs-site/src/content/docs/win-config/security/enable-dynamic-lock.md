@@ -1,7 +1,7 @@
 ---
 title: 'Dynamic Lock'
 description: 'Security option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/security/desc.md#enable-dynamic-lock'
+editUrl: false
 sidebar:
   order: 22
 ---

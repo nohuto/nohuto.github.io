@@ -1,7 +1,7 @@
 ---
 title: 'Overview'
 description: 'RegKit overview generated from README.'
-editUrl: 'https://github.com/nohuto/regkit/blob/main/README.md'
+editUrl: false
 sidebar:
   order: 1
 ---

@@ -1,7 +1,7 @@
 ---
 title: 'Cross-Device Experiences'
 description: 'Privacy option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-cross-device-experiences'
+editUrl: false
 sidebar:
   order: 28
 ---

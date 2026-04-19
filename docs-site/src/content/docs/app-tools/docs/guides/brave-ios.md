@@ -1,7 +1,7 @@
 ---
 title: 'Brave Configuration (iOS)'
 description: 'Generated from app-tools file: guides/brave-ios.md.'
-editUrl: 'https://github.com/nohuto/app-tools/blob/main/guides/brave-ios.md'
+editUrl: false
 sidebar:
   order: 4
 ---

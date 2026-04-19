@@ -1,7 +1,7 @@
 ---
 title: 'Reduced HiberFile'
 description: 'Power option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/power/desc.md#reduced-hiberfile'
+editUrl: false
 sidebar:
   order: 6
 ---

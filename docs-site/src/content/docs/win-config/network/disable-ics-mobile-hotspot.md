@@ -1,7 +1,7 @@
 ---
 title: 'ICS / Mobile Hotspot'
 description: 'Network option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/network/desc.md#disable-ics--mobile-hotspot'
+editUrl: false
 sidebar:
   order: 21
 ---

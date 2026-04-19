@@ -1,7 +1,7 @@
 ---
 title: 'Marvel Rivals'
 description: 'Generated from game-tools file: marvel-rivals/desc.md.'
-editUrl: 'https://github.com/nohuto/game-tools/blob/main/marvel-rivals/desc.md'
+editUrl: false
 sidebar:
   order: 3
 ---

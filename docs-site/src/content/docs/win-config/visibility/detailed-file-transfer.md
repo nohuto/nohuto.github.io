@@ -1,7 +1,7 @@
 ---
 title: 'Detailed File Transfer'
 description: 'Visibility option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#detailed-file-transfer'
+editUrl: false
 sidebar:
   order: 21
 ---

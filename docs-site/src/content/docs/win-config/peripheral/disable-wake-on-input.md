@@ -1,7 +1,7 @@
 ---
 title: 'Wake on Input'
 description: 'Peripheral option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/peripheral/desc.md#disable-wake-on-input'
+editUrl: false
 sidebar:
   order: 17
 ---

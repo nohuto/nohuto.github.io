@@ -1,7 +1,7 @@
 ---
 title: 'Microsoft Client/Multiplexor'
 description: 'Network option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/network/desc.md#disable-microsoft-clientmultiplexor'
+editUrl: false
 sidebar:
   order: 20
 ---

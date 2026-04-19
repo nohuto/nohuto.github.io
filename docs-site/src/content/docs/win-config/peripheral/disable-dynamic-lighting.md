@@ -1,7 +1,7 @@
 ---
 title: 'Dynamic Lighting'
 description: 'Peripheral option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/peripheral/desc.md#disable-dynamic-lighting'
+editUrl: false
 sidebar:
   order: 18
 ---

@@ -1,7 +1,7 @@
 ---
 title: 'Hide Last Logged-In User'
 description: 'Privacy option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#hide-last-logged-in-user'
+editUrl: false
 sidebar:
   order: 35
 ---

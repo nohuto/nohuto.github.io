@@ -1,7 +1,7 @@
 ---
 title: 'Legacy Switch Compatibility Mode'
 description: 'Network option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/network/desc.md#enable-legacy-switch-compatibility-mode'
+editUrl: false
 sidebar:
   order: 30
 ---

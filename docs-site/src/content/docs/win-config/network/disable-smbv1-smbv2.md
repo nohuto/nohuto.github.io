@@ -1,7 +1,7 @@
 ---
 title: 'SMBv1/SMBv2'
 description: 'Network option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/network/desc.md#disable-smbv1smbv2'
+editUrl: false
 sidebar:
   order: 10
 ---

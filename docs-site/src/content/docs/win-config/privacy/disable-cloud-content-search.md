@@ -1,7 +1,7 @@
 ---
 title: 'Cloud Content Search'
 description: 'Privacy option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-cloud-content-search'
+editUrl: false
 sidebar:
   order: 45
 ---

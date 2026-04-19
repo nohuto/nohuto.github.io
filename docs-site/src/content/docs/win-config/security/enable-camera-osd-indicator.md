@@ -1,7 +1,7 @@
 ---
 title: 'Camera OSD Indicator'
 description: 'Security option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/security/desc.md#enable-camera-osd-indicator'
+editUrl: false
 sidebar:
   order: 24
 ---

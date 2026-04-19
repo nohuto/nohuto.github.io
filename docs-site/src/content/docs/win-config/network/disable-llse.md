@@ -1,7 +1,7 @@
 ---
 title: 'LLSE'
 description: 'Network option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/network/desc.md#disable-llse'
+editUrl: false
 sidebar:
   order: 23
 ---

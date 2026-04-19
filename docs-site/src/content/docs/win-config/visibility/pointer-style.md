@@ -1,7 +1,7 @@
 ---
 title: 'Pointer Style'
 description: 'Visibility option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#pointer-style'
+editUrl: false
 sidebar:
   order: 1
 ---

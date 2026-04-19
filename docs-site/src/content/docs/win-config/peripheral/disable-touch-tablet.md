@@ -1,7 +1,7 @@
 ---
 title: 'Touch & Tablet'
 description: 'Peripheral option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/peripheral/desc.md#disable-touch--tablet'
+editUrl: false
 sidebar:
   order: 16
 ---

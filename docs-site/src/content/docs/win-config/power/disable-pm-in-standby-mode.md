@@ -1,7 +1,7 @@
 ---
 title: 'PM in Standby Mode'
 description: 'Power option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/power/desc.md#disable-pm-in-standby-mode'
+editUrl: false
 sidebar:
   order: 13
 ---

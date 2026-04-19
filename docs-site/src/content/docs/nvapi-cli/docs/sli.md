@@ -1,7 +1,7 @@
 ---
 title: 'SLI Group'
 description: 'Generated from nvapi-cli file: docs/sli.md.'
-editUrl: 'https://github.com/nohuto/nvapi-cli/blob/main/docs/sli.md'
+editUrl: false
 sidebar:
   order: 4
 ---

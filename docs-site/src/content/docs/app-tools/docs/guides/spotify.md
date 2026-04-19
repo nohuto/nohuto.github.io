@@ -1,7 +1,7 @@
 ---
 title: 'Spotify Configuration'
 description: 'Generated from app-tools file: guides/spotify.md.'
-editUrl: 'https://github.com/nohuto/app-tools/blob/main/guides/spotify.md'
+editUrl: false
 sidebar:
   order: 8
 ---

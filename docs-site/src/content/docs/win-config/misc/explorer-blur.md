@@ -1,7 +1,7 @@
 ---
 title: 'Explorer Blur'
 description: 'Misc option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/misc/desc.md#explorer-blur'
+editUrl: false
 sidebar:
   order: 3
 ---

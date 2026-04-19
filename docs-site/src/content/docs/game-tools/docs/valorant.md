@@ -1,7 +1,7 @@
 ---
 title: 'Valorant'
 description: 'Generated from game-tools file: valorant/desc.md.'
-editUrl: 'https://github.com/nohuto/game-tools/blob/main/valorant/desc.md'
+editUrl: false
 sidebar:
   order: 5
 ---

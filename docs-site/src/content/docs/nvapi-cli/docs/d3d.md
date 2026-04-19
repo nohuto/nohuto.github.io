@@ -1,7 +1,7 @@
 ---
 title: 'D3D Group'
 description: 'Generated from nvapi-cli file: docs/d3d.md.'
-editUrl: 'https://github.com/nohuto/nvapi-cli/blob/main/docs/d3d.md'
+editUrl: false
 sidebar:
   order: 12
 ---

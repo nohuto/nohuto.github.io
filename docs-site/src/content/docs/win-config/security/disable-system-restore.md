@@ -1,7 +1,7 @@
 ---
 title: 'System Restore'
 description: 'Security option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/security/desc.md#disable-system-restore'
+editUrl: false
 sidebar:
   order: 8
 ---

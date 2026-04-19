@@ -1,7 +1,7 @@
 ---
 title: 'SteelSeries Configuration'
 description: 'Generated from app-tools file: guides/steelseries.md.'
-editUrl: 'https://github.com/nohuto/app-tools/blob/main/guides/steelseries.md'
+editUrl: false
 sidebar:
   order: 10
 ---

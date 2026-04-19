@@ -1,7 +1,7 @@
 ---
 title: 'NetBIOS/mDNS/LLMNR'
 description: 'Network option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/network/desc.md#disable-netbiosmdnsllmnr'
+editUrl: false
 sidebar:
   order: 11
 ---

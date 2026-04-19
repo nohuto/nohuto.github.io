@@ -1,7 +1,7 @@
 ---
 title: 'Usage'
 description: 'Generated from nvapi-cli README section: Usage.'
-editUrl: 'https://github.com/nohuto/nvapi-cli/blob/main/README.md#usage'
+editUrl: false
 sidebar:
   order: 2
 ---

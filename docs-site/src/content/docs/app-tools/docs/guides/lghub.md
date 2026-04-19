@@ -1,7 +1,7 @@
 ---
 title: 'LGHUB Configuration'
 description: 'Generated from app-tools file: guides/lghub.md.'
-editUrl: 'https://github.com/nohuto/app-tools/blob/main/guides/lghub.md'
+editUrl: false
 sidebar:
   order: 6
 ---

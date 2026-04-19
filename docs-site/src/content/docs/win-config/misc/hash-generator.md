@@ -1,7 +1,7 @@
 ---
 title: 'Hash Generator'
 description: 'Misc option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/misc/desc.md#hash-generator'
+editUrl: false
 sidebar:
   order: 12
 ---

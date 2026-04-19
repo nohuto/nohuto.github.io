@@ -1,7 +1,7 @@
 ---
 title: 'VR Group'
 description: 'Generated from nvapi-cli file: docs/vr.md.'
-editUrl: 'https://github.com/nohuto/nvapi-cli/blob/main/docs/vr.md'
+editUrl: false
 sidebar:
   order: 14
 ---

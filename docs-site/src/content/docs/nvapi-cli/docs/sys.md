@@ -1,7 +1,7 @@
 ---
 title: 'SYS Group'
 description: 'Generated from nvapi-cli file: docs/sys.md.'
-editUrl: 'https://github.com/nohuto/nvapi-cli/blob/main/docs/sys.md'
+editUrl: false
 sidebar:
   order: 11
 ---

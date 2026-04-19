@@ -1,7 +1,7 @@
 ---
 title: 'Delivery Optimization Files'
 description: 'Cleanup option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/cleanup/desc.md#delivery-optimization-files'
+editUrl: false
 sidebar:
   order: 13
 ---

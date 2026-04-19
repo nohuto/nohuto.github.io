@@ -1,7 +1,7 @@
 ---
 title: 'Power Values'
 description: 'Power option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/power/desc.md#power-values'
+editUrl: false
 sidebar:
   order: 3
 ---

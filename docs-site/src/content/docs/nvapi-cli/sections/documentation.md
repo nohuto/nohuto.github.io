@@ -1,7 +1,7 @@
 ---
 title: 'Documentation'
 description: 'Generated from nvapi-cli README section: Documentation.'
-editUrl: 'https://github.com/nohuto/nvapi-cli/blob/main/README.md#documentation'
+editUrl: false
 sidebar:
   order: 4
 ---

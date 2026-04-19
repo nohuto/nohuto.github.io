@@ -1,7 +1,7 @@
 ---
 title: 'Troubleshooter Preference'
 description: 'Privacy option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#troubleshooter-preference'
+editUrl: false
 sidebar:
   order: 38
 ---

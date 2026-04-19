@@ -1,7 +1,7 @@
 ---
 title: 'MPO'
 description: 'NVIDIA option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/nvidia/desc.md#disable-mpo'
+editUrl: false
 sidebar:
   order: 14
 ---

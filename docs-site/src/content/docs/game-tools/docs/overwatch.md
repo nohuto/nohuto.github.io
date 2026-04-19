@@ -1,7 +1,7 @@
 ---
 title: 'Overwatch'
 description: 'Generated from game-tools file: overwatch/desc.md.'
-editUrl: 'https://github.com/nohuto/game-tools/blob/main/overwatch/desc.md'
+editUrl: false
 sidebar:
   order: 4
 ---

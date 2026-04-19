@@ -1,7 +1,7 @@
 ---
 title: 'Disk Write Cache Policy'
 description: 'Peripheral option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/peripheral/desc.md#disk-write-cache-policy'
+editUrl: false
 sidebar:
   order: 12
 ---

@@ -1,7 +1,7 @@
 ---
 title: 'P2P Updates'
 description: 'Security option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/security/desc.md#disable-p2p-updates'
+editUrl: false
 sidebar:
   order: 14
 ---

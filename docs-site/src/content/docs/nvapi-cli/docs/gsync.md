@@ -1,7 +1,7 @@
 ---
 title: 'GSync Group'
 description: 'Generated from nvapi-cli file: docs/gsync.md.'
-editUrl: 'https://github.com/nohuto/nvapi-cli/blob/main/docs/gsync.md'
+editUrl: false
 sidebar:
   order: 5
 ---

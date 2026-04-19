@@ -1,7 +1,7 @@
 ---
 title: 'Snap Flyout'
 description: 'Visibility option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#disable-snap-flyout'
+editUrl: false
 sidebar:
   order: 23
 ---

@@ -1,7 +1,7 @@
 ---
 title: 'SRUM Data'
 description: 'Cleanup option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/cleanup/desc.md#srum-data'
+editUrl: false
 sidebar:
   order: 3
 ---

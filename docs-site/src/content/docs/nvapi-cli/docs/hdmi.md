@@ -1,7 +1,7 @@
 ---
 title: 'HDMI Group'
 description: 'Generated from nvapi-cli file: docs/hdmi.md.'
-editUrl: 'https://github.com/nohuto/nvapi-cli/blob/main/docs/hdmi.md'
+editUrl: false
 sidebar:
   order: 8
 ---

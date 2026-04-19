@@ -1,7 +1,7 @@
 ---
 title: 'Classic Context Menu'
 description: 'Visibility option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#classic-context-menu'
+editUrl: false
 sidebar:
   order: 10
 ---

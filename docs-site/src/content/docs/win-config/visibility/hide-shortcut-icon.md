@@ -1,7 +1,7 @@
 ---
 title: 'Hide Shortcut Icon'
 description: 'Visibility option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#hide-shortcut-icon'
+editUrl: false
 sidebar:
   order: 18
 ---

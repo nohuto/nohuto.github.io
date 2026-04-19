@@ -1,7 +1,7 @@
 ---
 title: 'Sudo'
 description: 'Security option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/security/desc.md#sudo'
+editUrl: false
 sidebar:
   order: 23
 ---

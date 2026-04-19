@@ -1,7 +1,7 @@
 ---
 title: 'Taskbar Settings'
 description: 'Visibility option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#taskbar-settings'
+editUrl: false
 sidebar:
   order: 16
 ---

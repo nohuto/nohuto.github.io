@@ -1,7 +1,7 @@
 ---
 title: 'Message Sync'
 description: 'Privacy option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-message-sync'
+editUrl: false
 sidebar:
   order: 43
 ---

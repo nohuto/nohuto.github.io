@@ -1,7 +1,7 @@
 ---
 title: 'Notepad++'
 description: 'Misc option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/misc/desc.md#notepad'
+editUrl: false
 sidebar:
   order: 4
 ---

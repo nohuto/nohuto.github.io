@@ -1,7 +1,7 @@
 ---
 title: 'System Mitigations'
 description: 'Security option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/security/desc.md#disable-system-mitigations'
+editUrl: false
 sidebar:
   order: 6
 ---

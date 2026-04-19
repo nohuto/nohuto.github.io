@@ -1,7 +1,7 @@
 ---
 title: 'Remove Power Options'
 description: 'Power option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/power/desc.md#remove-power-options'
+editUrl: false
 sidebar:
   order: 7
 ---

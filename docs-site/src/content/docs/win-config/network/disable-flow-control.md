@@ -1,7 +1,7 @@
 ---
 title: 'Flow Control'
 description: 'Network option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/network/desc.md#disable-flow-control'
+editUrl: false
 sidebar:
   order: 24
 ---

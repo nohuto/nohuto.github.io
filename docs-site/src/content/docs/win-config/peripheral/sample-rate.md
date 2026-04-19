@@ -1,7 +1,7 @@
 ---
 title: 'Sample Rate'
 description: 'Peripheral option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/peripheral/desc.md#sample-rate'
+editUrl: false
 sidebar:
   order: 20
 ---

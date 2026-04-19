@@ -1,7 +1,7 @@
 ---
 title: 'Font Providers'
 description: 'Privacy option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-font-providers'
+editUrl: false
 sidebar:
   order: 48
 ---

@@ -1,7 +1,7 @@
 ---
 title: 'Quantum/Priority Separation'
 description: 'System option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/system/desc.md#quantumpriority-separation'
+editUrl: false
 sidebar:
   order: 1
 ---

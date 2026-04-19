@@ -1,7 +1,7 @@
 ---
 title: 'App Archive'
 description: 'System option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/system/desc.md#app-archive'
+editUrl: false
 sidebar:
   order: 35
 ---

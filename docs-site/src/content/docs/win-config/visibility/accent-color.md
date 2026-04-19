@@ -1,7 +1,7 @@
 ---
 title: 'Accent Color'
 description: 'Visibility option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#accent-color'
+editUrl: false
 sidebar:
   order: 5
 ---

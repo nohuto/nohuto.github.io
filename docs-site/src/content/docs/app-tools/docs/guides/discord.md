@@ -1,7 +1,7 @@
 ---
 title: 'Discord Configuration'
 description: 'Generated from app-tools file: guides/discord.md.'
-editUrl: 'https://github.com/nohuto/app-tools/blob/main/guides/discord.md'
+editUrl: false
 sidebar:
   order: 5
 ---

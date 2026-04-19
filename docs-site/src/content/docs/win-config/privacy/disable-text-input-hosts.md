@@ -1,7 +1,7 @@
 ---
 title: 'Text Input Hosts'
 description: 'Privacy option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-text-input-hosts'
+editUrl: false
 sidebar:
   order: 20
 ---

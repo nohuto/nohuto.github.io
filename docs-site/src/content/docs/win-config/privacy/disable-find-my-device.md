@@ -1,7 +1,7 @@
 ---
 title: 'Find My Device'
 description: 'Privacy option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-find-my-device'
+editUrl: false
 sidebar:
   order: 55
 ---

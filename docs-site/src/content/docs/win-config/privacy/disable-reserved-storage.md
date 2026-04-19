@@ -1,7 +1,7 @@
 ---
 title: 'Reserved Storage'
 description: 'Privacy option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-reserved-storage'
+editUrl: false
 sidebar:
   order: 14
 ---

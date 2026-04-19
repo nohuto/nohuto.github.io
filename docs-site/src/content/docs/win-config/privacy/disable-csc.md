@@ -1,7 +1,7 @@
 ---
 title: 'CSC'
 description: 'Privacy option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-csc'
+editUrl: false
 sidebar:
   order: 44
 ---

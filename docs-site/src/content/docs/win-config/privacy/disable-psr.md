@@ -1,7 +1,7 @@
 ---
 title: 'PSR'
 description: 'Privacy option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-psr'
+editUrl: false
 sidebar:
   order: 8
 ---

@@ -1,7 +1,7 @@
 ---
 title: 'Cs2'
 description: 'Generated from game-tools file: cs2/desc.md.'
-editUrl: 'https://github.com/nohuto/game-tools/blob/main/cs2/desc.md'
+editUrl: false
 sidebar:
   order: 1
 ---

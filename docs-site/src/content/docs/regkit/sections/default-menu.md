@@ -1,7 +1,7 @@
 ---
 title: 'Default Menu'
 description: 'Generated from regkit README section: Default Menu.'
-editUrl: 'https://github.com/nohuto/regkit/blob/main/README.md#default-menu'
+editUrl: false
 sidebar:
   order: 8
 ---

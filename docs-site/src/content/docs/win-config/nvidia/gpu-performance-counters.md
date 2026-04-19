@@ -1,7 +1,7 @@
 ---
 title: 'GPU Performance Counters'
 description: 'NVIDIA option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/nvidia/desc.md#gpu-performance-counters'
+editUrl: false
 sidebar:
   order: 13
 ---

@@ -1,7 +1,7 @@
 ---
 title: 'Overview'
 description: 'Game Configuration Tools overview generated from README.'
-editUrl: 'https://github.com/nohuto/game-tools/blob/main/README.md'
+editUrl: false
 sidebar:
   order: 1
 ---

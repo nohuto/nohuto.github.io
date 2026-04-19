@@ -1,0 +1,113 @@
+---
+import { docsDefaultThemes, docsLightThemeIds, docsThemeIds } from '../../utils/doc-themes';
+---
+
+<script
+  define:vars={{
+    defaultThemes: docsDefaultThemes,
+    lightThemeIds: docsLightThemeIds,
+    themeIds: docsThemeIds,
+  }}
+>
+  window.DocsThemeProvider = window.DocsThemeProvider || (() => {
+    const storageKey = 'nv-theme';
+    const availableThemeIds = new Set(themeIds);
+    const availableLightThemeIds = new Set(lightThemeIds);
+    const defaults = defaultThemes;
+
+    const getPreferredScheme = () =>
+      window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+
+    const getThemeScheme = (theme) => (availableLightThemeIds.has(theme) ? 'light' : 'dark');
+
+    const isValidTheme = (theme) => typeof theme === 'string' && availableThemeIds.has(theme);
+
+    const getFallbackTheme = (scheme = getPreferredScheme()) => defaults[scheme] ?? defaults.dark;
+
+    const parseTheme = (theme) => (isValidTheme(theme) ? theme : '');
+
+    const loadTheme = () => {
+      if (typeof localStorage === 'undefined') return '';
+      return parseTheme(localStorage.getItem(storageKey));
+    };
+
+    const applyTheme = (requestedTheme) => {
+      const nextTheme = parseTheme(requestedTheme) || getFallbackTheme();
+      const nextScheme = getThemeScheme(nextTheme);
+      document.documentElement.dataset.theme = nextScheme;
+      document.documentElement.dataset.docsTheme = nextTheme;
+      return { theme: nextTheme, scheme: nextScheme };
+    };
+
+    const updatePickers = (theme = loadTheme() || document.documentElement.dataset.docsTheme || getFallbackTheme()) => {
+      document.querySelectorAll('docs-theme-select').forEach((picker) => {
+        picker.dataset.themeValue = theme;
+        const optionButtons = Array.from(picker.querySelectorAll('[data-theme-option]'));
+        let activeLabel = '';
+
+        optionButtons.forEach((optionButton) => {
+          if (!(optionButton instanceof HTMLButtonElement)) return;
+          const isActive = optionButton.dataset.themeOption === theme;
+          optionButton.setAttribute('aria-selected', String(isActive));
+          optionButton.setAttribute('aria-checked', String(isActive));
+          optionButton.tabIndex = isActive ? 0 : -1;
+          optionButton.dataset.active = String(isActive);
+          if (isActive) {
+            activeLabel = optionButton.dataset.themeLabel || optionButton.textContent?.trim() || '';
+          }
+        });
+
+        const currentLabel = picker.querySelector('[data-current-label]');
+        if (currentLabel) currentLabel.textContent = activeLabel || theme;
+
+        const trigger = picker.querySelector('[data-theme-trigger]');
+        if (trigger instanceof HTMLButtonElement) {
+          const label = activeLabel || theme;
+          trigger.setAttribute('aria-label', `Select docs theme. Current theme: ${label}`);
+        }
+      });
+    };
+
+    const storeTheme = (theme) => {
+      if (typeof localStorage === 'undefined') return;
+      localStorage.setItem(storageKey, theme);
+    };
+
+    const setTheme = (theme) => {
+      const { theme: appliedTheme, scheme } = applyTheme(theme);
+      storeTheme(appliedTheme);
+      updatePickers(appliedTheme);
+      document.dispatchEvent(
+        new CustomEvent('nv:theme-change', {
+          detail: {
+            theme: appliedTheme,
+            scheme,
+            isLight: scheme === 'light',
+          },
+        }),
+      );
+      return appliedTheme;
+    };
+
+    const syncPreferredTheme = () => {
+      if (loadTheme()) return;
+      const { theme } = applyTheme('');
+      updatePickers(theme);
+    };
+
+    const initialTheme = loadTheme();
+    applyTheme(initialTheme);
+
+    window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', syncPreferredTheme);
+
+    return {
+      getFallbackTheme,
+      getThemeScheme,
+      loadTheme,
+      setTheme,
+      syncPreferredTheme,
+      updatePickers,
+    };
+  })();
+</script>
+

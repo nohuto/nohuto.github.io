@@ -1,7 +1,7 @@
 ---
 title: 'Recycle Bin'
 description: 'Cleanup option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/cleanup/desc.md#recycle-bin'
+editUrl: false
 sidebar:
   order: 5
 ---

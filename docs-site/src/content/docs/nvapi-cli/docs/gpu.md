@@ -1,7 +1,7 @@
 ---
 title: 'GPU Group'
 description: 'Generated from nvapi-cli file: docs/gpu.md.'
-editUrl: 'https://github.com/nohuto/nvapi-cli/blob/main/docs/gpu.md'
+editUrl: false
 sidebar:
   order: 1
 ---

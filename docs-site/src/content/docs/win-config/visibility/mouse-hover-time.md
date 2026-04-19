@@ -1,7 +1,7 @@
 ---
 title: 'Mouse Hover Time'
 description: 'Visibility option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#mouse-hover-time'
+editUrl: false
 sidebar:
   order: 33
 ---

@@ -1,7 +1,7 @@
 ---
 title: 'Increased DH & RSA Key'
 description: 'Security option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/security/desc.md#increased-dh--rsa-key'
+editUrl: false
 sidebar:
   order: 15
 ---

@@ -1,7 +1,7 @@
 ---
 title: 'Website Access to Language List'
 description: 'Privacy option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-website-access-to-language-list'
+editUrl: false
 sidebar:
   order: 4
 ---

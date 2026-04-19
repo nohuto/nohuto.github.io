@@ -1,7 +1,7 @@
 ---
 title: 'Hide Lock Screen'
 description: 'Visibility option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#hide-lock-screen'
+editUrl: false
 sidebar:
   order: 26
 ---

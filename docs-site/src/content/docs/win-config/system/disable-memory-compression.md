@@ -1,7 +1,7 @@
 ---
 title: 'Memory Compression'
 description: 'System option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/system/desc.md#disable-memory-compression'
+editUrl: false
 sidebar:
   order: 28
 ---

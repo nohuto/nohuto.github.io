@@ -1,7 +1,7 @@
 ---
 title: 'OGL Group'
 description: 'Generated from nvapi-cli file: docs/ogl.md.'
-editUrl: 'https://github.com/nohuto/nvapi-cli/blob/main/docs/ogl.md'
+editUrl: false
 sidebar:
   order: 13
 ---

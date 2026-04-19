@@ -1,7 +1,7 @@
 ---
 title: 'Suggestions/Tips/Tricks'
 description: 'Privacy option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-suggestionstipstricks'
+editUrl: false
 sidebar:
   order: 25
 ---

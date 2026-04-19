@@ -1,7 +1,7 @@
 ---
 title: 'Settings Page Visibility'
 description: 'Visibility option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#settings-page-visibility'
+editUrl: false
 sidebar:
   order: 35
 ---

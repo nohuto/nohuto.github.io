@@ -1,7 +1,7 @@
 ---
 title: 'Alt-Tab App Tabs'
 description: 'Visibility option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#alt-tab-app-tabs'
+editUrl: false
 sidebar:
   order: 22
 ---

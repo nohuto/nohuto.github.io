@@ -1,7 +1,7 @@
 ---
 title: 'StorNVMe Values'
 description: 'Peripheral option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/peripheral/desc.md#stornvme-values'
+editUrl: false
 sidebar:
   order: 6
 ---

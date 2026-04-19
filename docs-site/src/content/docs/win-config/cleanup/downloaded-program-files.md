@@ -1,7 +1,7 @@
 ---
 title: 'Downloaded Program Files'
 description: 'Cleanup option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/cleanup/desc.md#downloaded-program-files'
+editUrl: false
 sidebar:
   order: 25
 ---

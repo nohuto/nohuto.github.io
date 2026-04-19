@@ -1,7 +1,7 @@
 ---
 title: 'System Fonts'
 description: 'Visibility option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#system-fonts'
+editUrl: false
 sidebar:
   order: 25
 ---

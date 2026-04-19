@@ -1,7 +1,7 @@
 ---
 title: 'Guest Account'
 description: 'Security option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/security/desc.md#guest-account'
+editUrl: false
 sidebar:
   order: 26
 ---

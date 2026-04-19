@@ -1,7 +1,7 @@
 ---
 title: 'PowerShell Colors'
 description: 'Visibility option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#powershell-colors'
+editUrl: false
 sidebar:
   order: 29
 ---
@@ -33,7 +33,7 @@ Since `powershell.exe` has default color of white (foreground) and blue (backgro
 | Yellow | `1110` | `14` |
 | White | `1111` | `15` |
 
-Calculate it on your own, by using [bitmask-calc]([/docs/regkit/sections/overview/](/docs/regkit/sections/overview/)) - e.g. set bit `1-3` and `7`, to get `Yellow` (foreground) and `DarkGray` (background).
+Calculate it on your own, by using [bitmask-calc](/docs/regkit/sections/overview/) - e.g. set bit `1-3` and `7`, to get `Yellow` (foreground) and `DarkGray` (background).
 
 ## Miscellaneous Notes
 

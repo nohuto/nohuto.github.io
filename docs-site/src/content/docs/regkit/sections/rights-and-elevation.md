@@ -1,7 +1,7 @@
 ---
 title: 'Rights and Elevation'
 description: 'Generated from regkit README section: Rights and Elevation.'
-editUrl: 'https://github.com/nohuto/regkit/blob/main/README.md#rights-and-elevation'
+editUrl: false
 sidebar:
   order: 9
 ---

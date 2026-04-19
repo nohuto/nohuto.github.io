@@ -1,7 +1,7 @@
 ---
 title: 'Tracing Program Registry Activity'
 description: 'Generated from regkit file: guides/procmon.md.'
-editUrl: 'https://github.com/nohuto/regkit/blob/main/guides/procmon.md'
+editUrl: false
 sidebar:
   order: 1
 ---

@@ -1,7 +1,7 @@
 ---
 title: 'Hyper-V'
 description: 'System option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/system/desc.md#disable-hyper-v'
+editUrl: false
 sidebar:
   order: 38
 ---

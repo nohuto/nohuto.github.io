@@ -1,7 +1,7 @@
 ---
 title: 'Stereo Group'
 description: 'Generated from nvapi-cli file: docs/stereo.md.'
-editUrl: 'https://github.com/nohuto/nvapi-cli/blob/main/docs/stereo.md'
+editUrl: false
 sidebar:
   order: 15
 ---

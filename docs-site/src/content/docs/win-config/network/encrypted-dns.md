@@ -1,7 +1,7 @@
 ---
 title: 'Encrypted DNS'
 description: 'Network option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/network/desc.md#encrypted-dns'
+editUrl: false
 sidebar:
   order: 1
 ---

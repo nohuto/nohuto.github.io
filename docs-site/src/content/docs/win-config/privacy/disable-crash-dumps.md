@@ -1,7 +1,7 @@
 ---
 title: 'Crash Dumps'
 description: 'Privacy option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-crash-dumps'
+editUrl: false
 sidebar:
   order: 39
 ---

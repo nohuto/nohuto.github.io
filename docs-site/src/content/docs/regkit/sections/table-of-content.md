@@ -1,7 +1,7 @@
 ---
 title: 'Table of Content'
 description: 'Generated from regkit README section: Table of Content.'
-editUrl: 'https://github.com/nohuto/regkit/blob/main/README.md#table-of-content'
+editUrl: false
 sidebar:
   order: 2
 ---

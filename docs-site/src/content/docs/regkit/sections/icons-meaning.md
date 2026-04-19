@@ -1,7 +1,7 @@
 ---
 title: 'Icons Meaning'
 description: 'Generated from regkit README section: Icons Meaning.'
-editUrl: 'https://github.com/nohuto/regkit/blob/main/README.md#icons-meaning'
+editUrl: false
 sidebar:
   order: 6
 ---

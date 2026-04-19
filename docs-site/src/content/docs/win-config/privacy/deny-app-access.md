@@ -1,7 +1,7 @@
 ---
 title: 'Deny App Access'
 description: 'Privacy option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#deny-app-access'
+editUrl: false
 sidebar:
   order: 17
 ---

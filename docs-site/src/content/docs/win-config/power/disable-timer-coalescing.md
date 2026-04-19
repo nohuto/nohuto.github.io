@@ -1,7 +1,7 @@
 ---
 title: 'Timer Coalescing'
 description: 'Power option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/power/desc.md#disable-timer-coalescing'
+editUrl: false
 sidebar:
   order: 10
 ---

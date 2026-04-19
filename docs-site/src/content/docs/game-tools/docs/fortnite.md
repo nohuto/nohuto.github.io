@@ -1,7 +1,7 @@
 ---
 title: 'Fortnite'
 description: 'Generated from game-tools file: fortnite/desc.md.'
-editUrl: 'https://github.com/nohuto/game-tools/blob/main/fortnite/desc.md'
+editUrl: false
 sidebar:
   order: 2
 ---

@@ -1,7 +1,7 @@
 ---
 title: 'Optimize File System'
 description: 'System option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/system/desc.md#optimize-file-system'
+editUrl: false
 sidebar:
   order: 26
 ---

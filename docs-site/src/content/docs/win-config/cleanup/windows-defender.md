@@ -1,7 +1,7 @@
 ---
 title: 'Windows Defender'
 description: 'Cleanup option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/cleanup/desc.md#windows-defender'
+editUrl: false
 sidebar:
   order: 18
 ---

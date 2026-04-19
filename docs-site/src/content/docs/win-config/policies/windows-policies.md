@@ -1,12 +1,12 @@
 ---
 title: 'Windows Policies'
 description: 'Policies option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/policies/desc.md#windows-policies'
+editUrl: false
 sidebar:
   order: 1
 ---
 
-This section is based on my [admx-parser]([/docs/regkit/sections/overview/](/docs/regkit/sections/overview/)) project. You can get the whole parsed ADMX content via:
+This section is based on my [admx-parser](/docs/regkit/sections/overview/) project. You can get the whole parsed ADMX content via:
 
 ```powershell
 python admx-parser.py [FLAGS]

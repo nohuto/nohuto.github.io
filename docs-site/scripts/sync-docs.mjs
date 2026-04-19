@@ -73,7 +73,7 @@ const REGISTRY_DETAILS_ROUTE_REDIRECTS = new Map([
   ['usbhub-values', '/docs/win-config/peripheral/usbhub-values/#registry-values-details'],
   ['pnp-device-values', '/docs/win-config/power/pnp-device-values/#registry-values-details'],
   ['bcd-edits', '/docs/win-config/system/bcd-edits/#registry-values-details'],
-  ['mmcss-values', '/docs/win-config/system/mmcss-values/#registry-values-details'],
+  ['mmcss-values', '/docs/win-config/system/mmcss-values/'],
   ['stornvme-values', '/docs/win-config/peripheral/stornvme-values/#registry-values-details'],
   ['notification-values', '/docs/win-config/system/disable-notifications/#registry-research'],
 ]);
@@ -140,7 +140,6 @@ function generateRootOverview() {
     title: 'Overview',
     description:
       `Documentation generated from ${repoNames.join(', ')}.`,
-    editUrl: false,
     sidebarHidden: true,
     body: repoNames.map((repoName) => `- [${repoName}](/docs/${repoName}/)`).join('\n'),
   });
@@ -202,7 +201,6 @@ function generateWinConfig(winConfigDir) {
         route,
         title,
         description: `${categoryLabel} option documentation from win-config.`,
-        editUrl: `${WIN_CONFIG_REPO_URL}/blob/main/${category}/desc.md#${githubAnchor}`,
         sidebarOrder: index + 1,
         body: section.lines.join('\n').trim(),
       });
@@ -215,7 +213,6 @@ function generateNvapiCli(repoDir) {
   const sectionPages = generateReadmeSections({
     repoKey: 'nvapi-cli',
     repoDir,
-    repoUrl: NVAPI_CLI_REPO_URL,
     sectionLevel: 2,
     outputDirectory: 'nvapi-cli/sections',
     routeDirectory: '/docs/nvapi-cli/sections/',
@@ -224,7 +221,6 @@ function generateNvapiCli(repoDir) {
   const docPages = generateRepoMarkdownDirectory({
     repoKey: 'nvapi-cli',
     repoDir,
-    repoUrl: NVAPI_CLI_REPO_URL,
     sourceDirectory: 'docs',
     outputDirectory: 'nvapi-cli/docs',
     routeDirectory: '/docs/nvapi-cli/docs/',
@@ -237,7 +233,6 @@ function generateRegkit(repoDir) {
   const sectionPages = generateReadmeSections({
     repoKey: 'regkit',
     repoDir,
-    repoUrl: REGKIT_REPO_URL,
     sectionLevel: 2,
     outputDirectory: 'regkit/sections',
     routeDirectory: '/docs/regkit/sections/',
@@ -246,7 +241,6 @@ function generateRegkit(repoDir) {
   const guidePages = generateRepoMarkdownDirectory({
     repoKey: 'regkit',
     repoDir,
-    repoUrl: REGKIT_REPO_URL,
     sourceDirectory: 'guides',
     outputDirectory: 'regkit/guides',
     routeDirectory: '/docs/regkit/guides/',
@@ -259,7 +253,6 @@ function generateAppTools(repoDir) {
   const sectionPages = generateReadmeSections({
     repoKey: 'app-tools',
     repoDir,
-    repoUrl: APP_TOOLS_REPO_URL,
     sectionLevel: 2,
     outputDirectory: 'app-tools/sections',
     routeDirectory: '/docs/app-tools/sections/',
@@ -268,7 +261,6 @@ function generateAppTools(repoDir) {
   const docPages = generateRepoMarkdownFromRoot({
     repoKey: 'app-tools',
     repoDir,
-    repoUrl: APP_TOOLS_REPO_URL,
     outputDirectory: 'app-tools/docs',
     routeDirectory: '/docs/app-tools/docs/',
     collapseSingleDescLeaf: true,
@@ -281,7 +273,6 @@ function generateGameTools(repoDir) {
   const sectionPages = generateReadmeSections({
     repoKey: 'game-tools',
     repoDir,
-    repoUrl: GAME_TOOLS_REPO_URL,
     sectionLevel: 2,
     outputDirectory: 'game-tools/sections',
     routeDirectory: '/docs/game-tools/sections/',
@@ -290,7 +281,6 @@ function generateGameTools(repoDir) {
   const docPages = generateRepoMarkdownFromRoot({
     repoKey: 'game-tools',
     repoDir,
-    repoUrl: GAME_TOOLS_REPO_URL,
     outputDirectory: 'game-tools/docs',
     routeDirectory: '/docs/game-tools/docs/',
     collapseSingleDescLeaf: true,
@@ -336,7 +326,6 @@ function resolveRepoDirectory(repoName, repoUrl) {
 function generateReadmeSections({
   repoKey,
   repoDir,
-  repoUrl,
   sectionLevel,
   outputDirectory,
   routeDirectory,
@@ -383,7 +372,6 @@ function generateReadmeSections({
         heading === 'Overview'
           ? `${readmeTitle} overview generated from README.`
           : `Generated from ${repoKey} README section: ${heading}.`,
-      editUrl: anchor ? `${repoUrl}/blob/main/README.md#${anchor}` : `${repoUrl}/blob/main/README.md`,
       sidebarOrder: sectionPages + 1,
       body,
     });
@@ -397,7 +385,6 @@ function generateReadmeSections({
 function generateRepoMarkdownDirectory({
   repoKey,
   repoDir,
-  repoUrl,
   sourceDirectory,
   outputDirectory,
   routeDirectory,
@@ -441,7 +428,6 @@ function generateRepoMarkdownDirectory({
       route,
       title,
       description: `Generated from ${repoKey} file: ${sourceDirectory}/${normalizedRelativePath}.`,
-      editUrl: `${repoUrl}/blob/main/${sourceDirectory}/${normalizedRelativePath}`,
       sidebarOrder: generated + 1,
       body,
     });
@@ -455,7 +441,6 @@ function generateRepoMarkdownDirectory({
 function generateRepoMarkdownFromRoot({
   repoKey,
   repoDir,
-  repoUrl,
   outputDirectory,
   routeDirectory,
   collapseSingleDescLeaf = false,
@@ -510,7 +495,6 @@ function generateRepoMarkdownFromRoot({
       route,
       title,
       description: `Generated from ${repoKey} file: ${normalizedRelativePath}.`,
-      editUrl: `${repoUrl}/blob/main/${normalizedRelativePath}`,
       sidebarOrder: generated + 1,
       body,
     });
@@ -549,7 +533,6 @@ function generateSectionIndexes() {
       route,
       title,
       description: `Auto-generated overview for ${directoryLabel}.`,
-      editUrl: false,
       sidebarOrder: getDirectorySidebarOrder(directory),
       sidebarHidden: true,
       body,
@@ -574,12 +557,23 @@ function generateSectionIndexes() {
 
 function rewriteGeneratedLinks() {
   for (const entry of entries) {
-    entry.body = rewriteRepoMentions(rewriteMarkdownLinks(entry.body));
+    entry.body = rewriteRepoMentions(normalizeGeneratedMarkdown(rewriteMarkdownLinks(entry.body)));
   }
 }
 
 function rewriteRepoMentions(markdown) {
   return markdown.replace(/See\s+[a-z]+(?:-[a-z]+)+ repo(?=\s+for a list of)/gi, 'See regkit repo');
+}
+
+function normalizeGeneratedMarkdown(markdown) {
+  return markdown
+    .replace(/\]\(\((https?:\/\/[^)\s]+)\)\)/gi, ']($1)')
+    .replace(/\[([^\]]+)\]\(\[([^\]]+)\]\(([^)]+)\)\)/g, '[$1]($3)')
+    .replace(
+      /https:\/\/www\.noverse\.dev\/docs\/win-config\/system\/mmcss-values\/#registry-values-details/gi,
+      '/docs/win-config/system/mmcss-values/'
+    )
+    .replace(/(\/docs\/game-tools\/docs\/[^)\s#]+\/)#[-a-z0-9]+-tool\b/gi, '$1');
 }
 
 function collectGeneratedDirectories(allEntries) {
@@ -900,13 +894,12 @@ function normalizeAnchor(anchor) {
   return value;
 }
 
-function addEntry({ relativePath, route, title, description, editUrl, sidebarOrder, sidebarHidden, body }) {
+function addEntry({ relativePath, route, title, description, sidebarOrder, sidebarHidden, body }) {
   entries.push({
     relativePath,
     route,
     title,
     description,
-    editUrl,
     sidebarOrder,
     sidebarHidden: Boolean(sidebarHidden),
     body: body || '',
@@ -940,13 +933,8 @@ function buildMarkdown(entry) {
     '---',
     `title: ${yamlString(entry.title)}`,
     `description: ${yamlString(entry.description)}`,
+    'editUrl: false',
   ];
-
-  if (entry.editUrl === false) {
-    lines.push('editUrl: false');
-  } else if (typeof entry.editUrl === 'string' && entry.editUrl.length > 0) {
-    lines.push(`editUrl: ${yamlString(entry.editUrl)}`);
-  }
 
   if (entry.sidebarHidden || Number.isInteger(entry.sidebarOrder)) {
     lines.push('sidebar:');

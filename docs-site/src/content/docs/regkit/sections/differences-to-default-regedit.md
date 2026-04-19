@@ -1,7 +1,7 @@
 ---
 title: 'Differences to Default RegEdit'
 description: 'Generated from regkit README section: Differences to Default RegEdit.'
-editUrl: 'https://github.com/nohuto/regkit/blob/main/README.md#differences-to-default-regedit'
+editUrl: false
 sidebar:
   order: 3
 ---

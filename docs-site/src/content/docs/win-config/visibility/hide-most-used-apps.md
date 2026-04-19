@@ -1,7 +1,7 @@
 ---
 title: 'Hide Most Used Apps'
 description: 'Visibility option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/visibility/desc.md#hide-most-used-apps'
+editUrl: false
 sidebar:
   order: 27
 ---

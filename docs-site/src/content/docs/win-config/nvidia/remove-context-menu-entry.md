@@ -1,7 +1,7 @@
 ---
 title: 'Remove Context Menu Entry'
 description: 'NVIDIA option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/nvidia/desc.md#remove-context-menu-entry'
+editUrl: false
 sidebar:
   order: 12
 ---

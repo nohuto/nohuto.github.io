@@ -1,7 +1,7 @@
 ---
 title: 'Congestion Provider'
 description: 'Network option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/network/desc.md#congestion-provider'
+editUrl: false
 sidebar:
   order: 5
 ---

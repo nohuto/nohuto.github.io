@@ -1,7 +1,7 @@
 ---
 title: 'Video Group'
 description: 'Generated from nvapi-cli file: docs/video.md.'
-editUrl: 'https://github.com/nohuto/nvapi-cli/blob/main/docs/video.md'
+editUrl: false
 sidebar:
   order: 7
 ---

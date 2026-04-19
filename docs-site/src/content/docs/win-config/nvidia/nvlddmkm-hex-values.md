@@ -1,7 +1,7 @@
 ---
 title: 'NVLDDMKM Hex Values'
 description: 'NVIDIA option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/nvidia/desc.md#nvlddmkm-hex-values'
+editUrl: false
 sidebar:
   order: 15
 ---

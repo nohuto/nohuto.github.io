@@ -1,7 +1,7 @@
 ---
 title: 'Storage Idle States'
 description: 'Power option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/power/desc.md#disable-storage-idle-states'
+editUrl: false
 sidebar:
   order: 12
 ---

@@ -1,7 +1,7 @@
 ---
 title: 'App Launch Tracking'
 description: 'Privacy option documentation from win-config.'
-editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-app-launch-tracking'
+editUrl: false
 sidebar:
   order: 9
 ---
