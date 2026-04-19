@@ -14,5 +14,4 @@ Note that WPR doesn't pass the type/data so you'll have to find that out on your
 
 It's recommended that you create your own trace, as the templates are based on my system and IDs such as those for the disk won't be correct for your system. Follow the [wpr-wpa.md](/docs/regkit/guides/wpr-wpa/) guide to create a trace which regkit can use.
 
-> [!WARNING]
-> Loading traces affects startup time and memory consumption. Therefore, it's recommended to either load only one trace or none at all if you don't use them frequently (loading a trace takes only a few seconds, so it's better to load it when needed than to keep it active all the time). Parsing them doesn't affect the UI/display time, as a different thread is used for it.
+Loading traces affects startup time and memory consumption. Therefore, it's recommended to either load only one trace or none at all if you don't use them frequently (loading a trace takes only a few seconds, so it's better to load it when needed than to keep it active all the time). Parsing them doesn't affect the UI/display time, as a different thread is used for it.

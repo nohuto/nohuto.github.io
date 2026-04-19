@@ -19,8 +19,7 @@ See [session-manager-symbols](https://github.com/nohuto/win-config/tree/main/sys
 
 The comments of some values with more details are based on pseudocode, if so I added the function name to the end of the comment. Search for the function name in [decompiled-pseudocode/tree/main/ntoskrnl](https://github.com/nohuto/decompiled-pseudocode/tree/main/ntoskrnl).
 
-> [!WARNING]
-> Everything listed below is based on personal research. Mistakes may exist, but I don't think I've made any.
+Everything listed below is based on personal research. Mistakes may exist, but I don't think I've made any.
 
 ```c
 "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Kernel";

@@ -12,8 +12,7 @@ This option currently includes some speculations and default values. I haven't h
 
 See [assets/dwm](https://github.com/nohuto/win-config/tree/main/system/assets/dwm) for used snippets (taken from `dwmcore.dll`, `win32full.sys`, `dwm.exe`, `dwminit.dll`, `uDWM.dll`).
 
-> [!WARNING]
-> Everything listed below is based on personal research. Mistakes may exist, but I don't think I've made any.
+Everything listed below is based on personal research. Mistakes may exist, but I don't think I've made any.
 
 ```c
 "HKLM\\SOFTWARE\\Microsoft\\Windows\\Dwm";

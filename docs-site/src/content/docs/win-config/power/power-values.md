@@ -12,8 +12,7 @@ Several values are applied, some have been changed, others are default values. T
 
 See [power-symbols](https://github.com/nohuto/win-config/tree/main/power/assets/power/power-symbols.txt) for reference. The list doesn't include all existing values yet, but the listed ones do exist. [assets/power](https://github.com/nohuto/win-config/tree/main/power/assets/power) contains the split pseudocode for several `Session Manager\\Power` values.
 
-> [!WARNING]
-> Everything listed below is based on personal research. Mistakes may exist, but I don't think I've made any.
+Everything listed below is based on personal research. Mistakes may exist, but I don't think I've made any.
 
 ```c
 "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Power";
