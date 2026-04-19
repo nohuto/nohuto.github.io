@@ -63,6 +63,7 @@ export default defineConfig({
         }),
         starlightScrollToTop({
           borderRadius: '0',
+          threshold: 320,
           svgPath: 'M7 14l5-5 5 5 M7 19l5-5 5 5',
           svgStrokeWidth: 1.8,
         }),

@@ -30,6 +30,21 @@ const zoomHideReplacement = `
     // behave inconsistently for the same page and harms accessibility.
 `;
 
+const thresholdLogicPattern =
+  /      \/\/ Ensure threshold is between 10 and 99\.[\s\S]*?      if \(scrollPercentage > thresholdValue \/ 100\) \{\r?\n        \/\/ Show when scrolled past configured threshold\.\r?\n        scrollToTopButton\.classList\.add\("visible"\);\r?\n      \} else \{\r?\n        scrollToTopButton\.classList\.remove\("visible"\);\r?\n      \}/;
+const thresholdLogicReplacement = `      // Support a fixed pixel threshold for layouts where total document height
+      // varies a lot due to expanded sidebars and other persisted UI state.
+      const usesPixelThreshold = Number.isFinite(threshold) && threshold > 99;
+      const shouldShow = usesPixelThreshold
+        ? scrollPosition > threshold
+        : scrollPercentage > ((threshold >= 10 && threshold <= 99 ? threshold : 30) / 100);
+
+      if (shouldShow) {
+        scrollToTopButton.classList.add("visible");
+      } else {
+        scrollToTopButton.classList.remove("visible");
+      }`;
+
 let patched = source;
 
 if (homepageDetectorPattern.test(patched)) {
@@ -38,6 +53,10 @@ if (homepageDetectorPattern.test(patched)) {
 
 if (zoomHidePattern.test(patched)) {
   patched = patched.replace(zoomHidePattern, zoomHideReplacement);
+}
+
+if (thresholdLogicPattern.test(patched)) {
+  patched = patched.replace(thresholdLogicPattern, thresholdLogicReplacement);
 }
 
 patched = patched.replace(
