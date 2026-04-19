@@ -2305,7 +2305,7 @@ function initConsole() {
     docs: () => {
       addLine('documentation:');
       addKeyValueLines([
-        ['docs directory', 'docs/directory'],
+        ['overview', 'docs/'],
         ['winconfig', 'docs/win-config/'],
         ['system', 'docs/win-config/system/'],
         ['visibility', 'docs/win-config/visibility/'],

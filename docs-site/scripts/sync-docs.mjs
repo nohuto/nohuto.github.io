@@ -142,9 +142,7 @@ function generateRootOverview() {
       `Documentation generated from ${repoNames.join(', ')}.`,
     editUrl: false,
     sidebarHidden: true,
-    body: ['- [directory](/docs/directory/)', ...repoNames.map((repoName) => `- [${repoName}](/docs/${repoName}/)`)].join(
-      '\n'
-    ),
+    body: repoNames.map((repoName) => `- [${repoName}](/docs/${repoName}/)`).join('\n'),
   });
 }
 

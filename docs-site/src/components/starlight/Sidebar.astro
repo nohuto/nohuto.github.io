@@ -3,101 +3,19 @@ import MobileMenuFooter from 'virtual:starlight/components/MobileMenuFooter';
 import SidebarPersister from '@astrojs/starlight/components/SidebarPersister.astro';
 import SidebarSublist from '@astrojs/starlight/components/SidebarSublist.astro';
 
-const { sidebar, id } = Astro.locals.starlightRoute;
-
-const knownRoots = collectKnownRoots(sidebar);
-const routeRoot = getRouteRoot(id, knownRoots);
-const scopedSidebar = getScopedSidebar(sidebar, routeRoot);
-const renderedSidebar = flattenSectionsGroups(scopedSidebar);
-
-function getRouteRoot(routeId, roots) {
-  const segments = String(routeId || '')
-    .split('/')
-    .filter(Boolean)
-    .map(normalize)
-    .filter((segment) => segment !== 'docs');
-
-  if (segments.length === 0) return '';
-
-  const firstMatch = segments.find((segment) => roots.has(segment));
-  if (firstMatch) return firstMatch;
-
-  return segments[0] || '';
-}
-
-function normalize(value) {
-  return String(value || '').trim().toLowerCase();
-}
+const { sidebar } = Astro.locals.starlightRoute;
+const renderedSidebar = flattenSectionsGroups(sidebar);
 
 function slugifyLabel(value) {
-  return normalize(value)
+  return String(value || '')
+    .trim()
+    .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '');
 }
 
-function hrefRootSegment(href) {
-  if (!href) return '';
-  try {
-    const url = new URL(href, 'https://example.invalid');
-    const parts = url.pathname.split('/').filter(Boolean).map(normalize);
-    if (parts[0] === 'docs' && parts.length > 1) return parts[1];
-    return parts[0] || '';
-  } catch {
-    return '';
-  }
-}
-
-function collectKnownRoots(entries, roots = new Set()) {
-  entries.forEach((entry) => {
-    if (entry.type === 'link') {
-      const root = hrefRootSegment(entry.href);
-      if (root) roots.add(root);
-      return;
-    }
-    const labelRoot = slugifyLabel(entry.label);
-    if (labelRoot) roots.add(labelRoot);
-    collectKnownRoots(entry.entries, roots);
-  });
-  return roots;
-}
-
 function cloneGroup(group, entries) {
   return { ...group, entries };
-}
-
-function flattenSingleRootGroup(entries, root) {
-  if (entries.length !== 1) return entries;
-  const onlyEntry = entries[0];
-  if (!onlyEntry || onlyEntry.type !== 'group') return entries;
-  if (slugifyLabel(onlyEntry.label) !== root) return entries;
-  return onlyEntry.entries;
-}
-
-function pruneEntry(entry, root) {
-  if (!entry) return null;
-  if (entry.type === 'link') {
-    return hrefRootSegment(entry.href) === root ? entry : null;
-  }
-  if (entry.type === 'group') {
-    if (slugifyLabel(entry.label) === root) return entry;
-    const prunedEntries = entry.entries
-      .map((child) => pruneEntry(child, root))
-      .filter(Boolean);
-    return prunedEntries.length > 0 ? cloneGroup(entry, prunedEntries) : null;
-  }
-  return null;
-}
-
-function shouldScope(root) {
-  if (!root) return false;
-  return !['index', 'directory', '404'].includes(root);
-}
-
-function getScopedSidebar(allEntries, root) {
-  if (!shouldScope(root)) return allEntries;
-  const pruned = allEntries.map((entry) => pruneEntry(entry, root)).filter(Boolean);
-  if (pruned.length === 0) return allEntries;
-  return flattenSingleRootGroup(pruned, root);
 }
 
 function flattenSectionsGroups(entries) {

@@ -11,9 +11,7 @@ const { id, sidebar } = Astro.locals.starlightRoute;
 
 const knownRoots = collectKnownRoots(sidebar);
 const activeRepo = getActiveRepo(id, knownRoots);
-const hasActiveRepo = Boolean(activeRepo && !['index', 'directory', '404'].includes(activeRepo));
-
-const directoryHref = '/docs/directory/';
+const hasActiveRepo = Boolean(activeRepo && !['index', '404'].includes(activeRepo));
 const repoHref = hasActiveRepo ? `https://github.com/nohuto/${activeRepo}` : '';
 
 /**
@@ -81,7 +79,6 @@ function getActiveRepo(routeId, roots) {
           </a>
         )
       }
-      <a class="header-shortcut" href={directoryHref}>Directory</a>
     </div>
     <div class="sl-flex social-icons">
       <SocialIcons />

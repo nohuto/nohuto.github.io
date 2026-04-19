@@ -170,66 +170,6 @@ body::-webkit-scrollbar-thumb {
   color: var(--sl-color-gray-3);
   font-size: var(--sl-text-xs);
 }
-
-.docs-directory {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.docs-directory-header {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
-
-.docs-directory-description {
-  margin: 0;
-  color: var(--sl-color-gray-2);
-}
-
-.docs-directory-results-meta {
-  margin: 0;
-  font-size: var(--sl-text-sm);
-  color: var(--sl-color-gray-2);
-}
-
-.docs-directory-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(14.5rem, 1fr));
-  gap: 0.7rem;
-}
-
-.docs-directory-card {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  border: 1px solid var(--sl-rapide-ui-border-color);
-  border-radius: 0.65rem;
-  background: var(--sl-rapide-ui-bg-color);
-  padding: 0.8rem;
-  color: inherit;
-  text-decoration: none;
-}
-
-.docs-directory-card:hover {
-  border-color: var(--sl-color-accent);
-  background: color-mix(in srgb, var(--sl-rapide-ui-bg-color) 88%, var(--sl-color-accent-low));
-}
-
-.docs-directory-card-title {
-  margin: 0;
-  font-size: var(--sl-text-base);
-  line-height: 1.25;
-  color: var(--sl-color-text);
-}
-
-.docs-directory-card-description {
-  margin: 0;
-  color: var(--sl-color-gray-2);
-  font-size: var(--sl-text-xs);
-  line-height: 1.4;
-}
 /* Keep Rapide theme overall, but restore Starlight-like default sidebar styling. */
 .sidebar-pane {
   border-inline-end: 1px solid var(--sl-color-hairline-shade) !important;

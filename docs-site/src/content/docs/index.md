@@ -6,7 +6,6 @@ sidebar:
   hidden: true
 ---
 
-- [directory](/docs/directory/)
 - [win-config](/docs/win-config/)
 - [regkit](/docs/regkit/)
 - [nvapi-cli](/docs/nvapi-cli/)
