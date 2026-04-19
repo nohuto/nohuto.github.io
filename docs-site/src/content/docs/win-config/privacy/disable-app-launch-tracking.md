@@ -3,7 +3,7 @@ title: 'App Launch Tracking'
 description: 'Privacy option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-app-launch-tracking'
 sidebar:
-  order: 8
+  order: 9
 ---
 
 `Privacy & security > General : Let Windows improve Start and search results by tracking app launches`

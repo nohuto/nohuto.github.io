@@ -17,6 +17,8 @@ powercfg /devicequery wake_armed
 `powercfg /devicequery wake_programmable` -> devices that are user-configurable to wake the system from a sleep state  
 `powercfg /devicequery wake_armed` -> currently configured to wake the system from any sleep state
 
+## Registry Values Details
+
 ```c
 "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Class\\{4D36E972-E325-11CE-BFC1-08002bE10318}\\00XX";
   "*WakeOnMagicPacket" = 1; // range 0-1
@@ -26,7 +28,9 @@ powercfg /devicequery wake_armed
   "WakeOnLink" = 0; // range 0-2
 ```
 
-> https://github.com/nohuto/regkit#registry-values-details
+> https://github.com/nohuto/regkit/blob/main/records/NIC-Intel.txt
+
+### Setup Information
 
 `Disable Wait for Link`:
 ```inf
@@ -38,8 +42,6 @@ HKR, Ndi\Params\WaitAutoNegComplete\Enum,       "1",                    0, %On%
 HKR, Ndi\Params\WaitAutoNegComplete\Enum,       "2",                    0, %AutoDetect%
 HKR, Ndi\Params\WaitAutoNegComplete,            type,                   0, "enum"
 ```
-
----
 
 ```inf
 HKR, Ndi\Params\*WakeOnMagicPacket,		ParamDesc,	0, 	%MagicPacket%

@@ -4,7 +4,7 @@ description: 'Auto-generated overview for Guides.'
 editUrl: false
 sidebar:
   hidden: true
-  order: 2
+  order: 3
 ---
 
 - [Brave Configuration (Desktop)](/docs/app-tools/docs/guides/brave-desktop/)

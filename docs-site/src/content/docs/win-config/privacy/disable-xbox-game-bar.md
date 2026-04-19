@@ -3,7 +3,7 @@ title: 'Xbox Game Bar'
 description: 'Privacy option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-xbox-game-bar'
 sidebar:
-  order: 6
+  order: 7
 ---
 
 GameDVR is a built-in gameplay capture (Xbox Game Bar) for clips/screenshots, with optional background recording.

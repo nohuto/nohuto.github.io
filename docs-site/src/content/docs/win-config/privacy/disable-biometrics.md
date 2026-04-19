@@ -3,17 +3,13 @@ title: 'Biometrics'
 description: 'Privacy option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-biometrics'
 sidebar:
-  order: 14
+  order: 15
 ---
 
 Biometric is used for fingerprint, facial recognition, and other biometric authentication methods in Windows Hello and related security features.
 
+## Windows Policies
 
-```json
-mmc.exe	RegSetValue	HKCU\Software\Microsoft\Windows\CurrentVersion\Group Policy Objects\{C1B650B7-6E19-4DF2-B4AE-00E5893C0487}Machine\Software\Policies\Microsoft\Biometrics\Enabled	Type: REG_DWORD, Length: 4, Data: 0
-mmc.exe	RegSetValue	HKCU\Software\Microsoft\Windows\CurrentVersion\Group Policy Objects\{C1B650B7-6E19-4DF2-B4AE-00E5893C0487}Machine\Software\Policies\Microsoft\Biometrics\Credential Provider\Enabled	Type: REG_DWORD, Length: 4, Data: 0
-mmc.exe	RegSetValue	HKCU\Software\Microsoft\Windows\CurrentVersion\Group Policy Objects\{C1B650B7-6E19-4DF2-B4AE-00E5893C0487}Machine\Software\Policies\Microsoft\Biometrics\Credential Provider\Domain Accounts	Type: REG_DWORD, Length: 4, Data: 0
-```
 ```json
 {
   "File": "Biometrics.admx",

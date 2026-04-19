@@ -17,11 +17,11 @@ Disables the preview function for (extensions):
 > https://learn.microsoft.com/en-us/windows/win32/api/thumbcache/nn-thumbcache-ithumbnailprovider  
 > https://learn.microsoft.com/en-us/windows/win32/api/shobjidl_core/nn-shobjidl_core-iextractimage
 
-#### Enabled
+### Enabled
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/audiovidpreon.png?raw=true)
 
-#### Disabled
+### Disabled
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/audiovidpreonoff.png?raw=true)
 

@@ -3,7 +3,7 @@ title: 'Location Access'
 description: 'Privacy option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-location-access'
 sidebar:
-  order: 9
+  order: 10
 ---
 
 Disables app access to your location, locating your system will be disabled, geolocation service gets disabled.
@@ -17,7 +17,9 @@ Disables app access to your location, locating your system will be disabled, geo
 "svchost.exe","RegSetValue","HKCU\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location\ShowGlobalPrompts","Type: REG_DWORD, Length: 4, Data: 1"
 ```
 
----
+> [privacy/assets | locationaccess-LocationApi.c](https://github.com/nohuto/win-config/blob/main/privacy/assets/locationaccess-LocationApi.c)
+
+## Windows Policies
 
 ```json
 {
@@ -72,5 +74,3 @@ Disables app access to your location, locating your system will be disabled, geo
   ]
 },
 ```
-
-> [privacy/assets | locationaccess-LocationApi.c](https://github.com/nohuto/win-config/blob/main/privacy/assets/locationaccess-LocationApi.c)

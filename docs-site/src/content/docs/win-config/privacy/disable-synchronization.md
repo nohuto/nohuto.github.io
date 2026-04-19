@@ -3,7 +3,7 @@ title: 'Synchronization'
 description: 'Privacy option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-synchronization'
 sidebar:
-  order: 25
+  order: 26
 ---
 
 Disables all kind of synchronization.
@@ -11,6 +11,8 @@ Disables all kind of synchronization.
 `DisableSyncOnPaidNetwork`: "Do not sync on metered connections"
 > https://support.microsoft.com/en-us/windows/windows-backup-settings-catalog-deebcba2-5bc0-4e63-279a-329926955708#id0ebd=windows_11
 > https://gpsearch.azurewebsites.net/#7999
+
+## Windows Policies
 
 ```json
 {

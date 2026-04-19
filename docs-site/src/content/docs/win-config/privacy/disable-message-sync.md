@@ -3,7 +3,7 @@ title: 'Message Sync'
 description: 'Privacy option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-message-sync'
 sidebar:
-  order: 42
+  order: 43
 ---
 
 "This policy setting allows backup and restore of cellular text messages to Microsoft's cloud services. Disable this feature to avoid information being stored on servers outside of your organization's control."
@@ -13,6 +13,8 @@ sidebar:
 | AllowMessageSync | Controls whether SMS/MMS are synced to Microsoft's cloud so they can be backed up and restored; also decides if the user can toggle this in the UI. | 0 = sync not allowed, user cannot change - 1 = sync allowed, user can change (default) |
 
 > https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-messaging
+
+## Windows Policies
 
 ```json
 {

@@ -42,18 +42,16 @@ Note that everything written below is based on the [`eXtensible Host Controller 
 
 When a TRB event triggers the Interrupt Pending (`IP`) flag, host notification is throttled according to the Interrupter's Moderation (`IMOD`) register. `IMOD` combines the Interrupt Moderation Interval (`IMODI`) and the Interrupt Moderation Counter (`IMODC`). Software programs `IMODI` in 250 ns units, the hardware copies it into `IMODC`, counts down, and only raises the interrupt once the counter reaches zero and the *Event Handler Busy* (`EHB`) flag has been cleared. `interrupts/sec = 1 / (250 ns * IMODI)` and `inter-interrupt interval = 250 ns * (interrupts/sec)^-1`. "Recommended tuning values" are 0x28B-0x15CC with a default of 0x4000 (~1ms). For example, `IMODI = 512` guarantees at least 128 us between interrupts, so the maximum rate stays under 8kHz. Writing `IMODI = 0` disables throttling and interrupts are delivered immediately once `EHB` is clear and the *Event Ring* is non empty. Blocking Event handling ensures `IPE` (an internal flag) and `EHB` cooperate with `IMODC`. A new interrupt is prevented until `IMODC` reaches zero, `IPE` is asserted, and `EHB` is cleared, when those conditions hold, the counter reloads from `IMODI` so the pacing cycle repeats.
 
-## Bit Descriptions (taken from document)
+## Bit Descriptions
 
-**Interrupter Moderation Register (IMOD):**
+### Interrupter Moderation Register (IMOD)
 
 | Bit   | Description|
 | :---: | --- |
 | 15:0 | **Interrupt Moderation Interval (IMODI) – RW.** Default = '4000' (~1ms). Minimum inter-interrupt interval. The interval is specified in 250ns increments. A value of '0' disables interrupt throttling logic and interrupts shall be generated immediately if IP = '0', EHB = '0', and the *Event Ring* is not empty. |
 | 31:16 | **Interrupt Moderation Counter (IMODC) – RW.** Default = undefined. Down counter. Loaded with the IMODI value whenever IP is cleared to '0', counts down to '0', and stops. The associated interrupt shall be signaled whenever this counter is '0', the *Event Ring* is not empty, the IE and IP flags = '1', and EHB = '0'. This counter may be directly written by software at any time to alter the interrupt rate. |
 
----
-
-**Host Controller Structural Parameters 2 (HCSPARAMS2):**
+### Host Controller Structural Parameters 2 (HCSPARAMS2)
 
 | Bit  | Description |
 | :---: | --- |
@@ -63,9 +61,7 @@ When a TRB event triggers the Interrupt Pending (`IP`) flag, host notification i
 
 ![](https://github.com/nohuto/win-config/blob/main/power/images/HCSPARAMS2-structure.png?raw=true)
 
----
-
-**Runtime Register Space Offset Register (RTSOFF):**
+### Runtime Register Space Offset Register (RTSOFF)
 
 | Bit  | Description |
 | :---: | --- |
@@ -75,9 +71,7 @@ When a TRB event triggers the Interrupt Pending (`IP`) flag, host notification i
 
 ![](https://github.com/nohuto/win-config/blob/main/power/images/RTSOFF-structure.png?raw=true)
 
----
-
-**Interrupter Management Register Bit Definitions (IMAN):**
+### Interrupter Management Register Bit Definitions (IMAN)
 
 | Bit  | Description |
 | :---: | --- |

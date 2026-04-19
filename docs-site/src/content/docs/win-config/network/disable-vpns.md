@@ -21,7 +21,8 @@ or `WIN + I` > Network & Internet > VPN > Remove
 > https://learn.microsoft.com/en-us/powershell/module/vpnclient/remove-vpnconnection?view=windowsserver2025-ps  
 > https://learn.microsoft.com/en-us/powershell/module/vpnclient/?view=windowsserver2025-ps
 
-`Allow VPN over metered networks`:
+### `Allow VPN over metered networks`
+
 ```c
 OSDATA__SYSTEM__CurrentControlSet__Services__RasMan__Parameters_1 = 
     L"SYSTEM\\CurrentControlSet\\Services\\RasMan\\Parameters\\Config\\VpnCostedNetworkSettings",
@@ -36,7 +37,9 @@ VpnRegQueryDWord(
 if ( !v17[0] )
     g_donotUseCosted = 0, // default
 ```
-`Allow VPN while Roaming`:
+
+### `Allow VPN while Roaming`
+
 ```c
 OSDATA__SYSTEM__CurrentControlSet__Services__RasMan__Parameters = 
     L"SYSTEM\\CurrentControlSet\\Services\\RasMan\\Parameters\\Config\\VpnCostedNetworkSettings",

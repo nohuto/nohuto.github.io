@@ -3,7 +3,7 @@ title: 'Hide Last Logged-In User'
 description: 'Privacy option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#hide-last-logged-in-user'
 sidebar:
-  order: 34
+  order: 35
 ---
 
 Note that if you use this option and don't have a password, you'll have to enter your username at each boot.
@@ -31,7 +31,7 @@ services.exe	RegSetValue	HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies
 
 > https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/security-policy-settings/interactive-logon-do-not-display-last-user-name
 
----
+## Windows Policies
 
 ```json
 {

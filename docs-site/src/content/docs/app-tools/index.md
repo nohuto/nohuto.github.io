@@ -8,3 +8,4 @@ sidebar:
 ---
 
 - [Docs](/docs/app-tools/docs/)
+- [Sections](/docs/app-tools/sections/)

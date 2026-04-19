@@ -3,7 +3,7 @@ title: 'Jumbo Packets'
 description: 'Network option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/network/desc.md#enable-jumbo-packets'
 sidebar:
-  order: 24
+  order: 25
 ---
 
 As the name says ("Jumbo"), it is used for big packets, you won't use this feature. Jumbo packets are disabled by default. Enable Jumbo Packets **only if all devices across the network support them** and are configured to use the same frame size.
@@ -18,6 +18,8 @@ The Jumbo Frames feature enables or disables Jumbo Packet capability. The standa
 
 > https://www.intel.com/content/www/us/en/support/articles/000005593/ethernet-products.html  
 > https://edc.intel.com/content/www/us/en/design/products/ethernet/adapters-and-devices-user-guide/30.5/jumbo-frames/
+
+## Setup Information
 
 ```inf
 HKR, Ndi\params\*JumboPacket,	ParamDesc,	0, %JumboPacket%

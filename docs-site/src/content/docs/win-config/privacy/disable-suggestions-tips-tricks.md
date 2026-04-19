@@ -3,7 +3,7 @@ title: 'Suggestions/Tips/Tricks'
 description: 'Privacy option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-suggestionstipstricks'
 sidebar:
-  order: 24
+  order: 25
 ---
 
 Disables all kind of suggestions: in start, text suggestions (multilingual...), in the timeline, content. `338389` is the only value named `SubscribedContent-{number}Enabled` that exists by default.
@@ -39,6 +39,8 @@ Since the `SubscribedContent-*` values aren't documented literally anywhere I've
 | `OneDrivePictures` | `88000166`, `88000165` | OneDrive pictures backup/setup |
 
 `SubscribedContent-338393Enabled` `SubscribedContent-353694Enabled` ,`SubscribedContent-353696Enabled` are used in 'Privacy & security > Recommendations & offers - Recommendatins and offers in Settings' but only when toggling it off (when toggling it on they stay at `0`).
+
+## Windows Policies
 
 ```json
 {
@@ -139,9 +141,8 @@ Since the `SubscribedContent-*` values aren't documented literally anywhere I've
 },
 ```
 
----
 
-### Miscellaneous Notes
+## Miscellaneous Notes
 
 Disable edge related suggestions with (search suggestions in address bar):
 ```json

@@ -3,7 +3,7 @@ title: 'Sleep Study'
 description: 'Privacy option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-sleep-study'
 sidebar:
-  order: 39
+  order: 40
 ---
 
 Sleep Study tracks modern sleep states to analyze energy usage and pinpoint battery drain. It disables Sleep Study by making ETL logs read-only, disabling related diagnostics, and turning off the scheduled task.
@@ -22,9 +22,8 @@ svchost.exe	RegSetValue	HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Ch
 > [privacy/assets | sleepstudy-FxLibraryGlobalsQueryRegistrySettings.c](https://github.com/nohuto/win-config/blob/main/privacy/assets/sleepstudy-FxLibraryGlobalsQueryRegistrySettings.c)  
 > [privacy/assets | sleepstudy-PoFxInitPowerManagement.c](https://github.com/nohuto/win-config/blob/main/privacy/assets/sleepstudy-PoFxInitPowerManagement.c)
 
----
+## Miscellaenous Notes
 
-Miscellaenous notes:
 ```c
 "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Power";
     "SleepstudyAccountingEnabled" = 1; // SleepstudyHelperAccountingEnabled 
@@ -35,7 +34,7 @@ Miscellaenous notes:
     "SleepStudyDeviceAccountingLevel" = 4; // PopSleepStudyDeviceAccountingLevel 
     "SleepStudyDisabled" = 0; // PopSleepStudyDisabled 
 ```
-> [/docs/win-config/power/power-values/#registry-values-details](/docs/win-config/power/power-values/#registry-values-details)
+> https://www.noverse.dev/docs/win-config/power/power-values/#registry-values-details
 ```
 \Registry\Machine\SYSTEM\ControlSet001\Enum\ACPI\AMDI0010\3\Device Parameters\Wdf : SleepstudyState
 \Registry\Machine\SYSTEM\ControlSet001\Enum\ACPI\AMDI0030\0\Device Parameters\Wdf : SleepstudyState

@@ -8,11 +8,11 @@ sidebar:
 
 "This policy setting controls the default Control Panel view, whether by category or icons. If this policy setting is enabled, the Control Panel opens to the icon view. If this policy setting is disabled, the Control Panel opens to the category view."
 
-#### Icon View
+### Icon View
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/panel0.png?raw=true)
 
-#### Category View
+### Category View
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/panel1.png?raw=true)
 

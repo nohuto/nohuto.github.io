@@ -3,7 +3,7 @@ title: 'LLSE'
 description: 'Network option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/network/desc.md#disable-llse'
 sidebar:
-  order: 22
+  order: 23
 ---
 
 This setting is used to enable/disable the logging of link state changes. If enabled, a link-up change event or a link-down change event generates a message that is displayed in the system event logger. This message contains the link's speed and duplex. Administrators view the event message from the system event log.
@@ -13,6 +13,8 @@ The following events are logged:
 - The link is down. (`LINK_DOWN_CHANGE`)
 - Mismatch in duplex. (`LINK_DUPLEX_MISMATCH`)
 - Spanning Tree Protocol detected.
+
+## Setup Information
 
 ```inf
 ,Log Link State Event

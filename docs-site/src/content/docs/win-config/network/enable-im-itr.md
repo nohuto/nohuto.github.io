@@ -12,6 +12,8 @@ Some NICs expose multiple interrupt-moderation levels. Use interrupt moderation 
 > https://learn.microsoft.com/en-us/windows-server/networking/technologies/network-subsystem/net-sub-performance-tuning-nics?tabs=powershell#interrupt-moderation  
 > https://enterprise-support.nvidia.com/s/article/understanding-interrupt-moderation
 
+### Data Range
+
 The correct data might be the comment data, if so edit it manually.
 ```c
 Off: ITR = 0 (no limit)
@@ -23,6 +25,8 @@ Extreme: ITR = 3600 // 500
 Adaptive: ITR = 65535
 ```
 ITR = Interrupt Throttle Rate.
+
+## Setup Information
 
 Data/default is driver specific.
 ```inf

@@ -3,7 +3,7 @@ title: 'Website Access to Language List'
 description: 'Privacy option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-website-access-to-language-list'
 sidebar:
-  order: 3
+  order: 4
 ---
 
 "Sets the HTTP Accept Language from the Language List opt-out setting." Disables `Let websites provide locally relevant content by accessing my language list`.

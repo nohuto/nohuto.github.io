@@ -39,6 +39,6 @@ sidebar:
 - [Theme Mouse Changes](/docs/win-config/visibility/disable-theme-mouse-changes/)
 - [Hide Disabled/Disconnected Devices](/docs/win-config/visibility/hide-disabled-disconnected-devices/)
 - [Force Classic Control Panel](/docs/win-config/visibility/force-classic-control-panel/)
-- [Decrease Mouse Hover Time](/docs/win-config/visibility/decrease-mouse-hover-time/)
+- [Mouse Hover Time](/docs/win-config/visibility/mouse-hover-time/)
 - [OEM Information](/docs/win-config/visibility/oem-information/)
 - [Settings Page Visibility](/docs/win-config/visibility/settings-page-visibility/)

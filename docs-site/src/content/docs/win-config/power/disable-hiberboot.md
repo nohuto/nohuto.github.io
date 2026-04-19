@@ -3,7 +3,7 @@ title: 'Hiberboot'
 description: 'Power option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/power/desc.md#disable-hiberboot'
 sidebar:
-  order: 7
+  order: 8
 ---
 
 Fast startup is a type of shutdown that uses a hibernation file to speed up the subsequent boot. During this type of shutdown, the user is logged off before the hibernation file is created. Fast startup allows for a smaller hibernation file, more appropriate for systems with less storage capabilities.
@@ -18,32 +18,11 @@ To programmatically initiate a fast startup-style shutdown, call the [InitiateSh
 
 In Windows, fast startup is the default transition when a system shutdown is requested. A full shutdown (S5) occurs when a system restart is requested or when an application calls a shutdown API.
 
----
-
-Notes on `Disable Idle States At Boot` SUBOPTION (`DisableIdleStatesAtBoot`):
-
-The data `-1` (`PpmIdleDisableStatesAtBoot dd 0FFFFFFFFh`) gets handled as `0`
-```cpp
-if ( PpmIdleDisableStatesAtBoot == -1 )
-  PpmIdleDisableStatesAtBoot = 0;
-```
-`0` = skips all PpmInstall*IdleStates disable writes
-`1` = would write disable in `PpmInstallCoordinatedIdleStates`/`PpmInstallPlatformIdleStates`
-```cpp
-if ( PpmIdleDisableStatesAtBoot )
-  *(_DWORD *)(v20 + 80) = 0x80000000;
-```
-`2` = would do the same as `1` including disable write in `PpmInstallNewIdleStates`
-```cpp
-if ( v20 && PpmIdleDisableStatesAtBoot == 2 )
-  *(_DWORD *)(v23 + 32) = 0x80000000;
-```
-
----
+## Registry Values Defaults
 
 All three values exist as shown below. `PopReadHiberbootGroupPolicy` (`\\Registry\\Machine\\Software\\Policies\\Microsoft\\Windows\\System`) overrides `PopReadHiberbootPolicy` (`Control\\Session Manager\\Power`).
 
-> [/docs/win-config/power/power-values/#registry-values-details](/docs/win-config/power/power-values/#registry-values-details)
+> https://www.noverse.dev/docs/win-config/power/power-values/#registry-values-details
 
 ```c
 "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Power";
@@ -59,8 +38,9 @@ All three values exist as shown below. `PopReadHiberbootGroupPolicy` (`\\Registr
     "HiberIoCpuTime" = 0; // REG_DWORD, milliseconds, range: 0-0xFFFFFFFF
     "ResumeCompleteTimestamp" = 0; // REG_QWORD, range: 0-0xFFFFFFFFFFFFFFFF
 ```
-> [/docs/win-config/power/power-values/#registry-values-details](/docs/win-config/power/power-values/#registry-values-details)  
+> https://www.noverse.dev/docs/win-config/power/power-values/#registry-values-details  
 > https://github.com/marcosd4h/memhunter/blob/f68bca7efe31f49c0dc9ad988fb17bec443a1ca7/libs/boost/interprocess/detail/win32_api.hpp#L2373
+
 ```c
 // PopOpenPowerKey
 {
@@ -83,6 +63,32 @@ if ( result >= 0 )
   result = ZwClose(KeyHandle);
 }
 ```
+
+> [power/assets | hiberboot-PopReadHiberbootGroupPolicy.c](https://github.com/nohuto/win-config/blob/main/power/assets/hiberboot-PopReadHiberbootGroupPolicy.c)
+
+## DisableIdleStatesAtBoot Notes
+
+Notes on `Disable Idle States At Boot` SUBOPTION (`DisableIdleStatesAtBoot`):
+
+The data `-1` (`PpmIdleDisableStatesAtBoot dd 0FFFFFFFFh`) gets handled as `0`
+```cpp
+if ( PpmIdleDisableStatesAtBoot == -1 )
+  PpmIdleDisableStatesAtBoot = 0;
+```
+`0` = skips all PpmInstall*IdleStates disable writes
+`1` = would write disable in `PpmInstallCoordinatedIdleStates`/`PpmInstallPlatformIdleStates`
+```cpp
+if ( PpmIdleDisableStatesAtBoot )
+  *(_DWORD *)(v20 + 80) = 0x80000000;
+```
+`2` = would do the same as `1` including disable write in `PpmInstallNewIdleStates`
+```cpp
+if ( v20 && PpmIdleDisableStatesAtBoot == 2 )
+  *(_DWORD *)(v23 + 32) = 0x80000000;
+```
+
+## Windows Policies
+
 ```json
 {
   "File": "WinInit.admx",
@@ -102,5 +108,3 @@ if ( result >= 0 )
   ]
 },
 ```
-
-> [power/assets | hiberboot-PopReadHiberbootGroupPolicy.c](https://github.com/nohuto/win-config/blob/main/power/assets/hiberboot-PopReadHiberbootGroupPolicy.c)

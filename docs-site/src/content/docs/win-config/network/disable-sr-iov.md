@@ -3,7 +3,7 @@ title: 'SR-IOV'
 description: 'Network option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/network/desc.md#disable-sr-iov'
 sidebar:
-  order: 27
+  order: 28
 ---
 
 Single Root I/O Virtualization (SR-IOV) is an extension to the PCI Express (PCIe) specification that improves network performance in virtualized environments. SR-IOV allows devices, such as network adapters, to separate access to their resources among various PCIe hardware functions, enabling near-native network performance in Hyper-V virtual machines.
@@ -12,13 +12,15 @@ Single Root I/O Virtualization (SR-IOV) is an extension to the PCI Express (PCIe
 
 It depends on your adapter/driver if SR-IOV is enabled/disabled by default:
 
+## Registry Values Details
+
 ```c
 "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Class\\{4D36E972-E325-11CE-BFC1-08002bE10318}\\00XX";
     "*Sriov" = 0; // range 0-1
     "*SriovPreferred" = 0; // range 0-1
 ```
 
-> https://github.com/nohuto/regkit#registry-values-details
+> https://github.com/nohuto/regkit/blob/main/records/NIC-Intel.txt
 
 | SubkeyName            | Value       | EnumDesc |
 | --------------------  | ----------- | ---- |
@@ -28,6 +30,8 @@ It depends on your adapter/driver if SR-IOV is enabled/disabled by default:
 |                       | 1           | Report SR-IOV capabilities |
 
 > https://learn.microsoft.com/en-us/windows-hardware/drivers/network/standardized-inf-keywords-for-sr-iov
+
+### Setup Information
 
 ```inf
 , SRIOV Default switch registry keys.

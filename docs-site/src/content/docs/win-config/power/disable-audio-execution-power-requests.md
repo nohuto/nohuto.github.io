@@ -3,7 +3,7 @@ title: 'Audio Execution Power Requests'
 description: 'Power option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/power/desc.md#disable-audio-execution-power-requests'
 sidebar:
-  order: 17
+  order: 15
 ---
 
 There's no official documentation on this value, but it probably controls whether audio activity can trigger power execution requests, reducing the responsiveness of the system to power management events, maybe ending up with less efficient power usage or preventing certain power related actions from being triggered.
@@ -14,7 +14,7 @@ There's no official documentation on this value, but it probably controls whethe
     "AllowAudioToEnableExecutionRequiredPowerRequests" = 1; // PopPowerRequestActiveAudioEnablesExecutionRequired 
 ```
 
-> [/docs/win-config/power/power-values/#registry-values-details](/docs/win-config/power/power-values/#registry-values-details)
+> https://www.noverse.dev/docs/win-config/power/power-values/#registry-values-details
 
 ```c
 bool PopPowerRequestEvaluateExecutionRequiredStatus()

@@ -27,11 +27,11 @@ Value gets calculated with:
 
 I created a small tool for fun, since it's a lot easier to quickly change and test the different icon spacing. You've to log out after applying, otherwise it won't update instantly (the images show vertical `75px` & `100px` difference). I personally use `110px Horizonzal - 60px Vertical` for a more vertical compact view and more space horizontally (see suboption).
 
-#### `75px` Example
+### `75px` Example
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/iconspacing75.png?raw=true)
 
-#### `100px`
+### `100px`
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/iconspacing100.png?raw=true)
 

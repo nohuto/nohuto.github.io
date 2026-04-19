@@ -3,7 +3,7 @@ title: 'Audio Idle'
 description: 'Power option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/power/desc.md#disable-audio-idle'
 sidebar:
-  order: 12
+  order: 11
 ---
 
 | Parameter              | Desc                                                                                    | Default  | Notes                                                                 |

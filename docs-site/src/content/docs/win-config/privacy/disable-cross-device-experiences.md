@@ -3,12 +3,12 @@ title: 'Cross-Device Experiences'
 description: 'Privacy option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-cross-device-experiences'
 sidebar:
-  order: 27
+  order: 28
 ---
 
 Disables Cross-Device experiences (allows you to use `Share Across Devices`/`Nearby Sharing` functionalities) & share accross devices. With `Share across devices`, you can continue app experiences on other devices connected to your account (set to `My device only` by default).
 
----
+## SystemSettings Captures
 
 Changing "Share across devices" option via `SystemSettings`:
 ```c
@@ -41,6 +41,8 @@ L"WifiLastDisabledNearShare",
 ```
 
 > [privacy/assets | crossdev-SharedExperiencesSingleton.c](https://github.com/nohuto/win-config/blob/main/privacy/assets/crossdev-SharedExperiencesSingleton.c)
+
+## Windows Policies
 
 ```json
 {

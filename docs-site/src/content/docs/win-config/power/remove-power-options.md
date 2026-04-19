@@ -3,7 +3,7 @@ title: 'Remove Power Options'
 description: 'Power option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/power/desc.md#remove-power-options'
 sidebar:
-  order: 6
+  order: 7
 ---
 
 Removes the `Hibernate`, `Lock`, `Sleep` power options.
@@ -12,6 +12,8 @@ If hiding `Lock` for example via `Control Panel > All Control Panel Items > Powe
 ```c
 DllHost.exe	RegSetValue	HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings\ShowLockOption	Type: REG_DWORD, Length: 4, Data: 1
 ```
+
+## Windows Policies
 
 LGPE would set the values in `HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer`:
 ```json

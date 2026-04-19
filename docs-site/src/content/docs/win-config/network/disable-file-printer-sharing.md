@@ -26,6 +26,9 @@ Ethernet                       File and Printer Sharing for Microsoft Networks  
 > https://learn.microsoft.com/en-us/windows-hardware/customize/desktop/unattend/networking-mpssvc-svc-firewallgroups-firewallgroup-group  
 > https://learn.microsoft.com/en-us/powershell/module/netadapter/get-netadapterbinding?view=windowsserver2025-ps
 
+
+## Windows Policies
+
 ```json
 {
   "File": "WindowsSandbox.admx",

@@ -3,7 +3,7 @@ title: 'Application Compatibility'
 description: 'Privacy option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-application-compatibility'
 sidebar:
-  order: 50
+  order: 51
 ---
 
 Disables Windows Application Experience telemetry and compatibility components, Microsoft Compatibility Appraiser (including its daily task and `CompatTelRunner.exe`) and the Application Experience tasks. It reduces telemetry, and some attack surface, but removes most automatic compatibility checks, upgrade assessments and some app related backup/recovery features.
@@ -22,6 +22,9 @@ Currently includes all existing tasks in `\\Microsoft\\Windows\\Application Expe
 //"\\Microsoft\\Windows\\Application Experience\\AitAgent",
 //"\\Microsoft\\Windows\\Application Experience\\PcaWallpaperAppDetect",
 ```
+
+## Windows Policies
+
 ```json
 {
   "File": "AppDeviceInventory.admx",

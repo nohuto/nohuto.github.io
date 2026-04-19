@@ -3,13 +3,15 @@ title: 'CEIP'
 description: 'Privacy option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-ceip'
 sidebar:
-  order: 32
+  order: 33
 ---
 
 Voluntary program that collects usage data to help improve the quality and performance of its products.
 
 > https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-admx-icm  
 > https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-internetexplorer#disablecustomerexperienceimprovementprogramparticipation
+
+## Windows Policies
 
 ```json
 {

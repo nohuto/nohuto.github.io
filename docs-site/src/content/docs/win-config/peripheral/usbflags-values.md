@@ -6,7 +6,9 @@ sidebar:
   order: 1
 ---
 
-Value names in `usbflags-HUBREG_QueryUsbflagsValuesForDevice.c` are mostly UNICODE_STRING globals, the names below are resolved from `dq offset ... ; "Name"`. The usbflags device key base path is `HKLM\SYSTEM\CurrentControlSet\Control\usbflags` (from `LRegistryMachineSystemCurrentControlSetControlusbflags` in `HUBREG_OpenCreateUsbflagsDeviceKey`). For entries described as "any nonzero", the code treats the DWORD as a boolean, means any nonzero value is equivalent to `1`. Default data is unknown for most values as the driver code only reads the registry and handles fallbacks, note that this is currently based on USBHUB3.sys only, means it's not complete (USBXHCI.sys was used for DisableHCS0Idle & TestRunEsmInWorkItem, Ucx01000.sys for Allow64KLowOrFullSpeedControlTransfers, usbccgp.sys for GenericCompositeUSBDeviceString).
+Value names in [`usbflags-HUBREG_QueryUsbflagsValuesForDevice.c`](https://github.com/nohuto/win-config/tree/main/peripheral/assets/usbflags/HUBREG_QueryUsbflagsValuesForDevice.c) are mostly UNICODE_STRING globals, the names below are resolved from `dq offset ... ; "Name"`. The usbflags device key base path is `HKLM\SYSTEM\CurrentControlSet\Control\usbflags` (from `LRegistryMachineSystemCurrentControlSetControlusbflags` in `HUBREG_OpenCreateUsbflagsDeviceKey`).
+
+## USB_DEVICE_HACKS
 
 You can use `!usb3kd.device_info` to get more information on a USB device in the USB 3.0 tree, example:
 ```c
@@ -65,9 +67,18 @@ lkd> dt USBHUB3!_USB_DEVICE_HACKS
 
 > https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/debuggercmds/-usb3kd-device-info.md
 
+## Registry Values Details
+
 `HUBDSM_QueryingRegistryValuesForDevice` -> `HUBMISC_QueryAndCacheRegistryValuesForDevice` -> `HUBREG_QueryUsbflagsValuesForDevice`
 
+> [!WARNING]
+> Everything listed below is based on personal research. Mistakes may exist, but I don't think I've made any.
+
+For entries described as "any nonzero", the code treats the DWORD as a boolean, means any nonzero value is equivalent to `1`. Default data is unknown for most values as the driver code only reads the registry and handles fallbacks.
+
 Note on some usbflag values ("queried as 4-byte boolean"), `USBHUB3` reads a 4-byte and handles any nonzero value as enabled. The value type is not enforced, so both `REG_DWORD` and `REG_BINARY` should work if they're a 4-byte nonzero value (that's my current assumption). I would personally use `REG_BINARY` instead of `REG_DWORD` for now, as for example `osvc`, `IgnoreHWSerNum`, `ResetOnResume` are `REG_BINARY` ([usb-device-specific-registry-settings.md](https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/usbcon/usb-device-specific-registry-settings.md)).
+
+See [win-config/peripheral/usbflags-values/](https://www.noverse.dev/docs/win-config/peripheral/usbflags-values/) for notes on `USB_DEVICE_HACKS`/miscellaneous information on values.
 
 ```c
 "HKLM\\SYSTEM\\CurrentControlSet\\Control\\usbflags";
@@ -117,7 +128,7 @@ Note on some usbflag values ("queried as 4-byte boolean"), `USBHUB3` reads a 4-b
     //"NonFunctional"
     //"DisableUsb20HardwareLpm"
     //"DisableRemoteWakeForUsb20HardwareLpm"
-    //"DisableSuperSpeed"
+    "DisableSuperSpeed" // "There are certains hubs that we just don't want to support as they are too buggy. We will completely disable SuperSpeed for them."
     //"IncompatibleWithWindows"
     //"DisableFastEnumeration"
     //"AddControllerSuffixedCompatIdToAudioDevices"
@@ -126,20 +137,38 @@ Note on some usbflag values ("queried as 4-byte boolean"), `USBHUB3` reads a 4-b
     //"ResetOnErrorInD2Resume"
 ```
 
-Enabling `DisableLPM` won't get you anywhere since the devices are in D0 (working state) anyway while using them. The same can be said for the whole `Power` section too.
+> [peripheral/assets | HUBDSM_QueryingRegistryValuesForDevice.c](https://github.com/nohuto/win-config/blob/main/peripheral/assets/usbflags/HUBDSM_QueryingRegistryValuesForDevice.c)  
+> [peripheral/assets | HUBMISC_QueryAndCacheRegistryValuesForDevice.c](https://github.com/nohuto/win-config/blob/main/peripheral/assets/usbflags/HUBMISC_QueryAndCacheRegistryValuesForDevice.c)  
+> [peripheral/assets | HUBREG_OpenCreateUsbflagsDeviceKey.c](https://github.com/nohuto/win-config/blob/main/peripheral/assets/usbflags/HUBREG_OpenCreateUsbflagsDeviceKey.c)  
+> [peripheral/assets | HUBREG_QueryUsbflagsValuesForDevice.c](https://github.com/nohuto/win-config/blob/main/peripheral/assets/usbflags/HUBREG_QueryUsbflagsValuesForDevice.c)  
+> [peripheral/assets | HUBREG_QueryHubErrataFlags.c](https://github.com/nohuto/win-config/blob/main/peripheral/assets/usbflags/HUBREG_QueryHubErrataFlags.c)  
+> [peripheral/assets | HUBREG_QueryUsbflagsAlternateSettingFilter.c](https://github.com/nohuto/win-config/blob/main/peripheral/assets/usbflags/HUBREG_QueryUsbflagsAlternateSettingFilter.c)  
+> [peripheral/assets | RegQueryGenericCompositeUSBDeviceString.c](https://github.com/nohuto/win-config/blob/main/peripheral/assets/usbflags/RegQueryGenericCompositeUSBDeviceString.c)  
+> [peripheral/assets | GetConfigValue.c](https://github.com/nohuto/win-config/blob/main/peripheral/assets/usbflags/GetConfigValue.c)  
+> [peripheral/assets | Controller_IsRegKeySetToDisableS0Idle.c](https://github.com/nohuto/win-config/blob/main/peripheral/assets/usbflags/Controller_IsRegKeySetToDisableS0Idle.c)  
+> [peripheral/assets | Controller_PopulateRegistryOverrideForSetMultiTTBitFlag.c](https://github.com/nohuto/win-config/blob/main/peripheral/assets/usbflags/Controller_PopulateRegistryOverrideForSetMultiTTBitFlag.c)  
+> [peripheral/assets | Controller_PopulateTestRegistrySettings.c](https://github.com/nohuto/win-config/blob/main/peripheral/assets/usbflags/Controller_PopulateTestRegistrySettings.c)  
+> [peripheral/assets | Registry_InitializeAllow64KLowOrFullSpeedControlTransfersFlag.c](https://github.com/nohuto/win-config/blob/main/peripheral/assets/usbflags/Registry_InitializeAllow64KLowOrFullSpeedControlTransfersFlag.c)
 
-> [peripheral/assets | HUBDSM_QueryingRegistryValuesForDevice.c](https://github.com/nohuto/regkit/blob/main/assets/usbflags/HUBDSM_QueryingRegistryValuesForDevice.c)  
-> [peripheral/assets | HUBMISC_QueryAndCacheRegistryValuesForDevice.c](https://github.com/nohuto/regkit/blob/main/assets/usbflags/HUBMISC_QueryAndCacheRegistryValuesForDevice.c)  
-> [peripheral/assets | HUBREG_OpenCreateUsbflagsDeviceKey.c](https://github.com/nohuto/regkit/blob/main/assets/usbflags/HUBREG_OpenCreateUsbflagsDeviceKey.c)  
-> [peripheral/assets | HUBREG_QueryUsbflagsValuesForDevice.c](https://github.com/nohuto/regkit/blob/main/assets/usbflags/HUBREG_QueryUsbflagsValuesForDevice.c)  
-> [peripheral/assets | HUBREG_QueryHubErrataFlags.c](https://github.com/nohuto/regkit/blob/main/assets/usbflags/HUBREG_QueryHubErrataFlags.c)  
-> [peripheral/assets | HUBREG_QueryUsbflagsAlternateSettingFilter.c](https://github.com/nohuto/regkit/blob/main/assets/usbflags/HUBREG_QueryUsbflagsAlternateSettingFilter.c)  
-> [peripheral/assets | RegQueryGenericCompositeUSBDeviceString.c](https://github.com/nohuto/regkit/blob/main/assets/usbflags/RegQueryGenericCompositeUSBDeviceString.c)  
-> [peripheral/assets | GetConfigValue.c](https://github.com/nohuto/regkit/blob/main/assets/usbflags/GetConfigValue.c)  
-> [peripheral/assets | Controller_IsRegKeySetToDisableS0Idle.c](https://github.com/nohuto/regkit/blob/main/assets/usbflags/Controller_IsRegKeySetToDisableS0Idle.c)  
-> [peripheral/assets | Controller_PopulateRegistryOverrideForSetMultiTTBitFlag.c](https://github.com/nohuto/regkit/blob/main/assets/usbflags/Controller_PopulateRegistryOverrideForSetMultiTTBitFlag.c)  
-> [peripheral/assets | Controller_PopulateTestRegistrySettings.c](https://github.com/nohuto/regkit/blob/main/assets/usbflags/Controller_PopulateTestRegistrySettings.c)  
-> [peripheral/assets | Registry_InitializeAllow64KLowOrFullSpeedControlTransfersFlag.c](https://github.com/nohuto/regkit/blob/main/assets/usbflags/Registry_InitializeAllow64KLowOrFullSpeedControlTransfersFlag.c)
+## RegistryMachin_* Keys
+
+```c
+aRegistryMachin_1 = "HKLM\\SYSTEM\\CurrentControlSet\\Control\\USBFN";
+aRegistryMachin_2 = // doesn't exist
+aRegistryMachin_3 = "HKLM\\SYSTEM\\CurrentControlSet\\Services\\usbhub\\uxd_control\\pnp";
+aRegistryMachin_4 = "HKLM\\SYSTEM\\CurrentControlSet\\Control\\usb\\UsbLtm";
+aRegistryMachin_5 = "HKLM\\SYSTEM\\CurrentControlSet\\Services\\usbhub\\uxd_control\\devices";
+aRegistryMachin_6 = "HKLM\\SYSTEM\\CurrentControlSet\\Control\\usb\\AutomaticSurpriseRemoval";
+aRegistryMachin_7 = "HKLM\\SYSTEM\\CurrentControlSet\\Control\\usb\\HardwareVerifier";
+aRegistryMachin_8 = "HKLM\\SYSTEM\\CurrentControlSet\\Control\\usb\\Usb20HardwareLpm";
+aRegistryMachin_9 = "HKLM\\SYSTEM\\CurrentControlSet\\Control\\usbflags";
+aRegistryMachin_10 = "HKLM\\SYSTEM\\CurrentControlSet\\Services\\USBHUB\\hubg";
+aRegistryMachin_11 = "HKLM\\SYSTEM\\CurrentControlSet\\Control\\USB";
+aRegistryMachin_12 = "HKLM\\SYSTEM\\CurrentControlSet\\Services\\usbhub\\uxd_control\\policy";
+aRegistryMachin_13 = "HKLM\\SYSTEM\\CurrentControlSet\\Control\\usb";
+```
+
+## Subkey Structure
 
 The subkeys in `usbflags` always have a length of 12, build in such a structure `vvvvpppprrrr`:
 - **vvvv** is a 4-digit hexadecimal number that identifies the vendor
@@ -167,19 +196,3 @@ The vendor ID, product ID, and revision number values are obtained from the [USB
 `IgnoreHWSerNum<vvvvpppp>` exists in `\Registry\Machine\SYSTEM\ControlSet001\Control\usbflags` too.
 
 > https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/usbcon/usb-device-specific-registry-settings.md
-
-```c
-aRegistryMachin_1 = "HKLM\\SYSTEM\\CurrentControlSet\\Control\\USBFN";
-aRegistryMachin_2 = // doesn't exist
-aRegistryMachin_3 = "HKLM\\SYSTEM\\CurrentControlSet\\Services\\usbhub\\uxd_control\\pnp";
-aRegistryMachin_4 = "HKLM\\SYSTEM\\CurrentControlSet\\Control\\usb\\UsbLtm";
-aRegistryMachin_5 = "HKLM\\SYSTEM\\CurrentControlSet\\Services\\usbhub\\uxd_control\\devices";
-aRegistryMachin_6 = "HKLM\\SYSTEM\\CurrentControlSet\\Control\\usb\\AutomaticSurpriseRemoval";
-aRegistryMachin_7 = "HKLM\\SYSTEM\\CurrentControlSet\\Control\\usb\\HardwareVerifier";
-aRegistryMachin_8 = "HKLM\\SYSTEM\\CurrentControlSet\\Control\\usb\\Usb20HardwareLpm";
-aRegistryMachin_9 = "HKLM\\SYSTEM\\CurrentControlSet\\Control\\usbflags";
-aRegistryMachin_10 = "HKLM\\SYSTEM\\CurrentControlSet\\Services\\USBHUB\\hubg";
-aRegistryMachin_11 = "HKLM\\SYSTEM\\CurrentControlSet\\Control\\USB";
-aRegistryMachin_12 = "HKLM\\SYSTEM\\CurrentControlSet\\Services\\usbhub\\uxd_control\\policy";
-aRegistryMachin_13 = "HKLM\\SYSTEM\\CurrentControlSet\\Control\\usb";
-```

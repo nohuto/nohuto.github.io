@@ -17,6 +17,8 @@ Receive Buffers:
 > https://edc.intel.com/content/www/us/en/design/products/ethernet/adapters-and-devices-user-guide/29.3.1/receive-buffers/  
 > https://edc.intel.com/content/www/us/en/design/products/ethernet/adapters-and-devices-user-guide/transmit-buffers/
 
+## Setup Information
+
 ```inf
 , *TransmitBuffers
 HKR, Ndi\params\*TransmitBuffers,               ParamDesc,              0, %TransmitBuffers%

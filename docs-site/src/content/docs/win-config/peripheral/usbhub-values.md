@@ -6,7 +6,9 @@ sidebar:
   order: 3
 ---
 
-For entries described as "any nonzero", the code treats the DWORD as a boolean, means any nonzero value is equivalent to `1`. Default data is unknown for most values as the driver code only reads the registry and handles fallbacks, note that this is currently based on USBHUB3.sys only, means it's not complete.
+For entries described as "any nonzero", the code treats the DWORD as a boolean, means any nonzero value is equivalent to `1`. Default data is unknown for most values as the driver code only reads the registry and handles fallbacks.
+
+## Registry Values Details
 
 ```c
 // HUBREG_QueryGlobalHubValues
@@ -51,11 +53,13 @@ For entries described as "any nonzero", the code treats the DWORD as a boolean, 
     "{GUID}" = ?; // value name from RtlStringFromGUID
 ```
 
-> [peripheral/assets | HUBREG_QueryUxdDeviceKey.c](https://github.com/nohuto/regkit/blob/main/assets/usbhub/HUBREG_QueryUxdDeviceKey.c)  
-> [peripheral/assets | HUBREG_DeleteUxdDeviceKey.c](https://github.com/nohuto/regkit/blob/main/assets/usbhub/HUBREG_DeleteUxdDeviceKey.c)  
-> [peripheral/assets | HUBREG_QueryGlobalUxdSettings.c](https://github.com/nohuto/regkit/blob/main/assets/usbhub/HUBREG_QueryGlobalUxdSettings.c)  
-> [peripheral/assets | HUBREG_QueryGlobalHubValues.c](https://github.com/nohuto/regkit/blob/main/assets/usbhub/HUBREG_QueryGlobalHubValues.c)  
-> [peripheral/assets | HUBREG_GetUxdPnpValue.c](https://github.com/nohuto/regkit/blob/main/assets/usbhub/HUBREG_GetUxdPnpValue.c)
+> [peripheral/assets | HUBREG_QueryUxdDeviceKey.c](https://github.com/nohuto/win-config/tree/main/peripheral/assets/usbhub/HUBREG_QueryUxdDeviceKey.c)  
+> [peripheral/assets | HUBREG_DeleteUxdDeviceKey.c](https://github.com/nohuto/win-config/tree/main/peripheral/assets/usbhub/HUBREG_DeleteUxdDeviceKey.c)  
+> [peripheral/assets | HUBREG_QueryGlobalUxdSettings.c](https://github.com/nohuto/win-config/tree/main/peripheral/assets/usbhub/HUBREG_QueryGlobalUxdSettings.c)  
+> [peripheral/assets | HUBREG_QueryGlobalHubValues.c](https://github.com/nohuto/win-config/tree/main/peripheral/assets/usbhub/HUBREG_QueryGlobalHubValues.c)  
+> [peripheral/assets | HUBREG_GetUxdPnpValue.c](https://github.com/nohuto/win-config/tree/main/peripheral/assets/usbhub/HUBREG_GetUxdPnpValue.c)
+
+## RegistryMachin_* Keys
 
 ```c
 aRegistryMachin_1 = "HKLM\\SYSTEM\\CurrentControlSet\\Control\\USBFN";

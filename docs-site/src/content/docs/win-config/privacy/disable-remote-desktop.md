@@ -3,7 +3,7 @@ title: 'Remote Desktop'
 description: 'Privacy option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-remote-desktop'
 sidebar:
-  order: 15
+  order: 16
 ---
 
 Disables remote desktop, remote assistance, RPC traffic, and device redirection.
@@ -20,6 +20,8 @@ Disables remote desktop, remote assistance, RPC traffic, and device redirection.
 
 `TerminalServer.admx`:  
 `fDisableCdm`: Do not allow drive redirection
+
+## Windows Policies
 
 ```json
 {
@@ -183,9 +185,8 @@ Disables remote desktop, remote assistance, RPC traffic, and device redirection.
 },
 ```
 
----
+## Miscellaneous Notes
 
-Miscellaneous notes:
 ```json
 "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services": {
   "fEncryptRPCTraffic": { "Type": "REG_DWORD", "Data": 1 }

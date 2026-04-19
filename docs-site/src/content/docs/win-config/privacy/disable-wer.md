@@ -3,7 +3,7 @@ title: 'WER'
 description: 'Privacy option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-wer'
 sidebar:
-  order: 36
+  order: 37
 ---
 
 WER (Windows Error Reporting) sends error logs to Microsoft, disabling it keeps error data local.
@@ -31,62 +31,12 @@ Windows Internals (E7-P2, WER): WER is implemented by the WerSvc service and Wer
 > https://learn.microsoft.com/en-us/windows/win32/wer/wer-settings  
 > [privacy/assets | wer-PciGetSystemWideHackFlagsFromRegistry.c](https://github.com/nohuto/win-config/blob/main/privacy/assets/wer-PciGetSystemWideHackFlagsFromRegistry.c)
 
+## Suboption
+
 `Disable DHA Report`:  
 "This group policy enables Device Health Attestation reporting (DHA-report) on supported devices. It enables supported devices to send Device Health Attestation related information (device boot logs, PCR values, TPM certificate, etc.) to Device Health Attestation Service (DHA-Service) every time a device starts. Device Health Attestation Service validates the security state and health of the devices, and makes the findings accessible to enterprise administrators via a cloud based reporting portal. This policy is independent of DHA reports that are initiated by device manageability solutions (like MDM or SCCM), and will not interfere with their workflows."
 
-```powershell
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : ArchiveFolderCountLimit
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : AutoApproveOSDumps
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : BypassDataThrottling
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : BypassNetworkCostThrottling
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : BypassPowerThrottling
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : CabArchiveCreate
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : CabArchiveFolder
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : CabArchiveSeparate
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : ChangeDumpTypeByTelemetryLevel
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : ConfigureArchive
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : CorporateWerPortNumber
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : CorporateWerServer
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : CorporateWerUploadOnFreeNetworksOnly
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : CorporateWerUseAuthentication
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : CorporateWerUseSSL
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : DeferCabUpload
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : DisableArchive
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : Disabled
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : DisableEnterpriseAuthProxy
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : DisableWerUpload
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : DontSendAdditionalData
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : DontShowUI
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : ForceEtw
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : ForceHeapDump
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : ForceMetadata
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : ForceQueue
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : ForceUserModeCabCollection
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : LiveReportFlushInterval
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : LocalCompression
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : LoggingDisabled
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : MaxArchiveCount
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : MaxQueueCount
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : MaxRetriesForSasRenewal
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : MinFreeDiskSpace
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : MinQueueSize
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : NoHeapDumpOnQueue
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : OobeCompleted
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : QueueNoPesterInterval
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : QueuePesterInterval
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : QueueSizeMaxPercentFreeDisk
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : source
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : StorePath
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : UploadOnFreeNetworksOnly
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting : User
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting\Consent : DefaultConsent
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting\Consent : DefaultOverrideBehavior
-\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting\Consent : NewUserDefaultConsent
-```
-
----
-
-Miscellaneous notes:  
+## Miscellaneous Notes  
 
 ```c
 `EnableWerUserReporting`  
@@ -106,6 +56,8 @@ Default is `0`, non zero would enable the behaviour? The value doesn't exist by 
 \Registry\Machine\SYSTEM\ControlSet001\Control\StorPort : TelemetryErrorDataEnabled
 \Registry\Machine\SYSTEM\ControlSet001\Control\Session Manager\Memory Management : PeriodicTelemetryReportFrequency
 ```
+
+## Windows Policies
 
 ```json
 {

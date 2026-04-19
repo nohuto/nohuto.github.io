@@ -7,19 +7,19 @@ sidebar:
   order: 1
 ---
 
-- [Service Splitting](/docs/win-config/system/disable-service-splitting/)
+- [Quantum/Priority Separation](/docs/win-config/system/quantum-priority-separation/)
 - [Kernel Values](/docs/win-config/system/kernel-values/)
 - [DXG Kernel Values](/docs/win-config/system/dxg-kernel-values/)
 - [DWM Values](/docs/win-config/system/dwm-values/)
-- [Quantum/Priority Separation](/docs/win-config/system/quantum-priority-separation/)
 - [MMCSS Values](/docs/win-config/system/mmcss-values/)
+- [Service Splitting](/docs/win-config/system/disable-service-splitting/)
 - [Scheduled Tasks](/docs/win-config/system/disable-scheduled-tasks/)
 - [Services/Drivers](/docs/win-config/system/disable-services-drivers/)
 - [SCM Autostart Delay](/docs/win-config/system/scm-autostart-delay/)
 - [Time Zone](/docs/win-config/system/time-zone/)
 - [Game Mode](/docs/win-config/system/game-mode/)
 - [Windows Search](/docs/win-config/system/disable-windows-search/)
-- [HAGS](/docs/win-config/system/enable-hags/)
+- [HAGS](/docs/win-config/system/hags/)
 - [Storage Sense](/docs/win-config/system/disable-storage-sense/)
 - [Reduce Shutdown Time](/docs/win-config/system/reduce-shutdown-time/)
 - [FTH](/docs/win-config/system/disable-fth/)

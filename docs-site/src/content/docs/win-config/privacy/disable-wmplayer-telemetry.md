@@ -3,7 +3,7 @@ title: 'WMPlayer Telemetry'
 description: 'Privacy option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-wmplayer-telemetry'
 sidebar:
-  order: 5
+  order: 6
 ---
 
 WMPlayer (Windows Media Player) sends player usage data by default, if using the "Recommended ". This option turns off the `Diagnistics and Feedback` option, use the suboptions for further configuration.
@@ -11,6 +11,8 @@ WMPlayer (Windows Media Player) sends player usage data by default, if using the
 ![](https://github.com/nohuto/win-config/blob/main/privacy/images/wmplayer.png?raw=true)
 
 Note: I gathered all registry values via the legacy WMPlayer.
+
+## Suboptions
 
 | Option | Description |
 | ---- | ---- |
@@ -26,7 +28,7 @@ Note: I gathered all registry values via the legacy WMPlayer.
 | `Enable Screensaver` | Allows the screen saver to stay enabled during playback. |
 | `Prevent Internet Connection` | Disables the `Connect to the Internet (overrides other commands)` option. |
 
----
+## setup_wm Capture
 
 Registry values `setup_wm.exe` creates on first start, if unticking all options:
 ```powershell

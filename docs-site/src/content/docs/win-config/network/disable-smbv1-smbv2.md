@@ -28,6 +28,8 @@ Set-SmbServerConfiguration -EnableSMB2Protocol $false -Force
 "wmiprvse.exe","RegSetValue","HKLM\System\CurrentControlSet\Services\LanmanServer\Parameters\SMB1","Type: REG_DWORD, Length: 4, Data: 0"
 ```
 
+## Effects of Disabling
+
 | Functionality                                      | Disabled when SMBv3 is off       | Disabled when SMBv2 is off       |
 |----------------------------------------------------|----------------------------------|----------------------------------|
 | Transparent failover                               | Yes                              | No                               |

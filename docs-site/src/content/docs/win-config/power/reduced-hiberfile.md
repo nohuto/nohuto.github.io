@@ -3,7 +3,7 @@ title: 'Reduced HiberFile'
 description: 'Power option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/power/desc.md#reduced-hiberfile'
 sidebar:
-  order: 5
+  order: 6
 ---
 
 Hibernation files are used for hybrid sleep, fast startup, and [standard hibernation](https://learn.microsoft.com/en-us/windows/win32/power/system-power-states#hibernate-state-s4). There are two types, differentiated by size, a full and reduced size hibernation file. Only fast startup can use a reduced hibernation file.
@@ -33,6 +33,8 @@ Hibernation files are used for hybrid sleep, fast startup, and [standard hiberna
     "PercentUnlimitedReduced" = ?; // unk_140FC36FC - 14Hex/20Dec
 ```
 
+## PowerCFG Captures & Commands
+
 `powercfg /h /size 0`:
 ```c
 RegSetValue	HKLM\System\CurrentControlSet\Control\Power\HiberFileSizePercent	SUCCESS	Type: REG_DWORD, Length: 4, Data: 0
@@ -60,5 +62,5 @@ To verify or change the type of hibernation file used, run the *powercfg.exe* ut
 | `powercfg /h /type reduced`        | **Change the hibernation file type to reduced.** If the command returns "the parameter is incorrect," see the following example.      |
 | `powercfg /h /size 0`<br> `powercfg /h /type reduced`  | **Retry changing the hibernation file type to reduced.** If the hibernation file is set to a custom size greater than 40%, you must first set the size of the file to zero. Then retry the reduced configuration.     |
 
-> [/docs/win-config/power/power-values/#registry-values-details](/docs/win-config/power/power-values/#registry-values-details)  
+> https://www.noverse.dev/docs/win-config/power/power-values/#registry-values-details  
 > https://learn.microsoft.com/en-us/windows/win32/power/system-power-states

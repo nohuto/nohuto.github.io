@@ -3,7 +3,7 @@ title: 'Troubleshooter Preference'
 description: 'Privacy option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#troubleshooter-preference'
 sidebar:
-  order: 37
+  order: 38
 ---
 
 It's set to `Ask me before running` by default.
@@ -23,6 +23,8 @@ It's set to `Ask me before running` by default.
 
 These get disabled in the `Don't run any` option.
 
+## SystemSettings Captures
+
 `System > Troubleshoot` - `Recommended troubleshooter preferences`:
 ```c
 // Don't run any
@@ -39,6 +41,8 @@ HKLM\SOFTWARE\Microsoft\WindowsMitigation\UserPreference	Type: REG_DWORD, Length
 ```
 
 > https://support.microsoft.com/en-us/topic/keep-your-device-running-smoothly-with-recommended-troubleshooting-ec76fe10-4ac8-ce9d-49c6-757770fe68f1
+
+## Windows Policies
 
 ```json
 {
@@ -66,9 +70,7 @@ HKLM\SOFTWARE\Microsoft\WindowsMitigation\UserPreference	Type: REG_DWORD, Length
 },
 ```
 
----
-
-Miscellaneous notes:
+Miscellaneous policies:
 ```json
 {
   "File": "sdiageng.admx",

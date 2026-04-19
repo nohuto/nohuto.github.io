@@ -3,7 +3,7 @@ title: 'Flow Control'
 description: 'Network option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/network/desc.md#disable-flow-control'
 sidebar:
-  order: 23
+  order: 24
 ---
 
 A sending station (computer or network switch) may be transmitting data faster than the other end of the link can accept it. Using flow control, the receiving station can signal the sender requesting suspension of transmissions until the receiver catches up.
@@ -19,7 +19,9 @@ A sending station (computer or network switch) may be transmitting data faster t
     "*FlowControl" = 4; // range 0-4
 ```
 
-> https://github.com/nohuto/regkit#registry-values-details
+> https://github.com/nohuto/regkit/blob/main/records/NIC-Intel.txt
+
+## Setup Information
 
 ```inf
 , *FlowControl

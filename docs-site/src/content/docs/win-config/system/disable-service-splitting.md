@@ -3,7 +3,7 @@ title: 'Service Splitting'
 description: 'System option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/system/desc.md#disable-service-splitting'
 sidebar:
-  order: 1
+  order: 6
 ---
 
 Prevents services running under `svchost.exe` from being split into separate processes, keeping all grouped services within the same instance. This simplifies process management but increases the risk of system instability and reduces service isolation.

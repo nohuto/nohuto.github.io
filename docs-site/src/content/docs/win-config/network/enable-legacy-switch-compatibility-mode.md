@@ -3,7 +3,7 @@ title: 'Legacy Switch Compatibility Mode'
 description: 'Network option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/network/desc.md#enable-legacy-switch-compatibility-mode'
 sidebar:
-  order: 29
+  order: 30
 ---
 
 Probably a setting that controls how the adapter handles link negotiation when it's connected behind certain (usually older) network switches. There's no official documentation on it, but it seems to be disabled by default. Some older switches may have problems with modern auto negotiation behavior, enabling the mode (probably) changes how the NIC negotiates speed/duplex so that it behaves more like older hardware.
@@ -12,6 +12,8 @@ This should only be enabled, if needed. The text above is just a personal assump
 
 `2` = Enabled  
 `1` = Disabled
+
+## Setup Information
 
 ```inf
 ; Legacy Switch Compatibility Mode

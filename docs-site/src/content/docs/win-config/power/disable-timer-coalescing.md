@@ -3,10 +3,12 @@ title: 'Timer Coalescing'
 description: 'Power option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/power/desc.md#disable-timer-coalescing'
 sidebar:
-  order: 11
+  order: 10
 ---
 
 "CoalesecingTimerinterval is a computer system energy-saving technique that reduces CPU power consumption by reducing the precision of software timers to allow the synchronization of process wake-ups, minimizing the number of times the CPU is forced to perform the relatively power-costly operation of entering and exiting idle states"
+
+## TimerCoalescing Data
 
 `TimerCoalescing` is a binary value (`v18 == 3`) with a size of 80 bytes (`v19 == 80`).
 
@@ -46,12 +48,14 @@ As the pseudocode shows eight values have data, all other ones are forced to `0`
 ```
 Using the highest clamp as shown above will end up with a BSoD (same goes for `0x7FFFFFF4`/`0` and probably any other data).
 
+## Miscellaneous Values
+
 ```c
 "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Power";
     "CoalescingTimerInterval" = 1500; // PopCoalescingTimerInterval (0x000005DC) - Units: seconds (multiplies value by -10,000,000, one second in 100 ns units, so the default corresponds to a 25min cadence)
     "DeepIoCoalescingEnabled" = 0; // PopDeepIoCoalescingEnabled 
 ```
-> [/docs/win-config/power/power-values/#registry-values-details](/docs/win-config/power/power-values/#registry-values-details)
+> https://www.noverse.dev/docs/win-config/power/power-values/#registry-values-details
 
 ```c
 void InitTimerPowerSaving(void)

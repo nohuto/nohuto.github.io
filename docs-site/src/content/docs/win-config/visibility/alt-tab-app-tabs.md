@@ -8,19 +8,19 @@ sidebar:
 
 Select the amount of recent tabs from apps in the alt+tab menu.
 
-#### Don't show tabs
+### Don't show tabs
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/0tabs.png?raw=true)
 
-#### 3 Tabs
+### 3 Tabs
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/3tabs.png?raw=true)
 
-#### 5 Tabs
+### 5 Tabs
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/5tabs.png?raw=true)
 
-#### 20 Tabs
+### 20 Tabs
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/20tabs.png?raw=true)
 
@@ -56,10 +56,10 @@ The option changes it via `HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\E
 
 Restarting the explorer is enough to apply the changes.
 
-#### New
+### New
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/taskswitchnew.png?raw=true)
 
-#### Classic
+### Classic
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/taskswitchold.png?raw=true)

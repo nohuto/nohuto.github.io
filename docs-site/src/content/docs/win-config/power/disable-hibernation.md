@@ -3,7 +3,7 @@ title: 'Hibernation'
 description: 'Power option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/power/desc.md#disable-hibernation'
 sidebar:
-  order: 4
+  order: 5
 ---
 
 Windows uses hibernation to provide a fast startup experience. When available, it's also used on mobile devices to extend the usable battery life of a system by giving a mechanism to save all of the user's state prior to shutting down the system. In a hibernate transition, all the contents of memory are written to a file on the primary system drive, the hibernation file. This preserves the state of the operating system, applications, and devices. In the case where the combined memory footprint consumes all of physical memory, the hibernation file must be large enough to ensure there's space to save all the contents of physical memory. Since data is written to non-volatile storage, DRAM does not need to maintain self-refresh and can be powered off, which means power consumption of hibernation is very low, almost the same as power off.
@@ -11,6 +11,8 @@ Windows uses hibernation to provide a fast startup experience. When available, i
 Windows Internals (E7-P1, Power manager): the system saves a full memory image to `Hiberfil.sys` for S4 and resumes execution from that image on the next boot. The hibernation file is invalidated after a resume to prevent multiple resume attempts from stale data.
 
 During a full shutdown and boot (S5), the entire user session is torn down and restarted on the next boot. In contrast, during a hibernation (S4), the user session is closed and the user state is saved.
+
+## Power State Table
 
 | Power state | ACPI state | Description | 
 |-------------|------------|-------------|
@@ -22,6 +24,8 @@ During a full shutdown and boot (S5), the entire user session is torn down and r
 | Mechanical off | *G3* | The system is completely off and consumes no power. The system returns to the working state only after a full reboot. | 
 
 > https://learn.microsoft.com/en-us/windows/win32/power/system-power-states
+
+## Registry Value Defaults
 
 ```c
 "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Power";
@@ -46,6 +50,6 @@ During a full shutdown and boot (S5), the entire user session is torn down and r
 RegSetValue	HKLM\System\CurrentControlSet\Control\Power\HibernateEnabled	Type: REG_DWORD, Length: 4, Data: 0
 ```
 
-> [/docs/win-config/power/power-values/#registry-values-details](/docs/win-config/power/power-values/#registry-values-details)  
+> https://www.noverse.dev/docs/win-config/power/power-values/#registry-values-details  
 > https://learn.microsoft.com/en-us/troubleshoot/windows-client/setup-upgrade-and-drivers/disable-and-re-enable-hibernation  
 > https://github.com/nohuto/regkit/blob/main/records/Power.txt

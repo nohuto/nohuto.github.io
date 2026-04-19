@@ -26,6 +26,8 @@ Disabling `NetbiosOptions` via network center:
 RegSetValue	HKLM\System\CurrentControlSet\Services\NetBT\Parameters\Interfaces\Tcpip_{58f1d738-585f-40e2-aa37-39937f740875}\NetbiosOptions	Type: REG_DWORD, Length: 4, Data: 2
 ```
 
+## Protocols Notes
+
 | Protocol | Purpose | How it works | Notes |
 | -------- | ------- | ------------ | ----- |
 | LLMNR (Link-Local Multicast Name Resolution) | Local name resolution when DNS isn't available | Sends multicast queries on the local link (IPv4 224.0.0.252, UDP 5355) asking "who has this name?", hosts that own the name reply | Windows-specific legacy fallback, vulnerable to spoofing/poisoning |
@@ -35,6 +37,8 @@ RegSetValue	HKLM\System\CurrentControlSet\Services\NetBT\Parameters\Interfaces\T
 > https://en.wikipedia.org/wiki/Link-Local_Multicast_Name_Resolution  
 > https://en.wikipedia.org/wiki/Multicast_DNS  
 > https://en.wikipedia.org/wiki/NetBIOS  
+
+## Windows Policies
 
 ```json
 {

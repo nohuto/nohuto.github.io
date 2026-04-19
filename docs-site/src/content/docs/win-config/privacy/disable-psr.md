@@ -3,7 +3,7 @@ title: 'PSR'
 description: 'Privacy option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-psr'
 sidebar:
-  order: 7
+  order: 8
 ---
 
 "Steps Recorder, also known as Problems Steps Recorder (PSR) in Windows 7, is a Windows inbox program that records screenshots of the desktop along with the annotated steps while recording the activity on the screen. The screenshots and annotated text are saved to a file for later viewing."
@@ -14,16 +14,14 @@ It is a deprecated feature, as the banner shows:
 
 `PSR` = Problem Steps Recorder
 
----
+> https://support.microsoft.com/en-gb/windows/steps-recorder-deprecation-a64888d7-8482-4965-8ce3-25fb004e975f
 
-Miscellaneous notes:
-```bat
-takeown /f %WINDIR%\System32\psr.exe
-icacls %WINDIR%\System32\psr.exe /grant administrators:F
-ren %WINDIR%\System32\psr.exe psr.exe.nv
+```c
+// SR = Steps Recorder?
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\SystemSettings : SRAvailable
 ```
 
-> https://support.microsoft.com/en-gb/windows/steps-recorder-deprecation-a64888d7-8482-4965-8ce3-25fb004e975f
+## Windows Policies
 
 ```json
 {
@@ -43,9 +41,4 @@ ren %WINDIR%\System32\psr.exe psr.exe.nv
     { "Type": "DisabledValue", "Data": "0" }
   ]
 },
-```
-
-```c
-// SR = Steps Recorder?
-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\SystemSettings : SRAvailable
 ```

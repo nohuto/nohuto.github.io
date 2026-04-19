@@ -3,7 +3,7 @@ title: 'Inking & Typing Personalization'
 description: 'Privacy option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-inking--typing-personalization'
 sidebar:
-  order: 18
+  order: 19
 ---
 
 Used for better suggestions by creating a custom dictionary using your typing history and handwriting patterns. Disables autocorrection of misspelled words, highlight of misspelled words, and typing insights - would use AI to suggest words, autocorrect spelling mistakes etc. (`Privacy & security > Inking & typing personalization` & `Time & Language > Typing`).
@@ -15,6 +15,8 @@ Used for better suggestions by creating a custom dictionary using your typing hi
 ```
 
 ![](https://github.com/nohuto/win-config/blob/main/privacy/images/inking.png?raw=true)
+
+## Windows Policies
 
 ```json
 {

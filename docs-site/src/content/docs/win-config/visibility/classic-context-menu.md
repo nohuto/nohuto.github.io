@@ -8,10 +8,10 @@ sidebar:
 
 Use it on W11, unless you like the new menu.
 
-#### Before
+### Before
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/classiconb.png?raw=true)
 
-#### After
+### After
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/classicona.png?raw=true)

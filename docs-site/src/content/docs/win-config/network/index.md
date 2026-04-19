@@ -27,6 +27,7 @@ sidebar:
 - [RSS](/docs/win-config/network/enable-rss/)
 - [File/Printer Sharing](/docs/win-config/network/disable-file-printer-sharing/)
 - [Microsoft Client/Multiplexor](/docs/win-config/network/disable-microsoft-client-multiplexor/)
+- [ICS / Mobile Hotspot](/docs/win-config/network/disable-ics-mobile-hotspot/)
 - [Speed & Duplex](/docs/win-config/network/speed-duplex/)
 - [LLSE](/docs/win-config/network/disable-llse/)
 - [Flow Control](/docs/win-config/network/disable-flow-control/)

@@ -3,11 +3,25 @@ title: 'MMCSS Values'
 description: 'System option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/system/desc.md#mmcss-values'
 sidebar:
-  order: 6
+  order: 5
 ---
 
-See regkit repo for a list of `SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\multimedia\\systemprofile\\...` values/defaults/notes:
-> [/docs/win-config/system/mmcss-values/#registry-values-details](/docs/win-config/system/mmcss-values/#registry-values-details)
+All values are read via `CiConfigReadDWORD()`, so the type is `REG_DWORD` for all listed ones. If `\Tasks` opens successfully, `CiConfigInitializeFromRegistry()` handles that part?
+
+See [mmcss-CiConfigInitialize.c](https://github.com/nohuto/win-config/tree/main/system/assets/mmcss-CiConfigInitialize.c) for notes.
+
+```c
+"HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\multimedia\\systemprofile";
+    "SystemResponsiveness" = 20; // see section below
+    "NetworkThrottlingIndex" = 10; // 0 becomes 1, 1-70 stay unchanged, 71-4294967294 become 70, 4294967295 stays unchanged
+    "NoLazyMode" = 0; // any nonzero value = enabled
+    "IdleDetectionCycles" = 2; // valid range is 1-31, otherwise 2 is used
+    "LazyModeTimeout" = 1000000; // 0 is replaced with 1000000
+    "SchedulerTimerResolution" = 10000; // values above 10000 are capped to 10000
+    "SchedulerPeriod" = 100000; // valid range is 50000-1000000, otherwise 100000 is used
+    "MaxThreadsPerProcess" = 32; // valid range is 8-128, otherwise 32 is used
+    "MaxThreadsTotal" = 256; // valid range is 64-65535, otherwise 256 is used
+```
 
 ## SystemResponsiveness Details
 

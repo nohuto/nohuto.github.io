@@ -3,7 +3,7 @@ title: 'NIC Power Savings'
 description: 'Power option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/power/desc.md#disable-nic-power-savings'
 sidebar:
-  order: 16
+  order: 14
 ---
 
 You can get a lot of information about data ranges and more from `.inf` files, see examples below.
@@ -11,6 +11,8 @@ You can get a lot of information about data ranges and more from `.inf` files, s
 > https://github.com/nohuto/regkit/blob/main/records/NIC-Intel.txt  
 > https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/network/standardized-inf-keywords-for-power-management.md  
 > https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/network/standardized-inf-keywords-for-ndis-selective-suspend.md
+
+## Registry Value Overview
 
 Everything listed below is based on personal research. Mistakes may exist, but I don't think I've made any.
 
@@ -38,7 +40,7 @@ Everything listed below is based on personal research. Mistakes may exist, but I
     "ULPMode" = 1; // range 0-1
 ```
 
-> https://github.com/nohuto/regkit#registry-values-details
+> https://github.com/nohuto/regkit/blob/main/records/NIC-Intel.txt
 
 | SubkeyName | ParamDesc | Default | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
@@ -54,7 +56,9 @@ Everything listed below is based on personal research. Mistakes may exist, but I
 
 For more detail on each value, see GitHub links above.
 
-> https://github.com/nohuto/regkit#registry-values-details
+> https://github.com/nohuto/regkit/blob/main/records/NIC-Intel.txt
+
+### Setup Information
 
 ```inf
 HKR,Ndi\Params\*DeviceSleepOnDisconnect,ParamDesc,    ,%DeviceSleepOnDisconnectDesc%
@@ -144,9 +148,7 @@ HKR,Ndi\params\WolShutdownLinkSpeed\enum,      "2",             0, %NotSpeedDown
 
 Reminder: Each adapter uses it's own default values, means that the `default`/`min`/`max` may be different for you. E.g. `SSIdleTimeout` minimum value was `1` in the first setup information file (`.inf`), but `5` in the second.
 
----
-
-Miscellaneous notes:
+### Miscellaneous Values
 
 ```c
 "DynamicLTR": { "Type": "REG_SZ", "Data": 0 },

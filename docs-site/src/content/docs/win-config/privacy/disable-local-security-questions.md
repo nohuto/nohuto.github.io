@@ -3,10 +3,12 @@ title: 'Local Security Questions'
 description: 'Privacy option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-local-security-questions'
 sidebar:
-  order: 48
+  order: 49
 ---
 
 Prevent the use of security questions for local accounts.
+
+## Windows Policies
 
 ```json
 {

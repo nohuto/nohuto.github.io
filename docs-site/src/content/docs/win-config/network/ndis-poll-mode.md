@@ -3,7 +3,7 @@ title: 'NDIS Poll Mode'
 description: 'Network option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/network/desc.md#ndis-poll-mode'
 sidebar:
-  order: 30
+  order: 31
 ---
 
 `Threaded DPC + Adaptive` = NDIS poll mode disabled, aptive receive completion method, packet burst buffering via threaded DPC.  
@@ -32,6 +32,8 @@ For a detailed documentation, see:
 | RecvCompletionMethod | Set to 4 to register and use Ndis Poll Mode | Default is 1 (Adaptive) |
 | SendCompletionMethod | Set to 2 to register and use Ndis Poll Mode | Default is 1 (Interrupt) |
 
+### Setup Information
+
 ```inf
 HKR, Ndi\params\*NdisPoll,       ParamDesc,            0, "Ndis Poll Mode"
 HKR, Ndi\params\*NdisPoll,       Type,                 0, "enum"
@@ -54,7 +56,7 @@ This feature allows packet burst handling, while avoiding packet drops that may 
     "ThreadDpcEnable" = 1; // KeThreadDpcEnable
 ```
 
-> [/docs/win-config/system/kernel-values/#registry-values-details](/docs/win-config/system/kernel-values/#registry-values-details)  
+> https://www.noverse.dev/docs/win-config/system/kernel-values/#registry-values-details  
 > https://learn.microsoft.com/en-us/windows-hardware/drivers/kernel/introduction-to-threaded-dpcs
 
 | Data | Meaning |
@@ -71,6 +73,8 @@ Sets the completion methods of the receive packets, and it affects network throu
 
 - Polling - increases the CPU utilization, because the system polls the received rings for incoming packets; however, it may increase the network bandwidth since the incoming packet is handled faster.
 - Adaptive - combines the interrupt and polling methods dynamically, depending on traffic type and network usage.
+
+### Setup Information
 
 ```inf
 HKR, NDI\Params\RecvCompletionMethod,  ParamDesc, 0, "%RecvCompletionMethod%"

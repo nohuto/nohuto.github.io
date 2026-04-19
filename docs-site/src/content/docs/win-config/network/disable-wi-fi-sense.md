@@ -13,6 +13,8 @@ Wi-Fi Sense is enabled by default and, when you're signed in with a Microsoft ac
 > https://learn.microsoft.com/en-us/troubleshoot/windows-client/networking/configure-wifi-sense-and-paid-wifi-service  
 > https://learn.microsoft.com/en-us/windows/privacy/manage-connections-from-windows-operating-system-components-to-microsoft-services#23-wi-fi-sense
 
+## Windows Policies
+
 ```json
 {
   "File": "wlansvc.admx",

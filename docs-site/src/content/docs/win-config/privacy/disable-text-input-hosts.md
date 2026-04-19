@@ -3,7 +3,7 @@ title: 'Text Input Hosts'
 description: 'Privacy option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-text-input-hosts'
 sidebar:
-  order: 19
+  order: 20
 ---
 
 Renames `ctfmon.exe` and `TextInputHost.exe` to block the classic CTF loader and the modern text input host. This disables IME, emoji/clipboard panels, and touch keyboard input in most cases.

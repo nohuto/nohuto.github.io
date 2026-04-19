@@ -3,7 +3,7 @@ title: 'Cortana'
 description: 'Privacy option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-cortana'
 sidebar:
-  order: 33
+  order: 34
 ---
 
 "Cortana was a virtual assistant developed by Microsoft that used the Bing search engine to perform tasks such as setting reminders and answering questions for users."

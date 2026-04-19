@@ -3,7 +3,7 @@ title: 'Opt-Out KMS Activation Telemetry'
 description: 'Privacy option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#opt-out-kms-activation-telemetry'
 sidebar:
-  order: 46
+  order: 47
 ---
 
 Friendly name: `Turn off KMS Client Online AVS Validation`
@@ -17,6 +17,8 @@ If you disable or don't configure this policy setting, KMS client activation dat
 `Disable Auto Activation` (MAK and KMS host but not KMS client) prevents windows from whether it's actived or not.
 
 > https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn502532(v=ws.11)
+
+## Windows Policies
 
 ```json
 {

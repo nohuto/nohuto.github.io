@@ -3,7 +3,7 @@ title: 'Startup ETS'
 description: 'Privacy option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-startup-ets'
 sidebar:
-  order: 17
+  order: 18
 ---
 
 "The AutoLogger event tracing session records events that occur early in the operating system boot process. Applications and device drivers can use the AutoLogger session to capture traces before the user logs in. Note that some device drivers, such as disk device drivers, are not loaded at the time the AutoLogger session begins."
@@ -19,6 +19,8 @@ C:\WINDOWS\system32\Logfiles\WMI
 ```
 
 Removing all autologgers will cause issues, therefore it's not recommended to remove all of them.
+
+## Autologger Value Table
 
 | Value | Type | Description | 
 |-------|------|-------------|

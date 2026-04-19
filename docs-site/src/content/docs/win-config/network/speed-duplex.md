@@ -3,7 +3,7 @@ title: 'Speed & Duplex'
 description: 'Network option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/network/desc.md#speed--duplex'
 sidebar:
-  order: 21
+  order: 22
 ---
 
 Speed = rate at which data is transmitted.
@@ -22,6 +22,8 @@ For example:
 Once these capabilities are shared, they agree on the highest common speed and prioritize full-duplex over half-duplex.
 
 Windows Internals (E7-P1, I/O system): NDIS is the network "port" driver, and vendor miniport drivers interpret adapter specific settings. `*SpeedDuplex` is a miniport defined advanced property, unsupported values are ignored or treated as auto negotiation by the driver.
+
+## Setup Information
 
 Intel driver example:
 ```inf

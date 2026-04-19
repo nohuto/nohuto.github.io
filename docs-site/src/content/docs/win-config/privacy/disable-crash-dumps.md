@@ -3,10 +3,12 @@ title: 'Crash Dumps'
 description: 'Privacy option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-crash-dumps'
 sidebar:
-  order: 38
+  order: 39
 ---
 
 Disables the crash dump, logging. Not all values may be read on your system.
+
+### Data Meaning
 
 ```c
 CrashDumpEnabled REG_DWORD 0x0 = None

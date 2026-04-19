@@ -7,6 +7,7 @@ sidebar:
   order: 5
 ---
 
+- [App Configuration](/docs/win-config/privacy/app-configuration/)
 - [General Telemetry](/docs/win-config/privacy/disable-general-telemetry/)
 - [Automatic Map Downloads](/docs/win-config/privacy/disable-automatic-map-downloads/)
 - [Website Access to Language List](/docs/win-config/privacy/disable-website-access-to-language-list/)

@@ -8,6 +8,7 @@ sidebar:
 ---
 
 - [xHCI IMOD](/docs/win-config/power/xhci-imod/)
+- [Power Plan](/docs/win-config/power/power-plan/)
 - [Power Values](/docs/win-config/power/power-values/)
 - [PnP Device Values](/docs/win-config/power/pnp-device-values/)
 - [Hibernation](/docs/win-config/power/disable-hibernation/)
@@ -15,11 +16,8 @@ sidebar:
 - [Remove Power Options](/docs/win-config/power/remove-power-options/)
 - [Hiberboot](/docs/win-config/power/disable-hiberboot/)
 - [Energy Estimation](/docs/win-config/power/disable-energy-estimation/)
-- [Powerplan](/docs/win-config/power/powerplan/)
-- [HDD Parking](/docs/win-config/power/disable-hdd-parking/)
 - [Timer Coalescing](/docs/win-config/power/disable-timer-coalescing/)
 - [Audio Idle](/docs/win-config/power/disable-audio-idle/)
-- [NVMe Perf Throttling](/docs/win-config/power/disable-nvme-perf-throttling/)
 - [Storage Idle States](/docs/win-config/power/disable-storage-idle-states/)
 - [PM in Standby Mode](/docs/win-config/power/disable-pm-in-standby-mode/)
 - [NIC Power Savings](/docs/win-config/power/disable-nic-power-savings/)

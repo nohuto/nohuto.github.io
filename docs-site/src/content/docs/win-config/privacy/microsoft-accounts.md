@@ -3,7 +3,7 @@ title: 'Microsoft Accounts'
 description: 'Privacy option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#microsoft-accounts'
 sidebar:
-  order: 45
+  order: 46
 ---
 
 "This setting prevents using the Settings app to add a Microsoft account for single sign-on (SSO) authentication for Microsoft services and some background services, or using a Microsoft account for single sign-on to other applications or services.

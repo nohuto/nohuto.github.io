@@ -3,7 +3,7 @@ title: 'General Telemetry'
 description: 'Privacy option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-general-telemetry'
 sidebar:
-  order: 1
+  order: 2
 ---
 
 Prevents sending info about your computer to microsoft, disables the diagnostic log collection, bluetooth ads (`DataCollection.admx`), the inventory collector. It disables the ads ID ("Windows creates a unique advertising ID per user, allowing apps and ad networks to deliver targeted ads. When enabled, it works like a cookie, linking personal data to the ID for personalized ads. This setting only affects Windows apps using the advertising ID, not web-based ads or third-party methods.") which should be disabled by default, if you toggled all options off in the OS installation phase. See policy explanations below for more details.
@@ -18,6 +18,7 @@ The option applies all kind of telemetry related values including all values tha
 Seems to be a fallback if `AllowTelemetry` isn't set.
 > https://github.com/TechTech512/Win11Src/blob/840a61919419c94ed24a9b079ee1029f482d29f2/NT/onecore/base/telemetry/permission/product/telemetrypermission.cpp#L106
 
+## Windows Policies
 
 ```json
 {
@@ -256,7 +257,7 @@ Seems to be a fallback if `AllowTelemetry` isn't set.
 },
 ```
 
----
+### Deprecated Policies
 
 These [policies](https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-system) are deprecated and will only work on Windows 10 version 1809. Setting this policy will have no effect for other supported versions of Windows.
 ```json

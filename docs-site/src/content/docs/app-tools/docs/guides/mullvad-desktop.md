@@ -3,7 +3,7 @@ title: 'Mullvad Configuration'
 description: 'Generated from app-tools file: guides/mullvad-desktop.md.'
 editUrl: 'https://github.com/nohuto/app-tools/blob/main/guides/mullvad-desktop.md'
 sidebar:
-  order: 6
+  order: 7
 ---
 
 [Mullvad](https://github.com/mullvad/mullvad-browser/releases) is my primary desktop browser, it's configured by default for privacy/security/fingerprinting restistance ([hard-facts](https://mullvad.net/en/browser/hard-facts)), therefore there's not much to change (it's recommended to use the default configuration to not get unique). Read more about the Mullvad browser in their [acticles](https://mullvad.net/en/browser/articles).
@@ -41,7 +41,7 @@ As said above the default configuration shouldn't be changed a lot, therefore I'
 ### General
 
 - General
-  - `Open previous windows and tabs`: On (preference)
+  - `Open previous windows and tabs`: Off
   - `Ctrl+Tab cycles through tabs in recently used order`: Off
   - `Open links in tabs instead of new windows`: On
   - `When you open a link, image or media in a new tab, switch to it immediately`: On
@@ -52,6 +52,7 @@ As said above the default configuration shouldn't be changed a lot, therefore I'
   - `Check your spelling as you type`: Off
 - Files and Applications
   - `Always ask you where to save files`: Off
+  - `What should Mullvad Browser do with other files?`: Save files
 - Browsing
   - `Show a touch keyboard when necessary`: Off
   - `Search for text when you start typing`: Off
@@ -65,6 +66,13 @@ See [search-engine](/docs/app-tools/docs/search-engine/).
 
 ### Privacy & Security
 
+- Browser Privacy
+  - `Delete cookies and site data when Mullvad Browser is closed`: Off (leave enabled if you don't care about logging in every time)
+  - `Always use private browsing mode`: Off
+  - `Remember browsing and download history`: Off
+  - `Clear history when Mullvad Browser closes`: On
+    - Borwsing & download history
+    - Saved form info
 - Permissions
   - `Block pop-ups and third-party redirects`: On
   - `Warn you when websites try to install add-ons`: On

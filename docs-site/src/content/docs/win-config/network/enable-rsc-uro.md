@@ -3,7 +3,7 @@ title: 'RSC/URO'
 description: 'Network option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/network/desc.md#enable-rscuro'
 sidebar:
-  order: 25
+  order: 26
 ---
 
 When receiving data, the miniport driver, NDIS, and TCP/IP must all look at each protocol data unit (PDU) header information separately. When large amounts of data are being received, a large amount of overhead is created. Receive segment coalescing (RSC) reduces this overhead by coalescing a sequence of received segments and passing them to the host TCP/IP stack in one operation, so that NDIS and TCP/IP need to only look at one header for the entire sequence.
@@ -15,6 +15,8 @@ Coalescing UDP datagrams reduces the CPU cost to process packets in high-bandwid
 > https://learn.microsoft.com/en-us/windows-hardware/drivers/network/udp-rsc-offload  
 > https://learn.microsoft.com/en-us/windows-hardware/drivers/network/overview-of-receive-segment-coalescing
 
+## Registry Value Ranges
+
 `"*UdpRsc": { "Type": "REG_SZ", "Data": 1 }` causes high usage of the system idle process for whatever reason, I'll leave it out for now.
 
 ```c
@@ -25,7 +27,7 @@ Coalescing UDP datagrams reduces the CPU cost to process packets in high-bandwid
     "RscMode" = 1; // range 0-2
 ```
 
-> https://github.com/nohuto/regkit#registry-values-details
+> https://github.com/nohuto/regkit/blob/main/records/NIC-Intel.txt
 
 ```c
 void __fastcall ReceiveSideCoalescing::ReadRegistryParameters(struct ADAPTER_CONTEXT **this)

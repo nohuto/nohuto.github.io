@@ -25,6 +25,6 @@ sidebar:
 - [Touch & Tablet](/docs/win-config/peripheral/disable-touch-tablet/)
 - [Wake on Input](/docs/win-config/peripheral/disable-wake-on-input/)
 - [Dynamic Lighting](/docs/win-config/peripheral/disable-dynamic-lighting/)
-- [Printing](/docs/win-config/peripheral/disable-printing/)
+- [Printers](/docs/win-config/peripheral/disable-printers/)
 - [Sample Rate](/docs/win-config/peripheral/sample-rate/)
 - [Monitor Settings](/docs/win-config/peripheral/monitor-settings/)

@@ -3,7 +3,7 @@ title: 'Brave Configuration (iOS)'
 description: 'Generated from app-tools file: guides/brave-ios.md.'
 editUrl: 'https://github.com/nohuto/app-tools/blob/main/guides/brave-ios.md'
 sidebar:
-  order: 3
+  order: 4
 ---
 
 On iOS, [Brave](https://github.com/brave/brave-browser/releases) is my primary browser (more feature rich than Safari). If you don't like the UI or similar of Brave, Safari is also a good choice.

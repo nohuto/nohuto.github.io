@@ -6,11 +6,11 @@ sidebar:
   order: 9
 ---
 
-#### Home / Galery
+### Home / Galery
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/homegal.png?raw=true)
 
-#### Network Sharing Folder (Suboption)
+### Network Sharing Folder (Suboption)
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/homenet.png?raw=true)
 

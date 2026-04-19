@@ -3,7 +3,7 @@ title: 'MDM Enrollment'
 description: 'Privacy option documentation from win-config.'
 editUrl: 'https://github.com/nohuto/win-config/blob/main/privacy/desc.md#disable-mdm-enrollment'
 sidebar:
-  order: 30
+  order: 31
 ---
 
 `DisableRegistration`:  
@@ -11,6 +11,8 @@ sidebar:
 
 `AutoEnrollMDM`:  
 "This policy setting specifies whether to automatically enroll the device to the Mobile Device Management (MDM) service configured in Azure Active Directory (Azure AD). If the enrollment is successful, the device will remotely managed by the MDM service. Important: The device must be registered in Azure AD for enrollment to succeed. If you do not configure this policy setting, automatic MDM enrollment will not be initiated. If you enable this policy setting, a task is created to initiate enrollment of the device to MDM service specified in the Azure AD. If you disable this policy setting, MDM will be unenrolled."
+
+## Windows Policies
 
 ```json
 {
