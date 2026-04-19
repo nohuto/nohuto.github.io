@@ -63,13 +63,13 @@ For entries described as "any nonzero", the code treats the DWORD as a boolean, 
     "BootPathSurpriseRemovalCount" = ?;
 ```
 
-> [peripheral/assets | GetPersistedKeyPath.c](https://github.com/nohuto/win-registry/blob/main/assets/usb/GetPersistedKeyPath.c)  
-> [peripheral/assets | HUBREG_OpenQueryAttemptRecoveryFromUsbPowerDrainValue.c](https://github.com/nohuto/win-registry/blob/main/assets/usb/HUBREG_OpenQueryAttemptRecoveryFromUsbPowerDrainValue.c)  
-> [peripheral/assets | HUBREG_QueryGlobalUsb20HardwareLpmSettings.c](https://github.com/nohuto/win-registry/blob/main/assets/usb/HUBREG_QueryGlobalUsb20HardwareLpmSettings.c)  
-> [peripheral/assets | HUBREG_QueryGlobalUsbLtmSettings.c](https://github.com/nohuto/win-registry/blob/main/assets/usb/HUBREG_QueryGlobalUsbLtmSettings.c)  
-> [peripheral/assets | HUBREG_QueryUsbHardwareVerifierValue.c](https://github.com/nohuto/win-registry/blob/main/assets/usb/HUBREG_QueryUsbHardwareVerifierValue.c)  
-> [peripheral/assets | ReadManifestAssignedValue.c](https://github.com/nohuto/win-registry/blob/main/assets/usb/ReadManifestAssignedValue.c)  
-> [peripheral/assets | UsbDualRoleFeaturesQueryLocalMachine.c](https://github.com/nohuto/win-registry/blob/main/assets/usb/UsbDualRoleFeaturesQueryLocalMachine.c)
+> [peripheral/assets | GetPersistedKeyPath.c](https://github.com/nohuto/regkit/blob/main/assets/usb/GetPersistedKeyPath.c)  
+> [peripheral/assets | HUBREG_OpenQueryAttemptRecoveryFromUsbPowerDrainValue.c](https://github.com/nohuto/regkit/blob/main/assets/usb/HUBREG_OpenQueryAttemptRecoveryFromUsbPowerDrainValue.c)  
+> [peripheral/assets | HUBREG_QueryGlobalUsb20HardwareLpmSettings.c](https://github.com/nohuto/regkit/blob/main/assets/usb/HUBREG_QueryGlobalUsb20HardwareLpmSettings.c)  
+> [peripheral/assets | HUBREG_QueryGlobalUsbLtmSettings.c](https://github.com/nohuto/regkit/blob/main/assets/usb/HUBREG_QueryGlobalUsbLtmSettings.c)  
+> [peripheral/assets | HUBREG_QueryUsbHardwareVerifierValue.c](https://github.com/nohuto/regkit/blob/main/assets/usb/HUBREG_QueryUsbHardwareVerifierValue.c)  
+> [peripheral/assets | ReadManifestAssignedValue.c](https://github.com/nohuto/regkit/blob/main/assets/usb/ReadManifestAssignedValue.c)  
+> [peripheral/assets | UsbDualRoleFeaturesQueryLocalMachine.c](https://github.com/nohuto/regkit/blob/main/assets/usb/UsbDualRoleFeaturesQueryLocalMachine.c)
 
 `AttemptRecoveryFromUsbPowerDrain` is used to stop USB devices when your screen is off, obviously only for laptop users.
 

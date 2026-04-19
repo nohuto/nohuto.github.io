@@ -8,7 +8,7 @@ sidebar:
 
 Spatial audio positions sounds in 3D space around you, surround sound mainly anchors audio to speaker directions.
 
-> https://github.com/nohuto/win-registry/blob/main/records/Audio.txt  
+> https://github.com/nohuto/regkit/blob/main/records/Audio.txt  
 > https://www.dolby.com/experience/home-entertainment/articles/what-is-spatial-audio/
 
 ![](https://github.com/nohuto/win-config/blob/main/peripheral/images/spatial.jpeg?raw=true)

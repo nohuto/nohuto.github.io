@@ -8,5 +8,5 @@ sidebar:
 
 This option serves as a general values overview for the `stornvme` key. Several values are applied, some have been changed, others are default values. The applied data is sometimes pure speculation.
 
-See win-registry repo for a list of `CCS\\Services\\stornvme\\Parameters\\...` values/defaults/notes:
-> [/docs/win-registry/sections/registry-values-research/stornvme-values/](/docs/win-registry/sections/registry-values-research/stornvme-values/)
+See regkit repo for a list of `CCS\\Services\\stornvme\\Parameters\\...` values/defaults/notes:
+> [/docs/win-config/peripheral/stornvme-values/#registry-values-details](/docs/win-config/peripheral/stornvme-values/#registry-values-details)

@@ -55,4 +55,4 @@ __int64 __fastcall CTopLevelWindow::GetEffectiveCornerStyle(__int64 a1)
 }
 ```
 
-Obviously, `GetEffectiveCornerStyle` only exists in W11 builds (as you can see in [decompiled-pseudocode](https://github.com/nohuto/decompiled-pseudocode)).
+Obviously, `GetEffectiveCornerStyle` only exists in W11 builds (as you can see in [decompiled-pseudocode]([/docs/regkit/sections/overview/](/docs/regkit/sections/overview/))).

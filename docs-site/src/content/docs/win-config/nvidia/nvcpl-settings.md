@@ -115,7 +115,7 @@ sin(0) = 0  = 0x00000000 hex
 > https://github.com/pbatard/nvBrightness/blob/8f4a183532f1048375608fc70ad03c38652fc140/src/nvDisplay.cpp#L293  
 > https://github.com/nohuto/win-config/blob/main/nvidia/assets/color-displayDB.cpp  
 > https://github.com/nohuto/win-config/blob/main/nvidia/assets/color-DesktopColors.cpp  
-> https://github.com/nohuto/win-registry/blob/main/records/nvlddmkm.txt
+> https://github.com/nohuto/regkit/blob/main/records/nvlddmkm.txt
 
 ```powershell
 \Registry\Machine\SYSTEM\ControlSet001\Services\nvlddmkm\State\DisplayDatabase\ADAPTER_10DE_2482_00000007_00000000 : StereoPreferredTargetIdRegistryKey
@@ -235,7 +235,7 @@ NVDisplay.Container.exe    RegSetValue    HKLM\System\CurrentControlSet\Control\
 `Allow access to the GPU performance counters to all users` = `0`
 
 > https://www.nvidia.com/content/Control-Panel-Help/vLatest/en-us/index.htm#t=mergedProjects%2FDeveloper%2FManage_Performance_Counters_-_Reference.htm&rhsearch=counters  
-> https://github.com/nohuto/bitmask-calc
+> https://github.com/nohuto/regkit
 
 ![](https://github.com/nohuto/win-config/blob/main/nvidia/images/nvcpl5.png?raw=true)  
 

@@ -51,7 +51,7 @@ Using the highest clamp as shown above will end up with a BSoD (same goes for `0
     "CoalescingTimerInterval" = 1500; // PopCoalescingTimerInterval (0x000005DC) - Units: seconds (multiplies value by -10,000,000, one second in 100 ns units, so the default corresponds to a 25min cadence)
     "DeepIoCoalescingEnabled" = 0; // PopDeepIoCoalescingEnabled 
 ```
-> [/docs/win-registry/sections/registry-values-research/power-values/](/docs/win-registry/sections/registry-values-research/power-values/)
+> [/docs/win-config/power/power-values/#registry-values-details](/docs/win-config/power/power-values/#registry-values-details)
 
 ```c
 void InitTimerPowerSaving(void)
@@ -66,6 +66,6 @@ void InitTimerPowerSaving(void)
 The `CoalescingTimerInterval` value exist (takes a default of `1500` dec, `DeepIoCoalescingEnabled` one is set to `0` by default - both are located in `ntoskrnl.exe`), but doesn't get read on 24H2, the `RITdemonTimerPowerSave...` & `TimerCoalescing` ones get read.
 
 > [power/assets | coalesc-InitTimerCoalescing.c](https://github.com/nohuto/win-config/blob/main/power/assets/coalesc-InitTimerCoalescing.c)  
-> https://github.com/nohuto/win-registry/blob/main/records/Winows-NT.txt
+> https://github.com/nohuto/regkit/blob/main/records/Winows-NT.txt
 
 ![](https://github.com/nohuto/win-config/blob/main/power/images/coalesc.png?raw=true)

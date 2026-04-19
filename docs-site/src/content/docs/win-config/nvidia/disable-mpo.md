@@ -30,4 +30,4 @@ if (!(unsigned int)GetPersistedRegistryValueW(
 > [nvidia/assets | mpo-bDwmOverlayTestMode.c](https://github.com/nohuto/win-config/blob/main/nvidia/assets/mpo-bDwmOverlayTestMode.c)  
 > https://wiki.special-k.info/en/SwapChain  
 > https://wiki.special-k.info/Presentation_Model  
-> https://github.com/nohuto/win-registry/blob/main/records/Windows-Dwm.txt
+> https://github.com/nohuto/regkit/blob/main/records/Windows-Dwm.txt

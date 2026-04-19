@@ -10,7 +10,7 @@ I'd suggest you don't change this option and just use it for information only.
 
 The `\Registry\Machine\SYSTEM\ControlSet001\Services\nvlddmkm\State` hive is the driver's persistent state store, not the DRS/NVAPI profile database. In tree it is used for driver owned data like the `State\DisplayDatabase` subtree and other persisted blobs (for example HDCP SRM and TDR timing records), accessed via `NvDriverRegKeyPersistentState`. This information is based on `nvlRegistry.h`, `RegistryKeys.cpp`, `displayDb.h`, `displayMgr.cpp`, `nvlTdr.cpp` (ignore it if you don't know what I mean by file names) if I understood the references correctly. Adding the values to the key doesn't affect the state in NVPI.
 
-Values read under `\Registry\Machine\SYSTEM\ControlSet001\Services\nvlddmkm\State`, see [nvlddmkm.txt](https://github.com/nohuto/win-registry/blob/main/records/nvlddmkm.txt). These are the only hex ID style values which got read on boot (may differ for you if different driver) and I doubt that these have any affect, this is for documentation reasons only.
+Values read under `\Registry\Machine\SYSTEM\ControlSet001\Services\nvlddmkm\State`, see [nvlddmkm.txt](https://github.com/nohuto/regkit/blob/main/records/nvlddmkm.txt). These are the only hex ID style values which got read on boot (may differ for you if different driver) and I doubt that these have any affect, this is for documentation reasons only.
 
 ## 0x11112255 (WKS_SCANOUT_COMPOSITION_CONTROL)
 

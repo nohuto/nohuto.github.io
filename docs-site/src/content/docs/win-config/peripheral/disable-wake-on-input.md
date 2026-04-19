@@ -32,8 +32,8 @@ Default values:
 WakeOnInputDeviceTypes = 46
 UnDimOnInputDeviceTypes = -1  // 0xFFFFFFFF
 ```
-> https://github.com/nohuto/win-registry/blob/main/records/Input.txt  
-> https://github.com/nohuto/win-registry/blob/main/records/Enum-USB.txt  
+> https://github.com/nohuto/regkit/blob/main/records/Input.txt  
+> https://github.com/nohuto/regkit/blob/main/records/Enum-USB.txt  
 > [peripheral/assets | wakedev-WakeOnInputDeviceTypes.c](https://github.com/nohuto/win-config/blob/main/peripheral/assets/wakedev-WakeOnInputDeviceTypes.c)
 
 ---

@@ -24,4 +24,4 @@ __int64 IsDesktopHeapLoggingOn(void)
 
 > [privacy/assets | rsop-IsDesktopHeapLoggingOn.c](https://github.com/nohuto/win-config/blob/main/privacy/assets/rsop-IsDesktopHeapLoggingOn.c)  
 > https://answers.microsoft.com/en-us/windows/forum/all/question-about-some-dwm-registry-settings/341cac5c-d85a-43e5-89d3-d9734f84da4e  
-> https://github.com/nohuto/win-registry/blob/main/records/Winows-NT.txt
+> https://github.com/nohuto/regkit/blob/main/records/Winows-NT.txt

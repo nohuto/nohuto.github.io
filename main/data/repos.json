@@ -1,7 +1,6 @@
 {
   "nohuto/win-config": "Most complete/documented Windows configuration documentation/tool.",
   "nohuto/regkit": "Reworked regedit including several new features.",
-  "nohuto/win-registry": "Registry activity records & DXG Kernel/Session Manager/Power/DWM/USBHUB/PnPDevice/BCDEdit/NIC/StorNVMe values research.",
   "nohuto/decompiled-pseudocode": "Pseudocode of decompiled functions (1511, 1607, 1703, 1709, 1803, 1809, 1903, 1909, 2004, 20H2, 21H1, 21H2, 22H2, W11 21H2, 22H2, 23H2, 24H2, 25H2, 26H1)",
   "nohuto/nvapi-cli": "CLI for NvAPI - currently supports ~400.",
   "nohuto/aes-cbc": "PowerShell encryption using AES CBC - 256 bit encryption key.",

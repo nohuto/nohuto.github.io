@@ -3,7 +3,7 @@ title: 'Registry Fundamentals'
 description: 'Generated from regkit README section: Registry Fundamentals.'
 editUrl: 'https://github.com/nohuto/regkit/blob/main/README.md#registry-fundamentals'
 sidebar:
-  order: 10
+  order: 13
 ---
 
 ### Standard hives & REGISTRY Comparison

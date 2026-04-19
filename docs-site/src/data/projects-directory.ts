@@ -18,7 +18,7 @@ export interface DocsDirectoryData {
 const DOCS_SITE_DIR = process.cwd();
 const PROJECTS_HTML_PATH = path.resolve(DOCS_SITE_DIR, '..', 'projects.html');
 const REPOS_JSON_PATH = path.resolve(DOCS_SITE_DIR, '..', 'main', 'data', 'repos.json');
-const DOC_REPO_ORDER = ['win-config', 'regkit', 'win-registry', 'nvapi-cli', 'app-tools', 'game-tools'] as const;
+const DOC_REPO_ORDER = ['win-config', 'regkit', 'nvapi-cli', 'app-tools', 'game-tools'] as const;
 const DOC_REPOS = new Set<string>(DOC_REPO_ORDER);
 const DOC_REPO_RANK = new Map<string, number>(DOC_REPO_ORDER.map((repo, index) => [repo, index]));
 

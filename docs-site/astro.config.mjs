@@ -5,7 +5,7 @@ import starlightThemeRapide from 'starlight-theme-rapide';
 import starlightScrollToTop from 'starlight-scroll-to-top';
 import starlightCodeblockFullscreen from 'starlight-codeblock-fullscreen';
 
-const sidebarRepos = ['win-config', 'regkit', 'win-registry', 'nvapi-cli', 'app-tools', 'game-tools'];
+const sidebarRepos = ['win-config', 'regkit', 'nvapi-cli', 'app-tools', 'game-tools'];
 const winConfigSidebarCategories = [
   'system',
   'visibility',
@@ -53,7 +53,7 @@ export default defineConfig({
       ],
       title: 'Noverse Docs',
       description:
-        'Generated docs from win-config, regkit, win-registry, nvapi-cli, app-tools, and game-tools.',
+        'Generated docs from win-config, regkit, nvapi-cli, app-tools, and game-tools.',
       favicon: '/logo.png',
       social: [
         { icon: 'github', label: 'GitHub', href: 'https://github.com/nohuto' },

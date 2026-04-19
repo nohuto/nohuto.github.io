@@ -30,5 +30,5 @@ else if (v6 == 4 && ResultLength >= 4)  // REG_DWORD
 }
 ```
 
-> https://github.com/nohuto/win-registry/blob/main/records/Classpnp.txt  
+> https://github.com/nohuto/regkit/blob/main/records/Classpnp.txt  
 > [power/assets | nvmeperf-ClassUpdateDynamicRegistrySettings.c](https://github.com/nohuto/win-config/blob/main/power/assets/nvmeperf-ClassUpdateDynamicRegistrySettings.c)

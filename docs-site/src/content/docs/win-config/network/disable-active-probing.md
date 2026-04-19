@@ -24,7 +24,7 @@ See links below for a detailed documentation.
 
 > https://learn.microsoft.com/en-us/windows-server/networking/ncsi/ncsi-overview  
 > https://learn.microsoft.com/en-us/windows-server/networking/ncsi/ncsi-frequently-asked-questions  
-> https://github.com/nohuto/win-registry/blob/main/records/NlaSvc.txt  
+> https://github.com/nohuto/regkit/blob/main/records/NlaSvc.txt  
 > [network/assets | probing-NcsiConfigData.c](https://github.com/nohuto/win-config/blob/main/network/assets/probing-NcsiConfigData.c)
 
 ---

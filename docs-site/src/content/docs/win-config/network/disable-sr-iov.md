@@ -18,7 +18,7 @@ It depends on your adapter/driver if SR-IOV is enabled/disabled by default:
     "*SriovPreferred" = 0; // range 0-1
 ```
 
-> [/docs/win-registry/sections/registry-values-research/intel-nic-values/](/docs/win-registry/sections/registry-values-research/intel-nic-values/)
+> https://github.com/nohuto/regkit#registry-values-details
 
 | SubkeyName            | Value       | EnumDesc |
 | --------------------  | ----------- | ---- |

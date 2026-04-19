@@ -10,8 +10,8 @@ This option serves as a general values overview for the `Power` key (similar to 
 
 No values are applied that apply to other options in this section.
 
-See win-registry repo for a list of `CCS\\Control\\Power\\...` values/defaults/notes:
-> [/docs/win-registry/sections/registry-values-research/power-values/](/docs/win-registry/sections/registry-values-research/power-values/)
+See regkit repo for a list of `CCS\\Control\\Power\\...` values/defaults/notes:
+> [/docs/win-config/power/power-values/#registry-values-details](/docs/win-config/power/power-values/#registry-values-details)
 
 ---
 

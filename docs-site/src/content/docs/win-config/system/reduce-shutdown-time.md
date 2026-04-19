@@ -21,4 +21,4 @@ Forces hung apps and services to terminate faster.
 
 More timeout related values located in `HKCU\Control Panel\Desktop`: `CriticalAppShutdownCleanupTimeout`, `CriticalAppShutdownTimeout`, `QuickResolverTimeout`, `ActiveWndTrkTimeout`, `CaretTimeout`, `ForegroundLockTimeout`, `LowLevelHooksTimeout`. I may add information about some of them soon.
 
-> https://github.com/nohuto/win-registry/blob/main/records/ControlPanel-Desktop.txt
+> https://github.com/nohuto/regkit/blob/main/records/ControlPanel-Desktop.txt

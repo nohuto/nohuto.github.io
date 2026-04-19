@@ -62,7 +62,7 @@ if (dword_1C015B874 != v15) {
     WdLogGlobalForLineNumber = 2387;
 }
 ```
-> https://github.com/nohuto/win-registry/blob/main/records/Graphics-Drivers.txt  
+> https://github.com/nohuto/regkit/blob/main/records/Graphics-Drivers.txt  
 > [security/assets | TdrInit.c](https://github.com/nohuto/win-config/blob/main/security/assets/TdrInit.c)
 
 ## NVLDDMKM TDR

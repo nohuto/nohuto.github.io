@@ -52,10 +52,6 @@
     "path": "images/projects/regkit-ayu-dark.png"
   },
   {
-    "url": "https://raw.githubusercontent.com/nohuto/win-registry/main/images/web.png",
-    "path": "images/projects/win-registry-web.png"
-  },
-  {
     "url": "https://raw.githubusercontent.com/nohuto/nvapi-cli/main/images/nvapicli.png",
     "path": "images/projects/nvapi-cli.png"
   },

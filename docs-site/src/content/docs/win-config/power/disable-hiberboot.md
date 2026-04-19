@@ -43,7 +43,7 @@ if ( v20 && PpmIdleDisableStatesAtBoot == 2 )
 
 All three values exist as shown below. `PopReadHiberbootGroupPolicy` (`\\Registry\\Machine\\Software\\Policies\\Microsoft\\Windows\\System`) overrides `PopReadHiberbootPolicy` (`Control\\Session Manager\\Power`).
 
-> [/docs/win-registry/sections/registry-values-research/power-values/](/docs/win-registry/sections/registry-values-research/power-values/)
+> [/docs/win-config/power/power-values/#registry-values-details](/docs/win-config/power/power-values/#registry-values-details)
 
 ```c
 "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Power";
@@ -59,7 +59,7 @@ All three values exist as shown below. `PopReadHiberbootGroupPolicy` (`\\Registr
     "HiberIoCpuTime" = 0; // REG_DWORD, milliseconds, range: 0-0xFFFFFFFF
     "ResumeCompleteTimestamp" = 0; // REG_QWORD, range: 0-0xFFFFFFFFFFFFFFFF
 ```
-> [/docs/win-registry/sections/registry-values-research/power-values/](/docs/win-registry/sections/registry-values-research/power-values/)  
+> [/docs/win-config/power/power-values/#registry-values-details](/docs/win-config/power/power-values/#registry-values-details)  
 > https://github.com/marcosd4h/memhunter/blob/f68bca7efe31f49c0dc9ad988fb17bec443a1ca7/libs/boost/interprocess/detail/win32_api.hpp#L2373
 ```c
 // PopOpenPowerKey

@@ -40,6 +40,6 @@ Symlink: `C:\Users\YourName\Desktop\logo.png`
 > https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/fsutil-8dot3name  
 > https://github.com/MicrosoftDocs/windows-driver-docs/blob/5e03e46194f2a977da34fdf453f2703262370a23/windows-driver-docs-pr/ifs/offloaded-data-transfers.md?plain=1#L104  
 > https://learn.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=registry  
-> https://github.com/nohuto/win-registry/blob/main/records/FileSystem.txt
+> https://github.com/nohuto/regkit/blob/main/records/FileSystem.txt
 
 > [system/assets | filesystem-NtfsUpdateDynamicRegistrySettings.c](https://github.com/nohuto/win-config/blob/main/system/assets/filesystem-NtfsUpdateDynamicRegistrySettings.c)

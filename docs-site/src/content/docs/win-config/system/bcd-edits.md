@@ -26,8 +26,8 @@ HKLM\BCD00000000\Objects\{GUID}\Elements\XXXXXXXX : Element // (REG_BINARY/REG_M
 
 See all object identifiers via `bcdedit /enum all /v` (`identifier`). Note that the list below uses `{bootmgr}`, `{current}` etc. which must be replaced by the actual GUID (see block above).
 
-See win-registry repo for a list of `HKLM\\BCD00000000\\Objects\\...` values/defaults/notes:
-> [/docs/win-registry/sections/registry-values-research/bcd-edits/](/docs/win-registry/sections/registry-values-research/bcd-edits/)
+See regkit repo for a list of `HKLM\\BCD00000000\\Objects\\...` values/defaults/notes:
+> [/docs/win-config/system/bcd-edits/#registry-values-details](/docs/win-config/system/bcd-edits/#registry-values-details)
 
 ## Miscellaneous Notes
 

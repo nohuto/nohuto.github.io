@@ -14,7 +14,7 @@ Get-PnpDevice -PresentOnly:$false | ? FriendlyName -eq 'HID-compliant touch scre
 "Tablet mode makes Windows more touch friendly and is helpful on touch capable devices."
 
 > https://support.microsoft.com/en-us/windows/turn-tablet-mode-on-or-off-in-windows-add3fbce-5cb5-bf76-0f9c-8d7b30041f30  
-> https://github.com/nohuto/win-registry/blob/main/records/Wisp.txt  
+> https://github.com/nohuto/regkit/blob/main/records/Wisp.txt  
 > [peripheral/assets | touch-IsTouchDisabled.c](https://github.com/nohuto/win-config/blob/main/peripheral/assets/touch-IsTouchDisabled.c)
 
 ---

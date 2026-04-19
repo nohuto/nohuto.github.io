@@ -25,6 +25,6 @@ There're two values named `CrashDumpEnabled.New` & `CrashDumpEnabled.Old`, I hav
 
 > https://learn.microsoft.com/en-us/troubleshoot/windows-server/performance/memory-dump-file-options#registry-values-for-startup-and-recovery  
 > https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/automatic-memory-dump  
-> https://github.com/nohuto/win-registry/blob/main/records/CrashControl.txt  
+> https://github.com/nohuto/regkit/blob/main/records/CrashControl.txt  
 > [privacy/assets | crashdmp.c](https://github.com/nohuto/win-config/blob/main/privacy/assets/crashdmp.c)  
 > [privacy/assets | crashdmp-SecureDump_PrepareForInit.c](https://github.com/nohuto/win-config/blob/main/privacy/assets/crashdmp-SecureDump_PrepareForInit.c)

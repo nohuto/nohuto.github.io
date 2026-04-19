@@ -11,17 +11,14 @@ const CONTENT_DIR = path.join(DOCS_SITE_DIR, 'src', 'content', 'docs');
 const DOC_REPO_ORDER = [
   'win-config',
   'regkit',
-  'win-registry',
   'nvapi-cli',
   'app-tools',
   'game-tools',
 ];
+const DOC_REPOS = new Set(DOC_REPO_ORDER);
 
 const WIN_CONFIG_REPO_URL = trimRepoUrl(
   process.env.WIN_CONFIG_REPO_URL || 'https://github.com/nohuto/win-config'
-);
-const WIN_REGISTRY_REPO_URL = trimRepoUrl(
-  process.env.WIN_REGISTRY_REPO_URL || 'https://github.com/nohuto/win-registry'
 );
 const NVAPI_CLI_REPO_URL = trimRepoUrl(
   process.env.NVAPI_CLI_REPO_URL || 'https://github.com/nohuto/nvapi-cli'
@@ -66,14 +63,25 @@ const CATEGORY_ORDER = [
   'affinities',
 ];
 
+const REGISTRY_DETAILS_ROUTE_REDIRECTS = new Map([
+  ['dxg-kernel-values', '/docs/win-config/system/dxg-kernel-values/#registry-values-details'],
+  ['session-manager-values', '/docs/win-config/system/kernel-values/#registry-values-details'],
+  ['power-values', '/docs/win-config/power/power-values/#registry-values-details'],
+  ['dwm-values', '/docs/win-config/system/dwm-values/#registry-values-details'],
+  ['usbflags-values', '/docs/win-config/peripheral/usbflags-values/#registry-values-details'],
+  ['usb-values', '/docs/win-config/peripheral/usb-values/#registry-values-details'],
+  ['usbhub-values', '/docs/win-config/peripheral/usbhub-values/#registry-values-details'],
+  ['pnp-device-values', '/docs/win-config/power/pnp-device-values/#registry-values-details'],
+  ['bcd-edits', '/docs/win-config/system/bcd-edits/#registry-values-details'],
+  ['mmcss-values', '/docs/win-config/system/mmcss-values/#registry-values-details'],
+  ['stornvme-values', '/docs/win-config/peripheral/stornvme-values/#registry-values-details'],
+  ['notification-values', '/docs/win-config/system/disable-notifications/#registry-research'],
+]);
+
 const entries = [];
 const winConfigAnchorRoutes = new Map();
 const winConfigFirstOptionRoutes = new Map();
 let firstWinConfigRoute = '';
-const winRegistryAnchorRoutes = new Map();
-const winRegistryGuideRoutes = new Map();
-let firstWinRegistrySectionRoute = '';
-let firstWinRegistryGuideRoute = '';
 const repoContexts = new Map();
 
 for (const repoName of ['nvapi-cli', 'regkit', 'app-tools', 'game-tools']) {
@@ -84,14 +92,12 @@ main();
 
 function main() {
   const winConfigDir = resolveRepoDirectory('win-config', WIN_CONFIG_REPO_URL);
-  const winRegistryDir = resolveRepoDirectory('win-registry', WIN_REGISTRY_REPO_URL);
   const nvapiCliDir = resolveRepoDirectory('nvapi-cli', NVAPI_CLI_REPO_URL);
   const regkitDir = resolveRepoDirectory('regkit', REGKIT_REPO_URL);
   const appToolsDir = resolveRepoDirectory('app-tools', APP_TOOLS_REPO_URL);
   const gameToolsDir = resolveRepoDirectory('game-tools', GAME_TOOLS_REPO_URL);
 
   assertDirectory(winConfigDir, 'win-config');
-  assertDirectory(winRegistryDir, 'win-registry');
   assertDirectory(nvapiCliDir, 'nvapi-cli');
   assertDirectory(regkitDir, 'regkit');
   assertDirectory(appToolsDir, 'app-tools');
@@ -101,7 +107,6 @@ function main() {
   generateRootOverview();
 
   const winConfigStats = generateWinConfig(winConfigDir);
-  const winRegistryStats = generateWinRegistry(winRegistryDir);
   const nvapiCliStats = generateNvapiCli(nvapiCliDir);
   const regkitStats = generateRegkit(regkitDir);
   const appToolsStats = generateAppTools(appToolsDir);
@@ -114,11 +119,10 @@ function main() {
   console.log(
     `[sync-docs] Generated ${entries.length} pages (` +
       `win-config options: ${winConfigStats.optionPages}, ` +
-      `win-registry sections: ${winRegistryStats.sectionPages}, ` +
-      `win-registry guides: ${winRegistryStats.guidePages}, ` +
       `nvapi-cli sections: ${nvapiCliStats.sectionPages}, ` +
       `nvapi-cli docs: ${nvapiCliStats.docPages}, ` +
       `regkit sections: ${regkitStats.sectionPages}, ` +
+      `regkit guides: ${regkitStats.guidePages}, ` +
       `app-tools sections: ${appToolsStats.sectionPages}, ` +
       `app-tools docs: ${appToolsStats.docPages}, ` +
       `game-tools sections: ${gameToolsStats.sectionPages}, ` +
@@ -209,18 +213,6 @@ function generateWinConfig(winConfigDir) {
 
   return { optionPages };
 }
-
-function generateWinRegistry(winRegistryDir) {
-  const readmePath = path.join(winRegistryDir, 'README.md');
-  const guideDir = path.join(winRegistryDir, 'guide');
-  const readmeFileOrder = buildReadmeMarkdownFileOrder(winRegistryDir);
-
-  const sectionCount = generateWinRegistrySections(readmePath);
-  const guideCount = generateWinRegistryGuides(guideDir, readmeFileOrder);
-
-  return { sectionPages: sectionCount, guidePages: guideCount };
-}
-
 function generateNvapiCli(repoDir) {
   const sectionPages = generateReadmeSections({
     repoKey: 'nvapi-cli',
@@ -253,7 +245,16 @@ function generateRegkit(repoDir) {
     routeDirectory: '/docs/regkit/sections/',
   });
 
-  return { sectionPages };
+  const guidePages = generateRepoMarkdownDirectory({
+    repoKey: 'regkit',
+    repoDir,
+    repoUrl: REGKIT_REPO_URL,
+    sourceDirectory: 'guides',
+    outputDirectory: 'regkit/guides',
+    routeDirectory: '/docs/regkit/guides/',
+  });
+
+  return { sectionPages, guidePages };
 }
 
 function generateAppTools(repoDir) {
@@ -568,212 +569,19 @@ function generateSectionIndexes() {
       winConfigFirstOptionRoutes.set(winConfigCategoryMatch[1], route);
     }
 
-    if (directory === 'win-registry') {
-      firstWinRegistrySectionRoute = route;
-      if (!firstWinRegistryGuideRoute) {
-        firstWinRegistryGuideRoute = route;
-      }
-    }
   }
 
   return generated;
 }
 
-function generateWinRegistrySections(readmePath) {
-  const raw = readText(readmePath);
-  const groups = splitWinRegistrySections(raw);
-
-  let sidebarOrder = 1;
-  let sectionPages = 0;
-
-  for (const group of groups) {
-    const groupRoute = `/docs/win-registry/sections/${group.slug}/`;
-    if (!firstWinRegistrySectionRoute) {
-      firstWinRegistrySectionRoute = groupRoute;
-    }
-
-    if (group.anchor) {
-      winRegistryAnchorRoutes.set(group.anchor, groupRoute);
-    }
-
-    addEntry({
-      relativePath: `win-registry/sections/${group.slug}/index.md`,
-      route: groupRoute,
-      title: group.title,
-      description: `Generated from win-registry README section: ${group.title}.`,
-      editUrl: group.anchor
-        ? `${WIN_REGISTRY_REPO_URL}/blob/main/README.md#${group.anchor}`
-        : `${WIN_REGISTRY_REPO_URL}/blob/main/README.md`,
-      sidebarOrder,
-      body: group.body,
-    });
-
-    sidebarOrder += 1;
-    sectionPages += 1;
-
-    const childSlugSet = new Set();
-    for (const section of group.sections) {
-      const sectionSlug = uniqueSlug(slugify(section.heading), childSlugSet);
-      const sectionRoute = `${groupRoute}${sectionSlug}/`;
-
-      if (section.anchor) {
-        winRegistryAnchorRoutes.set(section.anchor, sectionRoute);
-      }
-
-      addEntry({
-        relativePath: `win-registry/sections/${group.slug}/${sectionSlug}.md`,
-        route: sectionRoute,
-        title: section.heading,
-        description: `Generated from win-registry README section: ${section.heading}.`,
-        editUrl: section.anchor
-          ? `${WIN_REGISTRY_REPO_URL}/blob/main/README.md#${section.anchor}`
-          : `${WIN_REGISTRY_REPO_URL}/blob/main/README.md`,
-        sidebarOrder,
-        body: section.body,
-      });
-
-      sidebarOrder += 1;
-      sectionPages += 1;
-    }
-  }
-
-  return sectionPages;
-}
-
-function splitWinRegistrySections(markdown) {
-  const lines = markdown.replace(/\r\n/g, '\n').split('\n');
-  const headingRegex = /^(#{1,2})\s+(.+?)\s*$/;
-  const headingCounts = new Map();
-  const headingEntries = [];
-
-  let inFence = false;
-  let fenceChar = '';
-  let current = null;
-
-  for (const line of lines) {
-    const fenceMatch = line.match(/^\s*(```|~~~)/);
-    if (fenceMatch) {
-      const marker = fenceMatch[1];
-      if (!inFence) {
-        inFence = true;
-        fenceChar = marker;
-      } else if (marker === fenceChar) {
-        inFence = false;
-        fenceChar = '';
-      }
-    }
-
-    const headingMatch = !inFence ? line.match(headingRegex) : null;
-    if (headingMatch) {
-      const level = headingMatch[1].length;
-      const heading = headingMatch[2].trim();
-      const anchor = uniqueGitHubAnchor(heading, headingCounts);
-
-      if (current) {
-        headingEntries.push(current);
-      }
-
-      current = { level, heading, anchor, lines: [] };
-      continue;
-    }
-
-    if (!current) continue;
-    current.lines.push(line);
-  }
-
-  if (current) {
-    headingEntries.push(current);
-  }
-
-  const groups = [];
-  const groupSlugSet = new Set();
-  let currentGroup = null;
-
-  for (const entry of headingEntries) {
-    if (entry.level === 1) {
-      const isFirstGroup = groups.length === 0;
-      const groupTitle = isFirstGroup ? 'Overview' : entry.heading;
-      const baseSlug = isFirstGroup ? 'overview' : slugify(entry.heading);
-      const groupSlug = uniqueSlug(baseSlug, groupSlugSet);
-
-      currentGroup = {
-        title: groupTitle,
-        slug: groupSlug,
-        anchor: entry.anchor,
-        body: entry.lines.join('\n').trim(),
-        sections: [],
-      };
-      groups.push(currentGroup);
-      continue;
-    }
-
-    if (!currentGroup) {
-      currentGroup = {
-        title: 'Overview',
-        slug: uniqueSlug('overview', groupSlugSet),
-        anchor: '',
-        body: '',
-        sections: [],
-      };
-      groups.push(currentGroup);
-    }
-
-    currentGroup.sections.push({
-      heading: entry.heading,
-      anchor: entry.anchor,
-      body: entry.lines.join('\n').trim(),
-    });
-  }
-
-  return groups;
-}
-
-function generateWinRegistryGuides(guideDir, readmeFileOrder) {
-  if (!fs.existsSync(guideDir)) return 0;
-
-  const guideFiles = sortMarkdownFilesBySourceOrder(
-    fs.readdirSync(guideDir).filter((name) => name.toLowerCase().endsWith('.md')),
-    readmeFileOrder,
-    'guide'
-  );
-
-  let guidePages = 0;
-
-  for (const fileName of guideFiles) {
-    const filePath = path.join(guideDir, fileName);
-    const raw = readText(filePath);
-    const titleMatch = raw.match(/^#\s+(.+)$/m);
-    const title = titleMatch ? titleMatch[1].trim() : toTitleCase(fileName.replace(/\.md$/i, ''));
-    const body = stripFirstH1(raw).trim();
-
-    const slug = slugify(fileName.replace(/\.md$/i, ''));
-    const route = `/docs/win-registry/guides/${slug}/`;
-    if (!firstWinRegistryGuideRoute) {
-      firstWinRegistryGuideRoute = route;
-    }
-
-    winRegistryGuideRoutes.set(fileName.toLowerCase(), route);
-
-    addEntry({
-      relativePath: `win-registry/guides/${slug}.md`,
-      route,
-      title,
-      description: `Generated from win-registry guide: ${fileName}.`,
-      editUrl: `${WIN_REGISTRY_REPO_URL}/blob/main/guide/${fileName}`,
-      sidebarOrder: guidePages + 1,
-      body,
-    });
-
-    guidePages += 1;
-  }
-
-  return guidePages;
-}
-
 function rewriteGeneratedLinks() {
   for (const entry of entries) {
-    entry.body = rewriteMarkdownLinks(entry.body);
+    entry.body = rewriteRepoMentions(rewriteMarkdownLinks(entry.body));
   }
+}
+
+function rewriteRepoMentions(markdown) {
+  return markdown.replace(/See\s+[a-z]+(?:-[a-z]+)+ repo(?=\s+for a list of)/gi, 'See regkit repo');
 }
 
 function collectGeneratedDirectories(allEntries) {
@@ -835,12 +643,6 @@ function sortDirectoryChild(parentDirectory, a, b) {
       if (aRank !== bRank) return aRank - bRank;
     }
 
-    if (parentDirectory === 'win-registry') {
-      const aRank = registrySortRank(a.segment);
-      const bRank = registrySortRank(b.segment);
-      if (aRank !== bRank) return aRank - bRank;
-    }
-
     return a.label.localeCompare(b.label);
   }
 
@@ -876,9 +678,6 @@ function getExplicitDirectorySidebarOrder(directory) {
     }
   }
 
-  if (directory === 'win-registry/sections') return 1;
-  if (directory === 'win-registry/guides') return 2;
-
   return null;
 }
 
@@ -887,17 +686,10 @@ function categorySortRank(segment) {
   return rank === -1 ? Number.MAX_SAFE_INTEGER : rank;
 }
 
-function registrySortRank(segment) {
-  if (segment === 'sections') return 0;
-  if (segment === 'guides') return 1;
-  return Number.MAX_SAFE_INTEGER;
-}
-
 function getDirectoryLabel(directory) {
   const segment = directory.split('/').pop() || directory;
 
   if (segment === 'win-config') return 'win-config';
-  if (segment === 'win-registry') return 'win-registry';
   if (segment === 'nvapi-cli') return 'nvapi-cli';
   if (segment === 'regkit') return 'regkit';
   if (segment === 'app-tools') return 'app-tools';
@@ -998,21 +790,9 @@ function rewriteLinkTarget(rawUrl) {
     return firstWinConfigRoute || rawUrl;
   }
 
-  const winRegistryGuideMatch = pathName.match(/^\/[^/]+\/win-registry\/blob\/main\/guide\/([^/]+\.md)$/i);
-  if (winRegistryGuideMatch) {
-    const route = winRegistryGuideRoutes.get(winRegistryGuideMatch[1].toLowerCase());
-    return route || rawUrl;
-  }
-
-  const isWinRegistryRoot = /^\/[^/]+\/win-registry$/i.test(pathName);
-  const isWinRegistryReadme = /^\/[^/]+\/win-registry\/blob\/main\/README\.md$/i.test(pathName);
-
-  if (isWinRegistryRoot || isWinRegistryReadme) {
-    if (!hash) {
-      return firstWinRegistrySectionRoute || firstWinRegistryGuideRoute || rawUrl;
-    }
-    const route = winRegistryAnchorRoutes.get(hash);
-    return route || rawUrl;
+  const rewrittenRegistryRoute = rewriteRegistryReference(pathName, hash);
+  if (rewrittenRegistryRoute) {
+    return rewrittenRegistryRoute;
   }
 
   const extraRepoRoute = rewriteExtraRepoLink(pathName, hash);
@@ -1023,17 +803,59 @@ function rewriteLinkTarget(rawUrl) {
   return rawUrl;
 }
 
+function rewriteRegistryReference(pathName, hash) {
+  const repoMatch = pathName.match(/^\/([^/]+)\/([^/]+)(?:\/(.+))?$/i);
+  if (!repoMatch) {
+    return '';
+  }
+
+  const [, owner, repoName, remainder = ''] = repoMatch;
+  if (owner.toLowerCase() !== 'nohuto') {
+    return '';
+  }
+  if (DOC_REPOS.has(repoName.toLowerCase())) {
+    return '';
+  }
+
+  if (!remainder || /^blob\/(main|master)\/README\.md$/i.test(remainder)) {
+    if (!hash) return REGKIT_REPO_URL;
+    return REGISTRY_DETAILS_ROUTE_REDIRECTS.get(hash) || `${REGKIT_REPO_URL}#registry-values-details`;
+  }
+
+  const guideMatch = remainder.match(/^blob\/(main|master)\/guide\/([^/]+\.md)$/i);
+  if (guideMatch) {
+    const candidatePathName = `/nohuto/regkit/blob/main/guides/${guideMatch[2]}`;
+    return rewriteExtraRepoLink(candidatePathName, hash) || `${REGKIT_REPO_URL}/blob/main/guides/${guideMatch[2]}`;
+  }
+
+  const blobMatch = remainder.match(/^blob\/(main|master)\/(.+)$/i);
+  if (!blobMatch) {
+    return '';
+  }
+
+  const relativePath = blobMatch[2].replace(/^guide\//i, 'guides/');
+  const topLevelDirectory = relativePath.split('/')[0]?.toLowerCase();
+  if (!['guides', 'records', 'assets'].includes(topLevelDirectory)) {
+    return '';
+  }
+
+  const candidatePathName = `/nohuto/regkit/blob/main/${relativePath}`;
+  const internalRoute = rewriteExtraRepoLink(candidatePathName, hash);
+  if (internalRoute) return internalRoute;
+  return `${REGKIT_REPO_URL}/blob/main/${relativePath}`;
+}
+
 function rewriteExtraRepoLink(pathName, hash) {
   const repoMatch = pathName.match(/^\/[^/]+\/([^/]+)(?:\/(.+))?$/i);
   if (!repoMatch) return '';
 
   const repoKey = repoMatch[1].toLowerCase();
-  if (repoKey === 'win-config' || repoKey === 'win-registry') return '';
+  if (repoKey === 'win-config') return '';
 
   const context = getRepoContext(repoKey);
   if (!context) return '';
 
-  const remainder = repoMatch[2] || '';
+  const remainder = normalizeExtraRepoRemainder(repoKey, repoMatch[2] || '');
   if (!remainder) {
     if (!hash) return context.firstRoute;
     return context.anchorRoutes.get(hash) || '';
@@ -1056,6 +878,14 @@ function rewriteExtraRepoLink(pathName, hash) {
   }
 
   return '';
+}
+
+function normalizeExtraRepoRemainder(repoKey, remainder) {
+  if (repoKey === 'regkit') {
+    return remainder.replace(/^blob\/(main|master)\/guide\//i, 'blob/$1/guides/');
+  }
+
+  return remainder;
 }
 
 function normalizeAnchor(anchor) {

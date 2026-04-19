@@ -128,18 +128,18 @@ Note on some usbflag values ("queried as 4-byte boolean"), `USBHUB3` reads a 4-b
 
 Enabling `DisableLPM` won't get you anywhere since the devices are in D0 (working state) anyway while using them. The same can be said for the whole `Power` section too.
 
-> [peripheral/assets | HUBDSM_QueryingRegistryValuesForDevice.c](https://github.com/nohuto/win-registry/blob/main/assets/usbflags/HUBDSM_QueryingRegistryValuesForDevice.c)  
-> [peripheral/assets | HUBMISC_QueryAndCacheRegistryValuesForDevice.c](https://github.com/nohuto/win-registry/blob/main/assets/usbflags/HUBMISC_QueryAndCacheRegistryValuesForDevice.c)  
-> [peripheral/assets | HUBREG_OpenCreateUsbflagsDeviceKey.c](https://github.com/nohuto/win-registry/blob/main/assets/usbflags/HUBREG_OpenCreateUsbflagsDeviceKey.c)  
-> [peripheral/assets | HUBREG_QueryUsbflagsValuesForDevice.c](https://github.com/nohuto/win-registry/blob/main/assets/usbflags/HUBREG_QueryUsbflagsValuesForDevice.c)  
-> [peripheral/assets | HUBREG_QueryHubErrataFlags.c](https://github.com/nohuto/win-registry/blob/main/assets/usbflags/HUBREG_QueryHubErrataFlags.c)  
-> [peripheral/assets | HUBREG_QueryUsbflagsAlternateSettingFilter.c](https://github.com/nohuto/win-registry/blob/main/assets/usbflags/HUBREG_QueryUsbflagsAlternateSettingFilter.c)  
-> [peripheral/assets | RegQueryGenericCompositeUSBDeviceString.c](https://github.com/nohuto/win-registry/blob/main/assets/usbflags/RegQueryGenericCompositeUSBDeviceString.c)  
-> [peripheral/assets | GetConfigValue.c](https://github.com/nohuto/win-registry/blob/main/assets/usbflags/GetConfigValue.c)  
-> [peripheral/assets | Controller_IsRegKeySetToDisableS0Idle.c](https://github.com/nohuto/win-registry/blob/main/assets/usbflags/Controller_IsRegKeySetToDisableS0Idle.c)  
-> [peripheral/assets | Controller_PopulateRegistryOverrideForSetMultiTTBitFlag.c](https://github.com/nohuto/win-registry/blob/main/assets/usbflags/Controller_PopulateRegistryOverrideForSetMultiTTBitFlag.c)  
-> [peripheral/assets | Controller_PopulateTestRegistrySettings.c](https://github.com/nohuto/win-registry/blob/main/assets/usbflags/Controller_PopulateTestRegistrySettings.c)  
-> [peripheral/assets | Registry_InitializeAllow64KLowOrFullSpeedControlTransfersFlag.c](https://github.com/nohuto/win-registry/blob/main/assets/usbflags/Registry_InitializeAllow64KLowOrFullSpeedControlTransfersFlag.c)
+> [peripheral/assets | HUBDSM_QueryingRegistryValuesForDevice.c](https://github.com/nohuto/regkit/blob/main/assets/usbflags/HUBDSM_QueryingRegistryValuesForDevice.c)  
+> [peripheral/assets | HUBMISC_QueryAndCacheRegistryValuesForDevice.c](https://github.com/nohuto/regkit/blob/main/assets/usbflags/HUBMISC_QueryAndCacheRegistryValuesForDevice.c)  
+> [peripheral/assets | HUBREG_OpenCreateUsbflagsDeviceKey.c](https://github.com/nohuto/regkit/blob/main/assets/usbflags/HUBREG_OpenCreateUsbflagsDeviceKey.c)  
+> [peripheral/assets | HUBREG_QueryUsbflagsValuesForDevice.c](https://github.com/nohuto/regkit/blob/main/assets/usbflags/HUBREG_QueryUsbflagsValuesForDevice.c)  
+> [peripheral/assets | HUBREG_QueryHubErrataFlags.c](https://github.com/nohuto/regkit/blob/main/assets/usbflags/HUBREG_QueryHubErrataFlags.c)  
+> [peripheral/assets | HUBREG_QueryUsbflagsAlternateSettingFilter.c](https://github.com/nohuto/regkit/blob/main/assets/usbflags/HUBREG_QueryUsbflagsAlternateSettingFilter.c)  
+> [peripheral/assets | RegQueryGenericCompositeUSBDeviceString.c](https://github.com/nohuto/regkit/blob/main/assets/usbflags/RegQueryGenericCompositeUSBDeviceString.c)  
+> [peripheral/assets | GetConfigValue.c](https://github.com/nohuto/regkit/blob/main/assets/usbflags/GetConfigValue.c)  
+> [peripheral/assets | Controller_IsRegKeySetToDisableS0Idle.c](https://github.com/nohuto/regkit/blob/main/assets/usbflags/Controller_IsRegKeySetToDisableS0Idle.c)  
+> [peripheral/assets | Controller_PopulateRegistryOverrideForSetMultiTTBitFlag.c](https://github.com/nohuto/regkit/blob/main/assets/usbflags/Controller_PopulateRegistryOverrideForSetMultiTTBitFlag.c)  
+> [peripheral/assets | Controller_PopulateTestRegistrySettings.c](https://github.com/nohuto/regkit/blob/main/assets/usbflags/Controller_PopulateTestRegistrySettings.c)  
+> [peripheral/assets | Registry_InitializeAllow64KLowOrFullSpeedControlTransfersFlag.c](https://github.com/nohuto/regkit/blob/main/assets/usbflags/Registry_InitializeAllow64KLowOrFullSpeedControlTransfersFlag.c)
 
 The subkeys in `usbflags` always have a length of 12, build in such a structure `vvvvpppprrrr`:
 - **vvvv** is a 4-digit hexadecimal number that identifies the vendor
@@ -148,7 +148,7 @@ The subkeys in `usbflags` always have a length of 12, build in such a structure 
 
 The vendor ID, product ID, and revision number values are obtained from the [USB device descriptor](https://github.com/MicrosoftDocs/windows-driver-docs/blob/staging/windows-driver-docs-pr/usbcon/usb-device-descriptors.md). The USB_DEVICE_DESCRIPTOR structure describes a device descriptor.
 
-> https://github.com/nohuto/win-registry/blob/main/records/USB-Flags.txt
+> https://github.com/nohuto/regkit/blob/main/records/USB-Flags.txt
 
 ---
 

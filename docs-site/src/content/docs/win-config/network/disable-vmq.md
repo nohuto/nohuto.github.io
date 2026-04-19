@@ -22,7 +22,7 @@ It depends on your adapter/driver if VMQ is enabled/disabled by default:
     "MaxNumVmqs" = ?; // found it in the "Mellanox ConnectX based IPoIB Adapter (NDIS 6.4)" driver
 ```
 
-> [/docs/win-registry/sections/registry-values-research/intel-nic-values/](/docs/win-registry/sections/registry-values-research/intel-nic-values/)
+> https://github.com/nohuto/regkit#registry-values-details
 
 ```inf
 ; Mellanox

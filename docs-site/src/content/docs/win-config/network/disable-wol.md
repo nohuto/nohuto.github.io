@@ -26,7 +26,7 @@ powercfg /devicequery wake_armed
   "WakeOnLink" = 0; // range 0-2
 ```
 
-> [/docs/win-registry/sections/registry-values-research/intel-nic-values/](/docs/win-registry/sections/registry-values-research/intel-nic-values/)
+> https://github.com/nohuto/regkit#registry-values-details
 
 `Disable Wait for Link`:
 ```inf

@@ -6,8 +6,8 @@ sidebar:
   order: 6
 ---
 
-See win-registry repo for a list of `SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\multimedia\\systemprofile\\...` values/defaults/notes:
-> [/docs/win-registry/sections/registry-values-research/mmcss-values/](/docs/win-registry/sections/registry-values-research/mmcss-values/)
+See regkit repo for a list of `SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\multimedia\\systemprofile\\...` values/defaults/notes:
+> [/docs/win-config/system/mmcss-values/#registry-values-details](/docs/win-config/system/mmcss-values/#registry-values-details)
 
 ## SystemResponsiveness Details
 

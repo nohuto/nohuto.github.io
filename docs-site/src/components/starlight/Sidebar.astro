@@ -101,10 +101,6 @@ function getScopedSidebar(allEntries, root) {
 }
 
 function flattenSectionsGroups(entries) {
-  return flattenSectionsGroupsWithContext(entries, { inRegistrySections: false });
-}
-
-function flattenSectionsGroupsWithContext(entries, context) {
   const flattened = [];
   const orderedEntries = orderSectionsFirst(entries);
 
@@ -118,37 +114,16 @@ function flattenSectionsGroupsWithContext(entries, context) {
 
     if (entry.type === 'group') {
       const isSectionsGroup = slugifyLabel(entry.label) === 'sections';
-      const nextContext = {
-        inRegistrySections: context.inRegistrySections || (routeRoot === 'win-registry' && isSectionsGroup),
-      };
-      const flattenedChildren = flattenSectionsGroupsWithContext(entry.entries || [], nextContext);
+      const flattenedChildren = flattenSectionsGroups(entry.entries || []);
       if (isSectionsGroup) {
         flattened.push(...flattenedChildren);
         continue;
       }
-      let nextGroup = cloneGroup(entry, flattenedChildren);
-      if (nextContext.inRegistrySections) {
-        nextGroup = {
-          ...nextGroup,
-          label: formatRegistrySectionLabel(nextGroup.label),
-        };
-      }
-      flattened.push(nextGroup);
+      flattened.push(cloneGroup(entry, flattenedChildren));
     }
   }
 
   return flattened;
-}
-
-function formatRegistrySectionLabel(value) {
-  const text = String(value || '').trim();
-  if (!text) return value;
-
-  return text
-    .split('-')
-    .filter(Boolean)
-    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-    .join(' ');
 }
 
 function orderSectionsFirst(entries) {

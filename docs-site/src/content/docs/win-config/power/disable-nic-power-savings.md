@@ -8,7 +8,7 @@ sidebar:
 
 You can get a lot of information about data ranges and more from `.inf` files, see examples below.
 
-> https://github.com/nohuto/win-registry/blob/main/records/NIC-Intel.txt  
+> https://github.com/nohuto/regkit/blob/main/records/NIC-Intel.txt  
 > https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/network/standardized-inf-keywords-for-power-management.md  
 > https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/network/standardized-inf-keywords-for-ndis-selective-suspend.md
 
@@ -38,7 +38,7 @@ Everything listed below is based on personal research. Mistakes may exist, but I
     "ULPMode" = 1; // range 0-1
 ```
 
-> [/docs/win-registry/sections/registry-values-research/intel-nic-values/](/docs/win-registry/sections/registry-values-research/intel-nic-values/)
+> https://github.com/nohuto/regkit#registry-values-details
 
 | SubkeyName | ParamDesc | Default | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
@@ -54,7 +54,7 @@ Everything listed below is based on personal research. Mistakes may exist, but I
 
 For more detail on each value, see GitHub links above.
 
-> [/docs/win-registry/sections/registry-values-research/intel-nic-values/](/docs/win-registry/sections/registry-values-research/intel-nic-values/)
+> https://github.com/nohuto/regkit#registry-values-details
 
 ```inf
 HKR,Ndi\Params\*DeviceSleepOnDisconnect,ParamDesc,    ,%DeviceSleepOnDisconnectDesc%

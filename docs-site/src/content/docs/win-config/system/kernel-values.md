@@ -8,8 +8,8 @@ sidebar:
 
 Since many people don't yet know which values exist and what default value they have, here's a list. I used IDA, WinDbg, WinObjEx, Windows Internals E7 P1 to create it. Many applied values are defaults, some not. See documentation below for details. The applied data is sometimes pure speculation.
 
-See win-registry repo for a list of `CCS\\Control\\Session Manager\\...` values/defaults/notes:
-> [/docs/win-registry/sections/registry-values-research/session-manager-values/](/docs/win-registry/sections/registry-values-research/session-manager-values/)
+See regkit repo for a list of `CCS\\Control\\Session Manager\\...` values/defaults/notes:
+> [/docs/win-config/system/kernel-values/#registry-values-details](/docs/win-config/system/kernel-values/#registry-values-details)
 
 ## Windows Internals
 

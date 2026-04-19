@@ -60,4 +60,4 @@ Since `EnableNVMeInterface` is included in the function, I'll add it here. Defau
 
 DisableNativeNVMeStack db 0 // default
 ```
-> https://github.com/nohuto/win-registry/blob/main/records/StorPort.txt
+> https://github.com/nohuto/regkit/blob/main/records/StorPort.txt

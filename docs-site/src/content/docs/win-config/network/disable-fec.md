@@ -21,7 +21,7 @@ FEC (forwarded error correction) improves link stability, but increases latency.
     "FecMode" = 0; // range 0-3
 ```
 
-> [/docs/win-registry/sections/registry-values-research/intel-nic-values/](/docs/win-registry/sections/registry-values-research/intel-nic-values/)
+> https://github.com/nohuto/regkit#registry-values-details
 
 ```c
 RegistryKey<enum HdSplitLocation>::Initialize(

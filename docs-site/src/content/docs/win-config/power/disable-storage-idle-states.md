@@ -12,5 +12,5 @@ If `IdleStatesNumber` is set, the other values are ignored? Let me know if you h
 
 > The values are located in the `EnergyEstimation` (guesses how much power is used over time), so it's probably related to something else. I'll leave it for documentation reasons (and future extended declaration).
 
-> https://github.com/nohuto/win-registry/blob/main/records/Power.txt  
+> https://github.com/nohuto/regkit/blob/main/records/Power.txt  
 > [power/assets | storageidle-PmPowerContextInitialization.c](https://github.com/nohuto/win-config/blob/main/power/assets/nvmeperf-ClassUpdateDynamicRegistrySettings.c)

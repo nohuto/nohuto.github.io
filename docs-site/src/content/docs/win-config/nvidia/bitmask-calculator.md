@@ -12,7 +12,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08
 ```
 The tool loads all value names including their bit definitions, making it easy for you to understand what the data of `1431655765` truely does. After selecting an option, it updates the `dec`, `hex`, `bin` data and displays the bit positions. If you want to use the value, you can add it with the `Reg Add` button, which searches for the correct key.
 
-It adds all values to the [`Display`](https://learn.microsoft.com/en-us/windows-hardware/drivers/install/system-defined-device-setup-classes-available-to-vendors#device-categories-and-class-values) class key. There are values with the same names in the [`nvlddmkm\*`](https://github.com/nohuto/wpr-reg-records/blob/main/records/nvlddmkm.txt) key, but those won't get added via the tool. I may add a second section for `nvlddmkm` key values.
+It adds all values to the [`Display`](https://learn.microsoft.com/en-us/windows-hardware/drivers/install/system-defined-device-setup-classes-available-to-vendors#device-categories-and-class-values) class key. There are values with the same names in the [`nvlddmkm\*`](https://github.com/nohuto/regkit/blob/main/records/nvlddmkm.txt) key, but those won't get added via the tool. I may add a second section for `nvlddmkm` key values.
 ```
 \Registry\Machine\SYSTEM\ControlSet001\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000 : RmProfilingAdminOnly
 \Registry\Machine\SYSTEM\ControlSet001\Services\nvlddmkm\Global\NVTweak : RmProfilingAdminOnly
@@ -25,7 +25,7 @@ Preview:
 https://github.com/user-attachments/assets/91b241ef-5e8e-4859-8957-d3b54dc52b0e
 
 The tool currently has a selection of `967` values ([`nvvalues.txt`](https://github.com/nohuto/bitmask-calc/blob/main/nvvalues.txt)). It works with my own `.json` converted bitfield definitions. This doesn't mean that all of them are configurable or used by your system. List of values, which got read on my system:
-> [NVIDIA Display Class GUID Record](https://github.com/nohuto/wpr-reg-records/blob/main/records/NVIDIA-DispGUID.txt)
+> [NVIDIA Display Class GUID Record](https://github.com/nohuto/regkit/blob/main/records/NVIDIA-DispGUID.txt)
 
 The lower right panel shows the `.json` code of the selected value, I used the `Min Dark` theme as template for colors:
 > [min-dark.json | miguelsolorio](https://github.com/miguelsolorio/min-theme/blob/master/themes/min-dark.json)

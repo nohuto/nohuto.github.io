@@ -34,13 +34,6 @@ jobs:
           ref: main
           path: sources/win-config
 
-      - name: Checkout win-registry
-        uses: actions/checkout@v4
-        with:
-          repository: nohuto/win-registry
-          ref: main
-          path: sources/win-registry
-
       - name: Checkout nvapi-cli
         uses: actions/checkout@v4
         with:
@@ -85,7 +78,6 @@ jobs:
         working-directory: docs-site
         env:
           WIN_CONFIG_REPO_URL: https://github.com/nohuto/win-config
-          WIN_REGISTRY_REPO_URL: https://github.com/nohuto/win-registry
           NVAPI_CLI_REPO_URL: https://github.com/nohuto/nvapi-cli
           REGKIT_REPO_URL: https://github.com/nohuto/regkit
           APP_TOOLS_REPO_URL: https://github.com/nohuto/app-tools

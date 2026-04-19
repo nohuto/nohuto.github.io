@@ -6,24 +6,24 @@ sidebar:
   order: 16
 ---
 
-> https://github.com/nohuto/gpu-oc-uv
+> https://github.com/nohuto/regkit
 
 Overclocking means increasing the clock speed, which increases temperatures. Undervolting limits the voltage for the GPU, resulting in lower voltage, wattage, and temperature.
 
 ## ToC
 
-- [Preconfigurations](https://github.com/nohuto/gpu-oc-uv#preconfigurations)
-  - [MSI Afterburner](https://github.com/nohuto/gpu-oc-uv#msi-afterburner)
-  - [3DMark](https://github.com/nohuto/gpu-oc-uv#3dmark)
-  - [Superposition](https://github.com/nohuto/gpu-oc-uv#superposition)
-  - [OCCT](https://github.com/nohuto/gpu-oc-uv#occt)
-- [Overclocking](https://github.com/nohuto/gpu-oc-uv#overclocking)
-  - [Increasing the core clock & finding the voltage](https://github.com/nohuto/gpu-oc-uv#increasing-the-core-clock--finding-the-voltage)
-- [Undervolting](https://github.com/nohuto/gpu-oc-uv#undervolting)
-  - [Limiting the voltage](https://github.com/nohuto/gpu-oc-uv#limiting-the-voltage)
-- [Memory Overclock](https://github.com/nohuto/gpu-oc-uv#memory-overclock)
-  - [Increasing the memory clock](https://github.com/nohuto/gpu-oc-uv#increasing-the-memory-clock)
-- [Final Test](https://github.com/nohuto/gpu-oc-uv#final-test)
+- [Preconfigurations]([/docs/regkit/sections/registry-values-details/](/docs/regkit/sections/registry-values-details/))
+  - [MSI Afterburner]([/docs/regkit/sections/registry-values-details/](/docs/regkit/sections/registry-values-details/))
+  - [3DMark]([/docs/regkit/sections/registry-values-details/](/docs/regkit/sections/registry-values-details/))
+  - [Superposition]([/docs/regkit/sections/registry-values-details/](/docs/regkit/sections/registry-values-details/))
+  - [OCCT]([/docs/regkit/sections/registry-values-details/](/docs/regkit/sections/registry-values-details/))
+- [Overclocking]([/docs/regkit/sections/registry-values-details/](/docs/regkit/sections/registry-values-details/))
+  - [Increasing the core clock & finding the voltage]([/docs/regkit/sections/registry-values-details/](/docs/regkit/sections/registry-values-details/))
+- [Undervolting]([/docs/regkit/sections/registry-values-details/](/docs/regkit/sections/registry-values-details/))
+  - [Limiting the voltage]([/docs/regkit/sections/registry-values-details/](/docs/regkit/sections/registry-values-details/))
+- [Memory Overclock]([/docs/regkit/sections/registry-values-details/](/docs/regkit/sections/registry-values-details/))
+  - [Increasing the memory clock]([/docs/regkit/sections/registry-values-details/](/docs/regkit/sections/registry-values-details/))
+- [Final Test]([/docs/regkit/sections/registry-values-details/](/docs/regkit/sections/registry-values-details/))
 
 ## Preconfigurations
 
@@ -34,7 +34,7 @@ You need to pay attention to the performance limit during overclocking, as you s
 ![](https://github.com/nohuto/gpu-oc-uv/blob/main/images/hwinfo-powerlimit.png?raw=true)
 
 ### MSI Afterburner
-Download [MSI Afterburner](https://www.msi.com/Landing/afterburner/graphics-cards) and set a custom fan curve, which could look like the one in the image below (make sure the speed is not too low, as this would affect your results). You can use the preconfigured [cfg file](https://github.com/nohuto/gpu-oc-uv/blob/main/assets/MSIAfterburner.cfg) or skip it.
+Download [MSI Afterburner](https://www.msi.com/Landing/afterburner/graphics-cards) and set a custom fan curve, which could look like the one in the image below (make sure the speed is not too low, as this would affect your results). You can use the preconfigured [cfg file](https://github.com/nohuto/regkit/blob/main/assets/MSIAfterburner.cfg) or skip it.
 
 ![](https://github.com/nohuto/gpu-oc-uv/blob/main/images/fancurve.png?raw=true)
 

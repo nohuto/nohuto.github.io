@@ -25,7 +25,7 @@ Coalescing UDP datagrams reduces the CPU cost to process packets in high-bandwid
     "RscMode" = 1; // range 0-2
 ```
 
-> [/docs/win-registry/sections/registry-values-research/intel-nic-values/](/docs/win-registry/sections/registry-values-research/intel-nic-values/)
+> https://github.com/nohuto/regkit#registry-values-details
 
 ```c
 void __fastcall ReceiveSideCoalescing::ReadRegistryParameters(struct ADAPTER_CONTEXT **this)

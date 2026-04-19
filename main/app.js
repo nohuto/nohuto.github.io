@@ -92,7 +92,6 @@ const RELEASE_NAME_COLLATOR = new Intl.Collator(undefined, { numeric: true, sens
 const PROJECT_LIST = [
   { title: 'Windows Configuration', repo: 'nohuto/win-config' },
   { title: 'RegKit', repo: 'nohuto/regkit' },
-  { title: 'Windows Registry Research', repo: 'nohuto/win-registry' },
   { title: 'Decompiled Pseudocode', repo: 'nohuto/decompiled-pseudocode' },
   { title: 'NVAPI CLI', repo: 'nohuto/nvapi-cli' },
   { title: 'AES CBC Encryption', repo: 'nohuto/aes-cbc' },
@@ -2320,7 +2319,6 @@ function initConsole() {
         ['policies', 'docs/win-config/policies/'],
         ['affinities', 'docs/win-config/affinities/'],
         ['regkit', 'docs/regkit/'],
-        ['win-registry', 'docs/win-registry/'],
         ['game-tools', 'docs/game-tools/'],
         ['app-tools', 'docs/app-tools/'],
         ['nvapi-cli', 'docs/nvapi-cli/']

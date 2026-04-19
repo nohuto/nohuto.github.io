@@ -10,7 +10,7 @@ Used to be my personal `neofetch`/`fastfetch` replacement with more details. Som
 
 ![](https://github.com/nohuto/win-config/blob/main/misc/images/nvfetch.png?raw=true)
 
-> https://github.com/nohuto/nvfetch
+> https://github.com/nohuto/regkit
 
 It currently gets most of the information using the [`Get-CimInstance`](https://learn.microsoft.com/en-us/powershell/module/cimcmdlets/get-ciminstance?view=powershell-7.5) cmdlet and `nvidia-smi` for NVIDIA GPUs.
 ```powershell

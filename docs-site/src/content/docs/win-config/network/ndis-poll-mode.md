@@ -54,7 +54,7 @@ This feature allows packet burst handling, while avoiding packet drops that may 
     "ThreadDpcEnable" = 1; // KeThreadDpcEnable
 ```
 
-> [/docs/win-registry/sections/registry-values-research/session-manager-values/](/docs/win-registry/sections/registry-values-research/session-manager-values/)  
+> [/docs/win-config/system/kernel-values/#registry-values-details](/docs/win-config/system/kernel-values/#registry-values-details)  
 > https://learn.microsoft.com/en-us/windows-hardware/drivers/kernel/introduction-to-threaded-dpcs
 
 | Data | Meaning |

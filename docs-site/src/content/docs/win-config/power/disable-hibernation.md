@@ -46,6 +46,6 @@ During a full shutdown and boot (S5), the entire user session is torn down and r
 RegSetValue	HKLM\System\CurrentControlSet\Control\Power\HibernateEnabled	Type: REG_DWORD, Length: 4, Data: 0
 ```
 
-> [/docs/win-registry/sections/registry-values-research/power-values/](/docs/win-registry/sections/registry-values-research/power-values/)  
+> [/docs/win-config/power/power-values/#registry-values-details](/docs/win-config/power/power-values/#registry-values-details)  
 > https://learn.microsoft.com/en-us/troubleshoot/windows-client/setup-upgrade-and-drivers/disable-and-re-enable-hibernation  
-> https://github.com/nohuto/win-registry/blob/main/records/Power.txt
+> https://github.com/nohuto/regkit/blob/main/records/Power.txt

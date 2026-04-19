@@ -6,7 +6,7 @@ sidebar:
   order: 1
 ---
 
-This section is based on my [admx-parser](https://github.com/nohuto/admx-parser) project. You can get the whole parsed ADMX content via:
+This section is based on my [admx-parser]([/docs/regkit/sections/overview/](/docs/regkit/sections/overview/)) project. You can get the whole parsed ADMX content via:
 
 ```powershell
 python admx-parser.py [FLAGS]

@@ -14,7 +14,7 @@ Task offloading has to be enabled, or RSS won't work (`DisableTaskOffload`).
 
 I may add more details here soon. RSS is enabled by default, so this is currently more of a placeholder containing the official documentation (see links below) - disabling the option therefore won't "disable" RSS, it only removes the created values.
 
-`RSS::RssReadRegistryParameters` shows miscellaneous values which are related to RSS, see [intelnet6x.c](https://github.com/nohuto/win-registry/blob/main/assets/intelnet6x.c) for reference:
+`RSS::RssReadRegistryParameters` shows miscellaneous values which are related to RSS, see [intelnet6x.c](https://github.com/nohuto/regkit/blob/main/assets/intelnet6x.c) for reference:
 ```c
 void __fastcall RSS::RssReadRegistryParameters(RSS *this, struct ADAPTER_CONTEXT *a2, void *a3)
 {

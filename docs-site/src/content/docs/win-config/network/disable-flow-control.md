@@ -19,7 +19,7 @@ A sending station (computer or network switch) may be transmitting data faster t
     "*FlowControl" = 4; // range 0-4
 ```
 
-> [/docs/win-registry/sections/registry-values-research/intel-nic-values/](/docs/win-registry/sections/registry-values-research/intel-nic-values/)
+> https://github.com/nohuto/regkit#registry-values-details
 
 ```inf
 , *FlowControl

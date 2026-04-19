@@ -45,7 +45,7 @@ dword_4C140 = -1;
 
 > [power/assets | hddpark-amdsbs.c](https://github.com/nohuto/win-config/blob/main/power/assets/hddpark-amdsbs.c)  
 > https://learn.microsoft.com/en-us/windows-hardware/drivers/kernel/device-power-states  
-> [/docs/win-registry/](/docs/win-registry/)
+> https://github.com/nohuto/regkit
 
 Needs more research (`ClassGetServiceParameter.c` - default `0`?):
 ```

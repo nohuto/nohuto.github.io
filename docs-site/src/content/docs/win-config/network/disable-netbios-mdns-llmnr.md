@@ -11,7 +11,7 @@ sidebar:
 Enabling the option includes disabling `LMHOSTS Lookups` - "LMHOSTS is a local text file Windows uses to map NetBIOS names to IPs when other NetBIOS methods (WINS, broadcast) don't give an answer. It lives in C:\Windows\System32\drivers\etc, there's an `lmhosts.sam` example, and it's checked only if `Enable LMHOSTS lookup` is on."
 
 > https://en.wikipedia.org/wiki/LMHOSTS  
-> https://github.com/nohuto/win-registry/blob/main/records/NetBT.txt
+> https://github.com/nohuto/regkit/blob/main/records/NetBT.txt
 
 `NetbiosOptions`:
 
