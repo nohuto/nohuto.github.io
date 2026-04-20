@@ -2,6 +2,7 @@
 ::backdrop {
   --sl-font: "Cascadia Mono", "Cascadia Code", Consolas, "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace;
   --sl-font-mono: "Cascadia Mono", "Cascadia Code", Consolas, "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace;
+  --nv-ui-radius: 0px;
   --sl-color-accent-low: #143448;
   --sl-color-accent: #4792c1;
   --sl-color-accent-high: #8fbede;
@@ -143,7 +144,7 @@ body::-webkit-scrollbar-thumb {
 .sidebar-tree-search-input {
   width: 100%;
   border: 1px solid var(--sl-rapide-ui-border-color);
-  border-radius: 0.22rem;
+  border-radius: var(--nv-ui-radius);
   background-color: color-mix(in srgb, var(--sl-rapide-ui-bg-color) 96%, var(--sl-color-bg));
   color: var(--sl-color-text);
   font-size: var(--sl-text-sm);
@@ -188,7 +189,7 @@ body::-webkit-scrollbar-thumb {
 
 site-search button[data-open-modal] {
   border: 1px solid var(--sl-rapide-ui-border-color);
-  border-radius: 0.22rem;
+  border-radius: var(--nv-ui-radius);
   background-color: color-mix(in srgb, var(--sl-rapide-ui-bg-color) 96%, var(--sl-color-bg));
   box-shadow: none;
   color: var(--sl-color-gray-2);
@@ -202,15 +203,16 @@ site-search button[data-open-modal]:is(:hover, :focus-visible) {
 
 site-search button[data-open-modal] > kbd {
   border: 1px solid var(--sl-color-hairline);
-  border-radius: 0.16rem;
+  border-radius: var(--nv-ui-radius);
   background-color: color-mix(in srgb, var(--sl-color-bg) 90%, var(--sl-rapide-ui-bg-color));
   color: var(--sl-color-gray-3);
   padding-inline: 0.3rem;
 }
 
 site-search dialog #starlight__search {
-  --sl-search-corners: calc(0.2rem * var(--pagefind-ui-scale));
-  --pagefind-ui-border-radius: calc(0.2rem * var(--pagefind-ui-scale));
+  --sl-search-corners: var(--nv-ui-radius);
+  --pagefind-ui-border-radius: var(--nv-ui-radius);
+  --pagefind-ui-image-border-radius: var(--nv-ui-radius);
 }
 
 @media (min-width: 50rem) {
@@ -289,9 +291,33 @@ site-search dialog #starlight__search {
 }
 
 .sidebar-pane a {
-  border-radius: 0.25rem;
+  border-radius: var(--nv-ui-radius);
   color: var(--sl-color-gray-2);
   padding: 0.3em var(--sl-sidebar-item-padding-inline) !important;
+}
+
+.pagination-links a,
+.sl-link-card,
+.sl-badge,
+.sl-markdown-content code:not(pre code),
+.expressive-code pre,
+.expressive-code .frame,
+.expressive-code .copy button,
+.expressive-code .copy button div,
+.expressive-code .copy button::before,
+.expressive-code .copy .feedback,
+.starlight-view-modes-table-of-contents-container a,
+.starlight-view-modes-table-of-contents-container kbd:has(kbd),
+.expressive-code.cb-fullscreen__active,
+.cb-fullscreen__button,
+.cb-fullscreen__button[data-tooltip]:hover::after,
+.cb-fullscreen__hint,
+.cb-fullscreen__hint kbd,
+.cb-fullscreen__font-controls,
+.cb-fullscreen__font-btn,
+.cb-fullscreen__font-btn--decrease::after,
+.cb-fullscreen__font-btn--increase::after {
+  border-radius: var(--nv-ui-radius) !important;
 }
 
 .sidebar-pane a:hover,

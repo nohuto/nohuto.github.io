@@ -176,6 +176,31 @@ function setActive(href) {
   });
 }
 
+function getPromptDirectory(pathname = location.pathname) {
+  const normalized = String(pathname || '')
+    .replace(/^https?:\/\/[^/]+/i, '')
+    .replace(/^\/+|\/+$/g, '')
+    .toLowerCase();
+
+  if (!normalized || normalized === 'index.html') return 'home';
+  if (normalized === 'product.html') return 'product';
+  if (normalized === 'projects.html') return 'projects';
+  if (normalized === 'bin-diff.html') return 'bin-diff';
+  if (normalized === 'docs' || normalized.startsWith('docs/')) return 'docs';
+  return 'home';
+}
+
+function getPromptPath(pathname = location.pathname) {
+  return `:~/${getPromptDirectory(pathname)}`;
+}
+
+function updatePromptBar(pathname = location.pathname) {
+  const nextPath = getPromptPath(pathname);
+  document.querySelectorAll('.prompt-bar .prompt-path').forEach(node => {
+    node.textContent = nextPath;
+  });
+}
+
 function updateIconTheme(theme) {
   const applied = theme || document.documentElement.getAttribute('data-theme') || DEFAULT_THEME;
   const useLight = LIGHT_THEMES.has(applied);
@@ -652,12 +677,14 @@ async function loadPage(url, push = true) {
     if (!newMain) throw new Error('No main element in response');
     sanitizeMain(newMain);
     const newTitle = doc.querySelector('title')?.textContent || document.title;
+    const nextPathname = new URL(url, location.href).pathname;
     newMain.classList.add('fading');
 
     setTimeout(() => {
       main.replaceWith(newMain);
       document.title = newTitle;
-      setActive(new URL(url, location.href).pathname.split('/').pop() || 'index.html');
+      setActive(nextPathname.split('/').pop() || 'index.html');
+      updatePromptBar(nextPathname);
       initRepoDescriptions();
       initFiltering();
       initSelectUI();
@@ -1993,14 +2020,26 @@ function initConsole() {
   let currentPath = rootPath;
   const promptEl = consoleRoot.querySelector('.console-prompt');
   const timestampEl = document.getElementById('console-timestamp');
+  const DOCS_ROOT_PATH = `${rootPath}/docs`;
+  const formatDisplayPath = path => {
+    if (path === rootPath) return '~/home';
+    if (path === DOCS_ROOT_PATH) return '~/docs';
+    if (String(path || '').startsWith(`${DOCS_ROOT_PATH}/`)) {
+      return String(path).replace(`${DOCS_ROOT_PATH}/`, '~/docs/');
+    }
+    if (String(path || '').startsWith(`${rootPath}/`)) {
+      return String(path).replace(`${rootPath}/`, '~/');
+    }
+    return path;
+  };
 
   const updatePrompt = () => {
     if (promptEl) {
-      promptEl.textContent = `${promptUser}@${promptHost}:${currentPath}$`;
+      promptEl.textContent = `${promptUser}@${promptHost}:${formatDisplayPath(currentPath)}$`;
     }
   };
 
-  const promptLabel = () => `${promptUser}@${promptHost}:${currentPath}$`;
+  const promptLabel = () => `${promptUser}@${promptHost}:${formatDisplayPath(currentPath)}$`;
 
   const updateTimestamp = () => {
     if (!timestampEl) return;
@@ -2143,7 +2182,6 @@ function initConsole() {
   };
 
   const normalizePath = input => (input || '').replace(/\\/g, '/').trim();
-  const DOCS_ROOT_PATH = `${rootPath}/docs`;
   const trimSlashes = value => (value || '').replace(/^\/+|\/+$/g, '');
 
   const resolvePath = input => {
@@ -2360,7 +2398,7 @@ function initConsole() {
       addLine(entries.join('  '), 'muted');
     },
     pwd: () => {
-      addLine(currentPath);
+      addLine(formatDisplayPath(currentPath));
     },
     cd: args => {
       const target = args.join(' ');
@@ -2554,6 +2592,7 @@ function initConsole() {
 
 document.addEventListener('DOMContentLoaded', () => {
   setActive(location.pathname.split('/').pop() || 'index.html');
+  updatePromptBar(location.pathname);
   initTheme();
   initBackground();
   initTypography();

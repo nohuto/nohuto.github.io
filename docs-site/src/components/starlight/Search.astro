@@ -180,7 +180,7 @@ if (project.trailingSlash === 'never') dataAttributes['data-strip-trailing-slash
 		@media (min-width: 50rem) {
 			button[data-open-modal] {
 				border: 1px solid var(--sl-color-gray-5);
-				border-radius: 0.5rem;
+				border-radius: var(--nv-ui-radius);
 				padding-inline-start: 0.75rem;
 				padding-inline-end: 0.5rem;
 				background-color: var(--sl-color-black);
@@ -200,7 +200,7 @@ if (project.trailingSlash === 'never') dataAttributes['data-strip-trailing-slash
 		}
 
 		button > kbd {
-			border-radius: 0.25rem;
+			border-radius: var(--nv-ui-radius);
 			font-size: var(--sl-text-2xs);
 			gap: 0.25em;
 			padding-inline: 0.375rem;
@@ -275,7 +275,7 @@ if (project.trailingSlash === 'never') dataAttributes['data-strip-trailing-slash
 
 			dialog {
 				margin: 4rem auto auto;
-				border-radius: 0.5rem;
+				border-radius: var(--nv-ui-radius);
 				width: 90%;
 				max-width: 40rem;
 				height: max-content;
@@ -303,7 +303,9 @@ if (project.trailingSlash === 'never') dataAttributes['data-strip-trailing-slash
 			--sl-search-result-pad-inline-start: calc(3.75rem * var(--pagefind-ui-scale));
 			--sl-search-result-pad-inline-end: calc(1.25rem * var(--pagefind-ui-scale));
 			--sl-search-result-pad-block: calc(0.9375rem * var(--pagefind-ui-scale));
-			--sl-search-corners: calc(0.3125rem * var(--pagefind-ui-scale));
+			--sl-search-corners: var(--nv-ui-radius);
+			--pagefind-ui-border-radius: var(--nv-ui-radius);
+			--pagefind-ui-image-border-radius: var(--nv-ui-radius);
 			--sl-search-page-icon-size: calc(1.875rem * var(--pagefind-ui-scale));
 			--sl-search-page-icon-inline-start: calc(
 				(var(--sl-search-result-pad-inline-start) - var(--sl-search-page-icon-size)) / 2

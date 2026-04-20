@@ -91,6 +91,17 @@ export default defineConfig({
         ThemeSelect: './src/components/starlight/ThemeSelect.astro',
       },
       customCss: ['./src/styles/rapide-overrides.css', './src/styles/doc-themes.css'],
+      expressiveCode: {
+        styleOverrides: {
+          borderRadius: 'var(--nv-ui-radius)',
+          frames: {
+            editorTabBorderRadius: 'var(--nv-ui-radius)',
+          },
+          textMarkers: {
+            inlineMarkerBorderRadius: 'var(--nv-ui-radius)',
+          },
+        },
+      },
       sidebar: sidebarRepos.map((repoName) => createSidebarRepoEntry(repoName)),
     }),
   ],
