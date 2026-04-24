@@ -52,6 +52,24 @@
   --nv-doc-danger: #b44a4a;
 }
 
+:root[data-docs-theme='purple-black'],
+[data-docs-theme='purple-black'] ::backdrop {
+  --nv-doc-bg: #08080d;
+  --nv-doc-bg-alt: #0c0b12;
+  --nv-doc-panel: #111018;
+  --nv-doc-panel-alt: #171421;
+  --nv-doc-border: #272235;
+  --nv-doc-border-strong: #3a304c;
+  --nv-doc-text: #ece8f3;
+  --nv-doc-muted: #9b93aa;
+  --nv-doc-accent: #7a5aa6;
+  --nv-doc-accent-2: #a58bc4;
+  --nv-doc-accent-contrast: #09080d;
+  --nv-doc-success: #79c99b;
+  --nv-doc-warning: #d5b879;
+  --nv-doc-danger: #d6768f;
+}
+
 :root[data-docs-theme='gruvbox-dark'],
 [data-docs-theme='gruvbox-dark'] ::backdrop {
   --nv-doc-bg: #282828;
@@ -268,42 +286,6 @@
   --nv-doc-danger: #dc322f;
 }
 
-:root[data-docs-theme='tokyo-night'],
-[data-docs-theme='tokyo-night'] ::backdrop {
-  --nv-doc-bg: #1a1b26;
-  --nv-doc-bg-alt: #15161f;
-  --nv-doc-panel: #24283b;
-  --nv-doc-panel-alt: #2f334d;
-  --nv-doc-border: #414868;
-  --nv-doc-border-strong: #565f89;
-  --nv-doc-text: #c0caf5;
-  --nv-doc-muted: #a9b1d6;
-  --nv-doc-accent: #7aa2f7;
-  --nv-doc-accent-2: #7dcfff;
-  --nv-doc-accent-contrast: #1a1b26;
-  --nv-doc-success: #9ece6a;
-  --nv-doc-warning: #e0af68;
-  --nv-doc-danger: #f7768e;
-}
-
-:root[data-docs-theme='dracula'],
-[data-docs-theme='dracula'] ::backdrop {
-  --nv-doc-bg: #282a36;
-  --nv-doc-bg-alt: #1f2029;
-  --nv-doc-panel: #343746;
-  --nv-doc-panel-alt: #3b3f52;
-  --nv-doc-border: #44475a;
-  --nv-doc-border-strong: #56597a;
-  --nv-doc-text: #f8f8f2;
-  --nv-doc-muted: #bfbfbf;
-  --nv-doc-accent: #bd93f9;
-  --nv-doc-accent-2: #8be9fd;
-  --nv-doc-accent-contrast: #282a36;
-  --nv-doc-success: #50fa7b;
-  --nv-doc-warning: #f1fa8c;
-  --nv-doc-danger: #ff5555;
-}
-
 :root[data-docs-theme='one-dark'],
 [data-docs-theme='one-dark'] ::backdrop {
   --nv-doc-bg: #282c34;
@@ -466,24 +448,6 @@
   --nv-doc-danger: #f92672;
 }
 
-:root[data-docs-theme='material'],
-[data-docs-theme='material'] ::backdrop {
-  --nv-doc-bg: #263238;
-  --nv-doc-bg-alt: #1f2a30;
-  --nv-doc-panel: #2f3b43;
-  --nv-doc-panel-alt: #36454f;
-  --nv-doc-border: #37474f;
-  --nv-doc-border-strong: #455a64;
-  --nv-doc-text: #cfd8dc;
-  --nv-doc-muted: #b0bec5;
-  --nv-doc-accent: #80cbc4;
-  --nv-doc-accent-2: #82aaff;
-  --nv-doc-accent-contrast: #263238;
-  --nv-doc-success: #c3e88d;
-  --nv-doc-warning: #ffcb6b;
-  --nv-doc-danger: #ff5370;
-}
-
 :root[data-docs-theme='horizon'],
 [data-docs-theme='horizon'] ::backdrop {
   --nv-doc-bg: #1c1e26;
@@ -522,9 +486,12 @@
 
 :root[data-theme][data-docs-theme],
 [data-theme][data-docs-theme] ::backdrop {
-  --sl-color-white: var(--nv-doc-text);
-  --sl-color-gray-1: color-mix(in srgb, var(--nv-doc-text) 92%, var(--nv-doc-muted));
-  --sl-color-gray-2: var(--nv-doc-text);
+  --nv-doc-readable-text: var(--nv-doc-text);
+  --nv-doc-readable-text-soft: color-mix(in srgb, var(--nv-doc-readable-text) 92%, var(--nv-doc-muted));
+
+  --sl-color-white: var(--nv-doc-readable-text);
+  --sl-color-gray-1: var(--nv-doc-readable-text-soft);
+  --sl-color-gray-2: var(--nv-doc-readable-text);
   --sl-color-gray-3: var(--nv-doc-muted);
   --sl-color-gray-4: color-mix(in srgb, var(--nv-doc-muted) 60%, var(--nv-doc-border));
   --sl-color-gray-5: var(--nv-doc-border);
@@ -551,7 +518,7 @@
   --sl-color-accent-low: color-mix(in srgb, var(--nv-doc-accent) 18%, var(--nv-doc-panel));
   --sl-color-accent: var(--nv-doc-accent);
   --sl-color-accent-high: color-mix(in srgb, var(--nv-doc-accent-2) 62%, var(--nv-doc-text));
-  --sl-color-text: var(--nv-doc-text);
+  --sl-color-text: var(--nv-doc-readable-text);
   --sl-color-text-accent: color-mix(in srgb, var(--nv-doc-accent) 62%, var(--nv-doc-text));
   --sl-color-text-invert: var(--nv-doc-accent-contrast);
   --sl-color-bg: var(--nv-doc-bg);
@@ -584,8 +551,20 @@ html[data-theme='light'] {
   color-scheme: light;
 }
 
+:root[data-theme='light'][data-docs-theme],
+[data-theme='light'][data-docs-theme] ::backdrop {
+  --nv-doc-readable-text: #2d3136;
+  --nv-doc-readable-text-soft: #3b4047;
+}
+
 html[data-theme='dark'] {
   color-scheme: dark;
+}
+
+:root[data-theme='dark'][data-docs-theme],
+[data-theme='dark'][data-docs-theme] ::backdrop {
+  --nv-doc-readable-text: #d8dbe0;
+  --nv-doc-readable-text-soft: #e1e3e7;
 }
 
 docs-theme-select {
@@ -600,8 +579,8 @@ docs-theme-select {
   align-items: center;
   gap: 0.625rem;
   min-width: 0;
-  min-height: 2rem;
-  height: 2rem;
+  min-height: 1.5rem;
+  height: 1.5rem;
   padding: 0 0.625rem 0 0.625rem;
   border: 1px solid var(--sl-color-hairline-shade);
   border-radius: var(--nv-ui-radius);

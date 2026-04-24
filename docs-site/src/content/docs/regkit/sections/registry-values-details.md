@@ -20,4 +20,4 @@ This includes details on keys/values which are either poorly documented or not d
 - [Intel NIC Values]()
 - [MMCSS Values](/docs/win-config/system/mmcss-values/)
 - [StorNVMe Values](https://www.noverse.dev/docs/win-config/peripheral/stornvme-values/#registry-values-details)
-- [Notification Values](https://www.noverse.dev/docs/win-config/system/disable-notifications/#registry-research)
+- [Notification Values](https://www.noverse.dev/docs/win-config/system/disable-notifications/#registry-values)

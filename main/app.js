@@ -1,6 +1,6 @@
 /* Copyright (c) 2026 Nohuto. All rights reserved. */
 const THEME_KEY = 'nv-theme';
-const DEFAULT_THEME = 'horizon';
+const DEFAULT_THEME = 'purple-black';
 const LIGHT_THEMES = new Set([
   'default-light',
   'gruvbox-light',
@@ -123,6 +123,7 @@ let consoleTimestampTimer;
 let consoleFocusListener;
 let consoleResizeHandler;
 let consoleResizeObserver;
+let consoleClampRaf = 0;
 let repoDescriptionsPromise;
 let selectUiListener;
 let selectUiKeyListener;
@@ -1919,6 +1920,14 @@ function initConsoleWindow() {
     windowEl.style.top = `${Math.min(Math.max(0, currentTop), maxTop)}px`;
   };
 
+  const scheduleClampPosition = () => {
+    if (consoleClampRaf) return;
+    consoleClampRaf = requestAnimationFrame(() => {
+      consoleClampRaf = 0;
+      clampPosition();
+    });
+  };
+
   requestAnimationFrame(() => {
     centerWindow();
     clampPosition();
@@ -1928,15 +1937,19 @@ function initConsoleWindow() {
     consoleResizeObserver.disconnect();
     consoleResizeObserver = null;
   }
+  if (consoleClampRaf) {
+    cancelAnimationFrame(consoleClampRaf);
+    consoleClampRaf = 0;
+  }
   if (window.ResizeObserver) {
-    consoleResizeObserver = new ResizeObserver(() => clampPosition());
+    consoleResizeObserver = new ResizeObserver(scheduleClampPosition);
     consoleResizeObserver.observe(windowEl);
   }
 
   if (consoleResizeHandler) {
     window.removeEventListener('resize', consoleResizeHandler);
   }
-  consoleResizeHandler = clampPosition;
+  consoleResizeHandler = scheduleClampPosition;
   window.addEventListener('resize', consoleResizeHandler);
 
   handle.addEventListener('pointerdown', e => {

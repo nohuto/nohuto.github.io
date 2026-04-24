@@ -47,6 +47,24 @@
   --scrollbar-thumb-hover: var(--accent);
 }
 
+[data-theme="purple-black"] {
+  --bg: #08080d;
+  --bg-alt: #0c0b12;
+  --panel: #111018;
+  --panel-alt: #171421;
+  --border: #272235;
+  --border-strong: #3a304c;
+  --text: #ece8f3;
+  --muted: #9b93aa;
+  --accent: #7a5aa6;
+  --accent-2: #a58bc4;
+  --accent-contrast: #09080d;
+  --success: #79c99b;
+  --warning: #d5b879;
+  --danger: #d6768f;
+  --scanline: rgba(236, 232, 243, 0.025);
+}
+
 *::selection {
   background-color: var(--accent);
   color: var(--accent-contrast);
@@ -306,42 +324,6 @@
   --scanline: rgba(88, 110, 117, 0.04);
 }
 
-[data-theme="tokyo-night"] {
-  --bg: #1a1b26;
-  --bg-alt: #15161f;
-  --panel: #24283b;
-  --panel-alt: #2f334d;
-  --border: #414868;
-  --border-strong: #565f89;
-  --text: #c0caf5;
-  --muted: #a9b1d6;
-  --accent: #7aa2f7;
-  --accent-2: #7dcfff;
-  --accent-contrast: #1a1b26;
-  --success: #9ece6a;
-  --warning: #e0af68;
-  --danger: #f7768e;
-  --scanline: rgba(192, 202, 245, 0.03);
-}
-
-[data-theme="dracula"] {
-  --bg: #282a36;
-  --bg-alt: #1f2029;
-  --panel: #343746;
-  --panel-alt: #3b3f52;
-  --border: #44475a;
-  --border-strong: #56597a;
-  --text: #f8f8f2;
-  --muted: #bfbfbf;
-  --accent: #bd93f9;
-  --accent-2: #8be9fd;
-  --accent-contrast: #282a36;
-  --success: #50fa7b;
-  --warning: #f1fa8c;
-  --danger: #ff5555;
-  --scanline: rgba(248, 248, 242, 0.03);
-}
-
 [data-theme="one-dark"] {
   --bg: #282c34;
   --bg-alt: #21252b;
@@ -502,24 +484,6 @@
   --warning: #e6db74;
   --danger: #f92672;
   --scanline: rgba(248, 248, 242, 0.03);
-}
-
-[data-theme="material"] {
-  --bg: #263238;
-  --bg-alt: #1f2a30;
-  --panel: #2f3b43;
-  --panel-alt: #36454f;
-  --border: #37474f;
-  --border-strong: #455a64;
-  --text: #cfd8dc;
-  --muted: #b0bec5;
-  --accent: #80cbc4;
-  --accent-2: #82aaff;
-  --accent-contrast: #263238;
-  --success: #c3e88d;
-  --warning: #ffcb6b;
-  --danger: #ff5370;
-  --scanline: rgba(207, 216, 220, 0.03);
 }
 
 [data-theme="horizon"] {
@@ -781,6 +745,7 @@ html[data-bg="starfield"] .stars::after {
   flex: 1;
   min-height: 70vh;
   height: 100%;
+  contain: layout paint style;
   overflow: hidden;
   padding: 0;
 }

@@ -2,7 +2,7 @@
 (() => {
   const THEME_KEY = 'nv-theme';
   const BG_KEY = 'nv-bg';
-  const DEFAULT_THEME = 'horizon';
+  const DEFAULT_THEME = 'purple-black';
   const DEFAULT_BG = 'diagonal-grid';
   const FONT_KEY = 'nv-font';
   const FONT_SIZE_KEY = 'nv-font-size';
@@ -10,15 +10,14 @@
   const FONT_SIZE_MAX = 22;
 
   const THEME_OPTIONS = new Set([
-    'default-dark',
-    'default-light',
     'ayu-dark',
     'ayu-light',
     'catppuccin-frappe',
     'catppuccin-latte',
     'catppuccin-macchiato',
     'catppuccin-mocha',
-    'dracula',
+    'default-dark',
+    'default-light',
     'everforest-dark',
     'everforest-light',
     'gruvbox-dark',
@@ -27,17 +26,16 @@
     'kanagawa-dragon',
     'kanagawa-lotus',
     'kanagawa-wave',
-    'material',
     'monokai',
     'night-owl',
     'nord',
     'one-dark',
     'one-light',
+    'purple-black',
     'rose-pine',
     'rose-pine-moon',
     'solarized-dark',
-    'solarized-light',
-    'tokyo-night'
+    'solarized-light'
   ]);
 
   const BG_OPTIONS = new Set([
