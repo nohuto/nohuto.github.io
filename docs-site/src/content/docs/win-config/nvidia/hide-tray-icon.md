@@ -10,9 +10,6 @@ sidebar:
 \Registry\Machine\SYSTEM\ControlSet001\Services\nvlddmkm\Global\NVTweak : HideXGpuTrayIcon
 \Registry\Machine\SOFTWARE\NVIDIA Corporation\Global\CoProcManager : ShowTrayIcon
 ```
-> https://forums.developer.nvidia.com/t/hide-nvidia-tray-icon/162739
-
----
 
 Other miscellaneous values I found:
 

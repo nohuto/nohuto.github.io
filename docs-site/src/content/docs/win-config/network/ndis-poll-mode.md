@@ -3,7 +3,7 @@ title: 'NDIS Poll Mode'
 description: 'Network option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 31
+  order: 30
 ---
 
 `Threaded DPC + Adaptive` = NDIS poll mode disabled, aptive receive completion method, packet burst buffering via threaded DPC.  
@@ -11,9 +11,9 @@ sidebar:
 
 ## NDIS Poll Mode
 
-"NDIS Poll Mode is an OS controlled polling execution model that drives the network interface datapath.
+"*NDIS Poll Mode is an OS controlled polling execution model that drives the network interface datapath.*
 
-Previously, NDIS had no formal definition of a datapath execution context. NDIS drivers typically relied on Deferred Procedure Calls (DPCs) to implement their execution model. However using DPCs can overwhelm the system when long indication chains are made and avoiding this problem requires a lot of code that's tricky to get right. NDIS Poll Mode offers an alternative to DPCs and similar execution tools."
+*Previously, NDIS had no formal definition of a datapath execution context. NDIS drivers typically relied on Deferred Procedure Calls (DPCs) to implement their execution model. However using DPCs can overwhelm the system when long indication chains are made and avoiding this problem requires a lot of code that's tricky to get right. NDIS Poll Mode offers an alternative to DPCs and similar execution tools.*" [[*]](https://learn.microsoft.com/en-us/windows-hardware/drivers/network/ndis-poll-mode)
 
 When enabled on RX side, the following capabilities are not be supported:
 - AsyncReceiveIndicate
@@ -23,9 +23,6 @@ When enabled on RX side, the following capabilities are not be supported:
 When enabled on TX side, the following capabilities are not be supported:
 - Transmit side Threaded DPC
 - TxMaxPostSendsCoalescing is limited to 32
-
-For a detailed documentation, see:
-> https://learn.microsoft.com/en-us/windows-hardware/drivers/network/ndis-poll-mode
 
 | Value | Data | Comments |
 | ---- | ---- | ---- |
@@ -45,19 +42,16 @@ HKR, Ndi\params\*NdisPoll\enum,  "1",                  0, "Enabled"
 
 Note: `*NdisPoll` is available to NDIS 6.85 and later miniport drivers.
 
-## AsyncReceiveIndicate (Packet Burst Handling)
+## [AsyncReceiveIndicate](https://docs.nvidia.com/nvidia-winof-2-documentation-v23-7.pdf) (Packet Burst Handling)
 
 This feature allows packet burst handling, while avoiding packet drops that may occur when a large amount of packets is sent in a short period of time.
 
-"A threaded DPC is a DPC that the system executes at `IRQL = PASSIVE_LEVEL`. An ordinary DPC preempts the execution of all threads, and cannot be preempted by a thread or by another DPC. If the system has a large number of ordinary DPCs queued, or if one of those DPCs runs for a long period time, every thread will remain paused for an arbitrarily long period of time. Thus, each ordinary DPC increases the system latency, which can damage the performance of time-sensitive applications, such as audio or video playback. Conversely, a threaded DPC can be preempted by an ordinary DPC, but not by other threads. Therefore, the user should use threaded DPCs rather than ordinary DPCs, unless a particular DPC must not be preempted, even by another DPC."
+"*A threaded DPC is a DPC that the system executes at `IRQL = PASSIVE_LEVEL`. An ordinary DPC preempts the execution of all threads, and cannot be preempted by a thread or by another DPC. If the system has a large number of ordinary DPCs queued, or if one of those DPCs runs for a long period time, every thread will remain paused for an arbitrarily long period of time. Thus, each ordinary DPC increases the system latency, which can damage the performance of time-sensitive applications, such as audio or video playback. Conversely, a threaded DPC can be preempted by an ordinary DPC, but not by other threads. Therefore, the user should use threaded DPCs rather than ordinary DPCs, unless a particular DPC must not be preempted, even by another DPC.*" [[*]](https://learn.microsoft.com/en-us/windows-hardware/drivers/kernel/introduction-to-threaded-dpcs)
 
 ```c
 "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Kernel";
     "ThreadDpcEnable" = 1; // KeThreadDpcEnable
 ```
-
-> https://www.noverse.dev/docs/win-config/system/kernel-values/#registry-values-details  
-> https://learn.microsoft.com/en-us/windows-hardware/drivers/kernel/introduction-to-threaded-dpcs
 
 | Data | Meaning |
 | :----: | ---- |
@@ -65,9 +59,7 @@ This feature allows packet burst handling, while avoiding packet drops that may 
 | 1 | Enables packet burst buffering using threaded DPC |
 | 2 | Enables packet burst buffering using polling |
 
-> https://docs.nvidia.com/nvidia-winof-2-documentation-v23-7.pdf
-
-## Receive Completion Method
+## [Receive Completion Method](https://docs.nvidia.com/nvidia-winof-2-documentation-v23-7.pdf)
 
 Sets the completion methods of the receive packets, and it affects network throughput and CPU utilization. The supported methods are:
 
@@ -86,5 +78,3 @@ HKR, NDI\Params\RecvCompletionMethod\enum,  "1", 0, "%Adaptive%"
 HKR, NDI\Params\RecvCompletionMethod\enum,  "2", 0x00000004 , ""
 HKR, "", RecvCompletionMethod, 0, "1"
 ```
-
-> https://docs.nvidia.com/networking/display/winofv55053000/performance+registry+keys

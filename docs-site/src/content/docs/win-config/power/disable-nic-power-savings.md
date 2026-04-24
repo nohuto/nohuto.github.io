@@ -8,11 +8,7 @@ sidebar:
 
 You can get a lot of information about data ranges and more from `.inf` files, see examples below.
 
-> https://github.com/nohuto/regkit/blob/main/records/NIC-Intel.txt  
-> https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/network/standardized-inf-keywords-for-power-management.md  
-> https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/network/standardized-inf-keywords-for-ndis-selective-suspend.md
-
-## Registry Value Overview
+## [Registry Value](https://github.com/nohuto/regkit/blob/main/records/NIC-Intel.txt) Overview
 
 Everything listed below is based on personal research. Mistakes may exist, but I don't think I've made any.
 
@@ -40,8 +36,6 @@ Everything listed below is based on personal research. Mistakes may exist, but I
     "ULPMode" = 1; // range 0-1
 ```
 
-> https://github.com/nohuto/regkit/blob/main/records/NIC-Intel.txt
-
 | SubkeyName | ParamDesc | Default | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
 | `*WakeOnPattern` | A value that describes whether the device should be enabled to wake the computer when a network packet matches a specified pattern. | 1 | 0 | 1 |
@@ -50,13 +44,12 @@ Everything listed below is based on personal research. Mistakes may exist, but I
 | `*IdleRestriction` | If a network device has both idle power down and wake on packet filter capabilities, this setting allows the user to decide when the device idle power down can happen. `1` = Only idle when user isn't present, `0` = No restriction | 0 | 0 | 1 |
 | `*ModernStandbyWoLMagicPacket` | A value that describes whether the device should be enabled to wake the computer when the device receives a magic packet and the system is in the S0ix power state. This doesn't apply when the system is in the S4 power state. | 0 | 0 | 1 |
 | `*DeviceSleepOnDisconnect` | A value that describes whether the device should be enabled to put the device into a low-power state (sleep state) when media is disconnected and return to a full-power state (wake state) when media is connected again. | 1 | 0 | 1 |
-| `*SelectiveSuspend` | Selective suspend (0 disabled, 1 enabled) | 1 | 0 | 1 |
-| `*SSIdleTimeout` | This keyword specifies the idle time-out period in units of seconds. If NDIS does not detect any activity on the network adapter for a period that exceeds the *SSIdleTimeout value, NDIS starts a selective suspend operation by calling the miniport driver's MiniportIdleNotification handler function. | 5 | 1 | 60 |
-| `*SSIdleTimeoutScreenOff` | This keyword specifies the idle time-out period in units of seconds and is only applicable when the screen is off. If NDIS does not detect any activity on the network adapter for a period that exceeds the *SSIdleTimeoutScreenOff value after the screen is off, NDIS starts a selective suspend operation by calling the miniport driver's MiniportIdleNotification handler function. | 3 | 1 | 60 |
+| [`*SelectiveSuspend`](https://learn.microsoft.com/en-us/windows-hardware/drivers/network/ndis-selective-suspend) | Selective suspend (0 disabled, 1 enabled) | 1 | 0 | 1 |
+| [`*SSIdleTimeout`](https://learn.microsoft.com/en-us/windows-hardware/drivers/network/standardized-inf-keywords-for-ndis-selective-suspend#ssidletimeout-inf-keyword) | This keyword specifies the idle time-out period in units of seconds. If NDIS does not detect any activity on the network adapter for a period that exceeds the *SSIdleTimeout value, NDIS starts a selective suspend operation by calling the miniport driver's MiniportIdleNotification handler function. | 5 | 1 | 60 |
+| [`*SSIdleTimeoutScreenOff`](https://learn.microsoft.com/en-us/windows-hardware/drivers/network/standardized-inf-keywords-for-ndis-selective-suspend#ssidletimeoutscreenoff-inf-keyword) | This keyword specifies the idle time-out period in units of seconds and is only applicable when the screen is off. If NDIS does not detect any activity on the network adapter for a period that exceeds the *SSIdleTimeoutScreenOff value after the screen is off, NDIS starts a selective suspend operation by calling the miniport driver's MiniportIdleNotification handler function. | 3 | 1 | 60 |
 
-For more detail on each value, see GitHub links above.
-
-> https://github.com/nohuto/regkit/blob/main/records/NIC-Intel.txt
+> [network/standardized-inf-keywords-for-power-management](https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/network/standardized-inf-keywords-for-power-management.md)  
+> [network/standardized-inf-keywords-for-ndis-selective-suspend](https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/network/standardized-inf-keywords-for-ndis-selective-suspend.md)
 
 ### Setup Information
 

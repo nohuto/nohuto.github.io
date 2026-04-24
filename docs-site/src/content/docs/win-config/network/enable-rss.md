@@ -3,20 +3,18 @@ title: 'RSS'
 description: 'Network option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 18
+  order: 17
 ---
 
-"Receive-Side Scaling (RSS), also known as multi-queue receive, distributes network receive processing across several hardware-based receive queues, allowing inbound network traffic to be processed by multiple CPUs. RSS can be used to relieve bottlenecks in receive interrupt processing caused by overloading a single CPU, and to reduce network latency."
-
-> https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/6/html/performance_tuning_guide/network-rss
+"*[Receive-Side Scaling (RSS)](https://learn.microsoft.com/en-us/windows-hardware/drivers/network/introduction-to-receive-side-scaling), also known as multi-queue receive, distributes network receive processing across several hardware-based receive queues, allowing inbound network traffic to be processed by multiple CPUs. RSS can be used to relieve bottlenecks in receive interrupt processing caused by overloading a single CPU, and to reduce network latency.*" [[*]](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/6/html/performance_tuning_guide/network-rss)
 
 Task offloading has to be enabled, or RSS won't work (`DisableTaskOffload`).
 
-I may add more details here soon. RSS is enabled by default, so this is currently more of a placeholder containing the official documentation (see links below) - disabling the option therefore won't "disable" RSS, it only removes the created values.
+I may add more details here soon. RSS is enabled by default, so this is currently more of a placeholder containing the official documentation (see links below), disabling the option therefore won't "disable" RSS, it only removes the created values.
 
 ## RssReadRegistryParameters
 
-`RSS::RssReadRegistryParameters` shows miscellaneous values which are related to RSS, see [intelnet6x.c](https://github.com/nohuto/win-config/blob/main/power/assets/intelnet6x.c) for reference:
+[`RSS::RssReadRegistryParameters`](https://github.com/nohuto/win-config/blob/main/power/assets/intel-nic/RSS_RssReadRegistryParameters.c) shows miscellaneous values which are related to RSS, see [intelnet6x.c](https://github.com/nohuto/win-config/blob/main/power/assets/intelnet6x.c) for reference:
 ```c
 void __fastcall RSS::RssReadRegistryParameters(RSS *this, struct ADAPTER_CONTEXT *a2, void *a3)
 {
@@ -39,7 +37,7 @@ void __fastcall RSS::RssReadRegistryParameters(RSS *this, struct ADAPTER_CONTEXT
 `*MaxRssProcessors`:  
 The maximum number of RSS processors.
 
-`*NumRssQueues`:  
+[`*NumRssQueues`](https://www.intel.com/content/www/us/en/support/articles/000005593/ethernet-products.html):  
 The maximum number of the RSS queues that the device should use.
 
 Configures the number of RSS queues:  
@@ -84,12 +82,6 @@ Enables the RSS v2 feature which improves the Receive Side Scaling by offering d
 
 `ValidateRssV2`:  
 Enables strict argument validation for upper layer testing. Set along with the RssV2 key to enable the RSSv2 feature.  
-
-> https://docs.kernel.org/networking/scaling.html  
-> https://docs.nvidia.com/networking/display/winof2v280/configuring+the+driver+registry+keys  
-> https://docs.nvidia.com/networking/display/winofv55052000/receive+side+scaling+(rss)  
-> https://learn.microsoft.com/en-us/windows-hardware/drivers/network/introduction-to-receive-side-scaling  
-> https://www.intel.com/content/www/us/en/support/articles/000005593/ethernet-products.html
 
 ---
 

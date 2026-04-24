@@ -6,15 +6,13 @@ sidebar:
   order: 8
 ---
 
-"Steps Recorder, also known as Problems Steps Recorder (PSR) in Windows 7, is a Windows inbox program that records screenshots of the desktop along with the annotated steps while recording the activity on the screen. The screenshots and annotated text are saved to a file for later viewing."
+"*Steps Recorder, also known as Problems Steps Recorder (PSR) in Windows 7, is a Windows inbox program that records screenshots of the desktop along with the annotated steps while recording the activity on the screen. The screenshots and annotated text are saved to a file for later viewing.*" [[*]](https://support.microsoft.com/en-gb/windows/steps-recorder-deprecation-a64888d7-8482-4965-8ce3-25fb004e975f)
 
 It is a deprecated feature, as the banner shows:
 
 ![](https://github.com/nohuto/win-config/blob/main/privacy/images/psr.png?raw=true)
 
 `PSR` = Problem Steps Recorder
-
-> https://support.microsoft.com/en-gb/windows/steps-recorder-deprecation-a64888d7-8482-4965-8ce3-25fb004e975f
 
 ```c
 // SR = Steps Recorder?

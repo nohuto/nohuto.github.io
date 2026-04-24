@@ -6,18 +6,12 @@ sidebar:
   order: 9
 ---
 
-Windows adds a hidden tag called `Zone.Identifier` to files downloaded from the internet. This tag (also known as MotW) stores info about the file's origin and helps apply security warnings, see files including the tag with:
+Windows adds a hidden tag called [`Zone.Identifier`](https://www.cyberengage.org/post/unveiling-file-origins-the-role-of-alternate-data-streams-ads-zone-identifier-in-forensic-inve) to files downloaded from the internet. This tag (also known as MotW) stores info about the file's origin and helps apply security warnings, see files including the tag with:
 ```powershell
 gi * -Stream "Zone.Identifier" -ErrorAction SilentlyContinue
 ```
 
-> https://www.cyberengage.org/post/unveiling-file-origins-the-role-of-alternate-data-streams-ads-zone-identifier-in-forensic-inve  
-> https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-fscc/6e3f7352-d11c-4d76-8c39-2516a9df36e8?redirectedfrom=MSDN  
-> https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/ms537183(v=vs.85)?redirectedfrom=MSDN
-
-```powershell
-gc -Path "C:\Path\Script.ps1" -Stream Zone.Identifier
-```
+![](https://github.com/nohuto/win-config/blob/main/security/images/downblocking.png?raw=true)
 
 ## ZoneID Data
 
@@ -58,5 +52,3 @@ dir C:\Path\*Files* | Unblock-File -> Multiple files
   ]
 },
 ```
-
-![](https://github.com/nohuto/win-config/blob/main/security/images/downblocking.png?raw=true)

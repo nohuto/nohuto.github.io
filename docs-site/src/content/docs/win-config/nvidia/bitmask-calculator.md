@@ -18,17 +18,11 @@ It adds all values to the [`Display`](https://learn.microsoft.com/en-us/windows-
 \Registry\Machine\SYSTEM\ControlSet001\Services\nvlddmkm\Global\NVTweak : RmProfilingAdminOnly
 ```
 
-> The calculator uses an converted `.json` version of the official NVIDIA resource manager definitions. I've built the converter myself, and it should be `100%` accurate. However, if you notice any obvious errors, please report them.
+The calculator uses an converted `.json` version of the official NVIDIA resource manager definitions. I've built the converter myself, and it should be `100%` accurate. However, if you notice any obvious errors, please report them.
 
-Preview:
+> [Preview](https://github.com/user-attachments/assets/91b241ef-5e8e-4859-8957-d3b54dc52b0e)
 
-https://github.com/user-attachments/assets/91b241ef-5e8e-4859-8957-d3b54dc52b0e
-
-The tool currently has a selection of `967` values ([`nvvalues.txt`](https://github.com/nohuto/bitmask-calc/blob/main/nvvalues.txt)). It works with my own `.json` converted bitfield definitions. This doesn't mean that all of them are configurable or used by your system. List of values, which got read on my system:
-> [NVIDIA Display Class GUID Record](https://github.com/nohuto/wpr-reg-records/blob/main/records/NVIDIA-DispGUID.txt)
-
-The lower right panel shows the `.json` code of the selected value, I used the `Min Dark` theme as template for colors:
-> [min-dark.json | miguelsolorio](https://github.com/miguelsolorio/min-theme/blob/master/themes/min-dark.json)
+The tool currently has a selection of `967` values ([`nvvalues.txt`](https://github.com/nohuto/bitmask-calc/blob/main/nvvalues.txt)). It works with my own `.json` converted bitfield definitions. This doesn't mean that all of them are configurable or used by your system. See [list of values](https://github.com/nohuto/wpr-reg-records/blob/main/records/NVIDIA-DispGUID.txt, which got read on my system while boot.
 
 ## GUI Buttons
 

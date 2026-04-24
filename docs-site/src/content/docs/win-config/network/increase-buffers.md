@@ -3,19 +3,16 @@ title: 'Increase Buffers'
 description: 'Network option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 16
+  order: 15
 ---
 
-The maximum data differs for users, e.g. if applying `4096` it may get rejected, see `inf` blocks below.
+The maximum data differs for users, e.g. if applying `4096` it may get rejected, see `inf` blocks below (this option won't try to apply the maximum size, read descriptions below).
 
-Transmit Buffers:  
+[Transmit Buffers](https://edc.intel.com/content/www/us/en/design/products/ethernet/adapters-and-devices-user-guide/transmit-buffers/):  
 > Defines the number of Transmit Descriptors. Transmit Descriptors are data segments that enable the adapter to track transmit packets in the system memory. Depending on the size of the packet, each transmit packet requires one or more Transmit Descriptors. You might choose to increase the number of Transmit Descriptors if you notice a problem with transmit performance. Increasing the number of Transmit Descriptors can enhance transmit performance. But, Transmit Descriptors consume system memory. If transmit performance is not an issue, use the default setting.
 
-Receive Buffers:  
+[Receive Buffers](https://edc.intel.com/content/www/us/en/design/products/ethernet/adapters-and-devices-user-guide/29.3.1/receive-buffers/):  
 > Sets the number of buffers used by the driver when copying data to the protocol memory. Increasing this value can enhance the receive performance, but also consumes system memory. Receive Descriptors are data segments that enable the adapter to allocate received packets to memory. Each received packet requires one Receive Descriptor, and each descriptor uses 2 KB of memory.
-
-> https://edc.intel.com/content/www/us/en/design/products/ethernet/adapters-and-devices-user-guide/29.3.1/receive-buffers/  
-> https://edc.intel.com/content/www/us/en/design/products/ethernet/adapters-and-devices-user-guide/transmit-buffers/
 
 ## Setup Information
 

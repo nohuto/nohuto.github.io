@@ -112,14 +112,6 @@ Since the tool includes a seperate `Policies` section and most of the Defender s
 | `EnabledV9` | Controls whether legacy Microsoft Edge SmartScreen is enforced, including phishing and malware checks against sites that are not on the allow list. |
 | `SmartScreenEnabled` | Controls whether current Microsoft Edge SmartScreen is turned on or off in the browser. |
 
-> https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-defender  
-> https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-webthreatdefense  
-> https://learn.microsoft.com/en-us/defender-endpoint/configure-real-time-protection-microsoft-defender-antivirus  
-> https://learn.microsoft.com/en-us/defender-endpoint/configure-protection-features-microsoft-defender-antivirus  
-> https://learn.microsoft.com/en-us/defender-endpoint/configure-block-at-first-sight-microsoft-defender-antivirus  
-> https://learn.microsoft.com/en-us/defender-endpoint/specify-cloud-protection-level-microsoft-defender-antivirus  
-> https://learn.microsoft.com/en-us/defender-endpoint/enable-controlled-folders  
-> https://learn.microsoft.com/en-us/defender-endpoint/troubleshoot-problems-with-tamper-protection  
 > [security/assets | Windows-Defender.txt](https://github.com/nohuto/win-config/blob/main/security/assets/Windows-Defender.txt)
 
 ## Remove Defender from Image

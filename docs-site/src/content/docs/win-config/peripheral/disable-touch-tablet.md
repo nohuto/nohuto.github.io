@@ -13,15 +13,14 @@ Get-PnpDevice -PresentOnly:$false | ? FriendlyName -eq 'HID-compliant touch scre
 
 "Tablet mode makes Windows more touch friendly and is helpful on touch capable devices."
 
-> https://support.microsoft.com/en-us/windows/turn-tablet-mode-on-or-off-in-windows-add3fbce-5cb5-bf76-0f9c-8d7b30041f30  
-> https://github.com/nohuto/regkit/blob/main/records/Wisp.txt  
-> [peripheral/assets | touch-IsTouchDisabled.c](https://github.com/nohuto/win-config/blob/main/peripheral/assets/touch-IsTouchDisabled.c)
-
----
+## Miscellaneous Values
 
 Everything listed below is based on personal research. Mistakes may exist, some parts are speculations. See links below for reference.
 
 ```c
+"HKLM\\SOFTWARE\\Policies\\Microsoft\\TabletPC";
+  "TurnOffTouchInput" // REG_DWORD
+
 "HKCU\\Software\\Microsoft\\Wisp\\Touch";
     "PanningDisabled" = 0;
     "Inertia" = 1;
@@ -110,7 +109,8 @@ Everything listed below is based on personal research. Mistakes may exist, some 
 ```
 
 > [peripheral/assets | touch-twinui.c](https://github.com/nohuto/win-config/blob/main/peripheral/assets/touch-twinui.c)  
-> [peripheral/assets | touch-InitializeInputSettingsGlobals.c](https://github.com/nohuto/win-config/blob/main/peripheral/assets/touch-InitializeInputSettingsGlobals.c)
+> [peripheral/assets | touch-InitializeInputSettingsGlobals.c](https://github.com/nohuto/win-config/blob/main/peripheral/assets/touch-InitializeInputSettingsGlobals.c)  
+> [peripheral/assets | touch-IsTouchDisabled.c](https://github.com/nohuto/win-config/blob/main/peripheral/assets/touch-IsTouchDisabled.c)
 
 ```
 TabletModeActivated

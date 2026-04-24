@@ -3,7 +3,7 @@ title: 'LLSE'
 description: 'Network option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 23
+  order: 22
 ---
 
 This setting is used to enable/disable the logging of link state changes. If enabled, a link-up change event or a link-down change event generates a message that is displayed in the system event logger. This message contains the link's speed and duplex. Administrators view the event message from the system event log.

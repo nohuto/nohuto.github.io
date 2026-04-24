@@ -30,6 +30,3 @@ Click on `View` > `Devices by connection`.
     - Disable all `PCI-to-PCI Bridge` devices, which are unused (`PCI Express Downstream Switch Port`)
 
 ![](https://github.com/nohuto/win-config/blob/main/peripheral/images/devman.png?raw=true)
-
-> https://learn.microsoft.com/en-us/powershell/module/pnpdevice/get-pnpdevice?view=windowsserver2025-ps  
-> https://learn.microsoft.com/en-us/windows-hardware/drivers/devtest/pnputil-command-syntax

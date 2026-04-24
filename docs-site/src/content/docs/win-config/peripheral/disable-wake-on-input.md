@@ -10,17 +10,15 @@ sidebar:
 powercfg /devicequery wake_programmable
 powercfg /devicequery wake_armed
 ```
-`powercfg /devicequery wake_programmable` -> devices that are user-configurable to wake the system from a sleep state
-`powercfg /devicequery wake_armed` -> currently configured to wake the system from any sleep state
+[`powercfg /devicequery wake_programmable`](https://learn.microsoft.com/en-us/windows-hardware/design/device-experiences/powercfg-command-line-options#availablesleepstates-or-a) -> devices that are user-configurable to wake the system from a sleep state
+[`powercfg /devicequery wake_armed`](https://learn.microsoft.com/en-us/windows-hardware/design/device-experiences/powercfg-command-line-options#availablesleepstates-or-a) -> currently configured to wake the system from any sleep state
 
 ```bat
 powercfg /devicedisablewake device
 ```
 Disables the device (replace '*Device*' with the device name) from waking the system from any sleep state. 
 
-> https://learn.microsoft.com/en-us/windows-hardware/design/device-experiences/powercfg-command-line-options#availablesleepstates-or-a
-
-`WakeOnInputDeviceTypes` probably handles wake on input behavior for all input devices - each bit represents a input device type? Since `\SYSTEM\INPUT` only queries two values I'll add the second on in here.
+[`WakeOnInputDeviceTypes`](https://github.com/nohuto/regkit/blob/main/records/Input.txt) probably handles wake on input behavior for all input devices - each bit represents a input device type? Since `\SYSTEM\INPUT` only queries two values I'll add the second on in here.
 ```
 \Registry\Machine\SYSTEM\INPUT : UnDimOnInputDeviceTypes
 \Registry\Machine\SYSTEM\INPUT : WakeOnInputDeviceTypes
@@ -32,12 +30,10 @@ Default values:
 WakeOnInputDeviceTypes = 46
 UnDimOnInputDeviceTypes = -1  // 0xFFFFFFFF
 ```
-> https://github.com/nohuto/regkit/blob/main/records/Input.txt  
-> https://github.com/nohuto/regkit/blob/main/records/Enum-USB.txt  
+
 > [peripheral/assets | wakedev-WakeOnInputDeviceTypes.c](https://github.com/nohuto/win-config/blob/main/peripheral/assets/wakedev-WakeOnInputDeviceTypes.c)
 
----
-
+## query_flag
 
 All available flags (`powercfg /devicequery query_flag`):
 

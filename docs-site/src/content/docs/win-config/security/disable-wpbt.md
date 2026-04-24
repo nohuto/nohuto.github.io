@@ -10,6 +10,3 @@ WPBT allows hardware manufacturers to run programs during Windows startup that m
 ```
 \Registry\Machine\SYSTEM\ControlSet001\Control\Session Manager : DisableWpbtExecution
 ```
-
-> https://persistence-info.github.io/Data/wpbbin.html  
-> https://github.com/Jamesits/dropWPBT

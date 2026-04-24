@@ -30,7 +30,7 @@ See all object identifiers via `bcdedit /enum all /v` (`identifier`). Note that 
 
 ### Value/Data List
 
-Here are elements which I tracked via Procmon (taken from default store and the MS documentation), note that this doesn't show default states (see block at the buttom), instead it shows several options and their possible states:
+Here are elements which I tracked via Procmon (taken from default store and the MS documentation - [bcd-settings-and-bitlocker](https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/bcd-settings-and-bitlocker), [bcd-enumerations](https://learn.microsoft.com/en-us/previous-versions/windows/desktop/bcd/bcd-enumerations)), note that this doesn't show default states (see block at the buttom), instead it shows several options and their possible states:
 
 ```c
 "HKLM\\BCD00000000\\Objects\\{current}\\Elements";
@@ -301,13 +301,9 @@ Here are elements which I tracked via Procmon (taken from default store and the 
 `{badmemory}` - RAM defects  
 `{hypervisorsettings}` - Hypervisor settings
 
-> https://learn.microsoft.com/en-us/previous-versions/windows/desktop/bcd/bcd-enumerations  
-> https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/bcd-settings-and-bitlocker
-
 ## Pseudocode Notes
 
-Personal notes on several features, used pseudocode:
-> [system/assets | bcdedit-HalpMiscGetParameters.c](https://github.com/nohuto/win-config/blob/main/system/assets/bcdedit-HalpMiscGetParameters.c)
+Personal notes on several features in relation of [HalpMiscGetParameters](https://github.com/nohuto/win-config/blob/main/system/assets/bcdedit-HalpMiscGetParameters.c).
 
 ```c
 lkd> db HalpInterruptX2ApicPolicy l1

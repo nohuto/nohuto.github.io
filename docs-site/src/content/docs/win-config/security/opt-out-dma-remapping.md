@@ -39,8 +39,6 @@ sidebar:
 | 1 | Opt-in, indicates the device and driver are fully compatible with DMA remapping. |
 | No registry key | Let the system determine the policy. |
 
-> https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/pci/enabling-dma-remapping-for-device-drivers.md
-
 Example paths:
 ```powershell
 \Registry\Machine\SYSTEM\ControlSet001\Services\msisadrv\Parameters : DmaRemappingCompatible
@@ -54,10 +52,9 @@ Since `EnableNVMeInterface` is included in the function, I'll add it here. Defau
 ```
 \Registry\Machine\SYSTEM\ControlSet001\Enum\pci\<dev>\<id>\Device Parameters\StorPort : EnableNVMeInterface
 ```
-`DisableNativeNVMeStack`, range `0`-`1`?
+[`DisableNativeNVMeStack`](https://github.com/nohuto/regkit/blob/main/records/StorPort.txt), range `0`-`1`?
 ```c
 \Registry\Machine\SYSTEM\ControlSet001\Control\StorPort : DisableNativeNVMeStack
 
 DisableNativeNVMeStack db 0 // default
 ```
-> https://github.com/nohuto/regkit/blob/main/records/StorPort.txt

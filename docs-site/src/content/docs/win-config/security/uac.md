@@ -30,7 +30,7 @@ Windows Internals (E7-P1, UAC): "*User Account Control (UAC) is meant to enable 
 
 Read more about UAC/file virtualization/(auto-)elevation in [Windows Internals E7, P1 - P.722f. 'User Account Control and virtualization'](https://github.com/nohuto/windows-books/releases/download/7th-Edition/Windows-Internals-E7-P1.pdf).
 
-## Registry Values Details
+## [Registry Values Details](https://learn.microsoft.com/en-us/windows/security/application-security/application-control/user-account-control/settings-and-configuration?tabs=reg)
 
 Value: `FilterAdministratorToken`
 
@@ -99,6 +99,3 @@ Value: `EnableVirtualization`
 | ------------ | --------------------------------------------------------------------------------------------- |
 | `0x00000000` | Disables data redirection for interactive processes.                                          |
 | `0x00000001` | Enables file and registry redirection for legacy apps to allow writes in user-writable paths. |
-
-> https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-gpsb/12867da0-2e4e-4a4f-9dc4-84a7f354c8d9  
-> https://learn.microsoft.com/en-us/windows/security/application-security/application-control/user-account-control/settings-and-configuration?tabs=reg

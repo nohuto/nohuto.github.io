@@ -8,9 +8,7 @@ sidebar:
 
 W11 uses `Segoe UI` by default. You can change it via registry edits, the selected font will be used for desktop interfaces, explorer, some apps (`StartAllBack` will use it), but won't get applied for e.g., `SystemSettings.exe` and app fonts in general. Some fonts will cause issues - `Yu Gothic UI Light` uses `¥` instead of `\` (picture).
 
-Either select a installed font with the command shown below or install new fonts via e.g.:
-> https://www.nerdfonts.com/font-downloads
-
+Either select a installed font with the command shown below or install new fonts via e.g. [nerdfonts](https://www.nerdfonts.com/font-downloads).
 
 Applying a new font needs a restart or logout, reverting doesn't.
 ```powershell
@@ -83,8 +81,8 @@ Revert the changes:
 
 ## Notes on System Text Size
 
-Edit text sizes via `TextScaleFactor`, valid ranges are `100-225` (DWORD).
-> https://learn.microsoft.com/en-us/uwp/api/windows.ui.viewmanagement.uisettings.textscalefactor?view=winrt-26100#windows-ui-viewmanagement-uisettings-textscalefactor
+Edit text sizes via [`TextScaleFactor`](https://learn.microsoft.com/en-us/uwp/api/windows.ui.viewmanagement.uisettings.textscalefactor?view=winrt-26100#windows-ui-viewmanagement-uisettings-textscalefactor), valid ranges are `100-225` (DWORD).
+
 ```c
   v10 = 0;
   if ( (int)SHRegGetDWORD(HKEY_CURRENT_USER, L"Software\\Microsoft\\Accessibility", L"TextScaleFactor", &v10) < 0
@@ -93,6 +91,8 @@ Edit text sizes via `TextScaleFactor`, valid ranges are `100-225` (DWORD).
     v6 = 100LL; // fallback to 100 if missing or out of range (<100 / >225)
   }
 ```
+> [visibility/assets | textsize-TextScaleDialogTemplate.c](https://github.com/nohuto/win-config/blob/main/visibility/assets/textsize-TextScaleDialogTemplate.c)
+
 Applying changes via `Accessibility > Text size`:
 ```c
 // 100%
@@ -120,4 +120,3 @@ StatusFont    Type: REG_BINARY, Length: 92, Data: E5 FF FF FF 00 00 00 00 00 00 
 MessageFont    Type: REG_BINARY, Length: 92, Data: E5 FF FF FF 00 00 00 00 00 00 00 00 00 00 00 00
 IconFont    Type: REG_BINARY, Length: 92, Data: E5 FF FF FF 00 00 00 00 00 00 00 00 00 00 00 00
 ```
-> [visibility/assets | textsize-TextScaleDialogTemplate.c](https://github.com/nohuto/win-config/blob/main/visibility/assets/textsize-TextScaleDialogTemplate.c)

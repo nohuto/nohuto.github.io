@@ -6,7 +6,7 @@ sidebar:
   order: 25
 ---
 
-This security setting determines whether the local Administrator account is enabled or disabled. The following conditions prevent disabling the Administrator account, even if this security setting is disabled.
+This security setting determines whether the [local Administrator account](https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/security-policy-settings/accounts-administrator-account-status) is enabled or disabled. The following conditions prevent disabling the Administrator account, even if this security setting is disabled.
 
 - he Administrator account is currently in use
 - The Administrators group has no other members
@@ -23,5 +23,3 @@ Disabling the administrator account can become a maintenance issue under certain
 ## Vulnerability
 
 The built-in administrator account can't be locked out no matter how many failed logons it accrues, which makes it a prime target for brute-force attacks that attempt to guess passwords. Also, this account has a well-known security identifier (SID), and there are non-Microsoft tools that allow authentication by using the SID rather than the account name. Therefore, even if you rename the Administrator account, an attacker could launch a brute-force attack by using the SID to sign in. All other accounts that are members of the Administrator's group have the safeguard of locking out the account if the number of failed logons exceeds its configured maximum.
-
-> https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/security-policy-settings/accounts-administrator-account-status

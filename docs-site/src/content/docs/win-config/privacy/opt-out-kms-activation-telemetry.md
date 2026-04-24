@@ -12,11 +12,7 @@ Friendly name: `Turn off KMS Client Online AVS Validation`
 
 If you disable or don't configure this policy setting, KMS client activation data will be sent to Microsoft services when this device activates."
 
-> https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-licensing#disallowkmsclientonlineavsvalidation
-
-`Disable Auto Activation` (MAK and KMS host but not KMS client) prevents windows from whether it's actived or not.
-
-> https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn502532(v=ws.11)
+[`Disable Auto Activation`](https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn502532(v=ws.11)#registry-settings) (MAK and KMS host but not KMS client) prevents windows from whether it's actived or not.
 
 ## Windows Policies
 

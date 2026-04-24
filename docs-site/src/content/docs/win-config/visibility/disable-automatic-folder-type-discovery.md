@@ -11,6 +11,3 @@ sidebar:
 Removing the `Bags` & `BagMRU` key resets all folder settings (view, size,...), `NotSpecified` sets the template to `General Items`. The other templates would be `Documents`, `Music`, `Videos` (folder: `Properties > Customize > Optimize this folder for:`)
 
 The revert may not work correctly yet, as it only creates the `Bags`/`BagsMRU` keys.
-
-> https://www.insomniacgeek.com/posts/how-to-disable-windows-folder-discovery/  
-> https://github.com/LesFerch/WinSetView

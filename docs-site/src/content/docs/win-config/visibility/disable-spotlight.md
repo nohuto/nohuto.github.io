@@ -8,11 +8,6 @@ sidebar:
 
 Spotlight is used to provide new pictures on your lock screen.
 
-> https://learn.microsoft.com/en-us/windows/configuration/windows-spotlight/?pivots=windows-11#policy-settings  
-> https://www.dev2qa.com/how-to-show-or-hide-the-windows-spotlight-learn-about-this-picture-icon-on-windows-11-desktop/
-
----
-
 These exist by default on 25H2:
 ```json
 "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\DesktopSpotlight\\Settings": {

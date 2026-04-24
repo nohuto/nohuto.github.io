@@ -27,8 +27,4 @@ All *context menu items* are getting handled via `ContextMenu` (`HKCU\Software\7
 7zFM.exe	RegSetValue	HKCU\Software\7-Zip\Options\WriteZoneIdExtract	Type: REG_DWORD, Length: 4, Data: 1
 ```
 
-A decent replacement would be NanaZip:
-```powershell
-winget install M2Team.NanaZip
-```
-> https://github.com/M2Team/NanaZip
+A decent replacement would be [NanaZip](https://github.com/M2Team/NanaZip).

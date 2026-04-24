@@ -6,11 +6,7 @@ sidebar:
   order: 6
 ---
 
-Since system informer is a lot better than the default task manager, it is recommended to replace it.
-
-> https://systeminformer.io/
-
-Undo it by removing the first line and executing the second command (delete the `::`), or just paste the second one in cmd.
+Since [system informer](https://systeminformer.io/) is a lot better than the default task manager, it is recommended to replace it.
 
 Enable `Theme support` (dark mode) and disable `Check for updates automatically` with:
 ```powershell

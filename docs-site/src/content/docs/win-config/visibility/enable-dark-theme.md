@@ -6,9 +6,7 @@ sidebar:
   order: 6
 ---
 
-`darktheme-GetThemeFromUnattendSetup.c` for information about the comments, otherwise ignore them.
-
-> [visibility/assets | darktheme-GetThemeFromUnattendSetup.c](https://github.com/nohuto/win-config/blob/main/visibility/assets/darktheme-GetThemeFromUnattendSetup.c)
+See [`darktheme-GetThemeFromUnattendSetup.c`](https://github.com/nohuto/win-config/blob/main/visibility/assets/darktheme-GetThemeFromUnattendSetup.c) for information about the comments, otherwise ignore it.
 
 ### Light Theme
 

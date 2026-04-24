@@ -3,14 +3,14 @@ title: 'IM/ITR'
 description: 'Network option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 17
+  order: 16
 ---
 
-Some NICs expose multiple interrupt-moderation levels. Use interrupt moderation for CPU-bound workloads and weigh host-CPU savings against added latency. For the lowest possible latency, disable Interrupt Moderation, accepting higher CPU use as a tradeoff. At higher link speeds more interrupts drive up CPU and hurt performance, increasing the ITR lowers the interrupt rate and improves performance. IM batches received packets and starts a timer on first arrival, interrupting when the buffer fills or the timer expires. Many NICs offer more than on/off, with low/medium/high rates that map to shorter or longer timers to favor latency or reduce interrupts.
+"*To control interrupt moderation, some network adapters expose different interrupt moderation levels, different buffer coalescing parameters (sometimes separately for send and receive buffers), or both.*
 
-> https://edc.intel.com/content/www/us/en/design/products/ethernet/adapters-and-devices-user-guide/interrupt-moderation-rate/  
-> https://learn.microsoft.com/en-us/windows-server/networking/technologies/network-subsystem/net-sub-performance-tuning-nics?tabs=powershell#interrupt-moderation  
-> https://enterprise-support.nvidia.com/s/article/understanding-interrupt-moderation
+*You should consider interrupt moderation for CPU-bound workloads. When using interrupt moderation, consider the trade-off between the host CPU savings and latency versus the increased host CPU savings because of more interrupts and less latency. If the network adapter doesn't perform interrupt moderation, but it does expose buffer coalescing, you can improve performance by increasing the number of coalesced buffers to allow more buffers per send or receive.*" [[*]](https://learn.microsoft.com/en-us/windows-server/networking/technologies/network-subsystem/net-sub-performance-tuning-nics?tabs=powershell#interrupt-moderation)
+
+Many NICs offer more than on/off, with low/medium/high rates that map to shorter or longer timers to favor latency or reduce interrupts.
 
 ### Data Range
 

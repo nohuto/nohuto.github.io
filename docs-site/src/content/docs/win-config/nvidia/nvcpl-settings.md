@@ -37,10 +37,9 @@ The following includes details of how the panel sets the changes and more, a lot
 
 More information - [discord notes](https://discord.com/channels/836870260715028511/1375059420970487838/1412446705869394071)  
 > [NVIDIA Profile Inspector](https://github.com/Orbmu2k/nvidiaProfileInspector)  
-> [NVIDIA Profile Inspector](https://github.com/Ixeoz/nvidiaProfileInspector-UNLOCKED)  
-> [Profile ReBar OFF](https://github.com/nohuto/Files/releases/download/Fortnite/NV-ROFF.nip)  
-> [Profile ReBar ON](https://github.com/nohuto/Files/releases/download/Fortnite/NV-RON.nip)  
-> [`d3dreg` Output](https://github.com/nohuto/win-config/blob/main/nvidia/assets/d3doutput.txt) - [List](https://github.com/nohuto/win-config/blob/main/nvidia/assets/d3dlist.cpp))
+> [Noverse-Minimal](https://raw.githubusercontent.com/nohuto/win-config/refs/heads/main/nvidia/assets/NV-Minimal.nip)  
+> [Noverse-Compatible](https://raw.githubusercontent.com/nohuto/win-config/refs/heads/main/nvidia/assets/NV-Compatible.nip)  
+> [`d3dreg` Output](https://github.com/nohuto/win-config/blob/main/nvidia/assets/d3doutput.txt) - [List](https://github.com/nohuto/win-config/blob/main/nvidia/assets/d3dlist.cpp)
 
 ## 3D Settings > Configure Surround, PhysX
 
@@ -83,7 +82,7 @@ HKCU\Software\NVIDIA Corporation\Global\NVTweak\Devices\1364265386-0\Color
 `3538949`, `3538950`, `3538951` handle the contrast, same value range as the brightness. 
 `3538952`, `3538953`, `3538954` handles the gamma value (`30-180 Dec`, `100 Dec = 1.00`). 
 `3538970` `1` = `Override to reference mode - Off`, `2` = `Override to reference mode - On`
-`NvCplGammaSet` is also located in the key, but seems to be at `1` all of the time (`DesktopColor.cpp`). If set to non zero, it uses the saved parameters (values from registry), if its `0` it'll use the default values?
+[`NvCplGammaSet`](https://github.com/pbatard/nvBrightness/blob/8f4a183532f1048375608fc70ad03c38652fc140/src/nvDisplay.cpp#L293) is also located in the key, but seems to be at `1` all of the time (`DesktopColor.cpp`). If set to non zero, it uses the saved parameters (values from registry), if its `0` it'll use the default values?
 
 ```powershell
 \Registry\Machine\SYSTEM\ControlSet001\Services\nvlddmkm\State\DisplayDatabase\MONITOR : SaturationRegistryKey
@@ -112,10 +111,8 @@ sin(0) = 0  = 0x00000000 hex
 = last 2 bytes
 ```
 
-> https://github.com/pbatard/nvBrightness/blob/8f4a183532f1048375608fc70ad03c38652fc140/src/nvDisplay.cpp#L293  
-> https://github.com/nohuto/win-config/blob/main/nvidia/assets/color-displayDB.cpp  
-> https://github.com/nohuto/win-config/blob/main/nvidia/assets/color-DesktopColors.cpp  
-> https://github.com/nohuto/regkit/blob/main/records/nvlddmkm.txt
+> [nvidia/assets | color-displayDB.cpp](https://github.com/nohuto/win-config/blob/main/nvidia/assets/color-displayDB.cpp)  
+> [nvidia/assets | color-DesktopColors.cpp](https://github.com/nohuto/win-config/blob/main/nvidia/assets/color-DesktopColors.cpp)
 
 ```powershell
 \Registry\Machine\SYSTEM\ControlSet001\Services\nvlddmkm\State\DisplayDatabase\ADAPTER_10DE_2482_00000007_00000000 : StereoPreferredTargetIdRegistryKey
@@ -209,7 +206,8 @@ You've to edit the `Rotation` value to change the orientation, `DefaultSettings.
 
 ## Developer > Manage GPU Performance Counters
 
-"GPU performance counters are used by NVIDIA GPU profiling tools such as NVIDIA Nsight. These tools enable developers debug, profile and develop software for NVIDIA GPUs."
+"*GPU performance counters are used by NVIDIA GPU profiling tools such as NVIDIA Nsight. These tools enable developers debug, profile and develop software for NVIDIA GPUs.*" [[*]](https://www.nvidia.com/content/Control-Panel-Help/vLatest/en-us/index.htm#t=mergedProjects%2FDeveloper%2FManage_Performance_Counters_-_Reference.htm&rhsearch=counters)
+
 ```json
 {
 "Name":  "RmProfilingAdminOnly",
@@ -231,11 +229,8 @@ Changing it via NVCPL:
 NVDisplay.Container.exe    RegSetValue    HKLM\System\CurrentControlSet\Services\nvlddmkm\Global\NVTweak\RmProfilingAdminOnly    Type: REG_DWORD, Length: 4, Data: 1
 NVDisplay.Container.exe    RegSetValue    HKLM\System\CurrentControlSet\Control\Class\{4d36e968-e325-11ce-bfc1-08002be10318}\0000\RmProfilingAdminOnly    Type: REG_DWORD, Length: 4, Data: 1
 ```
-`Restrict access to the GPU performance counters to admin users only` = `1`
+`Restrict access to the GPU performance counters to admin users only` = `1`  
 `Allow access to the GPU performance counters to all users` = `0`
-
-> https://www.nvidia.com/content/Control-Panel-Help/vLatest/en-us/index.htm#t=mergedProjects%2FDeveloper%2FManage_Performance_Counters_-_Reference.htm&rhsearch=counters  
-> https://github.com/nohuto/bitmask-calc
 
 ![](https://github.com/nohuto/win-config/blob/main/nvidia/images/nvcpl5.png?raw=true)  
 

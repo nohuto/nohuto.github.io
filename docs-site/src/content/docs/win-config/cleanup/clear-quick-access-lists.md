@@ -13,5 +13,3 @@ It clears both Quick Access Jump List folders:
 %APPDATA%\Microsoft\Windows\Recent\AutomaticDestinations\*
 %APPDATA%\Microsoft\Windows\Recent\CustomDestinations\*
 ```
-
-> https://support.microsoft.com/en-us/windows/file-explorer-in-windows-ef370130-1cca-9dc5-e0df-2f7416fe1cb1

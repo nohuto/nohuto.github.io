@@ -8,8 +8,6 @@ sidebar:
 
 `dxgkrnl.sys` is Windows DirectX/WDDM graphics kernel driver that mediates between apps and the GPU to schedule work, manage graphics memory, present frames, and handle TDR hang recovery.
 
-> https://github.com/nohuto/regkit/blob/main/records/Graphics-Drivers.txt
-
 Many applied values are defaults, some not. See documentation below for details. The applied data is sometimes pure speculation.
 
 ## Registry Values Details
@@ -505,4 +503,40 @@ Everything listed below is based on personal research. Mistakes may exist, but I
     "PrimSurfSize.cx" = ?; // REG_DWORD
     "PrimSurfSize.cy" = ?; // REG_DWORD
     "Stride" = ?; // REG_DWORD
+```
+
+## RegistryMachin_* Keys
+
+These are from `dxgkrnl.sys`. Looking at xrefs of these names is sometimes a start point when trying to find values within a binary or to see what keys are somewhere used, therefore I'm adding it (note that `aRegistryMachin_*` are IDA generated names so you won't find them in strings, nor will they be the exact same for you unless you disassemble the same binary build version).
+
+```c
+// dxgkrnl.sys
+aRegistryMachin = "\\Registry\\Machine\\SOFTWARE\\Microsoft\\Windows\\DWM"
+aRegistryMachin_0 = "\\Registry\\Machine\\Software\\Microsoft\\Shell\\Docking"
+aRegistryMachin_1 = "\\Registry\\Machine\\System\\Platform\\DeviceTargetingInfo"
+aRegistryMachin_2 = "\\Registry\\Machine\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Terminal Services"
+aRegistryMachin_3 = "\\Registry\\Machine\\"
+aRegistryMachin_4 = "\\Registry\\Machine\\Software\\Microsoft\\Windows NT\\CurrentVersion\\MultiScreen"
+aRegistryMachin_5 = "\\Registry\\Machine\\System\\CurrentControlSet\\Control\\GraphicsDrivers\\BlockList\\Runtime"
+aRegistryMachin_6 = "\\Registry\\Machine\\System\\CurrentControlSet\\Control\\GraphicsDrivers\\BlockList\\Kernel"
+aRegistryMachin_7 = "\\Registry\\Machine\\System\\CurrentControlSet\\Control\\Class"
+aRegistryMachin_8 = "\\Registry\\Machine\\Software\\Microsoft\\Windows\\CurrentVersion\\Control Panel\\Theme"
+aRegistryMachin_9 = "\\Registry\\Machine\\System\\CurrentControlSet\\Control\\GraphicsDrivers"
+aRegistryMachin_10 = "\\REGISTRY\\MACHINE\\OSDATA\\Software\\Microsoft\\Durango\\LiveSettings\\HevcOverride"
+aRegistryMachin_11 = "\\Registry\\Machine\\System\\CurrentControlSet\\Control\\GraphicsDrivers\\Connectivity\\"
+aRegistryMachin_12 = "\\Registry\\Machine\\System\\CurrentControlSet\\Control\\GraphicsDrivers\\Configuration\\"
+aRegistryMachin_13 = "\\REGISTRY\\MACHINE\\System\\ControlSet001\\Control\\Terminal Server\\WinStations"
+aRegistryMachin_14 = "\\Registry\\Machine\\Software\\Microsoft\\DirectX"
+aRegistryMachin_15 = "\\Registry\\Machine\\System\\CurrentControlSet\\Control\\GraphicsDrivers\\BreakOnBadEDID"
+aRegistryMachin_16 = "\\Registry\\Machine\\System\\CurrentControlSet\\Control\\MiniNT"
+aRegistryMachin_17 = "\\Registry\\Machine\\Software\\Microsoft\\PolicyManager\\current\\Experience"
+aRegistryMachin_18 = "\\Registry\\Machine\\System\\CurrentControlSet\\Control\\Video\\"
+aRegistryMachin_19 = "\\Registry\\Machine\\System\\CurrentControlSet\\Control\\GraphicsDrivers\\MonitorDataStore"
+aRegistryMachin_20 = "\\Registry\\Machine\\System\\CurrentControlSet\\Control\\GraphicsDrivers\\AdditionalModeLists\\"
+aRegistryMachin_21 = "\\Registry\\Machine\\Software\\Microsoft\\Windows\\Dwm"
+aRegistryMachin_22 = "\\Registry\\Machine\\System\\CurrentControlSet\\Control\\GraphicsDrivers\\FeatureSetUsage"
+aRegistryMachin_23 = "\\Registry\\Machine\\System\\CurrentControlSet\\Control\\GraphicsDrivers\\InternalMonEdid"
+aRegistryMachin_24 = "\\Registry\\Machine\\Software\\Classes\\Local Settings\\Software\\Microsoft\\Windows\\CurrentVersion\\AppModel\\PackageRepository\\Packages"
+aRegistryMachin_25 = "\\Registry\\Machine\\System"
+aRegistryMachin_26 = "\\Registry\\Machine\\SYSTEM\\CurrentControlSet\\Control\\Terminal Server\\WinStations"
 ```

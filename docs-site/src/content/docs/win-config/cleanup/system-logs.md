@@ -50,5 +50,3 @@ Paths removed:
 "%WINDIR%\\System32\\wbem\\Logs\\*.lo_",
 "%WINDIR%\\System32\\wbem\\Logs\\*.log"
 ```
-
-> https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/schtasks-run#remarks

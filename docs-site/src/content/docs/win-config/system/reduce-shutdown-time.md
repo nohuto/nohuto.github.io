@@ -20,5 +20,3 @@ Forces hung apps and services to terminate faster.
 `WaitToKillAppTimeout` seems to not be used anymore (would have a default of `20000` (`20` sec))
 
 More timeout related values located in `HKCU\Control Panel\Desktop`: `CriticalAppShutdownCleanupTimeout`, `CriticalAppShutdownTimeout`, `QuickResolverTimeout`, `ActiveWndTrkTimeout`, `CaretTimeout`, `ForegroundLockTimeout`, `LowLevelHooksTimeout`. I may add information about some of them soon.
-
-> https://github.com/nohuto/regkit/blob/main/records/ControlPanel-Desktop.txt

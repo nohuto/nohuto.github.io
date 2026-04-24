@@ -10,7 +10,7 @@ Default is configured to LAN. The Group Download mode combined with Group ID, en
 
 The option applies `0` = disables peer-to-peer (P2P) caching but still allows Delivery Optimization to download content over HTTP from the download's original source or a Microsoft Connected Cache server.
 
-### DODownloadMode Data
+### [DODownloadMode Data](https://learn.microsoft.com/en-us/windows/deployment/do/waas-delivery-optimization-reference#download-mode)
 
 | Download mode option | Data  | Functionality when configured |
 | ---- | :----: | ---- |
@@ -21,10 +21,6 @@ The option applies `0` = disables peer-to-peer (P2P) caching but still allows De
 | Simple | `99` | Simple mode disables the use of Delivery Optimization cloud services completely (for offline environments). Delivery Optimization switches to this mode automatically when the Delivery Optimization cloud services are unavailable, unreachable, or when the content file size is less than 50 MB, as the default. In this mode, Delivery Optimization provides a reliable download experience over HTTP from the download's original source or a Microsoft Connected Cache server, with no peer-to-peer caching. |
 | Bypass | `100` | Starting in Windows 11, this option is deprecated. Don't configure Download mode to '100' (Bypass), which can cause some content to fail to download. If you want to disable peer-to-peer functionality, configure DownloadMode to (0). If your device doesn't have internet access, configure Download Mode to (99). When you configure Bypass (100), the download bypasses Delivery Optimization and uses BITS instead. You don't need to configure this option if you're using Configuration Manager. |
 
-> https://learn.microsoft.com/en-us/windows/deployment/do/waas-delivery-optimization-reference#download-mode
-
-### Set-DODownloadMode
+### [Set-DODownloadMode](https://learn.microsoft.com/en-us/powershell/module/deliveryoptimization/set-dodownloadmode?view=windowsserver2025-ps)
 
 Microsoft has a cmdlet for it, but seems like they didn't work much on it yet.
-
-> https://learn.microsoft.com/en-us/powershell/module/deliveryoptimization/set-dodownloadmode?view=windowsserver2025-ps

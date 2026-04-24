@@ -6,11 +6,9 @@ sidebar:
   order: 16
 ---
 
-> https://github.com/nohuto/gpu-oc-uv
-
 Overclocking means increasing the clock speed, which increases temperatures. Undervolting limits the voltage for the GPU, resulting in lower voltage, wattage, and temperature.
 
-## ToC
+## [ToC](https://github.com/nohuto/gpu-oc-uv)
 
 - [Preconfigurations](https://github.com/nohuto/gpu-oc-uv#preconfigurations)
   - [MSI Afterburner](https://github.com/nohuto/gpu-oc-uv#msi-afterburner)
@@ -50,8 +48,6 @@ schtasks /create /sc ONSTART /tn "MSIAfterburnerProfile" /tr "powershell.exe -No
 | /tr `<Taskrun>` | Specifies the program or command that the task runs. Type the fully qualified path and file name of an executable file, script file, or batch file. The path name must not exceed 262 characters. If you don't add the path, **schtasks** assumes that the file is in the `<systemroot>\System32` directory. |
 | /rl `<level>` | Specifies the Run Level for the job. Acceptable values are **LIMITED** (scheduled tasks will be ran with the least level of privileges, such as Standard User accounts) and **HIGHEST** (scheduled tasks will be ran with the highest level of privileges, such as Superuser accounts). The default value is **Limited**. |
 | /delay `<delaytime>` | Specifies the wait time to delay running the task after it's triggered in mmmm:ss format. |
-
-> https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/schtasks-create
 
 Set the `Power Limit` and `Temp. Limit` options to the maximum value and change the priority to power limit. Also, disable the automatic start option for now to prevent a loop if something goes wrong.
 

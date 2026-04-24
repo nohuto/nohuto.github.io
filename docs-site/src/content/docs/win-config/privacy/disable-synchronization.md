@@ -6,11 +6,7 @@ sidebar:
   order: 26
 ---
 
-Disables all kind of synchronization.
-
-`DisableSyncOnPaidNetwork`: "Do not sync on metered connections"
-> https://support.microsoft.com/en-us/windows/windows-backup-settings-catalog-deebcba2-5bc0-4e63-279a-329926955708#id0ebd=windows_11
-> https://gpsearch.azurewebsites.net/#7999
+Disables all kind of synchronization, see policies.
 
 ## Windows Policies
 

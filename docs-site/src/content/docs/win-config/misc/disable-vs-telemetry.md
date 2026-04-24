@@ -36,7 +36,7 @@ for %%p in (
  "%TEMP%\VSTelem.Out"
 ) do rd /s /q "%%~p"
 ```
-Remove VS licenses (could cause the need of a reactivation):
+Remove [VS licenses](https://github.com/jedipi/Visual-Studio-Key-Finder/blob/main/src/VsKeyFinder/Data/ProductData.cs) (could cause the need of a reactivation):
 ```bat
 for %%g in (
  "77550D6B-6352-4E77-9DA3-537419DF564B"
@@ -47,7 +47,6 @@ for %%g in (
  "1299B4B9-DFCC-476D-98F0-F65A2B46C96D"
 ) do reg delete "HKLM\SOFTWARE\Classes\Licenses\%%~g" /f
 ```
-> https://github.com/jedipi/Visual-Studio-Key-Finder/blob/main/src/VsKeyFinder/Data/ProductData.cs
 
 ---
 

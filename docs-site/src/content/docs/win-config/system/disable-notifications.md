@@ -34,7 +34,7 @@ sidebar:
 
 "`WnsEndpoint` (`REG_SZ`) determines which Windows Notification Service (WNS) endpoint will be used to connect for Windows push notifications. If you disable or don't configure this setting, the push notifications will connect to the default endpoint of `client.wns.windows.com`. " Located in `HKLM\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\PushNotifications`. Block `client.wns.windows.com` via the hosts file.
 
-### Registry Research
+### Registry Values
 
 All `NOC_GLOBAL_SETTING_*` I found in `NotificationController.dll`:
 ```c

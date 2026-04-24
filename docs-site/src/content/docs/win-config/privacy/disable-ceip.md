@@ -8,9 +8,6 @@ sidebar:
 
 Voluntary program that collects usage data to help improve the quality and performance of its products.
 
-> https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-admx-icm  
-> https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-internetexplorer#disablecustomerexperienceimprovementprogramparticipation
-
 ## Windows Policies
 
 ```json
@@ -62,6 +59,24 @@ Voluntary program that collects usage data to help improve the quality and perfo
   "ValueName": "CEIP",
   "Elements": [
     { "Type": "EnabledValue", "Data": "2" },
+    { "Type": "DisabledValue", "Data": "1" }
+  ]
+},
+{
+  "File": "inetres.admx",
+  "CategoryName": "InternetExplorer",
+  "PolicyName": "SQM_DisableCEIP",
+  "NameSpace": "Microsoft.Policies.InternetExplorer",
+  "Supported": "IE7_NONVISTA - At least Internet Explorer 7.0. Not supported on Windows Vista",
+  "DisplayName": "Prevent participation in the Customer Experience Improvement Program",
+  "ExplainText": "This policy setting prevents the user from participating in the Customer Experience Improvement Program (CEIP). If you enable this policy setting, the user cannot participate in the CEIP, and the Customer Feedback Options command does not appear on the Help menu. If you disable this policy setting, the user must participate in the CEIP, and the Customer Feedback Options command does not appear on the Help menu. If you do not configure this policy setting, the user can choose to participate in the CEIP.",
+  "KeyPath": [
+    "HKLM\\Software\\Policies\\Microsoft\\Internet Explorer\\SQM",
+    "HKCU\\Software\\Policies\\Microsoft\\Internet Explorer\\SQM"
+  ],
+  "ValueName": "DisableCustomerImprovementProgram",
+  "Elements": [
+    { "Type": "EnabledValue", "Data": "0" },
     { "Type": "DisabledValue", "Data": "1" }
   ]
 },

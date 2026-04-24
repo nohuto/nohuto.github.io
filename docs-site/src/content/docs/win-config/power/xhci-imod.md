@@ -29,8 +29,7 @@ sidebar:
 --delete // removes the task
 ```
 
-You can download the executeable from my repository, I packed it into one package since some may not have python installed on their system.
-> https://github.com/nohuto/win-config/blob/main/power/assets/NV-IMOD.exe
+You can download [NV-IMOD](https://github.com/nohuto/win-config/blob/main/power/assets/NV-IMOD.exe) from my repository, I packed it into one package since some may not have python installed on their system.
 
 ## xHCI Interrupt Moderation Notes
 

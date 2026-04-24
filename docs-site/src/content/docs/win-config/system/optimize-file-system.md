@@ -8,13 +8,13 @@ sidebar:
 
 Small documentation on several values the option applies, see links below for more details.
 
-### Registry Values
+### [Registry Values](https://github.com/nohuto/regkit/blob/main/records/FileSystem.txt)
 
 | Value | Description |
 | ----- | ------------ |
 | `DisableDeleteNotification` | 0 = TRIM/UNMAP enabled, 1 = disabled. Controls whether delete operations send trim/unmap notifications to the underlying storage. |
 | `DontVerifyRandomDrivers` | 0 = Driver Verifier may pick random drivers, 1 = random selection suppressed, so only explicitly chosen drivers are verified. |
-| `LongPathsEnabled` | 0 = legacy `MAX_PATH` limit, 1 = Win32 long paths enabled (paths up to ~32k characters for apps and policies that opt in). |
+| [`LongPathsEnabled`](https://learn.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=registry) | 0 = legacy `MAX_PATH` limit, 1 = Win32 long paths enabled (paths up to ~32k characters for apps and policies that opt in). |
 | `NtfsAllowExtendedCharacter8dot3Rename` | 0 = 8.3 short names restricted to basic ASCII, 1 = extended characters (including diacritics). |
 | `NtfsBugcheckOnCorrupt` | 0 = NTFS attempts self healing without forcing a bugcheck, 1 = triggers a bugcheck when corruption is detected on an NTFS volume, avoiding "silent" data loss with self healing NTFS. |
 | `NtfsDisable8dot3NameCreation` | Disables the creation of 8.3 character-length file names on FAT- and NTFS-formatted volumes.<br>0: Enables 8dot3 name creation for all volumes on the system.<br>1: Disables 8dot3 name creation for all volumes on the system.<br>2: Sets 8dot3 name creation on a per volume basis.<br>3: Disables 8dot3 name creation for all volumes except the system volume. |
@@ -35,11 +35,5 @@ Scan current 8dot3 files names: `fsutil 8dot3name scan C:\`
 Symlinksare shortcuts or references that point to a file or folder in another location, like a portal. They're not duplicates, just pointers.
 File at: `C:\Projects\Game\assets\logo.png`
 Symlink: `C:\Users\YourName\Desktop\logo.png`
-
-> https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/fsutil-behavior  
-> https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/fsutil-8dot3name  
-> https://github.com/MicrosoftDocs/windows-driver-docs/blob/5e03e46194f2a977da34fdf453f2703262370a23/windows-driver-docs-pr/ifs/offloaded-data-transfers.md?plain=1#L104  
-> https://learn.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=registry  
-> https://github.com/nohuto/regkit/blob/main/records/FileSystem.txt
 
 > [system/assets | filesystem-NtfsUpdateDynamicRegistrySettings.c](https://github.com/nohuto/win-config/blob/main/system/assets/filesystem-NtfsUpdateDynamicRegistrySettings.c)

@@ -6,13 +6,13 @@ sidebar:
   order: 2
 ---
 
-Used to be my personal `neofetch`/`fastfetch` replacement with more details. Some arguments will probably also get added like `ids`, so it doesn't display the serial numbers and miscellaneous HWIDs by default.
+Used to be my personal [`neofetch`](https://github.com/dylanaraps/neofetch)/[`fastfetch`](https://github.com/fastfetch-cli/fastfetch) replacement with more details. Some arguments will probably also get added like `ids`, so it doesn't display the serial numbers and miscellaneous HWIDs by default.
 
 ![](https://github.com/nohuto/win-config/blob/main/misc/images/nvfetch.png?raw=true)
 
 > https://github.com/nohuto/nvfetch
 
-It currently gets most of the information using the [`Get-CimInstance`](https://learn.microsoft.com/en-us/powershell/module/cimcmdlets/get-ciminstance?view=powershell-7.5) cmdlet and `nvidia-smi` for NVIDIA GPUs.
+It currently gets most of the information using the [`Get-CimInstance`](https://learn.microsoft.com/en-us/powershell/module/cimcmdlets/get-ciminstance?view=powershell-7.5) cmdlet and [`nvidia-smi`](https://docs.nvidia.com/deploy/nvidia-smi/index.html) for NVIDIA GPUs.
 ```powershell
 nvidia-smi -q
 ```
@@ -47,8 +47,3 @@ nvfetch yellow
 nvfetch red
 ```
 Valid colors: `Black`, `Blue`, `Cyan`, `DarkBlue`, `DarkCyan`, `DarkGray`, `DarkGreen`, `DarkMagenta`, `DarkRed`, `DarkYellow`, `Gray`, `Green`, `Magenta`, `Red`, `White`, `Yellow`.
-
-> https://docs.nvidia.com/deploy/nvidia-smi/index.html  
-> https://learn.microsoft.com/en-us/powershell/module/cimcmdlets/get-ciminstance?view=powershell-7.5  
-> https://github.com/fastfetch-cli/fastfetch  
-> https://github.com/dylanaraps/neofetch

@@ -6,7 +6,7 @@ sidebar:
   order: 23
 ---
 
-[Sudo](https://github.com/microsoft/sudo) is a new way for users to run elevated commands (as an administrator) directly from an unelevated console session on Windows.
+[Sudo](https://github.com/microsoft/sudo) ([introduction](https://devblogs.microsoft.com/commandline/introducing-sudo-for-windows/) is a new way for users to run elevated commands (as an administrator) directly from an unelevated console session on Windows.
 
 Note that sudo uses administrator previledges and doesn't include `TrustedInstaller`/`SYSTEM` previledges.
 
@@ -43,6 +43,3 @@ Note that sudo uses administrator previledges and doesn't include `TrustedInstal
   ]
 }
 ```
-
-> https://learn.microsoft.com/en-us/windows/advanced-settings/sudo/  
-> https://devblogs.microsoft.com/commandline/introducing-sudo-for-windows/

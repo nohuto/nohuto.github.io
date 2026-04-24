@@ -17,7 +17,7 @@ Disable logon animations, which would remove the animation (picture), instead sh
 This policy controls whether users see the first sign-in animation when signing in for the first time, including both the initial setup user and those added later. It also determines if Microsoft account users receive the opt-in prompt for services. If enabled, Microsoft account users see the opt-in prompt and other users see the animation. If disabled, neither the animation nor the opt-in prompt appears. If not configured, the first user sees the animation during setup; later users won't see it if setup was already completed. This policy has no effect on Server editions.
 ```
 
-Second one is used by Windows (`Computer Configuration > Administrative Templates > System > Logon : Show first sign-in animation`:
+Second one is used by Windows (`Computer Configuration > Administrative Templates > System > Logon : Show first sign-in animation`), see [visibility/assets | animation-WinMain.c](https://github.com/nohuto/win-config/blob/main/visibility/assets/animation-WinMain.c) for more:
 ```c
 CMachine::RegQueryDWORD(
   v62,
@@ -36,14 +36,9 @@ CMachine::RegQueryDWORD(
 ```
 `AnimationAfterUserOOBE` & `SkipNextFirstLogonAnimation` (`CurrentVersion\Winlogon`) also exist.
 
-> https://github.com/nohuto/regkit/blob/main/records/ControlPanel-Desktop.txt  
-> [visibility/assets | animation-WinMain.c](https://github.com/nohuto/win-config/blob/main/visibility/assets/animation-WinMain.c)
-
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/animation.png?raw=true)
 
-`ForceDisableModeChangeAnimation` got added in 22621.3807/22631.3807 and is used for "When you set its value to 1 (or a non-zero number), it turns off the display mode change animation. If the value is 0 or the key does not exist, the animation is set to on."
-
-> https://blogs.windows.com/windows-insider/2024/06/13/releasing-windows-11-builds-22621-3807-and-22631-3807-to-the-release-preview-channel/
+`ForceDisableModeChangeAnimation` got added in [22621.3807/22631.3807](https://blogs.windows.com/windows-insider/2024/06/13/releasing-windows-11-builds-22621-3807-and-22631-3807-to-the-release-preview-channel/) and is used for "When you set its value to 1 (or a non-zero number), it turns off the display mode change animation. If the value is 0 or the key does not exist, the animation is set to on."
 
 ## Windows Policies
 

@@ -21,7 +21,6 @@ This policy setting specifies that power management is disabled when the machine
     "EnabledActions" = 0; // PopAggressiveStandbyActionsRegValue 
     "EnableDsNetRefresh" = 0; // PopEnableDsNetRefresh 
 ```
-> https://www.noverse.dev/docs/win-config/power/power-values/#registry-values-details
 
 ## Windows Policies
 

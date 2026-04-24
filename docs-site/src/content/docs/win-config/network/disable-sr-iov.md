@@ -3,16 +3,14 @@ title: 'SR-IOV'
 description: 'Network option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 28
+  order: 27
 ---
 
-Single Root I/O Virtualization (SR-IOV) is an extension to the PCI Express (PCIe) specification that improves network performance in virtualized environments. SR-IOV allows devices, such as network adapters, to separate access to their resources among various PCIe hardware functions, enabling near-native network performance in Hyper-V virtual machines.
-
-> https://learn.microsoft.com/en-us/windows-hardware/drivers/network/overview-of-single-root-i-o-virtualization--sr-iov-  
+"*Single Root I/O Virtualization (SR-IOV) is an extension to the PCI Express (PCIe) specification that improves network performance in virtualized environments. SR-IOV allows devices, such as network adapters, to separate access to their resources among various PCIe hardware functions, enabling near-native network performance in Hyper-V virtual machines.*" [[*]](https://learn.microsoft.com/en-us/windows-hardware/drivers/network/overview-of-single-root-i-o-virtualization--sr-iov-)
 
 It depends on your adapter/driver if SR-IOV is enabled/disabled by default:
 
-## Registry Values Details
+## [Registry Values Details](https://learn.microsoft.com/en-us/windows-hardware/drivers/network/standardized-inf-keywords-for-sr-iov)
 
 ```c
 "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Class\\{4D36E972-E325-11CE-BFC1-08002bE10318}\\00XX";
@@ -20,7 +18,6 @@ It depends on your adapter/driver if SR-IOV is enabled/disabled by default:
     "*SriovPreferred" = 0; // range 0-1
 ```
 
-> https://github.com/nohuto/regkit/blob/main/records/NIC-Intel.txt
 
 | SubkeyName            | Value       | EnumDesc |
 | --------------------  | ----------- | ---- |
@@ -28,8 +25,6 @@ It depends on your adapter/driver if SR-IOV is enabled/disabled by default:
 |                       | 1 (Default) | Enabled |
 | `*SriovPreferred`     | 0 (Default) | Report RSS/VMQ (per *VmqOrRssPreferrence), do not report SR-IOV |
 |                       | 1           | Report SR-IOV capabilities |
-
-> https://learn.microsoft.com/en-us/windows-hardware/drivers/network/standardized-inf-keywords-for-sr-iov
 
 ### Setup Information
 

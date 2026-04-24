@@ -40,8 +40,6 @@ HKLM\SOFTWARE\Microsoft\WindowsMitigation\UserPreference	Type: REG_DWORD, Length
 HKLM\SOFTWARE\Microsoft\WindowsMitigation\UserPreference	Type: REG_DWORD, Length: 4, Data: 4
 ```
 
-> https://support.microsoft.com/en-us/topic/keep-your-device-running-smoothly-with-recommended-troubleshooting-ec76fe10-4ac8-ce9d-49c6-757770fe68f1
-
 ## Windows Policies
 
 ```json

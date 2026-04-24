@@ -6,9 +6,7 @@ sidebar:
   order: 17
 ---
 
-Controls the Netlogon policy that enables or disables enhanced domain wide NTLM logs on domain controllers (includes NTLMv1 usage). Applies to domain controllers only (Windows 11 24H2+). If not configured, domain controllers default to logging these on supported builds.
-
-> https://aka.ms/ntlmlogandblock
+Controls the Netlogon policy that enables or disables [enhanced domain wide NTLM logs](https://aka.ms/ntlmlogandblock) on domain controllers (includes NTLMv1 usage). Applies to domain controllers only (Windows 11 24H2+). If not configured, domain controllers default to logging these on supported builds.
 
 ## Windows Policies
 

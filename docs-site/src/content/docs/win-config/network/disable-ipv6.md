@@ -3,7 +3,7 @@ title: 'IPv6'
 description: 'Network option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 12
+  order: 11
 ---
 
 `0xFFFFFFFF` disables all IPv6 interfaces, even ones Windows needs. The TCP/IP stack then waits for them to initialize and times out, which adds the `~5s` boot delay. The documentation below was taken from the official support articles.
@@ -24,7 +24,7 @@ Recommended by Microsoft: `0x20` (Prefer IPv4 over IPv6)
 |Re-enable IPv6 on all tunnel interfaces|Binary xxx xxx0|
 |Re-enable IPv6 on nontunnel interfaces and on IPv6 tunnel interfaces|Binary xxx0 xxx0|
 
-## How to calculate the registry value
+## [How to calculate the registry value](https://github.com/MicrosoftDocs/SupportArticles-docs/blob/main/support/windows-server/networking/configure-ipv6-in-windows.md#how-to-calculate-the-registry-value)
 
 Windows use bitmasks to check the `DisabledComponents` values and determine whether a component should be disabled.
 
@@ -53,6 +53,3 @@ For each bit, **0** means false and **1** means true. Refer to the following tab
 |Disable IP-TLS interfaces|0|0|0|0|
 |Binary|0010 0000|0001 0000|0000 0001|0001 0001|
 |Hexadecimal|0x20|0x10|0x01|0x11|
-
-> https://github.com/MicrosoftDocs/SupportArticles-docs/blob/main/support/windows-server/networking/configure-ipv6-in-windows.md  
-> https://support.microsoft.com/en-us/topic/startup-delay-occurs-after-you-disable-ipv6-in-windows-da7e0f60-27b0-c27e-7709-7ee9abfc6ef1

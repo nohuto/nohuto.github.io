@@ -25,8 +25,7 @@ Page identifiers are the part after `ms-settings:` in a settings URI.
 `showonly:bluetooth` only shows the `Bluetooth` page
 `hide:bluetooth;windowsdefender` hides the `Bluetooth` & `Windows Security` pages
 
-All categories of `ms-settings` URIs:
-> https://learn.microsoft.com/en-us/windows/apps/develop/launch/launch-settings-app#ms-settings-uri-scheme-reference
+See a list of all categories of `ms-settings` URIs [here](https://learn.microsoft.com/en-us/windows/apps/develop/launch/launch-settings-app#ms-settings-uri-scheme-reference).
 
 ### Example Value
 

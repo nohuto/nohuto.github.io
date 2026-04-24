@@ -32,9 +32,6 @@ HKLM\System\CurrentControlSet\Services\Dnscache\InterfaceSpecificParameters\{Net
 | DNSCrypt  | A non IETF protocol that encrypts and authenticates DNS between client and resolver, with more limited ecosystem support. |
 | DoH       | DNS sent inside HTTPS (typically HTTP/2) on port 443, providing encrypted lookups that blend in with regular HTTPS traffic. |
 
-> https://www.cloudflare.com/learning/dns/dns-over-tls/  
-> https://www.privacyguides.org/en/advanced/dns-overview/
-
 ## Providers Compared
 
 | Provider | Encryption | DNSSEC | ECS | QNAME | Logging Policy | Filtering | Jurisdiction / Owner |
@@ -45,13 +42,13 @@ HKLM\System\CurrentControlSet\Services\Dnscache\InterfaceSpecificParameters\{Net
 | [Cloudflare 1.1.1.1](https://developers.cloudflare.com/1.1.1.1/) | DoH, DoT, DoQ | Yes | Off | Unspecified | [Minimal logs](https://developers.cloudflare.com/1.1.1.1/privacy/public-dns-resolver/) (IP truncated, deleted <25h) | Malware/family (optional) | US (Cloudflare) |
 | [AdGuard DNS](https://adguard-dns.io/) | DoH, DoT, DoQ, DNSCrypt | Yes | Unspecified | Unspecified | No personal data on public DNS | Ads/malware blocking | EU (AdGuard team) |
 
-`Quad9/Mullvad > AdGuard > NextDNS > Cloudflare` in my option based on my findings. I wouldn't recommend to use DNS resolvers like 'Google Public DNS', just read trough their privacy policies and see if they support DNSSEC/QNAME minimalisation/encrypted DNS, disable ECS (EDNS Client Subnet), and don't collect identifiable query logs (that's how I created the table above, including some other facts like Mullvad supporting anycast).
+`Quad9/Mullvad > AdGuard > NextDNS > Cloudflare` in my option based on my findings. I wouldn't recommend to use DNS resolvers like 'Google Public DNS', just read through their privacy policies and see if they support DNSSEC/QNAME minimalisation/encrypted DNS, disable ECS (EDNS Client Subnet), and don't collect identifiable query logs (that's how I created the table above, including some other facts like Mullvad supporting anycast).
 
 Obviously self-host a DNS resolver for the best privacy, so queries stay local.
 
 ## DNS Explained
 
-DNS (domain name system) is the phonebook of the internet, which means that it translates domains to the corresponding IP addresses (DNS resolution).
+DNS (domain name system) is the phonebook of the internet, which means that it translates domains to the corresponding IP addresses (DNS resolution). See [dnssimple comics](https://dnsimple.com/comics) for a very simple explanation.
 
 The four types of DNS servers:  
 The **recursive resolver** sends requests to the other three nameservers (root -> TLD -> authoritative), if there's no cached data. It saves the data from the authoritative nameserver so the resolver can skip the requests and send back the IP from the domain to the client. If you're not using any specific DNS server, you're using the resolver from your ISP.
@@ -77,13 +74,6 @@ Step 9 is the HTTP request from the browser to the IP from the resolver & step 1
 Some additional info about HTTP request methods you may want to know:  
 `GET` & `POST` HTTP request methods are the most common ones. `GET` request awaits data (read a web page), `POST` request means that the user is sending data. There more [request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods), but I won't add them here. You're able to turn off `GET` requests in the DDG search engine settings, to hide search queries in the request body (queries aren't visible in browser history or logs), which is why I added this info. You can see request in the network tab (`F12`).
 
-> https://www.privacyguides.org/en/dns/  
-> https://dnsimple.com/comics
-
 ## Note for iOS users
 
-I personally use AdGuard, since it's possible to add custom blocklists/user rules (and it supports all lists of Hagezi while NextDNS only supports the main ones), while NextDNS only provides a specific set of blocklists and doesn't allow custom rules (there're also several other reasons why I wouldn't use their private DNS at the moment, e.g.: their TIF isn’t public ([and many other ones](https://github.com/nextdns/metadata))), they didn’t solve issues which got reported months ago (), they use lists that aren’t actively maintained by default (they also don't update [obselete links](https://github.com/nextdns/blocklists/tree/main/blocklists), causing 10 empty blocklists), they don’t look into their GitHub issues (e.g. nextdns/blocklists). Use 'Configuration Profile' instead of downloading the app, you can configure the profile using the links below.
-
-> https://adguard-dns.io/  
-> https://my.nextdns.io/  
-> https://github.com/yokoffing/NextDNS-Config
+I personally use [AdGuard](https://adguard-dns.io/), since it's possible to add custom blocklists/user rules (and it supports all lists of Hagezi while [NextDNS](https://my.nextdns.io/) only supports the main ones), while [NextDNS](https://my.nextdns.io/) only provides a specific set of blocklists and doesn't allow custom rules (there're also several other reasons why I wouldn't use their private DNS at the moment, e.g.: their TIF isn’t public ([and many other ones](https://github.com/nextdns/metadata))), they didn’t solve issues which got reported months ago (), they use lists that aren’t actively maintained by default (they also don't update [obselete links](https://github.com/nextdns/blocklists/tree/main/blocklists), causing 10 empty blocklists), they don’t look into their GitHub issues (e.g. nextdns/blocklists). Use 'Configuration Profile' instead of downloading the app, you can configure the profile using the links below.

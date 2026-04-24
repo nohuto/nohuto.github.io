@@ -8,8 +8,8 @@ sidebar:
 
 Prevents services running under `svchost.exe` from being split into separate processes, keeping all grouped services within the same instance. This simplifies process management but increases the risk of system instability and reduces service isolation.
 
-`Windows Internals 7th Edition, Part 2` handpicked snippets (shortened):
-If system physical memory, obtained via `GlobalMemoryStatusEx`, exceeds the SvcHostSplitThresholdInKB registry value (default is `3.5 GB` on client systems and `3.7 GB` on server systems), Svchost service splitting is enabled.
+[`Windows Internals 7th Edition, Part 2`](https://github.com/nohuto/Windows-Books/releases/download/7th-Edition/Windows-Internals-E7-P2.pdf) (page `467`f.) handpicked snippets (shortened):
+If system physical memory, obtained via [`GlobalMemoryStatusEx`](https://learn.microsoft.com/en-us/windows/win32/api/sysinfoapi/nf-sysinfoapi-globalmemorystatusex), exceeds the SvcHostSplitThresholdInKB registry value (default is `3.5 GB` on client systems and `3.7 GB` on server systems), Svchost service splitting is enabled.
 
 Service splitting is allowed only if:  
 - Splitting is globally enabled
@@ -35,13 +35,10 @@ if ( !RegistryValueWithFallbackW && Type == 4 )
 return v1;
 ```
 
-> [system/assets | servicesplitting-ScReadSCMConfiguration.c](https://github.com/nohuto/win-config/blob/main/system/assets/servicesplitting-ScReadSCMConfiguration.c)  
-> https://github.com/nohuto/Windows-Books/releases/download/7th-Edition/Windows-Internals-E7-P2.pdf (page `467`f)  
-> https://learn.microsoft.com/en-us/windows/application-management/svchost-service-refactoring  
-> https://learn.microsoft.com/en-us/windows/win32/api/sysinfoapi/nf-sysinfoapi-globalmemorystatusex
+> [system/assets | servicesplitting-ScReadSCMConfiguration.c](https://github.com/nohuto/win-config/blob/main/system/assets/servicesplitting-ScReadSCMConfiguration.c)
 
 ![](https://github.com/nohuto/win-config/blob/main/system/images/servicesplitting1.png?raw=true)
 
-## Windows Internals
+## [Windows Internals](https://github.com/nohuto/Windows-Books/releases/download/7th-Edition/Windows-Internals-E7-P2.pdf)
 
 ![](https://github.com/nohuto/win-config/blob/main/system/images/servicesplitting2.png?raw=true)

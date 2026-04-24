@@ -16,5 +16,5 @@ Paths removed:
 ```c
 %WINDIR%\System32\sru\SRUDB.dat
 ```
-Read the SRUM data:
-> https://github.com/MarkBaggett/srum-dump
+
+Convert SRUM database to an xlsx spreadsheet via [srum-dump](https://github.com/MarkBaggett/srum-dump).

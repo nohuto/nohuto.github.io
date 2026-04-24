@@ -6,8 +6,8 @@ sidebar:
   order: 5
 ---
 
-| **Setting**           | **Description**                                                                                          | **Default** | **Changed To** |
-| --------------------- | -------------------------------------------------------------------------------------------------------- | ----------- | -------------- |
+| Setting | Description | Default | Changed To |
+| --- | --- | --- | --- |
 | **Repeat Delay**      | Controls how long you need to hold down a key before it starts repeating when typing.                    | 1           | 0              |
 | **Repeat Rate**       | Adjusts how quickly a key repeats when held down after the repeat delay.                                 | 31          | 31             |
 | **Cursor Blink Rate** | Controls the speed at which the text cursor blinks on the screen. You can set it to be faster or slower. | 530         | 900            |

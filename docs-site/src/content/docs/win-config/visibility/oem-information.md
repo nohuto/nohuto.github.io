@@ -26,9 +26,7 @@ Edit registered owner/orga (visible in `winver`) via:
 }
 ```
 
-Edit miscellaneous things in `winver.exe` using (`basebrd.dll`/`basebrd.dll.mui`):
-
-> https://www.angusj.com/resourcehacker/
+Edit miscellaneous things in `winver.exe` using (`basebrd.dll`/`basebrd.dll.mui`) [resourcehacker](https://www.angusj.com/resourcehacker/).
 
 ### Example
 

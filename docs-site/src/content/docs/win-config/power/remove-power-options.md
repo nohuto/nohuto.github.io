@@ -3,7 +3,7 @@ title: 'Remove Power Options'
 description: 'Power option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 7
+  order: 8
 ---
 
 Removes the `Hibernate`, `Lock`, `Sleep` power options.

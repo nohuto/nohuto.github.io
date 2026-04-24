@@ -34,7 +34,7 @@ svchost.exe	RegSetValue	HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Ch
     "SleepStudyDeviceAccountingLevel" = 4; // PopSleepStudyDeviceAccountingLevel 
     "SleepStudyDisabled" = 0; // PopSleepStudyDisabled 
 ```
-> https://www.noverse.dev/docs/win-config/power/power-values/#registry-values-details
+
 ```
 \Registry\Machine\SYSTEM\ControlSet001\Enum\ACPI\AMDI0010\3\Device Parameters\Wdf : SleepstudyState
 \Registry\Machine\SYSTEM\ControlSet001\Enum\ACPI\AMDI0030\0\Device Parameters\Wdf : SleepstudyState
@@ -70,5 +70,3 @@ svchost.exe	RegSetValue	HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Ch
 \Registry\Machine\SYSTEM\ControlSet001\Control\Session Manager\Power : SleepStudyBufferSizeInMB
 \Registry\Machine\SYSTEM\ControlSet001\Control\Session Manager\Power : SleepStudyTraceDirectory
 ```
-
-> https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/wevtutil

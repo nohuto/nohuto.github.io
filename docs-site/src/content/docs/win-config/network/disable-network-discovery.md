@@ -6,13 +6,9 @@ sidebar:
   order: 4
 ---
 
-"LLTDIO and Responder are network protocol drivers used for Link Layer Topology Discovery and network diagnostics. LLTDIO discovers network topology and supports QoS functions, while Responder allows the device to be identified and take part in network health assessments."
+LLTDIO and Responder are network protocol drivers used for Link Layer Topology Discovery and network diagnostics. LLTDIO discovers network topology and supports QoS functions, while Responder allows the device to be identified and take part in network health assessments.
 
-"The Link Layer Discovery Protocol (LLDP) is a vendor-neutral link layer protocol used by network devices for advertising their identity, capabilities, and neighbors on a local area network based on IEEE 802 technology, principally wired Ethernet. LLDP performs functions similar to several proprietary protocols, such as CDP, FDP, NDP and LLTD."
-
-> https://en.wikipedia.org/wiki/Link_Layer_Discovery_Protocol  
-> https://gpsearch.azurewebsites.net/#1829  
-> https://gpsearch.azurewebsites.net/#1830
+The [Link Layer Discovery Protocol (LLDP)](https://en.wikipedia.org/wiki/Link_Layer_Discovery_Protocol) is a vendor-neutral link layer protocol used by network devices for advertising their identity, capabilities, and neighbors on a local area network based on IEEE 802 technology, principally wired Ethernet. LLDP performs functions similar to several proprietary protocols, such as CDP, FDP, NDP and LLTD.
 
 ## Set-NetFirewallRule & Capture
 
@@ -24,7 +20,6 @@ Get the current states with:
 ```powershell
 Get-NetFirewallRule -DisplayGroup "Network Discovery" | Select-Object Name, Enabled, Profile
 ```
-> https://learn.microsoft.com/en-us/powershell/module/netsecurity/set-netfirewallrule?view=windowsserver2025-ps
 
 ```powershell
 svchost.exe	RegSetValue	HKLM\SOFTWARE\Policies\Microsoft\Windows\LLTD\EnableLLTDIO	Type: REG_DWORD, Length: 4, Data: 0

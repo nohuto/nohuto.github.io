@@ -3,7 +3,7 @@ title: 'Offloads'
 description: 'Network option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 14
+  order: 13
 ---
 
 Network offload features transfer processing tasks from the CPU to the network adapter hardware, reducing system overhead and improving overall network performance. Common offload features include TCP checksum offload, Large Send Offload (LSO), and Receive Side Scaling (RSS).
@@ -39,26 +39,19 @@ Excludes (deprecated, chimney too):
 
 | Keyword | Description | Default | Minimum | Maximum |
 | --- | --- | --- | --- | --- |
-| `*IPChecksumOffloadIPv4` | Device IPv4 checksum handling (0 disabled, 1 Tx enabled, 2 Rx enabled, 3 Tx & Rx enabled) | 3 | 0 | 3 |
-| `*TCPChecksumOffloadIPv4` | TCP checksum offload for IPv4 packets (0 disabled, 1 Tx enabled, 2 Rx enabled, 3 Tx & Rx enabled) | 3 | 0 | 3 |
-| `*TCPChecksumOffloadIPv6` | TCP checksum offload for IPv6 packets (0 disabled, 1 Tx enabled, 2 Rx enabled, 3 Tx & Rx enabled) | 3 | 0 | 3 |
-| `*UDPChecksumOffloadIPv4` | UDP checksum offload for IPv4 packets (0 disabled, 1 Tx enabled, 2 Rx enabled, 3 Tx & Rx enabled) | 3 | 0 | 3 |
-| `*UDPChecksumOffloadIPv6` | UDP checksum offload for IPv6 packets (0 disabled, 1 Tx enabled, 2 Rx enabled, 3 Tx & Rx enabled) | 3 | 0 | 3 |
-| `*LsoV1IPv4` | Large Send Offload V1 for IPv4 (0 disabled, 1 enabled) | 1 | 0 | 1 |
-| `*LsoV2IPv4` | Large Send Offload V2 for IPv4 (0 disabled, 1 enabled) | 1 | 0 | 1 |
-| `*LsoV2IPv6` | Large Send Offload V2 for IPv6 (0 disabled, 1 enabled) | 1 | 0 | 1 |
-| `*IPsecOffloadV1IPv4` | IPsec offload V1 for IPv4 (0 disabled, 1 AH enabled, 2 ESP enabled, 3 AH & ESP enabled) | 3 | 0 | 3 |
-| `*IPsecOffloadV2` | IPsec offload V2 (0 disabled, 1 AH enabled, 2 ESP enabled, 3 AH & ESP enabled) | 3 | 0 | 3 |
-| `*IPsecOffloadV2IPv4` | IPsec offload V2 for IPv4 (0 disabled, 1 AH enabled, 2 ESP enabled, 3 AH & ESP enabled) | 3 | 0 | 3 |
-| `*TCPUDPChecksumOffloadIPv4` | Combined IP/TCP/UDP checksum offload for IPv4 packets (0 disabled, 1 Tx enabled, 2 Rx enabled, 3 Tx & Rx enabled) | 3 | 0 | 3 |
-| `*TCPUDPChecksumOffloadIPv6` | Combined TCP/UDP checksum offload for IPv6 packets (0 disabled, 1 Tx enabled, 2 Rx enabled, 3 Tx & Rx enabled) | 3 | 0 | 3 |
-| `*PMARPOffload` | A value that describes whether the device should be enabled to offload the Address Resolution Protocol (ARP) when the system enters a sleep state. | 1 | 0 | 1 |
-| `*PMNSOffload` | A value that describes whether the device should be enabled to offload neighbor solicitation (NS) when the system enters a sleep state. | 1 | 0 | 1 |
-| `*PMWiFiRekeyOffload` | A value that describes whether the device should be enabled to offload group temporal key (GTK) rekeying for wake-on-wireless-LAN (WOL) when the computer enters a sleep state. | 1 | 0 | 1 |
-
-> https://github.com/nohuto/regkit/blob/main/records/NIC-Intel.txt  
-> https://learn.microsoft.com/en-us/windows-server/networking/technologies/network-subsystem/net-sub-performance-top  
-> https://www.intel.com/content/www/us/en/support/articles/000005593/ethernet-products.html  
-> https://docs.nvidia.com/networking/display/winof2v320/configuring+the+driver+registry+keys#src-111583782_ConfiguringtheDriverRegistryKeys-OffloadRegistryKeys  
-> https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/network/standardized-inf-keywords-for-power-management.md  
-> https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/network/using-registry-values-to-enable-and-disable-task-offloading.md
+| [`*IPChecksumOffloadIPv4`](https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/network/using-registry-values-to-enable-and-disable-task-offloading.md#granular-keywords) | Device IPv4 checksum handling (0 disabled, 1 Tx enabled, 2 Rx enabled, 3 Tx & Rx enabled) | 3 | 0 | 3 |
+| [`*TCPChecksumOffloadIPv4`](https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/network/using-registry-values-to-enable-and-disable-task-offloading.md#granular-keywords) | TCP checksum offload for IPv4 packets (0 disabled, 1 Tx enabled, 2 Rx enabled, 3 Tx & Rx enabled) | 3 | 0 | 3 |
+| [`*TCPChecksumOffloadIPv6`](https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/network/using-registry-values-to-enable-and-disable-task-offloading.md#granular-keywords) | TCP checksum offload for IPv6 packets (0 disabled, 1 Tx enabled, 2 Rx enabled, 3 Tx & Rx enabled) | 3 | 0 | 3 |
+| [`*UDPChecksumOffloadIPv4`](https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/network/using-registry-values-to-enable-and-disable-task-offloading.md#granular-keywords) | UDP checksum offload for IPv4 packets (0 disabled, 1 Tx enabled, 2 Rx enabled, 3 Tx & Rx enabled) | 3 | 0 | 3 |
+| [`*UDPChecksumOffloadIPv6`](https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/network/using-registry-values-to-enable-and-disable-task-offloading.md#granular-keywords) | UDP checksum offload for IPv6 packets (0 disabled, 1 Tx enabled, 2 Rx enabled, 3 Tx & Rx enabled) | 3 | 0 | 3 |
+| [`*LsoV1IPv4`](https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/network/using-registry-values-to-enable-and-disable-task-offloading.md#granular-keywords) | Large Send Offload V1 for IPv4 (0 disabled, 1 enabled) | 1 | 0 | 1 |
+| [`*LsoV2IPv4`](https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/network/using-registry-values-to-enable-and-disable-task-offloading.md#granular-keywords) | Large Send Offload V2 for IPv4 (0 disabled, 1 enabled) | 1 | 0 | 1 |
+| [`*LsoV2IPv6`](https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/network/using-registry-values-to-enable-and-disable-task-offloading.md#granular-keywords) | Large Send Offload V2 for IPv6 (0 disabled, 1 enabled) | 1 | 0 | 1 |
+| [`*IPsecOffloadV1IPv4`](https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/network/using-registry-values-to-enable-and-disable-task-offloading.md#granular-keywords) | IPsec offload V1 for IPv4 (0 disabled, 1 AH enabled, 2 ESP enabled, 3 AH & ESP enabled) | 3 | 0 | 3 |
+| [`*IPsecOffloadV2`](https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/network/using-registry-values-to-enable-and-disable-task-offloading.md#granular-keywords) | IPsec offload V2 (0 disabled, 1 AH enabled, 2 ESP enabled, 3 AH & ESP enabled) | 3 | 0 | 3 |
+| [`*IPsecOffloadV2IPv4`](https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/network/using-registry-values-to-enable-and-disable-task-offloading.md#granular-keywords) | IPsec offload V2 for IPv4 (0 disabled, 1 AH enabled, 2 ESP enabled, 3 AH & ESP enabled) | 3 | 0 | 3 |
+| [`*TCPUDPChecksumOffloadIPv4`](https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/network/using-registry-values-to-enable-and-disable-task-offloading.md#grouped-keywords) | Combined IP/TCP/UDP checksum offload for IPv4 packets (0 disabled, 1 Tx enabled, 2 Rx enabled, 3 Tx & Rx enabled) | 3 | 0 | 3 |
+| [`*TCPUDPChecksumOffloadIPv6`](https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/network/using-registry-values-to-enable-and-disable-task-offloading.md#grouped-keywords) | Combined TCP/UDP checksum offload for IPv6 packets (0 disabled, 1 Tx enabled, 2 Rx enabled, 3 Tx & Rx enabled) | 3 | 0 | 3 |
+| [`*PMARPOffload`](https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/network/standardized-inf-keywords-for-power-management.md#power-management-keywords-for-netadaptercx-and-ndis) | A value that describes whether the device should be enabled to offload the Address Resolution Protocol (ARP) when the system enters a sleep state. | 1 | 0 | 1 |
+| [`*PMNSOffload`](https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/network/standardized-inf-keywords-for-power-management.md#power-management-keywords-for-netadaptercx-and-ndis) | A value that describes whether the device should be enabled to offload neighbor solicitation (NS) when the system enters a sleep state. | 1 | 0 | 1 |
+| [`*PMWiFiRekeyOffload`](PMWiFiRekeyOffload) | A value that describes whether the device should be enabled to offload group temporal key (GTK) rekeying for wake-on-wireless-LAN (WOL) when the computer enters a sleep state. | 1 | 0 | 1 |

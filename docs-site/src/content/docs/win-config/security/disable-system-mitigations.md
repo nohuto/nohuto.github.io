@@ -18,8 +18,8 @@ Disable specific mitigation:
 ```powershell
 Set-ProcessMitigation -Name process.exe -Disable Value
 ```
-
-Editing process mitigations via LGPE (`Administrative Templates\System\Mitigation Options\Process Mitigation Options`):
+ 
+## [Editing Process Mitigations via LGPE](https://learn.microsoft.com/en-us/windows/security/operating-system-security/device-management/override-mitigation-options-for-app-related-security-policies)
 
 ![](https://github.com/nohuto/win-config/blob/main/security/images/processmiti.png?raw=true)
 
@@ -31,8 +31,6 @@ Editing process mitigations via LGPE (`Administrative Templates\System\Mitigatio
 | D | 8 | PROCESS_CREATION_MITIGATION_POLICY_FORCE_RELOCATE_IMAGES_ALWAYS_ON (0x00000100) | Uses the force ASLR setting to act as though an image base collision happened at load time, forcibly rebasing images that aren't dynamic base compatible. Images without the base relocation section aren't loaded if relocations are required. |
 | E | 15 | PROCESS_CREATION_MITIGATION_POLICY_BOTTOM_UP_ASLR_ALWAYS_ON (0x00010000) | Turns on the bottom-up randomization policy, which includes stack randomization options and causes a random location to be used as the lowest user address. |
 | F | 16 | PROCESS_CREATION_MITIGATION_POLICY_BOTTOM_UP_ASLR_ALWAYS_OFF (0x00020000) | Turns off the bottom-up randomization policy, which includes stack randomization options and causes a random location to be used as the lowest user address. |
-
-> https://learn.microsoft.com/en-us/windows/security/operating-system-security/device-management/override-mitigation-options-for-app-related-security-policies
 
 ## Process Mitigation Options
 

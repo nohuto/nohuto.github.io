@@ -16,7 +16,7 @@ Example:
 3. The 17 MB saved is used for active apps
 4. When the data is needed again, it's decompressed back to 24 MB
 
-See the current memory compresstion state on your system via:
+See the current memory compression state on your system via ([cmdlet](https://learn.microsoft.com/en-us/powershell/module/mmagent/disable-mmagent?view=windowsserver2025-ps)):
 ```powershell
 Get-MMAgent
 ```
@@ -30,11 +30,8 @@ PageCombining                : True
 PSComputerName               :
 ```
 
-## Windows Internals
+## [Windows Internals](https://github.com/nohuto/Windows-Books/releases/download/7th-Edition/Windows-Internals-E7-P1.pdf)
 
 ![](https://github.com/nohuto/win-config/blob/main/system/images/memcompress1.png?raw=true)
 ![](https://github.com/nohuto/win-config/blob/main/system/images/memcompress2.png?raw=true)
 ![](https://github.com/nohuto/win-config/blob/main/system/images/memcompress3.png?raw=true)
-
-> https://github.com/nohuto/windows-books/releases/download/7th-Edition/Windows-Internals-E7-P1.pdf (P. 449)  
-> https://learn.microsoft.com/en-us/powershell/module/mmagent/disable-mmagent?view=windowsserver2025-ps

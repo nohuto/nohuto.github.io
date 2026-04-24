@@ -11,7 +11,7 @@ Disabled = `0`
 
 ---
 
-### From NVIDIA documentations:  
+### From NVIDIA Documentations
 
 `turn-dlss-indicator-off`
 ```powershell

@@ -18,9 +18,6 @@ rasphone -r "Name"
 ```
 or `WIN + I` > Network & Internet > VPN > Remove
 
-> https://learn.microsoft.com/en-us/powershell/module/vpnclient/remove-vpnconnection?view=windowsserver2025-ps  
-> https://learn.microsoft.com/en-us/powershell/module/vpnclient/?view=windowsserver2025-ps
-
 ### `Allow VPN over metered networks`
 
 ```c

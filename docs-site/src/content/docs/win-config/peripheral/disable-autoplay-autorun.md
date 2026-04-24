@@ -75,6 +75,8 @@ HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers\UserCho
 HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers\EventHandlersDefaultSelection\AutorunINFLegacyArrival\(Default)	Type: REG_SZ, Length: 30, Data: MSTakeNoAction
 ```
 
+## Windows Policies
+
 ```json
 {
   "File": "AutoPlay.admx",

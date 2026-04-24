@@ -32,10 +32,10 @@ else
 }
 ```
 
-Type: `String` (`REG_SZ`) - it uses `StrToIntW` to read the value (converts a string that represents a decimal value to an integer)
+Type: `String` (`REG_SZ`) - it uses [`StrToIntW`](https://learn.microsoft.com/en-us/windows/win32/api/shlwapi/nf-shlwapi-strtointw) to read the value (converts a string that represents a decimal value to an integer)
 Min: `0`  
 Max: `65534`?
-Fallback: Depends on `GetDoubleClickTime()` (`Control Panel > Mouse > Double-click speed`), which would change the `DoubleClickSpeed` value (has a default of `500`, which is why the default of `MenuShowDelay` is `400`)  
+Fallback: Depends on [`GetDoubleClickTime()`](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getdoubleclicktime) (`Control Panel > Mouse > Double-click speed`), which would change the `DoubleClickSpeed` value (has a default of `500`, which is why the default of `MenuShowDelay` is `400`)  
 Default: `400`
 
 ```c
@@ -73,6 +73,3 @@ return SetTimer(this[2], v2, v4, 0LL);
 ```
 
 Timers 32771/32777/32776 clamp the delay to >=2 seconds, so setting `MenuShowDelay` to `0` won't impact everything. Timers 32778/32779 do'nt use the registry at all.
-
-> https://learn.microsoft.com/en-us/windows/win32/api/shlwapi/nf-shlwapi-strtointw  
-> https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-getdoubleclicktime

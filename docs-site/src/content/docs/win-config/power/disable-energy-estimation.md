@@ -3,7 +3,7 @@ title: 'Energy Estimation'
 description: 'Power option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 9
+  order: 10
 ---
 
 Not needed, if you disable energy estimation:
@@ -22,7 +22,6 @@ Not needed, if you disable energy estimation:
                                     // If following HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\knobs\Power/Controls/EnergyEstimationEnabled, it should have a range of 0-4294967295
 ```
 
-> https://www.noverse.dev/docs/win-config/power/power-values/#registry-values-details  
 > [power/assets | energyesti-PtInitializeTelemetry.c](https://github.com/nohuto/win-config/blob/main/power/assets/energyesti-PtInitializeTelemetry.c)
 
 ![](https://github.com/nohuto/win-config/blob/main/power/images/energyesti.png?raw=true)

@@ -8,7 +8,7 @@ sidebar:
 
 ### Active Probing
 
-Active probing sends HTTP requests from the client to a predefined web probe server (by default `www.msftconnecttest.com/connecttest.txt`), using both IPv4 and IPv6 in parallel. If it gets an HTTP 200 response with the expected payload, NCSI marks the interface as having internet connectivity, if the probe fails or returns errors (for example, blocked by a proxy or DNS issues), NCSI treats connectivity as limited.
+Active probing sends HTTP requests from the client to a predefined web probe server (by default `www.msftconnecttest.com/connecttest.txt`), using both IPv4 and IPv6 in parallel. If it gets an HTTP 200 response with the expected payload, NCSI marks the interface as having internet connectivity, if the probe fails or returns errors (for example, blocked by a proxy or DNS issues), NCSI treats connectivity as limited. See [NCSI FAQs](https://learn.microsoft.com/en-us/windows-server/networking/ncsi/ncsi-frequently-asked-questions) for more information.
 
 ### Passive Probing
 
@@ -18,7 +18,7 @@ Disabling passive probing will break the network icon, causing for example spoti
 
 See links below for a detailed documentation.
 
-## Network Icon Meaning
+## [Network Icon Meaning](https://learn.microsoft.com/en-us/windows-server/networking/ncsi/ncsi-overview)
 
 |Icon|Description|
 |--|--|
@@ -28,9 +28,6 @@ See links below for a detailed documentation.
 
 `PassivePollPeriod` is set to `15` by default = Runs passive probe every 15 seconds. `MaxActiveProbes` to `0` (unlimited) = breaks connection status. If disabling active probes, but leaving passive probes enabled, enable `Enable Passive Mode`.
 
-> https://learn.microsoft.com/en-us/windows-server/networking/ncsi/ncsi-overview  
-> https://learn.microsoft.com/en-us/windows-server/networking/ncsi/ncsi-frequently-asked-questions  
-> https://github.com/nohuto/regkit/blob/main/records/NlaSvc.txt  
 > [network/assets | probing-NcsiConfigData.c](https://github.com/nohuto/win-config/blob/main/network/assets/probing-NcsiConfigData.c)
 
 ## Windows Policies

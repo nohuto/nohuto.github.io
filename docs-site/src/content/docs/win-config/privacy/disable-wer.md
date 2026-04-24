@@ -6,12 +6,13 @@ sidebar:
   order: 37
 ---
 
-WER (Windows Error Reporting) sends error logs to Microsoft, disabling it keeps error data local.
+[WER](https://learn.microsoft.com/en-us/windows/win32/wer/wer-settings) (Windows Error Reporting) sends error logs to Microsoft, disabling it keeps error data local.
 
 Windows Internals (E7-P2, WER): WER is implemented by the WerSvc service and Wer.dll/Faultrep.dll, crashed processes connect to the service over an ALPC port to generate reports and dumps. Disabling WER stops that reporting pipeline.
 
 `\Microsoft\Windows\Windows Error Reporting : QueueReporting` would run `%windir%\system32\wermgr.exe -upload`. `Error-Reporting.txt` shows a trace of `\Registry\Machine\SOFTWARE\Microsoft\WINDOWS\Windows Error Reporting`.
 
+[WER network endpoints](https://learn.microsoft.com/en-us/troubleshoot/windows-client/system-management-components/windows-error-reporting-diagnostics-enablement-guidance#configure-network-endpoints-to-be-allowed):
 ```
 0.0.0.0 watson.microsoft.com
 0.0.0.0 watson.telemetry.microsoft.com
@@ -26,9 +27,6 @@ Windows Internals (E7-P2, WER): WER is implemented by the WerSvc service and Wer
 `DisableSendRequestAdditionalSoftwareToWER`: "Prevent Windows from sending an error report when a device driver requests additional software during installation"
 `DisableSendGenericDriverNotFoundToWER`: "Do not send a Windows error report when a generic driver is installed on a device"
 
-> https://learn.microsoft.com/en-us/troubleshoot/windows-client/system-management-components/windows-error-reporting-diagnostics-enablement-guidance#configure-network-endpoints-to-be-allowed  
-> https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-errorreporting  
-> https://learn.microsoft.com/en-us/windows/win32/wer/wer-settings  
 > [privacy/assets | wer-PciGetSystemWideHackFlagsFromRegistry.c](https://github.com/nohuto/win-config/blob/main/privacy/assets/wer-PciGetSystemWideHackFlagsFromRegistry.c)
 
 ## Suboption
@@ -45,12 +43,11 @@ Default: `1` (`DbgkEnableWerUserReporting dd 1`)
 "Session Manager\Kernel","EnableWerUserReporting","0xFFFFF800CF1C335C","0x00000000","0x00000000","0x00000000"
 ```
 
-Related to PCIe advanced error reporting? Haven't found anything on this and haven't done much research myself:
+Related to [PCIe advanced error reporting](https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/wdm/ns-wdm-_pci_express_rootport_aer_capability)? Haven't found anything on this and haven't done much research myself:
 ```
 \Registry\Machine\SYSTEM\ControlSet001\Control\PnP\pci : AerMultiErrorDisabled
 ```
 Default is `0`, non zero would enable the behaviour? The value doesn't exist by default.
-> https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/wdm/ns-wdm-_pci_express_rootport_aer_capability ?
 
 ```
 \Registry\Machine\SYSTEM\ControlSet001\Control\StorPort : TelemetryErrorDataEnabled

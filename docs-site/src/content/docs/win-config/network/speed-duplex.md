@@ -3,7 +3,7 @@ title: 'Speed & Duplex'
 description: 'Network option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 22
+  order: 21
 ---
 
 Speed = rate at which data is transmitted.

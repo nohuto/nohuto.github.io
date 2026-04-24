@@ -28,8 +28,3 @@ sidebar:
 | `Disable Automatic Root Certificate Updates` | Stops automatic refresh of trusted root certificates. Some secure sites, apps, or signed content can fail until trust is updated another way. |
 | `Disable Defender Definition Updates` | Stops Defender definition updates from this update path. Malware detection ages quickly unless another definition source is provided. |
 | `Block MRT via WU` | Stops the MRT (Malicious Software Removal Tool) from being offered through Windows Update. MRT scans and related reporting are unavailable from this channel. |
-
-> https://learn.microsoft.com/en-us/windows/deployment/update/waas-configure-wufb  
-> https://learn.microsoft.com/en-us/windows/deployment/update/waas-wu-settings  
-> https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-update  
-> https://learn.microsoft.com/en-us/windows/privacy/manage-connections-from-windows-operating-system-components-to-microsoft-services

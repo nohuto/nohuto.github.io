@@ -30,10 +30,7 @@ sidebar:
 
 ## Search Indexing
 
-Search indexing builds a database of file names, properties, and contents to speed up searches, runs as `SearchIndexer.exe`, updates automatically. Disabling it slows down searches, but as shows below you should use everything anyway. Additionally you can disable content and property indexing per drive, by right clicking on the drive, then unticking the box as shown in the picture.
-
-> https://learn.microsoft.com/en-us/windows/win32/search/-search-indexing-process-overview  
-> https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-search
+[Search indexing](https://learn.microsoft.com/en-us/windows/win32/search/-search-indexing-process-overview) builds a database of file names, properties, and contents to speed up searches, runs as `SearchIndexer.exe`, updates automatically. Disabling it slows down searches, but as shows below you should use everything anyway. Additionally you can disable content and property indexing per drive, by right clicking on the drive, then unticking the box as shown in the picture.
 
 ![](https://github.com/nohuto/win-config/blob/main/system/images/searchindex.png?raw=true)
 

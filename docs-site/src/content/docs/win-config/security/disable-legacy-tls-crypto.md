@@ -8,7 +8,7 @@ sidebar:
 
 Disables legacy/insecure protocols, ciphers, renegotiation, hashes, and forces .NET apps to use strong cryptography (Disables RC2 (40/56/128), RC4 (40/56/64/128), DES, 3DES, NULL, MD5/SHA-1, SSL 2.0/3.0, TLS 1.0/1.1, DTLS 1.0, insecure TLS renegotiation - Enables TLS SCSV, .NET StrongCrypto & SystemDefaultTlsVersions, NTLMv2 only). Windows may use insecure connections for e.g. older software (compatibility reasons), so disabling them can cause issues with old software.
 
-## LmCompatibilityLevel Data
+## [LmCompatibilityLevel Data](https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/security-policy-settings/network-security-lan-manager-authentication-level#possible-values)
 
 | Setting | Description | Registry security level |
 | ---- | ---- | ---- |
@@ -20,11 +20,6 @@ Disables legacy/insecure protocols, ciphers, renegotiation, hashes, and forces .
 | Send NTLMv2 response only. Refuse LM & NTLM | Client devices use NTLMv2 authentication, and they use NTLMv2 session security if the server supports it. Domain controllers refuse to accept LM and NTLM authentication, and they'll accept only NTLMv2 authentication. | 5 |
 
 Level `5` gets applied.
-
-> https://browserleaks.com/tls  
-> https://learn.microsoft.com/en-us/dotnet/framework/network-programming/tls#schusestrongcrypto  
-> https://dirteam.com/sander/2019/07/30/howto-disable-weak-protocols-cipher-suites-and-hashing-algorithms-on-web-application-proxies-ad-fs-servers-and-windows-servers-running-azure-ad-connect/  
-> https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/security-policy-settings/network-security-lan-manager-authentication-level
 
 ![](https://github.com/nohuto/win-config/blob/main/security/images/insecureconn.png?raw=true)
 

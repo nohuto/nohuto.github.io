@@ -3,7 +3,7 @@ title: 'Hiberboot'
 description: 'Power option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 8
+  order: 9
 ---
 
 Fast startup is a type of shutdown that uses a hibernation file to speed up the subsequent boot. During this type of shutdown, the user is logged off before the hibernation file is created. Fast startup allows for a smaller hibernation file, more appropriate for systems with less storage capabilities.
@@ -22,8 +22,6 @@ In Windows, fast startup is the default transition when a system shutdown is req
 
 All three values exist as shown below. `PopReadHiberbootGroupPolicy` (`\\Registry\\Machine\\Software\\Policies\\Microsoft\\Windows\\System`) overrides `PopReadHiberbootPolicy` (`Control\\Session Manager\\Power`).
 
-> https://www.noverse.dev/docs/win-config/power/power-values/#registry-values-details
-
 ```c
 "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Power";
     "HiberbootEnabled" = 0; // PopHiberbootEnabledReg 
@@ -38,8 +36,6 @@ All three values exist as shown below. `PopReadHiberbootGroupPolicy` (`\\Registr
     "HiberIoCpuTime" = 0; // REG_DWORD, milliseconds, range: 0-0xFFFFFFFF
     "ResumeCompleteTimestamp" = 0; // REG_QWORD, range: 0-0xFFFFFFFFFFFFFFFF
 ```
-> https://www.noverse.dev/docs/win-config/power/power-values/#registry-values-details  
-> https://github.com/marcosd4h/memhunter/blob/f68bca7efe31f49c0dc9ad988fb17bec443a1ca7/libs/boost/interprocess/detail/win32_api.hpp#L2373
 
 ```c
 // PopOpenPowerKey

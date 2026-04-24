@@ -6,7 +6,7 @@ sidebar:
   order: 1
 ---
 
-Get the current size of the WinSxS folder, by pasting the following command into `cmd`:
+Get the [current size](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/determine-the-actual-size-of-the-winsxs-folder?view=windows-11&source=recommendations#analyze-the-component-store) of the WinSxS folder, by pasting the following command into `cmd`:
 ```cmd
 Dism.exe /Online /Cleanup-Image /AnalyzeComponentStore
 ```
@@ -31,8 +31,6 @@ Component Store Cleanup Recommended : No
 ```
 `Number of Reclaimable Packages : 0` -> This is the number of superseded packages on the system that component cleanup can remove.
 
-> https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/determine-the-actual-size-of-the-winsxs-folder?view=windows-11&source=recommendations#analyze-the-component-store
-
 Clean your folder with:
 ```cmd
 Dism.exe /online /Cleanup-Image /StartComponentCleanup
@@ -41,10 +39,7 @@ or
 ```
 Dism.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase
 ```
-, if you want to remove all superseded versions of every component in the component store. (no need, if there aren't any)
-
-> https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/manage-the-component-store?view=windows-11  
-> https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/clean-up-the-winsxs-folder?view=windows-11
+If you want to remove all superseded versions of every component in the component store (no need, if there aren't any).
 
 Permanently remove outdated update files from `C:\Windows\WinSxS` to free space. Once applied, previous updates cannot be uninstalled:
 ```json

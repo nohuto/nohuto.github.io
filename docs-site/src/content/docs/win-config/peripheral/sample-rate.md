@@ -17,7 +17,6 @@ As you may know a bit can be `0` or `1`, means (bit depth * `6` = dB):
 
 `44.1` kHz with a bit depth of `16` is more than enough for general usage.
 
-> https://noirsonance.com/bit-depth-calculator-visualizer/  
-> https://de.wikipedia.org/wiki/Nyquist-Shannon-Abtasttheorem
+## 8 Bit / 16 Bit
 
 ![](https://github.com/nohuto/win-config/blob/main/peripheral/images/samplerate.png?raw=true)

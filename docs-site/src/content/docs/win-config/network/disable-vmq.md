@@ -3,14 +3,14 @@ title: 'VMQ'
 description: 'Network option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 27
+  order: 26
 ---
 
-VMQ is a scaling networking technology for the Hyper-V switch. Without VMQ the networking performance of the Hyper-V switch bound to this network adapter may be reduced. VMQ offloads packet processing to NIC hardware queues, with each queue tied to a specific VM. This increases throughput, spreads work across CPU cores, lowers host CPU use, and scales effectively as more VMs are added on Hyper-V.
+[VMQ](https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/network/virtual-machine-queue-architecture.md) is a scaling networking technology for the Hyper-V switch. Without VMQ the networking performance of the Hyper-V switch bound to this network adapter may be reduced. VMQ offloads packet processing to NIC hardware queues, with each queue tied to a specific VM. This increases throughput, spreads work across CPU cores, lowers host CPU use, and scales effectively as more VMs are added on Hyper-V.
 
 It depends on your adapter/driver if VMQ is enabled/disabled by default:
 
-## Registry Values Details
+## [Registry Values Details](https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/network/standardized-inf-keywords-for-vmq.md)
 
 ```c
 // Intel
@@ -23,8 +23,6 @@ It depends on your adapter/driver if VMQ is enabled/disabled by default:
 
     "MaxNumVmqs" = ?; // found it in the "Mellanox ConnectX based IPoIB Adapter (NDIS 6.4)" driver
 ```
-
-> https://github.com/nohuto/regkit/blob/main/records/NIC-Intel.txt
 
 | Value | Description | Allowed Values | Default | Notes |
 | ----  | ---- | ---- | ---- | ---- |
@@ -48,8 +46,3 @@ HKR, Ndi\Params\*VMQ\enum,  "0",  0, "%Disabled%"
 HKR, Ndi\Params\*VMQ\enum,  "1",  0, "%Enabled%"
 HKR, "", *VMQ, %REG_SZ%, "1"
 ```
-
-> https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/network/standardized-inf-keywords-for-vmq.md  
-> https://docs.nvidia.com/networking/display/winofv55053000/ethernet+registry+keys#src-25134589_EthernetRegistryKeys-FlowControlOptions  
-> https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/network/virtual-machine-queue-architecture.md  
-> https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/network/introduction-to-ndis-virtual-machine-queue--vmq-.md

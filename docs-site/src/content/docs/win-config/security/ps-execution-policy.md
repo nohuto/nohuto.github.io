@@ -14,7 +14,7 @@ sidebar:
 
 *On non-Windows systems, the reported default is `Unrestricted` and cannot be changed, though the actual behavior is closer to `Bypass` because Windows security zones do not exist there.*"
 
-### Execution Policy
+### [Execution Policy](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.5)
 
 | **Execution Policy**  | **Description** |
 | ---- | ---- |
@@ -36,7 +36,7 @@ sidebar:
 | `CurrentUser` | The execution policy affects only the current user - stored in the HKCU subkey |
 | `LocalMachine` | The execution policy affects all users on the current computer - stored in the HKLM subkey |
 
-### Registry Values
+### [Registry Values](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_powershell_config?view=powershell-7.5)
 
 | **Value Name** | **Description** |
 | ---- | ---- |
@@ -50,8 +50,3 @@ See your current execution policies via:
 ```powershell
 Get-ExecutionPolicy -List
 ```
-
-> https://powershellisfun.com/2022/07/31/powershell-and-logging/  
-> https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.5  
-> https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_powershell_config?view=powershell-7.5  
-> https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.5

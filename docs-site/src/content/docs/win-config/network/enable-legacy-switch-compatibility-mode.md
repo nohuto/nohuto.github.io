@@ -3,7 +3,7 @@ title: 'Legacy Switch Compatibility Mode'
 description: 'Network option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 30
+  order: 29
 ---
 
 Probably a setting that controls how the adapter handles link negotiation when it's connected behind certain (usually older) network switches. There's no official documentation on it, but it seems to be disabled by default. Some older switches may have problems with modern auto negotiation behavior, enabling the mode (probably) changes how the NIC negotiates speed/duplex so that it behaves more like older hardware.

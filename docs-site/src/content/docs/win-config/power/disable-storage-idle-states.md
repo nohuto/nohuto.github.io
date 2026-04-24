@@ -10,9 +10,8 @@ Disables idle states for NVMe, SSD, SD, HDD. This is currently more of a possibl
 
 If `IdleStatesNumber` is set, the other values are ignored? Let me know if you have a better interpretation.
 
-> The values are located in the `EnergyEstimation` (guesses how much power is used over time), so it's probably related to something else. I'll leave it for documentation reasons (and future extended declaration).
+The values are located in the `EnergyEstimation` (guesses how much power is used over time), so it's probably related to something else. I'll leave it for documentation reasons (and future extended declaration).
 
-> https://github.com/nohuto/regkit/blob/main/records/Power.txt  
 > [power/assets | storageidle-PmPowerContextInitialization.c](https://github.com/nohuto/win-config/blob/main/power/assets/nvmeperf-ClassUpdateDynamicRegistrySettings.c)
 
 ## Suboption
@@ -66,6 +65,4 @@ dword_4C140 = -1;
 ```
 
 > [power/assets | hddpark-amdsbs.c](https://github.com/nohuto/win-config/blob/main/power/assets/hddpark-amdsbs.c)  
-> [power/assets | hddpark-DllInitialize.c](https://github.com/nohuto/win-config/blob/main/power/assets/hddpark-DllInitialize.c)  
-> https://learn.microsoft.com/en-us/windows-hardware/drivers/kernel/device-power-states  
-> https://learn.microsoft.com/en-us/windows-hardware/customize/power-settings/disk-settings-link-power-management-mode---hipm-dipm
+> [power/assets | hddpark-DllInitialize.c](https://github.com/nohuto/win-config/blob/main/power/assets/hddpark-DllInitialize.c)

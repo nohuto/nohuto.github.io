@@ -8,6 +8,8 @@ sidebar:
 
 This may not be accurate yet, it's preferable to disable FSO per application via the compability section. Disabling this option won't revert the changes like all other ones do, it'll disable FSO.
 
+See [demystifying-full-screen-optimizations](https://devblogs.microsoft.com/directx/demystifying-full-screen-optimizations/)/[SwapChain](https://wiki.special-k.info/en/SwapChain)/[PresentationModel](https://wiki.special-k.info/Presentation_Model) for more details.
+
 ### FSE (Fullscreen Exclusive)
 
 Game takes exclusive control of the display.
@@ -64,7 +66,3 @@ HKCU\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers\C:\Progr
 // Machine
 HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers\C:\Program Files (x86)\Steam\steamapps\common\Battlefield 6\bf6.exe	Type: REG_SZ, Length: 66, Data: ~ DISABLEDXMAXIMIZEDWINDOWEDMODE
 ```
-
-> https://devblogs.microsoft.com/directx/demystifying-full-screen-optimizations/
-> https://wiki.special-k.info/en/SwapChain
-> https://wiki.special-k.info/Presentation_Model

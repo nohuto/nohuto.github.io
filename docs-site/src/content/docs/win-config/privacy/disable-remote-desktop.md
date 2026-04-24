@@ -6,9 +6,7 @@ sidebar:
   order: 16
 ---
 
-Disables remote desktop, remote assistance, RPC traffic, and device redirection.
-> https://learn.microsoft.com/en-us/windows-server/remote/remote-desktop-services/remotepc/remote-pc-connections-faq  
-> https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-remotedesktopservices
+Disables remote desktop, remote assistance, RPC traffic, and device redirection. See [remote desktop FAQs](https://learn.microsoft.com/en-us/windows-server/remote/remote-desktop-services/remotepc/remote-pc-connections-faq) for more information.
 
 `RemoteAssistance.admx`:  
 `CreateEncryptedOnlyTickets`: Allow only Windows Vista or later connections

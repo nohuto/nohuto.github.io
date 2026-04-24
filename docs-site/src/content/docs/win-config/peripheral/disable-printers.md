@@ -64,14 +64,12 @@ dir Registry::HKEY_CLASSES_ROOT -Recurse -ea SilentlyContinue | ? { $_.Name -lik
 
 ## Printer Connections
 
-List all printer connections:
+[List](https://learn.microsoft.com/en-us/powershell/module/printmanagement/get-printer?view=windowsserver2025-ps) all printer connections:
 ```powershell
 Get-Printer
 ```
-> https://learn.microsoft.com/en-us/powershell/module/printmanagement/get-printer?view=windowsserver2025-ps
 
-Remove a specific printer using it's name:
+[Remove](https://learn.microsoft.com/en-us/powershell/module/printmanagement/remove-printer?view=windowsserver2025-ps) a specific printer using it's name:
 ```powershell
 Remove-Printer -Name "Printer Name"
 ```
-> https://learn.microsoft.com/en-us/powershell/module/printmanagement/remove-printer?view=windowsserver2025-ps

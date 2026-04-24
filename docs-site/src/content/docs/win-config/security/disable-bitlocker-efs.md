@@ -6,14 +6,11 @@ sidebar:
   order: 11
 ---
 
-Disable Bitlocker on all volumes:
+Disable [Bitlocker](https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/) on all volumes:
 ```powershell
 $nvbvol = Get-BitLockerVolume
 Disable-BitLocker -MountPoint $nvbvol
 ```
-> https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/  
-> https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/fsutil-behavior  
-> https://learn.microsoft.com/en-us/powershell/module/bitlocker/disable-bitlocker?view=windowsserver2025-ps
 
 ## NtfsDisableEncryption Notes
 

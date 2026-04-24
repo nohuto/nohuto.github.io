@@ -45,9 +45,7 @@ Edge is a whole mess, I wouldn't recommend anyone to use it, but here's an optio
 | `TrackingPrevention` | Tracking Prevention mode enforced |
 | `DefaultSensorsSetting` | Site access to  sensors blocked |
 
-See all edge policies here:
-
-> https://learn.microsoft.com/en-us/deployedge/microsoft-edge-policies
+See all edge policies [here](https://learn.microsoft.com/en-us/deployedge/microsoft-edge-policies).
 
 ```json
 {

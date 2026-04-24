@@ -24,9 +24,9 @@ AddReg = PS2_Inst.HW.AddReg
 HKR,,"MouseDataQueueSize",0x00010003,100
 ```
 
-"Specifies the number of mouse events to be buffered internally by the driver, in nonpaged pool. The allocated size, in bytes, of the internal buffer is this value times the size of the MOUSE_INPUT_DATA structure (defined in NTDDMOU.H)."
+"*Specifies the number of mouse events to be buffered internally by the driver, in nonpaged pool. The allocated size, in bytes, of the internal buffer is this value times the size of the MOUSE_INPUT_DATA structure (defined in NTDDMOU.H).*" [[*]](https://www.betaarchive.com/wiki/index.php/Microsoft_KB_Archive/102990)
 
-## MouseDataQueueSize
+## [MouseDataQueueSize](https://github.com/nohuto/win-config/blob/main/peripheral/assets/mkdata-MouConfiguration.c)
 
 - not present = default `100` -> final `2400`
 - present and `0` = forced to `100` -> final `2400`
@@ -56,7 +56,7 @@ LABEL_10:
 *((_DWORD *)&WPP_MAIN_CB.Reserved + 2) = v11;
 ```
 
-## KeyboardDataQueueSize
+## [KeyboardDataQueueSize](https://github.com/nohuto/win-config/blob/main/peripheral/assets/mkdata-KbdConfiguration.c)
 
 - not present = default `100` -> final `1200`
 - present and `0` = forced to `100` -> final `1200`
@@ -86,7 +86,3 @@ v15 = 12 * v14; // convert packet count to queue bytes
 LABEL_22:
 dword_1C000A234 = v15;
 ```
-
-> https://www.betaarchive.com/wiki/index.php/Microsoft_KB_Archive/102990  
-> [peripheral/assets | mkdata-MouConfiguration.c](https://github.com/nohuto/win-config/blob/main/peripheral/assets/mkdata-MouConfiguration.c)  
-> [peripheral/assets | mkdata-KbdConfiguration.c](https://github.com/nohuto/win-config/blob/main/peripheral/assets/mkdata-KbdConfiguration.c)

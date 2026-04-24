@@ -20,7 +20,7 @@ INIT:0000000140B9C350                 dq offset dword_140D1D1C8
 ALMOSTRO:0000000140D1D1C8 dword_140D1D1C8 dd 0                    ; DATA XREF: MiCombineIdenticalPages:loc_1407F7E3A↑r
 ```
 
-See the current page combining state on your system via:
+See the current page combining state on your system via ([cmdlet](https://learn.microsoft.com/en-us/powershell/module/mmagent/disable-mmagent?view=windowsserver2025-ps)):
 ```powershell
 Get-MMAgent
 ```
@@ -34,12 +34,9 @@ PageCombining                : True # Enabled
 PSComputerName               :
 ```
 
-## Windows Internals
+## [Windows Internals](https://github.com/nohuto/Windows-Books/releases/download/7th-Edition/Windows-Internals-E7-P1.pdf)
 
 ![](https://github.com/nohuto/win-config/blob/main/system/images/pagecomb1.png?raw=true)
 ![](https://github.com/nohuto/win-config/blob/main/system/images/pagecomb2.png?raw=true)
 ![](https://github.com/nohuto/win-config/blob/main/system/images/pagecomb3.png?raw=true)
 ![](https://github.com/nohuto/win-config/blob/main/system/images/pagecomb4.png?raw=true)
-
-> https://github.com/nohuto/windows-books/releases/download/7th-Edition/Windows-Internals-E7-P1.pdf (P. 459)  
-> https://learn.microsoft.com/en-us/powershell/module/mmagent/disable-mmagent?view=windowsserver2025-ps

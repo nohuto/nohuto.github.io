@@ -3,7 +3,7 @@ title: 'Microsoft Client/Multiplexor'
 description: 'Network option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 20
+  order: 19
 ---
 
 Disables the Client for Microsoft Networks (`ms_msclient`) and the Microsoft Network Adapter Multiplexor Protocol (`ms_implat`) bindings on all adapters. This blocks SMB client access and disables NIC teaming.

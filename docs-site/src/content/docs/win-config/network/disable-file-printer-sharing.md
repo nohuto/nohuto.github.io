@@ -3,7 +3,7 @@ title: 'File/Printer Sharing'
 description: 'Network option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 19
+  order: 18
 ---
 
 Disables "Allow other on the network to access shared files and printers on this device" via `@FirewallAPI.dll,-28502` & `ms_server`.
@@ -22,10 +22,6 @@ Name                           DisplayName                                      
 ----                           -----------                                        -----------          -------
 Ethernet                       File and Printer Sharing for Microsoft Networks    ms_server            False
 ```
-
-> https://learn.microsoft.com/en-us/windows-hardware/customize/desktop/unattend/networking-mpssvc-svc-firewallgroups-firewallgroup-group  
-> https://learn.microsoft.com/en-us/powershell/module/netadapter/get-netadapterbinding?view=windowsserver2025-ps
-
 
 ## Windows Policies
 

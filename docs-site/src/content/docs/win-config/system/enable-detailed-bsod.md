@@ -15,7 +15,4 @@ sidebar:
 | Extra help                | QR code + link                                  | Text-only advice                                                                  |
 | Purpose                   | Less scary, easier to tell support the code     | See the actual debug information                                                  |
 
-Enabling the options includes setting `AutoReboot` to `0` ("The option specifies that Windows automatically restarts your computer").
-
-> https://learn.microsoft.com/en-us/troubleshoot/windows-server/performance/memory-dump-file-options#registry-values-for-startup-and-recovery  
-> https://learn.microsoft.com/en-us/troubleshoot/windows-client/performance/configure-system-failure-and-recovery-options
+Enabling the options includes setting [`AutoReboot`](https://learn.microsoft.com/en-us/troubleshoot/windows-client/performance/configure-system-failure-and-recovery-options) to `0` ("The option specifies that Windows automatically restarts your computer").

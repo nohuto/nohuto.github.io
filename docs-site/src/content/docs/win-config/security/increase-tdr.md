@@ -6,11 +6,11 @@ sidebar:
   order: 19
 ---
 
-"TDR stands for Timeout Detection and Recovery. This is a feature of the Windows operating system which detects response problems from a graphics card, and recovers to a functional desktop by resetting the card. If the operating system does not receive a response from a graphics card within a certain amount of time (default is 2 seconds), the operating system resets the graphics card."
+"*TDR stands for Timeout Detection and Recovery. This is a feature of the Windows operating system which detects response problems from a graphics card, and recovers to a functional desktop by resetting the card. If the operating system does not receive a response from a graphics card within a certain amount of time (default is 2 seconds), the operating system resets the graphics card.*" [[*]](https://docs.nvidia.com/gameworks/content/developertools/desktop/timeout_detection_recovery.htm)
 
-> Disabling TDR removes a valuable layer of protection, so it is generally recommended that you keep it enabled.
+Disabling TDR removes a valuable layer of protection, so it is generally recommended that you keep it enabled.
 
-### Registry Values
+### [Registry Values](https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/display/tdr-registry-keys.md)
 
 | Registry value     | Value name           | Default data                 | Description                                                                                               |
 | ------------------ | -------------------- | ---------------------------- | --------------------------------------------------------------------------------------------------------- |
@@ -23,9 +23,6 @@ sidebar:
 | TdrTestMode        | `TdrTestMode`        | -                            | Reserved/test entry, not for normal use.                                                                  |
 | TdrDodPresentDelay | `TdrDodPresentDelay` | `2` seconds (min 1, max 900) | Extra time for display-only drivers to report an async present before a TDR is triggered.                 |
 | TdrDodVSyncDelay   | `TdrDodVSyncDelay`   | `2` seconds (min 1, max 900) | Time the VSync watchdog waits for VSync from a display-only driver before triggering TDR.                 |
-
-> https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/display/tdr-registry-keys.md  
-> https://docs.nvidia.com/gameworks/content/developertools/desktop/timeout_detection_recovery.htm
 
 ## Pseudocode Snippets
 
@@ -62,7 +59,7 @@ if (dword_1C015B874 != v15) {
     WdLogGlobalForLineNumber = 2387;
 }
 ```
-> https://github.com/nohuto/regkit/blob/main/records/Graphics-Drivers.txt  
+
 > [security/assets | TdrInit.c](https://github.com/nohuto/win-config/blob/main/security/assets/TdrInit.c)
 
 ## NVLDDMKM TDR

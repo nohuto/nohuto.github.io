@@ -3,14 +3,14 @@ title: 'USBFlags Values'
 description: 'Peripheral option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 1
+  order: 2
 ---
 
 Value names in [`usbflags-HUBREG_QueryUsbflagsValuesForDevice.c`](https://github.com/nohuto/win-config/tree/main/peripheral/assets/usbflags/HUBREG_QueryUsbflagsValuesForDevice.c) are mostly UNICODE_STRING globals, the names below are resolved from `dq offset ... ; "Name"`. The usbflags device key base path is `HKLM\SYSTEM\CurrentControlSet\Control\usbflags` (from `LRegistryMachineSystemCurrentControlSetControlusbflags` in `HUBREG_OpenCreateUsbflagsDeviceKey`).
 
 ## USB_DEVICE_HACKS
 
-You can use `!usb3kd.device_info` to get more information on a USB device in the USB 3.0 tree, example:
+You can use [`!usb3kd.device_info`](https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/debuggercmds/-usb3kd-device-info.md) to get more information on a USB device in the USB 3.0 tree, example:
 ```c
 lkd> !usb3.usb_tree
 
@@ -64,8 +64,6 @@ lkd> dt USBHUB3!_USB_DEVICE_HACKS
    +0x000 EnablePLDRDuringCyclePort : Pos 26, 1 Bit
    +0x000 ResetOnErrorInD2Resume : Pos 27, 1 Bit
 ```
-
-> https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/debuggercmds/-usb3kd-device-info.md
 
 ## Registry Values Details
 
@@ -151,7 +149,10 @@ See [win-config/peripheral/usbflags-values/](https://www.noverse.dev/docs/win-co
 
 ## RegistryMachin_* Keys
 
+These are from `usbhub.sys`. Looking at xrefs of these names is sometimes a start point when trying to find values within a binary or to see what keys are somewhere used, therefore I'm adding it (note that `aRegistryMachin_*` are IDA generated names so you won't find them in strings, nor will they be the exact same for you unless you disassemble the same binary build version).
+
 ```c
+// usbhub.sys
 aRegistryMachin_1 = "HKLM\\SYSTEM\\CurrentControlSet\\Control\\USBFN";
 aRegistryMachin_2 = // doesn't exist
 aRegistryMachin_3 = "HKLM\\SYSTEM\\CurrentControlSet\\Services\\usbhub\\uxd_control\\pnp";
@@ -167,18 +168,39 @@ aRegistryMachin_12 = "HKLM\\SYSTEM\\CurrentControlSet\\Services\\usbhub\\uxd_con
 aRegistryMachin_13 = "HKLM\\SYSTEM\\CurrentControlSet\\Control\\usb";
 ```
 
-## Subkey Structure
+```c
+// USBHUB3.sys
+aRegistryMachin = "\\Registry\\Machine\\SYSTEM\\CurrentControlSet\\Control\\USBFN\\Default"
+aRegistryMachin_0 = "\\Registry\\Machine\\System\\CurrentControlSet\\Control\\Usb\\Ceip"
+aRegistryMachin_1 = "\\Registry\\Machine\\SYSTEM\\CurrentControlSet\\Control\\USBFN"
+aRegistryMachin_3 = "\\registry\\machine\\system\\currentcontrolset\\services\\usbhub\\uxd_control\\pnp" // g_UxdGuidSettingsKey
+aRegistryMachin_4 = "\\Registry\\Machine\\System\\CurrentControlSet\\Control\\usb\\UsbLtm" // g_UsbLtmKeyName
+aRegistryMachin_5 = "\\registry\\machine\\system\\currentcontrolset\\services\\usbhub\\uxd_control\\devices" // g_UxdDeviceSettingsKey
+aRegistryMachin_6 = "\\Registry\\Machine\\System\\CurrentControlSet\\Control\\usb\\AutomaticSurpriseRemoval" // g_UsbAutomaticSurpriseRemovalKeyName
+aRegistryMachin_7 = "\\Registry\\Machine\\System\\CurrentControlSet\\Control\\usb\\HardwareVerifier" // g_HwVerifierKeyName
+aRegistryMachin_8 = "\\Registry\\Machine\\System\\CurrentControlSet\\Control\\usb\\Usb20HardwareLpm" // g_Usb20HardwareLpmKeyName
+aRegistryMachin_9 = "\\Registry\\Machine\\System\\CurrentControlSet\\Control\\usbflags"
+aRegistryMachin_10 = "\\Registry\\Machine\\System\\CurrentControlSet\\Services\\USBHUB\\hubg" // g_HubGlobalKeyName
+aRegistryMachin_11 = "\\Registry\\Machine\\SYSTEM\\CurrentControlSet\\Control\\USB"
+aRegistryMachin_12 = "\\registry\\machine\\system\\currentcontrolset\\services\\usbhub\\uxd_control\\policy" // g_UxdGlobalSettingsKey
+aRegistryMachin_13 = "\\Registry\\Machine\\System\\CurrentControlSet\\Control\\usb"
+```
+
+```c
+// USBXHCI.sys
+aRegistryMachin = "\\Registry\\Machine\\System\\CurrentControlSet\\Control\\CrashControl\\\\LiveKernelReports"
+aRegistryMachin_0 = "\\Registry\\Machine\\System\\CurrentControlSet\\Control\\usb\\HardwareVerifier" // g_HwVerifierKeyName
+aRegistryMachin_1 = "\\Registry\\Machine\\System\\CurrentControlSet\\Control\\usbflags" // g_usbflagsKeyName
+```
+
+## [Subkey Structure](https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/usbcon/usb-device-specific-registry-settings.md)
 
 The subkeys in `usbflags` always have a length of 12, build in such a structure `vvvvpppprrrr`:
 - **vvvv** is a 4-digit hexadecimal number that identifies the vendor
 - **pppp** is a 4-digit hexadecimal number that identifies the product
 - **rrrr** is a 4-digit hexadecimal number that contains the revision number of the device
 
-The vendor ID, product ID, and revision number values are obtained from the [USB device descriptor](https://github.com/MicrosoftDocs/windows-driver-docs/blob/staging/windows-driver-docs-pr/usbcon/usb-device-descriptors.md). The USB_DEVICE_DESCRIPTOR structure describes a device descriptor.
-
-> https://github.com/nohuto/regkit/blob/main/records/USB-Flags.txt
-
----
+The vendor ID, product ID, and revision number values are obtained from the [USB device descriptor](https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/usbcon/usb-device-descriptors.md). The USB_DEVICE_DESCRIPTOR structure describes a device descriptor.
 
 | Registry entry | Description | Possible values |
 |---|---|---|
@@ -192,6 +214,4 @@ The vendor ID, product ID, and revision number values are obtained from the [USB
 \Registry\Machine\SYSTEM\ControlSet001\Control\usbflags\<vvvvpppprrrr> : osvc
 ```
 
-`IgnoreHWSerNum<vvvvpppp>` exists in `\Registry\Machine\SYSTEM\ControlSet001\Control\usbflags` too.
-
-> https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/usbcon/usb-device-specific-registry-settings.md
+`IgnoreHWSerNum<vvvvpppp>` exists in [`\Registry\Machine\SYSTEM\ControlSet001\Control\usbflags`](https://github.com/nohuto/regkit/blob/main/records/USB-Flags.txt) too.

@@ -43,5 +43,3 @@ It changes every setting, which is shown in the `Folder Options` window. Some ar
     ]
   },
 ```
-
-> https://learn.microsoft.com/en-us/windows/client-management/mdm/policy-csp-admx-windowsconnectnow

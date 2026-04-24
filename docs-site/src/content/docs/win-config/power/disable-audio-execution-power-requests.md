@@ -8,13 +8,15 @@ sidebar:
 
 There's no official documentation on this value, but it probably controls whether audio activity can trigger power execution requests, reducing the responsiveness of the system to power management events, maybe ending up with less efficient power usage or preventing certain power related actions from being triggered.
 
+More information can very likely be gather via WPR/WPA 'Power > Power Requests', I'll update the section as soon as I've time.
+
+![](https://github.com/nohuto/win-config/blob/main/power/images/powerrequests.png?raw=true)
+
 ```c
 // Allowed by default
 "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Power";
     "AllowAudioToEnableExecutionRequiredPowerRequests" = 1; // PopPowerRequestActiveAudioEnablesExecutionRequired 
 ```
-
-> https://www.noverse.dev/docs/win-config/power/power-values/#registry-values-details
 
 ```c
 bool PopPowerRequestEvaluateExecutionRequiredStatus()

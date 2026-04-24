@@ -6,7 +6,7 @@ sidebar:
   order: 18
 ---
 
-"Dynamic Lighting is a feature that allows you to control LED-powered devices such as keyboards, mice, and other illuminated accessories. This feature enables you to coordinate the colors of LEDs, creating a unified lighting experience both within Windows and across all your devices."
+"*Dynamic Lighting is a feature that allows you to control LED-powered devices such as keyboards, mice, and other illuminated accessories. This feature enables you to coordinate the colors of LEDs, creating a unified lighting experience both within Windows and across all your devices.*" [[*]](ttps://learn.microsoft.com/en-us/windows-hardware/design/component-guidelines/dynamic-lighting-devices)
 
 | Value | Type | Values | Ranges | Notes |
 | --- | --- | --- | --- | --- |
@@ -19,6 +19,3 @@ sidebar:
 | `EffectMode` | REG_DWORD | Rainbow: `0 = Forward`, `1 = Reverse` · Wave: `0 = Right`, `1 = Left`, `2 = Down`, `3 = Up` · Wheel: `0 = Clockwise`, `1 = Counterclockwise` · Gradient: `0 = Horizontal`, `1 = Vertical`, `2 = Outward` | `discrete enum per effect` | Depends on `EffectType`. |
 | `Brightness` | REG_DWORD | `integer (%)` | `0–100` | - |
 | `ControlledByForegroundApp` | REG_DWORD | `0 = ignore apps`, `1 = apps can take control` | `0–1` | - |
-
-> https://learn.microsoft.com/en-us/windows-hardware/design/component-guidelines/dynamic-lighting-devices  
-> https://support.microsoft.com/en-us/windows/control-dynamic-lighting-devices-in-windows-8e8f22e3-e820-476c-8f9d-9ffc7b6ffcd2
