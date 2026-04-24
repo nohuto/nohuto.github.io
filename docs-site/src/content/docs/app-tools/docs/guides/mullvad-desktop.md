@@ -62,7 +62,7 @@ As said above the default configuration shouldn't be changed a lot, therefore I'
 
 ### Search
 
-See [search-engine](/docs/app-tools/docs/search-engine/).
+See [search-engine](https://github.com/nohuto/app-tools/blob/main/search-engine.md).
 
 ### Privacy & Security
 
@@ -83,7 +83,7 @@ See [search-engine](/docs/app-tools/docs/search-engine/).
 
 ### Extensions & [Themes](https://addons.mozilla.org/en-US/firefox/themes/)
 
-See [extensions](/docs/app-tools/docs/extensions/).
+See [extensions](https://github.com/nohuto/app-tools/blob/main/extensions.md).
 
 ## Flags
 

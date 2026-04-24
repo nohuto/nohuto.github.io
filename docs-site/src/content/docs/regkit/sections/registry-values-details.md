@@ -18,6 +18,6 @@ This includes details on keys/values which are either poorly documented or not d
 - [PnP Device Values](https://www.noverse.dev/docs/win-config/power/pnp-device-values/#registry-values-details)
 - [BCD Edits](https://www.noverse.dev/docs/win-config/system/bcd-edits/#registry-values-details)
 - [Intel NIC Values]()
-- [MMCSS Values](/docs/win-config/system/mmcss-values/)
+- [MMCSS Values](https://www.noverse.dev/docs/win-config/system/mmcss-values/#registry-values-details)
 - [StorNVMe Values](https://www.noverse.dev/docs/win-config/peripheral/stornvme-values/#registry-values-details)
 - [Notification Values](https://www.noverse.dev/docs/win-config/system/disable-notifications/#registry-values)

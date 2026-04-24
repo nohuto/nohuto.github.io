@@ -62,7 +62,7 @@ Disable Brave's Web3 features if you don't use them.
 
 ### Search Engine
 
-See [search-engine](/docs/app-tools/docs/search-engine/).
+See [search-engine](https://github.com/nohuto/app-tools/blob/main/search-engine.md).
 
 - `Standart Tab`: Custom Search Engine (`https://noai.duckduckgo.com/search?q=%s`)
 - `Private Tab`: Custom Search Engine (`https://noai.duckduckgo.com/search?q=%s`)
@@ -97,7 +97,7 @@ See [search-engine](/docs/app-tools/docs/search-engine/).
 
 ### Logins & Password
 
-Don't use the built-in password manager, use a [passowrd manager](/docs/app-tools/docs/extensions/#password-manager-firefox---chrome) instead.
+Don't use the built-in password manager, use a [passowrd manager](https://github.com/nohuto/app-tools/blob/main/extensions.md#password-manager-firefox---chrome) instead.
 
 - `Save Logins`: Off
 

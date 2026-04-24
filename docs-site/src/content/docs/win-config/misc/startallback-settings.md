@@ -11,7 +11,7 @@ Installation:
 winget install StartIsBack.StartAllBack --scope machine
 ```
 
-Disable Windows search via [`System > Disable Windows Search`](/docs/win-config/system/disable-windows-search/)
+Disable Windows search via [`System > Disable Windows Search`](https://github.com/nohuto/win-config/blob/main/system/desc.md#disable-windows-search)
 
 All `StartAllBackCfg.exe` settings, which I currently use:
 

@@ -235,7 +235,7 @@ NVDisplay.Container.exe    RegSetValue    HKLM\System\CurrentControlSet\Control\
 `Allow access to the GPU performance counters to all users` = `0`
 
 > https://www.nvidia.com/content/Control-Panel-Help/vLatest/en-us/index.htm#t=mergedProjects%2FDeveloper%2FManage_Performance_Counters_-_Reference.htm&rhsearch=counters  
-> https://github.com/nohuto/regkit
+> https://github.com/nohuto/bitmask-calc
 
 ![](https://github.com/nohuto/win-config/blob/main/nvidia/images/nvcpl5.png?raw=true)  
 

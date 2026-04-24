@@ -9,7 +9,7 @@ sidebar:
 | Option                    | Details                                                           |
 |---------------------------------------|-------------------------------------------------------------------|
 | `SettingsUserSettings.ini` & `RiotUserSettings.ini` Configuration | __Let you choose:__ <br> - Resolution <br> - FPS Cap <br> - Enemy color <br> - NVIDIA Reflex <br> You still have to apply the settings from the pictures above! |
-| **QoS Policy**                    | - High priority packet handling (DSCP) <br> - No bandwidth throttling <br> [win-config/network - QoS-Policy](/docs/win-config/network/qos-policy/) includes more information|
+| **QoS Policy**                    | - High priority packet handling (DSCP) <br> - No bandwidth throttling <br> [win-config/network - QoS-Policy](https://github.com/nohuto/win-config/blob/main/network/desc.md#qos-policy) includes more information|
 
 
 ## TUI Preview

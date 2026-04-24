@@ -9,7 +9,7 @@ sidebar:
 | Option                 | Details                                                           |
 |------------------------------------|-------------------------------------------------------------------|
 | `Settings_v0.ini` Configuration    | **Let you choose:** <br> - FPS Cap <br> - Shadow Detail <br> &nbsp;&nbsp;&nbsp; - Enabling shadows can give you an advantage in certain situations (if someone is above you and you can see their location based on the shadows) <br> - NVIDIA Reflex <br> You still have to apply the settings from the pictures above. |
-| **QoS Policy**                    | - High priority packet handling (DSCP) <br> - No bandwidth throttling <br> [win-config/network - QoS-Policy](/docs/win-config/network/qos-policy/) includes more information|
+| **QoS Policy**                    | - High priority packet handling (DSCP) <br> - No bandwidth throttling <br> [win-config/network - QoS-Policy](https://github.com/nohuto/win-config/blob/main/network/desc.md#qos-policy) includes more information|
 
 ## TUI Preview
 

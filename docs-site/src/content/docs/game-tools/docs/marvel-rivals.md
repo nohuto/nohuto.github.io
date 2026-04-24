@@ -12,7 +12,7 @@ sidebar:
 | `Engine.ini` Configuration         | Configuration settings for the game engine                        |
 | **Game Trimming**                  | Removes files/folders that aren't required to run the game     |
 | `launcher_config.xml` Config       | Configuration settings for the game launcher                     |
-| **QoS Policy**                    | - High priority packet handling (DSCP) <br> - No bandwidth throttling <br> [win-config/network - QoS-Policy](/docs/win-config/network/qos-policy/) includes more information|
+| **QoS Policy**                    | - High priority packet handling (DSCP) <br> - No bandwidth throttling <br> [win-config/network - QoS-Policy](https://github.com/nohuto/win-config/blob/main/network/desc.md#qos-policy) includes more information|
 
 
 ## TUI Preview

@@ -15,7 +15,6 @@ const DOC_REPO_ORDER = [
   'app-tools',
   'game-tools',
 ];
-const DOC_REPOS = new Set(DOC_REPO_ORDER);
 
 const WIN_CONFIG_REPO_URL = trimRepoUrl(
   process.env.WIN_CONFIG_REPO_URL || 'https://github.com/nohuto/win-config'
@@ -63,30 +62,7 @@ const CATEGORY_ORDER = [
   'affinities',
 ];
 
-const REGISTRY_DETAILS_ROUTE_REDIRECTS = new Map([
-  ['dxg-kernel-values', '/docs/win-config/system/dxg-kernel-values/#registry-values-details'],
-  ['session-manager-values', '/docs/win-config/system/kernel-values/#registry-values-details'],
-  ['power-values', '/docs/win-config/power/power-values/#registry-values-details'],
-  ['dwm-values', '/docs/win-config/system/dwm-values/#registry-values-details'],
-  ['usbflags-values', '/docs/win-config/peripheral/usbflags-values/#registry-values-details'],
-  ['usb-values', '/docs/win-config/peripheral/usb-values/#registry-values-details'],
-  ['usbhub-values', '/docs/win-config/peripheral/usbhub-values/#registry-values-details'],
-  ['pnp-device-values', '/docs/win-config/power/pnp-device-values/#registry-values-details'],
-  ['bcd-edits', '/docs/win-config/system/bcd-edits/#registry-values-details'],
-  ['mmcss-values', '/docs/win-config/system/mmcss-values/'],
-  ['stornvme-values', '/docs/win-config/peripheral/stornvme-values/#registry-values-details'],
-  ['notification-values', '/docs/win-config/system/disable-notifications/#registry-research'],
-]);
-
 const entries = [];
-const winConfigAnchorRoutes = new Map();
-const winConfigFirstOptionRoutes = new Map();
-let firstWinConfigRoute = '';
-const repoContexts = new Map();
-
-for (const repoName of ['nvapi-cli', 'regkit', 'app-tools', 'game-tools']) {
-  repoContexts.set(repoName, createRepoContext());
-}
 
 main();
 
@@ -113,7 +89,7 @@ function main() {
   const gameToolsStats = generateGameTools(gameToolsDir);
   const sectionIndexPages = generateSectionIndexes();
 
-  rewriteGeneratedLinks();
+  normalizeGeneratedEntries();
   writeEntries();
 
   console.log(
@@ -186,14 +162,6 @@ function generateWinConfig(winConfigDir) {
       const githubAnchor = uniqueGitHubAnchor(section.heading, githubAnchorCounts);
       const title = normalizeWinConfigTitle(section.heading);
 
-      if (index === 0) {
-        winConfigFirstOptionRoutes.set(category, route);
-        if (!firstWinConfigRoute) {
-          firstWinConfigRoute = route;
-        }
-      }
-
-      winConfigAnchorRoutes.set(`${category}|${githubAnchor}`, route);
       optionPages += 1;
 
       addEntry({
@@ -330,7 +298,6 @@ function generateReadmeSections({
   outputDirectory,
   routeDirectory,
 }) {
-  const context = ensureRepoContext(repoKey);
   const readmePath = path.join(repoDir, 'README.md');
   if (!fs.existsSync(readmePath)) return 0;
   const raw = readText(readmePath);
@@ -357,13 +324,6 @@ function generateReadmeSections({
     const routeSlug = isOverview ? 'overview' : uniqueSlug(slugify(heading), routeSlugSet);
     const route = `${routeDirectory}${routeSlug}/`;
 
-    if (!context.firstRoute) {
-      context.firstRoute = route;
-    }
-    if (anchor) {
-      context.anchorRoutes.set(anchor, route);
-    }
-
     addEntry({
       relativePath: `${outputDirectory}/${routeSlug}.md`,
       route,
@@ -389,7 +349,6 @@ function generateRepoMarkdownDirectory({
   outputDirectory,
   routeDirectory,
 }) {
-  const context = ensureRepoContext(repoKey);
   const sourceDirPath = path.join(repoDir, sourceDirectory);
   if (!fs.existsSync(sourceDirPath)) return 0;
 
@@ -418,11 +377,6 @@ function generateRepoMarkdownDirectory({
     const route = `${routeDirectory}${routeSlug}/`;
     const relativePath = `${outputDirectory}/${routeSlug}.md`;
 
-    if (!context.firstRoute) {
-      context.firstRoute = route;
-    }
-    context.fileRoutes.set(`${sourceDirectory}/${normalizedRelativePath}`.toLowerCase(), route);
-
     addEntry({
       relativePath,
       route,
@@ -445,7 +399,6 @@ function generateRepoMarkdownFromRoot({
   routeDirectory,
   collapseSingleDescLeaf = false,
 }) {
-  const context = ensureRepoContext(repoKey);
   const readmeFileOrder = buildReadmeMarkdownFileOrder(repoDir);
   const markdownFiles = sortMarkdownFilesBySourceOrder(listMarkdownFiles(repoDir), readmeFileOrder);
   const collapseDescLeaf =
@@ -484,11 +437,6 @@ function generateRepoMarkdownFromRoot({
       .join('/');
     const route = `${routeDirectory}${routeSlug}/`;
     const relativePath = `${outputDirectory}/${routeSlug}.md`;
-
-    if (!context.firstRoute) {
-      context.firstRoute = route;
-    }
-    context.fileRoutes.set(normalizedLower, route);
 
     addEntry({
       relativePath,
@@ -541,23 +489,14 @@ function generateSectionIndexes() {
     existingPaths.add(indexPath);
     generated += 1;
 
-    if (directory === 'win-config') {
-      firstWinConfigRoute = route;
-    }
-
-    const winConfigCategoryMatch = directory.match(/^win-config\/([^/]+)$/);
-    if (winConfigCategoryMatch) {
-      winConfigFirstOptionRoutes.set(winConfigCategoryMatch[1], route);
-    }
-
   }
 
   return generated;
 }
 
-function rewriteGeneratedLinks() {
+function normalizeGeneratedEntries() {
   for (const entry of entries) {
-    entry.body = rewriteRepoMentions(normalizeGeneratedMarkdown(rewriteMarkdownLinks(entry.body)));
+    entry.body = rewriteRepoMentions(normalizeGeneratedMarkdown(entry.body));
   }
 }
 
@@ -568,12 +507,7 @@ function rewriteRepoMentions(markdown) {
 function normalizeGeneratedMarkdown(markdown) {
   return markdown
     .replace(/\]\(\((https?:\/\/[^)\s]+)\)\)/gi, ']($1)')
-    .replace(/\[([^\]]+)\]\(\[([^\]]+)\]\(([^)]+)\)\)/g, '[$1]($3)')
-    .replace(
-      /https:\/\/www\.noverse\.dev\/docs\/win-config\/system\/mmcss-values\/#registry-values-details/gi,
-      '/docs/win-config/system/mmcss-values/'
-    )
-    .replace(/(\/docs\/game-tools\/docs\/[^)\s#]+\/)#[-a-z0-9]+-tool\b/gi, '$1');
+    .replace(/\[([^\]]+)\]\(\[([^\]]+)\]\(([^)]+)\)\)/g, '[$1]($3)');
 }
 
 function collectGeneratedDirectories(allEntries) {
@@ -702,196 +636,6 @@ function buildDirectoryListingMarkdown(children) {
   }
 
   return lines.join('\n');
-}
-
-function rewriteMarkdownLinks(markdown) {
-  const lines = markdown.replace(/\r\n/g, '\n').split('\n');
-  let inFence = false;
-  let fenceChar = '';
-
-  const rewritten = lines.map((line) => {
-    const fenceMatch = line.match(/^\s*(```|~~~)/);
-    if (fenceMatch) {
-      const marker = fenceMatch[1];
-      if (!inFence) {
-        inFence = true;
-        fenceChar = marker;
-      } else if (marker === fenceChar) {
-        inFence = false;
-        fenceChar = '';
-      }
-      return line;
-    }
-
-    if (/^\s*>\s*https?:\/\/github\.com\//i.test(line)) {
-      return rewriteBareGitHubUrls(line);
-    }
-
-    if (inFence) return line;
-
-    const withMarkdownLinks = line.replace(/(\]\()([^\)]+)(\))/g, (_, prefix, rawUrl, suffix) => {
-      const rewrittenUrl = rewriteLinkTarget(rawUrl.trim());
-      return `${prefix}${rewrittenUrl}${suffix}`;
-    });
-
-    return rewriteBareGitHubUrls(withMarkdownLinks);
-  });
-
-  return rewritten.join('\n');
-}
-
-function rewriteBareGitHubUrls(line) {
-  return line.replace(/https?:\/\/github\.com\/[^\s<>()]+/gi, (rawUrl) => {
-    const rewritten = rewriteLinkTarget(rawUrl);
-    if (rewritten === rawUrl) return rawUrl;
-    if (rewritten.startsWith('/docs/')) {
-      return `[${rewritten}](${rewritten})`;
-    }
-    return rewritten;
-  });
-}
-
-function rewriteLinkTarget(rawUrl) {
-  if (!/^https?:\/\//i.test(rawUrl)) return rawUrl;
-
-  let parsed;
-  try {
-    parsed = new URL(rawUrl);
-  } catch {
-    return rawUrl;
-  }
-
-  if (parsed.hostname.toLowerCase() !== 'github.com') return rawUrl;
-
-  const pathName = parsed.pathname.replace(/\/+$/, '');
-  const hash = normalizeAnchor(parsed.hash);
-
-  const winConfigMatch = pathName.match(/^\/[^/]+\/win-config\/blob\/main\/([^/]+)\/desc\.md$/i);
-  if (winConfigMatch) {
-    const category = winConfigMatch[1].toLowerCase();
-    if (hash) {
-      const route = winConfigAnchorRoutes.get(`${category}|${hash}`);
-      if (route) return route;
-      return rawUrl;
-    }
-    return winConfigFirstOptionRoutes.get(category) || rawUrl;
-  }
-
-  const isWinConfigRoot = /^\/[^/]+\/win-config$/i.test(pathName);
-  if (isWinConfigRoot) {
-    return firstWinConfigRoute || rawUrl;
-  }
-
-  const rewrittenRegistryRoute = rewriteRegistryReference(pathName, hash);
-  if (rewrittenRegistryRoute) {
-    return rewrittenRegistryRoute;
-  }
-
-  const extraRepoRoute = rewriteExtraRepoLink(pathName, hash);
-  if (extraRepoRoute) {
-    return extraRepoRoute;
-  }
-
-  return rawUrl;
-}
-
-function rewriteRegistryReference(pathName, hash) {
-  const repoMatch = pathName.match(/^\/([^/]+)\/([^/]+)(?:\/(.+))?$/i);
-  if (!repoMatch) {
-    return '';
-  }
-
-  const [, owner, repoName, remainder = ''] = repoMatch;
-  if (owner.toLowerCase() !== 'nohuto') {
-    return '';
-  }
-  if (DOC_REPOS.has(repoName.toLowerCase())) {
-    return '';
-  }
-
-  if (!remainder || /^blob\/(main|master)\/README\.md$/i.test(remainder)) {
-    if (!hash) return REGKIT_REPO_URL;
-    return REGISTRY_DETAILS_ROUTE_REDIRECTS.get(hash) || `${REGKIT_REPO_URL}#registry-values-details`;
-  }
-
-  const guideMatch = remainder.match(/^blob\/(main|master)\/guide\/([^/]+\.md)$/i);
-  if (guideMatch) {
-    const candidatePathName = `/nohuto/regkit/blob/main/guides/${guideMatch[2]}`;
-    return rewriteExtraRepoLink(candidatePathName, hash) || `${REGKIT_REPO_URL}/blob/main/guides/${guideMatch[2]}`;
-  }
-
-  const blobMatch = remainder.match(/^blob\/(main|master)\/(.+)$/i);
-  if (!blobMatch) {
-    return '';
-  }
-
-  const relativePath = blobMatch[2].replace(/^guide\//i, 'guides/');
-  const topLevelDirectory = relativePath.split('/')[0]?.toLowerCase();
-  if (!['guides', 'records', 'assets'].includes(topLevelDirectory)) {
-    return '';
-  }
-
-  const candidatePathName = `/nohuto/regkit/blob/main/${relativePath}`;
-  const internalRoute = rewriteExtraRepoLink(candidatePathName, hash);
-  if (internalRoute) return internalRoute;
-  return `${REGKIT_REPO_URL}/blob/main/${relativePath}`;
-}
-
-function rewriteExtraRepoLink(pathName, hash) {
-  const repoMatch = pathName.match(/^\/[^/]+\/([^/]+)(?:\/(.+))?$/i);
-  if (!repoMatch) return '';
-
-  const repoKey = repoMatch[1].toLowerCase();
-  if (repoKey === 'win-config') return '';
-
-  const context = getRepoContext(repoKey);
-  if (!context) return '';
-
-  const remainder = normalizeExtraRepoRemainder(repoKey, repoMatch[2] || '');
-  if (!remainder) {
-    if (!hash) return context.firstRoute;
-    return context.anchorRoutes.get(hash) || '';
-  }
-
-  const readmeMatch = remainder.match(/^blob\/(main|master)\/README\.md$/i);
-  if (readmeMatch) {
-    if (!hash) return context.firstRoute;
-    return context.anchorRoutes.get(hash) || '';
-  }
-
-  const blobMarkdownMatch = remainder.match(/^blob\/(main|master)\/(.+\.md)$/i);
-  if (blobMarkdownMatch) {
-    const fileRoute = context.fileRoutes.get(blobMarkdownMatch[2].toLowerCase());
-    if (fileRoute) return hash ? `${fileRoute}#${hash}` : fileRoute;
-    if (hash) {
-      const anchorRoute = context.anchorRoutes.get(hash);
-      if (anchorRoute) return anchorRoute;
-    }
-  }
-
-  return '';
-}
-
-function normalizeExtraRepoRemainder(repoKey, remainder) {
-  if (repoKey === 'regkit') {
-    return remainder.replace(/^blob\/(main|master)\/guide\//i, 'blob/$1/guides/');
-  }
-
-  return remainder;
-}
-
-function normalizeAnchor(anchor) {
-  if (!anchor) return '';
-  let value = anchor.replace(/^#/, '').trim().toLowerCase();
-  try {
-    value = decodeURIComponent(value);
-  } catch {
-    // Ignore malformed URI encoding.
-  }
-  if (value.startsWith('user-content-')) {
-    value = value.slice('user-content-'.length);
-  }
-  return value;
 }
 
 function addEntry({ relativePath, route, title, description, sidebarOrder, sidebarHidden, body }) {
@@ -1105,32 +849,6 @@ function normalizeWinConfigTitle(value) {
     .trim();
 
   return cleaned || value.trim();
-}
-
-function createRepoContext() {
-  return {
-    firstRoute: '',
-    anchorRoutes: new Map(),
-    fileRoutes: new Map(),
-  };
-}
-
-function ensureRepoContext(repoKey) {
-  if (!repoContexts.has(repoKey)) {
-    repoContexts.set(repoKey, createRepoContext());
-  }
-  return repoContexts.get(repoKey);
-}
-
-function getRepoContext(repoKey) {
-  const context = repoContexts.get(repoKey);
-  if (!context) return null;
-
-  if (!context.firstRoute && context.anchorRoutes.size === 0 && context.fileRoutes.size === 0) {
-    return null;
-  }
-
-  return context;
 }
 
 function buildReadmeMarkdownFileOrder(repoDir) {

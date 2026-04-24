@@ -38,7 +38,7 @@ Number of iterations = `1`.
 
 Open the saved `.etl` in WPA, expand `Other`, add the `Registry` graph to the analysis view.
 
-Filter the operations to `QueryValue` by either right clicking on the operation then selecting `Filter To Selection`, or open the filter window and add `Operation` - `equals` - `QueryValue`. If you want a specific key, add a `Entire Key (Base+Remainder) Tree` - `contains` (if recursive) / `equals` (if strict) - `<key>` (note that the key is different to the standart hive keys, e.g. `\Registry\Machine` instead of `HKLM`, or `ControlSet00X` instead of it's link `CurrentControlSet`, see [regkit](/docs/regkit/sections/overview/) documentation).
+Filter the operations to `QueryValue` by either right clicking on the operation then selecting `Filter To Selection`, or open the filter window and add `Operation` - `equals` - `QueryValue`. If you want a specific key, add a `Entire Key (Base+Remainder) Tree` - `contains` (if recursive) / `equals` (if strict) - `<key>` (note that the key is different to the standart hive keys, e.g. `\Registry\Machine` instead of `HKLM`, or `ControlSet00X` instead of it's link `CurrentControlSet`, see [regkit](https://github.com/nohuto/regkit) documentation).
 
 Move the `Entire Key (Base+Remainder)` column to the far left so it doesn't export the same queried values but from different processes. Press `CTRL+A` to select the entire data table, right click on any row in the `Entire Key (Base+Remainder)` column, `Copy Other` - `Copy Column Selection`.
 

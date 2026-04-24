@@ -6,7 +6,7 @@ sidebar:
   order: 1
 ---
 
-See [`app-tools`](https://www.noverse.dev/docs/app-tools/docs/) ([repo](/docs/app-tools/sections/guides/)) for all guides/assets.
+See [`app-tools`](https://www.noverse.dev/docs/app-tools/docs/) ([repo](https://github.com/nohuto/app-tools)) for all guides/assets.
 
 ## Guides
 
@@ -23,5 +23,5 @@ See [`app-tools`](https://www.noverse.dev/docs/app-tools/docs/) ([repo](/docs/ap
 - [SteelSeries Configuration](https://www.noverse.dev/docs/app-tools/docs/guides/steelseries)
 - [VSC Configuration](https://www.noverse.dev/docs/app-tools/docs/guides/vsc)
 
-- [Browser Extensions](/docs/app-tools/docs/extensions/)
-- [Search Engines](/docs/app-tools/docs/search-engine/)
+- [Browser Extensions](https://github.com/nohuto/app-tools/blob/main/extensions.md)
+- [Search Engines](https://github.com/nohuto/app-tools/blob/main/search-engine.md)

@@ -8,4 +8,4 @@ sidebar:
 
 Several PS tools which automate the configuration of specific games.
 
-See [app-tools](/docs/app-tools/sections/guides/) for similar tools, but for application configuration.
+See [app-tools](https://github.com/nohuto/app-tools) for similar tools, but for application configuration.

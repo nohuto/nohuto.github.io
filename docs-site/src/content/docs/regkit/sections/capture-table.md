@@ -15,9 +15,9 @@ The records of specific keys are based on `24H2`.
 
 | File | Path(s) |
 |------|---------|
-| [23H2.txt](https://github.com/nohuto/regkit/blob/main/records/23H2.txt) | System trace of 23H2, used for [regkit](/docs/regkit/sections/overview/) (see [trace-menu](/docs/regkit/sections/trace-menu/)) |
-| [24H2.txt](https://github.com/nohuto/regkit/blob/main/records/24H2.txt) | System trace of 24H2, used for [regkit](/docs/regkit/sections/overview/) (see [trace-menu](/docs/regkit/sections/trace-menu/)) |
-| [25H2.txt](https://github.com/nohuto/regkit/blob/main/records/25H2.txt) | System trace of 25H2, used for [regkit](/docs/regkit/sections/overview/) (see [trace-menu](/docs/regkit/sections/trace-menu/)) |
+| [23H2.txt](https://github.com/nohuto/regkit/blob/main/records/23H2.txt) | System trace of 23H2, used for [regkit](https://github.com/nohuto/regkit) (see [trace-menu](https://github.com/nohuto/regkit#trace-menu)) |
+| [24H2.txt](https://github.com/nohuto/regkit/blob/main/records/24H2.txt) | System trace of 24H2, used for [regkit](https://github.com/nohuto/regkit) (see [trace-menu](https://github.com/nohuto/regkit#trace-menu)) |
+| [25H2.txt](https://github.com/nohuto/regkit/blob/main/records/25H2.txt) | System trace of 25H2, used for [regkit](https://github.com/nohuto/regkit) (see [trace-menu](https://github.com/nohuto/regkit#trace-menu)) |
 | [ACPI.txt](https://github.com/nohuto/regkit/blob/main/records/ACPI.txt) | `HKLM\SYSTEM\ControlSet001\Services\ACPI`<br>`HKLM\SYSTEM\ControlSet001\Services\acpiex`<br>`HKLM\SYSTEM\ControlSet001\Services\AcpiDev`<br>`HKLM\SYSTEM\ControlSet001\Services\acpipagr`<br>`HKLM\SYSTEM\ControlSet001\Services\AcpiPmi`<br>`HKLM\SYSTEM\ControlSet001\Services\acpitime` |
 | [AFD-Parameters.txt](https://github.com/nohuto/regkit/blob/main/records/AFD-Parameters.txt) | `HKLM\SYSTEM\ControlSet001\Services\AFD\Parameters` |
 | [Accessibility.txt](https://github.com/nohuto/regkit/blob/main/records/Accessibility.txt) | `HKCU\Control Panel\Accessibility` |
