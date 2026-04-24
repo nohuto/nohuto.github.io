@@ -1,0 +1,146 @@
+---
+import LanguageSelect from 'virtual:starlight/components/LanguageSelect';
+import SocialIcons from 'virtual:starlight/components/SocialIcons';
+import ThemeSelect from 'virtual:starlight/components/ThemeSelect';
+
+const { id, sidebar } = Astro.locals.starlightRoute;
+
+const knownRoots = collectKnownRoots(sidebar);
+const activeRepo = getActiveRepo(id, knownRoots);
+const hasActiveRepo = Boolean(activeRepo && !['index', '404'].includes(activeRepo));
+const repoHref = hasActiveRepo ? `https://github.com/nohuto/${activeRepo}` : '';
+
+function normalize(value) {
+  return String(value || '').trim().toLowerCase();
+}
+
+function hrefRootSegment(href) {
+  if (!href) return '';
+  try {
+    const url = new URL(href, 'https://example.invalid');
+    const parts = url.pathname.split('/').filter(Boolean).map(normalize);
+    if (parts[0] === 'docs' && parts.length > 1) return parts[1];
+    return parts[0] || '';
+  } catch {
+    return '';
+  }
+}
+
+function collectKnownRoots(entries, roots = new Set()) {
+  entries.forEach((entry) => {
+    if (entry.type === 'link') {
+      const root = hrefRootSegment(entry.href);
+      if (root) roots.add(root);
+      return;
+    }
+    const labelRoot = normalize(entry.label).replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    if (labelRoot) roots.add(labelRoot);
+    collectKnownRoots(entry.entries, roots);
+  });
+  return roots;
+}
+
+function getActiveRepo(routeId, roots) {
+  const segments = String(routeId || '')
+    .split('/')
+    .filter(Boolean)
+    .map(normalize)
+    .filter((segment) => segment !== 'docs');
+
+  if (segments.length === 0) return '';
+  const firstMatch = segments.find((segment) => roots.has(segment));
+  return firstMatch || segments[0] || '';
+}
+---
+
+<div class="mobile-preferences sl-flex">
+  <div class:list={['mobile-links', { 'has-active-repo': hasActiveRepo }]}>
+    <div class="social-icons">
+      <SocialIcons />
+    </div>
+    {
+      hasActiveRepo && (
+        <a class="mobile-repo-link" href={repoHref} target="_blank" rel="noopener noreferrer">
+          {activeRepo}
+        </a>
+      )
+    }
+  </div>
+  <ThemeSelect />
+  <LanguageSelect />
+</div>
+
+<style>
+  @layer starlight.core {
+    .mobile-preferences {
+      position: relative;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-items: center;
+      border-top: 1px solid var(--sl-color-gray-6);
+      column-gap: 0.75rem;
+      row-gap: 0.625rem;
+      padding: 0.5rem 0;
+    }
+
+    .mobile-links {
+      display: inline-flex;
+      align-items: center;
+      min-width: 0;
+      margin-inline-end: auto;
+    }
+
+    .social-icons {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding-block: 0;
+    }
+
+    .social-icons:empty {
+      display: none;
+    }
+
+    .social-icons :global(a),
+    .mobile-repo-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 1.75rem;
+      min-height: 1.75rem;
+      padding: 0.25rem;
+      margin: 0;
+      color: var(--sl-color-gray-2);
+      text-decoration: none;
+    }
+
+    .social-icons :global(a:hover),
+    .social-icons :global(a:focus-visible),
+    .mobile-repo-link:hover,
+    .mobile-repo-link:focus-visible {
+      color: var(--sl-color-accent-high);
+      outline: none;
+    }
+
+    .mobile-links.has-active-repo .social-icons::after {
+      content: '';
+      align-self: stretch;
+      border-inline-end: 1px solid var(--sl-color-gray-5);
+      margin-inline: 0.35rem 0.55rem;
+    }
+
+    .mobile-repo-link {
+      order: 2;
+      justify-content: flex-start;
+      min-width: 0;
+      max-width: 8.5rem;
+      padding-inline: 0;
+      font-size: var(--sl-text-xs);
+      font-weight: 600;
+      line-height: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+</style>

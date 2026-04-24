@@ -87,6 +87,7 @@ export default defineConfig({
         PageTitle: './src/components/starlight/PageTitle.astro',
         Search: './src/components/starlight/Search.astro',
         Sidebar: './src/components/starlight/Sidebar.astro',
+        MobileMenuFooter: './src/components/starlight/MobileMenuFooter.astro',
         ThemeProvider: './src/components/starlight/ThemeProvider.astro',
         ThemeSelect: './src/components/starlight/ThemeSelect.astro',
       },
