@@ -9,7 +9,7 @@
   <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=()">
   <meta http-equiv="Content-Security-Policy"
     content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; script-src-attr 'none'; style-src 'self'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self' https://api.github.com https://raw.githubusercontent.com; form-action 'self' https://www.paypal.com">
-  <title>Home</title>
+  <title>Terminal</title>
   <link rel="icon" href="main/images/nvlogo.png">
   <script src="main/bootstrap.js"></script>
   <link rel="stylesheet" href="main/styles.css">
@@ -25,12 +25,12 @@
       <span class="prompt-user">nohuto</span>
       <span class="prompt-sep">@</span>
       <span class="prompt-host">noverse</span>
-      <span class="prompt-path">:~/home</span>
+      <span class="prompt-path">:~/terminal</span>
       <span class="prompt-caret">$</span>
       <span class="prompt-cmd">open</span>
     </div>
     <nav class="nav-tabs" aria-label="Primary navigation">
-      <a href="index.html" aria-current="page" class="active">home</a>
+      <a href="index.html" aria-current="page" class="active">terminal</a>
       <a href="product.html">product</a>
       <a href="projects.html">projects</a>
       <a href="bin-diff.html">bin-diff</a>
@@ -38,12 +38,12 @@
     </nav>
   </header>
 
-  <main id="main" class="main-home">
-    <section class="home-shell" data-title="home">
+  <main id="main" class="main-terminal">
+    <section class="terminal-shell" data-title="terminal">
       <div class="window-surface">
         <div class="console-window" id="console-window" role="region" aria-label="Terminal window">
           <div class="console-window-header" id="console-drag">
-            <span>home.terminal</span>
+            <span>terminal</span>
             <span class="console-window-meta">drag / resize</span>
           </div>
           <div class="console-window-body">
@@ -51,7 +51,7 @@
               <div class="console-output" id="console-output" role="log" aria-live="polite" aria-relevant="additions">
                 <div class="console-lines" id="console-lines"></div>
                 <form class="console-input" id="console-form" autocomplete="off">
-                  <span class="console-prompt">nohuto@noverse:~/home$</span>
+                  <span class="console-prompt">nohuto@noverse:~/terminal$</span>
                   <span class="console-edit">
                     <span class="console-measure" id="console-measure" aria-hidden="true"></span>
                     <span class="console-ghost" id="console-ghost" aria-hidden="true"></span>

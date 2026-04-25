@@ -128,6 +128,8 @@ let repoDescriptionsPromise;
 let selectUiListener;
 let selectUiKeyListener;
 let binDiffAssetsPromise;
+let terminalExited = false;
+let consoleAnimationCleanup = null;
 const binDiffAssetPromiseCache = new Map();
 const binDiffEntriesCache = new Map();
 const binDiffFunctionNamesCache = new Map();
@@ -143,6 +145,12 @@ const EMAIL_BYTES = [121, 120, 127, 98, 99, 120, 87, 99, 98, 99, 118, 57, 126, 1
 
 const getEmailAddress = () =>
   EMAIL_BYTES.map(byte => String.fromCharCode(byte ^ EMAIL_KEY)).join('');
+
+function stopConsoleAnimation() {
+  if (!consoleAnimationCleanup) return;
+  consoleAnimationCleanup();
+  consoleAnimationCleanup = null;
+}
 
 const storageGet = (key, fallback) => {
   try {
@@ -177,18 +185,36 @@ function setActive(href) {
   });
 }
 
+function applyTerminalExitState() {
+  document.documentElement.toggleAttribute('data-terminal-exited', terminalExited);
+  document.querySelectorAll('.nav-tabs a[href="index.html"]').forEach(link => {
+    link.hidden = terminalExited;
+    link.style.display = terminalExited ? 'none' : '';
+    link.setAttribute('aria-hidden', terminalExited ? 'true' : 'false');
+    if (terminalExited) {
+      link.classList.remove('active');
+      link.removeAttribute('aria-current');
+    } else {
+      link.removeAttribute('aria-hidden');
+    }
+  });
+  document.querySelectorAll('main.main-terminal, .terminal-shell, #console-window').forEach(node => {
+    node.hidden = terminalExited;
+  });
+}
+
 function getPromptDirectory(pathname = location.pathname) {
   const normalized = String(pathname || '')
     .replace(/^https?:\/\/[^/]+/i, '')
     .replace(/^\/+|\/+$/g, '')
     .toLowerCase();
 
-  if (!normalized || normalized === 'index.html') return 'home';
+  if (!normalized || normalized === 'index.html') return 'terminal';
   if (normalized === 'product.html') return 'product';
   if (normalized === 'projects.html') return 'projects';
   if (normalized === 'bin-diff.html') return 'bin-diff';
   if (normalized === 'docs' || normalized.startsWith('docs/')) return 'docs';
-  return 'home';
+  return 'terminal';
 }
 
 function getPromptPath(pathname = location.pathname) {
@@ -682,9 +708,11 @@ async function loadPage(url, push = true) {
     newMain.classList.add('fading');
 
     setTimeout(() => {
+      stopConsoleAnimation();
       main.replaceWith(newMain);
       document.title = newTitle;
       setActive(nextPathname.split('/').pop() || 'index.html');
+      applyTerminalExitState();
       updatePromptBar(nextPathname);
       initRepoDescriptions();
       initFiltering();
@@ -2029,13 +2057,13 @@ function initConsole() {
 
   const promptUser = 'nohuto';
   const promptHost = 'noverse';
-  const rootPath = '~/main';
+  const rootPath = '~/terminal';
   let currentPath = rootPath;
   const promptEl = consoleRoot.querySelector('.console-prompt');
   const timestampEl = document.getElementById('console-timestamp');
   const DOCS_ROOT_PATH = `${rootPath}/docs`;
   const formatDisplayPath = path => {
-    if (path === rootPath) return '~/home';
+    if (path === rootPath) return rootPath;
     if (path === DOCS_ROOT_PATH) return '~/docs';
     if (String(path || '').startsWith(`${DOCS_ROOT_PATH}/`)) {
       return String(path).replace(`${DOCS_ROOT_PATH}/`, '~/docs/');
@@ -2152,8 +2180,196 @@ function initConsole() {
     scrollToBottom();
   };
 
+  const addNodeLine = (node, className) => {
+    const line = document.createElement('div');
+    line.className = className ? `console-line ${className}` : 'console-line';
+    line.appendChild(node);
+    lines.appendChild(line);
+    scrollToBottom();
+    return line;
+  };
+
   const addIndentedLines = (items, className) => {
     items.forEach(item => addLine(`  ${item}`, className));
+  };
+
+  const parseAnimationDimension = value => {
+    if (value == null || value === '') return null;
+    const normalized = String(value).trim().toLowerCase();
+    if (!normalized) return null;
+    const match = normalized.match(/^(\d{1,5})(?:px)?$/);
+    if (!match) return Number.NaN;
+    const parsed = Number.parseInt(match[1], 10);
+    return Number.isFinite(parsed) && parsed > 0 ? parsed : Number.NaN;
+  };
+
+  const startTrippyAnimation = (requestedWidth = null, requestedHeight = null) => {
+    stopConsoleAnimation();
+
+    const container = document.createElement('div');
+    container.className = 'console-animation console-animation-trippy';
+
+    const gridContainer = document.createElement('div');
+    gridContainer.className = 'trippy-grid-container';
+
+    const canvas = document.createElement('canvas');
+    canvas.className = 'trippy-grid';
+    canvas.setAttribute('aria-label', 'Terminal animation');
+
+    gridContainer.appendChild(canvas);
+    container.appendChild(gridContainer);
+
+    const line = addNodeLine(container, 'console-animation-line');
+    const ctx = canvas.getContext('2d', { alpha: true });
+    if (!ctx) {
+      addLine('animation unavailable: canvas is not supported', 'muted');
+      line.remove();
+      return;
+    }
+
+    const charRangeStart = 33;
+    const charRangeEnd = 126;
+    const charRangeMax = charRangeEnd - charRangeStart;
+    const targetFrameMs = 1000 / 30;
+    let cellWidth = 10;
+    let cellHeight = 10;
+    let colCount = 0;
+    let rowCount = 0;
+    let canvasWidth = 0;
+    let canvasHeight = 0;
+    let xTerms = new Float32Array(0);
+    let yTerms = new Float32Array(0);
+    let glyphAtlas = [];
+    let palette = [];
+    let rafId = 0;
+    let lastFrame = 0;
+    let stopped = false;
+
+    const getThemePalette = () => {
+      const rootStyle = getComputedStyle(document.documentElement);
+      const nextPalette = [
+        rootStyle.getPropertyValue('--accent').trim(),
+        rootStyle.getPropertyValue('--accent-2').trim(),
+        rootStyle.getPropertyValue('--text').trim(),
+        rootStyle.getPropertyValue('--muted').trim(),
+        rootStyle.getPropertyValue('--success').trim(),
+        rootStyle.getPropertyValue('--warning').trim()
+      ].filter(Boolean);
+      return nextPalette.length ? nextPalette : ['#ffffff'];
+    };
+
+    const applyRequestedSize = () => {
+      const lineWidth = Math.max(1, line.clientWidth);
+      const outputHeight = Math.max(1, output.clientHeight);
+      const inputHeight = form.offsetHeight || 0;
+      const maxWidth = lineWidth;
+      const maxHeight = Math.max(80, outputHeight - inputHeight - 12);
+      const nextWidth = requestedWidth ? Math.min(requestedWidth, maxWidth) : maxWidth;
+      const nextHeight = requestedHeight ? Math.min(requestedHeight, maxHeight) : Math.min(Math.max(145, outputHeight * 0.26), 230, maxHeight);
+      gridContainer.style.width = `${Math.floor(nextWidth)}px`;
+      gridContainer.style.height = `${Math.floor(nextHeight)}px`;
+    };
+
+    const buildGlyphAtlas = font => {
+      glyphAtlas = palette.map(color => {
+        const colorGlyphs = [];
+        for (let code = 0; code < charRangeMax; code += 1) {
+          const glyphCanvas = document.createElement('canvas');
+          glyphCanvas.width = Math.ceil(cellWidth);
+          glyphCanvas.height = Math.ceil(cellHeight);
+          const glyphCtx = glyphCanvas.getContext('2d', { alpha: true });
+          if (glyphCtx) {
+            glyphCtx.font = font;
+            glyphCtx.textBaseline = 'top';
+            glyphCtx.fillStyle = color;
+            glyphCtx.fillText(String.fromCharCode(charRangeStart + code), 0, 0);
+          }
+          colorGlyphs.push(glyphCanvas);
+        }
+        return colorGlyphs;
+      });
+    };
+
+    const updateSize = () => {
+      if (stopped) return;
+
+      applyRequestedSize();
+
+      const rect = gridContainer.getBoundingClientRect();
+      const nextWidth = Math.max(1, Math.floor(rect.width));
+      const nextHeight = Math.max(1, Math.floor(rect.height));
+      const gridStyle = getComputedStyle(canvas);
+      const fontSize = parseFloat(gridStyle.fontSize) || 10;
+      const lineHeight = parseFloat(gridStyle.lineHeight) || fontSize;
+      const font = `${fontSize}px ${gridStyle.fontFamily}`;
+
+      ctx.font = font;
+      ctx.textBaseline = 'top';
+      cellWidth = Math.max(1, ctx.measureText('M').width);
+      cellHeight = Math.max(1, lineHeight);
+      colCount = Math.max(1, Math.floor(nextWidth / cellWidth));
+      rowCount = Math.max(1, Math.floor(nextHeight / cellHeight));
+      canvasWidth = Math.ceil(colCount * cellWidth);
+      canvasHeight = Math.ceil(rowCount * cellHeight);
+
+      canvas.width = canvasWidth;
+      canvas.height = canvasHeight;
+      canvas.style.width = `${canvasWidth}px`;
+      canvas.style.height = `${canvasHeight}px`;
+
+      ctx.imageSmoothingEnabled = false;
+      palette = getThemePalette();
+      buildGlyphAtlas(font);
+
+      xTerms = new Float32Array(colCount);
+      yTerms = new Float32Array(rowCount);
+      const cx = Math.floor(colCount / 2);
+      const cy = Math.floor(rowCount / 2);
+      for (let x = 0; x < colCount; x += 1) xTerms[x] = Math.cos((x - cx) / 8.0);
+      for (let y = 0; y < rowCount; y += 1) yTerms[y] = Math.sin((y - cy) / 8.0);
+
+      scrollToBottom();
+    };
+
+    const render = ticks => {
+      if (stopped || !line.isConnected) return;
+      rafId = requestAnimationFrame(render);
+      if (ticks - lastFrame < targetFrameMs) return;
+      lastFrame = ticks;
+
+      ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+      const t = 100 + (ticks * 0.001);
+
+      for (let y = 0; y < rowCount; y += 1) {
+        const yTerm = yTerms[y];
+        const drawY = y * cellHeight;
+        for (let x = 0; x < colCount; x += 1) {
+          const v = (xTerms[x] + yTerm + t) * 16;
+          const charVal = Math.floor(v % charRangeMax);
+          const glyphIndex = (charVal + charRangeMax) % charRangeMax;
+          const colorIndex = glyphIndex % palette.length;
+          ctx.drawImage(glyphAtlas[colorIndex][glyphIndex], x * cellWidth, drawY);
+        }
+      }
+    };
+
+    const resizeObserver = window.ResizeObserver ? new ResizeObserver(updateSize) : null;
+    const handleThemeChange = updateSize;
+    resizeObserver?.observe(line);
+    resizeObserver?.observe(output);
+    document.addEventListener('nv:theme-change', handleThemeChange);
+    requestAnimationFrame(() => {
+      updateSize();
+      rafId = requestAnimationFrame(render);
+    });
+
+    consoleAnimationCleanup = () => {
+      stopped = true;
+      if (rafId) cancelAnimationFrame(rafId);
+      resizeObserver?.disconnect();
+      document.removeEventListener('nv:theme-change', handleThemeChange);
+      if (line.isConnected) line.remove();
+    };
   };
 
   const extractFirstUrl = text => {
@@ -2206,13 +2422,13 @@ function initConsole() {
     if (raw.startsWith('~/')) raw = raw.slice(2);
     if (raw.startsWith(`${rootPath}/`)) raw = raw.slice(rootPath.length + 1);
     if (raw.startsWith('./')) raw = raw.slice(2);
-    if (raw === 'main') return rootPath;
-    if (raw.startsWith('main/')) raw = raw.slice(5);
+    if (raw === 'terminal') return rootPath;
+    if (raw.startsWith('terminal/')) raw = raw.slice(9);
     raw = raw.replace(/^\/+/, '');
 
     const segments = raw.split('/').filter(Boolean);
     if (!segments.length) return rootPath;
-    if (segments[0] === 'home') return rootPath;
+    if (segments[0] === 'terminal') return rootPath;
 
     if (segments[0] === 'docs') {
       const docsTail = trimSlashes(segments.slice(1).join('/'));
@@ -2233,7 +2449,7 @@ function initConsole() {
   };
 
   const NAV_MAP = {
-    home: 'index.html',
+    terminal: 'index.html',
     product: 'product.html',
     projects: 'projects.html',
     'bin-diff': 'bin-diff.html'
@@ -2251,7 +2467,7 @@ function initConsole() {
       return;
     }
 
-    const segment = nextPath === rootPath ? 'home' : nextPath.split('/').pop();
+    const segment = nextPath === rootPath ? 'terminal' : nextPath.split('/').pop();
     const target = NAV_MAP[segment];
     if (!target) return;
     const currentPage = location.pathname.split('/').pop() || 'index.html';
@@ -2262,16 +2478,20 @@ function initConsole() {
   const defaultAliases = {
     h: 'help',
     '?': 'help',
+    usage: 'help',
+    cmds: 'help',
+    commands: 'help',
     cls: 'clear',
     dir: 'ls',
     ll: 'ls',
     la: 'ls',
-    home: 'cd home',
+    terminal: 'cd terminal',
     cprod: 'cd product',
     cproj: 'cd projects',
     cbindiff: 'cd bin-diff',
     cdocs: 'cd docs',
     cabout: 'about',
+    quit: 'exit',
     '..': 'cd ..'
   };
   const aliases = Object.freeze({ ...defaultAliases });
@@ -2310,8 +2530,10 @@ function initConsole() {
         ['alias', 'list built-in aliases'],
         ['themes', 'list theme ids'],
         ['theme <id>', 'set theme'],
+        ['animation [x y]', 'some cool animation (x/y = pixels)'],
         ['fontsize <10-22>', 'set size'],
-        ['clear', 'clear the terminal']
+        ['clear', 'clear the terminal'],
+        ['exit', 'exit (hide) terminal, reverted on site refresh']
       ];
       const width = entries.reduce((max, [cmd]) => Math.max(max, cmd.length), 0);
       entries.forEach(([cmd, desc]) => {
@@ -2471,9 +2693,27 @@ function initConsole() {
       storageSet(FONT_SIZE_KEY, applied + 'px');
       addLine(`size set: ${applied}px`);
     },
+    animation: args => {
+      const requestedWidth = parseAnimationDimension(args[0]);
+      const requestedHeight = parseAnimationDimension(args[1]);
+      if (Number.isNaN(requestedWidth) || Number.isNaN(requestedHeight) || args.length > 2) {
+        addLine('usage: animation [width] [height]', 'muted');
+        addLine('example: animation 900 180', 'muted');
+        return;
+      }
+      addLine('animation', 'muted');
+      startTrippyAnimation(requestedWidth, requestedHeight);
+    },
     clear: () => {
+      stopConsoleAnimation();
       lines.replaceChildren();
       scrollToBottom();
+    },
+    exit: () => {
+      stopConsoleAnimation();
+      terminalExited = true;
+      applyTerminalExitState();
+      loadPage('projects.html');
     },
     projects: () => {
       addLine('projects:');
@@ -2605,6 +2845,7 @@ function initConsole() {
 
 document.addEventListener('DOMContentLoaded', () => {
   setActive(location.pathname.split('/').pop() || 'index.html');
+  applyTerminalExitState();
   updatePromptBar(location.pathname);
   initTheme();
   initBackground();

@@ -750,29 +750,29 @@ html[data-bg="starfield"] .stars::after {
   padding: 0;
 }
 
-main.main-home {
+main.main-terminal {
   width: 100%;
   max-width: none;
   padding: 16px 0 32px;
   gap: 0;
 }
 
-main.main-home .home-shell {
+main.main-terminal .terminal-shell {
   flex: 1;
   display: flex;
   min-height: 0;
 }
 
-.home-shell {
+.terminal-shell {
   width: 100%;
 }
 
-.home-shell .panel-body {
+.terminal-shell .panel-body {
   padding: 0;
 }
 
-.home-shell,
-.home-shell .panel-body {
+.terminal-shell,
+.terminal-shell .panel-body {
   background: transparent;
   border: none;
   box-shadow: none;
@@ -906,6 +906,10 @@ main {
   letter-spacing: 0.04em;
   line-height: 1;
   transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.nav-tabs a[hidden] {
+  display: none !important;
 }
 
 .nav-tabs a::before {
@@ -1243,6 +1247,37 @@ main.product-main {
 
 .console-line.muted {
   color: var(--muted);
+}
+
+.console-animation-line {
+  white-space: normal;
+}
+
+.console-animation {
+  width: 100%;
+  margin: 6px 0 4px;
+}
+
+.trippy-grid-container {
+  width: 100%;
+  max-width: 100%;
+  height: clamp(145px, 26vh, 230px);
+  padding: 0;
+  background: transparent;
+  border: 0;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.trippy-grid {
+  position: relative;
+  display: block;
+  margin: 0;
+  overflow: hidden;
+  background: transparent;
+  font-family: "Press Start 2P", var(--font-family);
+  font-size: 10px;
+  line-height: 1;
 }
 
 .console-comment {
