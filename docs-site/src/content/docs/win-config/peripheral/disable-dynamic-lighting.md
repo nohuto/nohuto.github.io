@@ -6,7 +6,9 @@ sidebar:
   order: 18
 ---
 
-"*Dynamic Lighting is a feature that allows you to control LED-powered devices such as keyboards, mice, and other illuminated accessories. This feature enables you to coordinate the colors of LEDs, creating a unified lighting experience both within Windows and across all your devices.*" [[*]](ttps://learn.microsoft.com/en-us/windows-hardware/design/component-guidelines/dynamic-lighting-devices)
+> "*Dynamic Lighting is a feature that allows you to control LED-powered devices such as keyboards, mice, and other illuminated accessories. This feature enables you to coordinate the colors of LEDs, creating a unified lighting experience both within Windows and across all your devices.*"
+>
+> — Microsoft Learn, [Dynamic Lighting devices](https://learn.microsoft.com/en-us/windows-hardware/design/component-guidelines/dynamic-lighting-devices)
 
 | Value | Type | Values | Ranges | Notes |
 | --- | --- | --- | --- | --- |

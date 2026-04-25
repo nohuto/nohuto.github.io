@@ -66,7 +66,9 @@ HKLM\System\CurrentControlSet\Services\LanmanServer\Parameters\SMB2	Type: REG_DW
 
 ### Enforce SMB Signing
 
-"*The `EnableSecuritySignature` registry setting for SMB2 and later clients and servers is ignored. Therefore, this setting does nothing unless you're using SMB1. SMB 2.02 and later signing is controlled solely by being required or not. This setting is used when either the server or client requires SMB signing. Signing doesn't occur only when both the server and client have signing set to `0`.*" [[*]](https://github.com/MicrosoftDocs/windowsserverdocs/blob/main/WindowsServerDocs/storage/file-server/smb-signing-overview.md#understanding-requiresecuritysignature-and-enablesecuritysignature)
+> "*The `EnableSecuritySignature` registry setting for SMB2 and later clients and servers is ignored. Therefore, this setting does nothing unless you're using SMB1. SMB 2.02 and later signing is controlled solely by being required or not. This setting is used when either the server or client requires SMB signing. Signing doesn't occur only when both the server and client have signing set to `0`.*"
+>
+> — Microsoft Learn, [SMB signing overview](https://learn.microsoft.com/en-us/windows-server/storage/file-server/smb-signing-overview#understanding-requiresecuritysignature-and-enablesecuritysignature)
 
 In summary SMB is signed when:
 
@@ -106,17 +108,19 @@ HKLM\System\CurrentControlSet\Services\LanmanServer\Parameters\CipherSuiteOrder	
 
 ### Disable Admin Shares
 
-"*By default, Windows Server automatically creates special hidden administrative shares that administrators, programs, and services can use to manage the computer environment or network. These special shared resources aren't visible in Windows Explorer or in My Computer. However, you can view them by using the Shared Folders tool in Computer Management. Depending on the configuration of your computer, some or all of the following special shared resources may be listed in the Shares folder in Shared Folders:*
-
-- *`<DriveLetter>$`: It's a shared root partition or volume. Shared root partitions and volumes are displayed as the drive letter name appended with the dollar sign (`$`). For example, when drive letters C and D are shared, they're displayed as `C$` and `D$`.*
-- *`ADMIN$`: It's a resource that is used during remote administration of a computer.*
-- *`IPC$`: It's a resource that shares the named pipes that you must have for communication between programs. This resource cannot be deleted.*
-- *`NETLOGON`: It's a resource that is used on domain controllers.*
-- *`SYSVOL`: It's a resource that is used on domain controllers.*
-- *`PRINT$`: It's a resource that is used during the remote administration of printers.*
-- *`FAX$`: It's a shared folder on a server that is used by fax clients during fax transmission.*
-
-*`NETLOGON` and `SYSVOL` aren't hidden shares. Instead, they are special administrative shares.*" [[*]](https://learn.microsoft.com/en-us/troubleshoot/windows-server/networking/remove-administrative-shares)
+> "*By default, Windows Server automatically creates special hidden administrative shares that administrators, programs, and services can use to manage the computer environment or network. These special shared resources aren't visible in Windows Explorer or in My Computer. However, you can view them by using the Shared Folders tool in Computer Management. Depending on the configuration of your computer, some or all of the following special shared resources may be listed in the Shares folder in Shared Folders:*
+>
+> - *`<DriveLetter>$`: It's a shared root partition or volume. Shared root partitions and volumes are displayed as the drive letter name appended with the dollar sign (`$`). For example, when drive letters C and D are shared, they're displayed as `C$` and `D$`.*
+> - *`ADMIN$`: It's a resource that is used during remote administration of a computer.*
+> - *`IPC$`: It's a resource that shares the named pipes that you must have for communication between programs. This resource cannot be deleted.*
+> - *`NETLOGON`: It's a resource that is used on domain controllers.*
+> - *`SYSVOL`: It's a resource that is used on domain controllers.*
+> - *`PRINT$`: It's a resource that is used during the remote administration of printers.*
+> - *`FAX$`: It's a shared folder on a server that is used by fax clients during fax transmission.*
+>
+> *`NETLOGON` and `SYSVOL` aren't hidden shares. Instead, they are special administrative shares.*"
+>
+> — Microsoft Learn, [Remove administrative shares](https://learn.microsoft.com/en-us/troubleshoot/windows-server/networking/remove-administrative-shares)
 
 Disable default sharing:
 ```powershell
@@ -139,15 +143,17 @@ HKLM\System\CurrentControlSet\Services\LanmanServer\Parameters\RejectUnencrypted
 
 ### Enable SMB Over QUIC
 
-"*SMB over QUIC introduces an alternative to the TCP network transport, providing secure, reliable connectivity to edge file servers over untrusted networks like the Internet. QUIC is an IETF-standardized protocol with many benefits when compared with TCP:*
-
-- *All packets are always encrypted and handshake is authenticated with TLS 1.3*
-- *Parallel streams of reliable and unreliable application data*
-- *Exchanges application data in the first round trip (0-RTT)*
-- *Improved congestion control and loss recovery*
-- *Survives a change in the clients IP address or port*
-
-*SMB over QUIC offers an "SMB VPN" for telecommuters, mobile device users, and high security organizations. The server certificate creates a TLS 1.3-encrypted tunnel over the internet-friendly UDP port 443 instead of the legacy TCP port 445. All SMB traffic, including authentication and authorization within the tunnel is never exposed to the underlying network. SMB behaves normally within the QUIC tunnel, meaning the user experience doesn't change. SMB features like multichannel, signing, compression, continuous availability, directory leasing, and so on, work normally.*" [[*]](https://learn.microsoft.com/en-us/windows-server/storage/file-server/smb-over-quic?tabs=windows-admin-center%2Cpowershell2%2Cwindows-admin-center1)
+> "*SMB over QUIC introduces an alternative to the TCP network transport, providing secure, reliable connectivity to edge file servers over untrusted networks like the Internet. QUIC is an IETF-standardized protocol with many benefits when compared with TCP:*
+>
+> - *All packets are always encrypted and handshake is authenticated with TLS 1.3*
+> - *Parallel streams of reliable and unreliable application data*
+> - *Exchanges application data in the first round trip (0-RTT)*
+> - *Improved congestion control and loss recovery*
+> - *Survives a change in the clients IP address or port*
+>
+> *SMB over QUIC offers an "SMB VPN" for telecommuters, mobile device users, and high security organizations. The server certificate creates a TLS 1.3-encrypted tunnel over the internet-friendly UDP port 443 instead of the legacy TCP port 445. All SMB traffic, including authentication and authorization within the tunnel is never exposed to the underlying network. SMB behaves normally within the QUIC tunnel, meaning the user experience doesn't change. SMB features like multichannel, signing, compression, continuous availability, directory leasing, and so on, work normally.*"
+>
+> — Microsoft Learn, [SMB over QUIC](https://learn.microsoft.com/en-us/windows-server/storage/file-server/smb-over-quic?tabs=windows-admin-center%2Cpowershell2%2Cwindows-admin-center1)
 
 ```powershell
 Set-SmbClientConfiguration -EnableSMBQUIC $true
@@ -201,14 +207,16 @@ HKLM\System\CurrentControlSet\Services\LanmanWorkstation\Parameters\DisableLarge
 
 ### Enable SMB Multichannel
 
-"*SMB Multichannel is part of the Server Message Block (SMB) 3.0 protocol, which increases network performance and the availability of file servers.*
-
-*SMB Multichannel enables file servers to use multiple network connections simultaneously. It facilitates aggregation of network bandwidth and network fault tolerance when multiple paths are available between the SMB 3.0 client and the SMB 3.0 server. This allows server applications to take full advantage of all available network bandwidth and makes them more resilient to network failures.*
-
-*SMB Multichannel provides the following capabilities:*
-- ***Increased throughput.** The file server can simultaneously transmit additional data by using multiple connections for high-speed network adapters or multiple network adapters.*
-- ***Network fault tolerance.** When clients simultaneously use multiple network connections, the clients can continue without interruption despite the loss of a network connection.*
-- ***Automatic configuration.** SMB Multichannel automatically discovers multiple available network paths and dynamically adds connections as necessary.*" [[*]](https://learn.microsoft.com/en-us/windows-server/storage/storage-spaces/manage-smb-multichannel)
+> "*SMB Multichannel is part of the Server Message Block (SMB) 3.0 protocol, which increases network performance and the availability of file servers.*
+>
+> *SMB Multichannel enables file servers to use multiple network connections simultaneously. It facilitates aggregation of network bandwidth and network fault tolerance when multiple paths are available between the SMB 3.0 client and the SMB 3.0 server. This allows server applications to take full advantage of all available network bandwidth and makes them more resilient to network failures.*
+>
+> *SMB Multichannel provides the following capabilities:*
+> - ***Increased throughput.** The file server can simultaneously transmit additional data by using multiple connections for high-speed network adapters or multiple network adapters.*
+> - ***Network fault tolerance.** When clients simultaneously use multiple network connections, the clients can continue without interruption despite the loss of a network connection.*
+> - ***Automatic configuration.** SMB Multichannel automatically discovers multiple available network paths and dynamically adds connections as necessary.*"
+>
+> — Microsoft Learn, [Manage SMB Multichannel](https://learn.microsoft.com/en-us/windows-server/storage/storage-spaces/manage-smb-multichannel)
 
 ```powershell
 Set-SmbClientConfiguration -EnableMultiChannel $true

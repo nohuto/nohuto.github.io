@@ -36,10 +36,10 @@ The following includes details of how the panel sets the changes and more, a lot
 ## 3D Settings > Manage 3D settings
 
 More information - [discord notes](https://discord.com/channels/836870260715028511/1375059420970487838/1412446705869394071)  
-> [NVIDIA Profile Inspector](https://github.com/Orbmu2k/nvidiaProfileInspector)  
-> [Noverse-Minimal](https://raw.githubusercontent.com/nohuto/win-config/refs/heads/main/nvidia/assets/NV-Minimal.nip)  
-> [Noverse-Compatible](https://raw.githubusercontent.com/nohuto/win-config/refs/heads/main/nvidia/assets/NV-Compatible.nip)  
-> [`d3dreg` Output](https://github.com/nohuto/win-config/blob/main/nvidia/assets/d3doutput.txt) - [List](https://github.com/nohuto/win-config/blob/main/nvidia/assets/d3dlist.cpp)
+- [NVIDIA Profile Inspector](https://github.com/Orbmu2k/nvidiaProfileInspector)
+- [Noverse-Minimal](https://raw.githubusercontent.com/nohuto/win-config/refs/heads/main/nvidia/assets/NV-Minimal.nip)
+- [Noverse-Compatible](https://raw.githubusercontent.com/nohuto/win-config/refs/heads/main/nvidia/assets/NV-Compatible.nip)
+- [`d3dreg` Output](https://github.com/nohuto/win-config/blob/main/nvidia/assets/d3doutput.txt) - [List](https://github.com/nohuto/win-config/blob/main/nvidia/assets/d3dlist.cpp)
 
 ## 3D Settings > Configure Surround, PhysX
 
@@ -63,7 +63,7 @@ NVDisplay.Container.exe    RegSetValue    HKLM\System\CurrentControlSet\Services
 NVDisplay.Container.exe    RegSetValue    HKLM\System\CurrentControlSet\Services\nvlddmkm\Global\NVTweak\NvCplPhysxAuto    Type: REG_DWORD, Length: 4, Data: 0
 NVDisplay.Container.exe    RegSetValue    HKLM\System\CurrentControlSet\Services\nvlddmkm\NVAPI\physxGpuId    Type: REG_BINARY, Length: 4, Data: 00 00 00 00
 ```
-> [nvidia/assets | physx-nvapi.h](https://github.com/nohuto/win-config/blob/main/nvidia/assets/physx-nvapi.h)
+- [nvidia/assets | physx-nvapi.h](https://github.com/nohuto/win-config/blob/main/nvidia/assets/physx-nvapi.h)
 
 ![](https://github.com/nohuto/win-config/blob/main/nvidia/images/nvcpl2.png?raw=true)  
 
@@ -111,8 +111,8 @@ sin(0) = 0  = 0x00000000 hex
 = last 2 bytes
 ```
 
-> [nvidia/assets | color-displayDB.cpp](https://github.com/nohuto/win-config/blob/main/nvidia/assets/color-displayDB.cpp)  
-> [nvidia/assets | color-DesktopColors.cpp](https://github.com/nohuto/win-config/blob/main/nvidia/assets/color-DesktopColors.cpp)
+- [nvidia/assets | color-displayDB.cpp](https://github.com/nohuto/win-config/blob/main/nvidia/assets/color-displayDB.cpp)
+- [nvidia/assets | color-DesktopColors.cpp](https://github.com/nohuto/win-config/blob/main/nvidia/assets/color-DesktopColors.cpp)
 
 ```powershell
 \Registry\Machine\SYSTEM\ControlSet001\Services\nvlddmkm\State\DisplayDatabase\ADAPTER_10DE_2482_00000007_00000000 : StereoPreferredTargetIdRegistryKey
@@ -206,7 +206,9 @@ You've to edit the `Rotation` value to change the orientation, `DefaultSettings.
 
 ## Developer > Manage GPU Performance Counters
 
-"*GPU performance counters are used by NVIDIA GPU profiling tools such as NVIDIA Nsight. These tools enable developers debug, profile and develop software for NVIDIA GPUs.*" [[*]](https://www.nvidia.com/content/Control-Panel-Help/vLatest/en-us/index.htm#t=mergedProjects%2FDeveloper%2FManage_Performance_Counters_-_Reference.htm&rhsearch=counters)
+> "*GPU performance counters are used by NVIDIA GPU profiling tools such as NVIDIA Nsight. These tools enable developers debug, profile and develop software for NVIDIA GPUs.*"
+>
+> — NVIDIA Control Panel Help, [Manage GPU Performance Counters](https://www.nvidia.com/content/Control-Panel-Help/vLatest/en-us/index.htm#t=mergedProjects%2FDeveloper%2FManage_Performance_Counters_-_Reference.htm&rhsearch=counters)
 
 ```json
 {

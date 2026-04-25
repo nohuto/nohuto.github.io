@@ -6,7 +6,9 @@ sidebar:
   order: 7
 ---
 
-"*Windows audio ducking is a dynamic audio processing technique that enables the automatic adjustment of audio levels between different audio sources on a Windows-based computer or operating system.*" [[*]](https://multimedia.easeus.com/ai-article/windows-audio-ducking.html)
+> "*Windows audio ducking is a dynamic audio processing technique that enables the automatic adjustment of audio levels between different audio sources on a Windows-based computer or operating system.*"
+>
+> — EaseUS, [Windows audio ducking](https://multimedia.easeus.com/ai-article/windows-audio-ducking.html)
 
 Can be disabled manually via `mmsys.cpl > Communications` `Do nothing`.
 

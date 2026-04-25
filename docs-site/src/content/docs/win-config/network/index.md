@@ -9,7 +9,7 @@ sidebar:
 
 - [Encrypted DNS](/docs/win-config/network/encrypted-dns/)
 - [SMB Configuration](/docs/win-config/network/smb-configuration/)
-- [[QoS Policy](https://learn.microsoft.com/en-us/windows-server/networking/technologies/qos/qos-policy-top)](/docs/win-config/network/qos-policy-https-learn-microsoft-com-en-us-windows-server-networking-technologies-qos-qos-policy-top/)
+- [QoS Policy](/docs/win-config/network/qos-policy/)
 - [Network Discovery](/docs/win-config/network/disable-network-discovery/)
 - [Congestion Provider](/docs/win-config/network/congestion-provider/)
 - [Wi-Fi](/docs/win-config/network/disable-wi-fi/)
