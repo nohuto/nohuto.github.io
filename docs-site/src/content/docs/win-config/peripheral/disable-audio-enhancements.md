@@ -10,7 +10,7 @@ Audio enhancements are software based sound processing features that change or i
 
 ## Registry Values
 
-The values below are related to `Exclusive Mode`/`Signal Enhancements`, see [https://winsps-kb.readthedocs.io/en/latest/sources/property-sets/](property-sets) for a list of all names.
+The values below are related to `Exclusive Mode`/`Signal Enhancements`, see [property-sets](https://winsps-kb.readthedocs.io/en/latest/sources/property-sets/) for a list of all names.
 
 The structure is `HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\MMDevices\Audio\{Render\|Capture}\{Endpoint}`.
 

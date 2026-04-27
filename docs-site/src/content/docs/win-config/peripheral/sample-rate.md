@@ -6,7 +6,7 @@ sidebar:
   order: 8
 ---
 
-The values below are related to `Default Format`, see [https://winsps-kb.readthedocs.io/en/latest/sources/property-sets/](property-sets) for a list of all names.
+The values below are related to `Default Format`, see [property-sets](https://winsps-kb.readthedocs.io/en/latest/sources/property-sets/) for a list of all names.
 
 The structure is `HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\MMDevices\Audio\{Render\|Capture}\{Endpoint}`.
 
@@ -14,6 +14,8 @@ The structure is `HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\MMDevices\Audio
 - `Capture` = Recording
 
 ## Registry Values
+
+Only the first three values are used for my side, this might be different for you.
 
 | Value | Meaning |
 | --- | --- |
