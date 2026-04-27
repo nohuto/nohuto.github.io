@@ -3,7 +3,7 @@ title: 'Disk Write Cache Policy'
 description: 'Peripheral option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 12
+  order: 13
 ---
 
 Enables [write cache & turns off write cache buffer flushing](https://learn.microsoft.com/en-us/previous-versions/troubleshoot/windows-server/turn-disk-write-caching-on-off) on all connected disks.

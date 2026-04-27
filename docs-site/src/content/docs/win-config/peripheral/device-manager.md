@@ -3,7 +3,7 @@ title: 'Device Manager'
 description: 'Peripheral option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 15
+  order: 16
 ---
 
 The `Clean` option removes non present devices (`-PresentOnly:$false`/`Status -eq 'Unknown'`) via `/remove-device` ([`pnputil`](https://learn.microsoft.com/en-us/windows-hardware/drivers/devtest/pnputil-command-syntax)).

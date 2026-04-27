@@ -3,7 +3,7 @@ title: 'M/K DQS'
 description: 'Peripheral option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 14
+  order: 15
 ---
 
 The value exists by default and is set to `100` decimal (`64` hex). Reducing it doesn't "reduce your latency", leave it default. E.g. setting it to `1` (MouseDataQueueSize) = queue size is 24 bytes (1 mouse packet) = one packet can be buffered, so bursts are much more likely to be dropped = worse. Decreasing it for saving memory is also very minimal, therefore there's no reason I could currently think of for decreasing it below 100.

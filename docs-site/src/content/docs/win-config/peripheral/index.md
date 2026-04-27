@@ -14,6 +14,7 @@ sidebar:
 - [Keyboard Values](/docs/win-config/peripheral/keyboard-values/)
 - [StorNVMe Values](/docs/win-config/peripheral/stornvme-values/)
 - [Audio Ducking](/docs/win-config/peripheral/audio-ducking/)
+- [Sample Rate](/docs/win-config/peripheral/sample-rate/)
 - [Audio Enhancements](/docs/win-config/peripheral/disable-audio-enhancements/)
 - [Spatial Audio](/docs/win-config/peripheral/disable-spatial-audio/)
 - [System Sounds](/docs/win-config/peripheral/disable-system-sounds/)
@@ -26,5 +27,4 @@ sidebar:
 - [Wake on Input](/docs/win-config/peripheral/disable-wake-on-input/)
 - [Dynamic Lighting](/docs/win-config/peripheral/disable-dynamic-lighting/)
 - [Printers](/docs/win-config/peripheral/disable-printers/)
-- [Sample Rate](/docs/win-config/peripheral/sample-rate/)
 - [Monitor Settings](/docs/win-config/peripheral/monitor-settings/)

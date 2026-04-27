@@ -3,7 +3,7 @@ title: 'Printers'
 description: 'Peripheral option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 19
+  order: 20
 ---
 
 Disables printer related services (`Spooler`, `PrintWorkFlowUserSvc`, `PrintNotify`, `usbprint`, `McpManagementService`, `PrintScanBrokerService`, `PrintDeviceConfigurationService`), and various optional features / scheduled tasks.
