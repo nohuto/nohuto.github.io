@@ -3,14 +3,14 @@ title: 'Audio Enhancements'
 description: 'Peripheral option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 9
+  order: 8
 ---
 
 Audio enhancements are software based sound processing features that change or improve how playback or microphone audio sounds on a device. In general, they are used to improve clarity, balance volume, reduce noise, boost certain frequencies, or simulate spatial/surround effects, depending on the device and driver, but they can also cause audio issues etc., which is why you may want to disable them.
 
 ## Registry Values
 
-The values below are related to `Exclusive Mode`/`Signal Enhancements`, see [property-sets](https://winsps-kb.readthedocs.io/en/latest/sources/property-sets/) for a list of all names.
+The values below are related to `Exclusive Mode`/`Signal Enhancements`, see [property-sets](https://winsps-kb.readthedocs.io/en/latest/sources/property-sets/) for a list of more names.
 
 The structure is `HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\MMDevices\Audio\{Render\|Capture}\{Endpoint}`.
 

@@ -3,7 +3,7 @@ title: 'Audio Ducking'
 description: 'Peripheral option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 7
+  order: 9
 ---
 
 > "*Windows audio ducking is a dynamic audio processing technique that enables the automatic adjustment of audio levels between different audio sources on a Windows-based computer or operating system.*"
