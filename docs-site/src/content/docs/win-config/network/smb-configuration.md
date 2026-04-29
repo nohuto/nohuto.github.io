@@ -6,7 +6,7 @@ sidebar:
   order: 2
 ---
 
-Windows Internals (E7-P2, Remote FSDs): SMB uses a client-side remote file system driver (LANMan Redirector) and a server-side remote FSD (`Srv2.sys`). Client settings under `LanmanWorkstation` and server settings under `LanmanServer` govern how those components negotiate and handle SMB traffic.
+SMB uses a client-side remote file system driver (LANMan Redirector) and a server-side remote FSD (`Srv2.sys`). Client settings under `LanmanWorkstation` and server settings under `LanmanServer` govern how those components negotiate and handle SMB traffic.
 
 ## Suboptions
 
@@ -68,7 +68,7 @@ HKLM\System\CurrentControlSet\Services\LanmanServer\Parameters\SMB2	Type: REG_DW
 
 > "*The `EnableSecuritySignature` registry setting for SMB2 and later clients and servers is ignored. Therefore, this setting does nothing unless you're using SMB1. SMB 2.02 and later signing is controlled solely by being required or not. This setting is used when either the server or client requires SMB signing. Signing doesn't occur only when both the server and client have signing set to `0`.*"
 >
-> — Microsoft Learn, [SMB signing overview](https://learn.microsoft.com/en-us/windows-server/storage/file-server/smb-signing-overview#understanding-requiresecuritysignature-and-enablesecuritysignature)
+> — Microsoft, [SMB signing overview](https://learn.microsoft.com/en-us/windows-server/storage/file-server/smb-signing-overview#understanding-requiresecuritysignature-and-enablesecuritysignature)
 
 In summary SMB is signed when:
 
@@ -120,7 +120,7 @@ HKLM\System\CurrentControlSet\Services\LanmanServer\Parameters\CipherSuiteOrder	
 >
 > *`NETLOGON` and `SYSVOL` aren't hidden shares. Instead, they are special administrative shares.*"
 >
-> — Microsoft Learn, [Remove administrative shares](https://learn.microsoft.com/en-us/troubleshoot/windows-server/networking/remove-administrative-shares)
+> — Microsoft, [Remove administrative shares](https://learn.microsoft.com/en-us/troubleshoot/windows-server/networking/remove-administrative-shares)
 
 Disable default sharing:
 ```powershell
@@ -153,7 +153,7 @@ HKLM\System\CurrentControlSet\Services\LanmanServer\Parameters\RejectUnencrypted
 >
 > *SMB over QUIC offers an "SMB VPN" for telecommuters, mobile device users, and high security organizations. The server certificate creates a TLS 1.3-encrypted tunnel over the internet-friendly UDP port 443 instead of the legacy TCP port 445. All SMB traffic, including authentication and authorization within the tunnel is never exposed to the underlying network. SMB behaves normally within the QUIC tunnel, meaning the user experience doesn't change. SMB features like multichannel, signing, compression, continuous availability, directory leasing, and so on, work normally.*"
 >
-> — Microsoft Learn, [SMB over QUIC](https://learn.microsoft.com/en-us/windows-server/storage/file-server/smb-over-quic?tabs=windows-admin-center%2Cpowershell2%2Cwindows-admin-center1)
+> — Microsoft, [SMB over QUIC](https://learn.microsoft.com/en-us/windows-server/storage/file-server/smb-over-quic?tabs=windows-admin-center%2Cpowershell2%2Cwindows-admin-center1)
 
 ```powershell
 Set-SmbClientConfiguration -EnableSMBQUIC $true
@@ -216,7 +216,7 @@ HKLM\System\CurrentControlSet\Services\LanmanWorkstation\Parameters\DisableLarge
 > - ***Network fault tolerance.** When clients simultaneously use multiple network connections, the clients can continue without interruption despite the loss of a network connection.*
 > - ***Automatic configuration.** SMB Multichannel automatically discovers multiple available network paths and dynamically adds connections as necessary.*"
 >
-> — Microsoft Learn, [Manage SMB Multichannel](https://learn.microsoft.com/en-us/windows-server/storage/storage-spaces/manage-smb-multichannel)
+> — Microsoft, [Manage SMB Multichannel](https://learn.microsoft.com/en-us/windows-server/storage/storage-spaces/manage-smb-multichannel)
 
 ```powershell
 Set-SmbClientConfiguration -EnableMultiChannel $true

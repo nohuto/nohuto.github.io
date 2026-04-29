@@ -10,7 +10,7 @@ sidebar:
 >
 > *MMCSS uses information stored in the registry to identify supported tasks and determine the relative priority of threads performing these tasks. Each thread that is performing work related to a particular task calls the [AvSetMmMaxThreadCharacteristics](https://learn.microsoft.com/en-us/windows/win32/api/avrt/nf-avrt-avsetmmmaxthreadcharacteristicsa) or [AvSetMmThreadCharacteristics](https://learn.microsoft.com/en-us/windows/win32/api/avrt/nf-avrt-avsetmmthreadcharacteristicsa) function to inform MMCSS that it is working on that task.*"
 >
-> — Microsoft Learn, [Multimedia Class Scheduler Service](https://learn.microsoft.com/en-us/windows/win32/procthread/multimedia-class-scheduler-service)
+> — Microsoft, [Multimedia Class Scheduler Service](https://learn.microsoft.com/en-us/windows/win32/procthread/multimedia-class-scheduler-service)
 
 Client applications can register with MMCSS by calling AvSetMmThreadCharacteristics with a task name that must match one of the subkeys under `HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile\Tasks`, see [task-details](https://www.noverse.dev/docs/win-config/system/mmcss-values/#tasks-details).
 
@@ -51,7 +51,7 @@ And as we can see here the MMCSS thread isn't present anymore if `100 (0x64)`:
 
 > "*Determines the percentage of CPU resources that should be guaranteed to low-priority tasks. For example, if this value is 20, then 20% of CPU resources are reserved for low-priority tasks. Note that values that are not evenly divisible by 10 are rounded down to the nearest multiple of 10. Values below 10 and above 100 are clamped to 20. A value of 100 disables MMCSS (driver returns `STATUS_SERVER_DISABLED`).*"
 >
-> — MicrosoftDocs/win32, [Multimedia Class Scheduler Service](https://github.com/MicrosoftDocs/win32/blob/docs/desktop-src/ProcThread/multimedia-class-scheduler-service.md#registry-settings)
+> — Microsoft, [Multimedia Class Scheduler Service](https://github.com/MicrosoftDocs/win32/blob/docs/desktop-src/ProcThread/multimedia-class-scheduler-service.md#registry-settings)
 
 ```c
 // CiConfigInitialize
@@ -117,7 +117,7 @@ CiSystemResponsiveness = 10 * (value / 10);
 
 > "*MMCSS sends a special command to the network stack, telling it to throttle network packets during the duration of the media playback. This throttling is designed to maximize playback performance at the cost of some small loss in network throughput (which would not be noticeable for network operations usually performed during playback, such as playing an online game).*"
 >
-> — Microsoft Press, [Windows Internals, Sixth Edition](https://www.informit.com/content/images/9780735648739/samplepages/9780735648739.pdf)
+> — Windows Internals, [E7, P1: 'Priority boosts for multimedia applications and games'](https://github.com/nohuto/Windows-Books/releases/download/7th-Edition/Windows-Internals-E7-P1.pdf)
 
 `0` becomes `1`, `1`-`70` stay unchanged, `71`-`4294967294` become `70`, `4294967295` (`0xFFFFFFFF`) stays unchanged.
 
@@ -192,6 +192,6 @@ It sets `NoLazyMode` to `0`, don't set it to `1`. This is currently more likely 
 
 > "*The screenshot below demonstrates some of the initial differences between each mode enabled (0x1) vs off (x0, Non-Present), during these tests MMCSS tasks were engaged and the same pattern reoccurred each time e.g. the Idle related conditions were no longer present leaving only System Responsiveness, Deep Sleep and Realtime MMCSS scheduler task results.*"
 >
-> — djdallmann/GamingPCSetup, [NoLazyMode](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/RESEARCH/WINSERVICES/README.md#q-what-the-heck-is-nolazymode-is-it-real-what-does-it-do)
+> — djdallmann, [NoLazyMode](https://github.com/djdallmann/GamingPCSetup/blob/master/CONTENT/RESEARCH/WINSERVICES/README.md#q-what-the-heck-is-nolazymode-is-it-real-what-does-it-do)
 
 ![](https://github.com/nohuto/win-config/blob/main/system/images/nolazymode.png?raw=true)

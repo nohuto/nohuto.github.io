@@ -8,7 +8,7 @@ sidebar:
 
 > "*The wake-on-LAN (WOL) feature wakes the computer from a low power state when a network adapter detects a WOL event (typically, a specially constructed Ethernet packet). WOL is supported from `S3` sleep or `S4` hibernate. It's not supported from fast startup or `S5` soft off shutdown states. NICs aren't armed for wake in these states because users don't expect their systems to wake up on their own. WOL is not officially supported from the `S5` soft off state. However, the BIOS on some systems might support arming NICs for wake, even though Windows isn't involved in the process.*"
 >
-> — Microsoft Learn, [System power states](https://learn.microsoft.com/en-us/windows/win32/power/system-power-states#wake-on-lan-behavior)
+> — Microsoft, [System power states](https://learn.microsoft.com/en-us/windows/win32/power/system-power-states#wake-on-lan-behavior)
 
 ```bat
 powercfg /devicequery wake_programmable

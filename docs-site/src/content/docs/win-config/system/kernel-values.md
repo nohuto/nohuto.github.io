@@ -6,7 +6,7 @@ sidebar:
   order: 2
 ---
 
-Since many people don't yet know which values exist and what default value they have, here's a list. I used IDA, WinDbg, WinObjEx, Windows Internals E7 P1 to create it. Many applied values are defaults, some not. See documentation below for details. The applied data is sometimes pure speculation.
+Since many people don't yet know which values exist and what default value they have, here's a list. I used [IDA](https://discord.com/channels/836870260715028511/836896618410278952/1492546690413236425), WinDbg, [WinObjEx](https://github.com/hfiref0x/WinObjEx64), [Windows Internals E7 P1](https://github.com/nohuto/Windows-Books/releases/download/7th-Edition/Windows-Internals-E7-P1.pdf) to create it. Many applied values are defaults, some not. See documentation below for details. The applied data is sometimes pure speculation.
 
 ## Registry Values Details
 

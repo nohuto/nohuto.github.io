@@ -31,7 +31,7 @@ HKLM\SYSTEM\CurrentControlSet\Services\<ServiceName> // software key - service/d
 
 Not every instance has the same subkeys or values.
 
-I won't add details on the PnP manager here, as that's not the purpose of the repo. For more details, read [Windows Internals E7 P1](https://github.com/nohuto/windows-books/releases/download/7th-Edition/Windows-Internals-E7-P1.pdf), Chapter 6 (`The Plug and Play manager`).
+I won't add details on the PnP manager here, as that's not the purpose of the repo. For more details, read [Windows Internals E7, P1](https://github.com/nohuto/windows-books/releases/download/7th-Edition/Windows-Internals-E7-P1.pdf), Chapter 6 (`The Plug and Play manager`).
 
 ---
 
@@ -397,6 +397,6 @@ wmiprvse.exe	RegSetValue	HKLM\System\CurrentControlSet\Control\Class\{4d36e972-e
 
 > "*Storport provides support for idle power management to allow storage devices to enter a low power state when not in use. Storport's idle power management (IPM) support includes handling idle power management for storage devices under its management, in coordination with the Power Manager in Windows.*"
 >
-> — Microsoft Learn, [Registry entries for Storport miniport drivers](https://learn.microsoft.com/en-us/windows-hardware/drivers/storage/registry-entries-for-storport-miniport-drivers)
+> — Microsoft, [Registry entries for Storport miniport drivers](https://learn.microsoft.com/en-us/windows-hardware/drivers/storage/registry-entries-for-storport-miniport-drivers)
 
 - [power/assets | storport.c](https://github.com/nohuto/win-config/blob/main/power/assets/storport.c)

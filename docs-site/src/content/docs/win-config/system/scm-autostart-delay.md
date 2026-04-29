@@ -8,7 +8,7 @@ sidebar:
 
 Windows marks some services as delayed autostart to reduce boot contention. The Service Control Manager (SCM) waits before starting those services, the default delay is 120 seconds as shown below.
 
-Windows Internals (E7, P2) puts this in the middle of the SCM boot sequence, so the delay only applies after normal autostart processing finishes.
+[Windows Internals (E7, P2)](https://github.com/nohuto/Windows-Books/releases/download/7th-Edition/Windows-Internals-E7-P2.pdf) puts this in the middle of the SCM boot sequence, so the delay only applies after normal autostart processing finishes.
 
 1. SCM loops through service groups and starts autostart services, relooping groups until dependencies (DependOnService) are satisfied
 2. It ignores Tag values for Windows services (Tag ordering is used by the I/O manager for boot/system-start drivers)
@@ -53,7 +53,7 @@ __int64 __fastcall CDelayStartContext::GetAutostartDelay(CDelayStartContext *thi
 
 ## EnableAutostartEvents Notes
 
-Note on a different option which I didn't implement (this information is based on Windows Internals E7 P2, P448-449):
+Note on a different option which I didn't implement (this information is based on [Windows Internals E7 P2](https://github.com/nohuto/Windows-Books/releases/download/7th-Edition/Windows-Internals-E7-P2.pdf), P448-449):
 
 By default the SCM logs events for services that start automatically at boot, which can flood the System event log. Setting this value to 0 suppresses autostart event logging while still keeping normal service start/stop/pause events. Read by SCM at startup = requires reboot to take effect.
 
