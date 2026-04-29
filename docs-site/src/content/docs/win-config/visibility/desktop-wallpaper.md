@@ -72,6 +72,10 @@ This is a collection of some wallpapers that I've found over time. Added for peo
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/wallpaper/Mac.png?raw=true)
 
+### Magic Forest
+
+![](https://github.com/nohuto/win-config/blob/main/visibility/images/wallpaper/Magic-Forest.png?raw=true)
+
 ### Man Landscape
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/wallpaper/Man-Landscape.png?raw=true)
@@ -87,6 +91,10 @@ This is a collection of some wallpapers that I've found over time. Added for peo
 ### Moon Castle
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/wallpaper/Moon-Castle.png?raw=true)
+
+### Moon Rose
+
+![](https://github.com/nohuto/win-config/blob/main/visibility/images/wallpaper/Moon-Rose.png?raw=true)
 
 ### Mountains
 
@@ -119,6 +127,18 @@ This is a collection of some wallpapers that I've found over time. Added for peo
 ### Stars
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/wallpaper/Stars.png?raw=true)
+
+### Stars Lake 1
+
+![](https://github.com/nohuto/win-config/blob/main/visibility/images/wallpaper/Stars-Lake-1.png?raw=true)
+
+### Stars Lake 2
+
+![](https://github.com/nohuto/win-config/blob/main/visibility/images/wallpaper/Stars-Lake-2.png?raw=true)
+
+### Stars Lake 3
+
+![](https://github.com/nohuto/win-config/blob/main/visibility/images/wallpaper/Stars-Lake-3.png?raw=true)
 
 ### Sunset
 
