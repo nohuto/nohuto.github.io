@@ -3,7 +3,7 @@ title: 'Sudo'
 description: 'Security option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 23
+  order: 22
 ---
 
 [Sudo](https://github.com/microsoft/sudo) ([introduction](https://devblogs.microsoft.com/commandline/introducing-sudo-for-windows/)) is a new way for users to run elevated commands (as an administrator) directly from an unelevated console session on Windows.

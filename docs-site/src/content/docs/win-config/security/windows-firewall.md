@@ -3,7 +3,7 @@ title: 'Windows Firewall'
 description: 'Security option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 3
+  order: 2
 ---
 
 > "*Windows Firewall is a security feature that helps to protect your device by filtering network traffic that enters and exits your device. This traffic can be filtered based on several criteria, including source and destination IP address, IP protocol, or source and destination port number. Windows Firewall can be configured to block or allow network traffic based on the services and applications that are installed on your device. This allows you to restrict network traffic to only those applications and services that are explicitly allowed to communicate on the network.*"

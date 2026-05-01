@@ -3,7 +3,7 @@ title: 'System Restore'
 description: 'Security option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 8
+  order: 7
 ---
 
 ```powershell

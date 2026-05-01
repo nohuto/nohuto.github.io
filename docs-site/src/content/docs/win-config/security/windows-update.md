@@ -3,7 +3,7 @@ title: 'Windows Update'
 description: 'Security option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 2
+  order: 1
 ---
 
 | Option | Description |

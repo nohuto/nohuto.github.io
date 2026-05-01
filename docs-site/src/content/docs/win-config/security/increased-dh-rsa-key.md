@@ -3,7 +3,7 @@ title: 'Increased DH & RSA Key'
 description: 'Security option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 15
+  order: 14
 ---
 
 By default it uses a minimum size of `1024` bits (both) - hardens Windows [TLS](https://learn.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings?tabs=diffie-hellman) engine by forcing minimum key sizes during secure communications (SSL/TLS handshake process).

@@ -7,13 +7,12 @@ sidebar:
   order: 11
 ---
 
-- [Windows Defender](/docs/win-config/security/windows-defender/)
 - [Windows Update](/docs/win-config/security/windows-update/)
 - [Windows Firewall](/docs/win-config/security/windows-firewall/)
 - [UAC](/docs/win-config/security/uac/)
 - [PS Execution Policy](/docs/win-config/security/ps-execution-policy/)
-- [System Mitigations](/docs/win-config/security/disable-system-mitigations/)
-- [Opt-Out DMA Remapping](/docs/win-config/security/opt-out-dma-remapping/)
+- [Process Mitigations](/docs/win-config/security/process-mitigations/)
+- [DMA Remapping](/docs/win-config/security/dma-remapping/)
 - [System Restore](/docs/win-config/security/disable-system-restore/)
 - [Downloads Blocking](/docs/win-config/security/disable-downloads-blocking/)
 - [WPBT](/docs/win-config/security/disable-wpbt/)

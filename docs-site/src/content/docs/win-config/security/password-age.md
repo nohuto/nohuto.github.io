@@ -3,7 +3,7 @@ title: 'Password Age'
 description: 'Security option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 20
+  order: 19
 ---
 
 `/MAXPWAGE:{days | UNLIMITED}`:  
