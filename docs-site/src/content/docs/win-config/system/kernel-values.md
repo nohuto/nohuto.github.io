@@ -18,7 +18,7 @@ See [session-manager-symbols](https://github.com/nohuto/win-config/tree/main/sys
 - [session-manager/assets | GetRegistryQwordValue.c](https://github.com/nohuto/win-config/tree/main/system/assets/session-manager/GetRegistryQwordValue.c)
 - [session-manager/assets | RtlpHpApplySegmentHeapConfigurations.c](https://github.com/nohuto/win-config/tree/main/system/assets/session-manager/RtlpHpApplySegmentHeapConfigurations.c)
 
-The comments of some values with more details are based on pseudocode, if so I added the function name to the end of the comment. Search for the function name in [decompiled-pseudocode/tree/main/ntoskrnl](https://github.com/nohuto/decompiled-pseudocode/tree/main/ntoskrnl).
+The comments of some values with more details are based on pseudocode, if so I added the function name to the end of the comment. Search for the function name in [decompiled-pseudocode/tree/main/11-23H2/ntoskrnl](https://github.com/nohuto/decompiled-pseudocode/tree/main/11-23H2/ntoskrnl).
 
 Everything listed below is based on personal research. Mistakes may exist, but I don't think I've made any.
 
