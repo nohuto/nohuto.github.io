@@ -3,7 +3,7 @@ title: 'Process Mitigations'
 description: 'Security option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 5
+  order: 6
 ---
 
 Process mitigations are system or per process exploit protections for common memory corruption & control flow attack classes. These can improve exploit resistance, but some mitigations can break older software, drivers, game anti-cheat components, launchers, or injected overlays. The mitigation tables in the sections are copied from [Windows Internals E7 P1](https://github.com/nohuto/windows-books/releases/download/7th-Edition/Windows-Internals-E7-P1.pdf), 'Exploit mitigations'.

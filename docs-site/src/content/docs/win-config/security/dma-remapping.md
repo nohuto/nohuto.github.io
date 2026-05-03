@@ -3,7 +3,7 @@ title: 'DMA Remapping'
 description: 'Security option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 6
+  order: 7
 ---
 
 [DMA remapping](https://learn.microsoft.com/en-us/windows-hardware/drivers/pci/enabling-dma-remapping-for-device-drivers) lets PCIe device drivers declare whether they are compatible with IOMMU backed DMA isolation. Windows uses this with [Kernel DMA Protection](https://learn.microsoft.com/en-us/windows/security/hardware-security/kernel-dma-protection-for-thunderbolt) and DMAGuard policy to reduce memory corruption and malicious DMA attack exposure. Devices with DMA remapping compatible drivers can start and perform DMA, incompatible external or exposed PCIe devices can be blocked by DMAGuard policy on systems where Kernel DMA Protection is enabled.

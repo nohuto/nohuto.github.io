@@ -1,5 +1,5 @@
 ---
-title: 'Windows Defender'
+title: 'Defender Scans'
 description: 'Cleanup option documentation from win-config.'
 editUrl: false
 sidebar:

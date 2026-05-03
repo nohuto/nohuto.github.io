@@ -3,7 +3,7 @@ title: 'VBS (HVCI)'
 description: 'Security option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 11
+  order: 12
 ---
 
 [VBS](https://learn.microsoft.com/en-us/windows-hardware/design/device-experiences/oem-vbs) won't work if Hyper-V is disabled. HVCI = hypervisor-protected code integrity.

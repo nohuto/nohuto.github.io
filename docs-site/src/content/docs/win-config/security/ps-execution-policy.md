@@ -3,7 +3,7 @@ title: 'PS Execution Policy'
 description: 'Security option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 4
+  order: 5
 ---
 
 > "*PowerShell execution policy is a safety feature that controls when PowerShell loads configuration files and runs scripts, helping prevent accidental execution of malicious scripts.*

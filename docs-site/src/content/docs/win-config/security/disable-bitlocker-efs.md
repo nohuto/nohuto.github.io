@@ -3,7 +3,7 @@ title: 'Bitlocker & EFS'
 description: 'Security option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 10
+  order: 11
 ---
 
 Disable [Bitlocker](https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/) on all volumes:

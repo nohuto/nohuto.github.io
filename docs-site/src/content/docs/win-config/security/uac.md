@@ -3,7 +3,7 @@ title: 'UAC'
 description: 'Security option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 3
+  order: 4
 ---
 
 Disabling UAC stops the prompts for administrative permissions, allowing programs and processes to run with elevated rights without user confirmation.

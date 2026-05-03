@@ -3,7 +3,7 @@ title: 'P2P Updates'
 description: 'Security option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 13
+  order: 14
 ---
 
 Default is configured to LAN. The Group Download mode combined with Group ID, enables administrators to create custom device groups that share content between devices in the group. Download mode dictates which download sources clients are allowed to use when downloading Windows updates in addition to Windows Update servers.

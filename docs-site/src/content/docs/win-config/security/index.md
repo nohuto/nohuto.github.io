@@ -7,6 +7,7 @@ sidebar:
   order: 11
 ---
 
+- [Windows Defender](/docs/win-config/security/windows-defender/)
 - [Windows Update](/docs/win-config/security/windows-update/)
 - [Windows Firewall](/docs/win-config/security/windows-firewall/)
 - [UAC](/docs/win-config/security/uac/)
