@@ -49,7 +49,7 @@ If using [`native.winoffice.txt`](https://github.com/hagezi/dns-blocklists/blob/
   - `*.config.ecs.gov.teams.microsoft.us` (GCC-H)
   - `*.config.ecs.dod.teams.microsoft.us` (DoD)
 
-## Windows Policies
+## [Windows Policies](https://raw.githubusercontent.com/nohuto/admx-parser/refs/heads/main/assets/policies.json)
 
 Since the tool includes a seperate `Policies` section and most of the Defender settings are controlled via them (not all SmartScreen parts are, which is why it's a suboption), I won't add all of them as suboptions to keep the UI clean. If you want to fine tune specific parts of Defender after applying the `Configured` preset, you can do so by copying the value name and pasting it into the search bar, it'll show the policy (or go into the Policies section and open WindowsDefender / WindowsDefenderSecurityCenter / WebThreatDefense).
 

@@ -22,7 +22,7 @@ This policy setting specifies that power management is disabled when the machine
     "EnableDsNetRefresh" = 0; // PopEnableDsNetRefresh 
 ```
 
-## Windows Policies
+## [Windows Policies](https://raw.githubusercontent.com/nohuto/admx-parser/refs/heads/main/assets/policies.json)
 
 ```json
 {

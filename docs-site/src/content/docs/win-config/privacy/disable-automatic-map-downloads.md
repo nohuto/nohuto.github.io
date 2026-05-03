@@ -59,7 +59,7 @@ if ( v6 < 0 )
 }
 ```
 
-## Windows Policies
+## [Windows Policies](https://raw.githubusercontent.com/nohuto/admx-parser/refs/heads/main/assets/policies.json)
 
 ```json
   {

@@ -19,7 +19,7 @@ Disables remote desktop, remote assistance, RPC traffic, and device redirection.
 `TerminalServer.admx`:  
 `fDisableCdm`: Do not allow drive redirection
 
-## Windows Policies
+## [Windows Policies](https://raw.githubusercontent.com/nohuto/admx-parser/refs/heads/main/assets/policies.json)
 
 ```json
 {

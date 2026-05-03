@@ -8,7 +8,7 @@ sidebar:
 
 Voluntary program that collects usage data to help improve the quality and performance of its products.
 
-## Windows Policies
+## [Windows Policies](https://raw.githubusercontent.com/nohuto/admx-parser/refs/heads/main/assets/policies.json)
 
 ```json
 {

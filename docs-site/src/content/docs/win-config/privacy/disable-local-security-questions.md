@@ -8,7 +8,7 @@ sidebar:
 
 Prevent the use of security questions for local accounts.
 
-## Windows Policies
+## [Windows Policies](https://raw.githubusercontent.com/nohuto/admx-parser/refs/heads/main/assets/policies.json)
 
 ```json
 {

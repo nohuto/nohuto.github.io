@@ -10,7 +10,7 @@ sidebar:
 
 If enabled = "Windows will periodically attempt to connect with the OneSettings service to download configuration settings".
 
-## Windows Policies
+## [Windows Policies](https://raw.githubusercontent.com/nohuto/admx-parser/refs/heads/main/assets/policies.json)
 
 ```json
 {

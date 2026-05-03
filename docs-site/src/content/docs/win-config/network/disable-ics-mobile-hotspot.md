@@ -16,7 +16,7 @@ When disabled, the PC can no longer share its internet connection to other devic
 | `ALG` | Provides support for 3rd party protocol plug-ins for Internet Connection Sharing |
 | `SharedAccess` | Provides network address translation, addressing, name resolution and/or intrusion prevention services for a home or small office network. |
 
-## Windows Policies
+## [Windows Policies](https://raw.githubusercontent.com/nohuto/admx-parser/refs/heads/main/assets/policies.json)
 
 ```json
   {

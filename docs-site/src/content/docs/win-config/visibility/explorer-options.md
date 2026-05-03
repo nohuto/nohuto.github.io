@@ -22,7 +22,7 @@ It changes every setting, which is shown in the `Folder Options` window. Some ar
 }
 ```
 
-## Windows Policies
+## [Windows Policies](https://raw.githubusercontent.com/nohuto/admx-parser/refs/heads/main/assets/policies.json)
 
 ```json
   {
