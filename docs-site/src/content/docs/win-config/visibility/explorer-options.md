@@ -10,7 +10,6 @@ It changes every setting, which is shown in the `Folder Options` window. Some ar
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/explorer.png?raw=true)
 
-
 ## Miscellaneous Notes
 
 ```json

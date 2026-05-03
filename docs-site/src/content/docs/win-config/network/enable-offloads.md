@@ -17,6 +17,8 @@ Excludes (deprecated, chimney too):
 
 ## Registry Values Details
 
+See [network/assets/intel-nic](https://github.com/nohuto/win-config/tree/main/network/assets/intel-nic) for reference.
+
 ```c
 "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Class\\{4D36E972-E325-11CE-BFC1-08002bE10318}\\00XX";
   "*IPChecksumOffloadIPv4" = 3; // range 0-3
@@ -35,6 +37,35 @@ Excludes (deprecated, chimney too):
   "LSOTcpOptions" = 1; // range 0-1 - Enables that the miniport driver to segment a large TCP packet whose TCP header contains TCP options.
   "LSOIpOptions" = 1; // range 0-1 - Enables its NIC to segment a large TCP packet whose IP header contains IP options.
 
+  // miscellaneous values, since there's no option to add them I'll add them here for now
+  // https://github.com/nohuto/win-registry/blob/main/records/NIC-Intel-IDA.txt
+  // https://github.com/nohuto/win-registry/blob/main/records/NIC-Intel.txt
+  "*EncapsulatedPacketTaskOffloadVxlan" = 0; // range 0-1
+  "*HeaderDataSplit" = 0; // range 0-1
+  "*VxlanUDPPortNumber" = 4789; // range 1-65535
+  "AdaptiveQHysteresis" = 64; // range 16-1024
+  "AdaptiveQSize" = 128; // range 64-8192
+  "AdaptiveQWorkSet" = 96; // range 32-8192
+  "CheckForHangTime" = 2; // range 0-60
+  "EnableAdaptiveQueuing" = 1; // range 0-1
+  "EnableHWAutonomous" = 0; // range 0-1
+  "EnableRxDescriptorChaining" = 1; // range 0-1
+  "HDSplitAlways" = 0; // range 0-1
+  "HDSplitBufferPad" = 2; // range 0-2
+  "HDSplitLocation" = 2; // range 0-3
+  "HDSplitSize" = 128; // range 128-960
+  "MaxPacketCountPerDPC" = 256; // range 8-65535
+  "MaxPacketCountPerIndicate" = 64; // range 1-65535
+  "MinHardwareOwnedPacketCount" = 32; // range 8-4096
+  "PadReceiveBuffer" = 0; // range 0-1
+  "ReceiveBuffersOverride" = 1; // range 0-1
+  "RegForceRxPathSerialization" = 0; // range 0-1
+  "ResetTest" = 0; // range 0-1
+  "ResetTestTime" = 300; // range 20-604800
+  "RxBufferPad" = 10; // range 0-63
+  "RxDescriptorCountPerTailWrite" = 8; // range 4-4096
+  "SidebandUngateOverride" = 0; // range 0-1
+  "StoreBadPackets" = 0; // range 0-1
 ```
 
 | Keyword | Description | Default | Minimum | Maximum |
