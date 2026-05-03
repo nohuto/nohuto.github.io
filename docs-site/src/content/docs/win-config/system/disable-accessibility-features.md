@@ -3,7 +3,7 @@ title: 'Accessibility Features'
 description: 'System option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 17
+  order: 16
 ---
 
 Disables all kind of accessibility features such as `Voice Access`, `Live Captions`, `Narrator`, `Magnifier`, `OSK` etc. (`SystemSettings > Accessibility`/`Control Panel > All Control Panel Items > Ease of Access Center`). Specific features can be enabled via the suboptions.

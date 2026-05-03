@@ -3,7 +3,7 @@ title: 'Mobility Center'
 description: 'System option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 37
+  order: 36
 ---
 
 Note that this is a laptop only feature. The "Mobility Center" is a feature that includes controls for screen brightness, power options, volume, battery status, wireless network status, external display settings, and more.

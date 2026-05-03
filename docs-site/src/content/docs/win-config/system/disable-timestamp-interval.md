@@ -3,7 +3,7 @@ title: 'Timestamp Interval'
 description: 'System option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 24
+  order: 23
 ---
 
 Disables the interval at which reliability events are timestamped (will not log regular timestamped reliability events).

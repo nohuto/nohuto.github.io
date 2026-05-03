@@ -22,7 +22,6 @@ sidebar:
 - [HAGS](/docs/win-config/system/hags/)
 - [Storage Sense](/docs/win-config/system/disable-storage-sense/)
 - [Reduce Shutdown Time](/docs/win-config/system/reduce-shutdown-time/)
-- [FTH](/docs/win-config/system/disable-fth/)
 - [Accessibility Features](/docs/win-config/system/disable-accessibility-features/)
 - [Detailed Verbose Messages](/docs/win-config/system/detailed-verbose-messages/)
 - [Aero Shake](/docs/win-config/system/disable-aero-shake/)

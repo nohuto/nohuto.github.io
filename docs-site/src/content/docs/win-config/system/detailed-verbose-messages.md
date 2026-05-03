@@ -3,7 +3,7 @@ title: 'Detailed Verbose Messages'
 description: 'System option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 18
+  order: 17
 ---
 
 Enables detailed messages at restart, shut down, sign out, and sign in, which can be helpful.

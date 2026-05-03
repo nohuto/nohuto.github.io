@@ -3,7 +3,7 @@ title: 'Page Combining'
 description: 'System option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 29
+  order: 28
 ---
 
 Page combining spots identical RAM pages across processes and merges them into a single shared page. Instead of keeping 50 copies of the same DLL/data page, the memory manager keeps one, maps it to everyone, and marks it `copy-on-write`. As long as nobody changes it, everyone shares the same physical page and RAM usage drops. If a process writes to it, Windows gives that process its own private copy and leaves the shared one intact. It's a background RAM deduplicator, basically.

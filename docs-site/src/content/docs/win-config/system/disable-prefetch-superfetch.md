@@ -3,7 +3,7 @@ title: 'Prefetch & Superfetch'
 description: 'System option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 25
+  order: 24
 ---
 
 Disables prefetcher (includes disabling [`ApplicationLaunchPrefetching` & `ApplicationPreLaunch`](https://learn.microsoft.com/en-us/powershell/module/mmagent/disable-mmagent?view=windowsserver2025-ps)) features, used to speed up the boot process and application startup by preloading data - **shouldn't be disabled**, leaving it for documentation reasons. Read through the pictures for more detailed information.

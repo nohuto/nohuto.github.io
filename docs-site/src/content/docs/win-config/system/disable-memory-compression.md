@@ -3,7 +3,7 @@ title: 'Memory Compression'
 description: 'System option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 28
+  order: 27
 ---
 
 Memory compression compresses rarely used or less frequently accessed data in RAM so it takes up less space. Windows does this to keep more data in physical memory and avoid writing to the pagefile, which reduces disk I/O. When the data is needed again, it's decompressed. It's faster than paging to disk, but it costs CPU.

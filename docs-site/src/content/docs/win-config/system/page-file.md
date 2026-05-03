@@ -3,7 +3,7 @@ title: 'Page File'
 description: 'System option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 36
+  order: 35
 ---
 
 Several notes I took while reading through [`Windows Internals Part 1, Edition 7`](https://github.com/nohuto/windows-books/releases/download/7th-Edition/Windows-Internals-E7-P1.pdf), everything written below is based on it.

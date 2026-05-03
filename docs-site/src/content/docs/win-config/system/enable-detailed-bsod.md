@@ -3,7 +3,7 @@ title: 'Detailed BSoD'
 description: 'System option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 30
+  order: 29
 ---
 
 | Aspect                    | New BSoD (Windows 8/10/11)                      | Old BSoD (Windows 7/classic)                                                      |

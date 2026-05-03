@@ -6,7 +6,7 @@ sidebar:
   order: 14
 ---
 
-Storage Sense deletes temporary files automatically - revert it by changing it back to `1`.
+Storage Sense deletes temporary/user files automatically, see [windows policies](https://www.noverse.dev/docs/win-config/system/disable-storage-sense/#windows-policies) for more.
 
 Head over to the `Policies` tab, then `StorageSense` to configure other related policies.
 
@@ -32,10 +32,7 @@ HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePo
 // Every month = 30
 // Every week = 7
 // Every day = 1
-HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy\2048	Type: REG_DWORD, Length: 4, Data: 0
-HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy\2048	Type: REG_DWORD, Length: 4, Data: 30
-HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy\2048	Type: REG_DWORD, Length: 4, Data: 7
-HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy\2048	Type: REG_DWORD, Length: 4, Data: 1
+HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy\2048	// Type: REG_DWORD
 
 // Delete files in my recycle bin if they have been there for over
 // 30 days (default): 08 = 1, 25 = 30

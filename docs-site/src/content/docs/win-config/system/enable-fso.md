@@ -3,7 +3,7 @@ title: 'FSO'
 description: 'System option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 34
+  order: 33
 ---
 
 This isn't accurate nor complete yet, it's preferable to disable FSO per application via the compability section if doing so. Disabling this option won't revert the changes like all other ones do, it'll disable FSO.
