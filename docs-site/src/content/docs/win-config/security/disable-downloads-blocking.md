@@ -3,7 +3,7 @@ title: 'Downloads Blocking'
 description: 'Security option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 9
+  order: 12
 ---
 
 Windows adds a hidden tag called [`Zone.Identifier`](https://www.cyberengage.org/post/unveiling-file-origins-the-role-of-alternate-data-streams-ads-zone-identifier-in-forensic-inve) to files downloaded from the internet. This tag (also known as MotW) stores info about the file's origin and helps apply security warnings, see files including the tag with:
@@ -31,7 +31,7 @@ Unblock-File -Path "C:\Path\Script.ps1" -> File
 dir C:\Path\*Files* | Unblock-File -> Multiple files 
 ```
 
-## Windows Policies
+## [Windows Policies](https://raw.githubusercontent.com/nohuto/admx-parser/refs/heads/main/assets/policies.json)
 
 ```json
 {
@@ -50,5 +50,5 @@ dir C:\Path\*Files* | Unblock-File -> Multiple files
     { "Type": "EnabledValue", "Data": "1" },
     { "Type": "DisabledValue", "Data": "2" }
   ]
-},
+}
 ```

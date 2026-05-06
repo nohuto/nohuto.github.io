@@ -3,7 +3,7 @@ title: 'Administrator Account'
 description: 'Security option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 25
+  order: 24
 ---
 
 This security setting determines whether the [local Administrator account](https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/security-policy-settings/accounts-administrator-account-status) is enabled or disabled. The following conditions prevent disabling the Administrator account, even if this security setting is disabled.

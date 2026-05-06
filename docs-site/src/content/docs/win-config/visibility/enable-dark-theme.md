@@ -3,7 +3,7 @@ title: 'Dark Theme'
 description: 'Visibility option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 6
+  order: 5
 ---
 
 See [`darktheme-GetThemeFromUnattendSetup.c`](https://github.com/nohuto/win-config/blob/main/visibility/assets/darktheme-GetThemeFromUnattendSetup.c) for information about the comments, otherwise ignore it.

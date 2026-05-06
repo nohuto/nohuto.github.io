@@ -3,7 +3,7 @@ title: 'StorNVMe Values'
 description: 'Peripheral option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 6
+  order: 8
 ---
 
 This option serves as a general values overview for the `stornvme` key. Several values are applied, some have been changed, others are default values. The applied data is sometimes pure speculation.

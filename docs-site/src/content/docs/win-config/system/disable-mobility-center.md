@@ -3,14 +3,14 @@ title: 'Mobility Center'
 description: 'System option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 37
+  order: 36
 ---
 
 Note that this is a laptop only feature. The "Mobility Center" is a feature that includes controls for screen brightness, power options, volume, battery status, wireless network status, external display settings, and more.
 
 ![](https://github.com/nohuto/win-config/blob/main/system/images/mobility-center.png?raw=true)
 
-## Windows Policies
+## [Windows Policies](https://raw.githubusercontent.com/nohuto/admx-parser/refs/heads/main/assets/policies.json)
 
 ```json
 {
@@ -29,13 +29,5 @@ Note that this is a laptop only feature. The "Mobility Center" is a feature that
     { "Type": "EnabledValue", "Data": "1" },
     { "Type": "DisabledValue", "Data": "0" }
   ]
-},
-```
-
-### Miscellaneous Values
-
-```c
-"HKCU\Software\Microsoft\Windows\CurrentVersion\Mobility\LastResumeOnPCInteractionTime","Length: 20"
-"HKCU\Software\Microsoft\Windows\CurrentVersion\Mobility\LastResumeOnPCTime","Length: 20"
-"HKCU\Software\Microsoft\Windows\CurrentVersion\Mobility\OptedIn","Length: 16"
+}
 ```

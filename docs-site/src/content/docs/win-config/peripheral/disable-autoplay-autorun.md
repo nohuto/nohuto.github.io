@@ -75,7 +75,7 @@ HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers\UserCho
 HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers\EventHandlersDefaultSelection\AutorunINFLegacyArrival\(Default)	Type: REG_SZ, Length: 30, Data: MSTakeNoAction
 ```
 
-## Windows Policies
+## [Windows Policies](https://raw.githubusercontent.com/nohuto/admx-parser/refs/heads/main/assets/policies.json)
 
 ```json
 {
@@ -96,24 +96,6 @@ HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers\EventHa
         { "DisplayName": "Automatically execute autorun commands", "Data": "2" }
       ]
     }
-  ]
-},
-{
-  "File": "AutoPlay.admx",
-  "CategoryName": "AutoPlay",
-  "PolicyName": "DontSetAutoplayCheckbox",
-  "NameSpace": "Microsoft.Policies.AutoPlay",
-  "Supported": "WindowsVista - At least Windows Vista",
-  "DisplayName": "Prevent AutoPlay from remembering user choices.",
-  "ExplainText": "This policy setting allows you to prevent AutoPlay from remembering user's choice of what to do when a device is connected. If you enable this policy setting, AutoPlay prompts the user to choose what to do when a device is connected. If you disable or do not configure this policy setting, AutoPlay remembers user's choice of what to do when a device is connected.",
-  "KeyPath": [
-    "HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer",
-    "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer"
-  ],
-  "ValueName": "DontSetAutoplayCheckbox",
-  "Elements": [
-    { "Type": "EnabledValue", "Data": "1" },
-    { "Type": "DisabledValue", "Data": "0" }
   ]
 },
 {
@@ -153,5 +135,5 @@ HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers\EventHa
     { "Type": "EnabledValue", "Data": "1" },
     { "Type": "DisabledValue", "Data": "0" }
   ]
-},
+}
 ```

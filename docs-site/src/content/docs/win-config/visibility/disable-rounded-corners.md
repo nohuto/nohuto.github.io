@@ -3,7 +3,7 @@ title: 'Rounded Corners'
 description: 'Visibility option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 12
+  order: 3
 ---
 
 This currently works via [Win11DisableRoundedCorners](https://github.com/valinet/Win11DisableRoundedCorners) which works fine on [latest version since the function exists/works the same on latest builds](https://www.noverse.dev/bin-diff.html). Note that the revert doesn't run `sfc /scannow` to restore proper file permissions to `uDWM.dll` since it does a lot more than restoring permissions. If you're aware if it, run the command after reverting the option.
@@ -14,7 +14,7 @@ It works by overriding the first 8 bytes in the function with `48 C7 C0 00 00 00
 mov rax, 0; ret // result = 0
 ```
 
-## GetEffectiveCornerStyle
+## [GetEffectiveCornerStyle](https://github.com/nohuto/decompiled-pseudocode/blob/main/11-23H2/uDWM/-GetEffectiveCornerStyle%40CTopLevelWindow%40%40AEAA-AW4CORNER_STYLE%40%40XZ.c)
 
 That function calculates the effective corner mode, its callers include border/shadow/radius.
 ```c

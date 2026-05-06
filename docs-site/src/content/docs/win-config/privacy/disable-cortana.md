@@ -3,53 +3,14 @@ title: 'Cortana'
 description: 'Privacy option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 34
+  order: 36
 ---
 
 "[Cortana](https://en.wikipedia.org/wiki/Cortana_(virtual_assistant)) was a virtual assistant developed by Microsoft that used the Bing search engine to perform tasks such as setting reminders and answering questions for users."
 
-## Windows Policies
+## [Windows Policies](https://raw.githubusercontent.com/nohuto/admx-parser/refs/heads/main/assets/policies.json)
 
 ```json
-{
-  "File": "Search.admx",
-  "CategoryName": "Search",
-  "PolicyName": "AllowCloudSearch",
-  "NameSpace": "FullArmor.Policies.3B9EA2B5_A1D1_4CD5_9EDE_75B22990BC21",
-  "Supported": "Windows_10_0 - At least Windows Server 2016, Windows 10",
-  "DisplayName": "Allow Cloud Search",
-  "ExplainText": "Allow search and Cortana to search cloud sources like OneDrive and SharePoint",
-  "KeyPath": [
-    "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search"
-  ],
-  "Elements": [
-    { "Type": "Enum", "ValueName": "AllowCloudSearch", "Items": [
-        { "DisplayName": "Disable Cloud Search", "Data": "0" },
-        { "DisplayName": "Enable Cloud Search", "Data": "1" },
-        { "DisplayName": "User Selected", "Data": "2" }
-      ]
-    }
-  ]
-},
-{
-  "File": "Search.admx",
-  "CategoryName": "Search",
-  "PolicyName": "AllowCortanaInAAD",
-  "NameSpace": "FullArmor.Policies.3B9EA2B5_A1D1_4CD5_9EDE_75B22990BC21",
-  "Supported": "Windows_10_0 - At least Windows Server 2016, Windows 10",
-  "DisplayName": "Allow Cortana Page in OOBE on an AAD account",
-  "ExplainText": "Allow the cortana opt-in page during windows setup out of the box experience",
-  "KeyPath": [
-    "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search\\AllowCortanaInAAD"
-  ],
-  "Elements": [
-    { "Type": "Enum", "ValueName": "AllowCortanaInAADPathOOBE", "Items": [
-        { "DisplayName": "Disable Cortana Page in AAD", "Data": "0" },
-        { "DisplayName": "Enable Cortana Page in AAD", "Data": "1" }
-      ]
-    }
-  ]
-},
 {
   "File": "Search.admx",
   "CategoryName": "Search",
@@ -99,6 +60,45 @@ sidebar:
   "Elements": [
     { "Type": "EnabledValue", "Data": "1" },
     { "Type": "DisabledValue", "Data": "0" }
+  ]
+},
+{
+  "File": "Search.admx",
+  "CategoryName": "Search",
+  "PolicyName": "AllowCloudSearch",
+  "NameSpace": "FullArmor.Policies.3B9EA2B5_A1D1_4CD5_9EDE_75B22990BC21",
+  "Supported": "Windows_10_0 - At least Windows Server 2016, Windows 10",
+  "DisplayName": "Allow Cloud Search",
+  "ExplainText": "Allow search and Cortana to search cloud sources like OneDrive and SharePoint",
+  "KeyPath": [
+    "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search"
+  ],
+  "Elements": [
+    { "Type": "Enum", "ValueName": "AllowCloudSearch", "Items": [
+        { "DisplayName": "Disable Cloud Search", "Data": "0" },
+        { "DisplayName": "Enable Cloud Search", "Data": "1" },
+        { "DisplayName": "User Selected", "Data": "2" }
+      ]
+    }
+  ]
+},
+{
+  "File": "Search.admx",
+  "CategoryName": "Search",
+  "PolicyName": "AllowCortanaInAAD",
+  "NameSpace": "FullArmor.Policies.3B9EA2B5_A1D1_4CD5_9EDE_75B22990BC21",
+  "Supported": "Windows_10_0 - At least Windows Server 2016, Windows 10",
+  "DisplayName": "Allow Cortana Page in OOBE on an AAD account",
+  "ExplainText": "Allow the cortana opt-in page during windows setup out of the box experience",
+  "KeyPath": [
+    "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search\\AllowCortanaInAAD"
+  ],
+  "Elements": [
+    { "Type": "Enum", "ValueName": "AllowCortanaInAADPathOOBE", "Items": [
+        { "DisplayName": "Disable Cortana Page in AAD", "Data": "0" },
+        { "DisplayName": "Enable Cortana Page in AAD", "Data": "1" }
+      ]
+    }
   ]
 }
 ```

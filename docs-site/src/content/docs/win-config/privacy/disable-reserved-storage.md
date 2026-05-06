@@ -3,7 +3,7 @@ title: 'Reserved Storage'
 description: 'Privacy option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 14
+  order: 21
 ---
 
 "Windows reserves `~7 GB` of disk space to ensure updates and system processes run reliably. Temporary files and updates use this reserved area first. If it's full, Windows uses normal disk space or asks for external storage. Size increases with optional features or extra languages. Unused ones can be removed to reduce it."

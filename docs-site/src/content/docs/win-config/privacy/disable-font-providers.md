@@ -3,7 +3,7 @@ title: 'Font Providers'
 description: 'Privacy option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 48
+  order: 46
 ---
 
 "This policy setting determines whether Windows is allowed to download fonts and font catalog data from an online font provider.
@@ -12,7 +12,7 @@ If you enable this policy setting, Windows periodically queries an online font p
 
 If you disable this policy setting, Windows does not connect to an online font provider and only enumerates locally-installed fonts."
 
-## Windows Policies
+## [Windows Policies](https://raw.githubusercontent.com/nohuto/admx-parser/refs/heads/main/assets/policies.json)
 
 ```json
 {
@@ -20,7 +20,7 @@ If you disable this policy setting, Windows does not connect to an online font p
   "CategoryName": "NetworkFonts",
   "PolicyName": "EnableFontProviders",
   "NameSpace": "Microsoft.Policies.GroupPolicy",
-  "Supported": "Windows_10_0",
+  "Supported": "Windows_10_0 - At least Windows Server 2016, Windows 10",
   "DisplayName": "Enable Font Providers",
   "ExplainText": "This policy setting determines whether Windows is allowed to download fonts and font catalog data from an online font provider. If you enable this policy setting, Windows periodically queries an online font provider to determine whether a new font catalog is available. Windows may also download font data if needed to format or render text. If you disable this policy setting, Windows does not connect to an online font provider and only enumerates locally-installed fonts. If you do not configure this policy setting, the default behavior depends on the Windows edition. Changes to this policy take effect on reboot.",
   "KeyPath": [
@@ -31,5 +31,5 @@ If you disable this policy setting, Windows does not connect to an online font p
     { "Type": "EnabledValue", "Data": "1" },
     { "Type": "DisabledValue", "Data": "0" }
   ]
-},
+}
 ```

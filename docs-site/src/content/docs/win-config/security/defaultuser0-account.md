@@ -3,7 +3,7 @@ title: 'defaultuser0 Account'
 description: 'Security option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 27
+  order: 26
 ---
 
 defaultuser0 is a temporary Windows setup account.

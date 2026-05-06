@@ -3,7 +3,7 @@ title: 'Wi-Fi'
 description: 'Network option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 6
+  order: 8
 ---
 
 Disables Wi-Fi services/drivers, scheduled tasks.

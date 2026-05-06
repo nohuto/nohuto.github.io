@@ -3,7 +3,7 @@ title: 'Audio / Video Preview'
 description: 'Visibility option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 8
+  order: 14
 ---
 
 Disables the preview function for (extensions):

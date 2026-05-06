@@ -3,14 +3,18 @@ title: 'Flow Control'
 description: 'Network option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 23
+  order: 22
 ---
 
 A sending station (computer or network switch) may be transmitting data faster than the other end of the link can accept it. Using flow control, the receiving station can signal the sender requesting suspension of transmissions until the receiver catches up.
 
-- *For adapters to benefit from this feature, link partners must support flow control frames.*
-- *On systems running a Microsoft Windows Server operating system, enabling QoS/priority flow control will disable link level flow control.*
-- *Some devices support Auto Negotiation. Selecting this will cause the device to advertise the value stored in its NVM (usually `Disabled`).*" [[*]](https://edc.intel.com/content/www/us/en/design/products/ethernet/adapters-and-devices-user-guide/flow-control/)
+> - *For adapters to benefit from this feature, link partners must support flow control frames.*
+> - *On systems running a Microsoft Windows Server operating system, enabling QoS/priority flow control will disable link level flow control.*
+> - *Some devices support Auto Negotiation. Selecting this will cause the device to advertise the value stored in its NVM (usually `Disabled`).*"
+>
+> — Intel, [Flow Control](https://edc.intel.com/content/www/us/en/design/products/ethernet/adapters-and-devices-user-guide/flow-control/)
+
+See [network/assets/intel-nic](https://github.com/nohuto/win-config/tree/main/network/assets/intel-nic) for reference.
 
 ```c
 "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Class\\{4D36E972-E325-11CE-BFC1-08002bE10318}\\00XX";

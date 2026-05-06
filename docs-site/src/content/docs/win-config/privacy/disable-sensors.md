@@ -3,7 +3,7 @@ title: 'Sensors'
 description: 'Privacy option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 11
+  order: 18
 ---
 
 Blocks apps/system from using hardware sensors such as ambient light, orientation, and other motion/position sensors (features like adaptive brightness, auto rotation and sensor based behaviors will no longer work).
@@ -18,7 +18,7 @@ Blocks apps/system from using hardware sensors such as ambient light, orientatio
 
 No other [services](https://github.com/nohuto/win-config/blob/main/system/assets/services.txt)/[drivers](https://github.com/nohuto/win-config/blob/main/system/assets/drivers.txt) depend on these three services.
 
-## Windows Policies
+## [Windows Policies](https://raw.githubusercontent.com/nohuto/admx-parser/refs/heads/main/assets/policies.json)
 
 ```json
 {
@@ -26,7 +26,7 @@ No other [services](https://github.com/nohuto/win-config/blob/main/system/assets
   "CategoryName": "LocationAndSensors",
   "PolicyName": "DisableSensors_2",
   "NameSpace": "Microsoft.Policies.Sensors",
-  "Supported": "Windows7",
+  "Supported": "Windows7 - At least Windows Server 2008 R2 or Windows 7",
   "DisplayName": "Turn off sensors",
   "ExplainText": "This policy setting turns off the sensor feature for this computer. If you enable this policy setting, the sensor feature is turned off, and all programs on this computer cannot use the sensor feature. If you disable or do not configure this policy setting, all programs on this computer can use the sensor feature.",
   "KeyPath": [
@@ -37,5 +37,5 @@ No other [services](https://github.com/nohuto/win-config/blob/main/system/assets
     { "Type": "EnabledValue", "Data": "1" },
     { "Type": "DisabledValue", "Data": "0" }
   ]
-},
+}
 ```

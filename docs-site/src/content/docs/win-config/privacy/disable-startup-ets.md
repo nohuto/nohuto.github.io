@@ -3,7 +3,7 @@ title: 'Startup ETS'
 description: 'Privacy option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 18
+  order: 25
 ---
 
 "The AutoLogger event tracing session records events that occur early in the operating system boot process. Applications and device drivers can use the AutoLogger session to capture traces before the user logs in. Note that some device drivers, such as disk device drivers, are not loaded at the time the AutoLogger session begins."

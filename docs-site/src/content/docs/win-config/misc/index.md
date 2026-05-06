@@ -17,5 +17,4 @@ sidebar:
 - [VS Telemetry](/docs/win-config/misc/disable-vs-telemetry/)
 - [MS Office Telemetry](/docs/win-config/misc/disable-ms-office-telemetry/)
 - [OneDrive](/docs/win-config/misc/onedrive/)
-- [Edge Features](/docs/win-config/misc/disable-edge-features/)
 - [Hash Generator](/docs/win-config/misc/hash-generator/)

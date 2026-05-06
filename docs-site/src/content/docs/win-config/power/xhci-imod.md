@@ -3,7 +3,7 @@ title: 'xHCI IMOD'
 description: 'Power option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 1
+  order: 2
 ---
 
 | Flag | Description |

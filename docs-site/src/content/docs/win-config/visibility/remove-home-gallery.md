@@ -3,7 +3,7 @@ title: 'Remove Home & Gallery'
 description: 'Visibility option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 9
+  order: 24
 ---
 
 ### Home / Galery

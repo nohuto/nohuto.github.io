@@ -3,33 +3,19 @@ title: 'Thumbnail Caching'
 description: 'Privacy option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 50
+  order: 48
 ---
 
 Disables persistent File Explorer thumbnail caching so previews are less likely to remain stored after browsing folders. Windows normally rebuilds thumbnail caches automatically (use `Thumbnail Cache` option in 'Cleanup' section to clear it).
 
 This improves privacy mainly by reducing leftover preview artifacts for images, videos, documents, and other shell items. Microsoft explicitly notes that the thumbnail cache can be read by everyone on shared or security sensitive systems, and the related network folder thumbnail policies note that allowing thumbnail use on network folders can expose computers to security risks.
 
-## Windows Policies
+## [Windows Policies](https://raw.githubusercontent.com/nohuto/admx-parser/refs/heads/main/assets/policies.json)
 
 ```json
 {
-  "File": "WindowsExplorer.admx",
-  "CategoryName": "WindowsExplorer",
-  "PolicyName": "NoCacheThumbNailPictures",
-  "NameSpace": "Microsoft.Policies.WindowsExplorer",
-  "Supported": "WindowsXP - At least Windows Server 2003 operating systems or Windows XP Professional",
-  "DisplayName": "Turn off caching of thumbnail pictures",
-  "ExplainText": "This policy setting allows you to turn off caching of thumbnail pictures. If you enable this policy setting, thumbnail views are not cached. If you disable or do not configure this policy setting, thumbnail views are cached. Note: For shared corporate workstations or computers where security is a top concern, you should enable this policy setting to turn off the thumbnail view cache, because the thumbnail cache can be read by everyone.",
-  "KeyPath": [
-    "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer"
-  ],
-  "ValueName": "NoThumbnailCache",
-  "Elements": []
-},
-{
   "File": "Thumbnails.admx",
-  "CategoryName": "Thumbnails",
+  "CategoryName": "WindowsExplorer",
   "PolicyName": "DisableThumbsDBOnNetworkFolders",
   "NameSpace": "Microsoft.Policies.Thumbnails",
   "Supported": "MicrosoftWindowsVista_SP1",
@@ -44,4 +30,18 @@ This improves privacy mainly by reducing leftover preview artifacts for images, 
     { "Type": "DisabledValue", "Data": "0" }
   ]
 },
+{
+  "File": "WindowsExplorer.admx",
+  "CategoryName": "WindowsExplorer",
+  "PolicyName": "NoCacheThumbNailPictures",
+  "NameSpace": "Microsoft.Policies.WindowsExplorer",
+  "Supported": "WindowsXP - At least Windows Server 2003 operating systems or Windows XP Professional",
+  "DisplayName": "Turn off caching of thumbnail pictures",
+  "ExplainText": "This policy setting allows you to turn off caching of thumbnail pictures. If you enable this policy setting, thumbnail views are not cached. If you disable or do not configure this policy setting, thumbnail views are cached. Note: For shared corporate workstations or computers where security is a top concern, you should enable this policy setting to turn off the thumbnail view cache, because the thumbnail cache can be read by everyone.",
+  "KeyPath": [
+    "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer"
+  ],
+  "ValueName": "NoThumbnailCache",
+  "Elements": []
+}
 ```

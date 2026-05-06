@@ -3,7 +3,7 @@ title: 'F1 Help Key'
 description: 'Privacy option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 54
+  order: 52
 ---
 
 Works via killing `HelpPane.exe` (Help and Support Windows desktop application) which was the help component in `W8`/`W8.1`. The executeable still exists but calls to it will either start the `Get Started` application (if user is offline), or opens a browser instance and redirects the browser to an online topic. Note that `HelpPane` still handles the `F1` shortcut.

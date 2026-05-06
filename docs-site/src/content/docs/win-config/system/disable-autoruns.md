@@ -3,7 +3,7 @@ title: 'Autoruns'
 description: 'System option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 33
+  order: 32
 ---
 
 The `Open` buttons downloads & executes [`Autoruns`](https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns). It's recommended to disable all kind of autoruns in the `Logon` section that you don't need, examples:

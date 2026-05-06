@@ -3,7 +3,7 @@ title: 'M/K DQS'
 description: 'Peripheral option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 14
+  order: 20
 ---
 
 The value exists by default and is set to `100` decimal (`64` hex). Reducing it doesn't "reduce your latency", leave it default. E.g. setting it to `1` (MouseDataQueueSize) = queue size is 24 bytes (1 mouse packet) = one packet can be buffered, so bursts are much more likely to be dropped = worse. Decreasing it for saving memory is also very minimal, therefore there's no reason I could currently think of for decreasing it below 100.
@@ -24,7 +24,9 @@ AddReg = PS2_Inst.HW.AddReg
 HKR,,"MouseDataQueueSize",0x00010003,100
 ```
 
-"*Specifies the number of mouse events to be buffered internally by the driver, in nonpaged pool. The allocated size, in bytes, of the internal buffer is this value times the size of the MOUSE_INPUT_DATA structure (defined in NTDDMOU.H).*" [[*]](https://www.betaarchive.com/wiki/index.php/Microsoft_KB_Archive/102990)
+> "*Specifies the number of mouse events to be buffered internally by the driver, in nonpaged pool. The allocated size, in bytes, of the internal buffer is this value times the size of the MOUSE_INPUT_DATA structure (defined in NTDDMOU.H).*"
+>
+> — Microsoft KB Archive, [MouseDataQueueSize](https://www.betaarchive.com/wiki/index.php/Microsoft_KB_Archive/102990)
 
 ## [MouseDataQueueSize](https://github.com/nohuto/win-config/blob/main/peripheral/assets/mkdata-MouConfiguration.c)
 

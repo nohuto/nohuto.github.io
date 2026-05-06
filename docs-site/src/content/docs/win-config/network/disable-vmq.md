@@ -3,7 +3,7 @@ title: 'VMQ'
 description: 'Network option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 26
+  order: 25
 ---
 
 [VMQ](https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/network/virtual-machine-queue-architecture.md) is a scaling networking technology for the Hyper-V switch. Without VMQ the networking performance of the Hyper-V switch bound to this network adapter may be reduced. VMQ offloads packet processing to NIC hardware queues, with each queue tied to a specific VM. This increases throughput, spreads work across CPU cores, lowers host CPU use, and scales effectively as more VMs are added on Hyper-V.
@@ -11,6 +11,8 @@ sidebar:
 It depends on your adapter/driver if VMQ is enabled/disabled by default:
 
 ## [Registry Values Details](https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/network/standardized-inf-keywords-for-vmq.md)
+
+See [network/assets/intel-nic](https://github.com/nohuto/win-config/tree/main/network/assets/intel-nic) for reference.
 
 ```c
 // Intel

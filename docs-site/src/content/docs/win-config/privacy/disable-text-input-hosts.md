@@ -3,9 +3,9 @@ title: 'Text Input Hosts'
 description: 'Privacy option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 20
+  order: 27
 ---
 
-Renames `ctfmon.exe` and `TextInputHost.exe` to block the classic CTF loader and the modern text input host. This disables IME, emoji/clipboard panels, and touch keyboard input in most cases.
+`ctfmon.exe` is the classic CTF (Collaborative Translation Framework) loader, it's started for the user at logon by `\Microsoft\Windows\TextServicesFramework\MsCtfMonitor`. It seems to handle [IME](https://learn.microsoft.com/en-us/windows/apps/develop/input/input-method-editors) (Input Method Editor) support, language/input profiles, language bar/input indicator, and [keyboard layout switching](https://www.noverse.dev/docs/win-config/peripheral/keyboard-values/).
 
-`TextInputManagementService` is the Windows service backing text input, expressive input, touch keyboard, handwriting, and IMEs. `ctfmon.exe` loads the Text Services Framework (IME/language bar), while `TextInputHost.exe` hosts the modern input UI (touch keyboard, emoji, clipboard). Renaming them can break language switching, IME input, and UWP input surfaces.
+`TextInputHost.exe` is the modern text input host (from `MicrosoftWindows.Client.CBS`), it seems to get used (on demand) through the `InputApp` registration when opening modern input parts such as `Win+.`, `Win+V`, touch keyboard, handwriting, voice typing, and so on.

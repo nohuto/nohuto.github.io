@@ -3,7 +3,7 @@ title: 'Troubleshooter Preference'
 description: 'Privacy option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 38
+  order: 4
 ---
 
 It's set to `Ask me before running` by default.
@@ -40,36 +40,26 @@ HKLM\SOFTWARE\Microsoft\WindowsMitigation\UserPreference	Type: REG_DWORD, Length
 HKLM\SOFTWARE\Microsoft\WindowsMitigation\UserPreference	Type: REG_DWORD, Length: 4, Data: 4
 ```
 
-## Windows Policies
+## [Windows Policies](https://raw.githubusercontent.com/nohuto/admx-parser/refs/heads/main/assets/policies.json)
 
 ```json
 {
   "File": "MSDT.admx",
   "CategoryName": "WdiScenarioCategory",
-  "PolicyName": "TroubleshootingAllowRecommendations",
+  "PolicyName": "MsdtSupportProvider",
   "NameSpace": "Microsoft.Policies.MSDT",
-  "Supported": "Windows_10_0_RS6 - At least Windows Server 2016, Windows 10 Version 1903",
-  "DisplayName": "Troubleshooting: Allow users to access recommended troubleshooting for known problems",
-  "ExplainText": "This policy setting configures how troubleshooting for known problems can be applied on the device and lets administrators configure how it's applied to their domains/IT environments. Not configuring this policy setting will allow the user to configure how troubleshooting is applied. Enabling this policy allows you to configure how troubleshooting is applied on the user's device. You can select from one of the following values: 0 = Do not allow users, system features, or Microsoft to apply troubleshooting. 1 = Only automatically apply troubleshooting for critical problems by system features and Microsoft. 2 = Automatically apply troubleshooting for critical problems by system features and Microsoft. Notify users when troubleshooting for other problems is available and allow users to choose to apply or ignore. 3 = Automatically apply troubleshooting for critical and other problems by system features and Microsoft. Notify users when troubleshooting has solved a problem. 4 = Automatically apply troubleshooting for critical and other problems by system features and Microsoft. Do not notify users when troubleshooting has solved a problem. 5 = Allow the user to choose their own troubleshooting settings. After setting this policy, you can use the following instructions to check devices in your domain for available troubleshooting from Microsoft: 1. Create a bat script with the following contents: rem The following batch script triggers Recommended Troubleshooting schtasks /run /TN \"\\Microsoft\\Windows\\Diagnosis\\RecommendedTroubleshootingScanner\" 2. To create a new immediate task, navigate to the Group Policy Management Editor > Computer Configuration > Preferences and select Control Panel Settings. 3. Under Control Panel settings, right-click on Scheduled Tasks and select New. Select Immediate Task (At least Windows 7). 4. Provide name and description as appropriate, then under Security Options set the user account to System and select the Run with highest privileges checkbox. 5. In the Actions tab, create a new action, select Start a Program as its type, then enter the file created in step 1. 6. Configure the task to deploy to your domain.",
+  "Supported": "Windows7 - At least Windows Server 2008 R2 or Windows 7",
+  "DisplayName": "Microsoft Support Diagnostic Tool: Turn on MSDT interactive communication with support provider",
+  "ExplainText": "This policy setting configures Microsoft Support Diagnostic Tool (MSDT) interactive communication with the support provider. MSDT gathers diagnostic data for analysis by support professionals. If you enable this policy setting, users can use MSDT to collect and send diagnostic data to a support professional to resolve a problem. By default, the support provider is set to Microsoft Corporation. If you disable this policy setting, MSDT cannot run in support mode, and no data can be collected or sent to the support provider. If you do not configure this policy setting, MSDT support mode is enabled by default. No reboots or service restarts are required for this policy setting to take effect. Changes take effect immediately.",
   "KeyPath": [
-    "HKLM\\Software\\Policies\\Microsoft\\Windows\\Troubleshooting\\AllowRecommendations"
+    "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\ScriptedDiagnosticsProvider\\Policy"
   ],
+  "ValueName": "DisableQueryRemoteServer",
   "Elements": [
-    { "Type": "Enum", "ValueName": "TroubleshootingAllowRecommendations", "Items": [
-        { "DisplayName": "Do not allow users, system features, or Microsoft to apply troubleshooting.", "Data": "0" },
-        { "DisplayName": "Only automatically apply troubleshooting for critical problems by system features and Microsoft.", "Data": "1" },
-        { "DisplayName": "Automatically apply troubleshooting for critical problems by system features and Microsoft. Notify users when troubleshooting for other problems is available and allow users to choose to apply or ignore.", "Data": "2" },
-        { "DisplayName": "Automatically apply troubleshooting for critical and other problems by system features and Microsoft. Notify users when troubleshooting has solved a problem.", "Data": "3" },
-        { "DisplayName": "Automatically apply troubleshooting for critical and other problems by system features and Microsoft. Do not notify users when troubleshooting has solved a problem.", "Data": "4" },
-        { "DisplayName": "Allow the user to choose their own troubleshooting settings.", "Data": "5" }
-      ]
-    }
+    { "Type": "EnabledValue", "Data": "1" },
+    { "Type": "DisabledValue", "Data": "0" }
   ]
 },
-```
-
-Miscellaneous policies:
-```json
 {
   "File": "sdiageng.admx",
   "CategoryName": "ScriptedDiagnosticsCategory",
@@ -104,4 +94,71 @@ Miscellaneous policies:
     { "Type": "DisabledValue", "Data": "0" }
   ]
 },
+{
+  "File": "MSDT.admx",
+  "CategoryName": "WdiScenarioCategory",
+  "PolicyName": "TroubleshootingAllowRecommendations",
+  "NameSpace": "Microsoft.Policies.MSDT",
+  "Supported": "Windows_10_0_RS6 - At least Windows Server 2016, Windows 10 Version 1903",
+  "DisplayName": "Troubleshooting: Allow users to access recommended troubleshooting for known problems",
+  "ExplainText": "This policy setting configures how troubleshooting for known problems can be applied on the device and lets administrators configure how it's applied to their domains/IT environments. Not configuring this policy setting will allow the user to configure how troubleshooting is applied. Enabling this policy allows you to configure how troubleshooting is applied on the user's device. You can select from one of the following values: 0 = Do not allow users, system features, or Microsoft to apply troubleshooting. 1 = Only automatically apply troubleshooting for critical problems by system features and Microsoft. 2 = Automatically apply troubleshooting for critical problems by system features and Microsoft. Notify users when troubleshooting for other problems is available and allow users to choose to apply or ignore. 3 = Automatically apply troubleshooting for critical and other problems by system features and Microsoft. Notify users when troubleshooting has solved a problem. 4 = Automatically apply troubleshooting for critical and other problems by system features and Microsoft. Do not notify users when troubleshooting has solved a problem. 5 = Allow the user to choose their own troubleshooting settings. After setting this policy, you can use the following instructions to check devices in your domain for available troubleshooting from Microsoft: 1. Create a bat script with the following contents: rem The following batch script triggers Recommended Troubleshooting schtasks /run /TN \"\\Microsoft\\Windows\\Diagnosis\\RecommendedTroubleshootingScanner\" 2. To create a new immediate task, navigate to the Group Policy Management Editor > Computer Configuration > Preferences and select Control Panel Settings. 3. Under Control Panel settings, right-click on Scheduled Tasks and select New. Select Immediate Task (At least Windows 7). 4. Provide name and description as appropriate, then under Security Options set the user account to System and select the Run with highest privileges checkbox. 5. In the Actions tab, create a new action, select Start a Program as its type, then enter the file created in step 1. 6. Configure the task to deploy to your domain.",
+  "KeyPath": [
+    "HKLM\\Software\\Policies\\Microsoft\\Windows\\Troubleshooting\\AllowRecommendations"
+  ],
+  "Elements": [
+    { "Type": "Enum", "ValueName": "TroubleshootingAllowRecommendations", "Items": [
+        { "DisplayName": "Do not allow users, system features, or Microsoft to apply troubleshooting.", "Data": "0" },
+        { "DisplayName": "Only automatically apply troubleshooting for critical problems by system features and Microsoft.", "Data": "1" },
+        { "DisplayName": "Automatically apply troubleshooting for critical problems by system features and Microsoft. Notify users when troubleshooting for other problems is available and allow users to choose to apply or ignore.", "Data": "2" },
+        { "DisplayName": "Automatically apply troubleshooting for critical and other problems by system features and Microsoft. Notify users when troubleshooting has solved a problem.", "Data": "3" },
+        { "DisplayName": "Automatically apply troubleshooting for critical and other problems by system features and Microsoft. Do not notify users when troubleshooting has solved a problem.", "Data": "4" },
+        { "DisplayName": "Allow the user to choose their own troubleshooting settings.", "Data": "5" }
+      ]
+    }
+  ]
+},
+{
+  "File": "sdiagschd.admx",
+  "CategoryName": "ScheduledDiagnosticsCategory",
+  "PolicyName": "ScheduledDiagnosticsExecutionPolicy",
+  "NameSpace": "Microsoft.Policies.ScheduledDiagnostics",
+  "Supported": "Windows7 - At least Windows Server 2008 R2 or Windows 7",
+  "DisplayName": "Configure Scheduled Maintenance Behavior",
+  "ExplainText": "Determines whether scheduled diagnostics will run to proactively detect and resolve system problems. If you enable this policy setting, you must choose an execution level. If you choose detection and troubleshooting only, Windows will periodically detect and troubleshoot problems. The user will be notified of the problem for interactive resolution. If you choose detection, troubleshooting and resolution, Windows will resolve some of these problems silently without requiring user input. If you disable this policy setting, Windows will not be able to detect, troubleshoot or resolve problems on a scheduled basis. If you do not configure this policy setting, local troubleshooting preferences will take precedence, as configured in the control panel. If no local troubleshooting preference is configured, scheduled diagnostics are enabled for detection, troubleshooting and resolution by default. No reboots or service restarts are required for this policy to take effect: changes take effect immediately. This policy setting will only take effect when the Task Scheduler service is in the running state. When the service is stopped or disabled, scheduled diagnostics will not be executed. The Task Scheduler service can be configured with the Services snap-in to the Microsoft Management Console.",
+  "KeyPath": [
+    "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\ScheduledDiagnostics"
+  ],
+  "ValueName": "EnabledExecution",
+  "Elements": [
+    { "Type": "Enum", "ValueName": "EnabledExecutionLevel", "Items": [
+        { "DisplayName": "Troubleshooting Only", "Data": "1" },
+        { "DisplayName": "Regular", "Data": "2" }
+      ]
+    },
+    { "Type": "EnabledValue", "Data": "1" },
+    { "Type": "DisabledValue", "Data": "0" }
+  ]
+},
+{
+  "File": "WDI.admx",
+  "CategoryName": "Troubleshooting",
+  "PolicyName": "WdiDpsScenarioExecutionPolicy",
+  "NameSpace": "Microsoft.Policies.WindowsDiagnostics",
+  "Supported": "WindowsVista - At least Windows Vista",
+  "DisplayName": "Diagnostics: Configure scenario execution level",
+  "ExplainText": "This policy setting determines the execution level for Diagnostic Policy Service (DPS) scenarios. If you enable this policy setting, you must select an execution level from the drop-down menu. If you select problem detection and troubleshooting only, the DPS will detect problems and attempt to determine their root causes. These root causes will be logged to the event log when detected, but no corrective action will be taken. If you select detection, troubleshooting and resolution, the DPS will attempt to automatically fix problems it detects or indicate to the user that assisted resolution is available. If you disable this policy setting, Windows cannot detect, troubleshoot, or resolve any problems that are handled by the DPS. If you do not configure this policy setting, the DPS enables all scenarios for resolution by default, unless you configure separate scenario-specific policy settings. This policy setting takes precedence over any scenario-specific policy settings when it is enabled or disabled. Scenario-specific policy settings only take effect if this policy setting is not configured. No reboots or service restarts are required for this policy setting to take effect: changes take effect immediately.",
+  "KeyPath": [
+    "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WDI"
+  ],
+  "ValueName": "ScenarioExecutionEnabled",
+  "Elements": [
+    { "Type": "Enum", "ValueName": "EnabledScenarioExecutionLevel", "Items": [
+        { "DisplayName": "Detection and Troubleshooting Only", "Data": "1" },
+        { "DisplayName": "Detection, Troubleshooting and Resolution", "Data": "2" }
+      ]
+    },
+    { "Type": "EnabledValue", "Data": "1" },
+    { "Type": "DisabledValue", "Data": "0" }
+  ]
+}
 ```

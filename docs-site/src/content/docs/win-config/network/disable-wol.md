@@ -3,10 +3,12 @@ title: 'WoL'
 description: 'Network option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 14
+  order: 16
 ---
 
-"*The wake-on-LAN (WOL) feature wakes the computer from a low power state when a network adapter detects a WOL event (typically, a specially constructed Ethernet packet). WOL is supported from `S3` sleep or `S4` hibernate. It's not supported from fast startup or `S5` soft off shutdown states. NICs aren't armed for wake in these states because users don't expect their systems to wake up on their own. WOL is not officially supported from the `S5` soft off state. However, the BIOS on some systems might support arming NICs for wake, even though Windows isn't involved in the process.*" [[*]](https://learn.microsoft.com/en-us/windows/win32/power/system-power-states#wake-on-lan-behavior)
+> "*The wake-on-LAN (WOL) feature wakes the computer from a low power state when a network adapter detects a WOL event (typically, a specially constructed Ethernet packet). WOL is supported from `S3` sleep or `S4` hibernate. It's not supported from fast startup or `S5` soft off shutdown states. NICs aren't armed for wake in these states because users don't expect their systems to wake up on their own. WOL is not officially supported from the `S5` soft off state. However, the BIOS on some systems might support arming NICs for wake, even though Windows isn't involved in the process.*"
+>
+> — Microsoft, [System power states](https://learn.microsoft.com/en-us/windows/win32/power/system-power-states#wake-on-lan-behavior)
 
 ```bat
 powercfg /devicequery wake_programmable
@@ -16,6 +18,8 @@ powercfg /devicequery wake_armed
 `powercfg /devicequery wake_armed` -> currently configured to wake the system from any sleep state
 
 ## Registry Values Details
+
+See [network/assets/intel-nic](https://github.com/nohuto/win-config/tree/main/network/assets/intel-nic) for reference.
 
 ```c
 "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Class\\{4D36E972-E325-11CE-BFC1-08002bE10318}\\00XX";

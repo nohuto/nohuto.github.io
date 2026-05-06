@@ -7,18 +7,18 @@ sidebar:
   order: 4
 ---
 
-- [xHCI IMOD](/docs/win-config/power/xhci-imod/)
 - [Power Plan](/docs/win-config/power/power-plan/)
-- [Power Values](/docs/win-config/power/power-values/)
+- [xHCI IMOD](/docs/win-config/power/xhci-imod/)
 - [PnP Device Values](/docs/win-config/power/pnp-device-values/)
+- [Power Values](/docs/win-config/power/power-values/)
+- [NIC Power Savings](/docs/win-config/power/disable-nic-power-savings/)
 - [Timer Coalescing](/docs/win-config/power/disable-timer-coalescing/)
 - [Hibernation](/docs/win-config/power/disable-hibernation/)
 - [Reduced HiberFile](/docs/win-config/power/reduced-hiberfile/)
-- [Remove Power Options](/docs/win-config/power/remove-power-options/)
 - [Hiberboot](/docs/win-config/power/disable-hiberboot/)
+- [Remove Power Options](/docs/win-config/power/remove-power-options/)
 - [Energy Estimation](/docs/win-config/power/disable-energy-estimation/)
 - [Audio Idle](/docs/win-config/power/disable-audio-idle/)
 - [Storage Idle States](/docs/win-config/power/disable-storage-idle-states/)
 - [PM in Standby Mode](/docs/win-config/power/disable-pm-in-standby-mode/)
-- [NIC Power Savings](/docs/win-config/power/disable-nic-power-savings/)
 - [Audio Execution Power Requests](/docs/win-config/power/disable-audio-execution-power-requests/)

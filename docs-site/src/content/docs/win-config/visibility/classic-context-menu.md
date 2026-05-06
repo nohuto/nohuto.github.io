@@ -3,7 +3,7 @@ title: 'Classic Context Menu'
 description: 'Visibility option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 10
+  order: 15
 ---
 
 Use it on W11, unless you like the new menu.

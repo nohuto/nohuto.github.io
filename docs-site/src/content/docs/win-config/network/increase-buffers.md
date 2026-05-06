@@ -3,7 +3,7 @@ title: 'Increase Buffers'
 description: 'Network option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 15
+  order: 17
 ---
 
 The maximum data differs for users, e.g. if applying `4096` it may get rejected, see `inf` blocks below (this option won't try to apply the maximum size, read descriptions below).

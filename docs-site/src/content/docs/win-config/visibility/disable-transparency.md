@@ -3,7 +3,7 @@ title: 'Transparency'
 description: 'Visibility option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 7
+  order: 6
 ---
 
 ### Transparency Enabled

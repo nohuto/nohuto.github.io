@@ -3,7 +3,7 @@ title: 'IPv6'
 description: 'Network option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 11
+  order: 13
 ---
 
 `0xFFFFFFFF` disables all IPv6 interfaces, even ones Windows needs. The TCP/IP stack then waits for them to initialize and times out, which adds the `~5s` boot delay. The documentation below was taken from the official support articles.

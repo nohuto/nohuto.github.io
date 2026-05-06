@@ -3,7 +3,7 @@ title: 'USB Values'
 description: 'Peripheral option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 3
+  order: 5
 ---
 
 For entries described as "any nonzero", the code treats the DWORD as a boolean, means any nonzero value is equivalent to `1`. Default data is unknown for most values as the driver code only reads the registry and handles fallbacks.
@@ -65,13 +65,13 @@ For entries described as "any nonzero", the code treats the DWORD as a boolean, 
     "BootPathSurpriseRemovalCount" = ?;
 ```
 
-> [peripheral/assets | GetPersistedKeyPath.c](https://github.com/nohuto/win-config/tree/main/peripheral/assets/usb/GetPersistedKeyPath.c)  
-> [peripheral/assets | HUBREG_OpenQueryAttemptRecoveryFromUsbPowerDrainValue.c](https://github.com/nohuto/win-config/tree/main/peripheral/assets/usb/HUBREG_OpenQueryAttemptRecoveryFromUsbPowerDrainValue.c)  
-> [peripheral/assets | HUBREG_QueryGlobalUsb20HardwareLpmSettings.c](https://github.com/nohuto/win-config/tree/main/peripheral/assets/usb/HUBREG_QueryGlobalUsb20HardwareLpmSettings.c)  
-> [peripheral/assets | HUBREG_QueryGlobalUsbLtmSettings.c](https://github.com/nohuto/win-config/tree/main/peripheral/assets/usb/HUBREG_QueryGlobalUsbLtmSettings.c)  
-> [peripheral/assets | HUBREG_QueryUsbHardwareVerifierValue.c](https://github.com/nohuto/win-config/tree/main/peripheral/assets/usb/HUBREG_QueryUsbHardwareVerifierValue.c)  
-> [peripheral/assets | ReadManifestAssignedValue.c](https://github.com/nohuto/win-config/tree/main/peripheral/assets/usb/ReadManifestAssignedValue.c)  
-> [peripheral/assets | UsbDualRoleFeaturesQueryLocalMachine.c](https://github.com/nohuto/win-config/tree/main/peripheral/assets/usb/UsbDualRoleFeaturesQueryLocalMachine.c)
+- [peripheral/assets | GetPersistedKeyPath.c](https://github.com/nohuto/win-config/tree/main/peripheral/assets/usb/GetPersistedKeyPath.c)
+- [peripheral/assets | HUBREG_OpenQueryAttemptRecoveryFromUsbPowerDrainValue.c](https://github.com/nohuto/win-config/tree/main/peripheral/assets/usb/HUBREG_OpenQueryAttemptRecoveryFromUsbPowerDrainValue.c)
+- [peripheral/assets | HUBREG_QueryGlobalUsb20HardwareLpmSettings.c](https://github.com/nohuto/win-config/tree/main/peripheral/assets/usb/HUBREG_QueryGlobalUsb20HardwareLpmSettings.c)
+- [peripheral/assets | HUBREG_QueryGlobalUsbLtmSettings.c](https://github.com/nohuto/win-config/tree/main/peripheral/assets/usb/HUBREG_QueryGlobalUsbLtmSettings.c)
+- [peripheral/assets | HUBREG_QueryUsbHardwareVerifierValue.c](https://github.com/nohuto/win-config/tree/main/peripheral/assets/usb/HUBREG_QueryUsbHardwareVerifierValue.c)
+- [peripheral/assets | ReadManifestAssignedValue.c](https://github.com/nohuto/win-config/tree/main/peripheral/assets/usb/ReadManifestAssignedValue.c)
+- [peripheral/assets | UsbDualRoleFeaturesQueryLocalMachine.c](https://github.com/nohuto/win-config/tree/main/peripheral/assets/usb/UsbDualRoleFeaturesQueryLocalMachine.c)
 
 ## RegistryMachin_* Keys
 
@@ -128,4 +128,4 @@ Stop USB devices when my screen is off to help battery.
 ```
 `Bluetooth & devices` > `USB` > `USB battery saver`
 
-> [power/assets | usbbattery-OpenQueryAttemptRecoveryFromUsbPowerDrainValue.c](https://github.com/nohuto/win-config/blob/main/power/assets/usbbattery-OpenQueryAttemptRecoveryFromUsbPowerDrainValue.c)
+- [power/assets | usbbattery-OpenQueryAttemptRecoveryFromUsbPowerDrainValue.c](https://github.com/nohuto/win-config/blob/main/power/assets/usbbattery-OpenQueryAttemptRecoveryFromUsbPowerDrainValue.c)

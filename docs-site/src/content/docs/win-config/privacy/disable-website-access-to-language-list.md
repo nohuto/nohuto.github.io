@@ -3,7 +3,7 @@ title: 'Website Access to Language List'
 description: 'Privacy option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 4
+  order: 7
 ---
 
 "Sets the HTTP Accept Language from the Language List opt-out setting." Disables [`Let websites provide locally relevant content by accessing my language list`](https://learn.microsoft.com/en-us/windows/privacy/manage-connections-from-windows-operating-system-components-to-microsoft-services#181-general).

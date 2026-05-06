@@ -3,7 +3,7 @@ title: 'Wake on Input'
 description: 'Peripheral option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 17
+  order: 15
 ---
 
 ```bat
@@ -31,7 +31,7 @@ WakeOnInputDeviceTypes = 46
 UnDimOnInputDeviceTypes = -1  // 0xFFFFFFFF
 ```
 
-> [peripheral/assets | wakedev-WakeOnInputDeviceTypes.c](https://github.com/nohuto/win-config/blob/main/peripheral/assets/wakedev-WakeOnInputDeviceTypes.c)
+- [peripheral/assets | wakedev-WakeOnInputDeviceTypes.c](https://github.com/nohuto/win-config/blob/main/peripheral/assets/wakedev-WakeOnInputDeviceTypes.c)
 
 ## query_flag
 

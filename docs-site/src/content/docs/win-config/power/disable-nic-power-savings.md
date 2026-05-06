@@ -3,7 +3,7 @@ title: 'NIC Power Savings'
 description: 'Power option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 14
+  order: 5
 ---
 
 You can get a lot of information about data ranges and more from `.inf` files, see examples below.
@@ -12,17 +12,15 @@ You can get a lot of information about data ranges and more from `.inf` files, s
 
 Everything listed below is based on personal research. Mistakes may exist, but I don't think I've made any.
 
+See [network/assets/intel-nic](https://github.com/nohuto/win-config/tree/main/network/assets/intel-nic) for reference.
+
 ```c
 "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Class\\{4D36E972-E325-11CE-BFC1-08002bE10318}\\00XX";
     "*DeviceSleepOnDisconnect" = 0; // range 0-1
     "*EnableDynamicPowerGating" = 1; // range 0-1
-    "CheckForHangTime" = 2; // range 0-60
     "DisableIntelRST" = 1; // range 0-1
-    "DisableReset" = 0; // range 0-1
     "DMACoalescing" = 0; // range 0-10240
-    "EnableAdaptiveQueuing" = 1; // range 0-1
     "EnableDisconnectedStandby" = 0; // range 0-1
-    "EnableHWAutonomous" = 0; // range 0-1
     "EnableModernStandby" = 0; // range 0-1
     "EnablePME" = 0; // range 0-1
     "EnablePowerManagement" = 1; // range 0-1
@@ -31,8 +29,6 @@ Everything listed below is based on personal research. Mistakes may exist, but I
     "I218DisablePLLShut" = 0; // range 0-1
     "I218DisablePLLShutGiga" = 0; // range 0-1
     "I219DisableK1Off" = 0; // range 0-1
-    "RegForceRxPathSerialization" = 0; // range 0-1
-    "SidebandUngateOverride" = 0; // range 0-1
     "ULPMode" = 1; // range 0-1
 ```
 
@@ -48,8 +44,8 @@ Everything listed below is based on personal research. Mistakes may exist, but I
 | [`*SSIdleTimeout`](https://learn.microsoft.com/en-us/windows-hardware/drivers/network/standardized-inf-keywords-for-ndis-selective-suspend#ssidletimeout-inf-keyword) | This keyword specifies the idle time-out period in units of seconds. If NDIS does not detect any activity on the network adapter for a period that exceeds the *SSIdleTimeout value, NDIS starts a selective suspend operation by calling the miniport driver's MiniportIdleNotification handler function. | 5 | 1 | 60 |
 | [`*SSIdleTimeoutScreenOff`](https://learn.microsoft.com/en-us/windows-hardware/drivers/network/standardized-inf-keywords-for-ndis-selective-suspend#ssidletimeoutscreenoff-inf-keyword) | This keyword specifies the idle time-out period in units of seconds and is only applicable when the screen is off. If NDIS does not detect any activity on the network adapter for a period that exceeds the *SSIdleTimeoutScreenOff value after the screen is off, NDIS starts a selective suspend operation by calling the miniport driver's MiniportIdleNotification handler function. | 3 | 1 | 60 |
 
-> [network/standardized-inf-keywords-for-power-management](https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/network/standardized-inf-keywords-for-power-management.md)  
-> [network/standardized-inf-keywords-for-ndis-selective-suspend](https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/network/standardized-inf-keywords-for-ndis-selective-suspend.md)
+- [network/standardized-inf-keywords-for-power-management](https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/network/standardized-inf-keywords-for-power-management.md)
+- [network/standardized-inf-keywords-for-ndis-selective-suspend](https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/network/standardized-inf-keywords-for-ndis-selective-suspend.md)
 
 ### Setup Information
 

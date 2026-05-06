@@ -3,7 +3,7 @@ title: 'Camera'
 description: 'Privacy option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 24
+  order: 29
 ---
 
 Disallows the use of a camera on your system, by denying access via `LetAppsAccessCamera`/`AllowCamera`/services (and app permission).
@@ -16,7 +16,7 @@ Disallows the use of a camera on your system, by denying access via `LetAppsAcce
 `Disable Lock Screen Camera`:  
 "Disables the lock screen camera toggle switch in PC Settings and prevents a camera from being invoked on the lock screen.By default, users can enable invocation of an available camera on the lock screen.If you enable this setting, users will no longer be able to enable or disable lock screen camera access in PC Settings, and the camera cannot be invoked on the lock screen." (`ControlPanelDisplay.admx`)
 
-## Windows Policies
+## [Windows Policies](https://raw.githubusercontent.com/nohuto/admx-parser/refs/heads/main/assets/policies.json)
 
 ```json
 {
@@ -40,20 +40,6 @@ Disallows the use of a camera on your system, by denying access via `LetAppsAcce
   ]
 },
 {
-  "File": "ControlPanelDisplay.admx",
-  "CategoryName": "Personalization",
-  "PolicyName": "CPL_Personalization_NoLockScreenCamera",
-  "NameSpace": "Microsoft.Policies.ControlPanelDisplay",
-  "Supported": "Windows_6_3",
-  "DisplayName": "Prevent enabling lock screen camera",
-  "ExplainText": "Disables the lock screen camera toggle switch in PC Settings and prevents a camera from being invoked on the lock screen. By default, users can enable invocation of an available camera on the lock screen. If you enable this setting, users will no longer be able to enable or disable lock screen camera access in PC Settings, and the camera cannot be invoked on the lock screen.",
-  "KeyPath": [
-    "HKLM\\Software\\Policies\\Microsoft\\Windows\\Personalization"
-  ],
-  "ValueName": "NoLockScreenCamera",
-  "Elements": []
-},
-{
   "File": "Camera.admx",
   "CategoryName": "L_Camera_GroupPolicyCategory",
   "PolicyName": "L_AllowCamera",
@@ -70,4 +56,18 @@ Disallows the use of a camera on your system, by denying access via `LetAppsAcce
     { "Type": "DisabledValue", "Data": "0" }
   ]
 },
+{
+  "File": "ControlPanelDisplay.admx",
+  "CategoryName": "Personalization",
+  "PolicyName": "CPL_Personalization_NoLockScreenCamera",
+  "NameSpace": "Microsoft.Policies.ControlPanelDisplay",
+  "Supported": "Windows_6_3 - At least Windows Server 2012 R2, Windows 8.1 or Windows RT 8.1",
+  "DisplayName": "Prevent enabling lock screen camera",
+  "ExplainText": "Disables the lock screen camera toggle switch in PC Settings and prevents a camera from being invoked on the lock screen. By default, users can enable invocation of an available camera on the lock screen. If you enable this setting, users will no longer be able to enable or disable lock screen camera access in PC Settings, and the camera cannot be invoked on the lock screen.",
+  "KeyPath": [
+    "HKLM\\Software\\Policies\\Microsoft\\Windows\\Personalization"
+  ],
+  "ValueName": "NoLockScreenCamera",
+  "Elements": []
+}
 ```

@@ -3,7 +3,7 @@ title: 'Hide Last Logged-In User'
 description: 'Privacy option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 35
+  order: 10
 ---
 
 Note that if you use this option and don't have a password, you'll have to enter your username at each boot ([policy](https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/security-policy-settings/interactive-logon-do-not-display-last-user-name)).
@@ -29,7 +29,7 @@ services.exe	RegSetValue	HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies
 services.exe	RegSetValue	HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\DontDisplayUserName	Type: REG_DWORD, Length: 4, Data: 0
 ```
 
-## Windows Policies
+## [Windows Policies](https://raw.githubusercontent.com/nohuto/admx-parser/refs/heads/main/assets/policies.json)
 
 ```json
 {
@@ -48,22 +48,5 @@ services.exe	RegSetValue	HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies
     { "Type": "EnabledValue", "Data": "1" },
     { "Type": "DisabledValue", "Data": "0" }
   ]
-},
-{
-  "File": "WinLogon.admx",
-  "CategoryName": "Logon",
-  "PolicyName": "LogonHoursNotificationPolicyDescription",
-  "NameSpace": "Microsoft.Policies.WindowsLogon2",
-  "Supported": "WindowsVista - At least Windows Vista",
-  "DisplayName": "Remove logon hours expiration warnings",
-  "ExplainText": "This policy controls whether the logged on user should be notified when his logon hours are about to expire. By default, a user is notified before logon hours expire, if actions have been set to occur when the logon hours expire. If you enable this setting, warnings are not displayed to the user before the logon hours expire. If you disable or do not configure this setting, users receive warnings before the logon hours expire, if actions have been set to occur when the logon hours expire. Note: If you configure this setting, you might want to examine and appropriately configure the \u201cSet action to take when logon hours expire\u201d setting. If \u201cSet action to take when logon hours expire\u201d is disabled or not configured, the \u201cRemove logon hours expiration warnings\u201d setting will have no effect, and users receive no warnings about logon hour expiration",
-  "KeyPath": [
-    "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System"
-  ],
-  "ValueName": "DontDisplayLogonHoursWarnings",
-  "Elements": [
-    { "Type": "EnabledValue", "Data": "1" },
-    { "Type": "DisabledValue", "Data": "0" }
-  ]
-},
+}
 ```

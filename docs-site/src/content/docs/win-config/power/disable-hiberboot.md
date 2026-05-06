@@ -8,7 +8,7 @@ sidebar:
 
 Fast startup is a type of shutdown that uses a hibernation file to speed up the subsequent boot. During this type of shutdown, the user is logged off before the hibernation file is created. Fast startup allows for a smaller hibernation file, more appropriate for systems with less storage capabilities.
 
-Windows Internals (E7-P2, Hybrid shutdown): Fast Startup is implemented as a hybrid shutdown that writes a hibernation image after user sessions are closed; Boot Manager uses the hiberboot/hiberfile BCD elements to resume from that image on the next boot.
+Fast Startup is implemented as a hybrid shutdown that writes a hibernation image after user sessions are closed; Boot Manager uses the hiberboot/hiberfile BCD elements to resume from that image on the next boot.
 
 When using fast startup, the system appears to the user as though a full shutdown (S5) has occurred, even though the system has actually gone through S4. This includes how the system responds to device wake alarms.
 
@@ -60,7 +60,7 @@ if ( result >= 0 )
 }
 ```
 
-> [power/assets | hiberboot-PopReadHiberbootGroupPolicy.c](https://github.com/nohuto/win-config/blob/main/power/assets/hiberboot-PopReadHiberbootGroupPolicy.c)
+- [power/assets | hiberboot-PopReadHiberbootGroupPolicy.c](https://github.com/nohuto/win-config/blob/main/power/assets/hiberboot-PopReadHiberbootGroupPolicy.c)
 
 ## DisableIdleStatesAtBoot Notes
 
@@ -83,7 +83,7 @@ if ( v20 && PpmIdleDisableStatesAtBoot == 2 )
   *(_DWORD *)(v23 + 32) = 0x80000000;
 ```
 
-## Windows Policies
+## [Windows Policies](https://raw.githubusercontent.com/nohuto/admx-parser/refs/heads/main/assets/policies.json)
 
 ```json
 {
@@ -91,7 +91,7 @@ if ( v20 && PpmIdleDisableStatesAtBoot == 2 )
   "CategoryName": "ShutdownOptions",
   "PolicyName": "Hiberboot",
   "NameSpace": "Microsoft.Policies.WindowsInitialization",
-  "Supported": "Windows8",
+  "Supported": "Windows8 - At least Windows Server 2012, Windows 8 or Windows RT",
   "DisplayName": "Require use of fast startup",
   "ExplainText": "This policy setting controls the use of fast startup. If you enable this policy setting, the system requires hibernate to be enabled. If you disable or do not configure this policy setting, the local setting is used.",
   "KeyPath": [
@@ -102,5 +102,5 @@ if ( v20 && PpmIdleDisableStatesAtBoot == 2 )
     { "Type": "EnabledValue", "Data": "1" },
     { "Type": "DisabledValue", "Data": "0" }
   ]
-},
+}
 ```

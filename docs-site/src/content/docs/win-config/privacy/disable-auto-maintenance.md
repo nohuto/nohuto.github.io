@@ -3,7 +3,7 @@ title: 'Auto Maintenance'
 description: 'Privacy option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 5
+  order: 13
 ---
 
 Runs updates and scans daily when your PC is idle, it helps keep your system secure and efficient without affecting performance. Theres no actual reason to disable it, as it doesn't do anything while being active, however if you've any reason for not wanting it to run the tasks while being in idle, toggle the switch.

@@ -3,7 +3,7 @@ title: 'Cross-Device Experiences'
 description: 'Privacy option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 28
+  order: 8
 ---
 
 Disables Cross-Device experiences (allows you to use `Share Across Devices`/`Nearby Sharing` functionalities) & share accross devices. With `Share across devices`, you can continue app experiences on other devices connected to your account (set to `My device only` by default).
@@ -40,9 +40,9 @@ L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\CDP\\SettingsPage",
 L"WifiLastDisabledNearShare",
 ```
 
-> [privacy/assets | crossdev-SharedExperiencesSingleton.c](https://github.com/nohuto/win-config/blob/main/privacy/assets/crossdev-SharedExperiencesSingleton.c)
+- [privacy/assets | crossdev-SharedExperiencesSingleton.c](https://github.com/nohuto/win-config/blob/main/privacy/assets/crossdev-SharedExperiencesSingleton.c)
 
-## Windows Policies
+## [Windows Policies](https://raw.githubusercontent.com/nohuto/admx-parser/refs/heads/main/assets/policies.json)
 
 ```json
 {
@@ -50,7 +50,7 @@ L"WifiLastDisabledNearShare",
   "CategoryName": "PolicyPolicies",
   "PolicyName": "EnableCDP",
   "NameSpace": "Microsoft.Policies.GroupPolicy",
-  "Supported": "Windows_10_0",
+  "Supported": "Windows_10_0 - At least Windows Server 2016, Windows 10",
   "DisplayName": "Continue experiences on this device",
   "ExplainText": "This policy setting determines whether the Windows device is allowed to participate in cross-device experiences (continue experiences). If you enable this policy setting, the Windows device is discoverable by other Windows devices that belong to the same user, and can participate in cross-device experiences. If you disable this policy setting, the Windows device is not discoverable by other devices, and cannot participate in cross-device experiences. If you do not configure this policy setting, the default behavior depends on the Windows edition. Changes to this policy take effect on reboot.",
   "KeyPath": [
@@ -61,5 +61,5 @@ L"WifiLastDisabledNearShare",
     { "Type": "EnabledValue", "Data": "1" },
     { "Type": "DisabledValue", "Data": "0" }
   ]
-},
+}
 ```

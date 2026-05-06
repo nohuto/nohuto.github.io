@@ -24,7 +24,7 @@ sidebar:
 - [Clipboard History](/docs/win-config/cleanup/clipboard-history/)
 - [DNS Cache](/docs/win-config/cleanup/dns-cache/)
 - [WER Files](/docs/win-config/cleanup/wer-files/)
-- [Windows Defender](/docs/win-config/cleanup/windows-defender/)
+- [Defender Scans](/docs/win-config/cleanup/defender-scans/)
 - [Event Logs](/docs/win-config/cleanup/event-logs/)
 - [Windows Update Cache](/docs/win-config/cleanup/windows-update-cache/)
 - [Thumbnail Cache](/docs/win-config/cleanup/thumbnail-cache/)

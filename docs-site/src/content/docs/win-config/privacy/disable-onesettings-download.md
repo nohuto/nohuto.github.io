@@ -3,14 +3,14 @@ title: 'OneSettings Download'
 description: 'Privacy option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 53
+  order: 51
 ---
 
 [Services Configuration](https://learn.microsoft.com/en-us/windows/privacy/manage-connections-from-windows-operating-system-components-to-microsoft-services#31-services-configuration) is used by Windows components and apps, such as the telemetry service, to dynamically update their configuration. If you turn off this service, apps using this service may stop working.
 
 If enabled = "Windows will periodically attempt to connect with the OneSettings service to download configuration settings".
 
-## Windows Policies
+## [Windows Policies](https://raw.githubusercontent.com/nohuto/admx-parser/refs/heads/main/assets/policies.json)
 
 ```json
 {
@@ -46,5 +46,5 @@ If enabled = "Windows will periodically attempt to connect with the OneSettings 
     { "Type": "EnabledValue", "Data": "1" },
     { "Type": "DisabledValue", "Data": "0" }
   ]
-},
+}
 ```

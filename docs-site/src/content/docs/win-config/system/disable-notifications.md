@@ -3,7 +3,7 @@ title: 'Notifications'
 description: 'System option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 22
+  order: 12
 ---
 
 ## Option/Suboptions
@@ -106,21 +106,166 @@ See [system/assets | noti-CLowDiskSpaceUI_CanShowStorageSenseToast.c](https://gi
 "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Notifications\\TimestampWhenSeen","Length: 20"
 ```
 
-## Windows Policies
+## SystemSettings Captures
+
+```c
+// System > Notifications
+
+// Get notifications from apps and other senders
+// On = 1 or value missing
+// Off = 0
+HKCU\Software\Microsoft\Windows\CurrentVersion\PushNotifications\ToastEnabled // Type: REG_DWORD
+
+// Allow notifications to play sounds
+// On = delete
+// Off = 0
+HKCU\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\NOC_GLOBAL_SETTING_ALLOW_NOTIFICATION_SOUND // Type: REG_DWORD
+
+// Show notifications on the lock screen
+// On = NOC value deleted, LockScreenToastEnabled = 1
+// Off = NOC value 0, LockScreenToastEnabled = 0
+HKCU\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\NOC_GLOBAL_SETTING_ALLOW_TOASTS_ABOVE_LOCK // Type: REG_DWORD
+HKCU\Software\Microsoft\Windows\CurrentVersion\PushNotifications\LockScreenToastEnabled // Type: REG_DWORD
+
+// Show reminders and incoming VoIP calls on the lock screen
+// On = delete
+// Off = 0
+HKCU\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\NOC_GLOBAL_SETTING_ALLOW_CRITICAL_TOASTS_ABOVE_LOCK // Type: REG_DWORD
+
+// Show notification bell icon
+// On = 1
+// Off = 0
+HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\ShowNotificationIcon // Type: REG_DWORD
+
+// Notifications from apps and other senders (examples since this depends on the installed apps)
+// On = delete
+// Off = 0
+HKCU\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.ActionCenter.SmartOptOut\Enabled // Notification Suggestions
+HKCU\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\Microsoft.Windows.Explorer\Enabled // File Explorer
+HKCU\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.SecurityAndMaintenance\Enabled // Security and Maintenance
+HKCU\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.PinConsent\Enabled // Apps
+HKCU\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\windows.immersivecontrolpanel_cw5n1h2txyewy!microsoft.windows.immersivecontrolpanel\Enabled // Settings
+HKCU\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.StartupApp\Enabled // Startup App Notification
+```
+
+## [Windows Policies](https://raw.githubusercontent.com/nohuto/admx-parser/refs/heads/main/assets/policies.json)
 
 ```json
 {
-  "File": "WindowsDefenderSecurityCenter.admx",
-  "CategoryName": "Notifications",
-  "PolicyName": "Notifications_DisableEnhancedNotifications",
-  "NameSpace": "Microsoft.Policies.WindowsDefenderSecurityCenter",
-  "Supported": "Windows_10_0_RS3",
-  "DisplayName": "Hide non-critical notifications",
-  "ExplainText": "Only show critical notifications from Windows Security. If the Suppress all notifications GP setting has been enabled, this setting will have no effect. Enabled: Local users will only see critical notifications from Windows Security. They will not see other types of notifications, such as regular PC or device health information. Disabled: Local users will see all types of notifications from Windows Security. Not configured: Same as Disabled.",
+  "File": "AccountNotifications.admx",
+  "CategoryName": "AccountNotifications",
+  "PolicyName": "DisableAccountNotifications",
+  "NameSpace": "Microsoft.Policies.AccountNotifications",
+  "Supported": "Windows_10_0_20H1_NOSERVER - At least Windows 10 Version 2004",
+  "DisplayName": "Turn off account notifications in Start",
+  "ExplainText": "This policy allows you to prevent Windows from displaying notifications to Microsoft account (MSA) and local users in Start (user tile). Notifications include getting users to: reauthenticate; backup their device; manage cloud storage quotas as well as manage their Microsoft 365 or XBOX subscription. If you enable this policy setting, Windows will not send account related notifications for local and MSA users to the user tile in Start. If you disable or do not configure this policy setting, Windows will send account related notifications for local and MSA users to the user tile in Start. No reboots or service restarts are required for this policy setting to take effect.",
   "KeyPath": [
-    "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows Defender Security Center\\Notifications"
+    "HKCU\\SOFTWARE\\Policies\\Microsoft\\Windows\\CurrentVersion\\AccountNotifications"
   ],
-  "ValueName": "DisableEnhancedNotifications",
+  "ValueName": "DisableAccountNotifications",
+  "Elements": [
+    { "Type": "EnabledValue", "Data": "1" },
+    { "Type": "DisabledValue", "Data": "0" }
+  ]
+},
+{
+  "File": "ICM.admx",
+  "CategoryName": "InternetManagement_Settings",
+  "PolicyName": "ShellNoUseStoreOpenWith_2",
+  "NameSpace": "Microsoft.Policies.InternetCommunicationManagement",
+  "Supported": "Windows8 - At least Windows Server 2012, Windows 8 or Windows RT",
+  "DisplayName": "Turn off access to the Store",
+  "ExplainText": "This policy setting specifies whether to use the Store service for finding an application to open a file with an unhandled file type or protocol association. When a user opens a file type or protocol that is not associated with any applications on the computer, the user is given the choice to select a local application or use the Store service to find an application. If you enable this policy setting, the \"Look for an app in the Store\" item in the Open With dialog is removed. If you disable or do not configure this policy setting, the user is allowed to use the Store service and the Store item is available in the Open With dialog.",
+  "KeyPath": [
+    "HKLM\\Software\\Policies\\Microsoft\\Windows\\Explorer"
+  ],
+  "ValueName": "NoUseStoreOpenWith",
+  "Elements": [
+    { "Type": "EnabledValue", "Data": "1" },
+    { "Type": "DisabledValue", "Data": "0" }
+  ]
+},
+{
+  "File": "Logon.admx",
+  "CategoryName": "Logon",
+  "PolicyName": "DisableLockScreenAppNotifications",
+  "NameSpace": "Microsoft.Policies.WindowsLogon",
+  "Supported": "Windows8 - At least Windows Server 2012, Windows 8 or Windows RT",
+  "DisplayName": "Turn off app notifications on the lock screen",
+  "ExplainText": "This policy setting allows you to prevent app notifications from appearing on the lock screen. If you enable this policy setting, no app notifications are displayed on the lock screen. If you disable or do not configure this policy setting, users can choose which apps display notifications on the lock screen.",
+  "KeyPath": [
+    "HKLM\\Software\\Policies\\Microsoft\\Windows\\System"
+  ],
+  "ValueName": "DisableLockScreenAppNotifications",
+  "Elements": [
+    { "Type": "EnabledValue", "Data": "1" },
+    { "Type": "DisabledValue", "Data": "0" }
+  ]
+},
+{
+  "File": "Taskbar.admx",
+  "CategoryName": "StartMenu",
+  "PolicyName": "DisableNotificationCenter",
+  "NameSpace": "Microsoft.Policies.TaskBar2",
+  "Supported": "Windows_10_0 - At least Windows Server 2016, Windows 10",
+  "DisplayName": "Remove Notifications and Action Center",
+  "ExplainText": "This policy setting removes Notifications and Action Center from the notification area on the taskbar. The notification area is located at the far right end of the taskbar and includes icons for current notifications and the system clock. If this setting is enabled, Notifications and Action Center is not displayed in the notification area. The user will be able to read notifications when they appear, but they won\u2019t be able to review any notifications they miss. If you disable or do not configure this policy setting, Notification and Security and Maintenance will be displayed on the taskbar. A reboot is required for this policy setting to take effect.",
+  "KeyPath": [
+    "HKLM\\Software\\Policies\\Microsoft\\Windows\\Explorer",
+    "HKCU\\Software\\Policies\\Microsoft\\Windows\\Explorer"
+  ],
+  "ValueName": "DisableNotificationCenter",
+  "Elements": [
+    { "Type": "EnabledValue", "Data": "1" },
+    { "Type": "DisabledValue", "Data": "0" }
+  ]
+},
+{
+  "File": "WebThreatDefense.admx",
+  "CategoryName": "WebThreatDefense",
+  "PolicyName": "NotifyMalicious",
+  "NameSpace": "Microsoft.Policies.WebThreatDefense",
+  "Supported": "Windows_11_0_22H2 - At least Windows 11 Version 22H2",
+  "DisplayName": "Notify Malicious",
+  "ExplainText": "This policy setting determines whether Enhanced Phishing Protection in Microsoft Defender SmartScreen warns your users if they type their work or school password into one of the following malicious scenarios: into a reported phishing site, into a Microsoft login URL with an invalid certificate, or into an application connecting to either a reported phishing site or a Microsoft login URL with an invalid certificate. If you enable this policy setting, Enhanced Phishing Protection in Microsoft Defender SmartScreen warns your users if they type their work or school password into one of the malicious scenarios described above and encourages them to change their password. If you disable or don\u2019t configure this policy setting, Enhanced Phishing Protection in Microsoft Defender SmartScreen will not warn your users if they type their work or school password into one of the malicious scenarios described above.",
+  "KeyPath": [
+    "HKLM\\Software\\Policies\\Microsoft\\Windows\\WTDS\\Components"
+  ],
+  "ValueName": "NotifyMalicious",
+  "Elements": [
+    { "Type": "EnabledValue", "Data": "1" },
+    { "Type": "DisabledValue", "Data": "0" }
+  ]
+},
+{
+  "File": "WebThreatDefense.admx",
+  "CategoryName": "WebThreatDefense",
+  "PolicyName": "NotifyPasswordReuse",
+  "NameSpace": "Microsoft.Policies.WebThreatDefense",
+  "Supported": "Windows_11_0_22H2 - At least Windows 11 Version 22H2",
+  "DisplayName": "Notify Password Reuse",
+  "ExplainText": "This policy setting determines whether Enhanced Phishing Protection in Microsoft Defender SmartScreen warns your users if they reuse their work or school password. If you enable this policy setting, Enhanced Phishing Protection in Microsoft Defender SmartScreen warns users if they reuse their work or school password and encourages them to change it. If you disable or don\u2019t configure this policy setting, Enhanced Phishing Protection in Microsoft Defender SmartScreen will not warn users if they reuse their work or school password.",
+  "KeyPath": [
+    "HKLM\\Software\\Policies\\Microsoft\\Windows\\WTDS\\Components"
+  ],
+  "ValueName": "NotifyPasswordReuse",
+  "Elements": [
+    { "Type": "EnabledValue", "Data": "1" },
+    { "Type": "DisabledValue", "Data": "0" }
+  ]
+},
+{
+  "File": "WebThreatDefense.admx",
+  "CategoryName": "WebThreatDefense",
+  "PolicyName": "NotifyUnsafeApp",
+  "NameSpace": "Microsoft.Policies.WebThreatDefense",
+  "Supported": "Windows_11_0_22H2 - At least Windows 11 Version 22H2",
+  "DisplayName": "Notify Unsafe App",
+  "ExplainText": "This policy setting determines whether Enhanced Phishing Protection in Microsoft Defender SmartScreen warns your users if they type their work or school passwords in Notepad, Winword, or M365 Office apps like OneNote, Word, Excel, etc. If you enable this policy setting, Enhanced Phishing Protection in Microsoft Defender SmartScreen warns your users if they store their password in text editor apps. If you disable or don\u2019t configure this policy setting, Enhanced Phishing Protection in Microsoft Defender SmartScreen will not warn users if they store their password in text editor apps.",
+  "KeyPath": [
+    "HKLM\\Software\\Policies\\Microsoft\\Windows\\WTDS\\Components"
+  ],
+  "ValueName": "NotifyUnsafeApp",
   "Elements": [
     { "Type": "EnabledValue", "Data": "1" },
     { "Type": "DisabledValue", "Data": "0" }
@@ -131,7 +276,7 @@ See [system/assets | noti-CLowDiskSpaceUI_CanShowStorageSenseToast.c](https://gi
   "CategoryName": "Reporting",
   "PolicyName": "Reporting_DisableEnhancedNotifications",
   "NameSpace": "Microsoft.Policies.WindowsDefender",
-  "Supported": "Windows_10_0",
+  "Supported": "Windows_10_0 - At least Windows Server 2016, Windows 10",
   "DisplayName": "Turn off enhanced notifications",
   "ExplainText": "Use this policy setting to specify if you want Microsoft Defender Antivirus enhanced notifications to display on clients. If you disable or do not configure this setting, Microsoft Defender Antivirus enhanced notifications will display on clients. If you enable this setting, Microsoft Defender Antivirus enhanced notifications will not display on clients.",
   "KeyPath": [
@@ -148,7 +293,7 @@ See [system/assets | noti-CLowDiskSpaceUI_CanShowStorageSenseToast.c](https://gi
   "CategoryName": "Notifications",
   "PolicyName": "Notifications_DisableNotifications",
   "NameSpace": "Microsoft.Policies.WindowsDefenderSecurityCenter",
-  "Supported": "Windows_10_0_RS3",
+  "Supported": "Windows_10_0_RS3 - At least Windows Server 2016, Windows 10 Version 1709",
   "DisplayName": "Hide all notifications",
   "ExplainText": "Hide notifications from Windows Security. Enabled: Local users will not see notifications from Windows Security. Disabled: Local users can see notifications from Windows Security. Not configured: Same as Disabled.",
   "KeyPath": [
@@ -161,17 +306,17 @@ See [system/assets | noti-CLowDiskSpaceUI_CanShowStorageSenseToast.c](https://gi
   ]
 },
 {
-  "File": "ICM.admx",
-  "CategoryName": "InternetManagement_Settings",
-  "PolicyName": "ShellNoUseStoreOpenWith_2",
-  "NameSpace": "Microsoft.Policies.InternetCommunicationManagement",
-  "Supported": "Windows8",
-  "DisplayName": "Turn off access to the Store",
-  "ExplainText": "This policy setting specifies whether to use the Store service for finding an application to open a file with an unhandled file type or protocol association. When a user opens a file type or protocol that is not associated with any applications on the computer, the user is given the choice to select a local application or use the Store service to find an application. If you enable this policy setting, the \"Look for an app in the Store\" item in the Open With dialog is removed. If you disable or do not configure this policy setting, the user is allowed to use the Store service and the Store item is available in the Open With dialog.",
+  "File": "WindowsDefenderSecurityCenter.admx",
+  "CategoryName": "Notifications",
+  "PolicyName": "Notifications_DisableEnhancedNotifications",
+  "NameSpace": "Microsoft.Policies.WindowsDefenderSecurityCenter",
+  "Supported": "Windows_10_0_RS3 - At least Windows Server 2016, Windows 10 Version 1709",
+  "DisplayName": "Hide non-critical notifications",
+  "ExplainText": "Only show critical notifications from Windows Security. If the Suppress all notifications GP setting has been enabled, this setting will have no effect. Enabled: Local users will only see critical notifications from Windows Security. They will not see other types of notifications, such as regular PC or device health information. Disabled: Local users will see all types of notifications from Windows Security. Not configured: Same as Disabled.",
   "KeyPath": [
-    "HKLM\\Software\\Policies\\Microsoft\\Windows\\Explorer"
+    "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows Defender Security Center\\Notifications"
   ],
-  "ValueName": "NoUseStoreOpenWith",
+  "ValueName": "DisableEnhancedNotifications",
   "Elements": [
     { "Type": "EnabledValue", "Data": "1" },
     { "Type": "DisabledValue", "Data": "0" }
@@ -189,23 +334,6 @@ See [system/assets | noti-CLowDiskSpaceUI_CanShowStorageSenseToast.c](https://gi
     "HKCU\\SOFTWARE\\Policies\\Microsoft\\Windows\\CurrentVersion\\PushNotifications"
   ],
   "ValueName": "NoTileApplicationNotification",
-  "Elements": [
-    { "Type": "EnabledValue", "Data": "1" },
-    { "Type": "DisabledValue", "Data": "0" }
-  ]
-},
-{
-  "File": "WPN.admx",
-  "CategoryName": "NotificationsCategory",
-  "PolicyName": "NoNotificationMirroring",
-  "NameSpace": "Microsoft.Policies.Notifications",
-  "Supported": "Windows_10_0 - At least Windows Server 2016, Windows 10",
-  "DisplayName": "Turn off notification mirroring",
-  "ExplainText": "This policy setting turns off notification mirroring. If you enable this policy setting, notifications from applications and system will not be mirrored to your other devices. If you disable or do not configure this policy setting, notifications will be mirrored, and can be turned off by the administrator or user. No reboots or service restarts are required for this policy setting to take effect.",
-  "KeyPath": [
-    "HKCU\\SOFTWARE\\Policies\\Microsoft\\Windows\\CurrentVersion\\PushNotifications"
-  ],
-  "ValueName": "DisallowNotificationMirroring",
   "Elements": [
     { "Type": "EnabledValue", "Data": "1" },
     { "Type": "DisabledValue", "Data": "0" }
@@ -246,4 +374,38 @@ See [system/assets | noti-CLowDiskSpaceUI_CanShowStorageSenseToast.c](https://gi
     { "Type": "DisabledValue", "Data": "0" }
   ]
 },
+{
+  "File": "WPN.admx",
+  "CategoryName": "NotificationsCategory",
+  "PolicyName": "NoCloudNotification",
+  "NameSpace": "Microsoft.Policies.Notifications",
+  "Supported": "Windows8 - At least Windows Server 2012, Windows 8 or Windows RT",
+  "DisplayName": "Turn off notifications network usage",
+  "ExplainText": "This policy setting blocks applications from using the network to send notifications to update tiles, tile badges, toast, or raw notifications. This policy setting turns off the connection between Windows and the Windows Push Notification Service (WNS). This policy setting also stops applications from being able to poll application services to update tiles. If you enable this policy setting, applications and system features will not be able receive notifications from the network from WNS or via notification polling APIs. If you enable this policy setting, notifications can still be raised by applications running on the machine via local API calls from within the application. If you disable or do not configure this policy setting, the client computer will connect to WNS at user login and applications will be allowed to poll for tile notification updates in the background. No reboots or service restarts are required for this policy setting to take effect.",
+  "KeyPath": [
+    "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\CurrentVersion\\PushNotifications"
+  ],
+  "ValueName": "NoCloudApplicationNotification",
+  "Elements": [
+    { "Type": "EnabledValue", "Data": "1" },
+    { "Type": "DisabledValue", "Data": "0" }
+  ]
+},
+{
+  "File": "WPN.admx",
+  "CategoryName": "NotificationsCategory",
+  "PolicyName": "NoNotificationMirroring",
+  "NameSpace": "Microsoft.Policies.Notifications",
+  "Supported": "Windows_10_0 - At least Windows Server 2016, Windows 10",
+  "DisplayName": "Turn off notification mirroring",
+  "ExplainText": "This policy setting turns off notification mirroring. If you enable this policy setting, notifications from applications and system will not be mirrored to your other devices. If you disable or do not configure this policy setting, notifications will be mirrored, and can be turned off by the administrator or user. No reboots or service restarts are required for this policy setting to take effect.",
+  "KeyPath": [
+    "HKCU\\SOFTWARE\\Policies\\Microsoft\\Windows\\CurrentVersion\\PushNotifications"
+  ],
+  "ValueName": "DisallowNotificationMirroring",
+  "Elements": [
+    { "Type": "EnabledValue", "Data": "1" },
+    { "Type": "DisabledValue", "Data": "0" }
+  ]
+}
 ```

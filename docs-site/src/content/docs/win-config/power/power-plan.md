@@ -3,7 +3,7 @@ title: 'Power Plan'
 description: 'Power option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 2
+  order: 1
 ---
 
 ### Noverse Performance

@@ -3,7 +3,7 @@ title: 'System Fonts'
 description: 'Visibility option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 25
+  order: 12
 ---
 
 W11 uses `Segoe UI` by default. You can change it via registry edits, the selected font will be used for desktop interfaces, explorer, some apps (`StartAllBack` will use it), but won't get applied for e.g., `SystemSettings.exe` and app fonts in general. Some fonts will cause issues - `Yu Gothic UI Light` uses `¥` instead of `\` (picture).
@@ -91,7 +91,7 @@ Edit text sizes via [`TextScaleFactor`](https://learn.microsoft.com/en-us/uwp/ap
     v6 = 100LL; // fallback to 100 if missing or out of range (<100 / >225)
   }
 ```
-> [visibility/assets | textsize-TextScaleDialogTemplate.c](https://github.com/nohuto/win-config/blob/main/visibility/assets/textsize-TextScaleDialogTemplate.c)
+- [visibility/assets | textsize-TextScaleDialogTemplate.c](https://github.com/nohuto/win-config/blob/main/visibility/assets/textsize-TextScaleDialogTemplate.c)
 
 Applying changes via `Accessibility > Text size`:
 ```c

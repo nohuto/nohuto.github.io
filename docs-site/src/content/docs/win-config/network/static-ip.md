@@ -3,7 +3,7 @@ title: 'Static IP'
 description: 'Network option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 7
+  order: 9
 ---
 
 Reads the active adapter's IPv4 settings from `netsh int ip show config` and applies them directly via registry. A static IP is useful for devices that must keep the same address (NAS, game servers, port forwarding, monitoring agents) so clients and firewall rules always target a stable IP. **Static IP requires a manual DNS server**. Use the `Encrypted DNS` option above to set `NameServer` for the same adapter.

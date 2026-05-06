@@ -3,7 +3,7 @@ title: 'System Clock Seconds'
 description: 'Visibility option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 15
+  order: 33
 ---
 
 "Uses more power" (in relation to laptops).

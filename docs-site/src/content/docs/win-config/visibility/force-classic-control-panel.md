@@ -16,7 +16,7 @@ sidebar:
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/panel1.png?raw=true)
 
-## Windows Policies
+## [Windows Policies](https://raw.githubusercontent.com/nohuto/admx-parser/refs/heads/main/assets/policies.json)
 
 ```json
 {
@@ -24,7 +24,7 @@ sidebar:
   "CategoryName": "ControlPanel",
   "PolicyName": "ForceClassicControlPanel",
   "NameSpace": "Microsoft.Policies.ControlPanel",
-  "Supported": "WindowsXP",
+  "Supported": "WindowsXP - At least Windows Server 2003 operating systems or Windows XP Professional",
   "DisplayName": "Always open All Control Panel Items when opening Control Panel",
   "ExplainText": "This policy setting controls the default Control Panel view, whether by category or icons. If this policy setting is enabled, the Control Panel opens to the icon view. If this policy setting is disabled, the Control Panel opens to the category view. If this policy setting is not configured, the Control Panel opens to the view used in the last Control Panel session. Note: Icon size is dependent upon what the user has set it to in the previous session.",
   "KeyPath": [
@@ -35,5 +35,5 @@ sidebar:
     { "Type": "EnabledValue", "Data": "1" },
     { "Type": "DisabledValue", "Data": "0" }
   ]
-},
+}
 ```

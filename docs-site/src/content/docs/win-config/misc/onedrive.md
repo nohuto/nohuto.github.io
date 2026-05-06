@@ -123,3 +123,78 @@ HKLM\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\OneDrive
   ]
 },
 ```
+
+## [Windows Policies](https://raw.githubusercontent.com/nohuto/admx-parser/refs/heads/main/assets/policies.json)
+
+```json
+{
+  "File": "SkyDrive.admx",
+  "CategoryName": "OneDrive",
+  "PolicyName": "PreventOnedriveFileSync",
+  "NameSpace": "Microsoft.Policies.OneDrive",
+  "Supported": "Windows7 - At least Windows Server 2008 R2 or Windows 7",
+  "DisplayName": "Prevent the usage of OneDrive for file storage",
+  "ExplainText": "This policy setting lets you prevent apps and features from working with files on OneDrive. If you enable this policy setting: * Users can\u2019t access OneDrive from the OneDrive app and file picker. * Packaged Microsoft Store apps can\u2019t access OneDrive using the WinRT API. * OneDrive doesn\u2019t appear in the navigation pane in File Explorer. * OneDrive files aren\u2019t kept in sync with the cloud. * Users can\u2019t automatically upload photos and videos from the camera roll folder. If you disable or do not configure this policy setting, apps and features can work with OneDrive file storage.",
+  "KeyPath": [
+    "HKLM\\Software\\Policies\\Microsoft\\Windows\\OneDrive"
+  ],
+  "ValueName": "DisableFileSyncNGSC",
+  "Elements": [
+    { "Type": "EnabledValue", "Data": "1" },
+    { "Type": "DisabledValue", "Data": "0" }
+  ]
+},
+{
+  "File": "SkyDrive.admx",
+  "CategoryName": "OneDrive",
+  "PolicyName": "PreventOnedriveFileSyncForBlue",
+  "NameSpace": "Microsoft.Policies.OneDrive",
+  "Supported": "Windows_6_3only - Windows Server 2012 R2, Windows 8.1 or Windows RT 8.1 only",
+  "DisplayName": "Prevent the usage of OneDrive for file storage on Windows 8.1",
+  "ExplainText": "This policy setting lets you prevent apps and features from working with files on OneDrive for Windows 8.1. If you enable this policy setting: * Users can\u2019t access OneDrive from the OneDrive app and file picker. * Packaged Microsoft Store apps can\u2019t access OneDrive using the WinRT API. * OneDrive doesn\u2019t appear in the navigation pane in File Explorer. * OneDrive files aren\u2019t kept in sync with the cloud. * Users can\u2019t automatically upload photos and videos from the camera roll folder. If you disable or do not configure this policy setting, apps and features can work with OneDrive file storage.",
+  "KeyPath": [
+    "HKLM\\Software\\Policies\\Microsoft\\Windows\\OneDrive"
+  ],
+  "ValueName": "DisableFileSync",
+  "Elements": [
+    { "Type": "EnabledValue", "Data": "1" },
+    { "Type": "DisabledValue", "Data": "0" }
+  ]
+},
+{
+  "File": "SkyDrive.admx",
+  "CategoryName": "OneDrive",
+  "PolicyName": "PreventOneDriveFileSyncOnMeteredNetwork",
+  "NameSpace": "Microsoft.Policies.OneDrive",
+  "Supported": "Windows_6_3only - Windows Server 2012 R2, Windows 8.1 or Windows RT 8.1 only",
+  "DisplayName": "Prevent OneDrive files from syncing over metered connections",
+  "ExplainText": "This policy setting allows configuration of OneDrive file sync behavior on metered connections.",
+  "KeyPath": [
+    "HKLM\\Software\\Policies\\Microsoft\\Windows\\OneDrive"
+  ],
+  "Elements": [
+    { "Type": "Enum", "ValueName": "DisableMeteredNetworkFileSync", "Items": [
+        { "DisplayName": "Block syncing on all metered connections", "Data": "0" },
+        { "DisplayName": "Block syncing on metered connections only when roaming", "Data": "1" }
+      ]
+    }
+  ]
+},
+{
+  "File": "SkyDrive.admx",
+  "CategoryName": "OneDrive",
+  "PolicyName": "DisableLibrariesDefaultSaveToOneDrive",
+  "NameSpace": "Microsoft.Policies.OneDrive",
+  "Supported": "Windows_6_3only - Windows Server 2012 R2, Windows 8.1 or Windows RT 8.1 only",
+  "DisplayName": "Save documents to OneDrive by default",
+  "ExplainText": "This policy setting lets you disable OneDrive as the default save location. It does not prevent apps and users from saving files on OneDrive. If you disable this policy setting, files will be saved locally by default. Users will still be able to change the value of this setting to save to OneDrive by default. They will also be able to open and save files on OneDrive using the OneDrive app and file picker, and packaged Microsoft Store apps will still be able to access OneDrive using the WinRT API. If you enable or do not configure this policy setting, users with a connected account will save documents to OneDrive by default.",
+  "KeyPath": [
+    "HKLM\\Software\\Policies\\Microsoft\\Windows\\OneDrive"
+  ],
+  "ValueName": "DisableLibrariesDefaultSaveToOneDrive",
+  "Elements": [
+    { "Type": "EnabledValue", "Data": "1" },
+    { "Type": "DisabledValue", "Data": "0" }
+  ]
+}
+```

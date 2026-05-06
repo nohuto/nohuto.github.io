@@ -3,7 +3,7 @@ title: 'Active Probing'
 description: 'Network option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 8
+  order: 10
 ---
 
 ### Active Probing
@@ -28,9 +28,9 @@ See links below for a detailed documentation.
 
 `PassivePollPeriod` is set to `15` by default = Runs passive probe every 15 seconds. `MaxActiveProbes` to `0` (unlimited) = breaks connection status. If disabling active probes, but leaving passive probes enabled, enable `Enable Passive Mode`.
 
-> [network/assets | probing-NcsiConfigData.c](https://github.com/nohuto/win-config/blob/main/network/assets/probing-NcsiConfigData.c)
+- [network/assets | probing-NcsiConfigData.c](https://github.com/nohuto/win-config/blob/main/network/assets/probing-NcsiConfigData.c)
 
-## Windows Policies
+## [Windows Policies](https://raw.githubusercontent.com/nohuto/admx-parser/refs/heads/main/assets/policies.json)
 
 ```json
 {
@@ -51,21 +51,6 @@ See links below for a detailed documentation.
   ]
 },
 {
-  "File": "NCSI.admx",
-  "CategoryName": "NCSI_Category",
-  "PolicyName": "NCSI_PassivePolling",
-  "NameSpace": "Microsoft.Policies.NCSI",
-  "Supported": "Windows8 - At least Windows Server 2012, Windows 8 or Windows RT",
-  "DisplayName": "Specify passive polling",
-  "ExplainText": "This Policy setting enables you to specify passive polling behavior. NCSI polls various measurements throughout the network stack on a frequent interval to determine if network connectivity has been lost. Use the options to control the passive polling behavior.",
-  "KeyPath": [
-    "HKLM\\Software\\Policies\\Microsoft\\Windows\\NetworkConnectivityStatusIndicator"
-  ],
-  "Elements": [
-    { "Type": "Boolean", "ValueName": "DisablePassivePolling", "TrueValue": "1", "FalseValue": "0" }
-  ]
-},
-{
   "File": "nca.admx",
   "CategoryName": "NetworkConnectivityAssistant",
   "PolicyName": "PassiveMode",
@@ -82,4 +67,19 @@ See links below for a detailed documentation.
     { "Type": "DisabledValue", "Data": "0" }
   ]
 },
+{
+  "File": "NCSI.admx",
+  "CategoryName": "NCSI_Category",
+  "PolicyName": "NCSI_PassivePolling",
+  "NameSpace": "Microsoft.Policies.NCSI",
+  "Supported": "Windows8 - At least Windows Server 2012, Windows 8 or Windows RT",
+  "DisplayName": "Specify passive polling",
+  "ExplainText": "This Policy setting enables you to specify passive polling behavior. NCSI polls various measurements throughout the network stack on a frequent interval to determine if network connectivity has been lost. Use the options to control the passive polling behavior.",
+  "KeyPath": [
+    "HKLM\\Software\\Policies\\Microsoft\\Windows\\NetworkConnectivityStatusIndicator"
+  ],
+  "Elements": [
+    { "Type": "Boolean", "ValueName": "DisablePassivePolling", "TrueValue": "1", "FalseValue": "0" }
+  ]
+}
 ```

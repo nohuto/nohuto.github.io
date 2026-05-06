@@ -3,7 +3,7 @@ title: 'FEC'
 description: 'Network option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 28
+  order: 27
 ---
 
 [FEC](https://edc.intel.com/content/www/us/en/design/products/ethernet/adapters-and-devices-user-guide/forward-error-correction-fec-mode/) (forwarded error correction) improves link stability, but increases latency. Many high quality optics, direct attach cables, and backplane channels provide a stable link without FEC.
@@ -14,6 +14,8 @@ sidebar:
 `No FEC`: Disables FEC.
 
 ## Registry Values Details
+
+See [network/assets/intel-nic](https://github.com/nohuto/win-config/tree/main/network/assets/intel-nic) for reference.
 
 ```c
 "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Class\\{4D36E972-E325-11CE-BFC1-08002bE10318}\\00XX";

@@ -3,7 +3,7 @@ title: 'Bitlocker & EFS'
 description: 'Security option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 11
+  order: 9
 ---
 
 Disable [Bitlocker](https://learn.microsoft.com/en-us/windows/security/operating-system-security/data-protection/bitlocker/) on all volumes:
@@ -31,9 +31,9 @@ Enabling `NtfsDisableEncryption` (`1`) may cause Xbox games to fail to install (
 ERROR_VOLUME_NOT_SUPPORT_EFS = 0x8007177E;
 ```
 
-> [Windows API - Error Defines](https://github.com/arizvisa/BugId-mWindowsAPI/blob/904a1c0bd22c019ef6ca8313945fe38f4ca26f30/mDefines/mErrorDefines.py#L1793)
+- [Windows API - Error Defines](https://github.com/arizvisa/BugId-mWindowsAPI/blob/904a1c0bd22c019ef6ca8313945fe38f4ca26f30/mDefines/mErrorDefines.py#L1793)
 
-## Windows Policies
+## [Windows Policies](https://raw.githubusercontent.com/nohuto/admx-parser/refs/heads/main/assets/policies.json)
 
 ```json
 {
@@ -41,7 +41,7 @@ ERROR_VOLUME_NOT_SUPPORT_EFS = 0x8007177E;
   "CategoryName": "NTFS",
   "PolicyName": "DisableEncryption",
   "NameSpace": "Microsoft.Policies.FileSys",
-  "Supported": "Windows7",
+  "Supported": "Windows7 - At least Windows Server 2008 R2 or Windows 7",
   "DisplayName": "Do not allow encryption on all NTFS volumes",
   "ExplainText": "Encryption can add to the processing overhead of filesystem operations. Enabling this setting will prevent access to and creation of encrypted files. A reboot is required for this setting to take effect",
   "KeyPath": [
@@ -52,5 +52,5 @@ ERROR_VOLUME_NOT_SUPPORT_EFS = 0x8007177E;
     { "Type": "EnabledValue", "Data": "1" },
     { "Type": "DisabledValue", "Data": "0" }
   ]
-},
+}
 ```

@@ -3,7 +3,7 @@ title: 'WPBT'
 description: 'Security option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 10
+  order: 13
 ---
 
 WPBT allows hardware manufacturers to run programs during Windows startup that may introduce unwanted software.

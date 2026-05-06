@@ -3,7 +3,7 @@ title: 'DWM Values'
 description: 'System option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 4
+  order: 6
 ---
 
 This option currently includes some speculations and default values. I haven't had time yet to test the behavior of the changed data.

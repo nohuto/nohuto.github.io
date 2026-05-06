@@ -3,7 +3,7 @@ title: 'Power Values'
 description: 'Power option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 3
+  order: 4
 ---
 
 Several values are applied, some have been changed, others are default values. The applied data is sometimes pure speculation. No values are applied that apply to other options in this section.

@@ -3,7 +3,7 @@ title: 'Deny App Access'
 description: 'Privacy option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 17
+  order: 24
 ---
 
 Denies the access for everything, only leaving the microphone enabled. See JSON content below for details. Note `Deny 'User Info Access'` = prevents users from managing the ability to allow apps (not desktop apps) to access the user name, account picture, and domain information - this option doesn't get applied via the main option.
@@ -22,28 +22,9 @@ svchost.exe	RegSetValue	HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Capabilit
 
 ![](https://github.com/nohuto/win-config/blob/main/privacy/images/appaccess.png?raw=true)
 
-## Windows Policies
+## [Windows Policies](https://raw.githubusercontent.com/nohuto/admx-parser/refs/heads/main/assets/policies.json)
 
 ```json
-{
-  "File": "UserProfiles.admx",
-  "CategoryName": "UserProfiles",
-  "PolicyName": "UserInfoAccessAction",
-  "NameSpace": "Microsoft.Policies.UserProfiles",
-  "Supported": "Windows8 - At least Windows Server 2012, Windows 8 or Windows RT",
-  "DisplayName": "User management of sharing user name, account picture, and domain information with apps (not desktop apps)",
-  "ExplainText": "This setting prevents users from managing the ability to allow apps to access the user name, account picture, and domain information. If you enable this policy setting, sharing of user name, picture and domain information may be controlled by setting one of the following options: \"Always on\" - users will not be able to change this setting and the user's name and account picture will be shared with apps (not desktop apps). In addition apps (not desktop apps) that have the enterprise authentication capability will also be able to retrieve the user's UPN, SIP/URI, and DNS. \"Always off\" - users will not be able to change this setting and the user's name and account picture will not be shared with apps (not desktop apps). In addition apps (not desktop apps) that have the enterprise authentication capability will not be able to retrieve the user's UPN, SIP/URI, and DNS. Selecting this option may have a negative impact on certain enterprise software and/or line of business apps that depend on the domain information protected by this setting to connect with network resources. If you do not configure or disable this policy the user will have full control over this setting and can turn it off and on. Selecting this option may have a negative impact on certain enterprise software and/or line of business apps that depend on the domain information protected by this setting to connect with network resources if users choose to turn the setting off.",
-  "KeyPath": [
-    "HKLM\\Software\\Policies\\Microsoft\\Windows\\System"
-  ],
-  "Elements": [
-    { "Type": "Enum", "ValueName": "AllowUserInfoAccess", "Items": [
-        { "DisplayName": "Always on", "Data": "1" },
-        { "DisplayName": "Always off", "Data": "2" }
-      ]
-    }
-  ]
-},
 {
   "File": "AppPrivacy.admx",
   "CategoryName": "AppPrivacy",
@@ -157,6 +138,26 @@ svchost.exe	RegSetValue	HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Capabilit
   ],
   "Elements": [
     { "Type": "Enum", "ValueName": "LetAppsAccessEmail", "Items": [
+        { "DisplayName": "User is in control", "Data": "0" },
+        { "DisplayName": "Force Allow", "Data": "1" },
+        { "DisplayName": "Force Deny", "Data": "2" }
+      ]
+    }
+  ]
+},
+{
+  "File": "AppPrivacy.admx",
+  "CategoryName": "AppPrivacy",
+  "PolicyName": "LetAppsAccessSystemAIModels",
+  "NameSpace": "Microsoft.Policies.AppPrivacy",
+  "Supported": "Windows_10_0 - At least Windows Server 2016, Windows 10",
+  "DisplayName": "Let Windows apps make use of Text and image generation features of Windows",
+  "ExplainText": "This policy setting specifies whether Windows apps can use Text and image generation features of Windows. You can specify either a default setting for all apps or a per-app setting by specifying a Package Family Name. You can get the Package Family Name for an app by using the Get-AppPackage Windows PowerShell cmdlet. A per-app setting overrides the default setting. If you choose the \"User is in control\" option, employees in your organization can decide whether Windows apps can use Text and image generation by using Settings > Privacy on the device. If you choose the \"Force Allow\" option, Windows apps are allowed to use Text and image generation features of Windows and employees in your organization cannot change it. If you choose the \"Force Deny\" option, Windows apps are not allowed to use Text and image generation features of Windows and employees in your organization cannot change it. If you disable or do not configure this policy setting, employees in your organization can decide whether Windows apps can use Text and image generation features of Windows by using Settings > Privacy on the device. If an app is open when this Group Policy object is applied on a device, employees must restart the app or device for the policy changes to be applied to the app.",
+  "KeyPath": [
+    "HKLM\\Software\\Policies\\Microsoft\\Windows\\AppPrivacy"
+  ],
+  "Elements": [
+    { "Type": "Enum", "ValueName": "LetAppsAccessSystemAIModels", "Items": [
         { "DisplayName": "User is in control", "Data": "0" },
         { "DisplayName": "Force Allow", "Data": "1" },
         { "DisplayName": "Force Deny", "Data": "2" }
@@ -427,26 +428,6 @@ svchost.exe	RegSetValue	HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Capabilit
 {
   "File": "AppPrivacy.admx",
   "CategoryName": "AppPrivacy",
-  "PolicyName": "LetAppsRunInBackground",
-  "NameSpace": "Microsoft.Policies.AppPrivacy",
-  "Supported": "Windows_10_0 - At least Windows Server 2016, Windows 10",
-  "DisplayName": "Let Windows apps run in the background",
-  "ExplainText": "This policy setting specifies whether Windows apps can run in the background. You can specify either a default setting for all apps or a per-app setting by specifying a Package Family Name. You can get the Package Family Name for an app by using the Get-AppPackage Windows PowerShell cmdlet. A per-app setting overrides the default setting. If you choose the \"User is in control\" option, employees in your organization can decide whether Windows apps can run in the background by using Settings > Privacy on the device. If you choose the \"Force Allow\" option, Windows apps are allowed to run in the background and employees in your organization cannot change it. If you choose the \"Force Deny\" option, Windows apps are not allowed to run in the background and employees in your organization cannot change it. If you disable or do not configure this policy setting, employees in your organization can decide whether Windows apps can run in the background by using Settings > Privacy on the device. If an app is open when this Group Policy object is applied on a device, employees must restart the app or device for the policy changes to be applied to the app.",
-  "KeyPath": [
-    "HKLM\\Software\\Policies\\Microsoft\\Windows\\AppPrivacy"
-  ],
-  "Elements": [
-    { "Type": "Enum", "ValueName": "LetAppsRunInBackground", "Items": [
-        { "DisplayName": "User is in control", "Data": "0" },
-        { "DisplayName": "Force Allow", "Data": "1" },
-        { "DisplayName": "Force Deny", "Data": "2" }
-      ]
-    }
-  ]
-},
-{
-  "File": "AppPrivacy.admx",
-  "CategoryName": "AppPrivacy",
   "PolicyName": "LetAppsGetDiagnosticInfo",
   "NameSpace": "Microsoft.Policies.AppPrivacy",
   "Supported": "Windows_10_0_RS2 - At least Windows Server 2016, Windows 10 Version 1703",
@@ -544,4 +525,43 @@ svchost.exe	RegSetValue	HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Capabilit
     }
   ]
 },
+{
+  "File": "UserProfiles.admx",
+  "CategoryName": "UserProfiles",
+  "PolicyName": "UserInfoAccessAction",
+  "NameSpace": "Microsoft.Policies.UserProfiles",
+  "Supported": "Windows8 - At least Windows Server 2012, Windows 8 or Windows RT",
+  "DisplayName": "User management of sharing user name, account picture, and domain information with apps (not desktop apps)",
+  "ExplainText": "This setting prevents users from managing the ability to allow apps to access the user name, account picture, and domain information. If you enable this policy setting, sharing of user name, picture and domain information may be controlled by setting one of the following options: \"Always on\" - users will not be able to change this setting and the user's name and account picture will be shared with apps (not desktop apps). In addition apps (not desktop apps) that have the enterprise authentication capability will also be able to retrieve the user's UPN, SIP/URI, and DNS. \"Always off\" - users will not be able to change this setting and the user's name and account picture will not be shared with apps (not desktop apps). In addition apps (not desktop apps) that have the enterprise authentication capability will not be able to retrieve the user's UPN, SIP/URI, and DNS. Selecting this option may have a negative impact on certain enterprise software and/or line of business apps that depend on the domain information protected by this setting to connect with network resources. If you do not configure or disable this policy the user will have full control over this setting and can turn it off and on. Selecting this option may have a negative impact on certain enterprise software and/or line of business apps that depend on the domain information protected by this setting to connect with network resources if users choose to turn the setting off.",
+  "KeyPath": [
+    "HKLM\\Software\\Policies\\Microsoft\\Windows\\System"
+  ],
+  "Elements": [
+    { "Type": "Enum", "ValueName": "AllowUserInfoAccess", "Items": [
+        { "DisplayName": "Always on", "Data": "1" },
+        { "DisplayName": "Always off", "Data": "2" }
+      ]
+    }
+  ]
+},
+{
+  "File": "wwansvc.admx",
+  "CategoryName": "CellularDataAccess",
+  "PolicyName": "LetAppsAccessCellularData",
+  "NameSpace": "Microsoft.Policies.WwanSvc",
+  "Supported": "Windows_10_0_RS2 - At least Windows Server 2016, Windows 10 Version 1703",
+  "DisplayName": "Let Windows apps access cellular data",
+  "ExplainText": "This policy setting specifies whether Windows apps can access cellular data. You can specify either a default setting for all apps or a per-app setting by specifying a Package Family Name. You can get the Package Family Name for an app by using the Get-AppPackage Windows PowerShell cmdlet. A per-app setting overrides the default setting. If you choose the \"User is in control\" option, employees in your organization can decide whether Windows apps can access cellular data by using Settings > Network - Internet > Cellular on the device. If you choose the \"Force Allow\" option, Windows apps are allowed to access cellular data and employees in your organization cannot change it. If you choose the \"Force Deny\" option, Windows apps are not allowed to access cellular data and employees in your organization cannot change it. If you disable or do not configure this policy setting, employees in your organization can decide whether Windows apps can access cellular data by using Settings > Network - Internet > Cellular on the device. If an app is open when this Group Policy object is applied on a device, employees must restart the app or device for the policy changes to be applied to the app.",
+  "KeyPath": [
+    "HKLM\\Software\\Policies\\Microsoft\\Windows\\WwanSvc\\CellularDataAccess"
+  ],
+  "Elements": [
+    { "Type": "Enum", "ValueName": "LetAppsAccessCellularData", "Items": [
+        { "DisplayName": "User is in control", "Data": "0" },
+        { "DisplayName": "Force Allow", "Data": "1" },
+        { "DisplayName": "Force Deny", "Data": "2" }
+      ]
+    }
+  ]
+}
 ```

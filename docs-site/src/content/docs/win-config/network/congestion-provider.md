@@ -3,7 +3,7 @@ title: 'Congestion Provider'
 description: 'Network option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 5
+  order: 6
 ---
 
 The following information isn't meant to be complete or whatever, it's a short overview including some basics.

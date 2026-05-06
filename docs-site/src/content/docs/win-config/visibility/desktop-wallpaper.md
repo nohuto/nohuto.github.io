@@ -3,7 +3,7 @@ title: 'Desktop Wallpaper'
 description: 'Visibility option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 2
+  order: 1
 ---
 
 This is a collection of some wallpapers that I've found over time. Added for people who may never have spent time changing their background, or for anyone else. Head over to [visibility/desc.md#desktop-wallpaper](https://github.com/nohuto/win-config/blob/main/visibility/desc.md#desktop-wallpaper), if you want to see the wallpapers in a seperate window.
@@ -72,6 +72,10 @@ This is a collection of some wallpapers that I've found over time. Added for peo
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/wallpaper/Mac.png?raw=true)
 
+### Magic Forest
+
+![](https://github.com/nohuto/win-config/blob/main/visibility/images/wallpaper/Magic-Forest.png?raw=true)
+
 ### Man Landscape
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/wallpaper/Man-Landscape.png?raw=true)
@@ -87,6 +91,10 @@ This is a collection of some wallpapers that I've found over time. Added for peo
 ### Moon Castle
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/wallpaper/Moon-Castle.png?raw=true)
+
+### Moon Rose
+
+![](https://github.com/nohuto/win-config/blob/main/visibility/images/wallpaper/Moon-Rose.png?raw=true)
 
 ### Mountains
 
@@ -120,6 +128,18 @@ This is a collection of some wallpapers that I've found over time. Added for peo
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/wallpaper/Stars.png?raw=true)
 
+### Stars Lake 1
+
+![](https://github.com/nohuto/win-config/blob/main/visibility/images/wallpaper/Stars-Lake-1.png?raw=true)
+
+### Stars Lake 2
+
+![](https://github.com/nohuto/win-config/blob/main/visibility/images/wallpaper/Stars-Lake-2.png?raw=true)
+
+### Stars Lake 3
+
+![](https://github.com/nohuto/win-config/blob/main/visibility/images/wallpaper/Stars-Lake-3.png?raw=true)
+
 ### Sunset
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/wallpaper/Sunset.png?raw=true)
@@ -144,9 +164,8 @@ This is a collection of some wallpapers that I've found over time. Added for peo
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/wallpaper/Zelda.png?raw=true)
 
-## Windows Policies
+## [Windows Policies](https://raw.githubusercontent.com/nohuto/admx-parser/refs/heads/main/assets/policies.json)
 
-It get's changed via the "Wallpaper" policy:
 ```json
 {
   "File": "Desktop.admx",
@@ -171,5 +190,5 @@ It get's changed via the "Wallpaper" policy:
       ]
     }
   ]
-},
+}
 ```

@@ -3,7 +3,7 @@ title: 'PnP Device Values'
 description: 'Power option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 4
+  order: 3
 ---
 
 This currently applies the values for the `USB` enumerator only, since most values were found in USB related drivers and kind of all of them (which I use in the option) only get read in the USB enumerator.
@@ -31,7 +31,7 @@ HKLM\SYSTEM\CurrentControlSet\Services\<ServiceName> // software key - service/d
 
 Not every instance has the same subkeys or values.
 
-I won't add details on the PnP manager here, as that's not the purpose of the repo. For more details, read [Windows Internals E7 P1](https://github.com/nohuto/windows-books/releases/download/7th-Edition/Windows-Internals-E7-P1.pdf), Chapter 6 (`The Plug and Play manager`).
+I won't add details on the PnP manager here, as that's not the purpose of the repo. For more details, read [Windows Internals E7, P1](https://github.com/nohuto/windows-books/releases/download/7th-Edition/Windows-Internals-E7-P1.pdf), Chapter 6 (`The Plug and Play manager`).
 
 ---
 
@@ -332,37 +332,37 @@ Everything listed below is based on personal research. Mistakes may exist, but I
     "CompanionServiceList" = ?;
 ```
 
-> [pnp/assets | BthUsb_QuerySelectiveSuspend.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/BthUsb_QuerySelectiveSuspend.c)  
-> [pnp/assets | ExpressDownstreamSwitchPortProcessAspmPolicy.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/ExpressDownstreamSwitchPortProcessAspmPolicy.c)  
-> [pnp/assets | ExpressPortFindOptInOptOutPolicy.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/ExpressPortFindOptInOptOutPolicy.c)  
-> [pnp/assets | FDO_GetIdleSupported.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/FDO_GetIdleSupported.c)  
-> [pnp/assets | FxPkgPnpSaveState.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/FxPkgPnpSaveState.c)  
-> [pnp/assets | FxPkgPnpSleepStudyEvaluateParticipation.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/FxPkgPnpSleepStudyEvaluateParticipation.c)  
-> [pnp/assets | GetEnhancedVerifierOptions.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/GetEnhancedVerifierOptions.c)  
-> [pnp/assets | HidpFdoConfigureIdleSettings.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/HidpFdoConfigureIdleSettings.c)  
-> [pnp/assets | HidpGetComboHardwareIdV2Enabled.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/HidpGetComboHardwareIdV2Enabled.c)  
-> [pnp/assets | HidpGetPdoReenumerateSelfInterfaceEnabled.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/HidpGetPdoReenumerateSelfInterfaceEnabled.c)  
-> [pnp/assets | HidpGetRetainWWIrpEnabledFromRegistry.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/HidpGetRetainWWIrpEnabledFromRegistry.c)  
-> [pnp/assets | HidpGetSessionSecurityState.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/HidpGetSessionSecurityState.c)  
-> [pnp/assets | HidpToggleRemoteWakeWorker.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/HidpToggleRemoteWakeWorker.c)  
-> [pnp/assets | HUBMISC_SetExtPropDescSemaphoreInRegistry.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/HUBMISC_SetExtPropDescSemaphoreInRegistry.c)  
-> [pnp/assets | HUBREG_QueryExtPropDescSemaphoreInDeviceHardwareKey.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/HUBREG_QueryExtPropDescSemaphoreInDeviceHardwareKey.c)  
-> [pnp/assets | HUBREG_QueryValuesInDeviceHardwareKey.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/HUBREG_QueryValuesInDeviceHardwareKey.c)  
-> [pnp/assets | HUBREG_QueryValuesInHubHardwareKey.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/HUBREG_QueryValuesInHubHardwareKey.c)  
-> [pnp/assets | HUBREG_SetWinUsbIdleDefaults.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/HUBREG_SetWinUsbIdleDefaults.c)  
-> [pnp/assets | HUBREG_UpdateSqmFlags.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/HUBREG_UpdateSqmFlags.c)  
-> [pnp/assets | IrqPolicySetDeviceAffinity.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/IrqPolicySetDeviceAffinity.c)  
-> [pnp/assets | PciGetDeviceCustomSetting.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/PciGetDeviceCustomSetting.c)  
-> [pnp/assets | PciGetDeviceCustomSettings.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/PciGetDeviceCustomSettings.c)  
-> [pnp/assets | PciGetDeviceD0DelayTime.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/PciGetDeviceD0DelayTime.c)  
-> [pnp/assets | PciGetDeviceDpcCustomSettings.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/PciGetDeviceDpcCustomSettings.c)  
-> [pnp/assets | PcisuppGetRoutingInfo.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/PcisuppGetRoutingInfo.c)  
-> [pnp/assets | PcisuppSetRoutingInfo.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/PcisuppSetRoutingInfo.c)  
-> [pnp/assets | PowerPolicySetS0IdleSettings.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/PowerPolicySetS0IdleSettings.c)  
-> [pnp/assets | UsbhGetD3Policy.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/UsbhGetD3Policy.c)  
-> [pnp/assets | WinUSB_DeterminePowerPolicyOwnership.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/WinUSB_DeterminePowerPolicyOwnership.c)  
-> [pnp/assets | WinUSB_GetRegParams.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/WinUSB_GetRegParams.c)  
-> [pnp/assets | WinUSB_UpdateSqmInfo.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/WinUSB_UpdateSqmInfo.c)
+- [pnp/assets | BthUsb_QuerySelectiveSuspend.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/BthUsb_QuerySelectiveSuspend.c)
+- [pnp/assets | ExpressDownstreamSwitchPortProcessAspmPolicy.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/ExpressDownstreamSwitchPortProcessAspmPolicy.c)
+- [pnp/assets | ExpressPortFindOptInOptOutPolicy.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/ExpressPortFindOptInOptOutPolicy.c)
+- [pnp/assets | FDO_GetIdleSupported.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/FDO_GetIdleSupported.c)
+- [pnp/assets | FxPkgPnpSaveState.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/FxPkgPnpSaveState.c)
+- [pnp/assets | FxPkgPnpSleepStudyEvaluateParticipation.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/FxPkgPnpSleepStudyEvaluateParticipation.c)
+- [pnp/assets | GetEnhancedVerifierOptions.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/GetEnhancedVerifierOptions.c)
+- [pnp/assets | HidpFdoConfigureIdleSettings.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/HidpFdoConfigureIdleSettings.c)
+- [pnp/assets | HidpGetComboHardwareIdV2Enabled.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/HidpGetComboHardwareIdV2Enabled.c)
+- [pnp/assets | HidpGetPdoReenumerateSelfInterfaceEnabled.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/HidpGetPdoReenumerateSelfInterfaceEnabled.c)
+- [pnp/assets | HidpGetRetainWWIrpEnabledFromRegistry.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/HidpGetRetainWWIrpEnabledFromRegistry.c)
+- [pnp/assets | HidpGetSessionSecurityState.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/HidpGetSessionSecurityState.c)
+- [pnp/assets | HidpToggleRemoteWakeWorker.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/HidpToggleRemoteWakeWorker.c)
+- [pnp/assets | HUBMISC_SetExtPropDescSemaphoreInRegistry.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/HUBMISC_SetExtPropDescSemaphoreInRegistry.c)
+- [pnp/assets | HUBREG_QueryExtPropDescSemaphoreInDeviceHardwareKey.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/HUBREG_QueryExtPropDescSemaphoreInDeviceHardwareKey.c)
+- [pnp/assets | HUBREG_QueryValuesInDeviceHardwareKey.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/HUBREG_QueryValuesInDeviceHardwareKey.c)
+- [pnp/assets | HUBREG_QueryValuesInHubHardwareKey.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/HUBREG_QueryValuesInHubHardwareKey.c)
+- [pnp/assets | HUBREG_SetWinUsbIdleDefaults.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/HUBREG_SetWinUsbIdleDefaults.c)
+- [pnp/assets | HUBREG_UpdateSqmFlags.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/HUBREG_UpdateSqmFlags.c)
+- [pnp/assets | IrqPolicySetDeviceAffinity.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/IrqPolicySetDeviceAffinity.c)
+- [pnp/assets | PciGetDeviceCustomSetting.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/PciGetDeviceCustomSetting.c)
+- [pnp/assets | PciGetDeviceCustomSettings.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/PciGetDeviceCustomSettings.c)
+- [pnp/assets | PciGetDeviceD0DelayTime.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/PciGetDeviceD0DelayTime.c)
+- [pnp/assets | PciGetDeviceDpcCustomSettings.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/PciGetDeviceDpcCustomSettings.c)
+- [pnp/assets | PcisuppGetRoutingInfo.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/PcisuppGetRoutingInfo.c)
+- [pnp/assets | PcisuppSetRoutingInfo.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/PcisuppSetRoutingInfo.c)
+- [pnp/assets | PowerPolicySetS0IdleSettings.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/PowerPolicySetS0IdleSettings.c)
+- [pnp/assets | UsbhGetD3Policy.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/UsbhGetD3Policy.c)
+- [pnp/assets | WinUSB_DeterminePowerPolicyOwnership.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/WinUSB_DeterminePowerPolicyOwnership.c)
+- [pnp/assets | WinUSB_GetRegParams.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/WinUSB_GetRegParams.c)
+- [pnp/assets | WinUSB_UpdateSqmInfo.c](https://github.com/nohuto/win-config/tree/main/power/assets/pnp/WinUSB_UpdateSqmInfo.c)
 
 ## MSPower_DeviceEnable
 
@@ -395,7 +395,8 @@ wmiprvse.exe	RegSetValue	HKLM\System\CurrentControlSet\Control\Class\{4d36e972-e
 
 ## Storport Idle (`Device Parameters\\StorPort`)
 
-"*Storport provides support for idle power management to allow storage devices to enter a low power state when not in use. Storport's idle power management (IPM) support includes handling idle power management for storage devices under its management, in coordination with the Power Manager in Windows.*"
+> "*Storport provides support for idle power management to allow storage devices to enter a low power state when not in use. Storport's idle power management (IPM) support includes handling idle power management for storage devices under its management, in coordination with the Power Manager in Windows.*"
+>
+> — Microsoft, [Registry entries for Storport miniport drivers](https://learn.microsoft.com/en-us/windows-hardware/drivers/storage/registry-entries-for-storport-miniport-drivers)
 
-> [drivers/storage/registry-entries-for-storport-miniport-drivers](https://learn.microsoft.com/en-us/windows-hardware/drivers/storage/registry-entries-for-storport-miniport-drivers)  
-> [power/assets | storport.c](https://github.com/nohuto/win-config/blob/main/power/assets/storport.c)
+- [power/assets | storport.c](https://github.com/nohuto/win-config/blob/main/power/assets/storport.c)

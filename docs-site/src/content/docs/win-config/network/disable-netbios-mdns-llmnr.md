@@ -3,12 +3,12 @@ title: 'NetBIOS/mDNS/LLMNR'
 description: 'Network option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 10
+  order: 12
 ---
 
-"`NetbiosOptions` specifies the configurable security settings for the NetBIOS service and determines the mode of operation for NetBIOS over TCP/IP on the parent interface."
+`NetbiosOptions` specifies the configurable security settings for the NetBIOS service and determines the mode of operation for NetBIOS over TCP/IP on the parent interface.
 
-Enabling the option includes disabling [LMHOSTS](https://en.wikipedia.org/wiki/LMHOSTS) Lookups - "LMHOSTS is a local text file Windows uses to map NetBIOS names to IPs when other NetBIOS methods (WINS, broadcast) don't give an answer. It lives in C:\Windows\System32\drivers\etc, there's an `lmhosts.sam` example, and it's checked only if `Enable LMHOSTS lookup` is on."
+Enabling the option includes disabling [LMHOSTS](https://en.wikipedia.org/wiki/LMHOSTS) Lookups - "*LMHOSTS is a local text file Windows uses to map NetBIOS names to IPs when other NetBIOS methods (WINS, broadcast) don't give an answer. It lives in C:\Windows\System32\drivers\etc, there's an `lmhosts.sam` example, and it's checked only if `Enable LMHOSTS lookup` is on.*"
 
 `NetbiosOptions`:
 
@@ -31,7 +31,7 @@ RegSetValue	HKLM\System\CurrentControlSet\Services\NetBT\Parameters\Interfaces\T
 | [mDNS](https://en.wikipedia.org/wiki/Multicast_DNS) (Multicast DNS) | Zero-config service/host discovery on local networks (e.g. printer.local) | Uses multicast to 224.0.0.251 (IPv6 ff02::fb) on UDP 5353, devices answer for their own .local names | Cross-platform (Apple Bonjour, now Windows), modern replacement for LLMNR in many cases |
 | [NetBIOS](https://en.wikipedia.org/wiki/NetBIOS) over TCP/IP | Legacy Windows naming, service announcement and sessions | Uses broadcasts or WINS to resolve NetBIOS names, historically used by SMB/Windows networking | Very old, chatty, bigger attack surface, kept for backward compatibility |
 
-## Windows Policies
+## [Windows Policies](https://raw.githubusercontent.com/nohuto/admx-parser/refs/heads/main/assets/policies.json)
 
 ```json
 {
@@ -39,7 +39,7 @@ RegSetValue	HKLM\System\CurrentControlSet\Services\NetBT\Parameters\Interfaces\T
   "CategoryName": "DNS_Client",
   "PolicyName": "DNS_MDNS",
   "NameSpace": "Microsoft.Policies.DNSClient",
-  "Supported": "Windows_10_0_RS2",
+  "Supported": "Windows_10_0_RS2 - At least Windows Server 2016, Windows 10 Version 1703",
   "DisplayName": "Configure multicast DNS (mDNS) protocol",
   "ExplainText": "Specifies if the DNS client will perform name resolution over mDNS. If you enable this policy, the DNS client will use mDNS protocol. If you disable this policy setting, or if you do not configure this policy setting, the DNS client will use locally configured settings.",
   "KeyPath": [
@@ -56,7 +56,7 @@ RegSetValue	HKLM\System\CurrentControlSet\Services\NetBT\Parameters\Interfaces\T
   "CategoryName": "DNS_Client",
   "PolicyName": "DNS_SmartMultiHomedNameResolution",
   "NameSpace": "Microsoft.Policies.DNSClient",
-  "Supported": "Windows8",
+  "Supported": "Windows8 - At least Windows Server 2012, Windows 8 or Windows RT",
   "DisplayName": "Turn off smart multi-homed name resolution",
   "ExplainText": "Specifies that a multi-homed DNS client should optimize name resolution across networks. The setting improves performance by issuing parallel DNS, link local multicast name resolution (LLMNR) and NetBIOS over TCP/IP (NetBT) queries across all networks. In the event that multiple positive responses are received, the network binding order is used to determine which response to accept. If you enable this policy setting, the DNS client will not perform any optimizations. DNS queries will be issued across all networks first. LLMNR queries will be issued if the DNS queries fail, followed by NetBT queries if LLMNR queries fail. If you disable this policy setting, or if you do not configure this policy setting, name resolution will be optimized when issuing DNS, LLMNR and NetBT queries.",
   "KeyPath": [
@@ -73,7 +73,7 @@ RegSetValue	HKLM\System\CurrentControlSet\Services\NetBT\Parameters\Interfaces\T
   "CategoryName": "DNS_Client",
   "PolicyName": "DNS_Netbios",
   "NameSpace": "Microsoft.Policies.DNSClient",
-  "Supported": "WindowsVista",
+  "Supported": "WindowsVista - At least Windows Vista",
   "DisplayName": "Configure NetBIOS settings",
   "ExplainText": "Specifies if the DNS client will perform name resolution over NetBIOS. By default, the DNS client will disable NetBIOS name resolution on public networks for security reasons. To use this policy setting, click Enabled, and then select one of the following options from the drop-down list: Disable NetBIOS name resolution: Never allow NetBIOS name resolution. Allow NetBIOS name resolution: Always allow NetBIOS name resolution. Disable NetBIOS name resolution on public networks: Only allow NetBIOS name resolution on network adapters which are not connected to public networks. NetBIOS learning mode: Always allow NetBIOS name resolution and use it as a fallback after mDNS/LLMNR queries fail. If you disable this policy setting, or if you do not configure this policy setting, the DNS client will use locally configured settings.",
   "KeyPath": [
@@ -94,7 +94,7 @@ RegSetValue	HKLM\System\CurrentControlSet\Services\NetBT\Parameters\Interfaces\T
   "CategoryName": "DNS_Client",
   "PolicyName": "Turn_Off_Multicast",
   "NameSpace": "Microsoft.Policies.DNSClient",
-  "Supported": "WindowsVista",
+  "Supported": "WindowsVista - At least Windows Vista",
   "DisplayName": "Turn off multicast name resolution",
   "ExplainText": "Specifies that link local multicast name resolution (LLMNR) is disabled on the DNS client. LLMNR is a secondary name resolution protocol. With LLMNR, queries are sent using multicast over a local network link on a single subnet from a DNS client to another DNS client on the same subnet that also has LLMNR enabled. LLMNR does not require a DNS server or DNS client configuration, and provides name resolution in scenarios in which conventional DNS name resolution is not possible. If you enable this policy setting, LLMNR will be disabled on all available network adapters on the DNS client. If you disable this policy setting, or you do not configure this policy setting, LLMNR will be enabled on all available network adapters.",
   "KeyPath": [
@@ -105,5 +105,5 @@ RegSetValue	HKLM\System\CurrentControlSet\Services\NetBT\Parameters\Interfaces\T
     { "Type": "EnabledValue", "Data": "0" },
     { "Type": "DisabledValue", "Data": "1" }
   ]
-},
+}
 ```

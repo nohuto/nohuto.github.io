@@ -3,7 +3,7 @@ title: 'App Launch Tracking'
 description: 'Privacy option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 9
+  order: 12
 ---
 
 `Privacy & security > General : Let Windows improve Start and search results by tracking app launches`
