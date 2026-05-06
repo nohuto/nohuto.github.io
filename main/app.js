@@ -3414,8 +3414,10 @@ function initConsole() {
     const width = measure.getBoundingClientRect().width;
     const caretOffset = 1;
     const ghostOffset = 0;
+    const caretHeight = Math.round(input.offsetHeight * 0.8);
     caret.style.left = `${width + caretOffset}px`;
-    caret.style.height = `${input.offsetHeight}px`;
+    caret.style.top = `${Math.round((input.offsetHeight - caretHeight) / 2)}px`;
+    caret.style.height = `${caretHeight}px`;
     updateGhost(value, pos, width + ghostOffset);
   };
 

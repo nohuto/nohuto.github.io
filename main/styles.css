@@ -893,10 +893,10 @@ main {
 .nav-tabs a {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  height: 24px;
+  gap: 1px;
+  height: 23px;
   box-sizing: border-box;
-  padding: 0 12px;
+  padding: 0 10px;
   border: 1px solid var(--border);
   background: var(--panel);
   color: var(--text);
@@ -904,7 +904,7 @@ main {
   font-size: 1rem;
   text-transform: lowercase;
   letter-spacing: 0.04em;
-  line-height: 1;
+  line-height: normal;
   transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
 }
 
@@ -2259,7 +2259,8 @@ body.policy-column-resizing * {
 .policy-element {
   border: 1px solid var(--border);
   background: var(--panel-alt);
-  padding: 7px 8px;
+  min-height: 24px;
+  padding: 3px 8px;
   overflow-wrap: anywhere;
 }
 
@@ -2294,13 +2295,13 @@ body.policy-column-resizing * {
 }
 
 .policy-copy-icon {
-  width: 15px;
-  height: 15px;
+  width: 13px;
+  height: 13px;
   justify-self: end;
   background: var(--muted);
   opacity: 0.82;
-  mask: url("icons/ui/copy.svg") center / 15px 15px no-repeat;
-  -webkit-mask: url("icons/ui/copy.svg") center / 15px 15px no-repeat;
+  mask: url("icons/ui/copy.svg") center / 13px 13px no-repeat;
+  -webkit-mask: url("icons/ui/copy.svg") center / 13px 13px no-repeat;
 }
 
 .policy-copy-button:hover .policy-copy-icon,
@@ -2313,7 +2314,6 @@ body.policy-column-resizing * {
   grid-template-columns: auto minmax(0, 1fr);
   gap: 8px;
   align-items: center;
-  min-height: 32px;
 }
 
 .policy-element-type {
