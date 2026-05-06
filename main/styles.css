@@ -41,7 +41,7 @@
     1390px -280px var(--starfield-dot);
   --shadow: rgba(0, 0, 0, 0.35);
   --font-family: "Cascadia Mono", "Cascadia Code", Consolas, "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace;
-  --font-size: 14px;
+  --font-size: 13px;
   --scrollbar-track: var(--bg-alt);
   --scrollbar-thumb: var(--border-strong);
   --scrollbar-thumb-hover: var(--accent);
@@ -809,7 +809,7 @@ main.main-terminal .terminal-shell {
   background: var(--panel-alt);
   border-bottom: 1px solid var(--border);
   text-transform: uppercase;
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   letter-spacing: 0.18em;
   cursor: move;
   user-select: none;
@@ -818,7 +818,7 @@ main.main-terminal .terminal-shell {
 
 .console-window-meta {
   color: var(--muted);
-  font-size: 0.68rem;
+  font-size: 0.73rem;
 }
 
 .console-window-body {
@@ -861,7 +861,7 @@ main {
   align-items: center;
   flex-wrap: wrap;
   gap: 4px;
-  font-size: 0.95rem;
+  font-size: 1rem;
   text-transform: lowercase;
   letter-spacing: 0.02em;
 }
@@ -901,7 +901,7 @@ main {
   background: var(--panel);
   color: var(--text);
   text-decoration: none;
-  font-size: 0.97rem;
+  font-size: 1rem;
   text-transform: lowercase;
   letter-spacing: 0.04em;
   line-height: 1;
@@ -933,7 +933,7 @@ main {
 }
 
 .theme-label {
-  font-size: 0.8rem;
+  font-size: 0.86rem;
   color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -942,7 +942,7 @@ main {
 select,
 input,
 button {
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--text);
   background: var(--panel);
   border: 1px solid var(--border);
@@ -1059,7 +1059,7 @@ select option:active {
   padding: 5px 10px;
   border-top: 1px solid var(--border);
   color: var(--muted);
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
@@ -1180,7 +1180,7 @@ main.no-center {
   border-bottom: 1px solid var(--border);
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  font-size: 0.72rem;
+  font-size: 0.78rem;
 }
 
 .panel-title {
@@ -1214,7 +1214,7 @@ main.product-main {
   padding: 12px;
   min-height: 0;
   overflow-y: auto;
-  font-size: 0.9rem;
+  font-size: 1rem;
   line-height: 1.5;
   display: flex;
   flex-direction: column;
@@ -1309,14 +1309,14 @@ main.product-main {
 
 .console-prompt {
   color: var(--accent);
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
 .console-edit {
   position: relative;
   flex: 1;
   min-width: 1ch;
-  font-size: 0.95rem;
+  font-size: 1rem;
   line-height: 1.5;
   min-width: 0;
   display: flex;
@@ -1351,7 +1351,7 @@ main.product-main {
   border: none;
   padding: 0;
   color: var(--text);
-  font-size: 0.95rem;
+  font-size: 1rem;
   caret-color: transparent;
   line-height: 1.5;
   position: relative;
@@ -1377,7 +1377,7 @@ main.product-main {
 .console-timestamp {
   margin-left: auto;
   color: var(--muted);
-  font-size: 0.8rem;
+  font-size: 0.86rem;
   white-space: nowrap;
 }
 
@@ -1417,7 +1417,7 @@ video {
 }
 
 .projects-heading {
-  font-size: 1.6rem;
+  font-size: 1.72rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin-bottom: 8px;
@@ -1446,7 +1446,7 @@ video {
 
 .filter-label {
   text-transform: uppercase;
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   letter-spacing: 0.16em;
   color: var(--muted);
 }
@@ -1471,7 +1471,7 @@ video {
   background: transparent;
   color: var(--text);
   text-transform: uppercase;
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   letter-spacing: 0.12em;
   padding: 4px 8px;
   cursor: pointer;
@@ -1523,7 +1523,7 @@ video {
   align-items: center;
   justify-content: center;
   color: var(--muted);
-  font-size: 0.82rem;
+  font-size: 0.88rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
@@ -1538,13 +1538,13 @@ video {
 
 .project-title {
   margin: 0;
-  font-size: 1.05rem;
+  font-size: 1.13rem;
 }
 
 .project-desc {
   margin: 0;
   color: var(--muted);
-  font-size: 0.92rem;
+  font-size: 1rem;
 }
 
 .project-actions {
@@ -1559,7 +1559,7 @@ video {
   color: var(--text);
   text-decoration: none;
   text-transform: uppercase;
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   letter-spacing: 0.12em;
   white-space: nowrap;
 }
@@ -1619,7 +1619,7 @@ video {
 }
 
 .policy-limit-label {
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: var(--muted);
@@ -1628,7 +1628,7 @@ video {
 .policy-search-field input,
 .policy-limit-controls input[type="number"] {
   height: 24px;
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
 .policy-search-field input {
@@ -1675,7 +1675,7 @@ video {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   cursor: pointer;
@@ -1787,7 +1787,7 @@ video {
 
 .policy-pane-header,
 .policy-table-note {
-  font-size: 0.74rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
@@ -1974,7 +1974,7 @@ body.policy-resizing .policy-splitter::after {
 
 .policy-tree-count {
   color: var(--muted);
-  font-size: 0.78rem;
+  font-size: 0.84rem;
 }
 
 .policy-table-wrap {
@@ -2007,7 +2007,7 @@ body.policy-resizing .policy-splitter::after {
   padding-right: 18px;
   background: var(--panel-alt);
   color: var(--muted);
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   user-select: none;
@@ -2091,10 +2091,6 @@ body.policy-column-resizing * {
 .policy-table td[data-column="registry"],
 .policy-table td[data-column="supported"] {
   color: var(--muted);
-}
-
-.policy-table td[data-column="setting"] {
-  font-weight: 600;
 }
 
 .policy-table-note {
@@ -2188,7 +2184,7 @@ body.policy-column-resizing * {
 
 .policy-detail-heading h2 {
   margin: 0;
-  font-size: 1.12rem;
+  font-size: 1.21rem;
   line-height: 1.35;
 }
 
@@ -2206,7 +2202,7 @@ body.policy-column-resizing * {
 .policy-field-label {
   display: block;
   color: var(--muted);
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   margin-bottom: 3px;
@@ -2233,7 +2229,7 @@ body.policy-column-resizing * {
 
 .policy-section h3 {
   margin: 0;
-  font-size: 0.82rem;
+  font-size: 0.88rem;
   color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -2322,7 +2318,7 @@ body.policy-column-resizing * {
 
 .policy-element-type {
   color: var(--muted);
-  font-size: 0.76rem;
+  font-size: 0.82rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
@@ -2368,7 +2364,7 @@ body.policy-column-resizing * {
 
 .bindiff-field>span,
 .bindiff-field>label {
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: var(--muted);
@@ -2379,7 +2375,7 @@ body.policy-column-resizing * {
 .bindiff-field .select-trigger {
   width: 100%;
   height: 24px;
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
 .bindiff-field .select-trigger {
@@ -2419,7 +2415,7 @@ body.policy-column-resizing * {
 
 .bindiff-field .select-option {
   padding: 4px 10px;
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
 .bindiff-limit-controls {
@@ -2441,7 +2437,7 @@ body.policy-column-resizing * {
   width: 78px;
   height: 22px;
   padding: 2px 6px;
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   appearance: textfield;
   -moz-appearance: textfield;
 }
@@ -2532,7 +2528,7 @@ body.policy-column-resizing * {
 
 .footer-tools .select-option {
   padding: 4px 10px;
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
 .bindiff-field input[list]::-webkit-calendar-picker-indicator {
@@ -2561,7 +2557,7 @@ body.policy-column-resizing * {
   color: var(--text);
   text-transform: none;
   letter-spacing: 0;
-  font-size: 0.95rem;
+  font-size: 1rem;
   padding: 0 8px;
   white-space: nowrap;
   cursor: pointer;
@@ -2591,7 +2587,7 @@ body.policy-column-resizing * {
   color: var(--text);
   text-transform: none;
   letter-spacing: 0;
-  font-size: 0.95rem;
+  font-size: 1rem;
   padding: 0 12px;
   white-space: nowrap;
   line-height: 1;
@@ -2632,7 +2628,7 @@ body.policy-column-resizing * {
 }
 
 .bindiff-links .link {
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   font-style: italic;
   color: var(--muted);
 }
@@ -2786,7 +2782,7 @@ body.policy-column-resizing * {
 
 .bindiff-settings-header h2 {
   margin: 0;
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.18em;
   color: var(--muted);
@@ -2834,7 +2830,7 @@ body.policy-column-resizing * {
   min-height: 28px;
   color: var(--text);
   cursor: pointer;
-  font-size: 0.92rem;
+  font-size: 1rem;
   padding: 2px 0;
 }
 
@@ -3209,7 +3205,7 @@ body.bindiff-settings-open {
 .price-label {
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  font-size: 0.75rem;
+  font-size: 0.81rem;
   color: var(--muted);
   margin: 0 0 10px;
 }
@@ -3222,7 +3218,7 @@ body.bindiff-settings-open {
 
 .pricing-note {
   color: var(--muted);
-  font-size: 0.85rem;
+  font-size: 0.92rem;
 }
 
 .product-cta {
@@ -3314,7 +3310,7 @@ body.bindiff-settings-open {
 .product-preview-card figcaption {
   margin: 0;
   padding: 3px 6px 5px;
-  font-size: 0.82rem;
+  font-size: 0.88rem;
   color: var(--muted);
 }
 
@@ -3383,7 +3379,7 @@ body.bindiff-settings-open {
 .comparison-table table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.92rem;
+  font-size: 1rem;
   min-width: 460px;
   margin: 0 auto;
 }
@@ -3399,7 +3395,7 @@ body.bindiff-settings-open {
   color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  font-size: 0.72rem;
+  font-size: 0.78rem;
 }
 
 .comparison-table tbody tr:hover td {
@@ -3411,7 +3407,7 @@ body.bindiff-settings-open {
   align-items: center;
   padding: 4px 10px;
   border: 1px solid var(--border-strong);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
@@ -3463,7 +3459,7 @@ body.bindiff-settings-open {
 }
 
 .doc-index {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.2em;
   color: var(--accent);
@@ -3474,7 +3470,7 @@ body.bindiff-settings-open {
 .legal-link {
   color: var(--accent);
   text-decoration: none;
-  font-size: 0.85rem;
+  font-size: 0.92rem;
 }
 
 .doc-link,
@@ -3655,7 +3651,7 @@ footer {
 
 .footer-copy {
   color: var(--muted);
-  font-size: 0.75rem;
+  font-size: 0.81rem;
   text-transform: uppercase;
   letter-spacing: 0.14em;
   justify-self: start;
@@ -3794,7 +3790,7 @@ footer {
   transition: opacity 0.2s ease, transform 0.2s ease;
   pointer-events: none;
   z-index: 20;
-  font-size: 0.85rem;
+  font-size: 0.92rem;
 }
 
 .toast.show {
@@ -4091,7 +4087,7 @@ footer {
 
   .policy-limit-label,
   .policy-limit-toggle {
-    font-size: 0.68rem;
+    font-size: 0.73rem;
     letter-spacing: 0.07em;
   }
 
