@@ -35,11 +35,12 @@
       <a href="product.html">product</a>
       <a href="projects.html">projects</a>
       <a href="bin-diff.html" aria-current="page" class="active">bin-diff</a>
+      <a href="policies.html">policies</a>
       <a href="/docs/">docs</a>
     </nav>
   </header>
 
-    <main id="main" class="no-center">
+    <main id="main" class="no-center bindiff-main">
     <section class="content-box panel" id="bin-diff-app" data-title="bin-diff">
       <div class="panel-header">
         <span class="panel-title">bin-diff</span>
@@ -72,16 +73,15 @@
             </div>
           </div>
 
-        </div>
-
-        <div class="bindiff-output-tools">
-          <div class="bindiff-actions">
-            <button id="bindiff-run" type="button">Compare</button>
-          </div>
-          <div class="bindiff-view-tools" id="bindiff-view-tools">
-            <div class="bindiff-view-toggle" aria-label="View mode" id="bindiff-view-mode" role="group">
-              <button class="bindiff-view-button is-active" type="button" data-mode="side-by-side" aria-pressed="true">Side by side</button>
-              <button class="bindiff-view-button" type="button" data-mode="line-by-line" aria-pressed="false">Line by line</button>
+          <div class="bindiff-output-tools">
+            <div class="bindiff-actions">
+              <button id="bindiff-run" type="button">Compare</button>
+            </div>
+            <div class="bindiff-view-tools" id="bindiff-view-tools">
+              <div class="bindiff-view-toggle" aria-label="View mode" id="bindiff-view-mode" role="group">
+                <button class="bindiff-view-button is-active" type="button" data-mode="side-by-side" aria-pressed="true">Side by side</button>
+                <button class="bindiff-view-button" type="button" data-mode="line-by-line" aria-pressed="false">Line by line</button>
+              </div>
             </div>
           </div>
         </div>

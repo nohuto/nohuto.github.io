@@ -40,7 +40,7 @@ export const docsLightThemeIds = docsThemes
   .map((theme) => theme.id);
 
 export const docsDefaultThemes = {
-  dark: 'purple-black',
-  light: 'purple-black',
+  dark: 'kanagawa-dragon',
+  light: 'kanagawa-dragon',
 } as const;
 
