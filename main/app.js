@@ -859,6 +859,13 @@ const getPolicyScope = policy => {
   return 'Machine';
 };
 
+const formatPolicyRange = element => {
+  const maxValue = element?.MaxValue;
+  const minValue = element?.MinValue ?? '0';
+  if (maxValue !== null && maxValue !== undefined && maxValue !== '') return `${minValue} - ${maxValue}`;
+  return `${minValue}+`;
+};
+
 const createNode = (tag, className, text) => {
   const node = document.createElement(tag);
   if (className) node.className = className;
@@ -875,8 +882,7 @@ const formatPolicyElement = element => {
     return `${element.ValueName || ''}: true=${element.TrueValue ?? '1'}, false=${element.FalseValue ?? '0'}`;
   }
   if (type === 'Decimal') {
-    const range = [element.MinValue, element.MaxValue].filter(value => value !== null && value !== undefined).join(' - ');
-    return `${element.ValueName || ''}${range ? ` (${range})` : ''}`;
+    return `${element.ValueName || ''} (${formatPolicyRange(element)})`;
   }
   if (type === 'Enum') {
     const items = Array.isArray(element.Items)
@@ -1055,10 +1061,7 @@ function initPolicyExplorer() {
     const type = element?.Type || '';
     if (type === 'Text' || type === 'MultiText' || type === 'List') return 'Input value';
     if (type === 'Decimal' || type === 'LongDecimal') {
-      const range = [element.MinValue, element.MaxValue]
-        .filter(value => value !== null && value !== undefined && value !== '')
-        .join(' - ');
-      return range ? `Range: ${range}` : 'Decimal value';
+      return `Range: ${formatPolicyRange(element)}`;
     }
     if (type === 'Boolean') {
       return `True: ${element.TrueValue ?? '1'}, False: ${element.FalseValue ?? '0'}`;
