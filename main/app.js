@@ -873,26 +873,6 @@ const createNode = (tag, className, text) => {
   return node;
 };
 
-const formatPolicyElement = element => {
-  const type = element?.Type || 'Element';
-  if (type === 'EnabledValue' || type === 'DisabledValue') {
-    return `${element.Data ?? ''}`;
-  }
-  if (type === 'Boolean') {
-    return `${element.ValueName || ''}: true=${element.TrueValue ?? '1'}, false=${element.FalseValue ?? '0'}`;
-  }
-  if (type === 'Decimal') {
-    return `${element.ValueName || ''} (${formatPolicyRange(element)})`;
-  }
-  if (type === 'Enum') {
-    const items = Array.isArray(element.Items)
-      ? element.Items.map(item => `${item.DisplayName}: ${item.Data}`).join(', ')
-      : '';
-    return `${element.ValueName || ''}${items ? `: ${items}` : ''}`;
-  }
-  return `${element.ValueName || ''}`.trim();
-};
-
 const getPolicyElementValueNames = policy => {
   const elements = Array.isArray(policy?.Elements) ? policy.Elements : [];
   return [...new Set(elements
@@ -1042,88 +1022,220 @@ function initPolicyExplorer() {
   const isNumericData = value => /^-?\d+$/.test(String(value ?? '').trim());
   const getElementRegistryType = element => {
     const type = element?.Type || '';
-    if (type === 'Text') return 'REG_SZ';
+    if (type === 'Text') return element?.Expandable ? 'REG_EXPAND_SZ' : 'REG_SZ';
     if (type === 'MultiText') return 'REG_MULTI_SZ';
     if (type === 'List') return 'REG_SZ';
     if (type === 'LongDecimal') return 'REG_QWORD';
-    if (type === 'Decimal' || type === 'Boolean' || type === 'TrueValue' || type === 'FalseValue') return 'REG_DWORD';
+    if (type === 'Decimal') return element?.StoreAsText ? 'REG_SZ' : 'REG_DWORD';
+    if (type === 'Boolean' || type === 'TrueValue' || type === 'FalseValue') return 'REG_DWORD';
     if (type === 'Enum') {
       const items = Array.isArray(element.Items) ? element.Items : [];
       return items.some(item => item.Data !== null && item.Data !== undefined && !isNumericData(item.Data)) ? 'REG_SZ' : 'REG_DWORD';
     }
-    if (type === 'EnabledValue' || type === 'DisabledValue') return isNumericData(element.Data) ? 'REG_DWORD' : 'REG_SZ';
+    if (type === 'EnabledValue' || type === 'DisabledValue' || type === 'EnabledList' || type === 'DisabledList') {
+      if (element?.Action === 'Delete') return 'Delete';
+      return isNumericData(element.Data) ? 'REG_DWORD' : 'REG_SZ';
+    }
     return 'Unknown';
   };
   const getElementDisplayType = element => {
     const type = element?.Type || 'Element';
-    if (type === 'EnabledValue' || type === 'DisabledValue') return getElementRegistryType(element);
+    if (type === 'EnabledValue' || type === 'DisabledValue' || type === 'EnabledList' || type === 'DisabledList') {
+      return getElementRegistryType(element);
+    }
     return type;
   };
-  const formatElementPrimaryText = element => {
-    const type = element?.Type || '';
-    if (type === 'Text' || type === 'MultiText' || type === 'List') return 'Input value';
-    if (type === 'Decimal' || type === 'LongDecimal') {
-      return `Range: ${formatPolicyRange(element)}`;
-    }
-    if (type === 'Boolean') {
-      return `True: ${element.TrueValue ?? '1'}, False: ${element.FalseValue ?? '0'}`;
-    }
-    return formatPolicyElement(element) || 'Value';
+  const appendUnique = (target, value) => {
+    if (value === null || value === undefined) return;
+    const normalized = String(value);
+    if (!normalized && value !== '') return;
+    if (!target.includes(normalized)) target.push(normalized);
   };
-  const createValueGroup = valueName => ({
-    valueName,
-    rows: []
-  });
-  const getPolicyValueGroups = policy => {
+  const formatPolicyMetaValue = value => {
+    if (typeof value === 'boolean') return value ? 'Yes' : 'No';
+    if (value === '') return '""';
+    return String(value);
+  };
+  const addPolicyMeta = (group, label, value) => {
+    if (value === null || value === undefined) return;
+    const text = formatPolicyMetaValue(value);
+    const existing = group.meta.find(item => item.label === label);
+    if (existing) {
+      appendUnique(existing.values, text);
+    } else {
+      group.meta.push({ label, values: [text] });
+    }
+  };
+  const addElementMeta = (entry, element) => {
+    [
+      ['Required', element?.Required],
+      ['Max length', element?.MaxLength],
+      ['Max strings', element?.MaxStrings],
+      ['Expandable', element?.Expandable],
+      ['Stored as text', element?.StoreAsText],
+      ['Client extension', element?.ClientExtension]
+    ].forEach(([label, value]) => addPolicyMeta(entry, label, value));
+  };
+  const getPathTail = path => {
+    const parts = String(path || '').split('\\').filter(Boolean);
+    return parts[parts.length - 1] || '';
+  };
+  const getActionValue = item => (item?.Action === 'Delete' ? 'Delete' : item?.Data ?? '');
+  const getEntryValueLabel = (valueName, element, paths) => {
+    const cleanValue = String(valueName || '').trim();
+    if (cleanValue) return cleanValue;
+    if (element?.Type === 'List') return 'List entries';
+    if (element?.Type === 'EnabledList' || element?.Type === 'DisabledList') return 'List value';
+    return getPathTail(paths[0]) || 'Element-defined';
+  };
+  const getElementPaths = (policy, element) => {
+    const elementPaths = Array.isArray(element?.KeyPath) ? element.KeyPath.filter(Boolean) : [];
+    if (elementPaths.length) return elementPaths;
+    return Array.isArray(policy?.KeyPath) ? policy.KeyPath.filter(Boolean) : [];
+  };
+  const makePathGroupKey = paths => (paths.length ? paths : ['__no_key__'])
+    .map(path => String(path || '').toLowerCase())
+    .join('\u001f');
+  const getPolicyStorageGroups = policy => {
     const groups = [];
-    const groupByValue = new Map();
-    const ensureGroup = valueName => {
-      const key = valueName || 'Element-defined';
-      if (!groupByValue.has(key)) {
-        const group = createValueGroup(key);
-        groupByValue.set(key, group);
+    const groupByPath = new Map();
+    const ensureGroup = paths => {
+      const normalizedPaths = paths.length ? paths : ['Registry path not specified'];
+      const key = makePathGroupKey(normalizedPaths);
+      if (!groupByPath.has(key)) {
+        const group = { keyPaths: normalizedPaths, entries: [] };
+        groupByPath.set(key, group);
         groups.push(group);
       }
-      return groupByValue.get(key);
+      return groupByPath.get(key);
+    };
+    const addEntry = (paths, valueName, element, rows, copyValue = valueName) => {
+      const group = ensureGroup(paths);
+      const label = getEntryValueLabel(valueName, element, paths);
+      const entryKey = `${label}\u001f${copyValue ?? ''}`;
+      let entry = group.entries.find(item => item.key === entryKey);
+      if (!entry) {
+        entry = {
+          key: entryKey,
+          valueName: label,
+          copyValue,
+          meta: [],
+          rows: []
+        };
+        group.entries.push(entry);
+      }
+      addElementMeta(entry, element);
+      entry.rows.push(...rows);
+      return entry;
     };
     const policyValueName = String(policy?.ValueName || '').trim();
     const elements = Array.isArray(policy?.Elements) ? policy.Elements : [];
 
     elements.forEach(element => {
       const type = element?.Type || '';
+      const paths = getElementPaths(policy, element);
       if ((type === 'EnabledValue' || type === 'DisabledValue') && policyValueName) {
-        ensureGroup(policyValueName).rows.push({
+        addEntry(paths, policyValueName, element, [{
           type,
           registryType: getElementRegistryType(element),
-          text: `${type === 'EnabledValue' ? 'Enabled' : 'Disabled'}: ${element.Data ?? ''}`
-        });
+          label: type === 'EnabledValue' ? 'Enabled' : 'Disabled',
+          value: getActionValue(element)
+        }], policyValueName);
         return;
       }
 
-      const valueName = String(element?.ValueName || policyValueName || '').trim();
-      const group = ensureGroup(valueName);
+      const rawValueName = String(element?.ValueName || '').trim();
       if (type === 'Enum' && Array.isArray(element.Items) && element.Items.length) {
+        const rows = element.Items.map(item => ({
+          type: 'Enum',
+          registryType: getElementRegistryType(element),
+          label: item.DisplayName || 'Option',
+          value: getActionValue(item)
+        }));
+        addEntry(paths, rawValueName || policyValueName, element, rows, rawValueName || policyValueName || null);
         element.Items.forEach(item => {
-          group.rows.push({
-            type: 'Enum',
-            registryType: getElementRegistryType(element),
-            text: `${item.DisplayName || 'Option'}: ${item.Data ?? ''}`
+          const valueList = Array.isArray(item.ValueList) ? item.ValueList : [];
+          valueList.forEach(listItem => {
+            const listPaths = getElementPaths(policy, listItem);
+            const listValueName = String(listItem?.ValueName || '').trim();
+            addEntry(listPaths, listValueName, listItem, [{
+              type: 'Enum option',
+              registryType: listItem.Action === 'Delete' ? 'Delete' : isNumericData(listItem.Data) ? 'REG_DWORD' : 'REG_SZ',
+              label: `When ${item.DisplayName || 'option'}`,
+              value: getActionValue(listItem)
+            }], listValueName || null);
           });
         });
         return;
       }
-      group.rows.push({
+      if (type === 'Boolean') {
+        addEntry(paths, rawValueName || policyValueName, element, [
+          {
+            type: 'Boolean',
+            registryType: getElementRegistryType(element),
+            label: 'True',
+            value: element.TrueAction === 'Delete' ? 'Delete' : element.TrueValue ?? '1'
+          },
+          {
+            type: 'Boolean',
+            registryType: getElementRegistryType(element),
+            label: 'False',
+            value: element.FalseAction === 'Delete' ? 'Delete' : element.FalseValue ?? '0'
+          }
+        ], rawValueName || policyValueName || null);
+        return;
+      }
+      if (type === 'Decimal' || type === 'LongDecimal') {
+        addEntry(paths, rawValueName || policyValueName, element, [{
+          type,
+          registryType: getElementRegistryType(element),
+          label: 'Range',
+          value: formatPolicyRange(element)
+        }], rawValueName || policyValueName || null);
+        return;
+      }
+      if (type === 'EnabledList' || type === 'DisabledList') {
+        addEntry(paths, rawValueName, element, [{
+          type,
+          registryType: getElementRegistryType(element),
+          label: type === 'EnabledList' ? 'Enabled' : 'Disabled',
+          value: getActionValue(element)
+        }], rawValueName || null);
+        return;
+      }
+      const fallbackValueName = type === 'List' && !rawValueName ? '' : rawValueName || policyValueName;
+      addEntry(paths, fallbackValueName, element, [{
         type: getElementDisplayType(element),
         registryType: getElementRegistryType(element),
-        text: formatElementPrimaryText(element)
-      });
+        label: type === 'List' ? 'Input entries' : '<InputValue>',
+        value: ''
+      }], fallbackValueName || null);
     });
 
     if (!groups.length && policyValueName) {
-      groups.push(createValueGroup(policyValueName));
+      addEntry(getElementPaths(policy, null), policyValueName, null, []);
     }
-    return groups;
+    const policyPathKey = makePathGroupKey(Array.isArray(policy?.KeyPath) ? policy.KeyPath.filter(Boolean) : []);
+    return groups.sort((left, right) => {
+      const leftMain = makePathGroupKey(left.keyPaths) === policyPathKey;
+      const rightMain = makePathGroupKey(right.keyPaths) === policyPathKey;
+      if (leftMain === rightMain) return 0;
+      return leftMain ? -1 : 1;
+    });
   };
+  const getPolicyValueGroups = policy => getPolicyStorageGroups(policy).flatMap(group => group.entries.map(entry => ({
+    valueName: entry.valueName,
+    keyPaths: group.keyPaths,
+    meta: entry.meta,
+    rows: entry.rows.map(row => ({
+      type: row.type,
+      registryType: row.registryType,
+      text: [row.label, row.value].filter(value => value !== '').join(': ')
+    }))
+  })));
+  const getEntryRegistryTypes = entry => [...new Set(entry.rows
+    .map(row => row.registryType && row.registryType !== 'Unknown' ? row.registryType : row.type)
+    .filter(Boolean))];
 
   const columns = [
     { id: 'setting', label: 'Name', width: 420, minWidth: 180, value: policy => policy.DisplayName || policy.PolicyName || '' },
@@ -1151,8 +1263,12 @@ function initPolicyExplorer() {
     }
   };
 
-  const createCopyBox = (className, text, label = 'Copy', successMessage = 'Copied') => {
+  const createCopyBox = (className, text, label = 'Copy', successMessage = 'Copied', prefixText = '') => {
     const box = createNode('div', className);
+    if (prefixText) {
+      box.classList.add('has-prefix');
+      box.appendChild(createNode('span', 'policy-copy-prefix', prefixText));
+    }
     const labelNode = createNode('span', 'policy-copy-text', text || '');
     const button = createNode('button', 'policy-copy-button');
     button.type = 'button';
@@ -1162,8 +1278,20 @@ function initPolicyExplorer() {
     iconNode.setAttribute('aria-hidden', 'true');
     button.appendChild(iconNode);
     button.addEventListener('click', () => copyPolicyText(text || '', successMessage));
-    box.replaceChildren(labelNode, button);
+    box.append(labelNode, button);
     return box;
+  };
+  const createPolicyValueTitle = (entry, typeText) => {
+    if (entry.copyValue !== null) {
+      return createCopyBox('policy-copy-box policy-value-name', entry.valueName, 'Copy value name', 'Copied value', typeText);
+    }
+
+    const title = createNode('div', 'policy-value-title');
+    if (typeText) {
+      title.appendChild(createNode('span', 'policy-copy-prefix', typeText));
+    }
+    title.appendChild(createNode('span', 'policy-copy-text', entry.valueName));
+    return title;
   };
 
   const updatePaneLayout = () => {
@@ -1221,14 +1349,18 @@ function initPolicyExplorer() {
     detailBody.appendChild(heading);
 
     const fields = createNode('div', 'policy-detail-grid');
-    [
+    const detailFields = [
       ['Policy', policy.PolicyName],
       ['Scope', policy.scope],
       ['ADMX', policy.File],
       ['Namespace', policy.NameSpace],
       ['Supported', policy.Supported],
       ['Category', getCategoryDisplayPath(policy)]
-    ].forEach(([label, value]) => {
+    ];
+    if (policy.ClientExtension) {
+      detailFields.splice(4, 0, ['Client Extension', policy.ClientExtension]);
+    }
+    detailFields.forEach(([label, value]) => {
       const row = createNode('div', 'policy-detail-field');
       row.appendChild(createNode('span', 'policy-field-label', label));
       row.appendChild(createNode('span', 'policy-field-value', value || 'Not specified'));
@@ -1241,39 +1373,62 @@ function initPolicyExplorer() {
       detailBody.appendChild(explain);
     }
 
-    const paths = createNode('section', 'policy-section');
-    paths.appendChild(createNode('h3', null, 'Registry Paths'));
-    const pathList = createNode('div', 'policy-code-list');
-    (policy.KeyPath || []).forEach(path => pathList.appendChild(createCopyBox('policy-copy-box', path, 'Copy registry path', 'Copied key')));
-    paths.appendChild(pathList);
-    detailBody.appendChild(paths);
-
     const elementSection = createNode('section', 'policy-section');
-    elementSection.appendChild(createNode('h3', null, 'Values'));
-    const valueGroups = getPolicyValueGroups(policy);
-    if (!valueGroups.length) {
+    elementSection.appendChild(createNode('h3', null, 'Registry Storage'));
+    const storageGroups = getPolicyStorageGroups(policy);
+    if (!storageGroups.length) {
       elementSection.appendChild(createNode('div', 'policy-muted', 'No ADMX elements exported for this policy.'));
     } else {
-      const valueList = createNode('div', 'policy-value-list');
-      valueGroups.forEach(group => {
-        const groupNode = createNode('div', 'policy-value-group');
-        groupNode.appendChild(createCopyBox('policy-copy-box policy-value-name', group.valueName, 'Copy value name', 'Copied value'));
-        if (group.rows.length) {
-          const list = createNode('div', 'policy-element-list');
-          group.rows.forEach(element => {
-            const item = createNode('div', 'policy-element');
-            const typeText = element.registryType && element.registryType !== element.type
-              ? `Type: ${element.type} (${element.registryType})`
-              : `Type: ${element.type}`;
-            item.appendChild(createNode('span', 'policy-element-type', typeText));
-            item.appendChild(createNode('div', 'policy-element-text', element.text));
-            list.appendChild(item);
-          });
-          groupNode.appendChild(list);
-        }
-        valueList.appendChild(groupNode);
+      const registryList = createNode('div', 'policy-registry-list');
+      storageGroups.forEach(group => {
+        const groupNode = createNode('div', 'policy-registry-group');
+        const pathList = createNode('div', 'policy-code-list policy-registry-paths');
+        group.keyPaths.forEach(path => {
+          pathList.appendChild(createCopyBox('policy-copy-box', path, 'Copy registry path', 'Copied key'));
+        });
+        groupNode.appendChild(pathList);
+
+        const entries = createNode('div', 'policy-registry-values');
+        group.entries.forEach(entry => {
+          const entryNode = createNode('div', 'policy-value-entry');
+          const header = createNode('div', 'policy-value-header');
+          const registryTypes = getEntryRegistryTypes(entry);
+          const typeText = registryTypes.length ? registryTypes.join(', ') : '';
+          header.appendChild(createPolicyValueTitle(entry, typeText));
+          if (entry.meta.length) {
+            const metaRow = createNode('div', 'policy-value-meta-row');
+            const meta = createNode('span', 'policy-value-attrs');
+            meta.textContent = entry.meta.map(item => `${item.label}: ${item.values.join(', ')}`).join('  |  ');
+            metaRow.appendChild(meta);
+            header.appendChild(metaRow);
+          }
+          entryNode.appendChild(header);
+
+          if (entry.rows.length) {
+            const rows = createNode('div', 'policy-data-list');
+            if (entry.rows.some(row => row.value !== '')) {
+              const head = createNode('div', 'policy-data-row policy-data-head');
+              head.appendChild(createNode('span', 'policy-data-label', 'Meaning'));
+              head.appendChild(createNode('span', 'policy-data-value', 'Data'));
+              rows.appendChild(head);
+            }
+            entry.rows.forEach(row => {
+              const hasValue = row.value !== '';
+              const item = createNode('div', hasValue ? 'policy-data-row' : 'policy-data-row policy-data-row-single');
+              item.appendChild(createNode('span', 'policy-data-label', row.label));
+              if (hasValue) {
+                item.appendChild(createNode('span', 'policy-data-value', row.value));
+              }
+              rows.appendChild(item);
+            });
+            entryNode.appendChild(rows);
+          }
+          entries.appendChild(entryNode);
+        });
+        groupNode.appendChild(entries);
+        registryList.appendChild(groupNode);
       });
-      elementSection.appendChild(valueList);
+      elementSection.appendChild(registryList);
     }
     detailBody.appendChild(elementSection);
   };
@@ -1777,10 +1932,15 @@ function initPolicyExplorer() {
     const valueGroups = getPolicyValueGroups(policy);
     const elementText = valueGroups.flatMap(group => [
       group.valueName,
+      ...group.keyPaths,
+      ...group.meta.flatMap(item => [item.label, ...item.values]),
       ...group.rows.flatMap(row => [row.type, row.registryType, row.text])
     ]).join(' ');
     const elementTypeText = elements.map(element => `${element.Type || ''} ${getElementRegistryType(element)}`).join(' ');
-    const keyText = (policy.KeyPath || []).join(' ');
+    const keyText = [
+      ...(policy.KeyPath || []),
+      ...valueGroups.flatMap(group => group.keyPaths)
+    ].join(' ');
     const categoryPath = getCategoryPath(policy);
     const categoryDisplayPath = categoryPath.map(segment => segment.displayName || segment.name).join(' / ');
     const scope = getPolicyScope(policy);
