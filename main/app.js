@@ -979,7 +979,7 @@ function initPolicyExplorer() {
   const getPolicyValue = policy => {
     if (policy.ValueName) return policy.ValueName;
     const valueNames = getPolicyElementValueNames(policy);
-    return valueNames.length ? valueNames.join(', ') : 'Element-defined';
+    return valueNames.length ? valueNames.join(', ') : '<ElementDefined>';
   };
   const POLICY_QUERY_PARAM = 'p';
   const getPolicyShareId = policy => {
@@ -1084,9 +1084,9 @@ function initPolicyExplorer() {
   const getEntryValueLabel = (valueName, element, paths) => {
     const cleanValue = String(valueName || '').trim();
     if (cleanValue) return cleanValue;
-    if (element?.Type === 'List') return 'List entries';
-    if (element?.Type === 'EnabledList' || element?.Type === 'DisabledList') return 'List value';
-    return getPathTail(paths[0]) || 'Element-defined';
+    if (element?.Type === 'List') return '<ListEntries>';
+    if (element?.Type === 'EnabledList' || element?.Type === 'DisabledList') return '<ListValue>';
+    return getPathTail(paths[0]) || '<ElementDefined>';
   };
   const getElementPaths = (policy, element) => {
     const elementPaths = Array.isArray(element?.KeyPath) ? element.KeyPath.filter(Boolean) : [];
@@ -1100,7 +1100,7 @@ function initPolicyExplorer() {
     const groups = [];
     const groupByPath = new Map();
     const ensureGroup = paths => {
-      const normalizedPaths = paths.length ? paths : ['Registry path not specified'];
+      const normalizedPaths = paths.length ? paths : ['<RegistryPathNotSpecified>'];
       const key = makePathGroupKey(normalizedPaths);
       if (!groupByPath.has(key)) {
         const group = { keyPaths: normalizedPaths, entries: [] };
@@ -1149,7 +1149,7 @@ function initPolicyExplorer() {
         const rows = element.Items.map(item => ({
           type: 'Enum',
           registryType: getElementRegistryType(element),
-          label: item.DisplayName || 'Option',
+          label: item.DisplayName || '<Option>',
           value: getActionValue(item)
         }));
         addEntry(paths, rawValueName || policyValueName, element, rows, rawValueName || policyValueName || null);
@@ -1161,7 +1161,7 @@ function initPolicyExplorer() {
             addEntry(listPaths, listValueName, listItem, [{
               type: 'Enum option',
               registryType: listItem.Action === 'Delete' ? 'Delete' : isNumericData(listItem.Data) ? 'REG_DWORD' : 'REG_SZ',
-              label: `When ${item.DisplayName || 'option'}`,
+              label: `When ${item.DisplayName || '<Option>'}`,
               value: getActionValue(listItem)
             }], listValueName || null);
           });
@@ -1207,7 +1207,7 @@ function initPolicyExplorer() {
       addEntry(paths, fallbackValueName, element, [{
         type: getElementDisplayType(element),
         registryType: getElementRegistryType(element),
-        label: type === 'List' ? 'Input entries' : '<InputValue>',
+        label: type === 'List' ? '<InputEntries>' : '<InputValue>',
         value: ''
       }], fallbackValueName || null);
     });
