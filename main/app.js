@@ -109,7 +109,6 @@ const PROJECT_LIST = [
   { title: 'PS12bat', repo: 'nohuto/ps12bat' },
   { title: 'Base64 Encoding / Character Obfuscation', repo: 'nohuto/b64-char' },
   { title: 'ADMX Parser', repo: 'nohuto/admx-parser' },
-  { title: 'Hash Generator', repo: 'nohuto/hash-gen' },
   { title: 'strings2 TUI', repo: 'nohuto/strings2-tui' },
   { title: 'Base64 Reversal & Character Obfuscation', repo: 'nohuto/b64rev' },
   { title: 'DISM WSIM', repo: 'nohuto/dism-wsim' },
