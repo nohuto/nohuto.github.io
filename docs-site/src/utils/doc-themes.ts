@@ -15,6 +15,7 @@ export const docsThemes: DocsTheme[] = [
   { id: 'default-light', label: 'Default Light', scheme: 'light' },
   { id: 'everforest-dark', label: 'Everforest Dark', scheme: 'dark' },
   { id: 'everforest-light', label: 'Everforest Light', scheme: 'light' },
+  { id: 'gray-black', label: 'Gray Black', scheme: 'dark' },
   { id: 'gruvbox-dark', label: 'Gruvbox Dark', scheme: 'dark' },
   { id: 'gruvbox-light', label: 'Gruvbox Light', scheme: 'light' },
   { id: 'horizon', label: 'Horizon', scheme: 'dark' },
@@ -40,7 +41,7 @@ export const docsLightThemeIds = docsThemes
   .map((theme) => theme.id);
 
 export const docsDefaultThemes = {
-  dark: 'kanagawa-dragon',
-  light: 'kanagawa-dragon',
+  dark: 'default-dark',
+  light: 'default-dark',
 } as const;
 

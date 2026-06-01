@@ -1,6 +1,6 @@
 /* Copyright (c) 2026 Nohuto. All rights reserved. */
 const THEME_KEY = 'nv-theme';
-const DEFAULT_THEME = 'kanagawa-wave';
+const DEFAULT_THEME = 'default-dark';
 const LIGHT_THEMES = new Set([
   'default-light',
   'gruvbox-light',

@@ -2,7 +2,7 @@
 (() => {
   const THEME_KEY = 'nv-theme';
   const BG_KEY = 'nv-bg';
-  const DEFAULT_THEME = 'kanagawa-wave';
+  const DEFAULT_THEME = 'default-dark';
   const DEFAULT_BG = 'diagonal-grid';
   const FONT_KEY = 'nv-font';
   const FONT_SIZE_KEY = 'nv-font-size';
@@ -20,6 +20,7 @@
     'default-light',
     'everforest-dark',
     'everforest-light',
+    'gray-black',
     'gruvbox-dark',
     'gruvbox-light',
     'horizon',

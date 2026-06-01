@@ -2,17 +2,17 @@
 @import url("data/starfield-stars.css");
 
 :root {
-  --bg: #0b0f10;
-  --bg-alt: #101416;
-  --panel: #0f1518;
-  --panel-alt: #131b1f;
-  --border: #29323a;
-  --border-strong: #3a4550;
-  --text: #e8edf2;
-  --muted: #9aa4ad;
-  --accent: #2994c2;
-  --accent-2: #53b8dd;
-  --accent-contrast: #0b0f10;
+  --bg: #0e0e0e;
+  --bg-alt: #131313;
+  --panel: #141414;
+  --panel-alt: #191919;
+  --border: #323232;
+  --border-strong: #454545;
+  --text: #ededed;
+  --muted: #a4a4a4;
+  --accent: #247fa8;
+  --accent-2: #429fc2;
+  --accent-contrast: #0e0e0e;
   --success: #44d388;
   --warning: #e4c07a;
   --danger: #ff6b6b;
@@ -91,21 +91,39 @@
 }
 
 [data-theme="default-light"] {
-  --bg: #f7f7f2;
-  --bg-alt: #eef0e8;
-  --panel: #f3f5ed;
-  --panel-alt: #e8eadf;
-  --border: #c8c9c2;
-  --border-strong: #a9aba3;
-  --text: #1a1f1d;
-  --muted: #59605c;
-  --accent: #2994c2;
-  --accent-2: #53b8dd;
-  --accent-contrast: #f7f7f2;
+  --bg: #f5f5f5;
+  --bg-alt: #ececec;
+  --panel: #f1f1f1;
+  --panel-alt: #e5e5e5;
+  --border: #c6c6c6;
+  --border-strong: #a7a7a7;
+  --text: #1d1d1d;
+  --muted: #5d5d5d;
+  --accent: #247fa8;
+  --accent-2: #429fc2;
+  --accent-contrast: #f5f5f5;
   --success: #2f7d5a;
   --warning: #b77a2a;
   --danger: #b44a4a;
   --scanline: rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="gray-black"] {
+  --bg: #0d0d0d;
+  --bg-alt: #080808;
+  --panel: #151515;
+  --panel-alt: #1d1d1d;
+  --border: #303030;
+  --border-strong: #484848;
+  --text: #f2f2f2;
+  --muted: #b8b8b8;
+  --accent: #b8b8b8;
+  --accent-2: #e0e0e0;
+  --accent-contrast: #0d0d0d;
+  --success: #c4c4c4;
+  --warning: #b0b0b0;
+  --danger: #d2d2d2;
+  --scanline: rgba(222, 222, 222, 0.025);
 }
 
 [data-theme="gruvbox-dark"] {

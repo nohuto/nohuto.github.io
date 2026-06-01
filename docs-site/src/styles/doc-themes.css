@@ -1,16 +1,16 @@
 :root,
 ::backdrop {
-  --nv-doc-bg: #0b0f10;
-  --nv-doc-bg-alt: #101416;
-  --nv-doc-panel: #0f1518;
-  --nv-doc-panel-alt: #131b1f;
-  --nv-doc-border: #29323a;
-  --nv-doc-border-strong: #3a4550;
-  --nv-doc-text: #e8edf2;
-  --nv-doc-muted: #9aa4ad;
-  --nv-doc-accent: #2994c2;
-  --nv-doc-accent-2: #53b8dd;
-  --nv-doc-accent-contrast: #0b0f10;
+  --nv-doc-bg: #0e0e0e;
+  --nv-doc-bg-alt: #131313;
+  --nv-doc-panel: #141414;
+  --nv-doc-panel-alt: #191919;
+  --nv-doc-border: #323232;
+  --nv-doc-border-strong: #454545;
+  --nv-doc-text: #ededed;
+  --nv-doc-muted: #a4a4a4;
+  --nv-doc-accent: #247fa8;
+  --nv-doc-accent-2: #429fc2;
+  --nv-doc-accent-contrast: #0e0e0e;
   --nv-doc-success: #44d388;
   --nv-doc-warning: #e4c07a;
   --nv-doc-danger: #ff6b6b;
@@ -18,17 +18,17 @@
 
 :root[data-docs-theme='default-dark'],
 [data-docs-theme='default-dark'] ::backdrop {
-  --nv-doc-bg: #0b0f10;
-  --nv-doc-bg-alt: #101416;
-  --nv-doc-panel: #0f1518;
-  --nv-doc-panel-alt: #131b1f;
-  --nv-doc-border: #29323a;
-  --nv-doc-border-strong: #3a4550;
-  --nv-doc-text: #e8edf2;
-  --nv-doc-muted: #9aa4ad;
-  --nv-doc-accent: #2994c2;
-  --nv-doc-accent-2: #53b8dd;
-  --nv-doc-accent-contrast: #0b0f10;
+  --nv-doc-bg: #0e0e0e;
+  --nv-doc-bg-alt: #131313;
+  --nv-doc-panel: #141414;
+  --nv-doc-panel-alt: #191919;
+  --nv-doc-border: #323232;
+  --nv-doc-border-strong: #454545;
+  --nv-doc-text: #ededed;
+  --nv-doc-muted: #a4a4a4;
+  --nv-doc-accent: #247fa8;
+  --nv-doc-accent-2: #429fc2;
+  --nv-doc-accent-contrast: #0e0e0e;
   --nv-doc-success: #44d388;
   --nv-doc-warning: #e4c07a;
   --nv-doc-danger: #ff6b6b;
@@ -36,20 +36,56 @@
 
 :root[data-docs-theme='default-light'],
 [data-docs-theme='default-light'] ::backdrop {
-  --nv-doc-bg: #f7f7f2;
-  --nv-doc-bg-alt: #eef0e8;
-  --nv-doc-panel: #f3f5ed;
-  --nv-doc-panel-alt: #e8eadf;
-  --nv-doc-border: #c8c9c2;
-  --nv-doc-border-strong: #a9aba3;
-  --nv-doc-text: #1a1f1d;
-  --nv-doc-muted: #59605c;
-  --nv-doc-accent: #2994c2;
-  --nv-doc-accent-2: #53b8dd;
-  --nv-doc-accent-contrast: #f7f7f2;
+  --nv-doc-bg: #f5f5f5;
+  --nv-doc-bg-alt: #ececec;
+  --nv-doc-panel: #f1f1f1;
+  --nv-doc-panel-alt: #e5e5e5;
+  --nv-doc-border: #c6c6c6;
+  --nv-doc-border-strong: #a7a7a7;
+  --nv-doc-text: #1d1d1d;
+  --nv-doc-muted: #5d5d5d;
+  --nv-doc-accent: #247fa8;
+  --nv-doc-accent-2: #429fc2;
+  --nv-doc-accent-contrast: #f5f5f5;
   --nv-doc-success: #2f7d5a;
   --nv-doc-warning: #b77a2a;
   --nv-doc-danger: #b44a4a;
+}
+
+[data-theme="default-light"] {
+  --bg: #f5f5f5;
+  --bg-alt: #ececec;
+  --panel: #f1f1f1;
+  --panel-alt: #e5e5e5;
+  --border: #c6c6c6;
+  --border-strong: #a7a7a7;
+  --text: #1d1d1d;
+  --muted: #5d5d5d;
+  --accent: #247fa8;
+  --accent-2: #429fc2;
+  --accent-contrast: #f5f5f5;
+  --success: #2f7d5a;
+  --warning: #b77a2a;
+  --danger: #b44a4a;
+  --scanline: rgba(0, 0, 0, 0.03);
+}
+
+:root[data-docs-theme='gray-black'],
+[data-docs-theme='gray-black'] ::backdrop {
+  --nv-doc-bg: #0d0d0d;
+  --nv-doc-bg-alt: #080808;
+  --nv-doc-panel: #151515;
+  --nv-doc-panel-alt: #1d1d1d;
+  --nv-doc-border: #303030;
+  --nv-doc-border-strong: #484848;
+  --nv-doc-text: #f2f2f2;
+  --nv-doc-muted: #b8b8b8;
+  --nv-doc-accent: #b8b8b8;
+  --nv-doc-accent-2: #e0e0e0;
+  --nv-doc-accent-contrast: #0d0d0d;
+  --nv-doc-success: #c4c4c4;
+  --nv-doc-warning: #b0b0b0;
+  --nv-doc-danger: #d2d2d2;
 }
 
 :root[data-docs-theme='purple-black'],
