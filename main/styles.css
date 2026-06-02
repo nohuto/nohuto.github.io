@@ -1307,7 +1307,7 @@ main.product-main {
 .console-lines {
   display: flex;
   flex-direction: column;
-  flex: 1 1 auto;
+  flex: 0 0 auto;
   gap: 0;
 }
 
@@ -1344,6 +1344,7 @@ main.product-main {
 .console-input {
   display: flex;
   align-items: center;
+  flex: 0 0 auto;
   gap: 8px;
   border-top: none;
   padding: 0;
