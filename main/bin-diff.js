@@ -929,7 +929,6 @@ function initBinDiff() {
     clearComparison();
     runButton.disabled = true;
     try {
-      await ensureBinDiffAssets();
       const releases = (await listRepoDirectories([])).sort(compareReleaseNames);
       if (!releases.length) {
         return;
