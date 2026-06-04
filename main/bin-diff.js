@@ -1,4 +1,4 @@
-/* Copyright (c) 2026 Nohuto. All rights reserved. */
+/* Copyright (c) 2026 Nohuto */
 (function attachBinDiff(global) {
   'use strict';
 
@@ -380,10 +380,10 @@ function initBinDiff() {
   const settingsCloseButton = document.getElementById('bindiff-settings-close');
   const settingsDoneButton = document.getElementById('bindiff-settings-done');
   const settingsResetButton = document.getElementById('bindiff-settings-reset');
-  const stripXrefsInput = document.getElementById('bindiff-setting-strip-xrefs');
-  const stripAddressesInput = document.getElementById('bindiff-setting-strip-addresses');
-  const stripLocationsInput = document.getElementById('bindiff-setting-strip-locations');
-  const normalizeIdentifiersInput = document.getElementById('bindiff-setting-normalize-identifiers');
+  const stripCrossReferenceMetadataInput = document.getElementById('bindiff-setting-strip-cross-reference-metadata');
+  const normalizeRelocationSymbolsInput = document.getElementById('bindiff-setting-normalize-relocation-symbols');
+  const stripStorageLocationCommentsInput = document.getElementById('bindiff-setting-strip-storage-location-comments');
+  const normalizeDecompilerIdentifiersInput = document.getElementById('bindiff-setting-normalize-decompiler-identifiers');
   const normalizeNumericInput = document.getElementById('bindiff-setting-normalize-numeric');
   const normalizeLabelsInput = document.getElementById('bindiff-setting-normalize-labels');
   const normalizePrototypeInput = document.getElementById('bindiff-setting-normalize-prototype');
@@ -414,10 +414,10 @@ function initBinDiff() {
     !settingsCloseButton ||
     !settingsDoneButton ||
     !settingsResetButton ||
-    !stripXrefsInput ||
-    !stripAddressesInput ||
-    !stripLocationsInput ||
-    !normalizeIdentifiersInput ||
+    !stripCrossReferenceMetadataInput ||
+    !normalizeRelocationSymbolsInput ||
+    !stripStorageLocationCommentsInput ||
+    !normalizeDecompilerIdentifiersInput ||
     !normalizeNumericInput ||
     !normalizeLabelsInput ||
     !normalizePrototypeInput ||
@@ -465,10 +465,10 @@ function initBinDiff() {
   };
 
   const syncSettingsUi = () => {
-    stripXrefsInput.checked = diffSettings.normalization.stripCrossReferenceMetadata;
-    stripAddressesInput.checked = diffSettings.normalization.normalizeRelocationSymbols;
-    stripLocationsInput.checked = diffSettings.normalization.stripStorageLocationComments;
-    normalizeIdentifiersInput.checked = diffSettings.normalization.normalizeDecompilerIdentifiers;
+    stripCrossReferenceMetadataInput.checked = diffSettings.normalization.stripCrossReferenceMetadata;
+    normalizeRelocationSymbolsInput.checked = diffSettings.normalization.normalizeRelocationSymbols;
+    stripStorageLocationCommentsInput.checked = diffSettings.normalization.stripStorageLocationComments;
+    normalizeDecompilerIdentifiersInput.checked = diffSettings.normalization.normalizeDecompilerIdentifiers;
     normalizeNumericInput.checked = diffSettings.normalization.normalizeNumericNotation;
     normalizeLabelsInput.checked = diffSettings.normalization.normalizeGeneratedLabels;
     normalizePrototypeInput.checked = diffSettings.normalization.normalizePrototypeExpansionArgs;
@@ -479,10 +479,10 @@ function initBinDiff() {
   const applySettingsFromUi = () => {
     diffSettings = {
       normalization: {
-        stripCrossReferenceMetadata: stripXrefsInput.checked,
-        normalizeRelocationSymbols: stripAddressesInput.checked,
-        stripStorageLocationComments: stripLocationsInput.checked,
-        normalizeDecompilerIdentifiers: normalizeIdentifiersInput.checked,
+        stripCrossReferenceMetadata: stripCrossReferenceMetadataInput.checked,
+        normalizeRelocationSymbols: normalizeRelocationSymbolsInput.checked,
+        stripStorageLocationComments: stripStorageLocationCommentsInput.checked,
+        normalizeDecompilerIdentifiers: normalizeDecompilerIdentifiersInput.checked,
         normalizeNumericNotation: normalizeNumericInput.checked,
         normalizeGeneratedLabels: normalizeLabelsInput.checked,
         normalizePrototypeExpansionArgs: normalizePrototypeInput.checked,
@@ -1086,10 +1086,10 @@ function initBinDiff() {
     clampSettingsDialogPosition();
   });
   [
-    stripXrefsInput,
-    stripAddressesInput,
-    stripLocationsInput,
-    normalizeIdentifiersInput,
+    stripCrossReferenceMetadataInput,
+    normalizeRelocationSymbolsInput,
+    stripStorageLocationCommentsInput,
+    normalizeDecompilerIdentifiersInput,
     normalizeNumericInput,
     normalizeLabelsInput,
     normalizePrototypeInput,

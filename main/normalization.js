@@ -1,4 +1,4 @@
-/* Copyright (c) 2026 Nohuto. All rights reserved. */
+/* Copyright (c) 2026 Nohuto */
 (function attachNormalization(global) {
   'use strict';
 
@@ -10,14 +10,6 @@
     normalizeNumericNotation: true,
     normalizeGeneratedLabels: false,
     normalizePrototypeExpansionArgs: false,
-    trimTrailingWhitespace: true
-  });
-
-  const LEGACY_DEFAULTS = Object.freeze({
-    stripXrefs: false,
-    stripAddresses: true,
-    stripLocations: true,
-    normalizeIdentifiers: true,
     trimTrailingWhitespace: true
   });
 
@@ -56,24 +48,6 @@
       }
     });
     return normalized;
-  };
-
-  const migrateSettings = legacySettings => {
-    const legacy = {
-      ...LEGACY_DEFAULTS,
-      ...(legacySettings && typeof legacySettings === 'object' ? legacySettings : {})
-    };
-
-    return normalizeSettings({
-      stripCrossReferenceMetadata: Boolean(legacy.stripXrefs),
-      normalizeRelocationSymbols: Boolean(legacy.stripAddresses),
-      stripStorageLocationComments: Boolean(legacy.stripLocations),
-      normalizeDecompilerIdentifiers: Boolean(legacy.normalizeIdentifiers),
-      normalizeNumericNotation: DEFAULTS.normalizeNumericNotation,
-      normalizeGeneratedLabels: DEFAULTS.normalizeGeneratedLabels,
-      normalizePrototypeExpansionArgs: DEFAULTS.normalizePrototypeExpansionArgs,
-      trimTrailingWhitespace: Boolean(legacy.trimTrailingWhitespace)
-    });
   };
 
   const stableStringify = value => {
@@ -943,7 +917,6 @@
 
   global.Normalization = Object.freeze({
     DEFAULTS,
-    migrateSettings,
     normalize,
     preparePair
   });

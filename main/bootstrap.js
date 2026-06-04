@@ -1,8 +1,11 @@
-/* Copyright (c) 2026 Nohuto. All rights reserved. */
+/* Copyright (c) 2026 Nohuto */
 (() => {
   const THEME_KEY = 'nv-theme';
   const BG_KEY = 'nv-bg';
-  const DEFAULT_THEME = 'default-dark';
+  const THEME_SYSTEM = 'system';
+  const THEME_DARK = 'dark';
+  const THEME_LIGHT = 'light';
+  const DEFAULT_THEME = THEME_SYSTEM;
   const DEFAULT_BG = 'dots';
   const FONT_KEY = 'nv-font';
   const FONT_SIZE_KEY = 'nv-font-size';
@@ -10,14 +13,15 @@
   const FONT_SIZE_MAX = 22;
 
   const THEME_OPTIONS = new Set([
+    'system',
+    'dark',
+    'light',
     'ayu-dark',
     'ayu-light',
     'catppuccin-frappe',
     'catppuccin-latte',
     'catppuccin-macchiato',
     'catppuccin-mocha',
-    'default-dark',
-    'default-light',
     'everforest-dark',
     'everforest-light',
     'gray-black',
@@ -48,7 +52,6 @@
     'carbon',
     'starfield'
   ]);
-
   const FONT_OPTIONS = new Set([
     'cascadia'
   ]);
@@ -63,13 +66,27 @@
 
   const setAttrIfValid = (attr, value, allowed, fallback) => {
     const candidate = (value || '').trim();
-    if (candidate && allowed.has(candidate)) {
-      document.documentElement.setAttribute(attr, candidate);
-      return;
+    const selected = candidate && allowed.has(candidate) ? candidate : fallback;
+    if (!selected) return;
+    document.documentElement.setAttribute(attr, selected);
+  };
+
+  const getSystemDefaultTheme = () => {
+    try {
+      return window.matchMedia('(prefers-color-scheme: light)').matches
+        ? THEME_LIGHT
+        : THEME_DARK;
+    } catch {
+      return THEME_DARK;
     }
-    if (fallback) {
-      document.documentElement.setAttribute(attr, fallback);
-    }
+  };
+
+  const setTheme = value => {
+    const candidate = (value || '').trim();
+    const selected = candidate && THEME_OPTIONS.has(candidate) ? candidate : DEFAULT_THEME;
+    const applied = selected === THEME_SYSTEM ? getSystemDefaultTheme() : selected;
+    document.documentElement.setAttribute('data-theme-setting', selected);
+    document.documentElement.setAttribute('data-theme', applied);
   };
 
   const applyFontSize = value => {
@@ -80,7 +97,7 @@
   };
 
   try {
-    setAttrIfValid('data-theme', safeGet(THEME_KEY) || DEFAULT_THEME, THEME_OPTIONS, DEFAULT_THEME);
+    setTheme(safeGet(THEME_KEY) || DEFAULT_THEME);
     setAttrIfValid('data-bg', safeGet(BG_KEY) || DEFAULT_BG, BG_OPTIONS, DEFAULT_BG);
     setAttrIfValid('data-font', safeGet(FONT_KEY), FONT_OPTIONS);
     applyFontSize(safeGet(FONT_SIZE_KEY));

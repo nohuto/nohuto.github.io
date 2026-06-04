@@ -16,8 +16,8 @@
   --nv-doc-danger: #ff6b6b;
 }
 
-:root[data-docs-theme='default-dark'],
-[data-docs-theme='default-dark'] ::backdrop {
+:root[data-docs-theme='dark'],
+[data-docs-theme='dark'] ::backdrop {
   --nv-doc-bg: #0e0e0e;
   --nv-doc-bg-alt: #131313;
   --nv-doc-panel: #141414;
@@ -34,8 +34,8 @@
   --nv-doc-danger: #ff6b6b;
 }
 
-:root[data-docs-theme='default-light'],
-[data-docs-theme='default-light'] ::backdrop {
+:root[data-docs-theme='light'],
+[data-docs-theme='light'] ::backdrop {
   --nv-doc-bg: #f5f5f5;
   --nv-doc-bg-alt: #ececec;
   --nv-doc-panel: #f1f1f1;
@@ -592,14 +592,14 @@ docs-theme-select {
 }
 
 .docs-theme-trigger {
-  display: inline-grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  position: relative;
+  display: inline-flex;
   align-items: center;
-  gap: 0.625rem;
+  justify-content: flex-start;
   min-width: 0;
   min-height: 1.5rem;
   height: 1.5rem;
-  padding: 0 0.625rem 0 0.625rem;
+  padding: 0 1.75rem 0 0.625rem;
   border: 1px solid var(--sl-color-hairline-shade);
   border-radius: var(--nv-ui-radius);
   background: var(--nv-doc-panel);
@@ -625,13 +625,6 @@ docs-theme-select[data-open='true'] .docs-theme-trigger {
   box-shadow: 0 0 0 1px var(--sl-color-accent);
 }
 
-.docs-theme-caret {
-  width: 0.85rem;
-  height: 0.85rem;
-  fill: currentColor;
-  flex: none;
-}
-
 .docs-theme-current {
   min-width: 0;
   max-width: 11.5rem;
@@ -641,12 +634,23 @@ docs-theme-select[data-open='true'] .docs-theme-trigger {
   font-weight: 400;
 }
 
-.docs-theme-caret {
-  opacity: 0.72;
+.docs-theme-trigger::after {
+  content: "";
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  bottom: auto;
+  margin: 0;
+  width: 6px;
+  height: 6px;
+  border-right: 1px solid var(--nv-doc-muted);
+  border-bottom: 1px solid var(--nv-doc-muted);
+  transform: translateY(-62%) rotate(45deg);
+  pointer-events: none;
 }
 
-docs-theme-select[data-open='true'] .docs-theme-caret {
-  transform: rotate(180deg);
+docs-theme-select[data-open='true'] .docs-theme-trigger::after {
+  transform: translateY(-28%) rotate(225deg);
 }
 
 .docs-theme-popover {

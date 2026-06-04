@@ -11,6 +11,9 @@ import { docsDefaultThemes, docsLightThemeIds, docsThemeIds } from '../../utils/
 >
   window.DocsThemeProvider = window.DocsThemeProvider || (() => {
     const storageKey = 'nv-theme';
+    const systemTheme = 'system';
+    const darkTheme = 'dark';
+    const lightTheme = 'light';
     const availableThemeIds = new Set(themeIds);
     const availableLightThemeIds = new Set(lightThemeIds);
     const defaults = defaultThemes;
@@ -18,13 +21,27 @@ import { docsDefaultThemes, docsLightThemeIds, docsThemeIds } from '../../utils/
     const getPreferredScheme = () =>
       window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
 
-    const getThemeScheme = (theme) => (availableLightThemeIds.has(theme) ? 'light' : 'dark');
+    const getPreferredTheme = () => (getPreferredScheme() === 'light' ? lightTheme : darkTheme);
+
+    const normalizeTheme = (theme) => {
+      return typeof theme === 'string' ? theme.trim() : '';
+    };
+
+    const resolveTheme = (theme) => {
+      const normalized = normalizeTheme(theme);
+      return normalized === systemTheme ? getPreferredTheme() : (normalized || darkTheme);
+    };
+
+    const getThemeScheme = (theme) => (availableLightThemeIds.has(resolveTheme(theme)) ? 'light' : 'dark');
 
     const isValidTheme = (theme) => typeof theme === 'string' && availableThemeIds.has(theme);
 
     const getFallbackTheme = (scheme = getPreferredScheme()) => defaults[scheme] ?? defaults.dark;
 
-    const parseTheme = (theme) => (isValidTheme(theme) ? theme : '');
+    const parseTheme = (theme) => {
+      const normalized = normalizeTheme(theme);
+      return isValidTheme(normalized) ? normalized : '';
+    };
 
     const loadTheme = () => {
       if (typeof localStorage === 'undefined') return '';
@@ -33,13 +50,15 @@ import { docsDefaultThemes, docsLightThemeIds, docsThemeIds } from '../../utils/
 
     const applyTheme = (requestedTheme) => {
       const nextTheme = parseTheme(requestedTheme) || getFallbackTheme();
-      const nextScheme = getThemeScheme(nextTheme);
+      const appliedTheme = resolveTheme(nextTheme);
+      const nextScheme = getThemeScheme(appliedTheme);
       document.documentElement.dataset.theme = nextScheme;
-      document.documentElement.dataset.docsTheme = nextTheme;
-      return { theme: nextTheme, scheme: nextScheme };
+      document.documentElement.dataset.docsThemeSetting = nextTheme;
+      document.documentElement.dataset.docsTheme = appliedTheme;
+      return { theme: nextTheme, appliedTheme, scheme: nextScheme };
     };
 
-    const updatePickers = (theme = loadTheme() || document.documentElement.dataset.docsTheme || getFallbackTheme()) => {
+    const updatePickers = (theme = loadTheme() || document.documentElement.dataset.docsThemeSetting || getFallbackTheme()) => {
       document.querySelectorAll('docs-theme-select').forEach((picker) => {
         picker.dataset.themeValue = theme;
         const optionButtons = Array.from(picker.querySelectorAll('[data-theme-option]'));
@@ -74,24 +93,26 @@ import { docsDefaultThemes, docsLightThemeIds, docsThemeIds } from '../../utils/
     };
 
     const setTheme = (theme) => {
-      const { theme: appliedTheme, scheme } = applyTheme(theme);
-      storeTheme(appliedTheme);
-      updatePickers(appliedTheme);
+      const { theme: selectedTheme, appliedTheme, scheme } = applyTheme(theme);
+      storeTheme(selectedTheme);
+      updatePickers(selectedTheme);
       document.dispatchEvent(
         new CustomEvent('nv:theme-change', {
           detail: {
-            theme: appliedTheme,
+            theme: selectedTheme,
+            appliedTheme,
             scheme,
             isLight: scheme === 'light',
           },
         }),
       );
-      return appliedTheme;
+      return selectedTheme;
     };
 
     const syncPreferredTheme = () => {
-      if (loadTheme()) return;
-      const { theme } = applyTheme('');
+      const selectedTheme = loadTheme() || document.documentElement.dataset.docsThemeSetting || getFallbackTheme();
+      if (selectedTheme !== systemTheme) return;
+      const { theme } = applyTheme(systemTheme);
       updatePickers(theme);
     };
 

@@ -1,8 +1,11 @@
-/* Copyright (c) 2026 Nohuto. All rights reserved. */
+/* Copyright (c) 2026 Nohuto */
 const THEME_KEY = 'nv-theme';
-const DEFAULT_THEME = 'default-dark';
+const THEME_SYSTEM = 'system';
+const THEME_DARK = 'dark';
+const THEME_LIGHT = 'light';
+const DEFAULT_THEME = THEME_SYSTEM;
 const LIGHT_THEMES = new Set([
-  'default-light',
+  THEME_LIGHT,
   'gruvbox-light',
   'kanagawa-lotus',
   'catppuccin-latte',
@@ -35,6 +38,7 @@ const PAGE_FEATURES = Object.freeze([
   { rootId: 'policy-explorer', src: 'main/policies.js', styleHref: 'main/tools.css', initName: 'initPolicyExplorer' },
   { rootId: 'bin-diff-app', src: 'main/bin-diff.js', styleHref: 'main/tools.css', initName: 'initBinDiff' }
 ]);
+const SYSTEM_THEME_QUERY = '(prefers-color-scheme: light)';
 
 let toastTimer;
 let repoDescriptionsPromise;
@@ -148,7 +152,7 @@ function updatePromptBar(pathname = location.pathname) {
 }
 
 function updateIconTheme(theme) {
-  const applied = theme || document.documentElement.getAttribute('data-theme') || DEFAULT_THEME;
+  const applied = resolveTheme(theme || document.documentElement.getAttribute('data-theme') || DEFAULT_THEME);
   const useLight = LIGHT_THEMES.has(applied);
   document.querySelectorAll('img[data-dark-src][data-light-src]').forEach(img => {
     const next = useLight ? img.getAttribute('data-light-src') : img.getAttribute('data-dark-src');
@@ -157,17 +161,37 @@ function updateIconTheme(theme) {
   });
 }
 
+function getSystemDefaultTheme() {
+  try {
+    return window.matchMedia(SYSTEM_THEME_QUERY).matches ? THEME_LIGHT : THEME_DARK;
+  } catch {
+    return THEME_DARK;
+  }
+}
+
+function normalizeTheme(theme) {
+  return String(theme || '').trim();
+}
+
+function resolveTheme(theme) {
+  const normalized = normalizeTheme(theme);
+  return normalized === THEME_SYSTEM ? getSystemDefaultTheme() : (normalized || THEME_DARK);
+}
+
 function applyTheme(theme) {
-  const applied = theme || DEFAULT_THEME;
+  const selected = normalizeTheme(theme || DEFAULT_THEME);
+  const applied = resolveTheme(selected);
+  document.documentElement.setAttribute('data-theme-setting', selected);
   document.documentElement.setAttribute('data-theme', applied);
   updateIconTheme(applied);
   document.dispatchEvent(new CustomEvent('nv:theme-change', {
     detail: {
-      theme: applied,
+      theme: selected,
+      appliedTheme: applied,
       isLight: LIGHT_THEMES.has(applied)
     }
   }));
-  return applied;
+  return selected;
 }
 
 function initSelectUI() {
@@ -442,7 +466,7 @@ function initTheme() {
   const select = document.getElementById('theme-select');
   if (!select) return;
 
-  const stored = storageGet(THEME_KEY, document.documentElement.getAttribute('data-theme') || DEFAULT_THEME);
+  const stored = normalizeTheme(storageGet(THEME_KEY, document.documentElement.getAttribute('data-theme-setting') || DEFAULT_THEME));
   const initial = hasSelectOption(select, stored) ? stored : DEFAULT_THEME;
   applyTheme(initial);
   select.value = initial;
@@ -452,6 +476,15 @@ function initTheme() {
     applyTheme(next);
     storageSet(THEME_KEY, next);
   });
+
+  try {
+    const media = window.matchMedia(SYSTEM_THEME_QUERY);
+    const syncSystemTheme = () => {
+      if (select.value !== THEME_SYSTEM) return;
+      applyTheme(THEME_SYSTEM);
+    };
+    media.addEventListener('change', syncSystemTheme);
+  } catch { }
 }
 
 function applyBackground(key) {

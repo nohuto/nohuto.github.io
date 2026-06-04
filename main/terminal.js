@@ -1,4 +1,4 @@
-/* Copyright (c) 2026 Nohuto. All rights reserved. */
+/* Copyright (c) 2026 Nohuto */
 (function attachTerminal(global) {
   'use strict';
 const BIN_DIFF_RELEASE_LINKS = Object.freeze([

@@ -5,14 +5,15 @@ export type DocsTheme = {
 };
 
 export const docsThemes: DocsTheme[] = [
+  { id: 'system', label: 'System', scheme: 'dark' },
+  { id: 'dark', label: 'Dark', scheme: 'dark' },
+  { id: 'light', label: 'Light', scheme: 'light' },
   { id: 'ayu-dark', label: 'Ayu Dark', scheme: 'dark' },
   { id: 'ayu-light', label: 'Ayu Light', scheme: 'light' },
   { id: 'catppuccin-frappe', label: 'Catppuccin Frappe', scheme: 'dark' },
   { id: 'catppuccin-latte', label: 'Catppuccin Latte', scheme: 'light' },
   { id: 'catppuccin-macchiato', label: 'Catppuccin Macchiato', scheme: 'dark' },
   { id: 'catppuccin-mocha', label: 'Catppuccin Mocha', scheme: 'dark' },
-  { id: 'default-dark', label: 'Default Dark', scheme: 'dark' },
-  { id: 'default-light', label: 'Default Light', scheme: 'light' },
   { id: 'everforest-dark', label: 'Everforest Dark', scheme: 'dark' },
   { id: 'everforest-light', label: 'Everforest Light', scheme: 'light' },
   { id: 'gray-black', label: 'Gray Black', scheme: 'dark' },
@@ -41,7 +42,7 @@ export const docsLightThemeIds = docsThemes
   .map((theme) => theme.id);
 
 export const docsDefaultThemes = {
-  dark: 'default-dark',
-  light: 'default-dark',
+  dark: 'system',
+  light: 'system',
 } as const;
 

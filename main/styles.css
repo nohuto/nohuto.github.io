@@ -1,4 +1,4 @@
-/* Copyright (c) 2026 Nohuto. All rights reserved. */
+/* Copyright (c) 2026 Nohuto */
 @import url("data/starfield-stars.css");
 
 :root {
@@ -17,27 +17,6 @@
   --warning: #e4c07a;
   --danger: #ff6b6b;
   --starfield-dot: color-mix(in srgb, var(--text) 90%, transparent);
-  --starfield-shadow-fallback:
-    -1180px -340px var(--starfield-dot),
-    -1030px 220px var(--starfield-dot),
-    -920px -120px var(--starfield-dot),
-    -760px 310px var(--starfield-dot),
-    -640px -260px var(--starfield-dot),
-    -510px 150px var(--starfield-dot),
-    -390px -410px var(--starfield-dot),
-    -250px 40px var(--starfield-dot),
-    -120px -300px var(--starfield-dot),
-    30px 260px var(--starfield-dot),
-    170px -170px var(--starfield-dot),
-    280px 360px var(--starfield-dot),
-    420px -80px var(--starfield-dot),
-    560px 210px var(--starfield-dot),
-    700px -360px var(--starfield-dot),
-    840px 120px var(--starfield-dot),
-    980px -220px var(--starfield-dot),
-    1120px 300px var(--starfield-dot),
-    1260px -40px var(--starfield-dot),
-    1390px -280px var(--starfield-dot);
   --shadow: rgba(0, 0, 0, 0.35);
   --font-family: "Cascadia Mono", "Cascadia Code", Consolas, "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace;
   --font-size: 13px;
@@ -88,7 +67,7 @@
   border: 0;
 }
 
-[data-theme="default-light"] {
+[data-theme="light"] {
   --bg: #f5f5f5;
   --bg-alt: #ececec;
   --panel: #f1f1f1;
@@ -704,7 +683,7 @@ html[data-bg="starfield"] .stars {
   --starfield-depth: 300px;
   --starfield-speed: 3s;
   --starfield-dot: color-mix(in srgb, var(--text) 90%, transparent);
-  box-shadow: var(--starfield-shadow, var(--starfield-shadow-fallback));
+  box-shadow: var(--starfield-shadow);
   transform-style: preserve-3d;
   will-change: transform;
   animation: fly var(--starfield-speed) linear infinite !important;
@@ -1952,7 +1931,7 @@ video {
 .social {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 8px;
   justify-content: flex-start;
   justify-self: start;
   grid-area: social;
@@ -1960,8 +1939,8 @@ video {
 
 .social a,
 .icon-button {
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1983,8 +1962,8 @@ video {
 }
 
 .social img {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.4));
 }
 
@@ -2059,6 +2038,12 @@ footer {
 .footer-tools .select-ui {
   width: 190px;
   min-width: 190px;
+}
+
+.footer-control:has(#bg-select) select,
+.footer-control:has(#bg-select) .select-ui {
+  width: 112px;
+  min-width: 112px;
 }
 
 .footer-tools select {

@@ -174,6 +174,20 @@ body::-webkit-scrollbar-thumb {
   font-size: var(--sl-text-xs);
 }
 
+.sidebar-content {
+  min-height: 100%;
+}
+
+.sidebar-docs-copyright {
+  flex-shrink: 0;
+  margin: auto 0 0;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--sl-color-hairline-light);
+  color: var(--sl-color-gray-3);
+  font-size: var(--sl-text-xs);
+  line-height: 1.35;
+}
+
 site-search button[data-open-modal] {
   justify-content: center;
   min-width: 2.5rem;

@@ -1,4 +1,4 @@
-/* Copyright (c) 2026 Nohuto. All rights reserved. */
+/* Copyright (c) 2026 Nohuto */
 (() => {
   const ACTIVE_PAGE_PATH_KEY = 'nv-active-page-path';
   const NOT_FOUND_PATH_KEY = 'nv-not-found-path';
