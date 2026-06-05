@@ -54,6 +54,7 @@ let consoleHistoryIndex = -1;
 let consoleTimestampTimer;
 let consoleFocusListener;
 let consoleResizeHandler;
+let consolePageShowHandler;
 let consoleResizeObserver;
 let consoleClampRaf = 0;
 let consoleAnimationCleanup = null;
@@ -79,26 +80,55 @@ function initConsoleWindow() {
   windowEl.dataset.ready = 'true';
 
   const parent = windowEl.parentElement;
+  let initialPositionTries = 0;
 
-  const materializeInitialPosition = () => {
-    if (windowEl.dataset.positioned === 'true') return;
+  const getParentSize = () => {
+    const rect = parent.getBoundingClientRect();
+    return {
+      width: Math.max(0, parent.clientWidth || rect.width || 0),
+      height: Math.max(0, parent.clientHeight || rect.height || 0)
+    };
+  };
+
+  const getWindowSize = () => ({
+    width: Math.max(0, windowEl.offsetWidth || windowEl.getBoundingClientRect().width || 0),
+    height: Math.max(0, windowEl.offsetHeight || windowEl.getBoundingClientRect().height || 0)
+  });
+
+  const centerPosition = () => {
     if (getComputedStyle(windowEl).position !== 'absolute') {
       windowEl.dataset.positioned = 'true';
-      return;
+      return true;
     }
-    const parentRect = parent.getBoundingClientRect();
-    const rect = windowEl.getBoundingClientRect();
-    windowEl.style.left = `${Math.max(0, rect.left - parentRect.left)}px`;
-    windowEl.style.top = `${Math.max(0, rect.top - parentRect.top)}px`;
+
+    const parentSize = getParentSize();
+    const windowSize = getWindowSize();
+    if ((!parentSize.width || !parentSize.height || !windowSize.width || !windowSize.height) && initialPositionTries < 8) {
+      initialPositionTries += 1;
+      requestAnimationFrame(centerPosition);
+      return false;
+    }
+
+    const maxLeft = Math.max(0, parentSize.width - windowSize.width);
+    const maxTop = Math.max(0, parentSize.height - windowSize.height);
     windowEl.style.transform = 'none';
+    windowEl.style.inset = 'auto';
+    windowEl.style.margin = '0';
+    windowEl.style.left = `${maxLeft / 2}px`;
+    windowEl.style.top = `${maxTop / 2}px`;
     windowEl.dataset.positioned = 'true';
+    return true;
   };
 
   const clampPosition = () => {
-    const parentRect = parent.getBoundingClientRect();
-    const rect = windowEl.getBoundingClientRect();
-    const maxLeft = Math.max(0, parentRect.width - rect.width);
-    const maxTop = Math.max(0, parentRect.height - rect.height);
+    if (windowEl.dataset.userPositioned !== 'true') {
+      centerPosition();
+      return;
+    }
+    const parentSize = getParentSize();
+    const windowSize = getWindowSize();
+    const maxLeft = Math.max(0, parentSize.width - windowSize.width);
+    const maxTop = Math.max(0, parentSize.height - windowSize.height);
     const currentLeft = windowEl.offsetLeft;
     const currentTop = windowEl.offsetTop;
     windowEl.style.left = `${Math.min(Math.max(0, currentLeft), maxLeft)}px`;
@@ -106,6 +136,7 @@ function initConsoleWindow() {
   };
 
   const scheduleClampPosition = () => {
+    if (!document.contains(windowEl)) return;
     if (consoleClampRaf) return;
     consoleClampRaf = requestAnimationFrame(() => {
       consoleClampRaf = 0;
@@ -113,8 +144,10 @@ function initConsoleWindow() {
     });
   };
 
-  materializeInitialPosition();
-  clampPosition();
+  requestAnimationFrame(() => {
+    centerPosition();
+    clampPosition();
+  });
 
   if (consoleResizeObserver) {
     consoleResizeObserver.disconnect();
@@ -131,22 +164,31 @@ function initConsoleWindow() {
 
   if (consoleResizeHandler) {
     window.removeEventListener('resize', consoleResizeHandler);
+    window.visualViewport?.removeEventListener('resize', consoleResizeHandler);
+  }
+  if (consolePageShowHandler) {
+    window.removeEventListener('pageshow', consolePageShowHandler);
   }
   consoleResizeHandler = scheduleClampPosition;
+  consolePageShowHandler = scheduleClampPosition;
   window.addEventListener('resize', consoleResizeHandler);
+  window.visualViewport?.addEventListener('resize', consoleResizeHandler);
+  window.addEventListener('pageshow', consolePageShowHandler);
 
   handle.addEventListener('pointerdown', e => {
     if (e.button !== 0) return;
-    const parentRect = parent.getBoundingClientRect();
-    const rect = windowEl.getBoundingClientRect();
+    e.preventDefault();
+    centerPosition();
+    windowEl.dataset.userPositioned = 'true';
+    windowEl.style.transform = 'none';
     const startX = e.clientX;
     const startY = e.clientY;
-    const startLeft = rect.left - parentRect.left;
-    const startTop = rect.top - parentRect.top;
-    const width = rect.width;
-    const height = rect.height;
-    const maxLeft = Math.max(0, parentRect.width - width);
-    const maxTop = Math.max(0, parentRect.height - height);
+    const startLeft = windowEl.offsetLeft;
+    const startTop = windowEl.offsetTop;
+    const parentSize = getParentSize();
+    const windowSize = getWindowSize();
+    const maxLeft = Math.max(0, parentSize.width - windowSize.width);
+    const maxTop = Math.max(0, parentSize.height - windowSize.height);
     let rafId = 0;
     let pendingX = startX;
     let pendingY = startY;
