@@ -3,6 +3,7 @@
   --sl-font: "Cascadia Mono", "Cascadia Code", Consolas, "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace;
   --sl-font-mono: "Cascadia Mono", "Cascadia Code", Consolas, "SFMono-Regular", Menlo, Monaco, "Liberation Mono", monospace;
   --nv-ui-radius: 0px;
+  --nv-search-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 10a7 7 0 1 0 14 0a7 7 0 1 0 -14 0'/%3E%3Cpath d='M21 21l-6 -6'/%3E%3C/svg%3E");
   --sl-color-accent-low: #143448;
   --sl-color-accent: #4792c1;
   --sl-color-accent-high: #8fbede;
@@ -26,21 +27,27 @@ html:not([data-has-sidebar]) {
 
 @media (min-width: 72rem) {
   html[data-has-sidebar][data-has-toc] {
-    --nv-doc-toc-width: clamp(var(--sl-sidebar-width), 24vw, 22rem);
-    --sl-content-width: min(80rem, calc(100vw - var(--sl-content-inline-start, var(--sl-sidebar-width)) - var(--nv-doc-toc-width)));
+    --nv-doc-toc-width: clamp(13rem, 15vw, 16rem);
+    --sl-content-width: min(80rem, calc(100vw - var(--sl-content-inline-start, var(--sl-sidebar-width)) - var(--nv-doc-toc-width) - 2 * var(--sl-content-pad-x)));
   }
 
   html[data-has-sidebar][data-has-toc] .right-sidebar-container {
-    width: calc(var(--nv-doc-toc-width) + (100% - var(--sl-content-width) - var(--nv-doc-toc-width)) / 2);
+    width: calc(var(--nv-doc-toc-width) + max(0rem, (100% - var(--sl-content-width) - var(--nv-doc-toc-width)) / 2));
   }
 
   html[data-has-sidebar][data-has-toc] .main-pane {
-    width: calc(var(--sl-content-width) + (100% - var(--sl-content-width) - var(--nv-doc-toc-width)) / 2);
+    width: calc(var(--sl-content-width) + max(0rem, (100% - var(--sl-content-width) - var(--nv-doc-toc-width)) / 2));
   }
 
   html[data-has-sidebar][data-has-toc] .right-sidebar-panel .sl-container {
     width: calc(var(--nv-doc-toc-width) - 2 * var(--sl-sidebar-pad-x));
     max-width: none;
+  }
+}
+
+@media (min-width: 94rem) {
+  html[data-has-sidebar][data-has-toc] {
+    --nv-doc-toc-width: clamp(18rem, 18vw, 22rem);
   }
 }
 
@@ -155,10 +162,10 @@ body::-webkit-scrollbar-thumb {
   border-radius: var(--nv-ui-radius);
   background-color: color-mix(in srgb, var(--sl-rapide-ui-bg-color) 96%, var(--sl-color-bg));
   color: var(--sl-color-text);
-  font-size: var(--sl-text-sm);
-  line-height: 1.2;
-  min-height: 2rem;
-  padding: 0.4rem 2rem 0.4rem 0.625rem;
+  font-size: 13px;
+  height: 24px;
+  line-height: 24px;
+  padding: 0 10px;
   box-shadow: none;
 }
 
@@ -170,21 +177,6 @@ body::-webkit-scrollbar-thumb {
   outline: none;
   border-color: var(--sl-color-accent);
   box-shadow: none;
-}
-
-.sidebar-tree-search-icon {
-  position: absolute;
-  right: 0.65rem;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 1rem;
-  height: 1rem;
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='currentColor' d='M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='currentColor' d='M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z'/%3E%3C/svg%3E");
-  -webkit-mask-size: 100%;
-  mask-size: 100%;
-  background-color: var(--sl-color-gray-3);
-  pointer-events: none;
 }
 
 .sidebar-tree-no-results {
@@ -279,7 +271,7 @@ site-search dialog #starlight__search {
   height: 1.7rem;
 }
 
-/* Keep Rapide theme overall, but restore Starlight-like default sidebar styling. */
+/* Keep Rapide theme overall, but restore Starlight-like default sidebar styling */
 .sidebar-pane {
   border-inline-end: 1px solid var(--sl-color-hairline-shade) !important;
 }

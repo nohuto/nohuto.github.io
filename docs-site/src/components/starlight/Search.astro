@@ -1,5 +1,4 @@
 ---
-import { Icon } from '@astrojs/starlight/components';
 import project from 'virtual:starlight/project-context';
 
 const pagefindTranslations = {
@@ -22,7 +21,7 @@ if (project.trailingSlash === 'never') dataAttributes['data-strip-trailing-slash
 		aria-label={Astro.locals.t('search.label')}
 		aria-keyshortcuts="Control+K"
 	>
-		<Icon name="magnifier" />
+		<span class="search-button-icon" aria-hidden="true"></span>
 		<span class="sl-hidden md:sl-block" aria-hidden="true">{Astro.locals.t('search.label')}</span>
 		<kbd class="sl-hidden md:sl-flex" style="display: none;">
 			<kbd>{Astro.locals.t('search.ctrlKey')}</kbd><kbd>K</kbd>
@@ -177,6 +176,16 @@ if (project.trailingSlash === 'never') dataAttributes['data-strip-trailing-slash
 			font-size: var(--sl-text-xl);
 		}
 
+		.search-button-icon {
+			width: 1em;
+			height: 1em;
+			background-color: currentColor;
+			-webkit-mask-image: var(--nv-search-icon);
+			mask-image: var(--nv-search-icon);
+			-webkit-mask-size: 100%;
+			mask-size: 100%;
+		}
+
 		@media (min-width: 50rem) {
 			button[data-open-modal] {
 				border: 1px solid var(--sl-color-gray-5);
@@ -314,6 +323,8 @@ if (project.trailingSlash === 'never') dataAttributes['data-strip-trailing-slash
 
 		#starlight__search .pagefind-ui__form::before {
 			--pagefind-ui-text: var(--sl-color-gray-1);
+			-webkit-mask-image: var(--nv-search-icon);
+			mask-image: var(--nv-search-icon);
 			opacity: 1;
 		}
 
