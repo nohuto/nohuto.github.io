@@ -62,10 +62,12 @@ html:not([data-has-sidebar]) {
 
   html[data-has-sidebar][data-has-toc] .main-pane main {
     min-width: 0;
+    width: 100%;
   }
 
   html[data-has-sidebar][data-has-toc] .main-pane .sl-container {
-    width: 100%;
+    box-sizing: border-box;
+    width: auto;
     max-width: var(--nv-doc-main-width);
     margin-inline: auto;
   }
@@ -100,6 +102,17 @@ html:not([data-has-sidebar]) {
 @media (min-width: 120rem) {
   html[data-has-sidebar][data-has-toc] .main-frame > .lg\:sl-flex {
     justify-content: center;
+  }
+}
+
+@media (min-width: 72rem) {
+  body:has(.starlight-view-modes-zen-mode-no-sidebar.starlight-view-modes-zen-mode-no-table-of-contents) .main-frame > .lg\:sl-flex {
+    display: block;
+    width: 100%;
+  }
+
+  body:has(.starlight-view-modes-zen-mode-no-sidebar.starlight-view-modes-zen-mode-no-table-of-contents) .main-pane {
+    width: 100% !important;
   }
 }
 
@@ -281,6 +294,16 @@ site-search dialog #starlight__search {
   --sl-search-corners: var(--nv-ui-radius);
   --pagefind-ui-border-radius: var(--nv-ui-radius);
   --pagefind-ui-image-border-radius: var(--nv-ui-radius);
+}
+
+html .starlight-view-modes-social-link-a {
+  color: var(--sl-color-gray-2);
+}
+
+html .starlight-view-modes-social-link-a:is(:hover, :focus-visible) {
+  color: var(--sl-color-accent-high);
+  opacity: 1;
+  outline: none;
 }
 
 @media (min-width: 50rem) {

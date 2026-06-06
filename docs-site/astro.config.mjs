@@ -70,8 +70,8 @@ export default defineConfig({
             displayOptions: {
               showHeader: false,
               showSidebar: false,
-              showTableOfContents: true,
-              showFooter: true,
+              showTableOfContents: false,
+              showFooter: false,
             },
           },
         }),

@@ -31,35 +31,27 @@ const isTemplateSplash = entry.data.template === 'splash';
     margin-top: 0.35rem;
   }
 
-  :global(body:has(.starlight-view-modes-zen-mode-no-header)) .docs-page-title-row {
+  body:has(.starlight-view-modes-zen-mode-no-header):has(.starlight-view-modes-zen-mode-no-table-of-contents) .docs-page-title-row {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: start;
-    column-gap: 0.8rem;
+    grid-template-columns: 1fr 2rem;
+    align-items: center;
   }
 
-  :global(body:has(.starlight-view-modes-zen-mode-no-header)) .docs-page-title-switcher {
-    display: inline-flex;
-    margin-top: 1.05rem;
-  }
-
-  :global(body:has(.starlight-view-modes-zen-mode-no-header) .docs-page-title-switcher a) {
-    color: var(--sl-color-gray-2);
-  }
-
-  :global(body:has(.starlight-view-modes-zen-mode-no-header) .docs-page-title-switcher a:hover),
-  :global(body:has(.starlight-view-modes-zen-mode-no-header) .docs-page-title-switcher a:focus-visible) {
-    color: var(--sl-color-accent-high);
+  body:has(.starlight-view-modes-zen-mode-no-header):has(.starlight-view-modes-zen-mode-no-table-of-contents) .docs-page-title-switcher {
+    display: flex !important;
+    margin-top: 0;
   }
 
   @media (max-width: 50rem) {
-    :global(body:has(.starlight-view-modes-zen-mode-no-header)) .docs-page-title-row {
-      grid-template-columns: minmax(0, 1fr);
+    body:has(.starlight-view-modes-zen-mode-no-header) .docs-page-title-row {
+      display: grid;
+      grid-template-columns: 1fr 2rem;
+      align-items: center;
     }
 
-    :global(body:has(.starlight-view-modes-zen-mode-no-header)) .docs-page-title-switcher {
-      margin-top: 0.5rem;
-      justify-content: flex-start;
+    body:has(.starlight-view-modes-zen-mode-no-header) .docs-page-title-switcher {
+      display: flex !important;
+      margin-top: 0;
     }
   }
 </style>
