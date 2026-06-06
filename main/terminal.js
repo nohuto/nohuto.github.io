@@ -80,7 +80,7 @@ function initConsoleWindow() {
   windowEl.dataset.ready = 'true';
 
   const parent = windowEl.parentElement;
-  let initialPositionTries = 0;
+  let positionTries = 0;
 
   const getParentSize = () => {
     const rect = parent.getBoundingClientRect();
@@ -95,29 +95,56 @@ function initConsoleWindow() {
     height: Math.max(0, windowEl.offsetHeight || windowEl.getBoundingClientRect().height || 0)
   });
 
-  const centerPosition = () => {
-    if (getComputedStyle(windowEl).position !== 'absolute') {
-      windowEl.dataset.positioned = 'true';
-      return true;
-    }
-
+  const getMetrics = () => {
     const parentSize = getParentSize();
     const windowSize = getWindowSize();
-    if ((!parentSize.width || !parentSize.height || !windowSize.width || !windowSize.height) && initialPositionTries < 8) {
-      initialPositionTries += 1;
-      requestAnimationFrame(centerPosition);
-      return false;
-    }
+    return {
+      parentWidth: parentSize.width,
+      parentHeight: parentSize.height,
+      windowWidth: windowSize.width,
+      windowHeight: windowSize.height,
+      maxLeft: Math.max(0, parentSize.width - windowSize.width),
+      maxTop: Math.max(0, parentSize.height - windowSize.height)
+    };
+  };
 
-    const maxLeft = Math.max(0, parentSize.width - windowSize.width);
-    const maxTop = Math.max(0, parentSize.height - windowSize.height);
+  const isAbsoluteWindow = () => getComputedStyle(windowEl).position === 'absolute';
+
+  const hasMetrics = metrics => metrics.parentWidth && metrics.parentHeight && metrics.windowWidth && metrics.windowHeight;
+
+  const setPosition = (left, top, metrics = getMetrics()) => {
     windowEl.style.transform = 'none';
     windowEl.style.inset = 'auto';
     windowEl.style.margin = '0';
-    windowEl.style.left = `${maxLeft / 2}px`;
-    windowEl.style.top = `${maxTop / 2}px`;
+    windowEl.style.left = `${Math.min(Math.max(0, left), metrics.maxLeft)}px`;
+    windowEl.style.top = `${Math.min(Math.max(0, top), metrics.maxTop)}px`;
     windowEl.dataset.positioned = 'true';
+  };
+
+  const centerPosition = () => {
+    if (!isAbsoluteWindow()) return true;
+    const metrics = getMetrics();
+    if (!hasMetrics(metrics)) {
+      if (positionTries < 8) {
+        positionTries += 1;
+        requestAnimationFrame(centerPosition);
+      }
+      return false;
+    }
+    positionTries = 0;
+    setPosition(metrics.maxLeft / 2, metrics.maxTop / 2, metrics);
     return true;
+  };
+
+  const materializeCurrentPosition = () => {
+    if (!isAbsoluteWindow()) return;
+    if (windowEl.dataset.positioned === 'true') {
+      setPosition(windowEl.offsetLeft, windowEl.offsetTop);
+      return;
+    }
+    const parentRect = parent.getBoundingClientRect();
+    const rect = windowEl.getBoundingClientRect();
+    setPosition(rect.left - parentRect.left, rect.top - parentRect.top);
   };
 
   const clampPosition = () => {
@@ -125,14 +152,7 @@ function initConsoleWindow() {
       centerPosition();
       return;
     }
-    const parentSize = getParentSize();
-    const windowSize = getWindowSize();
-    const maxLeft = Math.max(0, parentSize.width - windowSize.width);
-    const maxTop = Math.max(0, parentSize.height - windowSize.height);
-    const currentLeft = windowEl.offsetLeft;
-    const currentTop = windowEl.offsetTop;
-    windowEl.style.left = `${Math.min(Math.max(0, currentLeft), maxLeft)}px`;
-    windowEl.style.top = `${Math.min(Math.max(0, currentTop), maxTop)}px`;
+    setPosition(windowEl.offsetLeft, windowEl.offsetTop);
   };
 
   const scheduleClampPosition = () => {
@@ -140,14 +160,12 @@ function initConsoleWindow() {
     if (consoleClampRaf) return;
     consoleClampRaf = requestAnimationFrame(() => {
       consoleClampRaf = 0;
+      positionTries = 0;
       clampPosition();
     });
   };
 
-  requestAnimationFrame(() => {
-    centerPosition();
-    clampPosition();
-  });
+  requestAnimationFrame(clampPosition);
 
   if (consoleResizeObserver) {
     consoleResizeObserver.disconnect();
@@ -159,6 +177,7 @@ function initConsoleWindow() {
   }
   if (window.ResizeObserver) {
     consoleResizeObserver = new ResizeObserver(scheduleClampPosition);
+    consoleResizeObserver.observe(parent);
     consoleResizeObserver.observe(windowEl);
   }
 
@@ -178,17 +197,14 @@ function initConsoleWindow() {
   handle.addEventListener('pointerdown', e => {
     if (e.button !== 0) return;
     e.preventDefault();
-    centerPosition();
+    materializeCurrentPosition();
     windowEl.dataset.userPositioned = 'true';
     windowEl.style.transform = 'none';
     const startX = e.clientX;
     const startY = e.clientY;
     const startLeft = windowEl.offsetLeft;
     const startTop = windowEl.offsetTop;
-    const parentSize = getParentSize();
-    const windowSize = getWindowSize();
-    const maxLeft = Math.max(0, parentSize.width - windowSize.width);
-    const maxTop = Math.max(0, parentSize.height - windowSize.height);
+    const { maxLeft, maxTop } = getMetrics();
     let rafId = 0;
     let pendingX = startX;
     let pendingY = startY;
