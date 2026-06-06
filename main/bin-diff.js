@@ -197,7 +197,6 @@ const writeFunctionCacheStore = store => {
     const normalized = { entries: Object.fromEntries(entries) };
     localStorage.setItem(BIN_DIFF_FUNCTION_CACHE_KEY, JSON.stringify(normalized));
   } catch {
-    // ignore quota and storage failures
   }
 };
 

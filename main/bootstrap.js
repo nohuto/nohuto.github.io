@@ -91,6 +91,5 @@
     setAttrIfValid('data-bg', safeGet(BG_KEY) || DEFAULT_BG, BG_OPTIONS, DEFAULT_BG);
     setAttrIfValid('data-font', safeGet(FONT_KEY), FONT_OPTIONS);
   } catch {
-    // ignore storage errors or blocked access
   }
 })();
