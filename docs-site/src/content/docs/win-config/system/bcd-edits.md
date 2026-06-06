@@ -34,6 +34,10 @@ Here are elements which I tracked via Procmon (taken from default store and the 
 
 Note that this doesn't show default states, instead it shows several options and their possible states. And obviously the descriptions are most likely parsed, means that even "useless" descriptions will be included whenever the mentioned MS docs above include them.
 
+| Prefix | Component |
+| --- | --- |
+| `Hal` / `Halp` | Hardware Abstraction Layer |
+
 ```c
 "HKLM\\BCD00000000\\Objects\\{current}\\Elements";
     "\\26000141"; "Element" = 01; // REG_BINARY, event = true, false = 00

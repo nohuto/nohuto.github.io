@@ -217,6 +217,10 @@ So practically `RITdemonTimerPowerSaveElapse` = `10` & `RITdemonTimerPowerSaveCo
 
 ## Miscellaneous Values
 
+| Prefix | Component |
+| --- | --- |
+| `Pop` | Power Manager |
+
 ```c
 "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Power";
     "CoalescingTimerInterval" = 1500; // PopCoalescingTimerInterval (0x000005DC) - Units: seconds (multiplies value by -10,000,000, one second in 100 ns units, so the default corresponds to a 25min cadence)

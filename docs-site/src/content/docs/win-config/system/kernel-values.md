@@ -22,6 +22,26 @@ The comments of some values with more details are based on pseudocode, if so I a
 
 Everything listed below is based on personal findings, mistakes may exist.
 
+| Prefix | Component |
+| --- | --- |
+| `Alpcp` | Advanced Local Procedure Calls |
+| `Cc` | Common Cache |
+| `Cm` / `Cmp` | Configuration manager |
+| `Dbgk` | Debugging Framework for user mode |
+| `Ex` / `Exp` | Executive support routines |
+| `Hvl` | Hypervisor library |
+| `Io` / `Iop` | I/O manager |
+| `Kd` / `Kdp` | Kernel debugger |
+| `Ke` / `Ki` | Kernel / Kernel internal |
+| `Mm` | Memory manager |
+| `Ob` / `Obp` | Object manager |
+| `Po` / `Pop` | Power manager |
+| `Ppm` | Processor power manager |
+| `Ps` / `Psp` | Process support |
+| `Rtlp` | Run-time library |
+| `Se` / `Sep` | Security Reference Monitor |
+| `Vf` / `Vi` / `Dif*` | Driver Verifier |
+
 ```c
 "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Kernel";
     "AdjustDpcThreshold" = 20; // KiAdjustDpcThreshold, per CPU countdown value. When it reaches 1, it's reloaded and current DPC queue depth is incremented up to DpcQueueDepth ("number of clock ticks before DpcQueueDepth is incremented if DPCs are not pending") (KeAccumulateTicks, KiInitPrcb)

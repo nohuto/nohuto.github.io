@@ -24,6 +24,10 @@ svchost.exe	RegSetValue	HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Ch
 
 ## Miscellaenous Notes
 
+| Prefix | Component |
+| --- | --- |
+| `Pop` | Power Manager |
+
 ```c
 "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Power";
     "SleepstudyAccountingEnabled" = 1; // SleepstudyHelperAccountingEnabled 
