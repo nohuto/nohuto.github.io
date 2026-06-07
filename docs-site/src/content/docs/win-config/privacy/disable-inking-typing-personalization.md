@@ -16,11 +16,11 @@ Used for better suggestions by creating a custom dictionary using your typing hi
 
 ![](https://github.com/nohuto/win-config/blob/main/privacy/images/inking.png?raw=true)
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Improve inking and typing recognition](https://www.noverse.dev/policies.html?p=TextInput*AllowLinguisticDataCollection) | `HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\TextInput` | `AllowLinguisticDataCollection` |
-| [Restrict Internet communication](https://www.noverse.dev/policies.html?p=ICM*InternetManagement_RestrictCommunication_2) | `HKLM\Software\Policies\Microsoft\Windows\HandwritingErrorReports`<br>`HKLM\Software\Policies\Microsoft\Windows\TabletPC` | `PreventHandwritingErrorReports`<br>`PreventHandwritingDataSharing` |
-| [Allow Windows Ink Workspace](https://www.noverse.dev/policies.html?p=WindowsInkWorkspace*AllowWindowsInkWorkspace) | `HKLM\Software\Policies\Microsoft\WindowsInkWorkspace` | `AllowWindowsInkWorkspace` |
-| [Allow suggested apps in Windows Ink Workspace](https://www.noverse.dev/policies.html?p=WindowsInkWorkspace*AllowSuggestedAppsInWindowsInkWorkspace) | `HKLM\Software\Policies\Microsoft\WindowsInkWorkspace` | `AllowSuggestedAppsInWindowsInkWorkspace` |
+| [Improve inking and typing recognition](https://noverse.dev/policies?p=TextInput*AllowLinguisticDataCollection) | `HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\TextInput` | `AllowLinguisticDataCollection` |
+| [Restrict Internet communication](https://noverse.dev/policies?p=ICM*InternetManagement_RestrictCommunication_2) | `HKLM\Software\Policies\Microsoft\Windows\HandwritingErrorReports`<br>`HKLM\Software\Policies\Microsoft\Windows\TabletPC` | `PreventHandwritingErrorReports`<br>`PreventHandwritingDataSharing` |
+| [Allow Windows Ink Workspace](https://noverse.dev/policies?p=WindowsInkWorkspace*AllowWindowsInkWorkspace) | `HKLM\Software\Policies\Microsoft\WindowsInkWorkspace` | `AllowWindowsInkWorkspace` |
+| [Allow suggested apps in Windows Ink Workspace](https://noverse.dev/policies?p=WindowsInkWorkspace*AllowSuggestedAppsInWindowsInkWorkspace) | `HKLM\Software\Policies\Microsoft\WindowsInkWorkspace` | `AllowSuggestedAppsInWindowsInkWorkspace` |

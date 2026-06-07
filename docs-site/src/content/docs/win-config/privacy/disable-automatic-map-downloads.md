@@ -59,9 +59,9 @@ if ( v6 < 0 )
 }
 ```
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Turn off Automatic Download and Update of Map Data](https://www.noverse.dev/policies.html?p=WinMaps*TurnOffAutoUpdate) | `HKLM\Software\Policies\Microsoft\Windows\Maps` | `AutoDownloadAndUpdateMapData` |
-| [Turn off unsolicited network traffic on the Offline Maps settings page](https://www.noverse.dev/policies.html?p=WinMaps*DisallowUntriggeredNetworkOnSettingsPage) | `HKLM\Software\Policies\Microsoft\Windows\Maps` | `AllowUntriggeredNetworkTrafficOnSettingsPage` |
+| [Turn off Automatic Download and Update of Map Data](https://noverse.dev/policies?p=WinMaps*TurnOffAutoUpdate) | `HKLM\Software\Policies\Microsoft\Windows\Maps` | `AutoDownloadAndUpdateMapData` |
+| [Turn off unsolicited network traffic on the Offline Maps settings page](https://noverse.dev/policies?p=WinMaps*DisallowUntriggeredNetworkOnSettingsPage) | `HKLM\Software\Policies\Microsoft\Windows\Maps` | `AllowUntriggeredNetworkTrafficOnSettingsPage` |

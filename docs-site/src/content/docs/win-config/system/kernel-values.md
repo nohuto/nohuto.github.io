@@ -82,7 +82,7 @@ Everything listed below is based on personal findings, mistakes may exist.
     // Policy for dynamic thread that is deemed important but run a short amount of time.
     "DynamicHeteroCpuPolicyMask" = 7; // (foreground status = 1, priority = 2, expected run time = 4)
     // Determine what is considered in assessing whether a thread is important.
-    "EnablePerCpuClockTickScheduling" = 0; // KiEnableClockTimerPerCpuTickScheduling, https://www.noverse.dev/docs/win-config/system/timer-expiration/#enablepercpuclocktickscheduling
+    "EnablePerCpuClockTickScheduling" = 0; // KiEnableClockTimerPerCpuTickScheduling, https://noverse.dev/docs/win-config/system/timer-expiration/#enablepercpuclocktickscheduling
     "EnableTickAccumulationFromAccountingPeriods" = 0; // KiEnableTickAccumulationFromAccountingPeriods, controls how CPU time used by threads etc. get counted?
                                                        // >= 2 = disabled (adds CPU time when clock ticks happen)
                                                        // 0/1/missing = enabled (measure time between accounting points)
@@ -137,7 +137,7 @@ Everything listed below is based on personal findings, mistakes may exist.
     "SeCompatFlags" = 0; // SeCompatFlags
     "SeLpacEnableWatsonReporting" = 0; // SeLpacEnableWatsonReporting, REG_DWORD, 0 disables, nonzero enables
     "SeLpacEnableWatsonThrottling" = 1; // SeLpacEnableWatsonThrottling
-    "SerializeTimerExpiration" = 1; // KiSerializeTimerExpiration, https://www.noverse.dev/docs/win-config/system/timer-expiration/#serializetimerexpiration
+    "SerializeTimerExpiration" = 1; // KiSerializeTimerExpiration, https://noverse.dev/docs/win-config/system/timer-expiration/#serializetimerexpiration
     "SeTokenDoesNotTrackSessionObject" = 0; // SeTokenDoesNotTrackSessionObject
     "SeTokenLeakDiag" = 0; // SeTokenLeakTracking
     "SeTokenSingletonAttributesConfig" = 3; // SepTokenSingletonAttributesConfig
@@ -510,7 +510,7 @@ if ( (ExpPoolFlags & 1) != 0 )
   KeCheckForTimer(BugCheckParameter3);
 ```
 
-[VfMiscKeInitializeTimerEx_Entry](https://github.com/nohuto/decompiled-pseudocode/tree/main/11-23H2/ntoskrnl/VfMiscKeInitializeTimerEx_Entry.c) calls [KeCheckForTimer](https://github.com/nohuto/decompiled-pseudocode/tree/main/11-23H2/ntoskrnl/KeCheckForTimer.c) for the timer object range ([only until `11-23H2`](https://www.noverse.dev/bin-diff.html?left=11-23H2&right=11-25H2&module=ntoskrnl&function=KeCheckForTimer.c&mode=side-by-side), builds above use [ViMiscValidateSynchronizationObject](https://github.com/nohuto/decompiled-pseudocode/tree/main/11-25H2/ntoskrnl/ViMiscValidateSynchronizationObject.c)).
+[VfMiscKeInitializeTimerEx_Entry](https://github.com/nohuto/decompiled-pseudocode/tree/main/11-23H2/ntoskrnl/VfMiscKeInitializeTimerEx_Entry.c) calls [KeCheckForTimer](https://github.com/nohuto/decompiled-pseudocode/tree/main/11-23H2/ntoskrnl/KeCheckForTimer.c) for the timer object range ([only until `11-23H2`](https://noverse.dev/bin-diff?left=11-23H2&right=11-25H2&module=ntoskrnl&function=KeCheckForTimer.c&mode=side-by-side), builds above use [ViMiscValidateSynchronizationObject](https://github.com/nohuto/decompiled-pseudocode/tree/main/11-25H2/ntoskrnl/ViMiscValidateSynchronizationObject.c)).
 
 ```c
 // VfMiscKeInitializeTimerEx_Entry (23H2)

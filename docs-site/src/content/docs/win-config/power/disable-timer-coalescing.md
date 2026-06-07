@@ -91,7 +91,7 @@ void InitTimerPowerSaving(void)
 }
 ```
 
-Looks like a typo from MS (`demon` = `daemon`), which got probably fixed within the first W11 builds, see  [bin-diff 2004 & 21H2](https://www.noverse.dev/bin-diff.html?left=2004&right=11-21H2&module=win32kfull&function=-InitTimerPowerSaving%40%40YAXXZ.c&mode=side-by-side) comparision (the value name didn't change).
+Looks like a typo from MS (`demon` = `daemon`), which got probably fixed within the first W11 builds, see  [bin-diff 2004 & 21H2](https://noverse.dev/bin-diff?left=2004&right=11-21H2&module=win32kfull&function=-InitTimerPowerSaving%40%40YAXXZ.c&mode=side-by-side) comparision (the value name didn't change).
 
 ### When TimerPowerSaving Applies
 

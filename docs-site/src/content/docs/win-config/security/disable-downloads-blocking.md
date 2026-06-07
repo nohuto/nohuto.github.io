@@ -31,8 +31,8 @@ Unblock-File -Path "C:\Path\Script.ps1" -> File
 dir C:\Path\*Files* | Unblock-File -> Multiple files 
 ```
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Do not preserve zone information in file attachments](https://www.noverse.dev/policies.html?p=AttachmentManager*AM_MarkZoneOnSavedAtttachments) | `HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments` | `SaveZoneInformation` |
+| [Do not preserve zone information in file attachments](https://noverse.dev/policies?p=AttachmentManager*AM_MarkZoneOnSavedAtttachments) | `HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments` | `SaveZoneInformation` |

@@ -30,10 +30,10 @@ See links below for a detailed documentation.
 
 - [network/assets | probing-NcsiConfigData.c](https://github.com/nohuto/win-config/blob/main/network/assets/probing-NcsiConfigData.c)
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Turn off Windows Network Connectivity Status Indicator active tests](https://www.noverse.dev/policies.html?p=ICM*NoActiveProbe) | `HKLM\Software\Policies\Microsoft\Windows\NetworkConnectivityStatusIndicator` | `NoActiveProbe` |
-| [DirectAccess Passive Mode](https://www.noverse.dev/policies.html?p=nca*PassiveMode) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\NetworkConnectivityAssistant` | `PassiveMode` |
-| [Specify passive polling](https://www.noverse.dev/policies.html?p=NCSI*NCSI_PassivePolling) | `HKLM\Software\Policies\Microsoft\Windows\NetworkConnectivityStatusIndicator` | `DisablePassivePolling` |
+| [Turn off Windows Network Connectivity Status Indicator active tests](https://noverse.dev/policies?p=ICM*NoActiveProbe) | `HKLM\Software\Policies\Microsoft\Windows\NetworkConnectivityStatusIndicator` | `NoActiveProbe` |
+| [DirectAccess Passive Mode](https://noverse.dev/policies?p=nca*PassiveMode) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\NetworkConnectivityAssistant` | `PassiveMode` |
+| [Specify passive polling](https://noverse.dev/policies?p=NCSI*NCSI_PassivePolling) | `HKLM\Software\Policies\Microsoft\Windows\NetworkConnectivityStatusIndicator` | `DisablePassivePolling` |

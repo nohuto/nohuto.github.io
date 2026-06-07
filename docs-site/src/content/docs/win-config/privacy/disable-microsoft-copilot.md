@@ -46,12 +46,12 @@ Miscellaneous notes:
 "Explorer.EXE","HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoInstalledPWAs\CopilotPWAPreinstallCompleted","SUCCESS","Type: REG_DWORD, Length: 4, Data: 1"
 ```
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Turn off Windows Copilot](https://www.noverse.dev/policies.html?p=WindowsCopilot*TurnOffWindowsCopilot) | `HKCU\SOFTWARE\Policies\Microsoft\Windows\WindowsCopilot` | `TurnOffWindowsCopilot` |
-| [Set Copilot Hardware Key](https://www.noverse.dev/policies.html?p=WindowsCopilot*SetCopilotHardwareKey) | `HKCU\SOFTWARE\Policies\Microsoft\Windows\CopilotKey` | `SetCopilotHardwareKey` |
-| [Disable Image Creator](https://www.noverse.dev/policies.html?p=WindowsCopilot*DisableImageCreator) | `HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Paint` | `DisableImageCreator` |
-| [Disable Cocreator](https://www.noverse.dev/policies.html?p=WindowsCopilot*DisableCocreator) | `HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Paint` | `DisableCocreator` |
-| [Disable generative fill](https://www.noverse.dev/policies.html?p=WindowsCopilot*DisableGenerativeFill) | `HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Paint` | `DisableGenerativeFill` |
+| [Turn off Windows Copilot](https://noverse.dev/policies?p=WindowsCopilot*TurnOffWindowsCopilot) | `HKCU\SOFTWARE\Policies\Microsoft\Windows\WindowsCopilot` | `TurnOffWindowsCopilot` |
+| [Set Copilot Hardware Key](https://noverse.dev/policies?p=WindowsCopilot*SetCopilotHardwareKey) | `HKCU\SOFTWARE\Policies\Microsoft\Windows\CopilotKey` | `SetCopilotHardwareKey` |
+| [Disable Image Creator](https://noverse.dev/policies?p=WindowsCopilot*DisableImageCreator) | `HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Paint` | `DisableImageCreator` |
+| [Disable Cocreator](https://noverse.dev/policies?p=WindowsCopilot*DisableCocreator) | `HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Paint` | `DisableCocreator` |
+| [Disable generative fill](https://noverse.dev/policies?p=WindowsCopilot*DisableGenerativeFill) | `HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Paint` | `DisableGenerativeFill` |

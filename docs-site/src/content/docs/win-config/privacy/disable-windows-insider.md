@@ -12,8 +12,8 @@ sidebar:
 
 `AllowBuildPreview` is used up to V1703, I'll still leave it. `Computer Configuration > Administrative Templates > Windows Component > Windows Update > Windows Update for Business : Manage Preview Builds` for W10+ versions.
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Toggle user control over Insider builds](https://www.noverse.dev/policies.html?p=AllowBuildPreview*AllowBuildPreview) | `HKLM\Software\Policies\Microsoft\Windows\PreviewBuilds` | `AllowBuildPreview` |
+| [Toggle user control over Insider builds](https://noverse.dev/policies?p=AllowBuildPreview*AllowBuildPreview) | `HKLM\Software\Policies\Microsoft\Windows\PreviewBuilds` | `AllowBuildPreview` |

@@ -34,12 +34,12 @@ HKLM\SOFTWARE\WOW6432Node\Policies\Microsoft\Windows\OneDrive
 \\OneDrive*
 ```
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Save documents to OneDrive by default](https://www.noverse.dev/policies.html?p=SkyDrive*DisableLibrariesDefaultSaveToOneDrive) | `HKLM\Software\Policies\Microsoft\Windows\OneDrive` | `DisableLibrariesDefaultSaveToOneDrive` |
-| [Prevent the usage of OneDrive for file storage on Windows 8.1](https://www.noverse.dev/policies.html?p=SkyDrive*PreventOnedriveFileSyncForBlue) | `HKLM\Software\Policies\Microsoft\Windows\OneDrive` | `DisableFileSync` |
-| [Prevent the usage of OneDrive for file storage](https://www.noverse.dev/policies.html?p=SkyDrive*PreventOnedriveFileSync) | `HKLM\Software\Policies\Microsoft\Windows\OneDrive` | `DisableFileSyncNGSC` |
-| [Prevent OneDrive files from syncing over metered connections](https://www.noverse.dev/policies.html?p=SkyDrive*PreventOneDriveFileSyncOnMeteredNetwork) | `HKLM\Software\Policies\Microsoft\Windows\OneDrive` | `DisableMeteredNetworkFileSync` |
-| [Prevent OneDrive from generating network traffic until the user signs in to OneDrive](https://www.noverse.dev/policies.html?p=SkyDrive*PreventNetworkTrafficPreUserSignIn) | `HKLM\SOFTWARE\Microsoft\OneDrive` | `PreventNetworkTrafficPreUserSignIn` |
+| [Save documents to OneDrive by default](https://noverse.dev/policies?p=SkyDrive*DisableLibrariesDefaultSaveToOneDrive) | `HKLM\Software\Policies\Microsoft\Windows\OneDrive` | `DisableLibrariesDefaultSaveToOneDrive` |
+| [Prevent the usage of OneDrive for file storage on Windows 8.1](https://noverse.dev/policies?p=SkyDrive*PreventOnedriveFileSyncForBlue) | `HKLM\Software\Policies\Microsoft\Windows\OneDrive` | `DisableFileSync` |
+| [Prevent the usage of OneDrive for file storage](https://noverse.dev/policies?p=SkyDrive*PreventOnedriveFileSync) | `HKLM\Software\Policies\Microsoft\Windows\OneDrive` | `DisableFileSyncNGSC` |
+| [Prevent OneDrive files from syncing over metered connections](https://noverse.dev/policies?p=SkyDrive*PreventOneDriveFileSyncOnMeteredNetwork) | `HKLM\Software\Policies\Microsoft\Windows\OneDrive` | `DisableMeteredNetworkFileSync` |
+| [Prevent OneDrive from generating network traffic until the user signs in to OneDrive](https://noverse.dev/policies?p=SkyDrive*PreventNetworkTrafficPreUserSignIn) | `HKLM\SOFTWARE\Microsoft\OneDrive` | `PreventNetworkTrafficPreUserSignIn` |

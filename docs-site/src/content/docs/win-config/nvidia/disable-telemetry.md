@@ -6,7 +6,7 @@ sidebar:
   order: 10
 ---
 
-Installing a [debloated driver](https://www.noverse.dev/docs/win-config/nvidia/debloated-driver/) is the first step, the option removes several files & preventing the system from sending telemetry data.
+Installing a [debloated driver](https://noverse.dev/docs/win-config/nvidia/debloated-driver/) is the first step, the option removes several files & preventing the system from sending telemetry data.
 
 ```json
 "HKLM\\SOFTWARE\\NVIDIA Corporation\\Global\\FTS": {

@@ -53,11 +53,11 @@ See your current execution policies via:
 Get-ExecutionPolicy -List
 ```
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Turn on Script Execution](https://www.noverse.dev/policies.html?p=PowerShellExecutionPolicy*EnableScripts) | `HKLM\Software\Policies\Microsoft\Windows\PowerShell`<br>`HKCU\Software\Policies\Microsoft\Windows\PowerShell` | `EnableScripts`<br>`ExecutionPolicy` |
-| [Turn on Module Logging](https://www.noverse.dev/policies.html?p=PowerShellExecutionPolicy*EnableModuleLogging) | `HKLM\Software\Policies\Microsoft\Windows\PowerShell\ModuleLogging`<br>`HKCU\Software\Policies\Microsoft\Windows\PowerShell\ModuleLogging` | `EnableModuleLogging` |
-| [Turn on PowerShell Transcription](https://www.noverse.dev/policies.html?p=PowerShellExecutionPolicy*EnableTranscripting) | `HKLM\Software\Policies\Microsoft\Windows\PowerShell\Transcription`<br>`HKCU\Software\Policies\Microsoft\Windows\PowerShell\Transcription` | `EnableTranscripting`<br>`OutputDirectory`<br>`EnableInvocationHeader` |
-| [Turn on PowerShell Script Block Logging](https://www.noverse.dev/policies.html?p=PowerShellExecutionPolicy*EnableScriptBlockLogging) | `HKLM\Software\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging`<br>`HKCU\Software\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging` | `EnableScriptBlockLogging`<br>`EnableScriptBlockInvocationLogging` |
+| [Turn on Script Execution](https://noverse.dev/policies?p=PowerShellExecutionPolicy*EnableScripts) | `HKLM\Software\Policies\Microsoft\Windows\PowerShell`<br>`HKCU\Software\Policies\Microsoft\Windows\PowerShell` | `EnableScripts`<br>`ExecutionPolicy` |
+| [Turn on Module Logging](https://noverse.dev/policies?p=PowerShellExecutionPolicy*EnableModuleLogging) | `HKLM\Software\Policies\Microsoft\Windows\PowerShell\ModuleLogging`<br>`HKCU\Software\Policies\Microsoft\Windows\PowerShell\ModuleLogging` | `EnableModuleLogging` |
+| [Turn on PowerShell Transcription](https://noverse.dev/policies?p=PowerShellExecutionPolicy*EnableTranscripting) | `HKLM\Software\Policies\Microsoft\Windows\PowerShell\Transcription`<br>`HKCU\Software\Policies\Microsoft\Windows\PowerShell\Transcription` | `EnableTranscripting`<br>`OutputDirectory`<br>`EnableInvocationHeader` |
+| [Turn on PowerShell Script Block Logging](https://noverse.dev/policies?p=PowerShellExecutionPolicy*EnableScriptBlockLogging) | `HKLM\Software\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging`<br>`HKCU\Software\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging` | `EnableScriptBlockLogging`<br>`EnableScriptBlockInvocationLogging` |

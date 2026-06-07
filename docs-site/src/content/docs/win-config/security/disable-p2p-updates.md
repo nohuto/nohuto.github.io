@@ -25,8 +25,8 @@ The option applies `0` = disables peer-to-peer (P2P) caching but still allows De
 
 Microsoft has a cmdlet for it, but seems like they didn't work much on it yet.
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Download Mode](https://www.noverse.dev/policies.html?p=DeliveryOptimization*DownloadMode) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization` | `DODownloadMode` |
+| [Download Mode](https://noverse.dev/policies?p=DeliveryOptimization*DownloadMode) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization` | `DODownloadMode` |

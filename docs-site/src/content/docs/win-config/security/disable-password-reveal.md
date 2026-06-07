@@ -12,9 +12,9 @@ sidebar:
 
 `Disable Picture Password Sign-In`: "This policy setting allows you to control whether a domain user can sign in using a picture password. If you enable this policy setting, a domain user can't set up or sign in with a picture password. If you disable or don't configure this policy setting, a domain user can set up and use a picture password. Note that the user's domain password will be cached in the system vault when using this feature."
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Turn off picture password sign-in](https://www.noverse.dev/policies.html?p=CredentialProviders*BlockDomainPicturePassword) | `HKLM\Software\Policies\Microsoft\Windows\System` | `BlockDomainPicturePassword` |
-| [Do not display the password reveal button](https://www.noverse.dev/policies.html?p=CredUI*DisablePasswordReveal) | `HKLM\Software\Policies\Microsoft\Windows\CredUI`<br>`HKCU\Software\Policies\Microsoft\Windows\CredUI` | `DisablePasswordReveal` |
+| [Turn off picture password sign-in](https://noverse.dev/policies?p=CredentialProviders*BlockDomainPicturePassword) | `HKLM\Software\Policies\Microsoft\Windows\System` | `BlockDomainPicturePassword` |
+| [Do not display the password reveal button](https://noverse.dev/policies?p=CredUI*DisablePasswordReveal) | `HKLM\Software\Policies\Microsoft\Windows\CredUI`<br>`HKCU\Software\Policies\Microsoft\Windows\CredUI` | `DisablePasswordReveal` |

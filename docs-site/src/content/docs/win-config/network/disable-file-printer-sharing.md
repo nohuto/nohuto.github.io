@@ -23,8 +23,8 @@ Name                           DisplayName                                      
 Ethernet                       File and Printer Sharing for Microsoft Networks    ms_server            False
 ```
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Allow printer sharing with Windows Sandbox](https://www.noverse.dev/policies.html?p=WindowsSandbox*AllowPrinterRedirection) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\Sandbox` | `AllowPrinterRedirection` |
+| [Allow printer sharing with Windows Sandbox](https://noverse.dev/policies?p=WindowsSandbox*AllowPrinterRedirection) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\Sandbox` | `AllowPrinterRedirection` |

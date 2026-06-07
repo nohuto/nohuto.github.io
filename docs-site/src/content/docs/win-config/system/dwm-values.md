@@ -190,16 +190,16 @@ Everything listed below is based on personal findings, mistakes may exist.
     // animation/colorization policy related
     "DefaultColorizationColorState" = 0; // REG_DWORD, nonzero sets bit (policy bit 0x4)
                                          // "This policy setting controls the default color for window frames when the user does not specify a color. If you enable this policy setting and specify a default color, this color is used in glass window frames, if the user does not specify a color. If you disable or do not configure this policy setting, the default internal color is used, if the user does not specify a color. Note: This policy setting can be used in conjunction with the "Prevent color changes of window frames" setting, to enforce a specific color for window frames that cannot be changed by users."
-                                         // https://www.noverse.dev/policies.html?p=DWM*DwmDefaultColorizationColor_2
+                                         // https://noverse.dev/policies?p=DWM*DwmDefaultColorizationColor_2
     "DisallowAnimations" = 0; // REG_DWORD, nonzero sets bit (policy bit 0x1) which disables DWM window animations (also causes DWM reject live preview / Aero Peek)
                               // https://github.com/nohuto/decompiled-pseudocode/blob/main/11-23H2/uDWM/-SetWindowAnimation@CDesktopManager@@SAX_N@Z.c
                               // https://github.com/nohuto/decompiled-pseudocode/blob/main/11-23H2/uDWM/-IsLivePreviewAllowed@CDesktopManager@@SA_NXZ.c
                               // "This policy setting controls the appearance of window animations such as those found when restoring, minimizing, and maximizing windows. If you enable this policy setting, window animations are turned off. If you disable or do not configure this policy setting, window animations are turned on. Changing this policy setting requires a logoff for it to be applied.
-                              // https://www.noverse.dev/policies.html?p=DWM*DwmDisallowAnimations_2
+                              // https://noverse.dev/policies?p=DWM*DwmDisallowAnimations_2
     "ForceDisableModeChangeAnimation" = 0; // REG_DWORD (bool), nonzero disables display mode change animations (duplicate/extend/disconnect style monitor change visuals)
     "DisallowColorizationColorChanges" = 0; // REG_DWORD nonzero sets bit (policy bit 0x2) which blocks DWM colorization parameter changes
                                             // This policy setting controls the ability to change the color of window frames. If you enable this policy setting, you prevent users from changing the default window frame color. If you disable or do not configure this policy setting, you allow users to change the default window frame color. Note: This policy setting can be used in conjunction with the "Specify a default color for window frames" policy setting, to enforce a specific color for window frames that cannot be changed by users."
-                                            // https://www.noverse.dev/policies.html?p=DWM*DwmDisallowColorizationColorChanges_1
+                                            // https://noverse.dev/policies?p=DWM*DwmDisallowColorizationColorChanges_1
 
     // uDWM colorization
     "AccentColor" = ?; // REG_DWORD, only read when ColorPrevalence is nonzero
@@ -347,7 +347,7 @@ You can see the differences by moving a blurry window above a animation, for exa
 
 ### [OverlayTestMode](https://github.com/nohuto/decompiled-pseudocode/blob/main/11-23H2/dwmcore/-InitializeDWMKeysFromRegistry@CCommonRegistryData@@CAXXZ.c)
 
-See [Multiplane Overlay (MPO)](https://www.noverse.dev/docs/win-config/system/dwm-values/#multiplane-overlay-mpo) for what MPO is.
+See [Multiplane Overlay (MPO)](https://noverse.dev/docs/win-config/system/dwm-values/#multiplane-overlay-mpo) for what MPO is.
 
 | Data | Meaning |
 | --- | --- |

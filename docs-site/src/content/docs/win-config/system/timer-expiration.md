@@ -43,7 +43,7 @@ if ( KiClockTimerPerCpu )
 `SerializeTimerExpiration` decides which processor timer table is used for kernel timer (`KTIMER`) expiration.
 
 - Disabled = current processor uses its own PRCB (processor control block) timer table
-- Enabled = uses CPU 0 timer table (`KiProcessorBlock[0]`), only the current clock owner is allowed to enter expiration handling (this also means that CPU 0 timer table is used, but the expiration code runs on the clock owner (`KiClockTimerOwner`), see [KiDynamicTickDisableReason](https://www.noverse.dev/docs/win-config/system/timer-expiration/#kidynamictickdisablereason))
+- Enabled = uses CPU 0 timer table (`KiProcessorBlock[0]`), only the current clock owner is allowed to enter expiration handling (this also means that CPU 0 timer table is used, but the expiration code runs on the clock owner (`KiClockTimerOwner`), see [KiDynamicTickDisableReason](https://noverse.dev/docs/win-config/system/timer-expiration/#kidynamictickdisablereason))
 
 ```c
 // SerializeTimerExpiration = 1

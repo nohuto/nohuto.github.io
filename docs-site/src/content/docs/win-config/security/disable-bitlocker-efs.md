@@ -33,8 +33,8 @@ ERROR_VOLUME_NOT_SUPPORT_EFS = 0x8007177E;
 
 - [Windows API - Error Defines](https://github.com/arizvisa/BugId-mWindowsAPI/blob/904a1c0bd22c019ef6ca8313945fe38f4ca26f30/mDefines/mErrorDefines.py#L1793)
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Do not allow encryption on all NTFS volumes](https://www.noverse.dev/policies.html?p=FileSys*DisableEncryption) | `HKLM\System\CurrentControlSet\Policies` | `NtfsDisableEncryption` |
+| [Do not allow encryption on all NTFS volumes](https://noverse.dev/policies?p=FileSys*DisableEncryption) | `HKLM\System\CurrentControlSet\Policies` | `NtfsDisableEncryption` |

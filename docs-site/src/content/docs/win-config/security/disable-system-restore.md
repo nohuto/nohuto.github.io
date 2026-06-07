@@ -14,9 +14,9 @@ Does:
 "wmiprvse.exe", "RegSetValue","HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SystemRestore\RPSessionInterval","Type: REG_DWORD, Length: 4, Data: 0"
 ```
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Turn off Configuration](https://www.noverse.dev/policies.html?p=SystemRestore*SR_DisableConfig) | `HKLM\Software\Policies\Microsoft\Windows NT\SystemRestore` | `DisableConfig` |
-| [Turn off System Restore](https://www.noverse.dev/policies.html?p=SystemRestore*SR_DisableSR) | `HKLM\Software\Policies\Microsoft\Windows NT\SystemRestore` | `DisableSR` |
+| [Turn off Configuration](https://noverse.dev/policies?p=SystemRestore*SR_DisableConfig) | `HKLM\Software\Policies\Microsoft\Windows NT\SystemRestore` | `DisableConfig` |
+| [Turn off System Restore](https://noverse.dev/policies?p=SystemRestore*SR_DisableSR) | `HKLM\Software\Policies\Microsoft\Windows NT\SystemRestore` | `DisableSR` |

@@ -150,8 +150,8 @@ Windows 7/XP:
 }
 ```
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Turn off Tablet PC touch input](https://www.noverse.dev/policies.html?p=TouchInput*TouchInputOff_2) | `HKLM\SOFTWARE\Policies\Microsoft\TabletPC` | `TurnOffTouchInput` |
+| [Turn off Tablet PC touch input](https://noverse.dev/policies?p=TouchInput*TouchInputOff_2) | `HKLM\SOFTWARE\Policies\Microsoft\TabletPC` | `TurnOffTouchInput` |

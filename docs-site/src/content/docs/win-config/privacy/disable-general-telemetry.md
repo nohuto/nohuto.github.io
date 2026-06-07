@@ -86,21 +86,21 @@ See [23H2.txt](https://raw.githubusercontent.com/nohuto/regkit/refs/heads/main/r
 \Registry\User\<CURRENT_USER_SID>\SOFTWARE\Policies\Microsoft\Windows\DataCollection : AllowTelemetry_PolicyManager
 ```
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Turn off Application Telemetry](https://www.noverse.dev/policies.html?p=AppCompat*AppCompatTurnOffApplicationImpactTelemetry) | `HKLM\Software\Policies\Microsoft\Windows\AppCompat` | `AITEnable` |
-| [Turn off Inventory Collector](https://www.noverse.dev/policies.html?p=AppCompat*AppCompatTurnOffProgramInventory) | `HKLM\Software\Policies\Microsoft\Windows\AppCompat` | `DisableInventory` |
-| [Allow Diagnostic Data](https://www.noverse.dev/policies.html?p=DataCollection*AllowTelemetry) | `HKLM\Software\Policies\Microsoft\Windows\DataCollection`<br>`HKCU\Software\Policies\Microsoft\Windows\DataCollection` | `AllowTelemetry` |
-| [Configure Authenticated Proxy usage for the Connected User Experience and Telemetry service](https://www.noverse.dev/policies.html?p=DataCollection*DisableEnterpriseAuthProxy) | `HKLM\Software\Policies\Microsoft\Windows\DataCollection` | `DisableEnterpriseAuthProxy` |
-| [Limit optional diagnostic data for Desktop Analytics](https://www.noverse.dev/policies.html?p=DataCollection*LimitEnhancedDiagnosticDataWindowsAnalytics) | `HKLM\Software\Policies\Microsoft\Windows\DataCollection` | `LimitEnhancedDiagnosticDataWindowsAnalytics` |
-| [Allow device name to be sent in Windows diagnostic data](https://www.noverse.dev/policies.html?p=DataCollection*AllowDeviceNameInDiagnosticData) | `HKLM\Software\Policies\Microsoft\Windows\DataCollection` | `AllowDeviceNameInTelemetry` |
-| [Configure diagnostic data opt-in settings user interface](https://www.noverse.dev/policies.html?p=DataCollection*ConfigureTelemetryOptInSettingsUx) | `HKLM\Software\Policies\Microsoft\Windows\DataCollection` | `DisableTelemetryOptInSettingsUx` |
-| [Configure diagnostic data opt-in change notifications](https://www.noverse.dev/policies.html?p=DataCollection*ConfigureTelemetryOptInChangeNotification) | `HKLM\Software\Policies\Microsoft\Windows\DataCollection` | `DisableTelemetryOptInChangeNotification` |
-| [Disable deleting diagnostic data](https://www.noverse.dev/policies.html?p=DataCollection*DisableDeviceDelete) | `HKLM\Software\Policies\Microsoft\Windows\DataCollection` | `DisableDeviceDelete` |
-| [Disable diagnostic data viewer](https://www.noverse.dev/policies.html?p=DataCollection*DisableDiagnosticDataViewer) | `HKLM\Software\Policies\Microsoft\Windows\DataCollection` | `DisableDiagnosticDataViewer` |
-| [Limit Diagnostic Log Collection](https://www.noverse.dev/policies.html?p=DataCollection*LimitDiagnosticLogCollection) | `HKLM\Software\Policies\Microsoft\Windows\DataCollection` | `LimitDiagnosticLogCollection` |
-| [Limit Dump Collection](https://www.noverse.dev/policies.html?p=DataCollection*LimitDumpCollection) | `HKLM\Software\Policies\Microsoft\Windows\DataCollection` | `LimitDumpCollection` |
-| [Configure the Commercial ID](https://www.noverse.dev/policies.html?p=DataCollection*CommercialIdPolicy) | `HKLM\Software\Policies\Microsoft\Windows\DataCollection` | `CommercialId` |
-| [Turn off the advertising ID](https://www.noverse.dev/policies.html?p=UserProfiles*DisableAdvertisingId) | `HKLM\Software\Policies\Microsoft\Windows\AdvertisingInfo` | `DisabledByGroupPolicy` |
+| [Turn off Application Telemetry](https://noverse.dev/policies?p=AppCompat*AppCompatTurnOffApplicationImpactTelemetry) | `HKLM\Software\Policies\Microsoft\Windows\AppCompat` | `AITEnable` |
+| [Turn off Inventory Collector](https://noverse.dev/policies?p=AppCompat*AppCompatTurnOffProgramInventory) | `HKLM\Software\Policies\Microsoft\Windows\AppCompat` | `DisableInventory` |
+| [Allow Diagnostic Data](https://noverse.dev/policies?p=DataCollection*AllowTelemetry) | `HKLM\Software\Policies\Microsoft\Windows\DataCollection`<br>`HKCU\Software\Policies\Microsoft\Windows\DataCollection` | `AllowTelemetry` |
+| [Configure Authenticated Proxy usage for the Connected User Experience and Telemetry service](https://noverse.dev/policies?p=DataCollection*DisableEnterpriseAuthProxy) | `HKLM\Software\Policies\Microsoft\Windows\DataCollection` | `DisableEnterpriseAuthProxy` |
+| [Limit optional diagnostic data for Desktop Analytics](https://noverse.dev/policies?p=DataCollection*LimitEnhancedDiagnosticDataWindowsAnalytics) | `HKLM\Software\Policies\Microsoft\Windows\DataCollection` | `LimitEnhancedDiagnosticDataWindowsAnalytics` |
+| [Allow device name to be sent in Windows diagnostic data](https://noverse.dev/policies?p=DataCollection*AllowDeviceNameInDiagnosticData) | `HKLM\Software\Policies\Microsoft\Windows\DataCollection` | `AllowDeviceNameInTelemetry` |
+| [Configure diagnostic data opt-in settings user interface](https://noverse.dev/policies?p=DataCollection*ConfigureTelemetryOptInSettingsUx) | `HKLM\Software\Policies\Microsoft\Windows\DataCollection` | `DisableTelemetryOptInSettingsUx` |
+| [Configure diagnostic data opt-in change notifications](https://noverse.dev/policies?p=DataCollection*ConfigureTelemetryOptInChangeNotification) | `HKLM\Software\Policies\Microsoft\Windows\DataCollection` | `DisableTelemetryOptInChangeNotification` |
+| [Disable deleting diagnostic data](https://noverse.dev/policies?p=DataCollection*DisableDeviceDelete) | `HKLM\Software\Policies\Microsoft\Windows\DataCollection` | `DisableDeviceDelete` |
+| [Disable diagnostic data viewer](https://noverse.dev/policies?p=DataCollection*DisableDiagnosticDataViewer) | `HKLM\Software\Policies\Microsoft\Windows\DataCollection` | `DisableDiagnosticDataViewer` |
+| [Limit Diagnostic Log Collection](https://noverse.dev/policies?p=DataCollection*LimitDiagnosticLogCollection) | `HKLM\Software\Policies\Microsoft\Windows\DataCollection` | `LimitDiagnosticLogCollection` |
+| [Limit Dump Collection](https://noverse.dev/policies?p=DataCollection*LimitDumpCollection) | `HKLM\Software\Policies\Microsoft\Windows\DataCollection` | `LimitDumpCollection` |
+| [Configure the Commercial ID](https://noverse.dev/policies?p=DataCollection*CommercialIdPolicy) | `HKLM\Software\Policies\Microsoft\Windows\DataCollection` | `CommercialId` |
+| [Turn off the advertising ID](https://noverse.dev/policies?p=UserProfiles*DisableAdvertisingId) | `HKLM\Software\Policies\Microsoft\Windows\AdvertisingInfo` | `DisabledByGroupPolicy` |

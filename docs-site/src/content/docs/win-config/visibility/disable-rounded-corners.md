@@ -6,7 +6,7 @@ sidebar:
   order: 3
 ---
 
-This currently works via [Win11DisableRoundedCorners](https://github.com/valinet/Win11DisableRoundedCorners) which works fine on [latest version since the function exists/works the same on latest builds](https://www.noverse.dev/bin-diff.html). Note that the revert doesn't run `sfc /scannow` to restore proper file permissions to `uDWM.dll` since it does a lot more than restoring permissions. If you're aware if it, run the command after reverting the option.
+This currently works via [Win11DisableRoundedCorners](https://github.com/valinet/Win11DisableRoundedCorners) which works fine on [latest version since the function exists/works the same on latest builds](https://noverse.dev/bin-diff). Note that the revert doesn't run `sfc /scannow` to restore proper file permissions to `uDWM.dll` since it does a lot more than restoring permissions. If you're aware if it, run the command after reverting the option.
 
 It works by overriding the first 8 bytes in the function with `48 C7 C0 00 00 00 00 C3`:
 

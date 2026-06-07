@@ -148,28 +148,28 @@ HKCU\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\windows.im
 HKCU\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.StartupApp\Enabled // Startup App Notification
 ```
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Turn off account notifications in Start](https://www.noverse.dev/policies.html?p=AccountNotifications*DisableAccountNotifications) | `HKCU\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\AccountNotifications` | `DisableAccountNotifications` |
-| [Turn off access to the Store](https://www.noverse.dev/policies.html?p=ICM*ShellNoUseStoreOpenWith_2) | `HKLM\Software\Policies\Microsoft\Windows\Explorer` | `NoUseStoreOpenWith` |
-| [Turn off app notifications on the lock screen](https://www.noverse.dev/policies.html?p=Logon*DisableLockScreenAppNotifications) | `HKLM\Software\Policies\Microsoft\Windows\System` | `DisableLockScreenAppNotifications` |
-| [Remove Notifications and Action Center](https://www.noverse.dev/policies.html?p=Taskbar*DisableNotificationCenter) | `HKLM\Software\Policies\Microsoft\Windows\Explorer`<br>`HKCU\Software\Policies\Microsoft\Windows\Explorer` | `DisableNotificationCenter` |
-| [Notify Malicious](https://www.noverse.dev/policies.html?p=WebThreatDefense*NotifyMalicious) | `HKLM\Software\Policies\Microsoft\Windows\WTDS\Components` | `NotifyMalicious` |
-| [Notify Password Reuse](https://www.noverse.dev/policies.html?p=WebThreatDefense*NotifyPasswordReuse) | `HKLM\Software\Policies\Microsoft\Windows\WTDS\Components` | `NotifyPasswordReuse` |
-| [Notify Unsafe App](https://www.noverse.dev/policies.html?p=WebThreatDefense*NotifyUnsafeApp) | `HKLM\Software\Policies\Microsoft\Windows\WTDS\Components` | `NotifyUnsafeApp` |
-| [Turn off enhanced notifications](https://www.noverse.dev/policies.html?p=WindowsDefender*Reporting_DisableEnhancedNotifications) | `HKLM\Software\Policies\Microsoft\Windows Defender\Reporting` | `DisableEnhancedNotifications` |
-| [Hide all notifications](https://www.noverse.dev/policies.html?p=WindowsDefenderSecurityCenter*Notifications_DisableNotifications) | `HKLM\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Notifications` | `DisableNotifications` |
-| [Hide non-critical notifications](https://www.noverse.dev/policies.html?p=WindowsDefenderSecurityCenter*Notifications_DisableEnhancedNotifications) | `HKLM\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Notifications` | `DisableEnhancedNotifications` |
-| [Turn off tile notifications](https://www.noverse.dev/policies.html?p=WPN*NoTileNotification) | `HKCU\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\PushNotifications` | `NoTileApplicationNotification` |
-| [Turn on multiple expanded toast notifications in action center](https://www.noverse.dev/policies.html?p=WPN*ExpandedToastNotifications) | `HKCU\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications` | `EnableExpandedToastNotifications` |
-| [Turn off toast notifications](https://www.noverse.dev/policies.html?p=WPN*NoToastNotification) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\PushNotifications`<br>`HKCU\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\PushNotifications` | `NoToastApplicationNotification` |
-| [Turn off toast notifications on the lock screen](https://www.noverse.dev/policies.html?p=WPN*NoLockScreenToastNotification) | `HKCU\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\PushNotifications` | `NoToastApplicationNotificationOnLockScreen` |
-| [Turn off notifications network usage](https://www.noverse.dev/policies.html?p=WPN*NoCloudNotification) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\PushNotifications` | `NoCloudApplicationNotification` |
-| [Turn off notification mirroring](https://www.noverse.dev/policies.html?p=WPN*NoNotificationMirroring) | `HKCU\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\PushNotifications` | `DisallowNotificationMirroring` |
-| [Show notification bell icon](https://www.noverse.dev/policies.html?p=Taskbar*AlwaysShowNotificationIcon) | `HKCU\Software\Policies\Microsoft\Windows\Explorer` | `AlwaysShowNotificationIcon` |
-| [Disable showing balloon notifications as toasts.](https://www.noverse.dev/policies.html?p=Taskbar*EnableLegacyBalloonNotifications) | `HKCU\Software\Policies\Microsoft\Windows\Explorer` | `EnableLegacyBalloonNotifications` |
-| [Turn off notification area cleanup](https://www.noverse.dev/policies.html?p=StartMenu*NoAutoTrayNotify) | `HKCU\Software\Policies\Microsoft\Windows\Explorer` | `NoAutoTrayNotify` |
-| [Turn off all balloon notifications](https://www.noverse.dev/policies.html?p=Taskbar*TaskbarNoNotification) | `HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer` | `TaskbarNoNotification` |
-| [Turn off feature advertisement balloon notifications](https://www.noverse.dev/policies.html?p=Taskbar*NoBalloonFeatureAdvertisements) | `HKCU\Software\Policies\Microsoft\Windows\Explorer` | `NoBalloonFeatureAdvertisements` |
+| [Turn off account notifications in Start](https://noverse.dev/policies?p=AccountNotifications*DisableAccountNotifications) | `HKCU\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\AccountNotifications` | `DisableAccountNotifications` |
+| [Turn off access to the Store](https://noverse.dev/policies?p=ICM*ShellNoUseStoreOpenWith_2) | `HKLM\Software\Policies\Microsoft\Windows\Explorer` | `NoUseStoreOpenWith` |
+| [Turn off app notifications on the lock screen](https://noverse.dev/policies?p=Logon*DisableLockScreenAppNotifications) | `HKLM\Software\Policies\Microsoft\Windows\System` | `DisableLockScreenAppNotifications` |
+| [Remove Notifications and Action Center](https://noverse.dev/policies?p=Taskbar*DisableNotificationCenter) | `HKLM\Software\Policies\Microsoft\Windows\Explorer`<br>`HKCU\Software\Policies\Microsoft\Windows\Explorer` | `DisableNotificationCenter` |
+| [Notify Malicious](https://noverse.dev/policies?p=WebThreatDefense*NotifyMalicious) | `HKLM\Software\Policies\Microsoft\Windows\WTDS\Components` | `NotifyMalicious` |
+| [Notify Password Reuse](https://noverse.dev/policies?p=WebThreatDefense*NotifyPasswordReuse) | `HKLM\Software\Policies\Microsoft\Windows\WTDS\Components` | `NotifyPasswordReuse` |
+| [Notify Unsafe App](https://noverse.dev/policies?p=WebThreatDefense*NotifyUnsafeApp) | `HKLM\Software\Policies\Microsoft\Windows\WTDS\Components` | `NotifyUnsafeApp` |
+| [Turn off enhanced notifications](https://noverse.dev/policies?p=WindowsDefender*Reporting_DisableEnhancedNotifications) | `HKLM\Software\Policies\Microsoft\Windows Defender\Reporting` | `DisableEnhancedNotifications` |
+| [Hide all notifications](https://noverse.dev/policies?p=WindowsDefenderSecurityCenter*Notifications_DisableNotifications) | `HKLM\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Notifications` | `DisableNotifications` |
+| [Hide non-critical notifications](https://noverse.dev/policies?p=WindowsDefenderSecurityCenter*Notifications_DisableEnhancedNotifications) | `HKLM\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Notifications` | `DisableEnhancedNotifications` |
+| [Turn off tile notifications](https://noverse.dev/policies?p=WPN*NoTileNotification) | `HKCU\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\PushNotifications` | `NoTileApplicationNotification` |
+| [Turn on multiple expanded toast notifications in action center](https://noverse.dev/policies?p=WPN*ExpandedToastNotifications) | `HKCU\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications` | `EnableExpandedToastNotifications` |
+| [Turn off toast notifications](https://noverse.dev/policies?p=WPN*NoToastNotification) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\PushNotifications`<br>`HKCU\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\PushNotifications` | `NoToastApplicationNotification` |
+| [Turn off toast notifications on the lock screen](https://noverse.dev/policies?p=WPN*NoLockScreenToastNotification) | `HKCU\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\PushNotifications` | `NoToastApplicationNotificationOnLockScreen` |
+| [Turn off notifications network usage](https://noverse.dev/policies?p=WPN*NoCloudNotification) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\PushNotifications` | `NoCloudApplicationNotification` |
+| [Turn off notification mirroring](https://noverse.dev/policies?p=WPN*NoNotificationMirroring) | `HKCU\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\PushNotifications` | `DisallowNotificationMirroring` |
+| [Show notification bell icon](https://noverse.dev/policies?p=Taskbar*AlwaysShowNotificationIcon) | `HKCU\Software\Policies\Microsoft\Windows\Explorer` | `AlwaysShowNotificationIcon` |
+| [Disable showing balloon notifications as toasts.](https://noverse.dev/policies?p=Taskbar*EnableLegacyBalloonNotifications) | `HKCU\Software\Policies\Microsoft\Windows\Explorer` | `EnableLegacyBalloonNotifications` |
+| [Turn off notification area cleanup](https://noverse.dev/policies?p=StartMenu*NoAutoTrayNotify) | `HKCU\Software\Policies\Microsoft\Windows\Explorer` | `NoAutoTrayNotify` |
+| [Turn off all balloon notifications](https://noverse.dev/policies?p=Taskbar*TaskbarNoNotification) | `HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer` | `TaskbarNoNotification` |
+| [Turn off feature advertisement balloon notifications](https://noverse.dev/policies?p=Taskbar*NoBalloonFeatureAdvertisements) | `HKCU\Software\Policies\Microsoft\Windows\Explorer` | `NoBalloonFeatureAdvertisements` |

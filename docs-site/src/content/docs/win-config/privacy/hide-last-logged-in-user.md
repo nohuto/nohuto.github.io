@@ -29,9 +29,9 @@ services.exe	RegSetValue	HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies
 services.exe	RegSetValue	HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\DontDisplayUserName	Type: REG_DWORD, Length: 4, Data: 0
 ```
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Display information about previous logons during user logon](https://www.noverse.dev/policies.html?p=WinLogon*DisplayLastLogonInfoDescription) | `HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System` | `DisplayLastLogonInfo` |
-| [Remove logon hours expiration warnings](https://www.noverse.dev/policies.html?p=WinLogon*LogonHoursNotificationPolicyDescription) | `HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System` | `DontDisplayLogonHoursWarnings` |
+| [Display information about previous logons during user logon](https://noverse.dev/policies?p=WinLogon*DisplayLastLogonInfoDescription) | `HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System` | `DisplayLastLogonInfo` |
+| [Remove logon hours expiration warnings](https://noverse.dev/policies?p=WinLogon*LogonHoursNotificationPolicyDescription) | `HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System` | `DontDisplayLogonHoursWarnings` |

@@ -49,41 +49,41 @@ If using [`native.winoffice.txt`](https://github.com/hagezi/dns-blocklists/blob/
   - `*.config.ecs.gov.teams.microsoft.us` (GCC-H)
   - `*.config.ecs.dod.teams.microsoft.us` (DoD)
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Configure Windows Defender SmartScreen](https://www.noverse.dev/policies.html?p=MicrosoftEdge*AllowSmartScreen) | `HKLM\Software\Policies\Microsoft\MicrosoftEdge\PhishingFilter`<br>`HKCU\Software\Policies\Microsoft\MicrosoftEdge\PhishingFilter` | `EnabledV9` |
-| [Configure Windows Defender SmartScreen](https://www.noverse.dev/policies.html?p=SmartScreen*ShellConfigureSmartScreen) | `HKLM\Software\Policies\Microsoft\Windows\System` | `EnableSmartScreen`<br>`ShellSmartScreenLevel` |
-| [Configure Windows Defender SmartScreen](https://www.noverse.dev/policies.html?p=SmartScreen*EdgeConfigureSmartScreen) | `HKLM\Software\Policies\Microsoft\Edge`<br>`HKCU\Software\Policies\Microsoft\Edge` | `SmartScreenEnabled` |
-| [Service Enabled](https://www.noverse.dev/policies.html?p=WebThreatDefense*ServiceEnabled) | `HKLM\Software\Policies\Microsoft\Windows\WTDS\Components` | `ServiceEnabled` |
-| [Notify Malicious](https://www.noverse.dev/policies.html?p=WebThreatDefense*NotifyMalicious) | `HKLM\Software\Policies\Microsoft\Windows\WTDS\Components` | `NotifyMalicious` |
-| [Notify Password Reuse](https://www.noverse.dev/policies.html?p=WebThreatDefense*NotifyPasswordReuse) | `HKLM\Software\Policies\Microsoft\Windows\WTDS\Components` | `NotifyPasswordReuse` |
-| [Notify Unsafe App](https://www.noverse.dev/policies.html?p=WebThreatDefense*NotifyUnsafeApp) | `HKLM\Software\Policies\Microsoft\Windows\WTDS\Components` | `NotifyUnsafeApp` |
-| [Automatic Data Collection](https://www.noverse.dev/policies.html?p=WebThreatDefense*AutomaticDataCollection) | `HKLM\Software\Policies\Microsoft\Windows\WTDS\Components` | `CaptureThreatWindow` |
-| [Configure detection for potentially unwanted applications](https://www.noverse.dev/policies.html?p=WindowsDefender*Root_PUAProtection) | `HKLM\Software\Policies\Microsoft\Windows Defender` | `PUAProtection` |
-| [Turn on behavior monitoring](https://www.noverse.dev/policies.html?p=WindowsDefender*RealtimeProtection_DisableBehaviorMonitoring) | `HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection` | `DisableBehaviorMonitoring` |
-| [Scan all downloaded files and attachments](https://www.noverse.dev/policies.html?p=WindowsDefender*RealtimeProtection_DisableIOAVProtection) | `HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection` | `DisableIOAVProtection` |
-| [Monitor file and program activity on your computer](https://www.noverse.dev/policies.html?p=WindowsDefender*RealtimeProtection_DisableOnAccessProtection) | `HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection` | `DisableOnAccessProtection` |
-| [Turn off real-time protection](https://www.noverse.dev/policies.html?p=WindowsDefender*DisableRealtimeMonitoring) | `HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection` | `DisableRealtimeMonitoring` |
-| [Turn on process scanning whenever real-time protection is enabled](https://www.noverse.dev/policies.html?p=WindowsDefender*RealtimeProtection_DisableScanOnRealtimeEnable) | `HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection` | `DisableScanOnRealtimeEnable` |
-| [Configure Watson events](https://www.noverse.dev/policies.html?p=WindowsDefender*Reporting_DisablegenericrePorts) | `HKLM\Software\Policies\Microsoft\Windows Defender\Reporting` | `DisableGenericRePorts` |
-| [Turn off enhanced notifications](https://www.noverse.dev/policies.html?p=WindowsDefender*Reporting_DisableEnhancedNotifications) | `HKLM\Software\Policies\Microsoft\Windows Defender\Reporting` | `DisableEnhancedNotifications` |
-| [Turn on e-mail scanning](https://www.noverse.dev/policies.html?p=WindowsDefender*Scan_DisableEmailScanning) | `HKLM\Software\Policies\Microsoft\Windows Defender\Scan` | `DisableEmailScanning` |
-| [This settings controls whether Network Protection is allowed to be configured into block or audit mode on Windows Server.](https://www.noverse.dev/policies.html?p=WindowsDefender*AllowNetworkProtectionOnWinServer) | `HKLM\Software\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\Network Protection` | `AllowNetworkProtectionOnWinServer` |
-| [Allow notifications to disable security intelligence based reports to Microsoft MAPS](https://www.noverse.dev/policies.html?p=WindowsDefender*SignatureUpdate_SignatureDisableNotification) | `HKLM\Software\Policies\Microsoft\Windows Defender\Signature Updates` | `SignatureDisableNotification` |
-| [Configure the 'Block at First Sight' feature](https://www.noverse.dev/policies.html?p=WindowsDefender*DisableBlockAtFirstSeen) | `HKLM\Software\Policies\Microsoft\Windows Defender\Spynet` | `DisableBlockAtFirstSeen` |
-| [Configure local setting override for reporting to Microsoft MAPS](https://www.noverse.dev/policies.html?p=WindowsDefender*Spynet_LocalSettingOverrideSpynetReporting) | `HKLM\Software\Policies\Microsoft\Windows Defender\Spynet` | `LocalSettingOverrideSpynetReporting` |
-| [Join Microsoft MAPS](https://www.noverse.dev/policies.html?p=WindowsDefender*SpynetReporting) | `HKLM\Software\Policies\Microsoft\Windows Defender\Spynet` | `SpynetReporting` |
-| [Send file samples when further analysis is required](https://www.noverse.dev/policies.html?p=WindowsDefender*SubmitSamplesConsent) | `HKLM\Software\Policies\Microsoft\Windows Defender\Spynet` | `SubmitSamplesConsent` |
-| [Select cloud protection level](https://www.noverse.dev/policies.html?p=WindowsDefender*MpEngine_MpCloudBlockLevel) | `HKLM\Software\Policies\Microsoft\Windows Defender\MpEngine` | `MpCloudBlockLevel` |
-| [Configure extended cloud check](https://www.noverse.dev/policies.html?p=WindowsDefender*MpEngine_MpBafsExtendedTimeout) | `HKLM\Software\Policies\Microsoft\Windows Defender\MpEngine` | `MpBafsExtendedTimeout` |
-| [Prevent users and apps from accessing dangerous websites](https://www.noverse.dev/policies.html?p=WindowsDefender*ExploitGuard_EnableNetworkProtection) | `HKLM\Software\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\Network Protection` | `EnableNetworkProtection` |
-| [Configure Controlled folder access](https://www.noverse.dev/policies.html?p=WindowsDefender*ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess) | `HKLM\Software\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\Controlled Folder Access` | `EnableControlledFolderAccess` |
-| [Hide all notifications](https://www.noverse.dev/policies.html?p=WindowsDefenderSecurityCenter*Notifications_DisableNotifications) | `HKLM\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Notifications` | `DisableNotifications` |
-| [Hide non-critical notifications](https://www.noverse.dev/policies.html?p=WindowsDefenderSecurityCenter*Notifications_DisableEnhancedNotifications) | `HKLM\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Notifications` | `DisableEnhancedNotifications` |
-| [Configure Windows Defender SmartScreen](https://www.noverse.dev/policies.html?p=WindowsExplorer*EnableSmartScreen) | `HKLM\Software\Policies\Microsoft\Windows\System` | `EnableSmartScreen`<br>`ShellSmartScreenLevel` |
-| [Turn off Microsoft Defender Antivirus](https://www.noverse.dev/policies.html?p=WindowsDefender*DisableAntiSpywareDefender) | `HKLM\SOFTWARE\Policies\Microsoft\Windows Defender` | `DisableAntiSpyware` |
+| [Configure Windows Defender SmartScreen](https://noverse.dev/policies?p=MicrosoftEdge*AllowSmartScreen) | `HKLM\Software\Policies\Microsoft\MicrosoftEdge\PhishingFilter`<br>`HKCU\Software\Policies\Microsoft\MicrosoftEdge\PhishingFilter` | `EnabledV9` |
+| [Configure Windows Defender SmartScreen](https://noverse.dev/policies?p=SmartScreen*ShellConfigureSmartScreen) | `HKLM\Software\Policies\Microsoft\Windows\System` | `EnableSmartScreen`<br>`ShellSmartScreenLevel` |
+| [Configure Windows Defender SmartScreen](https://noverse.dev/policies?p=SmartScreen*EdgeConfigureSmartScreen) | `HKLM\Software\Policies\Microsoft\Edge`<br>`HKCU\Software\Policies\Microsoft\Edge` | `SmartScreenEnabled` |
+| [Service Enabled](https://noverse.dev/policies?p=WebThreatDefense*ServiceEnabled) | `HKLM\Software\Policies\Microsoft\Windows\WTDS\Components` | `ServiceEnabled` |
+| [Notify Malicious](https://noverse.dev/policies?p=WebThreatDefense*NotifyMalicious) | `HKLM\Software\Policies\Microsoft\Windows\WTDS\Components` | `NotifyMalicious` |
+| [Notify Password Reuse](https://noverse.dev/policies?p=WebThreatDefense*NotifyPasswordReuse) | `HKLM\Software\Policies\Microsoft\Windows\WTDS\Components` | `NotifyPasswordReuse` |
+| [Notify Unsafe App](https://noverse.dev/policies?p=WebThreatDefense*NotifyUnsafeApp) | `HKLM\Software\Policies\Microsoft\Windows\WTDS\Components` | `NotifyUnsafeApp` |
+| [Automatic Data Collection](https://noverse.dev/policies?p=WebThreatDefense*AutomaticDataCollection) | `HKLM\Software\Policies\Microsoft\Windows\WTDS\Components` | `CaptureThreatWindow` |
+| [Configure detection for potentially unwanted applications](https://noverse.dev/policies?p=WindowsDefender*Root_PUAProtection) | `HKLM\Software\Policies\Microsoft\Windows Defender` | `PUAProtection` |
+| [Turn on behavior monitoring](https://noverse.dev/policies?p=WindowsDefender*RealtimeProtection_DisableBehaviorMonitoring) | `HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection` | `DisableBehaviorMonitoring` |
+| [Scan all downloaded files and attachments](https://noverse.dev/policies?p=WindowsDefender*RealtimeProtection_DisableIOAVProtection) | `HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection` | `DisableIOAVProtection` |
+| [Monitor file and program activity on your computer](https://noverse.dev/policies?p=WindowsDefender*RealtimeProtection_DisableOnAccessProtection) | `HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection` | `DisableOnAccessProtection` |
+| [Turn off real-time protection](https://noverse.dev/policies?p=WindowsDefender*DisableRealtimeMonitoring) | `HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection` | `DisableRealtimeMonitoring` |
+| [Turn on process scanning whenever real-time protection is enabled](https://noverse.dev/policies?p=WindowsDefender*RealtimeProtection_DisableScanOnRealtimeEnable) | `HKLM\Software\Policies\Microsoft\Windows Defender\Real-Time Protection` | `DisableScanOnRealtimeEnable` |
+| [Configure Watson events](https://noverse.dev/policies?p=WindowsDefender*Reporting_DisablegenericrePorts) | `HKLM\Software\Policies\Microsoft\Windows Defender\Reporting` | `DisableGenericRePorts` |
+| [Turn off enhanced notifications](https://noverse.dev/policies?p=WindowsDefender*Reporting_DisableEnhancedNotifications) | `HKLM\Software\Policies\Microsoft\Windows Defender\Reporting` | `DisableEnhancedNotifications` |
+| [Turn on e-mail scanning](https://noverse.dev/policies?p=WindowsDefender*Scan_DisableEmailScanning) | `HKLM\Software\Policies\Microsoft\Windows Defender\Scan` | `DisableEmailScanning` |
+| [This settings controls whether Network Protection is allowed to be configured into block or audit mode on Windows Server.](https://noverse.dev/policies?p=WindowsDefender*AllowNetworkProtectionOnWinServer) | `HKLM\Software\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\Network Protection` | `AllowNetworkProtectionOnWinServer` |
+| [Allow notifications to disable security intelligence based reports to Microsoft MAPS](https://noverse.dev/policies?p=WindowsDefender*SignatureUpdate_SignatureDisableNotification) | `HKLM\Software\Policies\Microsoft\Windows Defender\Signature Updates` | `SignatureDisableNotification` |
+| [Configure the 'Block at First Sight' feature](https://noverse.dev/policies?p=WindowsDefender*DisableBlockAtFirstSeen) | `HKLM\Software\Policies\Microsoft\Windows Defender\Spynet` | `DisableBlockAtFirstSeen` |
+| [Configure local setting override for reporting to Microsoft MAPS](https://noverse.dev/policies?p=WindowsDefender*Spynet_LocalSettingOverrideSpynetReporting) | `HKLM\Software\Policies\Microsoft\Windows Defender\Spynet` | `LocalSettingOverrideSpynetReporting` |
+| [Join Microsoft MAPS](https://noverse.dev/policies?p=WindowsDefender*SpynetReporting) | `HKLM\Software\Policies\Microsoft\Windows Defender\Spynet` | `SpynetReporting` |
+| [Send file samples when further analysis is required](https://noverse.dev/policies?p=WindowsDefender*SubmitSamplesConsent) | `HKLM\Software\Policies\Microsoft\Windows Defender\Spynet` | `SubmitSamplesConsent` |
+| [Select cloud protection level](https://noverse.dev/policies?p=WindowsDefender*MpEngine_MpCloudBlockLevel) | `HKLM\Software\Policies\Microsoft\Windows Defender\MpEngine` | `MpCloudBlockLevel` |
+| [Configure extended cloud check](https://noverse.dev/policies?p=WindowsDefender*MpEngine_MpBafsExtendedTimeout) | `HKLM\Software\Policies\Microsoft\Windows Defender\MpEngine` | `MpBafsExtendedTimeout` |
+| [Prevent users and apps from accessing dangerous websites](https://noverse.dev/policies?p=WindowsDefender*ExploitGuard_EnableNetworkProtection) | `HKLM\Software\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\Network Protection` | `EnableNetworkProtection` |
+| [Configure Controlled folder access](https://noverse.dev/policies?p=WindowsDefender*ExploitGuard_ControlledFolderAccess_EnableControlledFolderAccess) | `HKLM\Software\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\Controlled Folder Access` | `EnableControlledFolderAccess` |
+| [Hide all notifications](https://noverse.dev/policies?p=WindowsDefenderSecurityCenter*Notifications_DisableNotifications) | `HKLM\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Notifications` | `DisableNotifications` |
+| [Hide non-critical notifications](https://noverse.dev/policies?p=WindowsDefenderSecurityCenter*Notifications_DisableEnhancedNotifications) | `HKLM\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Notifications` | `DisableEnhancedNotifications` |
+| [Configure Windows Defender SmartScreen](https://noverse.dev/policies?p=WindowsExplorer*EnableSmartScreen) | `HKLM\Software\Policies\Microsoft\Windows\System` | `EnableSmartScreen`<br>`ShellSmartScreenLevel` |
+| [Turn off Microsoft Defender Antivirus](https://noverse.dev/policies?p=WindowsDefender*DisableAntiSpywareDefender) | `HKLM\SOFTWARE\Policies\Microsoft\Windows Defender` | `DisableAntiSpyware` |
 
 ## Remove Defender from Image
 

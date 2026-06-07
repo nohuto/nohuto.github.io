@@ -125,7 +125,7 @@ That `0x800` flag isn't related to what device you use, it's set from mouse raw 
 
 I've checked that the `0x800` behavior is true with two small apps, one registered mouse raw input with `0x8100`, the other with only `0x0100`. By moving both to the background (`RawMouseThrottleDuration = 20`), the `0x8100` app stayed at `~1000 Hz`, while the `0x0100` app dropped to `~60 Hz`. So with `RawMouseThrottleForced = 0`, the forced registration bypassed throttling (I didn't find any app that uses that flag nor are there docs on it, means it's most likely unused).
 
-You can use [riflags](https://www.noverse.dev/docs/win-config/peripheral/mouse-values/#riflags) to see which processes have a mouse registration with `0x8000`. Read through the section for more details.
+You can use [riflags](https://noverse.dev/docs/win-config/peripheral/mouse-values/#riflags) to see which processes have a mouse registration with `0x8000`. Read through the section for more details.
 
 ### Duration / Leeway
 

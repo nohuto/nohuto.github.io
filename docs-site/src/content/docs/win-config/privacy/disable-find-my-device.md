@@ -12,8 +12,8 @@ sidebar:
 
 - You can't use it with a work or school account, and it doesn't work for iOS devices, Android devices, or Xbox One consoles."
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Turn On/Off Find My Device](https://www.noverse.dev/policies.html?p=FindMy*FindMy_AllowFindMyDeviceConfig) | `HKLM\SOFTWARE\Policies\Microsoft\FindMyDevice` | `AllowFindMyDevice` |
+| [Turn On/Off Find My Device](https://noverse.dev/policies?p=FindMy*FindMy_AllowFindMyDeviceConfig) | `HKLM\SOFTWARE\Policies\Microsoft\FindMyDevice` | `AllowFindMyDevice` |

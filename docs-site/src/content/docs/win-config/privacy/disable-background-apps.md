@@ -26,8 +26,8 @@ Renames `backgroundTaskHost.exe` to prevent UWP background tasks from running (n
 
 When the system is in Modern Standby, desktop apps are suspended and UWP apps are typically suspended, but background tasks created by UWP apps are allowed to execute. `backgroundTaskHost.exe` is the host for those tasks.
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Let Windows apps run in the background](https://www.noverse.dev/policies.html?p=AppPrivacy*LetAppsRunInBackground) | `HKLM\Software\Policies\Microsoft\Windows\AppPrivacy` | `LetAppsRunInBackground`<br>`LetAppsRunInBackground_UserInControlOfTheseApps`<br>`LetAppsRunInBackground_ForceAllowTheseApps`<br>`LetAppsRunInBackground_ForceDenyTheseApps` |
+| [Let Windows apps run in the background](https://noverse.dev/policies?p=AppPrivacy*LetAppsRunInBackground) | `HKLM\Software\Policies\Microsoft\Windows\AppPrivacy` | `LetAppsRunInBackground`<br>`LetAppsRunInBackground_UserInControlOfTheseApps`<br>`LetAppsRunInBackground_ForceAllowTheseApps`<br>`LetAppsRunInBackground_ForceDenyTheseApps` |

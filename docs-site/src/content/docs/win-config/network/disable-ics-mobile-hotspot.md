@@ -16,8 +16,8 @@ When disabled, the PC can no longer share its internet connection to other devic
 | `ALG` | Provides support for 3rd party protocol plug-ins for Internet Connection Sharing |
 | `SharedAccess` | Provides network address translation, addressing, name resolution and/or intrusion prevention services for a home or small office network. |
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Prohibit use of Internet Connection Sharing on your DNS domain network](https://www.noverse.dev/policies.html?p=NetworkConnections*NC_ShowSharedAccessUI) | `HKLM\Software\Policies\Microsoft\Windows\Network Connections` | `NC_ShowSharedAccessUI` |
+| [Prohibit use of Internet Connection Sharing on your DNS domain network](https://noverse.dev/policies?p=NetworkConnections*NC_ShowSharedAccessUI) | `HKLM\Software\Policies\Microsoft\Windows\Network Connections` | `NC_ShowSharedAccessUI` |

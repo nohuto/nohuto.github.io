@@ -12,8 +12,8 @@ Prevents windows from being minimized or restored when the active window is shak
 
 ![](https://www.techjunkie.com/wp-content/uploads/2018/10/windows-aero-shake-example.gif)
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Turn off Aero Shake window minimizing mouse gesture](https://www.noverse.dev/policies.html?p=Desktop*NoWindowMinimizingShortcuts) | `HKCU\Software\Policies\Microsoft\Windows\Explorer` | `NoWindowMinimizingShortcuts` |
+| [Turn off Aero Shake window minimizing mouse gesture](https://noverse.dev/policies?p=Desktop*NoWindowMinimizingShortcuts) | `HKCU\Software\Policies\Microsoft\Windows\Explorer` | `NoWindowMinimizingShortcuts` |

@@ -38,19 +38,19 @@ Instead of using the explorer to search for a file or folder, use [`Everything`]
 
 The `WSearch` service is needed for CmdPals `File Search` extension to work.
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Prevent clients from querying the index remotely](https://www.noverse.dev/policies.html?p=Search*PreventRemoteQueries) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search` | `PreventRemoteQueries` |
-| [Prevent indexing when running on battery power to conserve energy](https://www.noverse.dev/policies.html?p=Search*PreventIndexOnBattery) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search` | `PreventIndexOnBattery` |
-| [Always use automatic language detection when indexing content and properties](https://www.noverse.dev/policies.html?p=Search*AlwaysUseAutoLangDetection) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search` | `AlwaysUseAutoLangDetection` |
-| [Don't search the web or display web results in Search](https://www.noverse.dev/policies.html?p=Search*DoNotUseWebResults) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search` | `ConnectedSearchUseWeb` |
-| [Don't search the web or display web results in Search over metered connections](https://www.noverse.dev/policies.html?p=Search*DoNotUseWebResultsOnMeteredConnections) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search` | `ConnectedSearchUseWebOverMeteredConnections` |
-| [Do not allow web search](https://www.noverse.dev/policies.html?p=Search*DisableWebSearch) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search` | `DisableWebSearch` |
-| [Set the SafeSearch setting for Search](https://www.noverse.dev/policies.html?p=Search*SafeSearch) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search` | `ConnectedSearchSafeSearch` |
-| [Do not allow locations on removable drives to be added to libraries](https://www.noverse.dev/policies.html?p=Search*DisableRemovableDriveIndexing) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search` | `DisableRemovableDriveIndexing` |
-| [Fully disable Search UI](https://www.noverse.dev/policies.html?p=Search*DisableSearch) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search` | `DisableSearch` |
+| [Prevent clients from querying the index remotely](https://noverse.dev/policies?p=Search*PreventRemoteQueries) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search` | `PreventRemoteQueries` |
+| [Prevent indexing when running on battery power to conserve energy](https://noverse.dev/policies?p=Search*PreventIndexOnBattery) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search` | `PreventIndexOnBattery` |
+| [Always use automatic language detection when indexing content and properties](https://noverse.dev/policies?p=Search*AlwaysUseAutoLangDetection) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search` | `AlwaysUseAutoLangDetection` |
+| [Don't search the web or display web results in Search](https://noverse.dev/policies?p=Search*DoNotUseWebResults) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search` | `ConnectedSearchUseWeb` |
+| [Don't search the web or display web results in Search over metered connections](https://noverse.dev/policies?p=Search*DoNotUseWebResultsOnMeteredConnections) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search` | `ConnectedSearchUseWebOverMeteredConnections` |
+| [Do not allow web search](https://noverse.dev/policies?p=Search*DisableWebSearch) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search` | `DisableWebSearch` |
+| [Set the SafeSearch setting for Search](https://noverse.dev/policies?p=Search*SafeSearch) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search` | `ConnectedSearchSafeSearch` |
+| [Do not allow locations on removable drives to be added to libraries](https://noverse.dev/policies?p=Search*DisableRemovableDriveIndexing) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search` | `DisableRemovableDriveIndexing` |
+| [Fully disable Search UI](https://noverse.dev/policies?p=Search*DisableSearch) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search` | `DisableSearch` |
 
 ## Miscellaneous Notes
 

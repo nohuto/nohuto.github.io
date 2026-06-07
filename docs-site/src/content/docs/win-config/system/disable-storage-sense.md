@@ -6,7 +6,7 @@ sidebar:
   order: 17
 ---
 
-Storage Sense deletes temporary/user files automatically, see [windows policies](https://www.noverse.dev/docs/win-config/system/disable-storage-sense/#windows-policies) for more & [disable-notifications/#registry-values](https://www.noverse.dev/docs/win-config/system/disable-notifications/#registry-values) for storage sense related notification values.
+Storage Sense deletes temporary/user files automatically, see [windows policies](https://noverse.dev/docs/win-config/system/disable-storage-sense/#windows-policies) for more & [disable-notifications/#registry-values](https://noverse.dev/docs/win-config/system/disable-notifications/#registry-values) for storage sense related notification values.
 
 Head over to the `Policies` tab, then `StorageSense` to configure other related policies.
 
@@ -53,11 +53,11 @@ HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePo
 HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy\512 // Type: REG_DWORD
 ```
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Allow Storage Sense](https://www.noverse.dev/policies.html?p=StorageSense*SS_AllowStorageSenseGlobal) | `HKLM\Software\Policies\Microsoft\Windows\StorageSense` | `AllowStorageSenseGlobal` |
-| [Allow Storage Sense Temporary Files cleanup](https://www.noverse.dev/policies.html?p=StorageSense*SS_AllowStorageSenseTemporaryFilesCleanup) | `HKLM\Software\Policies\Microsoft\Windows\StorageSense` | `AllowStorageSenseTemporaryFilesCleanup` |
-| [Configure Storage Sense Recycle Bin cleanup threshold](https://www.noverse.dev/policies.html?p=StorageSense*SS_ConfigStorageSenseRecycleBinCleanupThreshold) | `HKLM\Software\Policies\Microsoft\Windows\StorageSense` | `ConfigStorageSenseRecycleBinCleanupThreshold` |
-| [Configure Storage Storage Downloads cleanup threshold](https://www.noverse.dev/policies.html?p=StorageSense*SS_ConfigStorageSenseDownloadsCleanupThreshold) | `HKLM\Software\Policies\Microsoft\Windows\StorageSense` | `ConfigStorageSenseDownloadsCleanupThreshold` |
+| [Allow Storage Sense](https://noverse.dev/policies?p=StorageSense*SS_AllowStorageSenseGlobal) | `HKLM\Software\Policies\Microsoft\Windows\StorageSense` | `AllowStorageSenseGlobal` |
+| [Allow Storage Sense Temporary Files cleanup](https://noverse.dev/policies?p=StorageSense*SS_AllowStorageSenseTemporaryFilesCleanup) | `HKLM\Software\Policies\Microsoft\Windows\StorageSense` | `AllowStorageSenseTemporaryFilesCleanup` |
+| [Configure Storage Sense Recycle Bin cleanup threshold](https://noverse.dev/policies?p=StorageSense*SS_ConfigStorageSenseRecycleBinCleanupThreshold) | `HKLM\Software\Policies\Microsoft\Windows\StorageSense` | `ConfigStorageSenseRecycleBinCleanupThreshold` |
+| [Configure Storage Storage Downloads cleanup threshold](https://noverse.dev/policies?p=StorageSense*SS_ConfigStorageSenseDownloadsCleanupThreshold) | `HKLM\Software\Policies\Microsoft\Windows\StorageSense` | `ConfigStorageSenseDownloadsCleanupThreshold` |

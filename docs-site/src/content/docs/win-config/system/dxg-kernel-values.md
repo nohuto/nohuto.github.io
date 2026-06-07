@@ -151,7 +151,7 @@ Everything listed below is based on personal findings, mistakes may exist.
     "RapidHPDThresholdCount" = 5;
     "RapidHPDTime" = 1000;
 
-    // https://www.noverse.dev/docs/win-config/security/increase-tdr/
+    // https://noverse.dev/docs/win-config/security/increase-tdr/
     "TdrDdiDelay" = 5;
     "TdrDebugMode" = 2;
     "TdrDelay" = 2;

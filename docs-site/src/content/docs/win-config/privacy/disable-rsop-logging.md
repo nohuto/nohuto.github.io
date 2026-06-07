@@ -15,8 +15,8 @@ sidebar:
 \Registry\Machine\SOFTWARE\Policies\Microsoft\Windows\SYSTEM : RsopLogging
 ```
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Turn off Resultant Set of Policy logging](https://www.noverse.dev/policies.html?p=GroupPolicy*RSoPLogging) | `HKLM\Software\Policies\Microsoft\Windows\System` | `RSoPLogging` |
+| [Turn off Resultant Set of Policy logging](https://noverse.dev/policies?p=GroupPolicy*RSoPLogging) | `HKLM\Software\Policies\Microsoft\Windows\System` | `RSoPLogging` |

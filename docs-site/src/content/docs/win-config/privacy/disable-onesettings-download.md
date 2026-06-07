@@ -10,9 +10,9 @@ sidebar:
 
 If enabled = "Windows will periodically attempt to connect with the OneSettings service to download configuration settings".
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Enable OneSettings Auditing](https://www.noverse.dev/policies.html?p=DataCollection*EnableOneSettingsAuditing) | `HKLM\Software\Policies\Microsoft\Windows\DataCollection` | `EnableOneSettingsAuditing` |
-| [Disable OneSettings Downloads](https://www.noverse.dev/policies.html?p=DataCollection*DisableOneSettingsDownloads) | `HKLM\Software\Policies\Microsoft\Windows\DataCollection` | `DisableOneSettingsDownloads` |
+| [Enable OneSettings Auditing](https://noverse.dev/policies?p=DataCollection*EnableOneSettingsAuditing) | `HKLM\Software\Policies\Microsoft\Windows\DataCollection` | `EnableOneSettingsAuditing` |
+| [Disable OneSettings Downloads](https://noverse.dev/policies?p=DataCollection*DisableOneSettingsDownloads) | `HKLM\Software\Policies\Microsoft\Windows\DataCollection` | `DisableOneSettingsDownloads` |

@@ -108,9 +108,9 @@ RegistryKey<unsigned char>::Initialize(
 
 - [network/assets | networkdisc-DataCenterBridgingConfiguration.c](https://github.com/nohuto/win-config/blob/main/network/assets/networkdisc-DataCenterBridgingConfiguration.c)
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Turn on Mapper I/O (LLTDIO) driver](https://www.noverse.dev/policies.html?p=LinkLayerTopologyDiscovery*LLTD_EnableLLTDIO) | `HKLM\Software\Policies\Microsoft\Windows\LLTD` | `EnableLLTDIO`<br>`AllowLLTDIOOnDomain`<br>`AllowLLTDIOOnPublicNet`<br>`ProhibitLLTDIOOnPrivateNet` |
-| [Turn on Responder (RSPNDR) driver](https://www.noverse.dev/policies.html?p=LinkLayerTopologyDiscovery*LLTD_EnableRspndr) | `HKLM\Software\Policies\Microsoft\Windows\LLTD` | `EnableRspndr`<br>`AllowRspndrOnDomain`<br>`AllowRspndrOnPublicNet`<br>`ProhibitRspndrOnPrivateNet` |
+| [Turn on Mapper I/O (LLTDIO) driver](https://noverse.dev/policies?p=LinkLayerTopologyDiscovery*LLTD_EnableLLTDIO) | `HKLM\Software\Policies\Microsoft\Windows\LLTD` | `EnableLLTDIO`<br>`AllowLLTDIOOnDomain`<br>`AllowLLTDIOOnPublicNet`<br>`ProhibitLLTDIOOnPrivateNet` |
+| [Turn on Responder (RSPNDR) driver](https://noverse.dev/policies?p=LinkLayerTopologyDiscovery*LLTD_EnableRspndr) | `HKLM\Software\Policies\Microsoft\Windows\LLTD` | `EnableRspndr`<br>`AllowRspndrOnDomain`<br>`AllowRspndrOnPublicNet`<br>`ProhibitRspndrOnPrivateNet` |

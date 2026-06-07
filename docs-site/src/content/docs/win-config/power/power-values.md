@@ -189,7 +189,7 @@ Everything listed below is based on personal findings, mistakes may exist.
     "PowerThrottlingOff" = 0; // PpmPerfQosGroupPolicyDisable 
 ```
 
-## [PowerThrottlingOff](https://www.noverse.dev/policies.html?p=Power*PowerThrottlingTurnOff)
+## [PowerThrottlingOff](https://noverse.dev/policies?p=Power*PowerThrottlingTurnOff)
 
 > "*The Quality of Service (QoS) associated with a thread is used to indicate the desired performance and power efficiency. Each thread is assigned to a QoS level. While scheduling priority remains the main metric by which the system determines which thread to schedule next, QoS can influence core selection and processor power management. On platforms with heterogeneous processors, the QoS of a thread may restrict scheduling to a subset of processors, or indicate a preference for a particular class of processor.*"
 >

@@ -62,8 +62,8 @@ The revert data is based on `W11 LTSC IoT Enterprise 2024` defaults.
 
 `DisableStartupSound` is set to `1` by default (`LogonUI\BootAnimation`).
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Turn off Windows Startup sound](https://www.noverse.dev/policies.html?p=Logon*DisableStartupSound) | `HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System` | `DisableStartupSound` |
+| [Turn off Windows Startup sound](https://noverse.dev/policies?p=Logon*DisableStartupSound) | `HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System` | `DisableStartupSound` |

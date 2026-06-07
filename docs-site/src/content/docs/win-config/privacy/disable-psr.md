@@ -21,8 +21,8 @@ It is a deprecated feature, as the banner shows:
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\SystemSettings : SRAvailable
 ```
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Turn off Steps Recorder](https://www.noverse.dev/policies.html?p=AppCompat*AppCompatTurnOffUserActionRecord) | `HKLM\Software\Policies\Microsoft\Windows\AppCompat` | `DisableUAR` |
+| [Turn off Steps Recorder](https://noverse.dev/policies?p=AppCompat*AppCompatTurnOffUserActionRecord) | `HKLM\Software\Policies\Microsoft\Windows\AppCompat` | `DisableUAR` |

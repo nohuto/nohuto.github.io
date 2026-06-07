@@ -16,8 +16,8 @@ Enables detailed messages at restart, shut down, sign out, and sign in, which ca
 >
 > — Windows Security Encyclopedia, [Display highly detailed status messages](https://www.windows-security.org/b74176eebf20a72c6e9cf193ddcedeb7/display-highly-detailed-status-messages)
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Display highly detailed status messages](https://www.noverse.dev/policies.html?p=Logon*VerboseStatus) | `HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System` | `VerboseStatus` |
+| [Display highly detailed status messages](https://noverse.dev/policies?p=Logon*VerboseStatus) | `HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System` | `VerboseStatus` |

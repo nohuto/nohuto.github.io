@@ -109,7 +109,7 @@ if ( !SeLpacEnableWatsonReporting )
 return DbgkQueueUserExceptionReport();
 ```
 
-WER replaced Dr. Watson, which was included in Windows XP, but it can still be used (see WER flow [above](https://www.noverse.dev/docs/win-config/privacy/disable-wer/)) "*4. WER sends the report to Microsoft (Watson Server) if the user consented.*".
+WER replaced Dr. Watson, which was included in Windows XP, but it can still be used (see WER flow [above](https://noverse.dev/docs/win-config/privacy/disable-wer/)) "*4. WER sends the report to Microsoft (Watson Server) if the user consented.*".
 
 ### AerMultiErrorDisabled
 
@@ -128,7 +128,7 @@ Default is `0`, non zero would enable the behaviour? The value doesn't exist by 
 
 ### [WER Endpoints](https://github.com/MicrosoftDocs/SupportArticles-docs/blob/main/support/windows-client/system-management-components/windows-error-reporting-diagnostics-enablement-guidance.md#configure-network-endpoints-to-be-allowed)
 
-See [privacy/disable-general-telemetry](https://www.noverse.dev/docs/win-config/privacy/disable-general-telemetry/) note on the blocklist (which includes these domains).
+See [privacy/disable-general-telemetry](https://noverse.dev/docs/win-config/privacy/disable-general-telemetry/) note on the blocklist (which includes these domains).
 
 - Port used: `443`
 - Protocol used: HTTPS with SSL/TLS using certificate pinning
@@ -167,15 +167,15 @@ Disables Windows Error Reporting.
 | --- | --- |
 | `1` | Disables Windows Error Reporting |
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Do not send a Windows error report when a generic driver is installed on a device](https://www.noverse.dev/policies.html?p=DeviceSetup*DeviceInstall_GenericDriverSendToWER) | `HKLM\Software\Policies\Microsoft\Windows\DeviceInstall\Settings` | `DisableSendGenericDriverNotFoundToWER` |
-| [Prevent Windows from sending an error report when a device driver requests additional software during installation](https://www.noverse.dev/policies.html?p=DeviceSetup*DeviceInstall_RequestAdditionalSoftwareSendToWER) | `HKLM\Software\Policies\Microsoft\Windows\DeviceInstall\Settings` | `DisableSendRequestAdditionalSoftwareToWER` |
-| [Disable Windows Error Reporting](https://www.noverse.dev/policies.html?p=ErrorReporting*WerDisable_2) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting` | `Disabled` |
-| [Disable logging](https://www.noverse.dev/policies.html?p=ErrorReporting*WerNoLogging_1) | `HKCU\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting` | `LoggingDisabled` |
-| [Automatically send memory dumps for OS-generated error reports](https://www.noverse.dev/policies.html?p=ErrorReporting*WerAutoApproveOSDumps_1) | `HKCU\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting` | `AutoApproveOSDumps` |
-| [Automatically send memory dumps for OS-generated error reports](https://www.noverse.dev/policies.html?p=ErrorReporting*WerAutoApproveOSDumps_2) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting` | `AutoApproveOSDumps` |
-| [Enable Device Health Attestation Monitoring and Reporting](https://www.noverse.dev/policies.html?p=TPM*OptIntoDSHA_Name) | `HKLM\Software\Policies\Microsoft\DeviceHealthAttestationService` | `EnableDeviceHealthAttestationService` |
-| [Enable Persistent Time Stamp](https://www.noverse.dev/policies.html?p=Reliability*EE_EnablePersistentTimeStamp) | `HKLM\Software\Policies\Microsoft\Windows NT\Reliability` | `TimeStampEnabled`<br>`TimeStampInterval` |
+| [Do not send a Windows error report when a generic driver is installed on a device](https://noverse.dev/policies?p=DeviceSetup*DeviceInstall_GenericDriverSendToWER) | `HKLM\Software\Policies\Microsoft\Windows\DeviceInstall\Settings` | `DisableSendGenericDriverNotFoundToWER` |
+| [Prevent Windows from sending an error report when a device driver requests additional software during installation](https://noverse.dev/policies?p=DeviceSetup*DeviceInstall_RequestAdditionalSoftwareSendToWER) | `HKLM\Software\Policies\Microsoft\Windows\DeviceInstall\Settings` | `DisableSendRequestAdditionalSoftwareToWER` |
+| [Disable Windows Error Reporting](https://noverse.dev/policies?p=ErrorReporting*WerDisable_2) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting` | `Disabled` |
+| [Disable logging](https://noverse.dev/policies?p=ErrorReporting*WerNoLogging_1) | `HKCU\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting` | `LoggingDisabled` |
+| [Automatically send memory dumps for OS-generated error reports](https://noverse.dev/policies?p=ErrorReporting*WerAutoApproveOSDumps_1) | `HKCU\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting` | `AutoApproveOSDumps` |
+| [Automatically send memory dumps for OS-generated error reports](https://noverse.dev/policies?p=ErrorReporting*WerAutoApproveOSDumps_2) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting` | `AutoApproveOSDumps` |
+| [Enable Device Health Attestation Monitoring and Reporting](https://noverse.dev/policies?p=TPM*OptIntoDSHA_Name) | `HKLM\Software\Policies\Microsoft\DeviceHealthAttestationService` | `EnableDeviceHealthAttestationService` |
+| [Enable Persistent Time Stamp](https://noverse.dev/policies?p=Reliability*EE_EnablePersistentTimeStamp) | `HKLM\Software\Policies\Microsoft\Windows NT\Reliability` | `TimeStampEnabled`<br>`TimeStampInterval` |

@@ -12,8 +12,8 @@ sidebar:
 | ------ | ------ | ------ |
 | AllowMessageSync | Controls whether SMS/MMS are synced to Microsoft's cloud so they can be backed up and restored; also decides if the user can toggle this in the UI. | 0 = sync not allowed, user cannot change - 1 = sync allowed, user can change (default) |
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Allow Message Service Cloud Sync](https://www.noverse.dev/policies.html?p=messaging*AllowMessageSync) | `HKLM\Software\Policies\Microsoft\Windows\Messaging` | `AllowMessageSync` |
+| [Allow Message Service Cloud Sync](https://noverse.dev/policies?p=messaging*AllowMessageSync) | `HKLM\Software\Policies\Microsoft\Windows\Messaging` | `AllowMessageSync` |

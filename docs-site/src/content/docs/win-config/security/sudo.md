@@ -18,8 +18,8 @@ Note that sudo uses administrator previledges and doesn't include `TrustedInstal
 | `disableInput` | Runs elevated in the same window but blocks keyboard input while it runs. |
 | `normal` | Runs elevated in the same window with normal input and output behavior. |
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Configure the behavior of the sudo command](https://www.noverse.dev/policies.html?p=Sudo*EnableSudo) | `HKLM\Software\Policies\Microsoft\Windows\Sudo` | `Enabled` |
+| [Configure the behavior of the sudo command](https://noverse.dev/policies?p=Sudo*EnableSudo) | `HKLM\Software\Policies\Microsoft\Windows\Sudo` | `Enabled` |

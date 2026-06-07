@@ -21,8 +21,8 @@ HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\InstallService\Stubification\S-{I
 HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\InstallService\Stubification\S-{ID}\EnableAppOffloading    Type: REG_DWORD, Length: 4, Data: 0
 ```
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Archive infrequently used apps](https://www.noverse.dev/policies.html?p=AppxPackageManager*AllowAutomaticAppArchiving) | `HKLM\Software\Policies\Microsoft\Windows\Appx` | `AllowAutomaticAppArchiving` |
+| [Archive infrequently used apps](https://noverse.dev/policies?p=AppxPackageManager*AllowAutomaticAppArchiving) | `HKLM\Software\Policies\Microsoft\Windows\Appx` | `AllowAutomaticAppArchiving` |

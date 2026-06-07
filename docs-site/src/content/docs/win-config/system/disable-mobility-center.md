@@ -10,8 +10,8 @@ Note that this is a laptop only feature. The "Mobility Center" is a feature that
 
 ![](https://github.com/nohuto/win-config/blob/main/system/images/mobility-center.png?raw=true)
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Turn off Windows Mobility Center](https://www.noverse.dev/policies.html?p=MobilePCMobilityCenter*MobilityCenterEnable_2) | `HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\MobilityCenter` | `NoMobilityCenter` |
+| [Turn off Windows Mobility Center](https://noverse.dev/policies?p=MobilePCMobilityCenter*MobilityCenterEnable_2) | `HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\MobilityCenter` | `NoMobilityCenter` |

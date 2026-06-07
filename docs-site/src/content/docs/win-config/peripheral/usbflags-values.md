@@ -75,7 +75,7 @@ For entries described as "any nonzero", the code treats the DWORD as a boolean, 
 
 Note on some usbflag values ("queried as 4 byte bool"), `USBHUB3` reads a 4-byte and handles any nonzero value as enabled. The value type is not enforced, so both `REG_DWORD` and `REG_BINARY` should work if they're a 4-byte nonzero value (that's my current assumption). I would personally use `REG_BINARY` instead of `REG_DWORD` for now, as for example `osvc`, `IgnoreHWSerNum`, `ResetOnResume` are `REG_BINARY` ([usb-device-specific-registry-settings.md](https://github.com/nohuto/windows-driver-docs/blob/staging/windows-driver-docs-pr/usbcon/usb-device-specific-registry-settings.md)).
 
-See [win-config/peripheral/usbflags-values/](https://www.noverse.dev/docs/win-config/peripheral/usbflags-values/) for notes on `USB_DEVICE_HACKS`/miscellaneous information on values.
+See [win-config/peripheral/usbflags-values/](https://noverse.dev/docs/win-config/peripheral/usbflags-values/) for notes on `USB_DEVICE_HACKS`/miscellaneous information on values.
 
 ```c
 "HKLM\\SYSTEM\\CurrentControlSet\\Control\\usbflags";

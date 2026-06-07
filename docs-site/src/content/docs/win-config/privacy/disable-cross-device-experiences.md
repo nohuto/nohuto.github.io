@@ -42,8 +42,8 @@ L"WifiLastDisabledNearShare",
 
 - [privacy/assets | crossdev-SharedExperiencesSingleton.c](https://github.com/nohuto/win-config/blob/main/privacy/assets/crossdev-SharedExperiencesSingleton.c)
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Continue experiences on this device](https://www.noverse.dev/policies.html?p=GroupPolicy*EnableCDP) | `HKLM\Software\Policies\Microsoft\Windows\System` | `EnableCdp` |
+| [Continue experiences on this device](https://noverse.dev/policies?p=GroupPolicy*EnableCDP) | `HKLM\Software\Policies\Microsoft\Windows\System` | `EnableCdp` |

@@ -16,8 +16,8 @@ sidebar:
 
 ![](https://github.com/nohuto/win-config/blob/main/visibility/images/panel1.png?raw=true)
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Always open All Control Panel Items when opening Control Panel](https://www.noverse.dev/policies.html?p=ControlPanel*ForceClassicControlPanel) | `HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer` | `ForceClassicControlPanel` |
+| [Always open All Control Panel Items when opening Control Panel](https://noverse.dev/policies?p=ControlPanel*ForceClassicControlPanel) | `HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer` | `ForceClassicControlPanel` |

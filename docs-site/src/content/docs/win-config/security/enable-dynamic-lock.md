@@ -19,8 +19,8 @@ HKCU\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\EnableGoodbye	Type: R
 HKCU\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\EnableGoodbye	Type: REG_DWORD, Length: 4, Data: 0
 ```
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Configure dynamic lock factors](https://www.noverse.dev/policies.html?p=Passport*MSPassport_UseDynamicLock) | `HKLM\SOFTWARE\Policies\Microsoft\PassportForWork\DynamicLock` | `DynamicLock`<br>`Plugins` |
+| [Configure dynamic lock factors](https://noverse.dev/policies?p=Passport*MSPassport_UseDynamicLock) | `HKLM\SOFTWARE\Policies\Microsoft\PassportForWork\DynamicLock` | `DynamicLock`<br>`Plugins` |

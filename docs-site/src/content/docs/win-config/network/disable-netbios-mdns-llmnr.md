@@ -31,11 +31,11 @@ RegSetValue	HKLM\System\CurrentControlSet\Services\NetBT\Parameters\Interfaces\T
 | [mDNS](https://en.wikipedia.org/wiki/Multicast_DNS) (Multicast DNS) | Zero-config service/host discovery on local networks (e.g. printer.local) | Uses multicast to 224.0.0.251 (IPv6 ff02::fb) on UDP 5353, devices answer for their own .local names | Cross-platform (Apple Bonjour, now Windows), modern replacement for LLMNR in many cases |
 | [NetBIOS](https://en.wikipedia.org/wiki/NetBIOS) over TCP/IP | Legacy Windows naming, service announcement and sessions | Uses broadcasts or WINS to resolve NetBIOS names, historically used by SMB/Windows networking | Very old, chatty, bigger attack surface, kept for backward compatibility |
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Configure multicast DNS (mDNS) protocol](https://www.noverse.dev/policies.html?p=DnsClient*DNS_MDNS) | `HKLM\Software\Policies\Microsoft\Windows NT\DNSClient` | `EnableMDNS` |
-| [Turn off smart multi-homed name resolution](https://www.noverse.dev/policies.html?p=DnsClient*DNS_SmartMultiHomedNameResolution) | `HKLM\Software\Policies\Microsoft\Windows NT\DNSClient` | `DisableSmartNameResolution` |
-| [Configure NetBIOS settings](https://www.noverse.dev/policies.html?p=DnsClient*DNS_Netbios) | `HKLM\Software\Policies\Microsoft\Windows NT\DNSClient` | `EnableNetbios` |
-| [Turn off multicast name resolution](https://www.noverse.dev/policies.html?p=DnsClient*Turn_Off_Multicast) | `HKLM\Software\Policies\Microsoft\Windows NT\DNSClient` | `EnableMulticast` |
+| [Configure multicast DNS (mDNS) protocol](https://noverse.dev/policies?p=DnsClient*DNS_MDNS) | `HKLM\Software\Policies\Microsoft\Windows NT\DNSClient` | `EnableMDNS` |
+| [Turn off smart multi-homed name resolution](https://noverse.dev/policies?p=DnsClient*DNS_SmartMultiHomedNameResolution) | `HKLM\Software\Policies\Microsoft\Windows NT\DNSClient` | `DisableSmartNameResolution` |
+| [Configure NetBIOS settings](https://noverse.dev/policies?p=DnsClient*DNS_Netbios) | `HKLM\Software\Policies\Microsoft\Windows NT\DNSClient` | `EnableNetbios` |
+| [Turn off multicast name resolution](https://noverse.dev/policies?p=DnsClient*Turn_Off_Multicast) | `HKLM\Software\Policies\Microsoft\Windows NT\DNSClient` | `EnableMulticast` |

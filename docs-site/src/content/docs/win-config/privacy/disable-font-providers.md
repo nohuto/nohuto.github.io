@@ -12,8 +12,8 @@ If you enable this policy setting, Windows periodically queries an online font p
 
 If you disable this policy setting, Windows does not connect to an online font provider and only enumerates locally-installed fonts."
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Enable Font Providers](https://www.noverse.dev/policies.html?p=GroupPolicy*EnableFontProviders) | `HKLM\Software\Policies\Microsoft\Windows\System` | `EnableFontProviders` |
+| [Enable Font Providers](https://noverse.dev/policies?p=GroupPolicy*EnableFontProviders) | `HKLM\Software\Policies\Microsoft\Windows\System` | `EnableFontProviders` |

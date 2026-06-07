@@ -23,15 +23,15 @@ Currently includes all existing tasks in `\\Microsoft\\Windows\\Application Expe
 //"\\Microsoft\\Windows\\Application Experience\\PcaWallpaperAppDetect",
 ```
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Turn off SwitchBack Compatibility Engine](https://www.noverse.dev/policies.html?p=AppCompat*AppCompatTurnOffSwitchBack) | `HKLM\Software\Policies\Microsoft\Windows\AppCompat` | `SbEnable` |
-| [Turn off Application Compatibility Engine](https://www.noverse.dev/policies.html?p=AppCompat*AppCompatTurnOffEngine) | `HKLM\Software\Policies\Microsoft\Windows\AppCompat` | `DisableEngine` |
-| [Turn off Program Compatibility Assistant](https://www.noverse.dev/policies.html?p=AppCompat*AppCompatTurnOffProgramCompatibilityAssistant_2) | `HKLM\Software\Policies\Microsoft\Windows\AppCompat` | `DisablePCA` |
-| [Turn off Install Tracing](https://www.noverse.dev/policies.html?p=AppDeviceInventory*TurnOffInstallTracing) | `HKLM\Software\Policies\Microsoft\Windows\AppCompat` | `DisableInstallTracing` |
-| [Turn off API Sampling](https://www.noverse.dev/policies.html?p=AppDeviceInventory*TurnOffAPISamping) | `HKLM\Software\Policies\Microsoft\Windows\AppCompat` | `DisableAPISamping` |
-| [Turn off Application Footprint](https://www.noverse.dev/policies.html?p=AppDeviceInventory*TurnOffApplicationFootprint) | `HKLM\Software\Policies\Microsoft\Windows\AppCompat` | `DisableApplicationFootprint` |
-| [Turn off compatibility scan for backed up applications](https://www.noverse.dev/policies.html?p=AppDeviceInventory*TurnOffWin32AppBackup) | `HKLM\Software\Policies\Microsoft\Windows\AppCompat` | `DisableWin32AppBackup` |
-| [Detect compatibility issues for applications and drivers](https://www.noverse.dev/policies.html?p=pca*DisablePcaUIPolicy) | `HKLM\Software\Policies\Microsoft\Windows\AppCompat` | `DisablePcaUI` |
+| [Turn off SwitchBack Compatibility Engine](https://noverse.dev/policies?p=AppCompat*AppCompatTurnOffSwitchBack) | `HKLM\Software\Policies\Microsoft\Windows\AppCompat` | `SbEnable` |
+| [Turn off Application Compatibility Engine](https://noverse.dev/policies?p=AppCompat*AppCompatTurnOffEngine) | `HKLM\Software\Policies\Microsoft\Windows\AppCompat` | `DisableEngine` |
+| [Turn off Program Compatibility Assistant](https://noverse.dev/policies?p=AppCompat*AppCompatTurnOffProgramCompatibilityAssistant_2) | `HKLM\Software\Policies\Microsoft\Windows\AppCompat` | `DisablePCA` |
+| [Turn off Install Tracing](https://noverse.dev/policies?p=AppDeviceInventory*TurnOffInstallTracing) | `HKLM\Software\Policies\Microsoft\Windows\AppCompat` | `DisableInstallTracing` |
+| [Turn off API Sampling](https://noverse.dev/policies?p=AppDeviceInventory*TurnOffAPISamping) | `HKLM\Software\Policies\Microsoft\Windows\AppCompat` | `DisableAPISamping` |
+| [Turn off Application Footprint](https://noverse.dev/policies?p=AppDeviceInventory*TurnOffApplicationFootprint) | `HKLM\Software\Policies\Microsoft\Windows\AppCompat` | `DisableApplicationFootprint` |
+| [Turn off compatibility scan for backed up applications](https://noverse.dev/policies?p=AppDeviceInventory*TurnOffWin32AppBackup) | `HKLM\Software\Policies\Microsoft\Windows\AppCompat` | `DisableWin32AppBackup` |
+| [Detect compatibility issues for applications and drivers](https://noverse.dev/policies?p=pca*DisablePcaUIPolicy) | `HKLM\Software\Policies\Microsoft\Windows\AppCompat` | `DisablePcaUI` |

@@ -50,7 +50,7 @@ Hibernation is Windows S4 power state, it writes the resume state to `Hiberfil.s
 
 Fast Startup (also called *hiberboot*/*hybrid shutdown*) is a shutdown mechamism built on hibernation. It logs off the interactive user sessions first, then hibernates the kernel session and loaded kernel mode drivers. The next boot can skip much of kernel and driver initialization. Restart doesn't use Fast Startup, it performs a full boot cycle so drivers and Windows components are initialized from a new state. For `shutdown.exe`, `/s /t 0` = full shutdown, while `/s /hybrid /t 0` = hybrid shutdown.
 
-Boot Manager uses the `resume`, `resumeobject`, `hiberboot`, `filepath`, `filedevice` BCD elements ([bcd-edits/#valuedata-list](https://www.noverse.dev/docs/win-config/system/bcd-edits/#valuedata-list)) to locate the Windows Resume application and hibernation file on the next boot.
+Boot Manager uses the `resume`, `resumeobject`, `hiberboot`, `filepath`, `filedevice` BCD elements ([bcd-edits/#valuedata-list](https://noverse.dev/docs/win-config/system/bcd-edits/#valuedata-list)) to locate the Windows Resume application and hibernation file on the next boot.
 
 > *Fast startup is a type of shutdown that uses a hibernation file to speed up the subsequent boot. During this type of shutdown, the user is logged off before the hibernation file is created. Fast startup allows for a smaller hibernation file, more appropriate for systems with less storage capabilities.*
 > *When using fast startup, the system appears to the user as though a full shutdown (S5) has occurred, even though the system has actually gone through S4. This includes how the system responds to device wake alarms.*
@@ -184,8 +184,8 @@ if ( v20 && PpmIdleDisableStatesAtBoot == 2 )
   *(_DWORD *)(v23 + 32) = 0x80000000;
 ```
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Require use of fast startup](https://www.noverse.dev/policies.html?p=WinInit*Hiberboot) | `HKLM\Software\Policies\Microsoft\Windows\System` | `HiberbootEnabled` |
+| [Require use of fast startup](https://noverse.dev/policies?p=WinInit*Hiberboot) | `HKLM\Software\Policies\Microsoft\Windows\System` | `HiberbootEnabled` |

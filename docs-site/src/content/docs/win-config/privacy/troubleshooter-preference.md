@@ -40,13 +40,13 @@ HKLM\SOFTWARE\Microsoft\WindowsMitigation\UserPreference	Type: REG_DWORD, Length
 HKLM\SOFTWARE\Microsoft\WindowsMitigation\UserPreference	Type: REG_DWORD, Length: 4, Data: 4
 ```
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Microsoft Support Diagnostic Tool: Turn on MSDT interactive communication with support provider](https://www.noverse.dev/policies.html?p=MSDT*MsdtSupportProvider) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\ScriptedDiagnosticsProvider\Policy` | `DisableQueryRemoteServer` |
-| [Troubleshooting: Allow users to access and run Troubleshooting Wizards](https://www.noverse.dev/policies.html?p=sdiageng*ScriptedDiagnosticsExecutionPolicy) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\ScriptedDiagnostics` | `EnableDiagnostics` |
-| [Troubleshooting: Allow users to access online troubleshooting content on Microsoft servers from the Troubleshooting Control Panel (via the Windows Online Troubleshooting Service - WOTS)](https://www.noverse.dev/policies.html?p=sdiageng*BetterWhenConnected) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\ScriptedDiagnosticsProvider\Policy` | `EnableQueryRemoteServer` |
-| [Troubleshooting: Allow users to access recommended troubleshooting for known problems](https://www.noverse.dev/policies.html?p=MSDT*TroubleshootingAllowRecommendations) | `HKLM\Software\Policies\Microsoft\Windows\Troubleshooting\AllowRecommendations` | `TroubleshootingAllowRecommendations` |
-| [Configure Scheduled Maintenance Behavior](https://www.noverse.dev/policies.html?p=sdiagschd*ScheduledDiagnosticsExecutionPolicy) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\ScheduledDiagnostics` | `EnabledExecution`<br>`EnabledExecutionLevel` |
-| [Diagnostics: Configure scenario execution level](https://www.noverse.dev/policies.html?p=WDI*WdiDpsScenarioExecutionPolicy) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\WDI` | `ScenarioExecutionEnabled`<br>`EnabledScenarioExecutionLevel` |
+| [Microsoft Support Diagnostic Tool: Turn on MSDT interactive communication with support provider](https://noverse.dev/policies?p=MSDT*MsdtSupportProvider) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\ScriptedDiagnosticsProvider\Policy` | `DisableQueryRemoteServer` |
+| [Troubleshooting: Allow users to access and run Troubleshooting Wizards](https://noverse.dev/policies?p=sdiageng*ScriptedDiagnosticsExecutionPolicy) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\ScriptedDiagnostics` | `EnableDiagnostics` |
+| [Troubleshooting: Allow users to access online troubleshooting content on Microsoft servers from the Troubleshooting Control Panel (via the Windows Online Troubleshooting Service - WOTS)](https://noverse.dev/policies?p=sdiageng*BetterWhenConnected) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\ScriptedDiagnosticsProvider\Policy` | `EnableQueryRemoteServer` |
+| [Troubleshooting: Allow users to access recommended troubleshooting for known problems](https://noverse.dev/policies?p=MSDT*TroubleshootingAllowRecommendations) | `HKLM\Software\Policies\Microsoft\Windows\Troubleshooting\AllowRecommendations` | `TroubleshootingAllowRecommendations` |
+| [Configure Scheduled Maintenance Behavior](https://noverse.dev/policies?p=sdiagschd*ScheduledDiagnosticsExecutionPolicy) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\ScheduledDiagnostics` | `EnabledExecution`<br>`EnabledExecutionLevel` |
+| [Diagnostics: Configure scenario execution level](https://noverse.dev/policies?p=WDI*WdiDpsScenarioExecutionPolicy) | `HKLM\SOFTWARE\Policies\Microsoft\Windows\WDI` | `ScenarioExecutionEnabled`<br>`EnabledScenarioExecutionLevel` |

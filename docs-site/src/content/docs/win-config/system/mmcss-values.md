@@ -6,7 +6,7 @@ sidebar:
   order: 3
 ---
 
-Everything below is based on the 11-23H2 mmcss driver pseudocode (see [bin-diff](https://www.noverse.dev/bin-diff.html?left=11-23H2&right=11-25H2&module=mmcss&function=CiConfigInitialize.c&mode=side-by-side) if you want to see changes on newer builds)/ WPR (`Microsoft-Windows-MMCSS` provider).
+Everything below is based on the 11-23H2 mmcss driver pseudocode (see [bin-diff](https://noverse.dev/bin-diff?left=11-23H2&right=11-25H2&module=mmcss&function=CiConfigInitialize.c&mode=side-by-side) if you want to see changes on newer builds)/ WPR (`Microsoft-Windows-MMCSS` provider).
 
 > "*The Multimedia Class Scheduler service (MMCSS) enables multimedia applications to ensure that their time-sensitive processing receives prioritized access to CPU resources. This service enables multimedia applications to utilize as much of the CPU as possible without denying CPU resources to lower-priority applications.*
 >
@@ -48,7 +48,7 @@ If `SystemResponsiveness == 100`, [`CiConfigInitialize`](https://github.com/nohu
 
 ![](https://github.com/nohuto/win-config/blob/main/system/images/mmcss-10-100.png?raw=true)
 
-For other values than 100, [`CiSchedulerInitialize`](https://github.com/nohuto/decompiled-pseudocode/blob/main/11-23H2/mmcss/CiSchedulerInitialize.c) splits `SchedulerPeriod` with `CiSystemResponsiveness`, see [`SchedulerPeriod`](https://www.noverse.dev/docs/win-config/system/mmcss-values/#schedulerperiod) section for more details on that.
+For other values than 100, [`CiSchedulerInitialize`](https://github.com/nohuto/decompiled-pseudocode/blob/main/11-23H2/mmcss/CiSchedulerInitialize.c) splits `SchedulerPeriod` with `CiSystemResponsiveness`, see [`SchedulerPeriod`](https://noverse.dev/docs/win-config/system/mmcss-values/#schedulerperiod) section for more details on that.
 
 > "*Determines the percentage of CPU resources that should be guaranteed to low-priority tasks. For example, if this value is 20, then 20% of CPU resources are reserved for low-priority tasks. Note that values that are not evenly divisible by 10 are rounded down to the nearest multiple of 10. Values below 10 and above 100 are clamped to 20. A value of 100 disables MMCSS (driver returns `STATUS_SERVER_DISABLED`).*"
 >
@@ -140,7 +140,7 @@ MMCSS samples CPU idle/starvation (`CiPotentiallyStarvedProcessors`) state and i
 
 `NoLazyMode = 1` only disables idle detection, causing `IdleDetection` & `IdleDetectionLazy` to disappear. It doesn't disable the normal boosted/exhausted sleeps (`Realtime`/`SleepResponsiveness`), `DeepSleep`, or an already set lazy state sleep (`SleepRealtimeLazy`). That's also why the `SchedulerPeriod` split is visible with `NoLazyMode = 1`, as `Realtime`/`SleepResponsiveness` use the boosted/exhausted durations (with `NoLazyMode = 0` it would show that as `IdleDetection`).
 
-You can see that in the picture of the [SchedulerPeriod](https://www.noverse.dev/docs/win-config/system/mmcss-values/#schedulerperiod) section.
+You can see that in the picture of the [SchedulerPeriod](https://noverse.dev/docs/win-config/system/mmcss-values/#schedulerperiod) section.
 
 ```c
 // CiConfigInitialize
@@ -376,7 +376,7 @@ Some additional notes:
 
 This part `For tasks with a Scheduling Category of High, this value is always treated as 2.` doesn't refer to the exhausted priority, only to the boosted priority. `Priority` gets stored as `prio - 1`, means 2 = 1, 3 = 2 etc., value 1 (which would be 0) gets clamped to 1 when calculating the exhausted priority. This doesn't mean that 1 and 2 are the same (they've the same exhaused priority), but boosted priority still differs.
 
-The boosted priority gets calculated using the `Scheduling Category` and the `Priority` value (after subtraction), so if using category `Medium` + priority of `6` the boosted priority would be `16 + 5 = 21`. If using category `High` and `Priority = 6`, the exhausted priority would be `5`, but the boosted base is forced to `24` (by [`CiConfigTaskPolicy`](https://github.com/nohuto/decompiled-pseudocode/blob/main/11-23H2/mmcss/CiConfigTaskPolicy.c)). Relative priority can then move that boosted value within `23-26` (see [relative-priorities](https://www.noverse.dev/docs/win-config/system/mmcss-values/#relative-priorities)), means:
+The boosted priority gets calculated using the `Scheduling Category` and the `Priority` value (after subtraction), so if using category `Medium` + priority of `6` the boosted priority would be `16 + 5 = 21`. If using category `High` and `Priority = 6`, the exhausted priority would be `5`, but the boosted base is forced to `24` (by [`CiConfigTaskPolicy`](https://github.com/nohuto/decompiled-pseudocode/blob/main/11-23H2/mmcss/CiConfigTaskPolicy.c)). Relative priority can then move that boosted value within `23-26` (see [relative-priorities](https://noverse.dev/docs/win-config/system/mmcss-values/#relative-priorities)), means:
 
 ```c
 // Low/Medium

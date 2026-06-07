@@ -22,8 +22,8 @@ HKCU\Software\Microsoft\Windows\CurrentVersion\CrossDeviceResume\Configuration\I
 
 By default resume is enabled, OneDrive is the only app which exists under the "Control which apps can use Resume" on a stock 25H2 installation and can be toggled via `IsOneDriveResumeAllowed` (same key as `IsResumeAllowed`). Disabling resume will disallow all apps to use Resume (doesn't set `IsXResumeAllowed` to `0`).
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Phone-PC linking on this device](https://www.noverse.dev/policies.html?p=GroupPolicy*EnableMMX) | `HKLM\Software\Policies\Microsoft\Windows\System` | `EnableMmx` |
+| [Phone-PC linking on this device](https://noverse.dev/policies?p=GroupPolicy*EnableMMX) | `HKLM\Software\Policies\Microsoft\Windows\System` | `EnableMmx` |

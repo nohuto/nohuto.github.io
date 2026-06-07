@@ -24,10 +24,10 @@ HKLM\SOFTWARE\Microsoft\PolicyManager\default\Start\HideSignOut
 HKLM\SOFTWARE\Microsoft\PolicyManager\default\Start\HideSwitchAccount
 ```
 
-## [Windows Policies](https://www.noverse.dev/policies.html)
+## [Windows Policies](https://noverse.dev/policies)
 
 | Policy | Key Path | Value Name |
 | --- | --- | --- |
-| [Show lock in the user tile menu](https://www.noverse.dev/policies.html?p=WindowsExplorer*ShowLockOption) | `HKLM\Software\Policies\Microsoft\Windows\Explorer` | `ShowLockOption` |
-| [Show sleep in the power options menu](https://www.noverse.dev/policies.html?p=WindowsExplorer*ShowSleepOption) | `HKLM\Software\Policies\Microsoft\Windows\Explorer` | `ShowSleepOption` |
-| [Show hibernate in the power options menu](https://www.noverse.dev/policies.html?p=WindowsExplorer*ShowHibernateOption) | `HKLM\Software\Policies\Microsoft\Windows\Explorer` | `ShowHibernateOption` |
+| [Show lock in the user tile menu](https://noverse.dev/policies?p=WindowsExplorer*ShowLockOption) | `HKLM\Software\Policies\Microsoft\Windows\Explorer` | `ShowLockOption` |
+| [Show sleep in the power options menu](https://noverse.dev/policies?p=WindowsExplorer*ShowSleepOption) | `HKLM\Software\Policies\Microsoft\Windows\Explorer` | `ShowSleepOption` |
+| [Show hibernate in the power options menu](https://noverse.dev/policies?p=WindowsExplorer*ShowHibernateOption) | `HKLM\Software\Policies\Microsoft\Windows\Explorer` | `ShowHibernateOption` |
