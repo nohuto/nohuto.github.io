@@ -13,7 +13,7 @@ sidebar:
 `TimerCoalescing` (queried by [InitTimerCoalescing](https://github.com/nohuto/decompiled-pseudocode/blob/main/11-23H2/win32kfull/InitTimerCoalescing.c)) is a binary value (`v18 == 3`) with a size of 80 bytes (`v19 == 80`), interpreted as 20 DWORDs. The value is used to load two four entry timer coalescing tolerance blocks.
 
 ```c
-// InitTimerCoalescing.c
+// InitTimerCoalescing
 
 if ( ZwQueryValueKey(
       KeyHandle,
@@ -30,7 +30,7 @@ if ( ZwQueryValueKey(
 ### Data Formatting
 
 ```c
-// InitTimerCoalescing.c
+// InitTimerCoalescing
 
 for ( i = &v19; !*(_DWORD *)i; i += 4 ) // DWORDs 1-3 must be zero
 {
