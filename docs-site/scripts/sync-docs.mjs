@@ -390,6 +390,7 @@ function normalizeGeneratedMarkdown(markdown) {
     .replace(/https?:\/\/(?:www\.)?noverse\.dev\/docs\/app-guides\/docs\/([^)/#?]+)\/?/g, '/docs/app-guides/$1/')
     .replace(/https?:\/\/(?:www\.)?noverse\.dev\/docs\/app-tools\/docs\/?/g, '/docs/app-guides/')
     .replace(/https?:\/\/(?:www\.)?noverse\.dev\/docs\/app-guides\/docs\/?/g, '/docs/app-guides/')
+    .replace(/https:\/\/www\.noverse\.dev\/(product|projects|bin-diff|policies)\.html/g, 'https://www.noverse.dev/$1')
     .replace(/https:\/\/github\.com\/nohuto\/app-tools/g, 'https://github.com/nohuto/app-guides')
     .replace(/\bapp-tools\b/g, 'app-guides')
     .replace(/\]\(\((https?:\/\/[^)\s]+)\)\)/gi, ']($1)')

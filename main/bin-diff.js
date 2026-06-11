@@ -666,7 +666,7 @@ function initBinDiff() {
     params.set('module', moduleSelect.value);
     params.set('function', functionSelect.value);
     params.set('mode', currentViewMode);
-    const url = `bin-diff.html?${params.toString()}`;
+    const url = `/bin-diff?${params.toString()}`;
     history.replaceState({ ...(history.state || {}), url }, '', url);
   };
 

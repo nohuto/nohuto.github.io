@@ -22,7 +22,19 @@ const KEYFRAMES_ICON_DARK = 'main/icons/dark/keyframes.svg';
 const KEYFRAMES_ICON_LIGHT = 'main/icons/light/keyframes.svg';
 const ACTIVE_PAGE_PATH_KEY = 'nv-active-page-path';
 const NOT_FOUND_PATH_KEY = 'nv-not-found-path';
-const MAIN_PAGE_PATHS = new Set(['/', '/index.html', '/product.html', '/projects.html', '/bin-diff.html', '/policies.html']);
+const MAIN_PAGE_ROUTES = Object.freeze([
+  { slug: 'terminal', clean: '/', file: '/index.html' },
+  { slug: 'product', clean: '/product', file: '/product.html' },
+  { slug: 'projects', clean: '/projects', file: '/projects.html' },
+  { slug: 'bin-diff', clean: '/bin-diff', file: '/bin-diff.html' },
+  { slug: 'policies', clean: '/policies', file: '/policies.html' }
+]);
+const MAIN_PAGE_ROUTE_ALIASES = new Map();
+MAIN_PAGE_ROUTES.forEach(route => {
+  MAIN_PAGE_ROUTE_ALIASES.set(route.clean, route);
+  MAIN_PAGE_ROUTE_ALIASES.set(route.file, route);
+});
+window.NV_MAIN_ROUTES = MAIN_PAGE_ROUTES;
 const FONT_KEY = 'nv-font';
 const DEFAULT_FONT = 'cascadia';
 const FONT_KEYS = ['cascadia'];
@@ -65,10 +77,24 @@ const storageSet = (key, value) => {
   } catch { }
 };
 
+const normalizePathname = pathname => {
+  const path = String(pathname || '/').replace(/^https?:\/\/[^/]+/i, '') || '/';
+  if (path === '/') return '/';
+  return `/${path.replace(/^\/+|\/+$/g, '')}`.toLowerCase();
+};
+
+const getMainPageRoute = pathname => MAIN_PAGE_ROUTE_ALIASES.get(normalizePathname(pathname)) || null;
+
+const getCanonicalPagePath = pathname => {
+  const route = getMainPageRoute(pathname);
+  return route ? route.clean : normalizePathname(pathname);
+};
+
 const rememberActivePage = pathname => {
-  if (!MAIN_PAGE_PATHS.has(pathname)) return;
+  const route = getMainPageRoute(pathname);
+  if (!route) return;
   try {
-    sessionStorage.setItem(ACTIVE_PAGE_PATH_KEY, pathname);
+    sessionStorage.setItem(ACTIVE_PAGE_PATH_KEY, route.clean);
   } catch { }
 };
 
@@ -91,9 +117,10 @@ const closeSelectUIs = except => {
   });
 };
 
-function setActive(href) {
+function syncPageChrome(pathname = location.pathname) {
+  const activePath = getCanonicalPagePath(pathname);
   document.querySelectorAll('.nav-tabs a').forEach(a => {
-    const isActive = a.getAttribute('href') === href;
+    const isActive = getCanonicalPagePath(a.pathname || a.getAttribute('href')) === activePath;
     a.classList.toggle('active', isActive);
     if (isActive) {
       a.setAttribute('aria-current', 'page');
@@ -101,11 +128,12 @@ function setActive(href) {
       a.removeAttribute('aria-current');
     }
   });
+  updatePromptBar(pathname);
 }
 
 function applyTerminalExitState() {
   document.documentElement.toggleAttribute('data-terminal-exited', terminalExited);
-  document.querySelectorAll('.nav-tabs a[href="index.html"]').forEach(link => {
+  document.querySelectorAll('.nav-tabs a[href="/"]').forEach(link => {
     link.hidden = terminalExited;
     link.style.display = terminalExited ? 'none' : '';
     link.setAttribute('aria-hidden', terminalExited ? 'true' : 'false');
@@ -122,16 +150,9 @@ function applyTerminalExitState() {
 }
 
 function getPromptDirectory(pathname = location.pathname) {
-  const normalized = String(pathname || '')
-    .replace(/^https?:\/\/[^/]+/i, '')
-    .replace(/^\/+|\/+$/g, '')
-    .toLowerCase();
-
-  if (!normalized || normalized === 'index.html') return 'terminal';
-  if (normalized === 'product.html') return 'product';
-  if (normalized === 'projects.html') return 'projects';
-  if (normalized === 'bin-diff.html') return 'bin-diff';
-  if (normalized === 'policies.html') return 'policies';
+  const route = getMainPageRoute(pathname);
+  if (route) return route.slug;
+  const normalized = normalizePathname(pathname).replace(/^\/+/, '');
   if (normalized === 'docs' || normalized.startsWith('docs/')) return 'docs';
   return 'terminal';
 }
@@ -700,10 +721,10 @@ function showNotFoundError(url) {
   modal.querySelector('[data-site-error-close]')?.focus();
 }
 
-function sanitizeMain(main) {
-  if (!main) return;
-  main.querySelectorAll('script').forEach(script => script.remove());
-  main.querySelectorAll('*').forEach(node => {
+function sanitizeElement(element) {
+  if (!element) return;
+  element.querySelectorAll('script').forEach(script => script.remove());
+  element.querySelectorAll('*').forEach(node => {
     node.getAttributeNames().forEach(name => {
       if (name.toLowerCase().startsWith('on')) {
         node.removeAttribute(name);
@@ -768,54 +789,69 @@ async function initPageFeatures() {
 }
 
 async function loadPage(url, push = true) {
+  const header = document.querySelector('header.prompt-bar');
   const main = document.querySelector('main');
+  const requestedUrl = new URL(url, location.href);
+  const route = getMainPageRoute(requestedUrl.pathname);
+  const fetchUrl = route
+    ? `${route.file}${requestedUrl.search}`
+    : `${requestedUrl.pathname}${requestedUrl.search}`;
+  const historyUrl = route
+    ? `${route.clean}${requestedUrl.search}${requestedUrl.hash}`
+    : `${requestedUrl.pathname}${requestedUrl.search}${requestedUrl.hash}`;
   try {
-    const res = await fetch(url, { credentials: 'same-origin' });
+    const res = await fetch(fetchUrl, { credentials: 'same-origin' });
     if (res.status === 404) {
-      showNotFoundError(url);
+      showNotFoundError(historyUrl);
       return;
     }
     if (!res.ok) throw new Error(`Page request failed with status ${res.status}`);
     const html = await res.text();
     const doc = new DOMParser().parseFromString(html, 'text/html');
+    const newHeader = doc.querySelector('header.prompt-bar');
     const newMain = doc.querySelector('main');
     if (!newMain) throw new Error('No main element in response');
-    sanitizeMain(newMain);
+    sanitizeElement(newHeader);
+    sanitizeElement(newMain);
     const newTitle = doc.querySelector('title')?.textContent || document.title;
-    const nextPathname = new URL(url, location.href).pathname;
+    const nextPathname = route ? route.clean : requestedUrl.pathname;
     rememberActivePage(nextPathname);
     window.stopConsoleAnimation?.();
+    if (header && newHeader) header.replaceWith(newHeader);
     main.replaceWith(newMain);
     document.title = newTitle;
-    setActive(nextPathname.split('/').pop() || 'index.html');
     applyTerminalExitState();
-    updatePromptBar(nextPathname);
+    syncPageChrome(nextPathname);
     initRepoDescriptions();
     initClickableCards();
     initFiltering();
     initSelectUI();
     await initPageFeatures();
 
-    if (push) history.pushState({ url }, '', url);
+    if (push) history.pushState({ url: historyUrl }, '', historyUrl);
   } catch {
-    location.href = url;
+    location.href = historyUrl;
   }
 }
 
 document.addEventListener('click', e => {
   if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-  const a = e.target.closest('a');
+  const target = e.target instanceof Element ? e.target : e.target?.parentElement;
+  const a = target?.closest('a[href]');
   const href = a?.getAttribute('href');
-  if (a && href && href.endsWith('.html') && a.origin === location.origin) {
+  if (a instanceof HTMLAnchorElement && href && getMainPageRoute(a.pathname) && a.origin === location.origin) {
     const targetPath = new URL(href, location.href).pathname;
-    if (targetPath === location.pathname) return;
     e.preventDefault();
+    if (getCanonicalPagePath(targetPath) === getCanonicalPagePath(location.pathname)) {
+      syncPageChrome(location.pathname);
+      return;
+    }
     loadPage(href);
   }
 });
 
 window.addEventListener('popstate', e => {
-  const url = e.state?.url || location.pathname.split('/').pop() || 'index.html';
+  const url = e.state?.url || location.pathname || '/';
   loadPage(url, false);
 });
 
@@ -916,9 +952,8 @@ function initFiltering() {
 document.addEventListener('DOMContentLoaded', () => {
   const notFoundPath = consumeNotFoundPath();
   rememberActivePage(location.pathname);
-  setActive(location.pathname.split('/').pop() || 'index.html');
   applyTerminalExitState();
-  updatePromptBar(location.pathname);
+  syncPageChrome(location.pathname);
   initTheme();
   initBackground();
   initTypography();

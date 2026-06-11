@@ -547,7 +547,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  height: 100%;
+  min-height: 100%;
 }
 
 html {
@@ -709,8 +709,8 @@ html[data-bg="starfield"] .stars::after {
 .window-surface {
   position: relative;
   flex: 1;
-  min-height: 70vh;
-  height: 100%;
+  min-height: 0;
+  height: auto;
   contain: layout paint style;
   overflow: hidden;
   padding: 0;
@@ -719,7 +719,7 @@ html[data-bg="starfield"] .stars::after {
 main.main-terminal {
   width: 100%;
   max-width: none;
-  padding: 16px 0 32px;
+  padding: 0;
   gap: 0;
 }
 
@@ -886,7 +886,9 @@ main {
 }
 
 .prompt-bar {
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 20;
   display: grid;
   grid-template-columns: minmax(220px, 1fr) auto;
   gap: 12px;

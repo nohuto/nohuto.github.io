@@ -668,13 +668,13 @@ function initConsole() {
     return ['..'];
   };
 
-  const NAV_MAP = {
-    terminal: 'index.html',
-    product: 'product.html',
-    projects: 'projects.html',
-    'bin-diff': 'bin-diff.html',
-    policies: 'policies.html'
-  };
+  const NAV_MAP = Object.fromEntries((window.NV_MAIN_ROUTES || [
+    { slug: 'terminal', clean: '/' },
+    { slug: 'product', clean: '/product' },
+    { slug: 'projects', clean: '/projects' },
+    { slug: 'bin-diff', clean: '/bin-diff' },
+    { slug: 'policies', clean: '/policies' }
+  ]).map(route => [route.slug, route.clean]));
 
   const navigateToPath = nextPath => {
     if (nextPath === DOCS_ROOT_PATH || nextPath.startsWith(`${DOCS_ROOT_PATH}/`)) {
@@ -691,8 +691,8 @@ function initConsole() {
     const segment = nextPath === rootPath ? 'terminal' : nextPath.split('/').pop();
     const target = NAV_MAP[segment];
     if (!target) return;
-    const currentPage = location.pathname.split('/').pop() || 'index.html';
-    if (currentPage === target) return;
+    const currentPath = location.pathname.replace(/\/+$/g, '') || '/';
+    if (currentPath === target) return;
     loadPage(target);
   };
 
@@ -952,7 +952,7 @@ function initConsole() {
       stopConsoleAnimation();
       terminalExited = true;
       applyTerminalExitState();
-      loadPage('projects.html');
+      loadPage('/projects');
     },
     projects: () => {
       addLine('projects:');
