@@ -7,9 +7,9 @@ sidebar:
   order: 7
 ---
 
+- [Windows Firewall](/docs/win-config/security/windows-firewall/)
 - [Windows Defender](/docs/win-config/security/windows-defender/)
 - [Windows Update](/docs/win-config/security/windows-update/)
-- [Windows Firewall](/docs/win-config/security/windows-firewall/)
 - [UAC](/docs/win-config/security/uac/)
 - [PS Execution Policy](/docs/win-config/security/ps-execution-policy/)
 - [Process Mitigations](/docs/win-config/security/process-mitigations/)

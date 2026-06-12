@@ -3,7 +3,7 @@ title: 'Windows Defender'
 description: 'Security option documentation from win-config.'
 editUrl: false
 sidebar:
-  order: 1
+  order: 2
 ---
 
 ## [Current Defender Status](https://github.com/MicrosoftDocs/defender-docs/blob/public/defender-endpoint/microsoft-defender-antivirus-windows.md#use-powershell-to-check-the-status-of-microsoft-defender-antivirus)
